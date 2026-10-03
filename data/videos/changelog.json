@@ -1,0 +1,35 @@
+[
+  {
+    "id": "change-01",
+    "timestamp": "2026-10-02T14:30:00Z",
+    "courseSlug": "ai-ml",
+    "chapterSlug": "transformers-llms-and-responsible-ai",
+    "chapterTitle": "Transformers, LLMs & Responsible AI",
+    "oldTopPickTitle": "Attention Is All You Need Explained",
+    "newTopPickTitle": "Visualizing Attention and Transformer Architecture",
+    "newTopPickChannel": "3Blue1Brown",
+    "reason": "New visual breakdown scored 14.8% higher on syllabus fit and engagement across two consecutive benchmark cycles."
+  },
+  {
+    "id": "change-02",
+    "timestamp": "2026-10-01T09:15:00Z",
+    "courseSlug": "cybersecurity",
+    "chapterSlug": "web-application-security-owasp-top-10",
+    "chapterTitle": "Web Application Security (OWASP Top 10)",
+    "oldTopPickTitle": "SQL Injection Basics 2024",
+    "newTopPickTitle": "OWASP Top 10 Full Modern Laboratory Walkthrough",
+    "newTopPickChannel": "John Hammond",
+    "reason": "Surpassed previous pick by 13.2% with live defensive remediation demonstrations and updated 2026 vulnerability taxonomy."
+  },
+  {
+    "id": "change-03",
+    "timestamp": "2026-09-28T18:45:00Z",
+    "courseSlug": "iot",
+    "chapterSlug": "microcontrollers-esp32-and-arduino",
+    "chapterTitle": "Microcontrollers in Practice (ESP32 & Arduino)",
+    "oldTopPickTitle": "ESP32 Pinout Guide",
+    "newTopPickTitle": "ESP32 Hardware Interrupts & Deep Sleep Architecture",
+    "newTopPickChannel": "Phil's Lab",
+    "reason": "Scored 16.1% higher in syllabus fit and precision hardware oscilloscope analysis."
+  }
+]

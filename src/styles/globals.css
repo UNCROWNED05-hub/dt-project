@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Typography Tokens */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-accent: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Default Desk Theme */
+  --bg: #F3EEE6;
+  --surface: #FAF6EF;
+  --fg: #17161A;
+  --fg-muted: #5B5761;
+  --line: rgba(23, 22, 26, 0.12);
+  --accent: #D97706;
+  --on-accent: #17161A;
+  --accent-2: #E11D48;
+  --block-1: #F5C451;
+  --on-block-1: #17161A;
+  --block-2: #EDE8DD;
+  --on-block-2: #17161A;
+  --block-3: #CFE5DB;
+  --on-block-3: #17161A;
+  --block-4: #BDD3FF;
+  --on-block-4: #17161A;
+
+  --cursor-tint: #D97706;
+  --noise-opacity: 0.04;
+  --noise-blend: multiply;
+  color-scheme: light;
+
+  /* Layer 1 Cursor Variables */
+  --cursor-pencil: url('/cursors/pencil.svg') 3 29, auto;
+  --cursor-nib: url('/cursors/nib.svg') 3 29, pointer;
+  --cursor-highlighter: url('/cursors/highlighter.svg') 3 29, text;
+}
+
+/* Theme 1: AI & ML "Sunrise Paper" */
+[data-theme="sunrise"] {
+  --bg: #F5EDE0;
+  --surface: #FFF9EF;
+  --fg: #1C2340;
+  --fg-muted: #565B7A;
+  --line: rgba(28, 35, 64, 0.12);
+  --accent: #F5B82E;
+  --on-accent: #1C2340;
+  --accent-2: #F08CAE;
+  --block-1: #F5C451;
+  --on-block-1: #1C2340;
+  --block-2: #F3A5BF;
+  --on-block-2: #1C2340;
+  --block-3: #BFDCC0;
+  --on-block-3: #1C2340;
+  --block-4: #A9C8EA;
+  --on-block-4: #1C2340;
+
+  --cursor-tint: #F5B82E;
+  --noise-opacity: 0.04;
+  --noise-blend: multiply;
+  color-scheme: light;
+
+  --cursor-pencil: url('/cursors/pencil-sunrise.svg') 3 29, auto;
+  --cursor-nib: url('/cursors/nib-sunrise.svg') 3 29, pointer;
+  --cursor-highlighter: url('/cursors/highlighter-sunrise.svg') 3 29, text;
+}
+
+/* Theme 2: Cybersecurity "Midnight Ledger" (Dark Theme) */
+[data-theme="midnight"] {
+  --bg: #0E0F12;
+  --surface: #181A1F;
+  --fg: #EDE8DD;
+  --fg-muted: #A8A396;
+  --line: rgba(237, 232, 221, 0.14);
+  --accent: #FF5B2E;
+  --on-accent: #0E0F12;
+  --accent-2: #8FD3FF;
+  --block-1: #FF5B2E;
+  --on-block-1: #0E0F12;
+  --block-2: #EDE8DD;
+  --on-block-2: #0E0F12;
+  --block-3: #232832;
+  --on-block-3: #EDE8DD;
+  --block-4: #8FD3FF;
+  --on-block-4: #0E0F12;
+
+  --cursor-tint: #FF5B2E;
+  --noise-opacity: 0.03;
+  --noise-blend: soft-light;
+  color-scheme: dark;
+
+  --cursor-pencil: url('/cursors/pencil-midnight.svg') 3 29, auto;
+  --cursor-nib: url('/cursors/nib-midnight.svg') 3 29, pointer;
+  --cursor-highlighter: url('/cursors/highlighter-midnight.svg') 3 29, text;
+}
+
+/* Theme 3: IoT "Blueprint Meadow" */
+[data-theme="blueprint"] {
+  --bg: #E6F0EC;
+  --surface: #F4FAF7;
+  --fg: #12307A;
+  --fg-muted: #4A5F8F;
+  --line: rgba(18, 48, 122, 0.14);
+  --accent: #2455E8;
+  --on-accent: #F4FAF7;
+  --accent-2: #FFB020;
+  --block-1: #CFE5DB;
+  --on-block-1: #12307A;
+  --block-2: #BDD3FF;
+  --on-block-2: #12307A;
+  --block-3: #FFE08A;
+  --on-block-3: #12307A;
+  --block-4: #12307A;
+  --on-block-4: #F4FAF7;
+
+  --cursor-tint: #2455E8;
+  --noise-opacity: 0.04;
+  --noise-blend: multiply;
+  color-scheme: light;
+
+  --cursor-pencil: url('/cursors/pencil-blueprint.svg') 3 29, auto;
+  --cursor-nib: url('/cursors/nib-blueprint.svg') 3 29, pointer;
+  --cursor-highlighter: url('/cursors/highlighter-blueprint.svg') 3 29, text;
+}
+
+/* Theme 4: "Desk" */
+[data-theme="desk"] {
+  --bg: #F3EEE6;
+  --surface: #FAF6EF;
+  --fg: #17161A;
+  --fg-muted: #5B5761;
+  --line: rgba(23, 22, 26, 0.12);
+  --accent: #D97706;
+  --on-accent: #17161A;
+  --accent-2: #E11D48;
+  --block-1: #F5C451;
+  --on-block-1: #17161A;
+  --block-2: #EDE8DD;
+  --on-block-2: #17161A;
+  --block-3: #CFE5DB;
+  --on-block-3: #17161A;
+  --block-4: #BDD3FF;
+  --on-block-4: #17161A;
+
+  --cursor-tint: #D97706;
+  --noise-opacity: 0.04;
+  --noise-blend: multiply;
+  color-scheme: light;
+}
+
+/* Global Reset with Semantic Tokens */
+html,
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  cursor: var(--cursor-pencil);
+  scroll-behavior: smooth;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Static Noise Texture Overlay */
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  opacity: var(--noise-opacity);
+  mix-blend-mode: var(--noise-blend);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Dynamic Highlighter Selection */
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Accessible Pencil-Dashed Focus Rings */
+:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 3px;
+}
+
+/* Layer 1 Cursor Bindings */
+a,
+button,
+[role="button"],
+summary,
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  cursor: var(--cursor-nib) !important;
+}
+
+.prose p,
+.prose li,
+.prose blockquote,
+.reading-text {
+  cursor: var(--cursor-highlighter);
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  cursor: text !important;
+}
+
+/* Semantic Prose Styles */
+.prose {
+  color: var(--fg);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--fg);
+  font-family: var(--font-display);
+}
+
+.prose p,
+.prose li {
+  color: var(--fg);
+  font-family: var(--font-body);
+}
+
+.prose blockquote {
+  border-left-color: var(--accent);
+  color: var(--fg);
+  background: var(--surface);
+}
+
+.prose code {
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* Custom Tactile Pencil Lead Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-muted);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Self-drawing SVG Animation */
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-stroke {
+  stroke-dasharray: 100;
+  animation: drawStroke 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Rubber Stamp Effect */
+.rubber-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  border: 2px dashed currentColor;
+  border-radius: 4px;
+  transform: rotate(-5deg);
+  box-shadow: 0 0 0 1px currentColor;
+  user-select: none;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

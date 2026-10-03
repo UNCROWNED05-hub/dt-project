@@ -1,0 +1,281 @@
+{
+  "what-ai-ml-really-are": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "aircAruvnKk",
+      "title": "But what is a neural network? | Chapter 1, Deep learning",
+      "channelTitle": "3Blue1Brown",
+      "duration": "19:13",
+      "publishedAt": "2017-10-05T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
+      "score": 0.942,
+      "scoreBreakdown": {
+        "engagement": 0.98,
+        "traction": 0.89,
+        "authority": 1.0,
+        "freshness": 0.86,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "Unmatched visual exposition of weight tensors, activations, and continuous parameter adjustment from first principles."
+    },
+    "alternates": [
+      {
+        "videoId": "IHZwWFHWa-w",
+        "title": "Gradient descent, how neural networks learn | Chapter 2, Deep learning",
+        "channelTitle": "3Blue1Brown",
+        "duration": "21:01",
+        "publishedAt": "2017-10-16T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/IHZwWFHWa-w/hqdefault.jpg",
+        "score": 0.912
+      },
+      {
+        "videoId": "GIsg-ZUy0MY",
+        "title": "Machine Learning for Everybody – Full Course",
+        "channelTitle": "freeCodeCamp.org",
+        "duration": "3:53:00",
+        "publishedAt": "2022-04-26T14:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/GIsg-ZUy0MY/hqdefault.jpg",
+        "score": 0.884
+      }
+    ]
+  },
+  "python-numpy-and-pandas": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "QUT1VHiLmmI",
+      "title": "Python NumPy Tutorial for Beginners",
+      "channelTitle": "freeCodeCamp.org",
+      "duration": "59:45",
+      "publishedAt": "2020-03-24T15:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QUT1VHiLmmI/hqdefault.jpg",
+      "score": 0.925,
+      "scoreBreakdown": {
+        "engagement": 0.94,
+        "traction": 0.87,
+        "authority": 0.95,
+        "freshness": 0.88,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Rigorous practical walkthrough of array shapes, broadcasting rules, and memory vectorization."
+    },
+    "alternates": [
+      {
+        "videoId": "vmEHCJofslg",
+        "title": "Pandas & Python for Data Analysis by Example",
+        "channelTitle": "Keith Galli",
+        "duration": "58:32",
+        "publishedAt": "2019-06-11T16:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/vmEHCJofslg/hqdefault.jpg",
+        "score": 0.892
+      }
+    ]
+  },
+  "math-you-actually-need": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "fNk_zzaMoSs",
+      "title": "Vectors | Chapter 1, Essence of linear algebra",
+      "channelTitle": "3Blue1Brown",
+      "duration": "9:52",
+      "publishedAt": "2016-08-05T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fNk_zzaMoSs/hqdefault.jpg",
+      "score": 0.956,
+      "scoreBreakdown": {
+        "engagement": 0.99,
+        "traction": 0.90,
+        "authority": 1.0,
+        "freshness": 0.89,
+        "syllabusFit": 0.99
+      },
+      "whyTopPick": "The gold standard for geometric intuition of vector spaces, basis spans, and transformations."
+    },
+    "alternates": [
+      {
+        "videoId": "kYB8IZa5AuE",
+        "title": "Linear transformations and matrices | Chapter 3, Essence of linear algebra",
+        "channelTitle": "3Blue1Brown",
+        "duration": "10:59",
+        "publishedAt": "2016-08-11T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/kYB8IZa5AuE/hqdefault.jpg",
+        "score": 0.938
+      }
+    ]
+  },
+  "data-cleaning-eda-feature-engineering": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "xi0vhXFPegA",
+      "title": "Data Cleaning in Python | Pandas Tutorial",
+      "channelTitle": "Alex The Analyst",
+      "duration": "28:15",
+      "publishedAt": "2023-01-18T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/xi0vhXFPegA/hqdefault.jpg",
+      "score": 0.904,
+      "scoreBreakdown": {
+        "engagement": 0.92,
+        "traction": 0.89,
+        "authority": 0.90,
+        "freshness": 0.91,
+        "syllabusFit": 0.90
+      },
+      "whyTopPick": "Realistic industry workflow resolving dirty formats, duplicate entries, and categorical encoding."
+    },
+    "alternates": []
+  },
+  "regression-and-classification": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "7xHsLq3PwUQ",
+      "title": "Linear Regression, Clearly Explained!!!",
+      "channelTitle": "StatQuest with Josh Starmer",
+      "duration": "27:26",
+      "publishedAt": "2020-07-27T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7xHsLq3PwUQ/hqdefault.jpg",
+      "score": 0.935,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.88,
+        "authority": 0.98,
+        "freshness": 0.87,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Clear step-by-step breakdown of sum of squared residuals, R-squared, and p-values without jargon."
+    },
+    "alternates": [
+      {
+        "videoId": "yIYKR4sgzI8",
+        "title": "Logistic Regression Details Pt1: Coefficients",
+        "channelTitle": "StatQuest with Josh Starmer",
+        "duration": "19:02",
+        "publishedAt": "2018-03-05T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/yIYKR4sgzI8/hqdefault.jpg",
+        "score": 0.918
+      }
+    ]
+  },
+  "trees-ensembles-and-svms": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "_L39rN6gz7Y",
+      "title": "StatQuest: Random Forests Part 1 - Building, using and evaluating",
+      "channelTitle": "StatQuest with Josh Starmer",
+      "duration": "9:54",
+      "publishedAt": "2018-02-12T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_L39rN6gz7Y/hqdefault.jpg",
+      "score": 0.929,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.87,
+        "authority": 0.98,
+        "freshness": 0.86,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Masterclass explanation of bagging, out-of-bag error estimation, and feature importance."
+    },
+    "alternates": [
+      {
+        "videoId": "J4Wdy0Wc_xQ",
+        "title": "StatQuest: Decision Trees",
+        "channelTitle": "StatQuest with Josh Starmer",
+        "duration": "17:22",
+        "publishedAt": "2018-02-05T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/J4Wdy0Wc_xQ/hqdefault.jpg",
+        "score": 0.911
+      }
+    ]
+  },
+  "evaluation-overfitting-and-tuning": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "fSytzGwwBVw",
+      "title": "Machine Learning Fundamentals: Bias and Variance",
+      "channelTitle": "StatQuest with Josh Starmer",
+      "duration": "6:35",
+      "publishedAt": "2018-05-14T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fSytzGwwBVw/hqdefault.jpg",
+      "score": 0.915,
+      "scoreBreakdown": {
+        "engagement": 0.94,
+        "traction": 0.86,
+        "authority": 0.98,
+        "freshness": 0.85,
+        "syllabusFit": 0.94
+      },
+      "whyTopPick": "Crystal-clear demonstration of underfitting versus overfitting trade-offs."
+    },
+    "alternates": []
+  },
+  "unsupervised-learning-and-pca": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "FgakZw6K1QQ",
+      "title": "Principal Component Analysis (PCA), Step-by-Step",
+      "channelTitle": "StatQuest with Josh Starmer",
+      "duration": "21:57",
+      "publishedAt": "2018-04-02T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/FgakZw6K1QQ/hqdefault.jpg",
+      "score": 0.948,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.89,
+        "authority": 0.98,
+        "freshness": 0.88,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "The most widely referenced intuitive walkthrough of eigenvalues and projection lines."
+    },
+    "alternates": []
+  },
+  "neural-networks-and-cnns": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "KuXjwB4LzSA",
+      "title": "Convolutional Neural Networks (CNNs) explained",
+      "channelTitle": "deeplizard",
+      "duration": "8:26",
+      "publishedAt": "2017-12-07T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/KuXjwB4LzSA/hqdefault.jpg",
+      "score": 0.910,
+      "scoreBreakdown": {
+        "engagement": 0.92,
+        "traction": 0.85,
+        "authority": 0.90,
+        "freshness": 0.87,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Visual matrix kernels demonstrating spatial filter convolutions, stride, and max pooling."
+    },
+    "alternates": []
+  },
+  "transformers-llms-and-responsible-ai": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "wjZofJX0v4U",
+      "title": "Visualizing Attention and Transformer Architecture",
+      "channelTitle": "3Blue1Brown",
+      "duration": "26:45",
+      "publishedAt": "2024-04-07T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/wjZofJX0v4U/hqdefault.jpg",
+      "score": 0.965,
+      "scoreBreakdown": {
+        "engagement": 0.99,
+        "traction": 0.95,
+        "authority": 1.0,
+        "freshness": 0.98,
+        "syllabusFit": 0.99
+      },
+      "whyTopPick": "High-fidelity geometric visualization of Query, Key, Value vectors and multi-head self-attention mechanisms."
+    },
+    "alternates": [
+      {
+        "videoId": "kCc8FmEb1nY",
+        "title": "Let's build GPT: from scratch, in code, spelled out.",
+        "channelTitle": "Andrej Karpathy",
+        "duration": "1:56:00",
+        "publishedAt": "2023-01-17T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/kCc8FmEb1nY/hqdefault.jpg",
+        "score": 0.952
+      }
+    ]
+  }
+}

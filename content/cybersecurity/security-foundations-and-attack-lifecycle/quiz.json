@@ -1,0 +1,124 @@
+[
+  {
+    "id": "sec-01-q1",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "An attacker intercepts an encrypted database backup on a public network. Because the attacker does not have the private key, they cannot read any information. Which pillar of the CIA triad successfully held firm?",
+    "options": [
+      "Availability",
+      "Confidentiality",
+      "Integrity",
+      "Non-repudiation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Confidentiality ensures that unauthorized parties cannot access or decipher secret data.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "sec-01-q2",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "A rogue insider alters the account balance records in a bank database without authorization. Which pillar of the CIA triad has been directly violated?",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Scalability"
+    ],
+    "correctIndex": 1,
+    "explanation": "Integrity guarantees that data has not been modified, forged, or deleted in an unauthorized manner.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "sec-01-q3",
+    "type": "multi",
+    "difficulty": "Medium",
+    "prompt": "According to the Cyber Kill Chain model, which of the following represent stages prior to the attacker achieving 'Actions on Objectives'? (Select all that apply)",
+    "options": [
+      "Reconnaissance",
+      "Delivery",
+      "Command & Control (C2)",
+      "Permanent Server Decommissioning"
+    ],
+    "correctIndices": [0, 1, 2],
+    "explanation": "Reconnaissance, Weaponization, Delivery, Exploitation, Installation, and Command & Control all precede the final Actions on Objectives phase.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "sec-01-q4",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "Why is 'Security through Obscurity' (e.g., merely changing a port number) considered insufficient on its own?",
+    "options": [
+      "Because changing port numbers consumes significantly more bandwidth.",
+      "Because automated port scanners can systematically sweep all 65,535 ports and fingerprint running services in minutes.",
+      "Because operating systems automatically shut down when non-standard ports are used.",
+      "Because encryption only works on port 443."
+    ],
+    "correctIndex": 1,
+    "explanation": "Obscurity slows down automated script-kiddie noise slightly, but port scanners and banner grabbers discover services quickly regardless of port numbers.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "sec-01-q5",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "A financial company hosts an internal wiki server accessible only on their private corporate Wi-Fi. An employee connects to the Wi-Fi on an infected laptop, which immediately connects to the wiki and extracts unencrypted payroll files. What structural security failure occurred?",
+    "scenarioContext": "Network Topology: Single Flat Subnet | Authentication: Implicit Trust for Local IP range",
+    "options": [
+      "Lack of Zero Trust: The network operated on the outdated 'Castle & Moat' model, implicitly trusting any device once inside the perimeter.",
+      "The Wi-Fi was broadcasting an 802.11ac signal instead of 802.11ax.",
+      "The server used Python instead of C++ for backend scripting.",
+      "The database had too many indexes enabled."
+    ],
+    "correctIndex": 0,
+    "explanation": "Zero Trust mandates that internal network presence alone never grants access. Every device and session must be authenticated and authorized under least privilege.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "sec-01-q6",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "What is the primary objective of an egress filter on an enterprise edge firewall?",
+    "options": [
+      "To prevent internal users from receiving incoming web traffic.",
+      "To restrict and monitor outbound network traffic originating from internal hosts to the public internet.",
+      "To encrypt local hard drives automatically during peak hours.",
+      "To increase maximum broadband upload speeds."
+    ],
+    "correctIndex": 1,
+    "explanation": "Egress filtering blocks compromised internal hosts from phoning home to attacker Command & Control (C2) servers or exfiltrating stolen data.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "sec-01-q7",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "What does the principle of 'Defense-in-Depth' advocate?",
+    "options": [
+      "Relying entirely on a single ultra-powerful military-grade firewall.",
+      "Deploying multiple overlapping security controls (MFA, firewalls, EDR, least privilege) so that if one fails, others stop the breach.",
+      "Disabling all outbound internet access across all corporate laptops.",
+      "Encrypting only the top 10% most expensive database tables."
+    ],
+    "correctIndex": 1,
+    "explanation": "Defense-in-depth ensures resilient redundancy: no single control failure leads to total system compromise.",
+    "sectionAnchor": "5-cheat-sheet"
+  },
+  {
+    "id": "sec-01-q8",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "During an incident, a SOC team detects suspicious outbound DNS queries transmitting base64-encoded strings to an unknown foreign domain every 30 seconds. In which stage of the Cyber Kill Chain is the attacker operating?",
+    "scenarioContext": "Outbound Traffic: DNS TXT Queries | Frequency: Every 30s | Destination: dynamic-c2-node.xyz",
+    "options": [
+      "Reconnaissance",
+      "Command & Control (C2) / Exfiltration",
+      "Initial Weaponization",
+      "Network Subnetting"
+    ],
+    "correctIndex": 1,
+    "explanation": "Periodic beaconing and encoded data transfers over DNS tunneling are classic hallmarks of Command & Control channels and data exfiltration.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  }
+]

@@ -1,0 +1,124 @@
+[
+  {
+    "id": "iot-01-q1",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "Which layer of the IoT architecture directly converts physical environmental phenomena into electrical voltage signals?",
+    "options": [
+      "Perception / Sensing Layer",
+      "Network Ingestion Layer",
+      "Cloud Analytics Layer",
+      "Application Presentation Layer"
+    ],
+    "correctIndex": 0,
+    "explanation": "The perception layer houses physical sensors (e.g. thermistors, photodiodes) that convert physical properties into electrical signals.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "iot-01-q2",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "Why is the function 'delay(5000)' generally avoided in production embedded microcontroller code?",
+    "options": [
+      "Because delay() consumes 100 times more battery power than active calculation.",
+      "Because delay() blocks the single execution thread completely, preventing the chip from responding to urgent sensor interrupts or network packets.",
+      "Because delay() can only be called inside the setup() function in C++.",
+      "Because microcontrollers crash if delay exceeds 1000 milliseconds."
+    ],
+    "correctIndex": 1,
+    "explanation": "Blocking delay pauses the CPU clock ticks. Using millis() time deltas allows the processor to remain responsive to asynchronous tasks.",
+    "sectionAnchor": "3-worked-example-non-blocking-sensor-reading-on-arduinoesp32"
+  },
+  {
+    "id": "iot-01-q3",
+    "type": "multi",
+    "difficulty": "Medium",
+    "prompt": "According to the 'Iron Triangle' of embedded wireless connectivity, which trade-offs must an engineer balance? (Select all that apply)",
+    "options": [
+      "Power consumption",
+      "Transmission range",
+      "Data bandwidth",
+      "Brand of solder used on the breadboard"
+    ],
+    "correctIndices": [0, 1, 2],
+    "explanation": "RF physics mandates trade-offs between battery life (power), distance covered (range), and throughput (bandwidth).",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "iot-01-q4",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "What catastrophic hardware failure will occur if an engineer connects a 12V 500mA water pump motor directly to an ESP32 GPIO pin?",
+    "options": [
+      "The motor will run backwards due to inverted logic.",
+      "The microcontroller GPIO will supply infinite power and trigger a brownout reset.",
+      "The GPIO pin (rated for ~12-20mA at 3.3V) and its internal transistors will burn out from massive overcurrent and inductive flyback.",
+      "The Wi-Fi antenna will overheat."
+    ],
+    "correctIndex": 2,
+    "explanation": "Microcontroller GPIO pins are low-current logic lines (max ~12-20mA). High current inductive loads must always be isolated with a MOSFET or relay.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "iot-01-q5",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "An agricultural startup needs to deploy 50 soil-moisture probes across a 15-kilometer vineyard where cellular reception is spotty and each sensor must run for 4 years on two AA batteries. Which wireless technology is the optimal engineering choice?",
+    "scenarioContext": "Coverage: 15km | Payload: 12 bytes every 30 minutes | Target Battery Life: 4 Years",
+    "options": [
+      "High-speed 5G Cellular Modem",
+      "Wi-Fi 6 Mesh Network",
+      "LoRaWAN (Low Power Long Range)",
+      "Bluetooth Classic (BR/EDR)"
+    ],
+    "correctIndex": 2,
+    "explanation": "LoRaWAN delivers kilometer-scale range and multi-year battery longevity for minuscule payloads (few bytes per transmission).",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "iot-01-q6",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "What is the primary function of an ADC (Analog-to-Digital Converter) on a microcontroller?",
+    "options": [
+      "It converts 240V AC grid electricity into 5V DC power.",
+      "It samples continuous analog voltage signals and quantizes them into discrete digital numerical integers.",
+      "It encrypts MQTT packets before sending them over the radio.",
+      "It converts Python source code into binary machine bytecode."
+    ],
+    "correctIndex": 1,
+    "explanation": "The ADC translates continuous real-world voltage levels into integer counts (e.g. 0 to 4095 on a 12-bit ADC).",
+    "sectionAnchor": "5-cheat-sheet"
+  },
+  {
+    "id": "iot-01-q7",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "Why is deep sleep mode essential for battery-powered remote IoT devices?",
+    "options": [
+      "It reduces current consumption from tens of milliamperes down to microamperes while inactive, extending battery life by months or years.",
+      "It completely erases flash memory to prevent data theft.",
+      "It cools down the ambient air temperature around the sensor.",
+      "It increases the CPU clock speed to 1 Gigahertz."
+    ],
+    "correctIndex": 0,
+    "explanation": "In deep sleep, almost all internal peripherals and clock trees are disabled, sipping single-digit microamps of current.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "iot-01-q8",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "A developer notes that their ESP32 analogRead() on pin 34 returns 4095 for a voltage of 3.3V, but returns 0 when the wire is disconnected entirely and floating in the air. Sometimes when hands touch the board, the reading fluctuates wildly between 400 and 2200. What circuit element is missing?",
+    "scenarioContext": "Pin State: Floating high impedance input | Symptom: Random capacitive coupling",
+    "options": [
+      "A cooling fan heatsink.",
+      "A pull-down (or pull-up) resistor to provide a stable reference voltage when disconnected.",
+      "A higher bitrate USB-C data cable.",
+      "A 100-watt transformer."
+    ],
+    "correctIndex": 1,
+    "explanation": "Floating input pins pick up ambient electromagnetic interference and stray capacitance. A pull-down or pull-up resistor clamps the pin to a known state when unasserted.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  }
+]

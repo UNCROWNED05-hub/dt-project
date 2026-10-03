@@ -1,0 +1,134 @@
+---
+title: "Security Foundations & The Attack Lifecycle"
+chapterId: "sec-01"
+readingTimeMinutes: 12
+reviewed: false
+sources:
+  - title: "NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide"
+    author: "National Institute of Standards and Technology (NIST)"
+    url: "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
+    license: "Public Domain (U.S. Federal Government Work)"
+    licenseUrl: "https://www.nist.gov/oism/copyrights"
+    dateAccessed: "2026-10-02"
+  - title: "Lockheed Martin Cyber Kill Chain® Framework"
+    author: "Lockheed Martin Corporation"
+    url: "https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"
+    license: "Fair Use / Open Educational Reference"
+    licenseUrl: "https://www.lockheedmartin.com/"
+    dateAccessed: "2026-10-02"
+---
+
+# Security Foundations & The Attack Lifecycle
+
+## 1. Why It Matters
+Modern digital infrastructure powers clean water grids, financial transfers, medical telemetry, and telecommunications. In cybersecurity, defense is inherently asymmetric: **a security engineering team must defend thousands of attack surfaces 24 hours a day, whereas an adversary only needs to find one unpatched flaw, one leaked credential, or one misconfigured firewall rule.**
+
+Security is not a product or a compliance checklist; it is an active risk-management discipline. To protect complex systems effectively, engineers must adopt an adversary mindset—understanding how intrusions unfold step-by-step from initial reconnaissance to objective execution.
+
+---
+
+## 2. Core Ideas in Plain English
+
+### The CIA Triad: The North Star of Defense
+Every security policy, encryption cipher, and access control list exists to preserve one or more of these three pillars:
+
+* **Confidentiality**: Ensuring sensitive information is inaccessible to unauthorized entities (e.g. encrypting patient records in transit and at rest).
+* **Integrity**: Guaranteeing data has not been modified, corrupted, or forged by unauthorized actors (e.g. verifying cryptographic hash sums before executing system updates).
+* **Availability**: Ensuring systems, networks, and services remain operational and accessible to legitimate users (e.g. load balancers resisting Distributed Denial of Service floods).
+
+```
+          [ Confidentiality ]
+             /          \
+            /   TRUST    \
+           /              \
+  [ Integrity ] ────── [ Availability ]
+```
+
+### The Cyber Kill Chain & Attack Lifecycle
+Adversaries do not teleport into core enterprise databases; intrusions follow a predictable progression of phases:
+
+1. **Reconnaissance**: Gathering OSINT, port scanning, identifying employee email patterns and tech stacks.
+2. **Weaponization**: Pairing an exploit with a payload (e.g., embedding a malicious script in a PDF).
+3. **Delivery**: Transmitting the payload to the victim (via email phishing, web drive-by, or compromised USB).
+4. **Exploitation**: Triggering vulnerable code on the victim host (e.g. buffer overflow, deserialization flaw).
+5. **Installation**: Establishing persistence on the compromised machine (e.g. creating registry run-keys or cron jobs).
+6. **Command & Control (C2)**: Establishing an outbound beacon to external attacker-controlled infrastructure.
+7. **Actions on Objectives**: Exfiltrating intellectual property, encrypting files for extortion, or destroying logs.
+
+*Defensive Principle*: Breaking any single link in this chain breaks the attack.
+
+---
+
+## 3. Worked Example: Defensive Threat Modeling & Asset Inventory
+
+Here is an automated Python script for defensive engineers. It parses local network interface logs to calculate basic asset visibility and flag unencrypted legacy protocols (such as plaintext HTTP or Telnet) before an adversary scans them.
+
+```python
+# defensive_audit.py: Inspect local service bindings for insecure protocols
+import socket
+
+COMMON_RISKY_PORTS = {
+    21: "FTP (Plaintext Credentials)",
+    23: "Telnet (Unencrypted CLI)",
+    80: "HTTP (Plaintext Web Traffic)",
+    110: "POP3 (Plaintext Mail)",
+    445: "SMB (High Exposure Vector)"
+}
+
+def inspect_host_exposure(target_host="127.0.0.1"):
+    print(f"[*] Auditing host exposure for: {target_host}")
+    exposed_risks = []
+    
+    for port, description in COMMON_RISKY_PORTS.items():
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(0.5)
+            result = sock.connect_ex((target_host, port))
+            if result == 0:
+                print(f"[!] WARNING: Port {port} is OPEN ({description})")
+                exposed_risks.append((port, description))
+                
+    if not exposed_risks:
+        print("[+] Good posture: No common plaintext legacy ports open locally.")
+    else:
+        print(f"[-] Remediation required: {len(exposed_risks)} unencrypted services identified.")
+
+if __name__ == "__main__":
+    inspect_host_exposure()
+```
+
+---
+
+## 4. Common Mistakes & Pitfalls
+
+1. **Confusing Security with Obscurity**:
+   * Changing SSH from port 22 to port 2222 stops low-effort automated noise, but a port scan like `nmap -p-` finds it in seconds. Real security relies on robust authentication (SSH keypairs, MFA) rather than hiding.
+2. **Assuming Firewalls Make Internal Networks Safe ("Castle & Moat" Fallacy)**:
+   * Modern security assumes breach. Once an attacker obtains valid credentials or phishes an employee, internal perimeters collapse unless zero-trust microsegmentation and principle of least privilege are enforced.
+3. **Ignoring Logging and Egress Filtering**:
+   * Organizations often monitor incoming traffic heavily while leaving outgoing traffic unmonitored. Attackers rely on unmonitored outbound DNS or HTTPS ports to control compromised machines.
+
+---
+
+## 5. Cheat Sheet
+
+| Principle | Meaning | Defensive Action |
+|---|---|---|
+| **Defense-in-Depth** | Layered security controls | Firewalls + EDR + MFA + Least Privilege; if one layer fails, another stops the intrusion. |
+| **Least Privilege** | Granting minimal required permissions | A web application should never run as root or administrator. |
+| **Zero Trust** | Never trust, always verify | Explicitly authenticate and authorize every transaction regardless of origin. |
+| **CIA Triad** | Confidentiality, Integrity, Availability | Core evaluation framework for any technical risk assessment. |
+
+---
+
+## 6. Further Reading
+* [NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+* [MITRE ATT&CK® Enterprise Framework Matrix](https://attack.mitre.org/)
+* [OWASP Risk Assessment Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
+
+---
+
+## 7. Sources & License
+
+* **Primary Reference**: National Institute of Standards and Technology (NIST), *Computer Security Incident Handling Guide* (SP 800-61 Rev. 2). U.S. Federal Government Work (Public Domain).
+* **Framework Reference**: Lockheed Martin Corporation, *Cyber Kill Chain®*. Used under educational fair reference.
+* **Original Synthesis**: Authored by Vellum Curriculum Editorial Team. Free to distribute under CC BY-SA 4.0.

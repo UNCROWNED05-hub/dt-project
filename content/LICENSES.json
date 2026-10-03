@@ -1,0 +1,79 @@
+[
+  {
+    "id": "lic-01",
+    "title": "Dive into Deep Learning (D2L.ai)",
+    "author": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+    "url": "https://d2l.ai/",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["what-ai-ml-really-are", "neural-networks-and-cnns"],
+    "notes": "Used for conceptual geometric formulation of parameter tensors and gradient descent intuition."
+  },
+  {
+    "id": "lic-02",
+    "title": "OpenStax Elementary Algebra 2e & Statistics",
+    "author": "OpenStax (Rice University)",
+    "url": "https://openstax.org/details/books/introductory-statistics",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["math-you-actually-need", "regression-and-classification"],
+    "notes": "Used for standard linear regression formulation and normal distribution metrics."
+  },
+  {
+    "id": "lic-03",
+    "title": "Scikit-Learn Documentation & User Guide",
+    "author": "Scikit-learn Developers",
+    "url": "https://scikit-learn.org/stable/user_guide.html",
+    "license": "BSD 3-Clause",
+    "licenseUrl": "https://opensource.org/licenses/BSD-3-Clause",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["data-cleaning-eda-feature-engineering", "trees-ensembles-and-svms", "unsupervised-learning-and-pca"],
+    "notes": "Used for reproducible sample datasets and algorithmic parameter descriptions."
+  },
+  {
+    "id": "lic-04",
+    "title": "NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide",
+    "author": "National Institute of Standards and Technology (NIST)",
+    "url": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+    "license": "Public Domain (U.S. Federal Government Work)",
+    "licenseUrl": "https://www.nist.gov/oism/copyrights",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["security-foundations-and-attack-lifecycle", "soc-incident-response-and-forensics"],
+    "notes": "Incident response lifecycle stages: Preparation, Detection & Analysis, Containment, Eradication & Recovery, Post-Incident Activity."
+  },
+  {
+    "id": "lic-05",
+    "title": "OWASP Top 10 Web Application Security Risks",
+    "author": "OWASP Foundation",
+    "url": "https://owasp.org/www-project-top-ten/",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["web-application-security-owasp-top-10", "vulnerability-assessment-and-lab-pentesting"],
+    "notes": "Vulnerability taxonomy, SQLi/XSS classification, and mitigation guidelines."
+  },
+  {
+    "id": "lic-06",
+    "title": "OASIS MQTT Version 5.0 Standard Specification",
+    "author": "OASIS Open Standards Network",
+    "url": "https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html",
+    "license": "OASIS Open IPR Mode",
+    "licenseUrl": "https://www.oasis-open.org/policies-guidelines/ipr/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["iot-messaging-mqtt-coap-http"],
+    "notes": "MQTT packet structure, Publish/Subscribe mechanics, and QoS levels (0, 1, 2)."
+  },
+  {
+    "id": "lic-07",
+    "title": "Arduino Reference & ESP32 Technical Documentation",
+    "author": "Arduino AG & Espressif Systems",
+    "url": "https://www.arduino.cc/reference/en/",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["iot-architecture-and-physical-computing", "electronics-sensors-and-actuators", "microcontrollers-esp32-and-arduino"],
+    "notes": "GPIO control methods, non-blocking millis timer idioms, and bus pinout configurations."
+  }
+]

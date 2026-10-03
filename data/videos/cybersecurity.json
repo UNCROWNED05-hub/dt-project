@@ -1,0 +1,263 @@
+{
+  "security-foundations-and-attack-lifecycle": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "inWWhr5tnEA",
+      "title": "Cyber Security Full Course for Beginners",
+      "channelTitle": "freeCodeCamp.org",
+      "duration": "2:34:00",
+      "publishedAt": "2020-05-18T14:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/inWWhr5tnEA/hqdefault.jpg",
+      "score": 0.938,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.89,
+        "authority": 0.98,
+        "freshness": 0.88,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Comprehensive defensive foundation establishing CIA triad, threat vectors, and risk assessment."
+    },
+    "alternates": [
+      {
+        "videoId": "2_lswM1S264",
+        "title": "Cyber Security In 7 Minutes | What Is Cyber Security?",
+        "channelTitle": "Simplilearn",
+        "duration": "7:45",
+        "publishedAt": "2019-10-18T12:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/2_lswM1S264/hqdefault.jpg",
+        "score": 0.890
+      }
+    ]
+  },
+  "networking-essentials-for-defenders": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "rloTR_c2W8A",
+      "title": "you need to learn Wireshark RIGHT NOW!! (Packet Analysis Tutorial)",
+      "channelTitle": "NetworkChuck",
+      "duration": "18:24",
+      "publishedAt": "2021-03-23T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/rloTR_c2W8A/hqdefault.jpg",
+      "score": 0.952,
+      "scoreBreakdown": {
+        "engagement": 0.98,
+        "traction": 0.92,
+        "authority": 0.97,
+        "freshness": 0.89,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "High-octane practical demonstration inspecting the TCP 3-way handshake and HTTP vs HTTPS payload frames."
+    },
+    "alternates": [
+      {
+        "videoId": "IPvYjXCsTg8",
+        "title": "Network Protocols - ARP, FTP, SMTP, HTTP, SSL, TLS",
+        "channelTitle": "PowerCert Animated Videos",
+        "duration": "11:05",
+        "publishedAt": "2021-06-21T13:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/IPvYjXCsTg8/hqdefault.jpg",
+        "score": 0.908
+      }
+    ]
+  },
+  "linux-windows-and-the-defense-cli": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "k9ZGsUR9m4E",
+      "title": "Linux for Hackers // EP 1",
+      "channelTitle": "NetworkChuck",
+      "duration": "19:50",
+      "publishedAt": "2021-01-19T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/k9ZGsUR9m4E/hqdefault.jpg",
+      "score": 0.941,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.90,
+        "authority": 0.97,
+        "freshness": 0.88,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Essential bash commands, sudo architecture, file permissions, and directory navigation."
+    },
+    "alternates": []
+  },
+  "applied-cryptography-basics": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "jhXCTbFnK0o",
+      "title": "Public Key Cryptography - Computerphile",
+      "channelTitle": "Computerphile",
+      "duration": "6:21",
+      "publishedAt": "2014-03-05T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jhXCTbFnK0o/hqdefault.jpg",
+      "score": 0.945,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.87,
+        "authority": 1.0,
+        "freshness": 0.88,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "The definitive visual primer on one-way mathematical trapdoors, modular arithmetic, and RSA pairs."
+    },
+    "alternates": [
+      {
+        "videoId": "b4b8ktEV4Bg",
+        "title": "Diffie Hellman - Computerphile",
+        "channelTitle": "Computerphile",
+        "duration": "8:06",
+        "publishedAt": "2014-04-16T17:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/b4b8ktEV4Bg/hqdefault.jpg",
+        "score": 0.920
+      }
+    ]
+  },
+  "identity-auth-and-access-control": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "996OiexHze0",
+      "title": "OAuth 2.0 and OpenID Connect (OIDC) in plain English",
+      "channelTitle": "OktaDev",
+      "duration": "35:10",
+      "publishedAt": "2018-04-10T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/996OiexHze0/hqdefault.jpg",
+      "score": 0.950,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.91,
+        "authority": 0.95,
+        "freshness": 0.90,
+        "syllabusFit": 0.99
+      },
+      "whyTopPick": "The industry reference explanation separating authentication (who you are) from authorization (what you can do)."
+    },
+    "alternates": []
+  },
+  "web-application-security-owasp-top-10": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "3QnD2c4Xovk",
+      "title": "SQL Injection - Computerphile",
+      "channelTitle": "Computerphile",
+      "duration": "10:14",
+      "publishedAt": "2013-11-20T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/3QnD2c4Xovk/hqdefault.jpg",
+      "score": 0.936,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.87,
+        "authority": 1.0,
+        "freshness": 0.86,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Clear breakdown of SQL syntax escaping, parameterization, and defensive sanitization."
+    },
+    "alternates": []
+  },
+  "network-defense-firewalls-and-ids-ips": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "7_LPdttKXPc",
+      "title": "what is a firewall? (it's not what you think!)",
+      "channelTitle": "NetworkChuck",
+      "duration": "14:52",
+      "publishedAt": "2021-08-10T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7_LPdttKXPc/hqdefault.jpg",
+      "score": 0.932,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.89,
+        "authority": 0.97,
+        "freshness": 0.87,
+        "syllabusFit": 0.95
+      },
+      "whyTopPick": "Explains packet filtering, stateful inspection, and next-gen deep packet inspection in action."
+    },
+    "alternates": []
+  },
+  "malware-phishing-and-threat-intel": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "7K_V_3VjL3k",
+      "title": "Malware Analysis 101 - Basic Static & Dynamic Analysis",
+      "channelTitle": "John Hammond",
+      "duration": "28:34",
+      "publishedAt": "2022-09-08T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7K_V_3VjL3k/hqdefault.jpg",
+      "score": 0.944,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.90,
+        "authority": 0.97,
+        "freshness": 0.90,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Demonstrates safe virtual machine detonation, hash lookups on VirusTotal, and string extraction."
+    },
+    "alternates": []
+  },
+  "vulnerability-assessment-and-lab-pentesting": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "4t4kBkMsDbQ",
+      "title": "Nmap Tutorial for Beginners - 2023",
+      "channelTitle": "NetworkChuck",
+      "duration": "25:40",
+      "publishedAt": "2023-01-24T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4t4kBkMsDbQ/hqdefault.jpg",
+      "score": 0.940,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.91,
+        "authority": 0.97,
+        "freshness": 0.91,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Covers TCP SYN stealth scans, OS fingerprinting, and responsible authorized lab scanning."
+    },
+    "alternates": []
+  },
+  "soc-incident-response-and-forensics": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "M3bBq7vWwJ4",
+      "title": "SOC Analyst Day in the Life & Incident Response Workflow",
+      "channelTitle": "John Hammond",
+      "duration": "22:15",
+      "publishedAt": "2023-05-16T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/M3bBq7vWwJ4/hqdefault.jpg",
+      "score": 0.928,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.88,
+        "authority": 0.97,
+        "freshness": 0.91,
+        "syllabusFit": 0.94
+      },
+      "whyTopPick": "Real-world telemetry log triage and escalation containment steps in an enterprise SIEM."
+    },
+    "alternates": []
+  },
+  "cloud-security-devsecops-and-governance": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "a9__D53WsUs",
+      "title": "DevSecOps Explained in 7 Minutes",
+      "channelTitle": "IBM Technology",
+      "duration": "7:12",
+      "publishedAt": "2022-03-10T15:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/a9__D53WsUs/hqdefault.jpg",
+      "score": 0.912,
+      "scoreBreakdown": {
+        "engagement": 0.92,
+        "traction": 0.86,
+        "authority": 0.94,
+        "freshness": 0.90,
+        "syllabusFit": 0.93
+      },
+      "whyTopPick": "Clear enterprise overview of shifting security left in automated CI/CD deployment pipelines."
+    },
+    "alternates": []
+  }
+}

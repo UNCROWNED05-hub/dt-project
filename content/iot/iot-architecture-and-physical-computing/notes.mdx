@@ -1,0 +1,135 @@
+---
+title: "IoT Architecture & Physical Computing"
+chapterId: "iot-01"
+readingTimeMinutes: 10
+reviewed: false
+sources:
+  - title: "ITU-T Recommendation Y.2060: Overview of the Internet of Things"
+    author: "International Telecommunication Union (ITU)"
+    url: "https://www.itu.int/rec/T-REC-Y.2060-201206-I/en"
+    license: "Public Open Standard"
+    licenseUrl: "https://www.itu.int/"
+    dateAccessed: "2026-10-02"
+  - title: "Arduino Technical Documentation & Reference"
+    author: "Arduino AG"
+    url: "https://docs.arduino.cc/"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/"
+    dateAccessed: "2026-10-02"
+---
+
+# IoT Architecture & Physical Computing
+
+## 1. Why It Matters
+Traditional software engineering lives in an idealized world of unlimited electricity, high-speed fiber internet, and server CPUs with gigabytes of RAM. 
+
+**The Internet of Things (IoT) lives in the dirt.** An IoT device might be a solar-powered soil moisture sensor buried in an agricultural field in rural Maharashtra, or a vibration sensor mounted on an industrial lathe inside a hot manufacturing plant. It must survive on micro-amperes of battery power, transmit over intermittent wireless channels, and wake up from deep sleep in milliseconds. Physical computing is the art and science of connecting the physical universe of analog voltages, temperature, and motion to digital networks.
+
+---
+
+## 2. Core Ideas in Plain English
+
+### The Four-Tier IoT Architecture
+A complete end-to-end IoT deployment spans four distinct architectural layers:
+
+1. **Perception Layer (Sensing & Actuation)**: Hardware components that interface with the physical environment. Sensors convert analog physical phenomena (photons, pressure, heat) into electrical voltages; actuators convert electrical signals into motion or work (relays, servos, solenoids).
+2. **Edge / Transmission Layer (Gateways & Microcontrollers)**: Low-power compute nodes (ESP32, STM32, Raspberry Pi) that digitize signals, apply local filtering, and package telemetry over local RF protocols (BLE, Zigbee, LoRa) or Wi-Fi.
+3. **Network & Ingestion Layer (Brokers & Gateways)**: Cloud or on-premise infrastructure receiving millions of lightweight messages using low-overhead protocols such as MQTT or CoAP.
+4. **Application & Analytics Layer**: Time-series databases, dashboards (Grafana), anomaly alert triggers, and machine learning models predicting machine failure.
+
+```
+[ Physical World: Heat / Motion / Light ]
+              ▼
+[ 1. Perception ]: Sensors & Transducers
+              ▼ (Analog / GPIO)
+[ 2. Edge Node ]: Microcontroller (ESP32/Arduino)
+              ▼ (MQTT / LoRa / Wi-Fi)
+[ 3. Network Broker ]: Ingestion Pipeline
+              ▼
+[ 4. Application ]: Time-series DB & Analytics
+```
+
+### The Iron Triangle of Embedded IoT: Power, Range & Bandwidth
+Unlike smartphones that recharge every evening, many IoT nodes must operate unattended for 5 to 10 years on a single lithium cell. Every hardware design decision is a trade-off:
+* **High Bandwidth + High Range** (e.g. 5G / 4G LTE) $\rightarrow$ *Massive power consumption*.
+* **Low Power + High Range** (e.g. LoRaWAN) $\rightarrow$ *Tiny bandwidth* (transmitting only ~50 bytes per hour).
+* **Low Power + High Bandwidth** (e.g. BLE) $\rightarrow$ *Short range* (less than 10 meters).
+
+---
+
+## 3. Worked Example: Non-Blocking Sensor Reading on Arduino/ESP32
+
+In physical computing, using `delay()` freezes the microcontroller core, preventing it from handling incoming packets or emergency sensor interrupts. Below is an idiomatic non-blocking timer in C/C++:
+
+```cpp
+// non_blocking_telemetry.ino: Production-safe polling loop
+const int SENSOR_PIN = 34; // Analog pin on ESP32
+const unsigned long POLLING_INTERVAL_MS = 2000; // Poll every 2 seconds
+
+unsigned long previousMillis = 0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(SENSOR_PIN, INPUT);
+  Serial.println("[SYSTEM READY] IoT Edge Node Initialized.");
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+
+  // Non-blocking timer condition
+  if (currentMillis - previousMillis >= POLLING_INTERVAL_MS) {
+    previousMillis = currentMillis;
+
+    // Read analog voltage (12-bit ADC on ESP32: 0 - 4095)
+    int rawValue = analogRead(SENSOR_PIN);
+    float voltage = (rawValue / 4095.0) * 3.3;
+
+    // Output formatted telemetry line
+    Serial.print("TELEMETRY | Raw: ");
+    Serial.print(rawValue);
+    Serial.print(" | Voltage: ");
+    Serial.print(voltage, 2);
+    Serial.println("V");
+  }
+
+  // Microcontroller remains free to process network beacons or background tasks
+}
+```
+
+---
+
+## 4. Common Mistakes & Pitfalls
+
+1. **Using Blocking `delay()` Functions in Production Code**:
+   * Calling `delay(5000)` halts CPU execution completely. If an urgent network packet arrives or an emergency stop switch is pressed, the chip misses it. Always use non-blocking `millis()` delta checks.
+2. **Ignoring Power Consumption and Deep Sleep Modes**:
+   * Leaving an ESP32 running full Wi-Fi radio at 160MHz drains a standard 18650 battery in less than 48 hours. Putting the chip into deep sleep (~10 µA) between sensor readings allows the same battery to last months or years.
+3. **Directly Connecting High-Current Actuators to Microcontroller GPIO Pins**:
+   * A GPIO pin on an ESP32 or Arduino can safely supply only 12–20mA. Connecting a motor, solenoid, or relay coil directly will permanently burn out the microcontroller silicon. Always use a transistor, MOSFET, or optoisolated relay module.
+
+---
+
+## 5. Cheat Sheet
+
+| Subsystem | Key Specs | Best Use Case |
+|---|---|---|
+| **ESP32** | 240MHz dual-core, Wi-Fi & BLE, ~10µA deep sleep | Connected Wi-Fi edge nodes, gateways. |
+| **LoRaWAN** | 868/915MHz, up to 15km line-of-sight, <1kbps | Remote farm sensors, environmental tracking. |
+| **MQTT** | Pub/Sub over TCP, tiny 2-byte header, QoS 0/1/2 | Standard lightweight telemetry protocol. |
+| **ADC (Analog-to-Digital)** | Converts 0–3.3V into integer counts (e.g. 0–4095) | Reading thermistors, light sensors, potentiometers. |
+
+---
+
+## 6. Further Reading
+* [ITU-T Recommendation Y.2060: Overview of the Internet of Things](https://www.itu.int/rec/T-REC-Y.2060-201206-I/en)
+* [Espressif Systems ESP32 Technical Reference Manual](https://www.espressif.com/en/support/documents/technical-documents)
+* [OASIS MQTT Version 5.0 Standard Specification](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html)
+
+---
+
+## 7. Sources & License
+
+* **Primary Reference**: International Telecommunication Union (ITU), *ITU-T Y.2060: Overview of the Internet of Things*. Open international standard.
+* **Hardware Reference**: Arduino AG Documentation. Licensed under [Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)](https://creativecommons.org/licenses/by-sa/3.0/).
+* **Original Synthesis**: Authored by Vellum Curriculum Editorial Team. Free to distribute under CC BY-SA 4.0.

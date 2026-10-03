@@ -1,0 +1,124 @@
+[
+  {
+    "id": "ai-01-q1",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "How does traditional software engineering differ fundamentally from machine learning?",
+    "options": [
+      "Traditional engineering writes algorithms in Python, while machine learning algorithms are executed without code.",
+      "Traditional engineering feeds human-written rules and data into a computer to produce answers; machine learning feeds data and answers to discover the underlying mathematical rules.",
+      "Traditional engineering cannot process numerical datasets, whereas machine learning can only process text.",
+      "Traditional engineering uses floating-point math, whereas machine learning requires quantum computing."
+    ],
+    "correctIndex": 1,
+    "explanation": "In classical programming, humans code explicit rules. In ML, the computer adjusts weight parameters to statistically discover the mapping between inputs and targets.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "ai-01-q2",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "Which of the following is an example of Unsupervised Learning?",
+    "options": [
+      "Predicting whether an email is spam based on 10,000 emails labeled by human moderators.",
+      "Forecasting next month's electricity usage using 5 years of recorded meter bills.",
+      "Clustering customer credit card transactions into natural behavioral groupings with zero pre-existing category labels.",
+      "Training a self-driving car using a reward function that penalizes collisions."
+    ],
+    "correctIndex": 2,
+    "explanation": "Unsupervised learning discovers latent clusters or structures in data without human-provided labels or target answers.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "ai-01-q3",
+    "type": "multi",
+    "difficulty": "Medium",
+    "prompt": "Which of the following components are universal to every supervised machine learning system? (Select all that apply)",
+    "options": [
+      "A model function with adjustable parameters (weights and biases)",
+      "A loss function that scores the discrepancy between prediction and ground truth",
+      "A proprietary cloud database subscription",
+      "An optimization routine that computes gradients to update parameters"
+    ],
+    "correctIndices": [0, 1, 3],
+    "explanation": "A parameterized model function, a loss metric, and an optimization routine (such as gradient descent) form the universal trinity of supervised learning.",
+    "sectionAnchor": "2-core-ideas-in-plain-english"
+  },
+  {
+    "id": "ai-01-q4",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "What role does the 'learning rate' parameter play during gradient descent?",
+    "options": [
+      "It dictates the number of CPU threads assigned to compute matrix multiplications.",
+      "It scales the step size taken in parameter space along the negative gradient direction.",
+      "It determines the percentage of rows removed from the raw dataset.",
+      "It acts as the final accuracy threshold required to stop training."
+    ],
+    "correctIndex": 1,
+    "explanation": "The learning rate scales the gradient step. If set too high, optimization diverges; if too low, convergence takes an impractically long time.",
+    "sectionAnchor": "3-worked-example-learning-a-relationship-from-scratch"
+  },
+  {
+    "id": "ai-01-q5",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "An engineer trains a complex polynomial regression model. On the training dataset, the loss is virtually 0.0 (100% accuracy). When deployed to live production data, the predictions are disastrously wrong. What has happened?",
+    "scenarioContext": "Training Loss: 0.001 | Production Validation Loss: 428.5",
+    "options": [
+      "Underfitting: The model had too few parameters to capture the simplest trend in the training dataset.",
+      "Overfitting: The model memorized individual training noise and sample quirks, destroying its generalization ability on unseen data.",
+      "Data Leakage: The model accidentally received test answers during evaluation.",
+      "Hardware Throttling: The floating point precision degraded during inference."
+    ],
+    "correctIndex": 1,
+    "explanation": "Near-zero training loss paired with massive production error is the quintessential signature of overfitting—high variance and poor generalization.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "ai-01-q6",
+    "type": "single",
+    "difficulty": "Medium",
+    "prompt": "What does a single 'epoch' represent in machine learning training loops?",
+    "options": [
+      "The duration of 1 hour of server compute time.",
+      "One complete forward and backward pass through the entire training dataset.",
+      "The moment when validation accuracy reaches its highest peak.",
+      "The time it takes to download and parse a dataset from disk."
+    ],
+    "correctIndex": 1,
+    "explanation": "An epoch is defined as one full traversal of all training examples through the model and loss calculation.",
+    "sectionAnchor": "5-cheat-sheet"
+  },
+  {
+    "id": "ai-01-q7",
+    "type": "single",
+    "difficulty": "Easy",
+    "prompt": "Why is 'Deep Learning' considered a subset of Machine Learning rather than a completely separate discipline?",
+    "options": [
+      "Because Deep Learning uses deep databases rather than standard relational tables.",
+      "Because Deep Learning specifically uses artificial neural networks with multiple stacked layers to perform machine learning.",
+      "Because Deep Learning was invented in 1950 before statistical machine learning existed.",
+      "Because Deep Learning does not optimize weights or loss functions."
+    ],
+    "correctIndex": 1,
+    "explanation": "Deep Learning is simply machine learning implemented using layered artificial neural network representations.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  },
+  {
+    "id": "ai-01-q8",
+    "type": "scenario",
+    "difficulty": "Hard",
+    "prompt": "You are hired by a hospital to build an ML model predicting patient readmission. The dataset contains 10,000 patient records, but only 50 were readmitted. A junior colleague builds a dummy model that predicts 'Never Readmitted' for every single patient and boasts 99.5% accuracy. How should you respond?",
+    "scenarioContext": "Total Patients: 10,000 | Readmitted: 50 | Model Prediction: 100% Negative",
+    "options": [
+      "Congratulate the colleague because 99.5% exceeds typical clinical benchmark thresholds.",
+      "Explain that extreme class imbalance makes raw accuracy deceptive; the model caught zero readmissions (0% recall) and is clinically useless.",
+      "Retrain the model using unsupervised clustering so that classes become balanced automatically.",
+      "Deploy the model to production since missing false positives is risk-free in medicine."
+    ],
+    "correctIndex": 1,
+    "explanation": "In severe class imbalance, high accuracy is an illusion. Metrics like Precision, Recall, and ROC-AUC are required because failing to identify the minority class has severe real-world consequences.",
+    "sectionAnchor": "4-common-mistakes--pitfalls"
+  }
+]

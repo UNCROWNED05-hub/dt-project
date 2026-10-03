@@ -1,0 +1,232 @@
+{
+  "iot-architecture-and-physical-computing": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "6mBO2vqLv38",
+      "title": "What is IoT (Internet of Things) and How Does it Work? - In 6 Minutes",
+      "channelTitle": "Simplilearn",
+      "duration": "6:14",
+      "publishedAt": "2021-01-20T14:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/6mBO2vqLv38/hqdefault.jpg",
+      "score": 0.928,
+      "scoreBreakdown": {
+        "engagement": 0.94,
+        "traction": 0.88,
+        "authority": 0.94,
+        "freshness": 0.88,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Clear structural overview decomposing perception layers, network gateways, and cloud platforms."
+    },
+    "alternates": [
+      {
+        "videoId": "QSIPNhOiMoE",
+        "title": "Internet of Things (IoT) | What is IoT | How it Works | IoT Explained",
+        "channelTitle": "Edureka",
+        "duration": "21:38",
+        "publishedAt": "2019-01-08T15:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/QSIPNhOiMoE/hqdefault.jpg",
+        "score": 0.892
+      }
+    ]
+  },
+  "electronics-sensors-and-actuators": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "mc979OhitAg",
+      "title": "Basic Electronics For Beginners",
+      "channelTitle": "The Organic Chemistry Tutor",
+      "duration": "30:21",
+      "publishedAt": "2021-03-24T18:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/mc979OhitAg/hqdefault.jpg",
+      "score": 0.948,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.91,
+        "authority": 0.98,
+        "freshness": 0.89,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Precise mathematical grounding for Ohm's law, voltage dividers, resistor color codes, and LEDs."
+    },
+    "alternates": []
+  },
+  "microcontrollers-esp32-and-arduino": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "k9H5_KqCq38",
+      "title": "How a CPU Works",
+      "channelTitle": "Ben Eater",
+      "duration": "20:25",
+      "publishedAt": "2016-10-05T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/k9H5_KqCq38/hqdefault.jpg",
+      "score": 0.962,
+      "scoreBreakdown": {
+        "engagement": 0.99,
+        "traction": 0.92,
+        "authority": 1.0,
+        "freshness": 0.89,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "The ultimate visual intuition for registers, clock pulses, buses, and microcontroller execution cycles."
+    },
+    "alternates": [
+      {
+        "videoId": "nL34zDTPkcs",
+        "title": "Getting Started with ESP32 (Arduino IDE)",
+        "channelTitle": "DroneBot Workshop",
+        "duration": "27:14",
+        "publishedAt": "2020-04-04T16:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/nL34zDTPkcs/hqdefault.jpg",
+        "score": 0.932
+      }
+    ]
+  },
+  "embedded-programming-c-and-micropython": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "wW_n_4iO6k0",
+      "title": "MicroPython on ESP32 - Getting Started Tutorial",
+      "channelTitle": "DroneBot Workshop",
+      "duration": "35:10",
+      "publishedAt": "2021-05-15T15:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/wW_n_4iO6k0/hqdefault.jpg",
+      "score": 0.935,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.88,
+        "authority": 0.96,
+        "freshness": 0.89,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Practical REPL workflows, memory allocation caveats, and GPIO controlling via Python on silicon."
+    },
+    "alternates": []
+  },
+  "wired-protocols-uart-i2c-spi": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "IY_061x_J_0",
+      "title": "SPI, I2C, and UART: Communication Protocols Explained",
+      "channelTitle": "Robert Feranec",
+      "duration": "14:50",
+      "publishedAt": "2021-08-31T15:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/IY_061x_J_0/hqdefault.jpg",
+      "score": 0.940,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.90,
+        "authority": 0.96,
+        "freshness": 0.89,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "Direct oscilloscope comparisons of clock synchronization, pull-ups, and wiring pin counts."
+    },
+    "alternates": []
+  },
+  "wireless-wifi-ble-lora-zigbee": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "1xYl2m1_nQc",
+      "title": "BLE vs LoRa vs Zigbee vs Wi-Fi for IoT Projects",
+      "channelTitle": "Andreas Spiess",
+      "duration": "16:40",
+      "publishedAt": "2020-09-12T14:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/1xYl2m1_nQc/hqdefault.jpg",
+      "score": 0.946,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.89,
+        "authority": 0.98,
+        "freshness": 0.88,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Empirical power consumption measurements and real transmission range benchmarks."
+    },
+    "alternates": []
+  },
+  "iot-messaging-mqtt-coap-http": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "EIxdz-2rhLs",
+      "title": "MQTT Protocol Tutorial for Beginners - IoT",
+      "channelTitle": "Core Electronics",
+      "duration": "10:55",
+      "publishedAt": "2019-11-20T04:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EIxdz-2rhLs/hqdefault.jpg",
+      "score": 0.938,
+      "scoreBreakdown": {
+        "engagement": 0.96,
+        "traction": 0.88,
+        "authority": 0.94,
+        "freshness": 0.87,
+        "syllabusFit": 0.98
+      },
+      "whyTopPick": "Clear breakdown of broker pub/sub mechanics, topics hierarchy, and QoS guarantees."
+    },
+    "alternates": []
+  },
+  "cloud-telemetry-and-dashboards": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "wH4bB1wKk8c",
+      "title": "Build an IoT Dashboard with Node-RED and InfluxDB",
+      "channelTitle": "DroneBot Workshop",
+      "duration": "32:10",
+      "publishedAt": "2022-02-19T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/wH4bB1wKk8c/hqdefault.jpg",
+      "score": 0.925,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.87,
+        "authority": 0.96,
+        "freshness": 0.90,
+        "syllabusFit": 0.94
+      },
+      "whyTopPick": "Hands-on pipeline feeding sensor telemetry into time-series buckets with live gauges."
+    },
+    "alternates": []
+  },
+  "edge-computing-and-tinyml": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "B_H9SfZG_H0",
+      "title": "Introduction to TinyML with Edge Impulse",
+      "channelTitle": "Shawn Hymel",
+      "duration": "14:15",
+      "publishedAt": "2021-03-02T17:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/B_H9SfZG_H0/hqdefault.jpg",
+      "score": 0.934,
+      "scoreBreakdown": {
+        "engagement": 0.95,
+        "traction": 0.88,
+        "authority": 0.96,
+        "freshness": 0.90,
+        "syllabusFit": 0.96
+      },
+      "whyTopPick": "Quantizing neural models to fit inside 520KB of SRAM on an ESP32 chip."
+    },
+    "alternates": []
+  },
+  "iot-security-and-capstone": {
+    "lastChecked": "2026-10-02T12:00:00Z",
+    "topPick": {
+      "videoId": "3j0_4Z8mHw8",
+      "title": "Securing the Internet of Things: Hardware Security and TLS",
+      "channelTitle": "LiveOverflow",
+      "duration": "15:20",
+      "publishedAt": "2021-07-22T16:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/3j0_4Z8mHw8/hqdefault.jpg",
+      "score": 0.942,
+      "scoreBreakdown": {
+        "engagement": 0.97,
+        "traction": 0.89,
+        "authority": 0.98,
+        "freshness": 0.89,
+        "syllabusFit": 0.97
+      },
+      "whyTopPick": "Explains secure boot keys, flash encryption, and encrypted MQTT transport over TLS."
+    },
+    "alternates": []
+  }
+}
