@@ -79,7 +79,7 @@ export default function HomePage() {
                 href="/ai-ml"
                 className="inline-flex items-center space-x-2 px-7 py-4 rounded-pill bg-accent text-on-accent font-mono text-sm font-bold shadow-tactile hover:-translate-y-0.5 transition-all"
               >
-                <span>Take a Book from the Shelf</span>
+                <span>Pick a book</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
@@ -87,23 +87,8 @@ export default function HomePage() {
                 href="#how-it-works"
                 className="inline-flex items-center space-x-2 px-6 py-4 rounded-pill bg-surface border border-line text-fg font-mono text-sm font-semibold hover:bg-bg transition-colors"
               >
-                <span>See the Engine</span>
+                <span>How we pick videos</span>
               </a>
-            </div>
-          </div>
-
-          <div className="lg:col-span-4 hidden lg:flex flex-col items-end pt-8">
-            <div className="p-6 rounded-card bg-surface border border-line shadow-tactile max-w-xs space-y-3 -rotate-1">
-              <div className="flex items-center justify-between text-xs font-mono text-fg-muted">
-                <span>CANONICAL LEDGER</span>
-                <TallyMarks count={5} className="w-8 h-4 text-accent" />
-              </div>
-              <p className="font-display font-bold text-base text-fg">
-                Three tracks. 31 chapters. Zero paywalls.
-              </p>
-              <p className="text-xs text-fg-muted leading-relaxed font-body">
-                Every video is verified against the YouTube API v3. Every note is licensed CC BY-SA or Public Domain.
-              </p>
             </div>
           </div>
         </div>

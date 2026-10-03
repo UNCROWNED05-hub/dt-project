@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Clock, ArrowRight, Shield, Cpu, Sparkles } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { Clock, ArrowRight } from 'lucide-react';
 import { Course, ChapterMeta, CourseTier } from '@/lib/types';
 import { getStudentState } from '@/lib/storage';
 import { RubberStampBadge } from '@/components/illustrations/Kit';
@@ -14,6 +14,11 @@ interface RoadmapViewProps {
 export function RoadmapView({ course, chapters }: RoadmapViewProps) {
   const [studentProgress, setStudentProgress] = useState<Record<string, any>>({});
   const [activeTier, setActiveTier] = useState<CourseTier>('Beginner');
+  const navRef = useRef<HTMLElement>(null);
+  const isClickScrollingRef = useRef(false);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const tiers: CourseTier[] = ['Beginner', 'Intermediate', 'Advanced'];
 
   useEffect(() => {
     const state = getStudentState();
@@ -27,35 +32,132 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
     return () => window.removeEventListener('vellum_state_change', onStateChange);
   }, []);
 
-  const tiers: CourseTier[] = ['Beginner', 'Intermediate', 'Advanced'];
+  const scrollToTier = (slug: string, updateHash = true) => {
+    const el = document.getElementById(slug);
+    if (!el) return;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const stickyTop = isMobile ? 64 : 80;
+    const navHeight = navRef.current?.offsetHeight || 44;
+    const offset = stickyTop + navHeight + 16;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+
+    isClickScrollingRef.current = true;
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 1500);
+
+    if (updateHash && window.location.hash !== `#${slug}`) {
+      window.history.pushState(null, '', `#${slug}`);
+    }
+
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleTierClick = (e: React.MouseEvent<HTMLAnchorElement>, tier: CourseTier, slug: string) => {
+    e.preventDefault();
+    setActiveTier(tier);
+    scrollToTier(slug, true);
+  };
+
+  // Deep-link handling on mount (#beginner, #intermediate, #advanced)
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash === 'beginner' || hash === 'intermediate' || hash === 'advanced') {
+      const matchedTier = tiers.find((t) => t.toLowerCase() === hash);
+      if (matchedTier) {
+        setActiveTier(matchedTier);
+        const timer = setTimeout(() => {
+          scrollToTier(hash, false);
+        }, 350);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
+  // Scroll-spy listener to update active tier and hash during manual scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isClickScrollingRef.current) return;
+      const navHeight = navRef.current?.offsetHeight || 56;
+      const triggerY = navHeight + 80;
+
+      let detectedTier: CourseTier = activeTier;
+      for (const t of tiers) {
+        const slug = t.toLowerCase();
+        const el = document.getElementById(slug);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= triggerY && rect.bottom > triggerY) {
+            detectedTier = t;
+            break;
+          }
+        }
+      }
+
+      if (detectedTier !== activeTier) {
+        setActiveTier(detectedTier);
+        const slug = detectedTier.toLowerCase();
+        if (window.location.hash !== `#${slug}`) {
+          window.history.replaceState(null, '', `#${slug}`);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeTier, tiers]);
 
   return (
-    <div className="space-y-12">
-      {/* Sticky Tier Tabs */}
-      <div className="sticky top-20 z-20 flex items-center space-x-2 p-1.5 rounded-pill bg-surface/90 backdrop-blur-md border border-line w-fit">
-        {tiers.map((t) => (
-          <button
-            key={t}
-            onClick={() => setActiveTier(t)}
-            className={`px-4 py-1.5 rounded-pill text-xs font-mono font-bold transition-colors duration-150 ${
-              activeTier === t
-                ? 'bg-accent text-on-accent shadow-sm'
-                : 'text-fg-muted hover:text-fg'
-            }`}
-          >
-            {t} Tier
-          </button>
-        ))}
-      </div>
+    <div className="space-y-16">
+      {/* Sticky Tier Navigation Bar (Semantic <nav> with Anchor Links) */}
+      <nav
+        ref={navRef}
+        aria-label="Curriculum Tiers"
+        className="sticky top-20 z-20 flex items-center space-x-2 p-1.5 rounded-pill bg-surface/90 backdrop-blur-md border border-line w-fit shadow-sm max-w-full overflow-x-auto"
+      >
+        {tiers.map((t) => {
+          const slug = t.toLowerCase();
+          const tierChapters = chapters.filter((c) => c.tier === t);
+          const totalHours = tierChapters.reduce((acc, c) => acc + c.estimatedHours, 0);
+          const isActive = activeTier === t;
+
+          return (
+            <a
+              key={t}
+              href={`#${slug}`}
+              onClick={(e) => handleTierClick(e, t, slug)}
+              aria-current={isActive ? 'page' : undefined}
+              className={`relative px-4 py-1.5 rounded-pill text-xs font-body transition-colors duration-150 shrink-0 select-none ${
+                isActive
+                  ? 'bg-accent text-on-accent font-bold shadow-sm'
+                  : 'text-fg-muted hover:text-fg font-medium'
+              }`}
+            >
+              <span>{t} Tier</span>
+              <span className="ml-1.5 text-[11px] opacity-80 font-normal">
+                ({tierChapters.length} ch • {totalHours}h)
+              </span>
+            </a>
+          );
+        })}
+      </nav>
 
       {tiers.map((tier) => {
+        const slug = tier.toLowerCase();
         const tierChapters = chapters.filter((c) => c.tier === tier);
         if (tierChapters.length === 0) return null;
+        const totalHours = tierChapters.reduce((acc, c) => acc + c.estimatedHours, 0);
 
         return (
           <section
             key={tier}
-            className={`space-y-6 ${activeTier === tier ? 'block' : 'opacity-90'}`}
+            id={slug}
+            style={{ scrollMarginTop: '138px' }}
+            className="space-y-6 pt-2"
           >
             {/* Tier Header with Editorial Divider */}
             <div className="flex items-center space-x-4">
@@ -64,7 +166,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
               </span>
               <div className="h-px flex-1 bg-line" />
               <span className="text-xs font-mono text-fg-muted">
-                {tierChapters.length} Chapter{tierChapters.length > 1 ? 's' : ''}
+                {tierChapters.length} Chapter{tierChapters.length > 1 ? 's' : ''} • ~{totalHours} hrs
               </span>
             </div>
 
@@ -82,7 +184,6 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
                       href={`/${course.slug}/${chapter.slug}`}
                       className="group relative flex flex-col justify-between p-6 rounded-card border border-line bg-surface hover:border-accent transition-all duration-200 hover:-translate-y-1 shadow-tactile text-fg overflow-hidden"
                     >
-                      {/* Redaction Bar Motif on Cyber chapters */}
                       {!isCompleted && (
                         <div className="h-1.5 w-16 bg-accent rounded-full mb-3 opacity-90" />
                       )}

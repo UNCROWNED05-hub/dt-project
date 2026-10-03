@@ -39,6 +39,10 @@ const config: Config = {
           3: "var(--on-block-3)",
           4: "var(--on-block-4)",
         },
+        nav: {
+          bg: "var(--nav-bg)",
+          fg: "var(--nav-fg)",
+        },
       },
       boxShadow: {
         hairline: "0 0 0 1px var(--line)",

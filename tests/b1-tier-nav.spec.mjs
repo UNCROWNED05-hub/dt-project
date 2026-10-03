@@ -2,69 +2,112 @@ import { chromium } from 'playwright-core';
 
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
-async function testB1() {
-  console.log('Testing Bug B1 (Tier Navigation)...\n');
+const COURSES = ['/cybersecurity', '/ai-ml', '/iot'];
+const TIERS = [
+  { name: 'Beginner', slug: 'beginner' },
+  { name: 'Intermediate', slug: 'intermediate' },
+  { name: 'Advanced', slug: 'advanced' },
+];
+const VIEWPORTS = [
+  { name: 'desktop-1440', width: 1440, height: 900 },
+  { name: 'mobile-375', width: 375, height: 667 },
+];
+
+async function testTierNav() {
+  console.log('=== Automated Test Suite E2: Tier Navigation ===\n');
   const browser = await chromium.launch({ executablePath: CHROME_PATH, headless: true });
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  let totalTests = 0;
+  let passedTests = 0;
 
-  await page.goto('http://localhost:3000/cybersecurity', { waitUntil: 'networkidle' });
+  for (const coursePath of COURSES) {
+    for (const vp of VIEWPORTS) {
+      console.log(`Testing Course: ${coursePath} @ ${vp.name}`);
+      const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
+      await page.goto(`http://localhost:3000${coursePath}`, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(300);
 
-  // Find the tier button for Advanced
-  const advBtn = page.locator('button:has-text("Advanced Tier"), a[href="#advanced"]');
-  if (!(await advBtn.count())) {
-    throw new Error('Advanced tier navigation trigger not found');
-  }
+      for (const tier of TIERS) {
+        totalTests++;
+        // Find tier navigation link
+        const linkSelector = `nav[aria-label="Curriculum Tiers"] a[href="#${tier.slug}"]`;
+        const link = page.locator(linkSelector);
+        
+        if (!(await link.count())) {
+          console.error(`❌ Link not found for tier ${tier.name}: ${linkSelector}`);
+          continue;
+        }
 
-  const initialScrollY = await page.evaluate(() => window.scrollY);
+        // Click the tier link
+        await link.first().click();
+        await page.waitForTimeout(1400);
 
-  // Click Advanced Tier
-  await advBtn.first().click();
-  await page.waitForTimeout(500);
+        // Verify URL hash
+        const hash = await page.evaluate(() => window.location.hash);
+        const hashOk = hash === `#${tier.slug}`;
 
-  const newScrollY = await page.evaluate(() => window.scrollY);
-  const hash = await page.evaluate(() => window.location.hash);
-  const advHeading = page.locator('#advanced');
-  const hasAdvId = (await advHeading.count()) > 0;
+        // Verify aria-current
+        const ariaCurrent = await link.first().getAttribute('aria-current');
+        const ariaOk = ariaCurrent === 'page';
 
-  console.log(`Initial Scroll Y: ${initialScrollY}`);
-  console.log(`New Scroll Y: ${newScrollY}`);
-  console.log(`URL Hash: "${hash}"`);
-  console.log(`Has #advanced section element: ${hasAdvId}`);
+        // Verify target heading position relative to sticky nav
+        const positionMetrics = await page.evaluate(({ slug }) => {
+          const nav = document.querySelector('nav[aria-label="Curriculum Tiers"]');
+          const target = document.getElementById(slug);
+          if (!nav || !target) return null;
+          const navRect = nav.getBoundingClientRect();
+          const targetRect = target.getBoundingClientRect();
+          return {
+            navBottom: navRect.bottom,
+            targetTop: targetRect.top,
+            distance: targetRect.top - navRect.bottom,
+          };
+        }, { slug: tier.slug });
 
-  let failed = false;
-  const failureReasons = [];
+        // Target should sit within 24px below sticky bar (per spec E2)
+        const distanceOk = positionMetrics && Math.abs(positionMetrics.distance - 16) <= 24;
 
-  // Check 1: Did page scroll down to Advanced tier?
-  if (newScrollY <= initialScrollY + 50) {
-    failed = true;
-    failureReasons.push(`Page did NOT scroll to Advanced tier (scrollY remained ${newScrollY})`);
-  }
+        if (hashOk && ariaOk && distanceOk) {
+          passedTests++;
+          console.log(`  ✓ [${tier.name}] Hash: ${hash} | aria-current: ${ariaCurrent} | distance: ${positionMetrics?.distance.toFixed(0)}px`);
+        } else {
+          console.error(`  ❌ [${tier.name}] Failed: Hash: ${hash} (expected #${tier.slug}), aria-current: ${ariaCurrent}, distance: ${positionMetrics?.distance}`);
+        }
+      }
 
-  // Check 2: Did the URL hash update to #advanced?
-  if (hash !== '#advanced') {
-    failed = true;
-    failureReasons.push(`URL hash was not updated to #advanced (current hash: "${hash}")`);
-  }
+      // Test deep linking directly with hash
+      totalTests++;
+      await page.goto(`http://localhost:3000${coursePath}#advanced`, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(1600);
+      const deepLinkScrollY = await page.evaluate(() => window.scrollY);
+      const deepLinkAdvPos = await page.evaluate(() => {
+        const adv = document.getElementById('advanced');
+        const nav = document.querySelector('nav[aria-label="Curriculum Tiers"]');
+        return adv && nav ? adv.getBoundingClientRect().top - nav.getBoundingClientRect().bottom : null;
+      });
 
-  // Check 3: Does the section have id="advanced"?
-  if (!hasAdvId) {
-    failed = true;
-    failureReasons.push('Target section does not have id="advanced" for anchor navigation');
+      if (deepLinkScrollY > 100 && deepLinkAdvPos !== null && Math.abs(deepLinkAdvPos) <= 24) {
+        passedTests++;
+        console.log(`  ✓ Deep Link #advanced: Scrolled to ${deepLinkScrollY}px (offset: ${deepLinkAdvPos?.toFixed(0)}px)`);
+      } else {
+        console.error(`  ❌ Deep link #advanced failed: scrollY=${deepLinkScrollY}, offset=${deepLinkAdvPos}`);
+      }
+
+      await page.close();
+    }
   }
 
   await browser.close();
 
-  if (failed) {
-    console.error('\n❌ B1 Reproduction Confirmed! Failures:');
-    failureReasons.forEach((r) => console.error(`  - ${r}`));
+  console.log(`\n======================================================`);
+  console.log(`E2 Tier Navigation: ${passedTests} / ${totalTests} assertions passed!`);
+  console.log(`======================================================\n`);
+
+  if (passedTests < totalTests) {
     process.exit(1);
-  } else {
-    console.log('\n✓ B1 Tier Navigation passed!');
-    process.exit(0);
   }
 }
 
-testB1().catch((err) => {
-  console.error(err.message || err);
+testTierNav().catch((err) => {
+  console.error(err);
   process.exit(1);
 });
