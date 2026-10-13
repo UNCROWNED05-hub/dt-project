@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Play, ExternalLink, Info, CheckCircle2, Award, Clock } from 'lucide-react';
 import { ChapterVideos, VideoItem } from '@/lib/types';
 import { recordVideoWatched } from '@/lib/storage';
@@ -136,9 +137,11 @@ export function WatchFacade({ chapterId, courseSlug, chapterSlug, videos }: Watc
               className="relative w-full h-full cursor-pointer group"
               onClick={() => handlePlay(topPick)}
             >
-              <img
+              <Image
                 src={topPick.thumbnailUrl}
                 alt={topPick.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 800px"
                 className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-fg/20 group-hover:bg-fg/10 transition-colors" />
@@ -208,9 +211,11 @@ export function WatchFacade({ chapterId, courseSlug, chapterSlug, videos }: Watc
                       />
                     ) : (
                       <div onClick={() => handlePlay(alt)} className="w-full h-full relative">
-                        <img
+                        <Image
                           src={alt.thumbnailUrl}
                           alt={alt.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 300px"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
                         <div className="absolute inset-0 bg-fg/20 flex items-center justify-center">

@@ -12,6 +12,7 @@
     "fast-moving": 0.0035
   },
   "dethroningThreshold": 1.12,
+  "requiredConsecutiveChecks": 2,
   "maxAlternates": 4,
   "channelAllowList": [
     "3Blue1Brown",

@@ -1,0 +1,17 @@
+{
+  "dethroningThreshold": 1.12,
+  "requiredConsecutiveChecks": 2,
+  "weights": {
+    "engagement": 0.25,
+    "traction": 0.15,
+    "authority": 0.25,
+    "freshness": 0.15,
+    "syllabusFit": 0.20
+  },
+  "volatilityDecayLambdas": {
+    "evergreen": 0.0003,
+    "moderate": 0.0010,
+    "fast-moving": 0.0035
+  },
+  "maxAlternates": 4
+}

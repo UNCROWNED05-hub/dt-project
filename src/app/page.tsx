@@ -1,16 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/navigation';
 import { ArrowRight, Play, BookOpen, CheckCircle, Flame, Clock, Award, Sparkles, Shield, Cpu, ExternalLink } from 'lucide-react';
 import { COURSES } from '@/lib/courses-data';
 import { getChangelog } from '@/lib/content';
 import { Underline, HighlighterSwipe, SketchArrow, Scribble, PencilDivider, TallyMarks, RubberStampBadge, NeuralHeroDoodle, CyberHeroDoodle, IoTHeroDoodle } from '@/components/illustrations/Kit';
+import { ChapterSystemDeck } from '@/components/home/ChapterSystemDeck';
+import { FreshThisWeek } from '@/components/home/FreshThisWeek';
 
 export default function HomePage() {
-  const [activeStep, setActiveStep] = useState(1);
-  const [reRankSimulated, setReRankSimulated] = useState(false);
-  const [quizAnswered, setQuizAnswered] = useState(false);
   const changelog = [
     {
       id: "c1",
@@ -38,14 +37,6 @@ export default function HomePage() {
     }
   ];
 
-  // Auto-cycle through the 3 interactive step demos
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev % 3) + 1);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="space-y-24 sm:space-y-32 pt-28 sm:pt-36 pb-20">
       {/* 1. ASYMMETRIC HERO SECTION */}
@@ -53,7 +44,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-8 space-y-6">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-pill bg-surface border border-line text-xs font-mono text-fg-muted shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-accent" />
               <span>Free Engineering Monograph • No Login Required</span>
             </div>
 
@@ -221,287 +212,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. FRESH THIS WEEK TICKER */}
+      {/* 3. FRESH THIS WEEK (MANUAL SCROLL-SNAP ROW) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-4 sm:p-5 rounded-card bg-surface border border-line shadow-sm overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-center space-x-2 shrink-0">
-            <span className="px-2.5 py-1 rounded-pill bg-accent text-on-accent text-[11px] font-mono font-bold uppercase">
-              Fresh This Week
-            </span>
-            <span className="text-xs font-mono text-fg-muted hidden sm:inline">
-              Automated 12% dethroning updates
-            </span>
-          </div>
-
-          <div className="flex-1 overflow-x-auto flex items-center space-x-8 text-xs font-mono text-fg">
-            {changelog.map((c) => (
-              <div key={c.id} className="flex items-center space-x-2 shrink-0">
-                <span className="text-fg font-bold underline decoration-accent underline-offset-2">[{c.course}]</span>
-                <span className="font-semibold">{c.title}:</span>
-                <span className="text-fg-muted">{c.newTop}</span>
-                <span className="px-1.5 py-0.5 rounded bg-bg text-[10px] font-bold">{c.score}pts</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <FreshThisWeek entries={changelog} />
       </section>
 
-      {/* 4. PINNED "HOW IT WORKS" & INTERACTIVE SIGNATURE DEMOS */}
+      {/* 4. THE THREE-PART CHAPTER SYSTEM (MANUAL 3D DECK) */}
       <section id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12">
-          <div className="flex items-center space-x-3 text-xs font-mono uppercase tracking-widest text-fg-muted">
-            <span className="w-4 h-px bg-line" />
-            <span>Interactive Pedagogical Engine</span>
-          </div>
-          <h2 className="font-display font-black text-3xl sm:text-5xl text-fg">
-            The Three-Part Chapter System
-          </h2>
-          <p className="text-fg-muted font-body max-w-xl text-base">
-            Click through each stage to witness how real-time algorithms, open licenses, and instant scenario testing converge.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left: Step Switcher */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Step 1 */}
-            <div
-              onClick={() => setActiveStep(1)}
-              className={`p-6 rounded-card border cursor-pointer transition-all ${
-                activeStep === 1
-                  ? 'bg-surface border-accent shadow-tactile'
-                  : 'bg-bg border-line hover:bg-surface/50'
-              }`}
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <span className={`w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
-                  activeStep === 1 ? 'bg-accent text-on-accent' : 'bg-surface border border-line text-fg'
-                }`}>
-                  1
-                </span>
-                <h3 className="font-display font-bold text-xl text-fg">Watch (Ranked Lectures)</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-fg-muted font-body leading-relaxed pl-11">
-                YouTube API v3 pipeline continuously benchmarks candidate lectures using engagement quality, traction, channel authority, and freshness.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div
-              onClick={() => setActiveStep(2)}
-              className={`p-6 rounded-card border cursor-pointer transition-all ${
-                activeStep === 2
-                  ? 'bg-surface border-accent shadow-tactile'
-                  : 'bg-bg border-line hover:bg-surface/50'
-              }`}
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <span className={`w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
-                  activeStep === 2 ? 'bg-accent text-on-accent' : 'bg-surface border border-line text-fg'
-                }`}>
-                  2
-                </span>
-                <h3 className="font-display font-bold text-xl text-fg">Read (Open-License Notes)</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-fg-muted font-body leading-relaxed pl-11">
-                7 mandatory sections: Why it matters, plain-English mechanics, runnable code, common traps, cheat sheet, and verified legal citations.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div
-              onClick={() => setActiveStep(3)}
-              className={`p-6 rounded-card border cursor-pointer transition-all ${
-                activeStep === 3
-                  ? 'bg-surface border-accent shadow-tactile'
-                  : 'bg-bg border-line hover:bg-surface/50'
-              }`}
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <span className={`w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
-                  activeStep === 3 ? 'bg-accent text-on-accent' : 'bg-surface border border-line text-fg'
-                }`}>
-                  3
-                </span>
-                <h3 className="font-display font-bold text-xl text-fg">Practice (Scenario Mastery)</h3>
-              </div>
-              <p className="text-xs sm:text-sm text-fg-muted font-body leading-relaxed pl-11">
-                Original conceptual questions. Scoring 70% or more awards a rubber-drawn chapter verification stamp saved locally.
-              </p>
-            </div>
-          </div>
-
-          {/* Right: Live Interactive Demonstrations */}
-          <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-card bg-surface border border-line shadow-tactile min-h-[380px] flex flex-col justify-center">
-              {/* Demo 1: Re-Rank Simulation */}
-              {activeStep === 1 && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-line pb-3">
-                    <span className="font-mono text-xs font-bold uppercase text-fg">Live Re-Ranking Engine Demo</span>
-                    <button
-                      onClick={() => setReRankSimulated((p) => !p)}
-                      className="px-3 py-1 rounded-pill bg-accent text-on-accent text-xs font-mono font-bold shadow-sm"
-                    >
-                      {reRankSimulated ? 'Reset Order' : 'Simulate Challenger Dethrone (+14%)'}
-                    </button>
-                  </div>
-
-                  {/* Cards Swapping with FLIP effect */}
-                  <div className="space-y-3 pt-2">
-                    <div
-                      className={`p-4 rounded-2xl border transition-all duration-500 ${
-                        reRankSimulated
-                          ? 'bg-accent/10 border-accent order-1'
-                          : 'bg-bg border-line'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between text-xs font-mono mb-1">
-                        <span className="font-bold text-fg flex items-center space-x-1.5">
-                          <span className="w-2 h-2 rounded-full bg-accent" />
-                          <span>{reRankSimulated ? '#1 Top Pick (Dethroned Challenger)' : '#2 Runner-up'}</span>
-                        </span>
-                        <span>Score: {reRankSimulated ? '96.5' : '88.2'}</span>
-                      </div>
-                      <h4 className="font-display font-bold text-base text-fg">
-                        Visualizing Attention and Transformer Architecture
-                      </h4>
-                      <p className="text-xs text-fg-muted font-mono mt-0.5">3Blue1Brown • 26:45</p>
-                    </div>
-
-                    <div
-                      className={`p-4 rounded-2xl border transition-all duration-500 ${
-                        reRankSimulated
-                          ? 'bg-bg border-line opacity-80'
-                          : 'bg-accent/10 border-accent'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between text-xs font-mono mb-1">
-                        <span className="font-bold text-fg flex items-center space-x-1.5">
-                          <span className="w-2 h-2 rounded-full bg-accent" />
-                          <span>{reRankSimulated ? '#2 Alternate (Old Incumbent)' : '#1 Top Pick'}</span>
-                        </span>
-                        <span>Score: 89.5</span>
-                      </div>
-                      <h4 className="font-display font-bold text-base text-fg">
-                        Attention Is All You Need Explained
-                      </h4>
-                      <p className="text-xs text-fg-muted font-mono mt-0.5">Yannic Kilcher • 34:10</p>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-fg-muted font-mono pt-2">
-                    *Hysteresis rule: Challenger replaces #1 only upon beating score by &ge; 12% across 2 runs.
-                  </p>
-                </div>
-              )}
-
-              {/* Demo 2: Reading Note Highlighter Simulation */}
-              {activeStep === 2 && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-line pb-3">
-                    <span className="font-mono text-xs font-bold uppercase text-fg">Interactive Editorial Notes Demo</span>
-                    <span className="font-mono text-xs text-fg-muted">CC BY-SA 4.0</span>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-bg border border-line space-y-3 font-body text-sm leading-relaxed text-fg">
-                    <p>
-                      In classical software, humans code explicit rules. In{' '}
-                      <span className="bg-accent/25 px-1 py-0.5 rounded font-semibold text-fg">
-                        machine learning
-                      </span>
-                      , the computer adjusts weight parameters to statistically discover relationships from data.
-                    </p>
-                    <div className="p-3 rounded-xl bg-surface border-l-4 border-accent text-xs italic text-fg">
-                      &ldquo;Margin Note: Never optimize for training loss at the expense of production generalization.&rdquo;
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs font-mono text-fg-muted pt-2">
-                    <span>Includes: Runnable Code • Common Traps • Cheat Sheet</span>
-                    <span className="text-fg font-semibold px-2 py-0.5 rounded bg-line/20">reviewed: false (Draft)</span>
-                  </div>
-                </div>
-              )}
-
-              {/* Demo 3: Quiz Ink-Fill & Stamp Simulation */}
-              {activeStep === 3 && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-line pb-3">
-                    <span className="font-mono text-xs font-bold uppercase text-fg">Tactile Scenario Quiz Demo</span>
-                    <span className="font-mono text-xs text-fg-muted">Question 1 of 8</span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <p className="font-display font-semibold text-base text-fg">
-                      Which principle of the CIA triad was preserved when an encrypted payload resisted unauthorized decryption?
-                    </p>
-
-                    <div
-                      onClick={() => setQuizAnswered(true)}
-                      className={`p-3.5 rounded-xl border cursor-pointer text-xs font-body transition-all ${
-                        quizAnswered
-                          ? 'bg-accent text-on-accent border-accent font-bold'
-                          : 'bg-bg border-line hover:bg-surface text-fg'
-                      }`}
-                    >
-                      Confidentiality (Correct answer — click to test ink fill)
-                    </div>
-                  </div>
-
-                  {quizAnswered && (
-                    <div className="pt-2 flex items-center justify-between animate-in fade-in">
-                      <span className="text-xs font-mono text-fg">Mastery achieved! Score: 100%</span>
-                      <RubberStampBadge text="VERIFIED • COMPLETE" className="text-accent" />
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <ChapterSystemDeck />
       </section>
 
       {/* 5. ASYMMETRIC BENTO GRID (6 Distinct Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center space-x-3 text-xs font-mono uppercase tracking-widest text-fg-muted">
-            <span className="w-4 h-px bg-line" />
-            <span>Built Differently</span>
-          </div>
-          <h2 className="font-display font-black text-3xl sm:text-5xl text-fg">
+        <div className="space-y-2 mb-8">
+          <h2 className="font-display font-black text-3xl sm:text-5xl text-fg tracking-tight">
             Crafted for Focus, Not Algorithms
           </h2>
+          <p className="text-sm font-body text-fg/85 max-w-xl">
+            A transparent engineering library built for rigorous self-paced mastery.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: 5-Factor Ranking Engine */}
           <div className="md:col-span-2 p-8 rounded-card bg-surface border border-line shadow-tactile flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs uppercase font-bold text-fg flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span>01 • Video Engine</span>
+              <span className="font-display text-xs font-bold text-fg flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-accent" />
+                <span>Video Engine Architecture</span>
               </span>
               <h3 className="font-display font-bold text-2xl text-fg mt-2 mb-3">
                 Autonomous 5-Factor Ranking
               </h3>
-              <p className="text-sm text-fg-muted font-body leading-relaxed max-w-xl">
+              <p className="text-sm text-fg/85 font-body leading-relaxed max-w-xl">
                 Every video score combines engagement quality (likes/views Laplace-smoothed), traction velocity, 
-                channel authority allow-lists, syllabus keyword fit, and volatility freshness decay. No sponsored links, ever.
+                channel authority allow-lists, syllabus keyword fit, and volatility freshness decay. Refreshed daily with zero sponsored links.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line flex flex-wrap gap-2 text-xs font-mono text-fg">
-              <span className="px-2.5 py-1 rounded bg-bg border border-line">Engagement 25%</span>
-              <span className="px-2.5 py-1 rounded bg-bg border border-line">Authority 25%</span>
-              <span className="px-2.5 py-1 rounded bg-bg border border-line">Syllabus Fit 20%</span>
-              <span className="px-2.5 py-1 rounded bg-bg border border-line">Freshness 15%</span>
+              <span className="px-2.5 py-1 rounded bg-bg border border-line tabular-nums">Engagement 25%</span>
+              <span className="px-2.5 py-1 rounded bg-bg border border-line tabular-nums">Authority 25%</span>
+              <span className="px-2.5 py-1 rounded bg-bg border border-line tabular-nums">Syllabus Fit 20%</span>
+              <span className="px-2.5 py-1 rounded bg-bg border border-line tabular-nums">Freshness 15%</span>
             </div>
           </div>
 
           {/* Card 2: Open-Source Legal Ledger */}
           <div className="p-8 rounded-card bg-block-3 text-on-block-3 border border-line shadow-tactile flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs uppercase font-bold opacity-80">02 • Legal Transparency</span>
+              <span className="font-display text-xs font-bold opacity-90">Legal Transparency</span>
               <h3 className="font-display font-bold text-2xl mt-2 mb-3">
                 100% Free & Open
               </h3>
@@ -518,14 +277,14 @@ export default function HomePage() {
           {/* Card 3: Local-First Privacy */}
           <div className="p-8 rounded-card bg-surface border border-line shadow-tactile flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs uppercase font-bold text-fg flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span>03 • Zero Tracking</span>
+              <span className="font-display text-xs font-bold text-fg flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-accent" />
+                <span>Zero Tracking</span>
               </span>
               <h3 className="font-display font-bold text-2xl text-fg mt-2 mb-3">
                 Your Progress Stays Local
               </h3>
-              <p className="text-sm text-fg-muted font-body leading-relaxed">
+              <p className="text-sm text-fg/85 font-body leading-relaxed">
                 Streaks, best scores, and completion stamps live in your browser&rsquo;s localStorage. No passwords, no surveillance.
               </p>
             </div>
@@ -541,14 +300,14 @@ export default function HomePage() {
           {/* Card 4: Lightning Client Search */}
           <div className="md:col-span-2 p-8 rounded-card bg-surface border border-line shadow-tactile flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs uppercase font-bold text-fg flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span>04 • Instant Navigation</span>
+              <span className="font-display text-xs font-bold text-fg flex items-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-accent" />
+                <span>Instant Navigation</span>
               </span>
               <h3 className="font-display font-bold text-2xl text-fg mt-2 mb-3">
                 Static Fuzzy Command Palette
               </h3>
-              <p className="text-sm text-fg-muted font-body leading-relaxed max-w-xl">
+              <p className="text-sm text-fg/85 font-body leading-relaxed max-w-xl">
                 Press <kbd className="px-1.5 py-0.5 bg-bg border border-line rounded font-mono text-xs">Ctrl+K</kbd> anywhere. 
                 Fuzzy search across all 31 chapters, prerequisites, hours, and keywords with sub-10ms response on slow 2G connections.
               </p>
@@ -568,14 +327,14 @@ export default function HomePage() {
             <h3 className="font-display font-black text-3xl sm:text-5xl text-fg tracking-tight">
               Open your field notebook.
             </h3>
-            <p className="text-sm sm:text-base text-fg-muted font-body">
+            <p className="text-sm sm:text-base text-fg/85 font-body">
               Pick a track, learn the foundational equations and protocols, and verify your understanding today.
             </p>
           </div>
 
           <a
             href="/ai-ml/what-ai-ml-really-are"
-            className="inline-flex items-center space-x-2 px-8 py-4 rounded-pill bg-accent text-on-accent font-mono text-sm font-bold shadow-tactile hover:-translate-y-0.5 transition-all shrink-0"
+            className="inline-flex items-center space-x-2 px-8 py-4 rounded-[14px] bg-fg text-bg font-display text-sm font-bold shadow-tactile hover:-translate-y-0.5 transition-all shrink-0 active:scale-95"
           >
             <span>Begin Chapter 01</span>
             <ArrowRight className="w-4 h-4" />

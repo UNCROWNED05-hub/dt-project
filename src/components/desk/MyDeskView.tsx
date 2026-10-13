@@ -87,7 +87,7 @@ export function MyDeskView() {
         <div className="flex items-center space-x-4 shrink-0">
           <div className="p-5 rounded-2xl bg-bg border border-line text-center shadow-sm">
             <div className="flex items-center justify-center space-x-1.5 text-accent mb-1">
-              <Flame className="w-6 h-6 fill-accent animate-pulse" />
+              <Flame className="w-6 h-6 fill-accent" />
               <span className="font-display font-extrabold text-3xl text-fg">
                 {state.streak.currentCount}
               </span>

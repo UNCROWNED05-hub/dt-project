@@ -11,14 +11,14 @@ interface RoadmapViewProps {
   chapters: ChapterMeta[];
 }
 
+const TIERS: CourseTier[] = ['Beginner', 'Intermediate', 'Advanced'];
+
 export function RoadmapView({ course, chapters }: RoadmapViewProps) {
   const [studentProgress, setStudentProgress] = useState<Record<string, any>>({});
   const [activeTier, setActiveTier] = useState<CourseTier>('Beginner');
   const navRef = useRef<HTMLElement>(null);
   const isClickScrollingRef = useRef(false);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const tiers: CourseTier[] = ['Beginner', 'Intermediate', 'Advanced'];
 
   useEffect(() => {
     const state = getStudentState();
@@ -67,7 +67,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
   useEffect(() => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     if (hash === 'beginner' || hash === 'intermediate' || hash === 'advanced') {
-      const matchedTier = tiers.find((t) => t.toLowerCase() === hash);
+      const matchedTier = TIERS.find((t) => t.toLowerCase() === hash);
       if (matchedTier) {
         setActiveTier(matchedTier);
         const timer = setTimeout(() => {
@@ -86,7 +86,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
       const triggerY = navHeight + 80;
 
       let detectedTier: CourseTier = activeTier;
-      for (const t of tiers) {
+      for (const t of TIERS) {
         const slug = t.toLowerCase();
         const el = document.getElementById(slug);
         if (el) {
@@ -109,7 +109,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTier, tiers]);
+  }, [activeTier]);
 
   return (
     <div className="space-y-16">
@@ -119,7 +119,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
         aria-label="Curriculum Tiers"
         className="sticky top-20 z-20 flex items-center space-x-2 p-1.5 rounded-pill bg-surface/90 backdrop-blur-md border border-line w-fit shadow-sm max-w-full overflow-x-auto"
       >
-        {tiers.map((t) => {
+        {TIERS.map((t) => {
           const slug = t.toLowerCase();
           const tierChapters = chapters.filter((c) => c.tier === t);
           const totalHours = tierChapters.reduce((acc, c) => acc + c.estimatedHours, 0);
@@ -146,7 +146,7 @@ export function RoadmapView({ course, chapters }: RoadmapViewProps) {
         })}
       </nav>
 
-      {tiers.map((tier) => {
+      {TIERS.map((tier) => {
         const slug = tier.toLowerCase();
         const tierChapters = chapters.filter((c) => c.tier === tier);
         if (tierChapters.length === 0) return null;

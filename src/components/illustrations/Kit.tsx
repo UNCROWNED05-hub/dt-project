@@ -205,7 +205,6 @@ export function IoTHeroDoodle({ className = 'w-32 h-32' }: { className?: string 
     >
       {/* Sensor IC with traces and wireless radiating arcs */}
       <rect x="45" y="45" width="50" height="50" rx="8" fill="var(--surface)" stroke="var(--fg)" strokeWidth="2.5" />
-      <circle cx="58" cy="58" r="3" fill="var(--accent)" className="animate-ping" />
       <circle cx="58" cy="58" r="3" fill="var(--accent)" />
 
       {/* Radiating RF Signal Arcs */}
