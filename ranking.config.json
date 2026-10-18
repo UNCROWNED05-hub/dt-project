@@ -3,10 +3,10 @@
   "requiredConsecutiveChecks": 2,
   "weights": {
     "engagement": 0.25,
-    "traction": 0.15,
-    "authority": 0.25,
+    "traction": 0.20,
+    "authority": 0.15,
     "freshness": 0.15,
-    "syllabusFit": 0.20
+    "coverage": 0.25
   },
   "volatilityDecayLambdas": {
     "evergreen": 0.0003,

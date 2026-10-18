@@ -1,0 +1,37 @@
+{
+  "evidenceWeights": {
+    "creatorMarker": 1.0,
+    "videoTitle": 0.8,
+    "descriptionLine": 0.5,
+    "tag": 0.4,
+    "override": 1.0
+  },
+  "coverageThresholds": {
+    "covered": 0.60,
+    "partial": 0.35
+  },
+  "confidenceRules": {
+    "highMinMarkers": 5,
+    "highMinCoreFoundFraction": 0.60,
+    "mediumMinMarkers": 3,
+    "mediumMinDescLength": 300,
+    "mediumMinLoHits": 3
+  },
+  "gatesForTopPick": {
+    "minCoreCoverage": 0.70,
+    "allowMissingMustHave": false,
+    "minConfidence": "medium",
+    "minComposableQuizQuestions": 8,
+    "alternateMinCoreCoverage": 0.40
+  },
+  "acronyms": {
+    "CNN": ["neural", "network", "convolution", "vision", "deep learning", "image"],
+    "RNN": ["recurrent", "neural", "network", "sequence", "lstm"],
+    "XSS": ["scripting", "web", "security", "vulnerability", "injection", "cross-site"],
+    "SQLi": ["sql", "injection", "database", "query", "database", "security"],
+    "CIA": ["confidentiality", "integrity", "availability", "triad", "security"],
+    "IoT": ["things", "internet", "sensor", "device", "embedded", "physical", "gateway"],
+    "MQTT": ["broker", "publish", "subscribe", "messaging", "protocol", "topic"],
+    "CoAP": ["constrained", "protocol", "udp", "rest", "device"]
+  }
+}
