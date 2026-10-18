@@ -351,6 +351,7 @@ export function QuizWidget({
                     return (
                       <button
                         key={opt.id}
+                        data-testid="quiz-option"
                         onClick={() => handleSelectOption(q.id, optIdx, isMulti)}
                         disabled={submitted}
                         className={`w-full text-left p-3.5 sm:p-4 rounded-xl border text-sm font-body transition-all duration-150 flex items-start space-x-3 ${optionBorder} ${optionBg}`}
@@ -494,6 +495,7 @@ export function QuizWidget({
                       return (
                         <button
                           key={opt.id}
+                          data-testid="beyond-quiz-option"
                           onClick={() => handleSelectOption(bq.id, optIdx, isMulti)}
                           disabled={submitted}
                           className={`w-full text-left p-3.5 rounded-xl border text-sm font-body transition-all ${

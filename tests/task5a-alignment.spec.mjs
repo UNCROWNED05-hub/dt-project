@@ -44,6 +44,11 @@ async function runAlignmentE2ETests() {
     page.on('pageerror', (err) => {
       consoleErrors.push(err.message);
     });
+    page.on('response', (res) => {
+      if (res.status() === 404) {
+        console.log('  ⚠️ 404 URL:', res.url());
+      }
+    });
 
     // 1. Visit Chapter Page
     await page.goto(`${BASE_URL}/${slice.courseSlug}/${slice.chapterSlug}`, {
@@ -158,12 +163,14 @@ async function runAlignmentE2ETests() {
     }
 
     // Answer questions
-    const questionOptions = page.locator('button:has-text("A")');
+    const questionOptions = page.locator('[data-testid="quiz-option"]');
     const qCount = await questionOptions.count();
     if (qCount > 0) {
       console.log(`  Answering ${Math.min(qCount, 5)} sample questions...`);
       for (let i = 0; i < Math.min(qCount, 5); i++) {
-        await questionOptions.nth(i).click();
+        const opt = questionOptions.nth(i);
+        await opt.scrollIntoViewIfNeeded();
+        await opt.click();
         await page.waitForTimeout(100);
       }
     }
@@ -171,6 +178,7 @@ async function runAlignmentE2ETests() {
     // Submit answers
     const submitBtn = page.locator('button:has-text("Submit Practice Answers")');
     if ((await submitBtn.count()) > 0) {
+      await submitBtn.scrollIntoViewIfNeeded();
       await submitBtn.click();
       await page.waitForTimeout(300);
       const retryBtn = page.locator('button:has-text("Retry Practice Quiz")');

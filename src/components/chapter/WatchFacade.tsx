@@ -90,26 +90,26 @@ export function WatchFacade({
     switch (confidence) {
       case 'confirmed':
         return (
-          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold bg-blue-500/10 text-blue-500 border border-blue-500/20">
+          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold badge-confirmed">
             Confirmed by Maintainer
           </span>
         );
       case 'high':
         return (
-          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold badge-covered">
             High Confidence
           </span>
         );
       case 'medium':
         return (
-          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
+          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-bold badge-uncovered">
             Medium Confidence
           </span>
         );
       case 'low':
       default:
         return (
-          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-medium bg-zinc-500/10 text-fg-muted border border-line">
+          <span className="px-2 py-0.5 rounded-pill text-[10px] font-mono font-medium bg-zinc-500/10 text-fg border border-line">
             Low Confidence
           </span>
         );
@@ -285,7 +285,7 @@ export function WatchFacade({
 
             {/* Missing LO warning banner if applicable */}
             {align && align.mustHaveMissing && align.mustHaveMissing.length > 0 && (
-              <div className="px-6 py-2.5 bg-amber-500/10 border-b border-amber-500/20 flex items-center space-x-2 text-xs font-mono text-amber-600 dark:text-amber-400">
+              <div className="px-6 py-2.5 banner-missing-lo flex items-center space-x-2 text-xs font-mono font-semibold">
                 <AlertTriangle className="w-4 h-4 shrink-0" />
                 <span>
                   Missing must-have objectives: {align.mustHaveMissing.join(', ')}. The notes tab provides full coverage.

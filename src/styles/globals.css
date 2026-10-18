@@ -355,3 +355,45 @@ textarea {
     scroll-behavior: auto !important;
   }
 }
+
+/* Accessible Alignment Badges across light and dark themes */
+.badge-covered {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+[data-theme="midnight"] .badge-covered {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #6EE7B7;
+}
+
+.badge-uncovered {
+  background-color: rgba(217, 119, 6, 0.15);
+  color: #92400E;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+[data-theme="midnight"] .badge-uncovered {
+  background-color: rgba(217, 119, 6, 0.2);
+  color: #FCD34D;
+}
+
+.badge-confirmed {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #1D4ED8;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+[data-theme="midnight"] .badge-confirmed {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #93C5FD;
+}
+
+.banner-missing-lo {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #92400E;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+}
+[data-theme="midnight"] .banner-missing-lo {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #FDE68A;
+}
+

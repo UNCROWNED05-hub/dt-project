@@ -101,7 +101,7 @@ export function ReadNotes({
         <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-line shadow-sm space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-accent font-bold">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-fg font-bold">
                 Aligned to this video&apos;s outline
               </span>
               <h3 className="font-display font-bold text-base sm:text-lg text-fg line-clamp-1 mt-0.5">
@@ -190,7 +190,7 @@ export function ReadNotes({
 
                     {/* Tag indicating video alignment status */}
                     {marker && marker.t !== undefined ? (
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold badge-covered">
                         <Play className="w-3 h-3 fill-current" />
                         <span>
                           In this video at {Math.floor(marker.t / 60)}:
@@ -198,17 +198,17 @@ export function ReadNotes({
                         </span>
                       </span>
                     ) : isCovered ? (
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold badge-covered">
                         <CheckCircle2 className="w-3 h-3" />
                         <span>In this video</span>
                       </span>
                     ) : isPartial ? (
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold badge-uncovered">
                         <AlertTriangle className="w-3 h-3" />
                         <span>Partially in this video</span>
                       </span>
                     ) : (
-                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-pill text-xs font-mono font-semibold badge-uncovered">
                         <BookOpen className="w-3 h-3" />
                         <span>Not in this video: read this</span>
                       </span>
@@ -246,8 +246,8 @@ export function ReadNotes({
                           key={pIdx}
                           className="mt-6 p-5 rounded-xl border border-line bg-bg/50 space-y-3"
                         >
-                          <div className="flex items-center space-x-2 text-xs font-mono font-bold text-accent uppercase">
-                            <Lightbulb className="w-4 h-4" />
+                          <div className="flex items-center space-x-2 text-xs font-mono font-bold text-fg uppercase">
+                            <Lightbulb className="w-4 h-4 text-accent" />
                             <span>Check Yourself</span>
                           </div>
                           <p className="font-body text-sm text-fg">
