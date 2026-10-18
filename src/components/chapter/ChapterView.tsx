@@ -1,15 +1,20 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/navigation';
 import { Play, BookOpen, CheckCircle, ArrowLeft, ArrowRight, Award } from 'lucide-react';
 import { Course, ChapterMeta } from '@/lib/types';
 import { ParsedNotes } from '@/lib/content';
+import { VideoAlignment, LearningObjective, QuestionBankItem } from '@/lib/alignment/types';
 import { WatchFacade } from './WatchFacade';
 import { ReadNotes } from './ReadNotes';
 import { QuizWidget } from './QuizWidget';
-import { recordChapterActivity, getStudentState } from '@/lib/storage';
-import { RubberStampBadge, Underline } from '@/components/illustrations/Kit';
+import {
+  recordChapterActivity,
+  getStudentProgressV2,
+  setChapterFollowedVideo,
+  setChapterOrderMode,
+} from '@/lib/storage';
+import { RubberStampBadge } from '@/components/illustrations/Kit';
 
 interface ChapterViewProps {
   course: Course;
@@ -19,6 +24,10 @@ interface ChapterViewProps {
   notes: ParsedNotes;
   videos: any;
   quiz: any[];
+  alignments?: Record<string, VideoAlignment> | null;
+  objectives?: LearningObjective[] | null;
+  modularNotes?: Record<string, string> | null;
+  questionBank?: QuestionBankItem[] | null;
 }
 
 export function ChapterView({
@@ -29,17 +38,46 @@ export function ChapterView({
   notes,
   videos,
   quiz,
+  alignments,
+  objectives,
+  modularNotes,
+  questionBank,
 }: ChapterViewProps) {
   const [activeTab, setActiveTab] = useState<'watch' | 'read' | 'practice'>('watch');
   const [earnedStamp, setEarnedStamp] = useState(false);
+  const [followedVideoId, setFollowedVideoId] = useState<string>(
+    videos?.topPick?.videoId || ''
+  );
+  const [orderMode, setOrderMode] = useState<'canonical' | 'video'>('canonical');
 
   useEffect(() => {
     recordChapterActivity(chapter.id);
-    const state = getStudentState();
-    if (state.chapters[chapter.id]?.earnedStamp) {
-      setEarnedStamp(true);
+    const state = getStudentProgressV2();
+    const ch = state.chapters[chapter.id];
+    if (ch) {
+      if (ch.earnedStamp) setEarnedStamp(true);
+      if (ch.followedVideoId) setFollowedVideoId(ch.followedVideoId);
+      if (ch.orderMode) setOrderMode(ch.orderMode);
     }
   }, [chapter.id]);
+
+  const handleFollowVideo = (videoId: string) => {
+    setFollowedVideoId(videoId);
+    setChapterFollowedVideo(chapter.id, videoId);
+  };
+
+  const handleToggleOrderMode = (mode: 'canonical' | 'video') => {
+    setOrderMode(mode);
+    setChapterOrderMode(chapter.id, mode);
+  };
+
+  // Find followed video metadata
+  const candidateVideos = videos ? [videos.topPick, ...(videos.alternates || [])] : [];
+  const followedVideo =
+    candidateVideos.find((v: any) => v && v.videoId === followedVideoId) ||
+    videos?.topPick;
+  const followedVideoTitle = followedVideo?.title || '';
+  const currentAlignment = alignments && followedVideo ? alignments[followedVideo.videoId] : null;
 
   return (
     <div className="min-h-screen transition-colors duration-300">
@@ -146,6 +184,10 @@ export function ChapterView({
             courseSlug={course.slug}
             chapterSlug={chapter.slug}
             videos={videos}
+            alignments={alignments}
+            objectives={objectives}
+            followedVideoId={followedVideoId}
+            onFollowVideo={handleFollowVideo}
           />
         )}
 
@@ -154,6 +196,12 @@ export function ChapterView({
           <ReadNotes
             chapterId={chapter.id}
             notes={notes}
+            objectives={objectives}
+            modularNotes={modularNotes}
+            alignment={currentAlignment}
+            followedVideoTitle={followedVideoTitle}
+            orderMode={orderMode}
+            onToggleOrderMode={handleToggleOrderMode}
           />
         )}
 
@@ -164,6 +212,10 @@ export function ChapterView({
             courseSlug={course.slug}
             chapterSlug={chapter.slug}
             questions={quiz}
+            alignment={currentAlignment}
+            objectives={objectives}
+            questionBank={questionBank}
+            followedVideoTitle={followedVideoTitle}
           />
         )}
 

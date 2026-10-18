@@ -141,6 +141,7 @@ export interface PromotionResult {
   alternates: string[];
   promoted: boolean;
   promotionReason?: string;
+  updatedConsecutiveWins?: Record<string, number>;
   changelogEntry?: {
     date: string;
     chapter: string;
@@ -299,12 +300,17 @@ export function runAtomicPromotion(state: PromotionState): PromotionResult {
       };
     } else {
       // Challenger did not pass lead or consecutive run check; keep current #1
+      const updatedConsecutiveWins = {
+        ...consecutiveWinsMap,
+        [challenger.videoId]: consecutiveChecks,
+      };
       return {
         topPickId: currentTop.videoId,
         alternates: scoredCandidates
           .filter((c) => c.videoId !== currentTop.videoId)
           .map((c) => c.videoId),
         promoted: false,
+        updatedConsecutiveWins,
         reviewQueueItem,
       };
     }

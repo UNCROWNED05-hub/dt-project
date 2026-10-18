@@ -120,3 +120,53 @@ export function getLicenseLedger() {
     return [];
   }
 }
+
+export function getChapterAlignment(courseSlug: string, chapterSlug: string) {
+  const alignPath = path.join(ROOT_DIR, 'data', 'alignment', courseSlug, `${chapterSlug}.json`);
+  if (!fs.existsSync(alignPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(alignPath, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+export function getChapterObjectives(courseSlug: string, chapterSlug: string) {
+  const objPath = path.join(ROOT_DIR, 'content', courseSlug, chapterSlug, 'objectives.json');
+  if (!fs.existsSync(objPath)) return null;
+  try {
+    const data = JSON.parse(fs.readFileSync(objPath, 'utf-8'));
+    return data.objectives || [];
+  } catch {
+    return null;
+  }
+}
+
+export function getChapterModularNotes(courseSlug: string, chapterSlug: string) {
+  const notesDir = path.join(ROOT_DIR, 'content', courseSlug, chapterSlug, 'notes');
+  if (!fs.existsSync(notesDir)) return null;
+  try {
+    const files = fs.readdirSync(notesDir);
+    const result: Record<string, string> = {};
+    for (const file of files) {
+      if (file.endsWith('.mdx')) {
+        const loId = file.replace(/\.mdx$/, '');
+        result[loId] = fs.readFileSync(path.join(notesDir, file), 'utf-8');
+      }
+    }
+    return Object.keys(result).length > 0 ? result : null;
+  } catch {
+    return null;
+  }
+}
+
+export function getChapterQuestionBank(courseSlug: string, chapterSlug: string) {
+  const bankPath = path.join(ROOT_DIR, 'content', courseSlug, chapterSlug, 'quiz', 'bank.json');
+  if (!fs.existsSync(bankPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(bankPath, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+

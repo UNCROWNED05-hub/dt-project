@@ -7,7 +7,15 @@ import {
   COURSES,
   CHAPTERS,
 } from '@/lib/courses-data';
-import { getChapterNotes, getChapterVideos, getChapterQuiz } from '@/lib/content';
+import {
+  getChapterNotes,
+  getChapterVideos,
+  getChapterQuiz,
+  getChapterAlignment,
+  getChapterObjectives,
+  getChapterModularNotes,
+  getChapterQuestionBank,
+} from '@/lib/content';
 import { ChapterView } from '@/components/chapter/ChapterView';
 
 interface ChapterPageProps {
@@ -44,6 +52,10 @@ export default function ChapterPage({ params }: ChapterPageProps) {
   const notes = getChapterNotes(courseSlug, chapterSlug);
   const videos = getChapterVideos(courseSlug, chapterSlug);
   const quiz = getChapterQuiz(courseSlug, chapterSlug);
+  const alignments = getChapterAlignment(courseSlug, chapterSlug);
+  const objectives = getChapterObjectives(courseSlug, chapterSlug);
+  const modularNotes = getChapterModularNotes(courseSlug, chapterSlug);
+  const questionBank = getChapterQuestionBank(courseSlug, chapterSlug);
 
   return (
     <ChapterView
@@ -54,6 +66,10 @@ export default function ChapterPage({ params }: ChapterPageProps) {
       notes={notes}
       videos={videos}
       quiz={quiz}
+      alignments={alignments}
+      objectives={objectives}
+      modularNotes={modularNotes}
+      questionBank={questionBank}
     />
   );
 }

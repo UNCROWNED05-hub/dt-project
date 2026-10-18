@@ -108,6 +108,7 @@ export interface StudentProgressV2 {
       followedVideoId?: string;
       orderMode?: 'canonical' | 'video';
       notesRead?: boolean;
+      watchedVideo?: boolean;
     }
   >;
   objectives: Record<
