@@ -1,0 +1,28 @@
+---
+loId: "iot-01-lo03"
+title: "Analog vs Digital Sensor Interfacing (ADC, I2C, SPI)"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Sensors interface with microcontrollers via two primary electrical regimes:
+- **Analog Sensors**: Output a continuous voltage proportional to the physical measurement. The MCU uses an **Analog-to-Digital Converter (ADC)** to sample and quantize the voltage into discrete bit values (e.g. 10-bit ADC quantizes $0-3.3\text{V}$ into $0-1023$ integer levels).
+- **Digital Sensors**: Contain onboard micro-silicon with built-in ADCs and signal conditioning. They communicate structured numerical registers over standard digital serial buses:
+  - **I2C (Inter-Integrated Circuit)**: 2 wires (SDA data, SCL clock), address-based, supports multiple sensors on one bus, moderate speed (~400 kHz).
+  - **SPI (Serial Peripheral Interface)**: 4 wires (MOSI, MISO, SCK, CS), master-slave, very high speed (10-50 MHz), requires dedicated chip-select lines.
+
+### Worked Example
+Quantizing a 3.3V analog potentiometer with a 10-bit ADC:
+$$\text{Resolution} = 2^{10} = 1024\text{ discrete steps}$$
+$$\text{Voltage per step} = \frac{3.3\text{ V}}{1023} \approx 3.225\text{ mV}$$
+If the ADC returns a raw reading of $512$:
+$$\text{Voltage} = 512 \times 3.225\text{ mV} = 1.65\text{ V (midpoint)}$$
+
+### Common Mistake
+Connecting multiple SPI devices together without separate Chip Select (CS) pins. Unlike I2C which uses software addresses, SPI devices must be selected individually by pulling their specific CS pin LOW.
+
+### Check Yourself
+How many signal wires does the I2C serial protocol require to communicate with multiple sensors? (Two: SDA data and SCL clock, plus shared ground).

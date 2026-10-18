@@ -1,7 +1,7 @@
 /**
  * src/lib/alignment/engine.ts
  *
- * Pure, deterministic coverage engine (no network, no LLMs, zero transcript scraping).
+ * Pure, deterministic coverage engine (no network, no LLMs, zero unauthorized scraping).
  * Maps official YouTube Data API v3 metadata to Learning Objectives (LOs).
  */
 
@@ -51,6 +51,7 @@ export interface VideoMetadata {
   description: string;
   tags?: string[];
   duration?: string;
+  markers?: CreatorMarker[];
 }
 
 export interface MaintainerOverride {
@@ -138,8 +139,11 @@ export function evaluateVideoAlignment(
     };
   }
 
-  // 2. Parse creator chapter markers from description
-  const markers: CreatorMarker[] = parseCreatorTimestamps(video.description);
+  // 2. Parse creator chapter markers from description or use explicit markers
+  const markers: CreatorMarker[] =
+    video.markers && video.markers.length >= 3
+      ? video.markers
+      : parseCreatorTimestamps(video.description);
   const signals: string[] = [];
   if (markers.length >= 3) {
     signals.push(`creator_chapters_${markers.length}`);

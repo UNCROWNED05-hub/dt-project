@@ -1,0 +1,26 @@
+---
+loId: "iot-01-lo08"
+title: "Hardware and Firmware Attack Surfaces"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Unlike cloud servers locked inside secure datacenters, IoT devices are deployed in physically accessible environments, exposing unique hardware attack vectors:
+1. **Unprotected Debug Ports (UART / JTAG)**: Physical test pads left active on printed circuit boards (PCBs) allow attackers to attach logic analyzers, gain root root shells, or dump firmware.
+2. **Cleartext External Flash**: SPI flash memory chips soldered onto PCBs can be desoldered or probed in-circuit with an EEPROM reader to extract firmware and hardcoded cryptographic keys.
+3. **Lack of Secure Boot**: Without cryptographic signature verification on boot, an attacker can flash malicious modified firmware.
+4. **Hardcoded Credentials & Default Passwords**: Millions of connected IP cameras and routers fall prey to botnets (like Mirai) scanning for default telnet/ssh credentials.
+
+### Worked Example
+Hardening a production IoT PCB:
+- Development prototype: Exposed 4-pin header for UART root console (`115200 baud`), cleartext firmware in external flash.
+- Production hardened: Physically remove debug header test pads, disable hardware JTAG/UART in MCU eFuses, enable Hardware Secure Boot with cryptographic signature keys burned into one-time-programmable silicon, and enable on-the-fly flash memory encryption (AES-XTS).
+
+### Common Mistake
+Relying on software obscurity (like hiding UART pinouts) instead of hardware disabling. Security researchers can identify ground, transmit, and receive pins on a PCB in minutes using a multimeter or logic analyzer.
+
+### Check Yourself
+How can an attacker extract firmware from an IoT device that has no network vulnerabilities? (By physically clipping an EEPROM reader onto the external SPI flash memory chip or accessing unprotected UART/JTAG debug pads).

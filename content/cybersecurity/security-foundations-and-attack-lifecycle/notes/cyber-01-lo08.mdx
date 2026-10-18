@@ -1,0 +1,30 @@
+---
+loId: "cyber-01-lo08"
+title: "Defense-in-Depth Layered Security"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+No single security tool or control is foolproof. **Defense-in-Depth** deploys redundant, defensive layers across the entire operational environment:
+1. **Physical Controls**: Biometric datacenter locks, security guards, CCTV.
+2. **Network Controls**: Next-generation firewalls, network microsegmentation, WAF, IDS/IPS.
+3. **Host Controls**: Endpoint Detection & Response (EDR), disk encryption, OS patching.
+4. **Application Controls**: Input validation, parameterized queries, CSRF tokens.
+5. **Data Controls**: Column-level encryption, Data Loss Prevention (DLP), access logs.
+If an adversary circumvents one layer (e.g. bypassing a firewall), the next layer (e.g. EDR or host encryption) blocks or alerts on the intrusion.
+
+### Worked Example
+Stopping an SQL injection attempt across layers:
+- Layer 1 (WAF): Blocks obvious malformed SQL signatures at the edge.
+- Layer 2 (Application Code): Uses parameterized prepared statements, preventing SQL injection even if the WAF fails.
+- Layer 3 (Database Permissions): App user has no administrative rights, limiting damage even if code is flawed.
+- Layer 4 (Audit Logging): SIEM flags anomalous query volume and alerts security analysts.
+
+### Common Mistake
+Relying entirely on an endpoint antivirus or firewall. Attackers easily bypass signature-based antivirus using simple runtime crypters or memory injection.
+
+### Check Yourself
+If an adversary bypasses your perimeter firewall, what prevents them from immediately reading sensitive database files on a compromised server? (Host-level controls, least privilege permissions, and data-at-rest encryption).

@@ -1,0 +1,28 @@
+---
+loId: "aiml-01-lo04"
+title: "Loss and Cost Functions (MSE)"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+A loss function $\mathcal{L}(\hat{y}, y)$ quantifies the error for an individual prediction against the ground truth. A cost function $J(\theta)$ averages this loss across the entire training dataset of $N$ examples. For continuous regression, Mean Squared Error (MSE) is the gold standard:
+$$J(w, b) = \frac{1}{N} \sum_{i=1}^N (\hat{y}_i - y_i)^2$$
+Squaring residuals ensures all errors are positive and penalizes large outliers quadratically.
+
+### Worked Example
+Calculating MSE across 3 predictions:
+- Actual targets: $[10, 20, 30]$
+- Predictions: $[12, 19, 26]$
+- Residuals: $[+2, -1, -4]$
+- Squared errors: $[4, 1, 16]$
+- Sum of squares: $21$
+- Mean Squared Error: $J = 21 / 3 = 7.0$
+
+### Common Mistake
+Using raw differences $(\hat{y} - y)$ instead of squaring or absolute values. Positive and negative errors cancel each other out, making a terribly inaccurate model appear to have zero net error.
+
+### Check Yourself
+If prediction $\hat{y} = 10$ and ground truth $y = 6$, what is the single-sample squared error? ($(10 - 6)^2 = 16$).

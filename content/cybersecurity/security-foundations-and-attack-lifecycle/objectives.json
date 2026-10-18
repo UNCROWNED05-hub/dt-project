@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "chapterId": "cyber-01",
+  "objectives": [
+    {
+      "id": "cyber-01-lo01",
+      "order": 1,
+      "title": "Define the foundational CIA Triad (Confidentiality, Integrity, Availability) and Non-Repudiation",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["cia triad", "confidentiality", "integrity", "availability", "non-repudiation", "tampering"],
+      "aliases": ["security pillars", "CIA"],
+      "estMinutes": 8
+    },
+    {
+      "id": "cyber-01-lo02",
+      "order": 2,
+      "title": "Classify threat actors by motivation, capability, and operational scope",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["threat actors", "nation state", "apt", "insider threat", "cybercrime", "hacktivist", "script kiddie"],
+      "aliases": ["adversary taxonomy", "threat profiles"],
+      "prerequisites": ["cyber-01-lo01"],
+      "estMinutes": 10
+    },
+    {
+      "id": "cyber-01-lo03",
+      "order": 3,
+      "title": "Analyze organizational attack surfaces and primary ingress attack vectors",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["attack surface", "attack vector", "phishing", "misconfiguration", "unpatched software", "credential theft"],
+      "aliases": ["threat vectors", "exposure analysis"],
+      "prerequisites": ["cyber-01-lo01"],
+      "estMinutes": 10
+    },
+    {
+      "id": "cyber-01-lo04",
+      "order": 4,
+      "title": "Deconstruct cyber intrusions through the Cyber Kill Chain and MITRE ATT&CK frameworks",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["cyber kill chain", "mitre att&ck", "reconnaissance", "weaponization", "lateral movement", "exfiltration"],
+      "aliases": ["intrusion lifecycle", "attack lifecycle"],
+      "prerequisites": ["cyber-01-lo02", "cyber-01-lo03"],
+      "estMinutes": 14
+    },
+    {
+      "id": "cyber-01-lo05",
+      "order": 5,
+      "title": "Compute qualitative and quantitative Risk using Threats, Vulnerabilities, and Impact",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["risk formula", "threat", "vulnerability", "impact", "likelihood", "cve", "cvss"],
+      "aliases": ["risk assessment", "risk calculation"],
+      "prerequisites": ["cyber-01-lo01"],
+      "estMinutes": 12
+    },
+    {
+      "id": "cyber-01-lo06",
+      "order": 6,
+      "title": "Differentiate Symmetric and Asymmetric Cryptography and Public Key Infrastructure (PKI)",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["cryptography", "symmetric encryption", "asymmetric encryption", "pki", "public key", "private key", "tls"],
+      "aliases": ["encryption mechanisms", "cryptographic fundamentals"],
+      "prerequisites": ["cyber-01-lo01"],
+      "estMinutes": 14
+    },
+    {
+      "id": "cyber-01-lo07",
+      "order": 7,
+      "title": "Apply the Principle of Least Privilege and Zero Trust Architecture tenets",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["least privilege", "zero trust", "identity verification", "rbac", "microsegmentation", "implicit trust"],
+      "aliases": ["zero trust tenets", "access control"],
+      "prerequisites": ["cyber-01-lo01"],
+      "estMinutes": 12
+    },
+    {
+      "id": "cyber-01-lo08",
+      "order": 8,
+      "title": "Synthesize Defense-in-Depth strategies across preventative, detective, and corrective controls",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["defense in depth", "layered security", "preventative controls", "detective controls", "firewall", "siem"],
+      "aliases": ["layered defense", "security controls"],
+      "prerequisites": ["cyber-01-lo04", "cyber-01-lo07"],
+      "estMinutes": 12
+    },
+    {
+      "id": "cyber-01-lo09",
+      "order": 9,
+      "title": "Execute forensic evidence triage and preserve chain of custody during incident handling",
+      "bloom": "apply",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": ["chain of custody", "incident response", "digital forensics", "evidence preservation", "order of volatility"],
+      "aliases": ["forensic triage", "incident handling"],
+      "prerequisites": ["cyber-01-lo04"],
+      "estMinutes": 15
+    }
+  ]
+}

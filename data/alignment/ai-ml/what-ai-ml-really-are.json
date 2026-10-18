@@ -1,0 +1,430 @@
+{
+  "aircAruvnKk": {
+    "videoId": "aircAruvnKk",
+    "objectivesVersion": 1,
+    "confidence": "medium",
+    "signals": [
+      "creator_chapters_5"
+    ],
+    "coreCoverage": 0.5,
+    "mustHaveMissing": [
+      "aiml-01-lo01",
+      "aiml-01-lo02",
+      "aiml-01-lo06",
+      "aiml-01-lo07"
+    ],
+    "coverage": {
+      "aiml-01-lo01": {
+        "status": "none",
+        "score": 0.32,
+        "evidence": [
+          {
+            "kind": "tag",
+            "text": "machine learning"
+          }
+        ]
+      },
+      "aiml-01-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo03": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Neurons, Weights, and Biases in Layers",
+            "t": 195
+          },
+          {
+            "kind": "marker",
+            "text": "Activation Functions: Sigmoid and ReLU",
+            "t": 525
+          },
+          {
+            "kind": "description",
+            "text": "What are neural networks really doing? We unpack neurons, weights, biases, ac..."
+          },
+          {
+            "kind": "tag",
+            "text": "weights"
+          }
+        ]
+      },
+      "aiml-01-lo04": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Loss Functions and Cost Computation",
+            "t": 800
+          },
+          {
+            "kind": "description",
+            "text": "What are neural networks really doing? We unpack neurons, weights, biases, ac..."
+          },
+          {
+            "kind": "tag",
+            "text": "loss function"
+          }
+        ]
+      },
+      "aiml-01-lo05": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Gradient Descent Preview and Summary",
+            "t": 1000
+          },
+          {
+            "kind": "tag",
+            "text": "gradient descent"
+          }
+        ]
+      },
+      "aiml-01-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo08": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Activation Functions: Sigmoid and ReLU",
+            "t": 525
+          },
+          {
+            "kind": "description",
+            "text": "What are neural networks really doing? We unpack neurons, weights, biases, ac..."
+          },
+          {
+            "kind": "tag",
+            "text": "activation function"
+          }
+        ]
+      },
+      "aiml-01-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-01-lo03",
+      "aiml-01-lo08",
+      "aiml-01-lo04",
+      "aiml-01-lo05"
+    ]
+  },
+  "IHZwWFHWa-w": {
+    "videoId": "IHZwWFHWa-w",
+    "objectivesVersion": 1,
+    "confidence": "medium",
+    "signals": [
+      "creator_chapters_5"
+    ],
+    "coreCoverage": 0.38,
+    "mustHaveMissing": [
+      "aiml-01-lo01",
+      "aiml-01-lo02",
+      "aiml-01-lo06",
+      "aiml-01-lo07",
+      "aiml-01-lo08"
+    ],
+    "coverage": {
+      "aiml-01-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo03": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Connection to Network Weights and Biases",
+            "t": 1100
+          },
+          {
+            "kind": "tag",
+            "text": "weights"
+          }
+        ]
+      },
+      "aiml-01-lo04": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Visualizing the Cost Surface and Loss Functions",
+            "t": 180
+          },
+          {
+            "kind": "description",
+            "text": "Chapter 2 of Deep Learning series: exploring gradient descent, learning rates..."
+          },
+          {
+            "kind": "tag",
+            "text": "loss function"
+          }
+        ]
+      },
+      "aiml-01-lo05": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Introduction to Gradient Descent",
+            "t": 0
+          },
+          {
+            "kind": "marker",
+            "text": "Stepping Downhill: Learning Rate and Partial Derivatives",
+            "t": 450
+          },
+          {
+            "kind": "marker",
+            "text": "Stochastic Gradient Descent and Mini-Batches",
+            "t": 800
+          },
+          {
+            "kind": "title",
+            "text": "Gradient descent, how neural networks learn | Chapter 2, Deep learning",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Chapter 2 of Deep Learning series: exploring gradient descent, learning rates..."
+          },
+          {
+            "kind": "tag",
+            "text": "gradient descent"
+          }
+        ]
+      },
+      "aiml-01-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-01-lo09": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Stochastic Gradient Descent and Mini-Batches",
+            "t": 800
+          }
+        ]
+      }
+    },
+    "order": [
+      "aiml-01-lo05",
+      "aiml-01-lo04",
+      "aiml-01-lo09",
+      "aiml-01-lo03"
+    ]
+  },
+  "GIsg-ZUy0MY": {
+    "videoId": "GIsg-ZUy0MY",
+    "objectivesVersion": 1,
+    "confidence": "high",
+    "signals": [
+      "creator_chapters_9"
+    ],
+    "coreCoverage": 1,
+    "mustHaveMissing": [],
+    "coverage": {
+      "aiml-01-lo01": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Introduction to Machine Learning & Paradigms",
+            "t": 0
+          },
+          {
+            "kind": "title",
+            "text": "Machine Learning for Everybody – Full Course",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss fu..."
+          },
+          {
+            "kind": "tag",
+            "text": "machine learning"
+          }
+        ]
+      },
+      "aiml-01-lo02": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Introduction to Machine Learning & Paradigms",
+            "t": 0
+          },
+          {
+            "kind": "marker",
+            "text": "Supervised, Unsupervised, and Reinforcement Learning",
+            "t": 510
+          },
+          {
+            "kind": "description",
+            "text": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss fu..."
+          },
+          {
+            "kind": "tag",
+            "text": "supervised learning"
+          }
+        ]
+      },
+      "aiml-01-lo03": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Parametric Models: Weights, Biases, and Activation Functions",
+            "t": 3300
+          }
+        ]
+      },
+      "aiml-01-lo04": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Loss Functions, Mean Squared Error, and Cross-Entropy",
+            "t": 5040
+          },
+          {
+            "kind": "description",
+            "text": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss fu..."
+          },
+          {
+            "kind": "tag",
+            "text": "loss function"
+          }
+        ]
+      },
+      "aiml-01-lo05": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Gradient Descent Optimization and Learning Rate Tuning",
+            "t": 6750
+          },
+          {
+            "kind": "description",
+            "text": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss fu..."
+          },
+          {
+            "kind": "tag",
+            "text": "gradient descent"
+          }
+        ]
+      },
+      "aiml-01-lo06": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Overfitting, Underfitting, and Regularization (L1/L2, Dropout)",
+            "t": 8410
+          },
+          {
+            "kind": "description",
+            "text": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss fu..."
+          },
+          {
+            "kind": "tag",
+            "text": "overfitting"
+          }
+        ]
+      },
+      "aiml-01-lo07": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Features, Labels, and Dataset Splits (Train/Val/Test)",
+            "t": 1695
+          },
+          {
+            "kind": "marker",
+            "text": "Ethics, Algorithmic Bias, and Preventing Data Leakage",
+            "t": 12120
+          }
+        ]
+      },
+      "aiml-01-lo08": {
+        "status": "covered",
+        "score": 0.6,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Parametric Models: Weights, Biases, and Activation Functions",
+            "t": 3300
+          }
+        ]
+      },
+      "aiml-01-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-01-lo01",
+      "aiml-01-lo02",
+      "aiml-01-lo07",
+      "aiml-01-lo03",
+      "aiml-01-lo08",
+      "aiml-01-lo04",
+      "aiml-01-lo05",
+      "aiml-01-lo06"
+    ]
+  }
+}

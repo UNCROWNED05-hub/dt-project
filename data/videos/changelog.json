@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-10-18",
+    "chapter": "what-ai-ml-really-are",
+    "from": "aircAruvnKk",
+    "to": "GIsg-ZUy0MY",
+    "reason": "Previous top pick failed alignment gates",
+    "coverageBefore": 0.5,
+    "coverageAfter": 1,
+    "quizSize": 32
+  },
+  {
     "id": "change-01",
     "timestamp": "2026-10-02T14:30:00Z",
     "courseSlug": "ai-ml",

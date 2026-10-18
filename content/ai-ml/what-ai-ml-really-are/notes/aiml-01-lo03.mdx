@@ -1,0 +1,24 @@
+---
+loId: "aiml-01-lo03"
+title: "Model Function: Weights and Biases"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+The simplest parameterized model is an affine transformation: $\hat{y} = w^T x + b$. Here, $x$ is the feature vector, $w$ represents the weights (slopes governing each feature's influence), and $b$ is the scalar bias (intercept shifting the prediction independent of inputs). Training a model means systematically finding numerical values for $w$ and $b$ that minimize prediction discrepancy across training observations.
+
+### Worked Example
+Predicting server response latency ($y$, ms) from concurrent requests ($x_1$) and memory usage ($x_2$):
+$$\hat{y} = w_1 x_1 + w_2 x_2 + b$$
+If $w_1 = 0.5$, $w_2 = 1.2$, and $b = 15.0$:
+For $x_1 = 100$ and $x_2 = 10$:
+$$\hat{y} = (0.5 \times 100) + (1.2 \times 10) + 15.0 = 50 + 12 + 15 = 77\text{ ms}$$
+
+### Common Mistake
+Omitting the bias term $b$. Without bias, the regression line or hyperplane is forced to pass strictly through the origin $(0, 0)$, severely limiting what functions the model can represent.
+
+### Check Yourself
+What happens to the model output $\hat{y} = w x + b$ if all input features $x = 0$? (The prediction equals the bias term $b$).

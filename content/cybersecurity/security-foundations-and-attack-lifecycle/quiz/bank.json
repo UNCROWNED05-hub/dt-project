@@ -1,0 +1,1006 @@
+[
+  {
+    "id": "cyber-01-q01",
+    "loId": "cyber-01-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Which pillar of the CIA Triad is violated when an attacker secretly alters patient blood type records in an electronic hospital database?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Confidentiality"
+      },
+      {
+        "id": "b",
+        "text": "Integrity"
+      },
+      {
+        "id": "c",
+        "text": "Availability"
+      },
+      {
+        "id": "d",
+        "text": "Non-repudiation"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Integrity guarantees that information is authentic and has not been altered or tampered with by unauthorized actors.",
+    "noteRef": "cyber-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q02",
+    "loId": "cyber-01-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does digital signature cryptography establish the property of Non-Repudiation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By encrypting the entire hard drive with BitLocker."
+      },
+      {
+        "id": "b",
+        "text": "By signing the message hash with the sender's private key, proving mathematically that only the key holder could have generated the signature."
+      },
+      {
+        "id": "c",
+        "text": "By requiring three independent human witnesses."
+      },
+      {
+        "id": "d",
+        "text": "By generating a random password reset link."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Because the private key is held exclusively by the sender, a valid signature provides mathematical proof that they dispatched the payload and cannot deny it.",
+    "noteRef": "cyber-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q03",
+    "loId": "cyber-01-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A distributed denial of service (DDoS) volumetric flood takes down an online brokerage application during market hours. Which security requirement was primarily compromised?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Availability"
+      },
+      {
+        "id": "b",
+        "text": "Confidentiality"
+      },
+      {
+        "id": "c",
+        "text": "Non-repudiation"
+      },
+      {
+        "id": "d",
+        "text": "Authorization"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Availability ensures authorized users have timely, reliable access to critical assets and services when needed.",
+    "noteRef": "cyber-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q04",
+    "loId": "cyber-01-lo01",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which security mechanisms directly protect Data Integrity? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cryptographic hash functions (e.g. SHA-256 checksums)"
+      },
+      {
+        "id": "b",
+        "text": "Digital signatures on firmware updates"
+      },
+      {
+        "id": "c",
+        "text": "Uninterruptible power supplies (UPS)"
+      },
+      {
+        "id": "d",
+        "text": "Hash-based message authentication codes (HMAC)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Hashes, digital signatures, and HMACs verify that data has not been modified in transit or storage. UPS ensures power availability.",
+    "noteRef": "cyber-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q05",
+    "loId": "cyber-01-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What primary trait distinguishes Advanced Persistent Threat (APT) nation-state actors from script kiddies?",
+    "options": [
+      {
+        "id": "a",
+        "text": "APTs only use Windows operating systems."
+      },
+      {
+        "id": "b",
+        "text": "APTs possess substantial funding, specialized personnel, custom zero-day exploits, and pursue long-term stealthy objectives."
+      },
+      {
+        "id": "c",
+        "text": "APTs always publicly announce their intrusions on social media."
+      },
+      {
+        "id": "d",
+        "text": "APTs do not target government or defense infrastructure."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "APTs represent state-sponsored or elite teams with sustained campaigns, high discipline, advanced evasion techniques, and immense resources.",
+    "noteRef": "cyber-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q06",
+    "loId": "cyber-01-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An automated vulnerability scanner finds 500 websites running an unpatched WordPress plugin and defaces their landing pages with political slogans. Which threat actor profile best fits this behavior?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nation-state military intelligence unit"
+      },
+      {
+        "id": "b",
+        "text": "Opportunistic hacktivist or script kiddie using public exploit scripts"
+      },
+      {
+        "id": "c",
+        "text": "Corporate executive insider"
+      },
+      {
+        "id": "d",
+        "text": "Ransomware cartel targeting tier-1 banks"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Opportunistic scanning, low technical barrier, and broad defacement for attention/ideology fit the script kiddie / hacktivist archetype.",
+    "noteRef": "cyber-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q07",
+    "loId": "cyber-01-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is an Insider Threat often considered more difficult to detect than external adversaries?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because insiders never use electronic computers."
+      },
+      {
+        "id": "b",
+        "text": "Because insiders operate with legitimate, authorized credentials and are already inside perimeter network firewalls."
+      },
+      {
+        "id": "c",
+        "text": "Because insider actions are immune to logging."
+      },
+      {
+        "id": "d",
+        "text": "Because law enforcement prohibits inspecting internal traffic."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Insiders already possess trusted access, legitimate credentials, and familiarity with operational workflows, making malicious activity blend with normal business behavior.",
+    "noteRef": "cyber-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q08",
+    "loId": "cyber-01-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are primary motivations for modern organized Cybercrime syndicates? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Direct monetary extortion via double-extortion ransomware"
+      },
+      {
+        "id": "b",
+        "text": "Selling compromised payment card numbers and personally identifiable information (PII) on darknet markets"
+      },
+      {
+        "id": "c",
+        "text": "Contributing free open-source software to charitable foundations"
+      },
+      {
+        "id": "d",
+        "text": "Conducting business email compromise (BEC) wire fraud schemes"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Cybercrime syndicates are financially motivated criminal organizations focusing on revenue generation through extortion, fraud, and data brokering.",
+    "noteRef": "cyber-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q09",
+    "loId": "cyber-01-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is an organization's \"Attack Surface\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The physical square footage of the server room."
+      },
+      {
+        "id": "b",
+        "text": "The sum total of all reachable vulnerabilities and exposed entry points across software, hardware, networks, and humans."
+      },
+      {
+        "id": "c",
+        "text": "The number of computer screens in the security operations center."
+      },
+      {
+        "id": "d",
+        "text": "The speed of the core fiber internet connection."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The attack surface encompasses all potential entryways that an adversary could target or probe for vulnerabilities.",
+    "noteRef": "cyber-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q10",
+    "loId": "cyber-01-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A company employee receives an urgent email appearing to come from the CEO requesting an emergency gift card purchase. What attack vector is being employed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "b",
+        "text": "Spear Phishing / Social Engineering"
+      },
+      {
+        "id": "c",
+        "text": "Buffer Overflow"
+      },
+      {
+        "id": "d",
+        "text": "Man-in-the-Middle arp spoofing"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Spear phishing targets specific individuals with deceptive, context-tailored social engineering communications to manipulate human psychology.",
+    "noteRef": "cyber-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q11",
+    "loId": "cyber-01-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Which administrative practice most effectively reduces an organization's external network attack surface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Closing unnecessary listening ports and disabling exposed administrative interfaces (like RDP and SSH) to the public internet."
+      },
+      {
+        "id": "b",
+        "text": "Setting all user passwords to never expire."
+      },
+      {
+        "id": "c",
+        "text": "Increasing server RAM from 16GB to 64GB."
+      },
+      {
+        "id": "d",
+        "text": "Allowing all outbound traffic on all UDP ports."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Disabling unneeded services and moving administrative interfaces behind VPNs/Zero Trust proxies eliminates internet-reachable targets.",
+    "noteRef": "cyber-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q12",
+    "loId": "cyber-01-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are common technical attack vectors? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exploiting an unauthenticated remote code execution flaw in an edge VPN gateway"
+      },
+      {
+        "id": "b",
+        "text": "Credential stuffing using automated credential dumps from unrelated data breaches"
+      },
+      {
+        "id": "c",
+        "text": "Installing an official OS patch verified with cryptographic signatures"
+      },
+      {
+        "id": "d",
+        "text": "Compromised third-party open-source software dependencies (supply chain attack)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Edge exploits, credential stuffing, and supply chain poisoning are common ingress attack vectors. Legitimate verified patching is a defensive remedy.",
+    "noteRef": "cyber-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q13",
+    "loId": "cyber-01-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In the Cyber Kill Chain model, what occurs during the \"Reconnaissance\" phase?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The attacker encrypts all hard drives with ransomware."
+      },
+      {
+        "id": "b",
+        "text": "The attacker gathers intelligence on the target (identifying IP ranges, email addresses, employee names, software versions)."
+      },
+      {
+        "id": "c",
+        "text": "The attacker extracts gigabytes of confidential IP to a foreign server."
+      },
+      {
+        "id": "d",
+        "text": "The attacker reboots the domain controller."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Reconnaissance is the initial information-gathering phase used to plan and optimize subsequent intrusion attempts.",
+    "noteRef": "cyber-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q14",
+    "loId": "cyber-01-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does the MITRE ATT&CK framework differ from the classic Cyber Kill Chain?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MITRE ATT&CK only covers attacks on mobile smartphones."
+      },
+      {
+        "id": "b",
+        "text": "MITRE ATT&CK provides a granular, non-linear knowledge base of adversary Tactics, Techniques, and Procedures (TTPs) based on real-world observations."
+      },
+      {
+        "id": "c",
+        "text": "MITRE ATT&CK is an automated antivirus program."
+      },
+      {
+        "id": "d",
+        "text": "MITRE ATT&CK requires hardware dongles to operate."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "While the Kill Chain is a high-level sequential phase model, ATT&CK is a deep matrix detailing hundreds of specific adversary techniques and defensive mitigations.",
+    "noteRef": "cyber-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q15",
+    "loId": "cyber-01-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An attacker uses stolen credentials to access a workstation in accounting, then uses PsExec and credential dumping (Mimikatz) to pivot to the domain controller. What phase of the intrusion is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Reconnaissance"
+      },
+      {
+        "id": "b",
+        "text": "Lateral Movement and Privilege Escalation"
+      },
+      {
+        "id": "c",
+        "text": "Weaponization"
+      },
+      {
+        "id": "d",
+        "text": "Weapon delivery"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Pivoting from an initial foothold through intermediate systems toward higher-value targets constitutes Lateral Movement and Privilege Escalation.",
+    "noteRef": "cyber-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q16",
+    "loId": "cyber-01-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "Why is the \"Command and Control (C2)\" phase critical for defenders seeking to disrupt an ongoing breach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because blocking C2 communication isolates the compromised implant, preventing the adversary from sending commands or receiving stolen data."
+      },
+      {
+        "id": "b",
+        "text": "Because C2 only operates during daylight hours."
+      },
+      {
+        "id": "c",
+        "text": "Because C2 is strictly prohibited by RFC 1918."
+      },
+      {
+        "id": "d",
+        "text": "Because C2 requires physical hardware intervention."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Breaking the C2 channel severs the adversary's control over the installed backdoor, stopping active operations.",
+    "noteRef": "cyber-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q17",
+    "loId": "cyber-01-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In classical cybersecurity risk assessment, what is the standard qualitative relationship among Risk, Threat, Vulnerability, and Impact?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Risk = Threat + RAM / CPU"
+      },
+      {
+        "id": "b",
+        "text": "Risk = Threat x Vulnerability x Impact"
+      },
+      {
+        "id": "c",
+        "text": "Risk = Lines of Code x Number of Employees"
+      },
+      {
+        "id": "d",
+        "text": "Risk = Firewall Cost - Antivirus License"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Risk requires all three components: a flaw (vulnerability), an adversary capable of reaching and exploiting it (threat), and negative consequence (impact).",
+    "noteRef": "cyber-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q18",
+    "loId": "cyber-01-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A legacy Linux server contains a critical CVSS 10.0 vulnerability. However, it is an isolated development VM with no internet access, no real data, and will be destroyed in 1 hour. Why is operational risk low?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because CVSS scores are meaningless."
+      },
+      {
+        "id": "b",
+        "text": "Because Threat exposure is near-zero and potential business Impact is negligible, mitigating the raw vulnerability severity."
+      },
+      {
+        "id": "c",
+        "text": "Because Linux is immune to cyberattacks."
+      },
+      {
+        "id": "d",
+        "text": "Because all vulnerabilities expire automatically."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A critical vulnerability without threat accessibility or valuable assets represents minimal actual organizational risk.",
+    "noteRef": "cyber-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q19",
+    "loId": "cyber-01-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What standard system provides a standardized numerical severity rating (from 0.0 to 10.0) for reported software vulnerabilities?",
+    "options": [
+      {
+        "id": "a",
+        "text": "CVSS (Common Vulnerability Scoring System)"
+      },
+      {
+        "id": "b",
+        "text": "NIST SP 800-53"
+      },
+      {
+        "id": "c",
+        "text": "OWASP Top 10"
+      },
+      {
+        "id": "d",
+        "text": "DNSSEC"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "CVSS evaluates vulnerability characteristics (attack vector, complexity, privileges required, confidentiality/integrity/availability impact) to generate a standardized score.",
+    "noteRef": "cyber-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q20",
+    "loId": "cyber-01-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are valid risk treatment options in enterprise cybersecurity risk management? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Risk Mitigation (implementing technical security controls to reduce likelihood or impact)"
+      },
+      {
+        "id": "b",
+        "text": "Risk Transference (purchasing cyber insurance or outsourcing to a compliant SaaS provider)"
+      },
+      {
+        "id": "c",
+        "text": "Risk Avoidance (discontinuing a high-risk activity or decommissioning a legacy system)"
+      },
+      {
+        "id": "d",
+        "text": "Risk Denial (ignoring security audit findings and refusing to log incidents)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Mitigation, transference, avoidance, and acceptance are the four recognized risk management options. Denying or hiding risk is negligence.",
+    "noteRef": "cyber-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q21",
+    "loId": "cyber-01-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the fundamental difference between Symmetric and Asymmetric encryption?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Symmetric encryption uses numbers; asymmetric encryption uses letters."
+      },
+      {
+        "id": "b",
+        "text": "Symmetric uses a single secret key for both encryption and decryption; asymmetric uses a public/private key pair."
+      },
+      {
+        "id": "c",
+        "text": "Symmetric encryption is only legal in North America."
+      },
+      {
+        "id": "d",
+        "text": "Asymmetric encryption is obsolete and unsecure."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Symmetric relies on one shared secret key. Asymmetric uses paired keys where data encrypted with the public key can only be decrypted by the matching private key.",
+    "noteRef": "cyber-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q22",
+    "loId": "cyber-01-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does the TLS/HTTPS protocol use asymmetric cryptography only during the initial handshake, switching to symmetric AES for actual payload data transfer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because symmetric encryption is mathematically impossible to break."
+      },
+      {
+        "id": "b",
+        "text": "Because asymmetric encryption is computationally thousands of times slower than hardware-accelerated symmetric ciphers like AES."
+      },
+      {
+        "id": "c",
+        "text": "Because browsers cannot parse RSA certificates after port 443 opens."
+      },
+      {
+        "id": "d",
+        "text": "To prevent packets from exceeding MTU limits."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Asymmetric math (modular exponentiation or elliptic curve points) is compute-heavy. TLS uses it to establish a shared session key, then uses fast AES-GCM for stream data.",
+    "noteRef": "cyber-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q23",
+    "loId": "cyber-01-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "Alice wants to send Bob an encrypted message that only Bob can read, and Bob wants cryptographic proof that Alice wrote it. How do their keys achieve this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Alice encrypts with Bob's public key; Alice signs with Alice's private key."
+      },
+      {
+        "id": "b",
+        "text": "Alice encrypts with Alice's public key; Bob signs with Bob's private key."
+      },
+      {
+        "id": "c",
+        "text": "Alice encrypts with Bob's private key; Bob signs with Alice's public key."
+      },
+      {
+        "id": "d",
+        "text": "Both parties share Alice's private key over unencrypted email."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Encrypting with Bob's public key ensures only Bob can decrypt with his private key. Signing with Alice's private key allows anyone with her public key to verify her authorship.",
+    "noteRef": "cyber-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q24",
+    "loId": "cyber-01-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "What is the role of a Certificate Authority (CA) in Public Key Infrastructure (PKI)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A CA stores copies of all private keys on internet servers."
+      },
+      {
+        "id": "b",
+        "text": "A CA acts as a trusted third party that signs digital certificates, binding a verified organization identity to its public key."
+      },
+      {
+        "id": "c",
+        "text": "A CA issues IP addresses to home routers."
+      },
+      {
+        "id": "d",
+        "text": "A CA monitors user web browsing for advertising."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Without CAs, attackers could impersonate any domain (Man-in-the-Middle) by presenting self-generated public keys. The CA's digital signature certifies identity authenticity.",
+    "noteRef": "cyber-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q25",
+    "loId": "cyber-01-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the core mandate of the Principle of Least Privilege (PoLP)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Users should have administrator rights so they are not blocked during work hours."
+      },
+      {
+        "id": "b",
+        "text": "Every user, service, and process should be granted only the minimum permissions necessary to perform their legitimate duties."
+      },
+      {
+        "id": "c",
+        "text": "All files must be publicly readable by default."
+      },
+      {
+        "id": "d",
+        "text": "Passwords should be restricted to 4 digits."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Restricting permissions to the absolute minimum necessary contains blast radius if an account or service is compromised.",
+    "noteRef": "cyber-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q26",
+    "loId": "cyber-01-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is the central philosophical shift of Zero Trust Architecture compared to legacy perimeter security?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zero Trust replaces passwords with magnetic swipe cards."
+      },
+      {
+        "id": "b",
+        "text": "Zero Trust assumes breach and never trusts requests based on network location, requiring continuous explicit authentication and authorization."
+      },
+      {
+        "id": "c",
+        "text": "Zero Trust disables all network encryption."
+      },
+      {
+        "id": "d",
+        "text": "Zero Trust eliminates firewalls."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Legacy security assumed anything inside the corporate network perimeter was trustworthy. Zero Trust eliminates implicit trust regardless of network locality.",
+    "noteRef": "cyber-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q27",
+    "loId": "cyber-01-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A web application server needs to insert user registration records into a database. Which configuration best adheres to the Principle of Least Privilege?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Connecting as the PostgreSQL superuser 'postgres' with all privileges."
+      },
+      {
+        "id": "b",
+        "text": "Creating an 'app_writer' user with INSERT and SELECT rights on the users table only, with no DROP, ALTER, or access to other tables."
+      },
+      {
+        "id": "c",
+        "text": "Disabling database authentication completely."
+      },
+      {
+        "id": "d",
+        "text": "Granting DB administrator permissions to all developers."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Limiting the application to strictly required tables and operations ensures an SQL injection vulnerability cannot be leveraged to DROP tables or read other schemas.",
+    "noteRef": "cyber-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q28",
+    "loId": "cyber-01-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are foundational pillars of Zero Trust Architecture? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Explicit verification of identity, device health, and context for every transaction"
+      },
+      {
+        "id": "b",
+        "text": "Assuming the network is already hostile (Assume Breach)"
+      },
+      {
+        "id": "c",
+        "text": "Microsegmentation to prevent lateral movement between workloads"
+      },
+      {
+        "id": "d",
+        "text": "Treating all traffic inside the corporate office as automatically authenticated"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Continuous explicit verification, assuming breach, and microsegmentation define Zero Trust. Implicit trust for internal office traffic is the exact legacy anti-pattern it replaces.",
+    "noteRef": "cyber-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q29",
+    "loId": "cyber-01-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the primary rationale behind the \"Defense-in-Depth\" architectural strategy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To ensure servers are installed in deep underground basements."
+      },
+      {
+        "id": "b",
+        "text": "To deploy layered, redundant defensive controls so that the failure of any single control does not result in total system compromise."
+      },
+      {
+        "id": "c",
+        "text": "To reduce the total number of security vendors used by an IT department."
+      },
+      {
+        "id": "d",
+        "text": "To replace software firewalls with physical locks."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Defense-in-depth recognizes that any single defensive measure can fail; layered controls ensure backup protection and detection at every step.",
+    "noteRef": "cyber-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q30",
+    "loId": "cyber-01-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An attacker bypasses an edge Web Application Firewall (WAF) using an obfuscated SQL injection payload. Which layered defense-in-depth control stops the exploit at the next tier?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Parameterized SQL queries (prepared statements) in application code"
+      },
+      {
+        "id": "b",
+        "text": "The office door badge reader"
+      },
+      {
+        "id": "c",
+        "text": "A faster network switch"
+      },
+      {
+        "id": "d",
+        "text": "A larger hard drive"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Parameterized queries separate code from data at the application layer, neutralizing SQL injection regardless of whether the WAF detected the payload.",
+    "noteRef": "cyber-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q31",
+    "loId": "cyber-01-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Which category of security control is exemplified by a Security Information and Event Management (SIEM) system analyzing log streams?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Preventative control"
+      },
+      {
+        "id": "b",
+        "text": "Detective control"
+      },
+      {
+        "id": "c",
+        "text": "Physical control"
+      },
+      {
+        "id": "d",
+        "text": "Deterrent control"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "SIEM systems aggregate and correlate telemetry to detect and alert on unauthorized activity that has bypassed preventative barriers.",
+    "noteRef": "cyber-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q32",
+    "loId": "cyber-01-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following demonstrate effective Defense-in-Depth for customer database records? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Enforcing TLS in transit and AES-256 encryption at rest"
+      },
+      {
+        "id": "b",
+        "text": "Placing the database in a private subnet with zero public internet routing"
+      },
+      {
+        "id": "c",
+        "text": "Requiring multi-factor authentication (MFA) and bastion jump-hosts for DBA administration"
+      },
+      {
+        "id": "d",
+        "text": "Disabling database access logging to improve query throughput"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Encryption, network isolation, and privileged access management provide layered defense. Disabling audit logging destroys detective and compliance capabilities.",
+    "noteRef": "cyber-01-lo08",
+    "reviewed": false
+  }
+]

@@ -1,0 +1,26 @@
+---
+loId: "iot-01-lo02"
+title: "Sensors vs Actuators"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Physical computing relies on two complementary transducer categories:
+- **Sensors (Inputs)**: Devices that measure a physical phenomenon (temperature, pressure, optical luminosity, magnetic field, acceleration) and convert it into a measurable electrical signal (analog voltage or digital word).
+- **Actuators (Outputs)**: Devices that take an electrical control signal and convert it into a physical effect (closing a relay switch, turning a servo motor, firing a solenoid valve, illuminating an LED).
+IoT systems create closed control loops: Sensors read state $\rightarrow$ Compute decides action $\rightarrow$ Actuators change physical reality.
+
+### Worked Example
+A smart greenhouse environmental loop:
+1. Soil moisture sensor (transducer) measures capacitive resistance decreasing as soil dries out.
+2. Microcontroller reads voltage and decides water is required.
+3. Solenoid valve actuator receives 12V current to physically open a pressurized drip irrigation pipe for 45 seconds.
+
+### Common Mistake
+Assuming sensors and actuators operate on the same logic voltage as modern microcontrollers (3.3V). Actuators like motors and solenoids require external power supplies, flyback diodes, and relays or MOSFET drivers to isolate high currents from delicate silicon.
+
+### Check Yourself
+Is a stepper motor an IoT sensor or an actuator? (An actuator, because it converts electrical signals into physical mechanical motion).

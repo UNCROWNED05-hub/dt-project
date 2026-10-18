@@ -1,0 +1,39 @@
+---
+loId: "aiml-01-lo07"
+title: "Train, Validation, and Test Splits"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+To prevent data leakage and obtain unbiased evaluations, datasets must be partitioned into three isolated splits:
+1. **Training Set (~70%)**: Used by gradient descent to directly calculate gradients and update model parameters ($w, b$).
+2. **Validation Set (~15%)**: Used by human engineers to compare different architectures, tune hyperparameters (learning rate, tree depth), and implement early stopping.
+3. **Test Set (~15%)**: Kept in a vault until the model is finalized; used strictly once to measure expected real-world generalization performance.
+
+### Worked Example
+A clean 10,000-sample partition:
+```python
+import random
+
+def partition_data(dataset, train_ratio=0.70, val_ratio=0.15):
+    shuffled = dataset.copy()
+    random.seed(42) # Deterministic split
+    random.shuffle(shuffled)
+    
+    n_train = int(len(shuffled) * train_ratio)
+    n_val = int(len(shuffled) * val_ratio)
+    
+    train = shuffled[:n_train]
+    val = shuffled[n_train:n_train + n_val]
+    test = shuffled[n_train + n_val:]
+    return train, val, test
+```
+
+### Common Mistake
+Performing feature normalization or data imputation on the entire dataset *before* splitting. This leaks statistical parameters (like mean and standard deviation) from the test set into the training pipeline.
+
+### Check Yourself
+Why can you not use the test set to choose your learning rate? (Because choosing hyperparameters based on test set performance causes overfitting to the test set, destroying its validity as an unbiased evaluation).

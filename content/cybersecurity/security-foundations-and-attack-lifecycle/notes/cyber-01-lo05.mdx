@@ -1,0 +1,27 @@
+---
+loId: "cyber-01-lo05"
+title: "Risk Calculation: Threat, Vulnerability, and Impact"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Cybersecurity risk is quantified as a function of three variables:
+$$\text{Risk} = \text{Threat} \times \text{Vulnerability} \times \text{Impact}$$
+- **Vulnerability**: A flaw or weakness in software, hardware, or process (e.g. CVE-2021-44228 Log4j).
+- **Threat**: The likelihood of an adversary capability attempting to exploit that flaw.
+- **Impact**: The tangible financial, legal, or operational loss if the breach succeeds.
+If any single factor is zero (e.g. a vulnerability exists on an air-gapped machine with zero threat reachability), the risk is zero.
+
+### Worked Example
+Prioritizing patching across two servers:
+- Server A: Critical RCE vulnerability (CVSS 9.8) on an air-gapped test VM with zero sensitive data. Impact = Low, Threat = Very Low $\rightarrow$ Overall Risk = Moderate.
+- Server B: Moderate Information Disclosure vulnerability (CVSS 5.3) on an internet-facing payment processing server storing PCI cardholder data. Impact = Catastrophic, Threat = High $\rightarrow$ Overall Risk = Critical.
+
+### Common Mistake
+Prioritizing remediation purely by CVSS vulnerability score without factoring in asset criticality and threat accessibility.
+
+### Check Yourself
+If a software library has a known critical exploit, but the server is locked in a vault, disconnected from all networks, and has no users, why is operational risk low? (Because Threat accessibility is near zero).

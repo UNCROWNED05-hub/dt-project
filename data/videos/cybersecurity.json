@@ -16,7 +16,66 @@
         "freshness": 0.88,
         "syllabusFit": 0.97
       },
-      "whyTopPick": "Comprehensive defensive foundation establishing CIA triad, threat vectors, and risk assessment."
+      "whyTopPick": "Comprehensive defensive foundation establishing CIA triad, threat vectors, and risk assessment.",
+      "description": "Comprehensive cyber security course covering CIA triad, threat vectors, authentication, cryptography, vulnerability management, defense-in-depth, and incident response.",
+      "tags": [
+        "cybersecurity",
+        "cia triad",
+        "threat vectors",
+        "authentication",
+        "cryptography",
+        "vulnerability",
+        "firewalls",
+        "incident response",
+        "ethical hacking"
+      ],
+      "markers": [
+        {
+          "seconds": 0,
+          "timeStr": "0:00",
+          "title": "Course Introduction & Security Mindset"
+        },
+        {
+          "seconds": 600,
+          "timeStr": "10:00",
+          "title": "The CIA Triad: Confidentiality, Integrity, Availability"
+        },
+        {
+          "seconds": 1500,
+          "timeStr": "25:00",
+          "title": "Threat Actors, Vectors, and Attack Surface Analysis"
+        },
+        {
+          "seconds": 2700,
+          "timeStr": "45:00",
+          "title": "Authentication, MFA, and Principle of Least Privilege"
+        },
+        {
+          "seconds": 3900,
+          "timeStr": "1:05:00",
+          "title": "Symmetric and Asymmetric Encryption, Hashes, and Signatures"
+        },
+        {
+          "seconds": 5100,
+          "timeStr": "1:25:00",
+          "title": "Vulnerability Assessment and CVE Scanners"
+        },
+        {
+          "seconds": 6300,
+          "timeStr": "1:45:00",
+          "title": "Network Defense: Firewalls, DMZs, and Defense-in-Depth"
+        },
+        {
+          "seconds": 7500,
+          "timeStr": "2:05:00",
+          "title": "Incident Response Lifecycle: Detect, Contain, Eradicate, Recover"
+        },
+        {
+          "seconds": 8700,
+          "timeStr": "2:25:00",
+          "title": "Ethical Hacking, Penetration Testing, and Legal Boundaries"
+        }
+      ]
     },
     "alternates": [
       {
@@ -26,7 +85,36 @@
         "duration": "7:45",
         "publishedAt": "2019-10-18T12:00:00Z",
         "thumbnailUrl": "https://i.ytimg.com/vi/2_lswM1S264/hqdefault.jpg",
-        "score": 0.890
+        "score": 0.89,
+        "description": "Quick overview of cyber security fundamentals including the CIA triad and common threat vectors.",
+        "tags": [
+          "cyber security",
+          "cia triad",
+          "threat vectors",
+          "malware"
+        ],
+        "markers": [
+          {
+            "seconds": 0,
+            "timeStr": "0:00",
+            "title": "What is Cyber Security?"
+          },
+          {
+            "seconds": 120,
+            "timeStr": "2:00",
+            "title": "The CIA Triad Pillars"
+          },
+          {
+            "seconds": 270,
+            "timeStr": "4:30",
+            "title": "Common Threat Vectors & Malware"
+          },
+          {
+            "seconds": 400,
+            "timeStr": "6:40",
+            "title": "Summary & Career in Security"
+          }
+        ]
       }
     ]
   },
@@ -73,7 +161,7 @@
       "score": 0.941,
       "scoreBreakdown": {
         "engagement": 0.97,
-        "traction": 0.90,
+        "traction": 0.9,
         "authority": 0.97,
         "freshness": 0.88,
         "syllabusFit": 0.96
@@ -95,7 +183,7 @@
       "scoreBreakdown": {
         "engagement": 0.96,
         "traction": 0.87,
-        "authority": 1.0,
+        "authority": 1,
         "freshness": 0.88,
         "syllabusFit": 0.98
       },
@@ -109,7 +197,7 @@
         "duration": "8:06",
         "publishedAt": "2014-04-16T17:00:00Z",
         "thumbnailUrl": "https://i.ytimg.com/vi/b4b8ktEV4Bg/hqdefault.jpg",
-        "score": 0.920
+        "score": 0.92
       }
     ]
   },
@@ -122,12 +210,12 @@
       "duration": "35:10",
       "publishedAt": "2018-04-10T16:00:00Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/996OiexHze0/hqdefault.jpg",
-      "score": 0.950,
+      "score": 0.95,
       "scoreBreakdown": {
         "engagement": 0.97,
         "traction": 0.91,
         "authority": 0.95,
-        "freshness": 0.90,
+        "freshness": 0.9,
         "syllabusFit": 0.99
       },
       "whyTopPick": "The industry reference explanation separating authentication (who you are) from authorization (what you can do)."
@@ -147,7 +235,7 @@
       "scoreBreakdown": {
         "engagement": 0.95,
         "traction": 0.87,
-        "authority": 1.0,
+        "authority": 1,
         "freshness": 0.86,
         "syllabusFit": 0.97
       },
@@ -188,9 +276,9 @@
       "score": 0.944,
       "scoreBreakdown": {
         "engagement": 0.97,
-        "traction": 0.90,
+        "traction": 0.9,
         "authority": 0.97,
-        "freshness": 0.90,
+        "freshness": 0.9,
         "syllabusFit": 0.96
       },
       "whyTopPick": "Demonstrates safe virtual machine detonation, hash lookups on VirusTotal, and string extraction."
@@ -206,7 +294,7 @@
       "duration": "25:40",
       "publishedAt": "2023-01-24T17:00:00Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/4t4kBkMsDbQ/hqdefault.jpg",
-      "score": 0.940,
+      "score": 0.94,
       "scoreBreakdown": {
         "engagement": 0.96,
         "traction": 0.91,
@@ -253,7 +341,7 @@
         "engagement": 0.92,
         "traction": 0.86,
         "authority": 0.94,
-        "freshness": 0.90,
+        "freshness": 0.9,
         "syllabusFit": 0.93
       },
       "whyTopPick": "Clear enterprise overview of shifting security left in automated CI/CD deployment pipelines."

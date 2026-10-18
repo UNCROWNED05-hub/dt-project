@@ -1,0 +1,29 @@
+---
+loId: "aiml-01-lo05"
+title: "Gradient Descent Optimization"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Gradient Descent is an iterative optimization algorithm that updates parameters $\theta$ in the direction of steepest descent—the negative gradient of the cost function:
+$$\theta \leftarrow \theta - \alpha \nabla_\theta J(\theta)$$
+Where $\alpha$ is the **learning rate**, a positive scalar tuning the step size. For MSE with respect to weight $w$, the partial derivative is:
+$$\frac{\partial J}{\partial w} = \frac{2}{N} \sum_{i=1}^N (\hat{y}_i - y_i) x_i$$
+
+### Worked Example
+One step of gradient descent for a single parameter $w$:
+- Current weight: $w = 2.0$
+- Learning rate: $\alpha = 0.05$
+- Computed gradient: $\frac{\partial J}{\partial w} = +4.0$ (loss increases as $w$ increases)
+- Update step:
+$$w_{\text{new}} = 2.0 - (0.05 \times 4.0) = 2.0 - 0.2 = 1.8$$
+Weight correctly decreases to move toward the loss valley.
+
+### Common Mistake
+Setting learning rate $\alpha$ too high, which causes gradient descent to overshoot the minimum and diverge toward infinity; or setting $\alpha$ too small, taking millions of iterations to converge.
+
+### Check Yourself
+If the gradient $\frac{\partial J}{\partial w} = 0$, what does the update rule do? ($w$ does not change; a local or global stationary point has been reached).

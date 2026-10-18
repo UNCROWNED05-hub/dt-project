@@ -1,0 +1,28 @@
+---
+loId: "iot-01-lo05"
+title: "Wireless Protocols: Range vs Power Trade-offs"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+There is no single universal wireless protocol. IoT connectivity obeys immutable RF physics: **Range, Bandwidth, and Power Consumption form a trilemma**:
+1. **Short Range, High Bandwidth (Wi-Fi 802.11)**: High throughput (megabits), high power draw (unsuitable for tiny batteries without aggressive sleep), indoor range (~30m).
+2. **Short Range, Ultra-Low Power (BLE 802.15.1)**: Low throughput, tiny coin-cell operation for months, ideal for wearables and indoor beacons (~10-20m).
+3. **Mesh Networking (Zigbee 802.15.4 / Thread)**: Self-healing mesh topologies for home automation and smart lighting.
+4. **Long Range, Low Power (LPWAN / LoRaWAN)**: Extremely long range (5-15 km), battery life measured in years, but minimal bandwidth (bytes per minute).
+5. **Cellular IoT (LTE-M, NB-IoT)**: Operates over national mobile towers, carrier subscription required, reliable outdoor infrastructure telemetry.
+
+### Worked Example
+Selecting connectivity for smart agriculture soil probes across a 500-acre farm:
+- Wi-Fi: Range is too short; placing access points across 500 acres is cost-prohibitive.
+- BLE: Range is strictly limited to 20 meters.
+- LoRaWAN: Ideal; a single LoRa gateway mounted on a farm silo covers the entire 500-acre radius, and battery-powered probes send 10-byte moisture readings every 30 minutes for 3+ years.
+
+### Common Mistake
+Designing an off-grid battery sensor with Wi-Fi expecting continuous network availability. Wi-Fi radios draw 100-300 mA during transmission and reception, draining small batteries within days unless deep sleep is rigorously applied.
+
+### Check Yourself
+Which wireless protocol is best suited for transmitting small telemetry packets across 10 kilometers on small battery power? (LoRaWAN).

@@ -1,0 +1,28 @@
+---
+loId: "cyber-01-lo06"
+title: "Symmetric vs Asymmetric Cryptography and PKI"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Cryptography secures data through two complementary paradigms:
+1. **Symmetric Encryption (e.g. AES-256)**: Uses a single shared secret key for both encryption and decryption. Highly computational efficient, ideal for encrypting large payloads (disk images, video streams). Key distribution problem: both parties must securely agree on the secret key beforehand.
+2. **Asymmetric Encryption (e.g. RSA, ECC)**: Uses mathematically linked key pairs: a public key (distributed openly) and a private key (kept strictly secret). Ideal for identity verification and digital signatures.
+**TLS / HTTPS** combines both: asymmetric cryptography (RSA/ECDH) safely negotiates a session key, then switches to fast symmetric AES for all actual data transfer.
+
+### Worked Example
+Establishing a secure TLS connection:
+1. Browser connects to `https://bank.com`.
+2. Bank server responds with its X.509 Certificate containing its public key, signed by a trusted Root Certificate Authority (CA).
+3. Browser validates the signature.
+4. Both sides use asymmetric Diffie-Hellman key exchange to establish an ephemeral AES-256 session key.
+5. All subsequent HTTP traffic is encrypted using AES-256.
+
+### Common Mistake
+Encrypting massive multi-gigabyte video streams directly with asymmetric RSA. RSA is thousands of times slower and computationally expensive; asymmetric crypto is designed only to secure keys and digital signatures.
+
+### Check Yourself
+In digital signatures, which key does the sender use to sign the message hash? (The sender's Private Key; anyone with the Public Key can verify it).

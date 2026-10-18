@@ -1,0 +1,24 @@
+---
+loId: "iot-01-lo04"
+title: "Microcontrollers (MCUs) vs Microprocessors (MPUs)"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Choosing edge compute requires understanding the fundamental divide:
+- **Microcontroller (MCU, e.g. ARM Cortex-M, ESP32, STM32)**: Single chip integrating CPU, RAM (kilobytes), flash ROM (megabytes), and hardware peripherals (ADC, PWM, timers). Executes bare-metal C or Real-Time Operating Systems (RTOS). Ultra-low power (microamps in sleep), sub-microsecond deterministic interrupt latency.
+- **Single-Board Microprocessor (MPU, e.g. Raspberry Pi, ARM Cortex-A)**: High-speed multi-core CPU requiring external RAM (gigabytes) and operating system (Linux). High power consumption (watts), complex multitasking, non-deterministic latency due to OS process scheduling. Ideal for heavy edge video analytics and complex local gateways.
+
+### Worked Example
+Edge hardware selection:
+- Case A: Battery-powered forest fire sensor sampling temperature and transmitting over LoRa once an hour -> STM32 ultra-low-power MCU (sleeps at $2\mu\text{A}$, lasts 5 years on AA batteries).
+- Case B: Traffic intersection camera running real-time YOLO computer vision to count vehicle types -> Raspberry Pi 5 or NVIDIA Jetson MPU running Linux.
+
+### Common Mistake
+Using a full Linux single-board computer for simple sensor polling. Linux takes 30 seconds to boot, draws hundreds of milliamps continuously, and cannot easily sleep for battery conservation.
+
+### Check Yourself
+If an application requires microsecond-level deterministic motor timing and must run for 3 years on a coin cell battery, should you select an MCU or an MPU? (An MCU running bare-metal or RTOS).

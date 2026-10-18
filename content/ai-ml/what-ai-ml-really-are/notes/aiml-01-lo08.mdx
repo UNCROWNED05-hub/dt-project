@@ -1,0 +1,23 @@
+---
+loId: "aiml-01-lo08"
+title: "Non-Linear Decision Boundaries and Hidden Layers"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+A single linear layer can only draw planar decision boundaries (hyperplanes). It cannot solve problems where classes are not linearly separable, such as the classic **XOR (exclusive OR)** problem. To represent non-linear relationships, neural networks introduce **hidden layers** coupled with non-linear **activation functions** (such as ReLU: $f(z) = \max(0, z)$ or Sigmoid: $\sigma(z) = \frac{1}{1 + e^{-z}}$). Without non-linear activations, stacking multiple linear layers mathematically collapses into a single linear transformation ($W_2(W_1 x) = (W_2 W_1) x = W_3 x$).
+
+### Worked Example
+The XOR Problem:
+- Inputs: $(0, 0) \rightarrow 0$, $(1, 1) \rightarrow 0$, $(0, 1) \rightarrow 1$, $(1, 0) \rightarrow 1$.
+- Plotting these 4 points on a 2D plane proves no single straight line can separate the $1$s from the $0$s.
+- Adding a 2-neuron hidden layer with ReLU activations bends the input space, projecting the points into a 2D representation where they become linearly separable.
+
+### Common Mistake
+Stacking 10 dense neural layers with purely linear activations ($f(z) = z$) and expecting deep learning power. The entire 10-layer network has exactly the same mathematical representation power as a 1-layer linear regression.
+
+### Check Yourself
+What is the output of $\text{ReLU}(-4.2)$? ($0.0$, because $\max(0, -4.2) = 0$).

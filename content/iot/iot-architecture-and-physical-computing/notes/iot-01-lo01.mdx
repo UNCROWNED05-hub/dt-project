@@ -1,0 +1,28 @@
+---
+loId: "iot-01-lo01"
+title: "Four-Tier IoT Architecture"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Internet of Things systems operate across four distinct functional layers:
+1. **Perception Layer (Physical)**: Physical transducers (sensors and actuators) that interact directly with the environment, sampling analog voltages or triggering physical motion.
+2. **Edge Gateway Layer**: Local compute nodes (microcontrollers or industrial gateways) that aggregate sensor telemetry, filter high-frequency noise, and translate serial protocols (I2C/SPI) into network packets.
+3. **Network Layer**: Wired or wireless transport infrastructure (Ethernet, Cellular IoT, Wi-Fi, LoRaWAN) routing packets across internet gateways.
+4. **Cloud / Application Layer**: High-capacity servers and time-series databases executing business logic, anomaly detection, telemetry analytics, and user dashboards.
+
+### Worked Example
+Tracking cold-chain pharmaceutical shipping:
+- Perception Layer: DS18B20 digital temperature probe inside shipping container.
+- Edge Layer: ESP32 microcontroller reading temperature every 30 seconds and logging to flash memory.
+- Network Layer: LTE-M cellular modem transmitting batch packets when network coverage is detected.
+- Cloud Layer: InfluxDB time-series database triggering alert emails if temperature exceeds 4°C.
+
+### Common Mistake
+Attempting to stream raw uncompressed sensor readings (e.g. 10 kHz vibration data) directly from battery-powered sensors over cellular to the cloud. Edge filtering is essential to conserve bandwidth and battery life.
+
+### Check Yourself
+Which layer of the IoT architecture contains physical temperature sensors and motor relays? (The Perception Layer).

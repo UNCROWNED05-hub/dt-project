@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "iot-01-q01",
+    "loId": "iot-01-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In the four-tier IoT architecture, which layer is responsible for direct physical interaction with the environment through transducers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cloud Application Layer"
+      },
+      {
+        "id": "b",
+        "text": "Perception Layer"
+      },
+      {
+        "id": "c",
+        "text": "Network Routing Layer"
+      },
+      {
+        "id": "d",
+        "text": "Business Analytics Layer"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The Perception Layer contains physical sensors (converting physical inputs to electrical signals) and actuators (producing physical outputs).",
+    "noteRef": "iot-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q02",
+    "loId": "iot-01-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An industrial facility deploys vibration sensors that sample at 20 kHz. Streaming this raw data directly to cloud storage exhausts network bandwidth. Which IoT architecture layer should process this data locally before transmission?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Edge Gateway Layer"
+      },
+      {
+        "id": "b",
+        "text": "The DNS Nameserver"
+      },
+      {
+        "id": "c",
+        "text": "The User Interface Presentation Layer"
+      },
+      {
+        "id": "d",
+        "text": "The Enterprise Billing Layer"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Edge Gateways aggregate, filter, and extract features from high-frequency sensor streams before sending summary metrics across the network.",
+    "noteRef": "iot-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q03",
+    "loId": "iot-01-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is the primary function of the Network Layer in an IoT ecosystem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To manufacture silicon semiconductors."
+      },
+      {
+        "id": "b",
+        "text": "To transport telemetry packets between edge devices/gateways and central cloud platforms across protocols like Ethernet, Cellular, or LPWAN."
+      },
+      {
+        "id": "c",
+        "text": "To convert analog voltage into mechanical rotation."
+      },
+      {
+        "id": "d",
+        "text": "To render HTML graphs in a web browser."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The Network Layer provides the connectivity and routing fabric transmitting data between edge nodes and cloud systems.",
+    "noteRef": "iot-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q04",
+    "loId": "iot-01-lo01",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which components typically reside in the Perception Layer of an IoT deployment? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Thermistor temperature sensors"
+      },
+      {
+        "id": "b",
+        "text": "Solenoid fluid control valves"
+      },
+      {
+        "id": "c",
+        "text": "Central PostgreSQL database cluster"
+      },
+      {
+        "id": "d",
+        "text": "Piezoelectric vibration transducers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Sensors (thermistors, piezo sensors) and actuators (solenoid valves) are perception layer devices. Database clusters reside in the cloud layer.",
+    "noteRef": "iot-01-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q05",
+    "loId": "iot-01-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What fundamental operational difference distinguishes an IoT Sensor from an IoT Actuator?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sensors run on AC power; actuators run on solar power."
+      },
+      {
+        "id": "b",
+        "text": "Sensors measure physical phenomena and produce electrical signals; actuators accept electrical signals to create physical movement or action."
+      },
+      {
+        "id": "c",
+        "text": "Sensors are purely software; actuators are purely hardware."
+      },
+      {
+        "id": "d",
+        "text": "Sensors require internet connection; actuators do not."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Sensors are inputs (measuring real-world states); actuators are outputs (modifying real-world states).",
+    "noteRef": "iot-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q06",
+    "loId": "iot-01-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "In an automated smart heating system, a digital temperature probe reads 18°C and sends a signal to a heating element switch. Identify the sensor and actuator.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sensor: heating element switch; Actuator: digital temperature probe."
+      },
+      {
+        "id": "b",
+        "text": "Sensor: digital temperature probe; Actuator: heating element switch/relay."
+      },
+      {
+        "id": "c",
+        "text": "Both are sensors."
+      },
+      {
+        "id": "d",
+        "text": "Both are actuators."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The temperature probe senses thermal energy (input); the switch/relay actuates the heater (output).",
+    "noteRef": "iot-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q07",
+    "loId": "iot-01-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why should inductive actuators like DC motors and solenoids never be connected directly to a microcontroller GPIO pin?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because microcontrollers cannot output direct current."
+      },
+      {
+        "id": "b",
+        "text": "Because inductive coils produce high-voltage flyback spikes and draw currents exceeding the GPIO pin's maximum rating (~20mA), which destroys the silicon."
+      },
+      {
+        "id": "c",
+        "text": "Because motors cause wireless interference that blocks Wi-Fi."
+      },
+      {
+        "id": "d",
+        "text": "Because GPIO pins only accept audio inputs."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Inductive loads draw high currents and generate massive inductive voltage spikes when switched off. Transistor/MOSFET drivers and flyback diodes are required.",
+    "noteRef": "iot-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q08",
+    "loId": "iot-01-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following devices function as physical Actuators? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Servo motor"
+      },
+      {
+        "id": "b",
+        "text": "Piezoelectric buzzer"
+      },
+      {
+        "id": "c",
+        "text": "Photodiode light sensor"
+      },
+      {
+        "id": "d",
+        "text": "Solid-state electrical power relay"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Servos (mechanical motion), buzzers (acoustic waves), and relays (electrical switching) are actuators. Photodiodes are optical sensors.",
+    "noteRef": "iot-01-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q09",
+    "loId": "iot-01-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the role of an Analog-to-Digital Converter (ADC) in microcontroller physical computing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To convert written C code into machine binary."
+      },
+      {
+        "id": "b",
+        "text": "To sample a continuous analog input voltage and quantize it into a discrete digital numerical value."
+      },
+      {
+        "id": "c",
+        "text": "To amplify audio signals."
+      },
+      {
+        "id": "d",
+        "text": "To convert alternating current from wall outlets into direct current."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "An ADC measures continuous electrical voltage and converts it into a discrete integer value (e.g. 0 to 1023 for a 10-bit converter).",
+    "noteRef": "iot-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q10",
+    "loId": "iot-01-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A 10-bit ADC has a reference voltage of 3.3V. If an analog sensor outputs 1.65V, what raw digital integer will the microcontroller read?",
+    "options": [
+      {
+        "id": "a",
+        "text": "256"
+      },
+      {
+        "id": "b",
+        "text": "512"
+      },
+      {
+        "id": "c",
+        "text": "1024"
+      },
+      {
+        "id": "d",
+        "text": "1650"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A 10-bit range spans 0 to 1023 (1024 steps). 1.65V is exactly half of 3.3V, so the ADC value is 1024 / 2 = 512.",
+    "noteRef": "iot-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q11",
+    "loId": "iot-01-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does the I2C digital sensor communication bus differ from SPI?",
+    "options": [
+      {
+        "id": "a",
+        "text": "I2C uses 2 shared wires (SDA/SCL) and 7-bit device addresses; SPI uses 4 wires (MOSI/MISO/SCK/CS) and requires dedicated Chip Select lines per device."
+      },
+      {
+        "id": "b",
+        "text": "I2C is analog, while SPI is digital."
+      },
+      {
+        "id": "c",
+        "text": "I2C is wireless, while SPI is wired."
+      },
+      {
+        "id": "d",
+        "text": "I2C is only supported by Raspberry Pi."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "I2C minimizes pin count by addressing devices over a shared 2-wire bus. SPI provides faster throughput with 4 wires and individual Chip Select lines.",
+    "noteRef": "iot-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q12",
+    "loId": "iot-01-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which communication protocols are standard synchronous or asynchronous digital interfaces for embedded sensors? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "I2C (Inter-Integrated Circuit)"
+      },
+      {
+        "id": "b",
+        "text": "SPI (Serial Peripheral Interface)"
+      },
+      {
+        "id": "c",
+        "text": "UART (Universal Asynchronous Receiver-Transmitter)"
+      },
+      {
+        "id": "d",
+        "text": "BGP (Border Gateway Protocol)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "I2C, SPI, and UART are the three universal hardware serial communication protocols for embedded sensors. BGP is an internet routing protocol.",
+    "noteRef": "iot-01-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q13",
+    "loId": "iot-01-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the primary architectural characteristic of a Microcontroller Unit (MCU) compared to a Microprocessor (MPU)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An MCU requires external DDR RAM chips to execute code."
+      },
+      {
+        "id": "b",
+        "text": "An MCU integrates the processor core, RAM, Flash memory, and hardware peripherals (ADC, timers) onto a single silicon die."
+      },
+      {
+        "id": "c",
+        "text": "An MCU always runs a full desktop Linux operating system."
+      },
+      {
+        "id": "d",
+        "text": "An MCU consumes more power than a desktop workstation."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "MCUs are self-contained single-chip systems containing compute, memory, and I/O peripherals, optimized for low power and bare-metal control.",
+    "noteRef": "iot-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q14",
+    "loId": "iot-01-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You are designing an emergency automotive airbag deployment module that must react within 5 milliseconds of an impact sensor trigger. Why is a bare-metal/RTOS Microcontroller preferred over a Linux Microprocessor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because Linux cannot read sensor data."
+      },
+      {
+        "id": "b",
+        "text": "Because MCUs running bare-metal or RTOS provide hard real-time deterministic latency, whereas general-purpose OS schedulers can introduce unpredictable delays."
+      },
+      {
+        "id": "c",
+        "text": "Because microcontrollers are physically heavier."
+      },
+      {
+        "id": "d",
+        "text": "Because microprocessors do not support C programming."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Safety-critical applications require hard real-time guarantees where interrupts and code execution deadlines are mathematically deterministic.",
+    "noteRef": "iot-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q15",
+    "loId": "iot-01-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is typical sleep current consumption for an ultra-low-power modern microcontroller (such as an ARM Cortex-M0+ or ESP32 deep sleep)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1 to 5 Amperes"
+      },
+      {
+        "id": "b",
+        "text": "100 to 500 Milliamps"
+      },
+      {
+        "id": "c",
+        "text": "1 to 15 Microamps"
+      },
+      {
+        "id": "d",
+        "text": "Zero (perpetual motion)"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "In deep sleep modes with clocks gated and core power removed, modern MCUs draw only a few microamps (running an RTC timer), enabling years of battery operation.",
+    "noteRef": "iot-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q16",
+    "loId": "iot-01-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "In which scenarios is a Linux Single-Board Microprocessor (MPU) preferred over a low-power Microcontroller (MCU)? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Running real-time object detection using a convolutional neural network on a 1080p video feed."
+      },
+      {
+        "id": "b",
+        "text": "Hosting a local web application server with an embedded relational database and graphical desktop UI."
+      },
+      {
+        "id": "c",
+        "text": "Reading a single analog soil moisture probe once every 24 hours on a coin cell battery."
+      },
+      {
+        "id": "d",
+        "text": "Serving as an industrial multi-protocol edge gateway connecting 50 Zigbee and BLE sensor networks."
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Heavy computer vision, full web/database stacks, and complex gateway orchestration require the gigabytes of RAM and compute of MPUs. Daily soil polling is ideal for MCUs.",
+    "noteRef": "iot-01-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q17",
+    "loId": "iot-01-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What fundamental trade-off governs all wireless communications in battery-powered IoT devices?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cost vs Color"
+      },
+      {
+        "id": "b",
+        "text": "Range, Bandwidth, and Power Consumption form a trilemma where maximizing two necessitates sacrificing the third."
+      },
+      {
+        "id": "c",
+        "text": "Antenna length must equal the battery diameter."
+      },
+      {
+        "id": "d",
+        "text": "All wireless signals travel at the speed of sound."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Transmitting higher bandwidth across longer distances requires exponentially more radio frequency power.",
+    "noteRef": "iot-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q18",
+    "loId": "iot-01-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A smart agriculture company needs to deploy 50 soil probes across an isolated 2,000-acre vineyard with no cellular or Wi-Fi coverage. Probes transmit 12 bytes of data every hour. Which protocol is best suited?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wi-Fi (802.11ac)"
+      },
+      {
+        "id": "b",
+        "text": "Bluetooth Low Energy (BLE)"
+      },
+      {
+        "id": "c",
+        "text": "LoRaWAN"
+      },
+      {
+        "id": "d",
+        "text": "NFC"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "LoRaWAN provides sub-GHz long-range coverage (up to 15km line-of-sight) with minimal power draw, ideal for low-payload rural telemetry.",
+    "noteRef": "iot-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q19",
+    "loId": "iot-01-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What network topology allows Zigbee and Thread smart home devices to extend range across an entire building?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mesh network topology where mains-powered nodes act as routers relaying packets for neighbors."
+      },
+      {
+        "id": "b",
+        "text": "Direct point-to-point laser links."
+      },
+      {
+        "id": "c",
+        "text": "Star network topology connecting directly to cell towers."
+      },
+      {
+        "id": "d",
+        "text": "Token ring topology over coaxial cables."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Mesh topologies allow nodes to route packets across multiple hops, extending effective network reach throughout buildings.",
+    "noteRef": "iot-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q20",
+    "loId": "iot-01-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which wireless protocols belong to the Low-Power Wide-Area Network (LPWAN) category designed for kilometers of range on batteries? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "LoRaWAN"
+      },
+      {
+        "id": "b",
+        "text": "NB-IoT (Narrowband IoT)"
+      },
+      {
+        "id": "c",
+        "text": "Sigfox"
+      },
+      {
+        "id": "d",
+        "text": "Gigabit Wi-Fi 6"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "LoRaWAN, NB-IoT, and Sigfox are classic LPWAN technologies prioritizing long distance and multi-year battery life over bandwidth.",
+    "noteRef": "iot-01-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q21",
+    "loId": "iot-01-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What architectural communication model does the MQTT IoT messaging protocol use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Client-server synchronous polling (HTTP GET)"
+      },
+      {
+        "id": "b",
+        "text": "Publish / Subscribe pattern mediated by a central Broker"
+      },
+      {
+        "id": "c",
+        "text": "Peer-to-peer torrent exchange"
+      },
+      {
+        "id": "d",
+        "text": "Master-slave clock line switching"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "MQTT decouples senders (publishers) from receivers (subscribers) through named topics routed by a central MQTT broker.",
+    "noteRef": "iot-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q22",
+    "loId": "iot-01-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An IoT temperature sensor publishes reading 24.5°C to the topic \"building1/floor2/room104/temp\". Which subscription topic filter will receive this update?",
+    "options": [
+      {
+        "id": "a",
+        "text": "building1/floor2/+/temp"
+      },
+      {
+        "id": "b",
+        "text": "building1/floor3/#"
+      },
+      {
+        "id": "c",
+        "text": "building2/temp"
+      },
+      {
+        "id": "d",
+        "text": "sensors/all"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The '+' wildcard matches a single topic level, so 'building1/floor2/+/temp' matches room104 (and any other room on floor 2).",
+    "noteRef": "iot-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q23",
+    "loId": "iot-01-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is CoAP (Constrained Application Protocol) implemented over UDP rather than TCP?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because UDP eliminates connection handshake overhead and packet keepalive state, reducing radio-on time on energy-constrained nodes."
+      },
+      {
+        "id": "b",
+        "text": "Because TCP packets cannot cross fiber optic cables."
+      },
+      {
+        "id": "c",
+        "text": "Because UDP encrypts data automatically."
+      },
+      {
+        "id": "d",
+        "text": "Because UDP supports larger file transfers than TCP."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "UDP avoids the 3-way handshake and continuous state of TCP, allowing low-power nodes to wake up, fire a quick packet, and immediately return to deep sleep.",
+    "noteRef": "iot-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q24",
+    "loId": "iot-01-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "What are the three Quality of Service (QoS) delivery tiers defined in the MQTT standard? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "QoS 0: At most once (fire-and-forget without acknowledgement)"
+      },
+      {
+        "id": "b",
+        "text": "QoS 1: At least once (acknowledged delivery with potential duplicates)"
+      },
+      {
+        "id": "c",
+        "text": "QoS 2: Exactly once (four-step handshake ensuring no loss and no duplicates)"
+      },
+      {
+        "id": "d",
+        "text": "QoS 3: Instantaneous telepathic transfer"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "MQTT defines QoS 0, 1, and 2, allowing developers to balance network reliability overhead against battery and bandwidth constraints.",
+    "noteRef": "iot-01-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q25",
+    "loId": "iot-01-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the primary definition of \"Edge Computing\" in an IoT system?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Moving compute and analytics close to where data is generated (on local gateways or devices) rather than exclusively in central cloud datacenters."
+      },
+      {
+        "id": "b",
+        "text": "Placing servers on the geometric border of country boundaries."
+      },
+      {
+        "id": "c",
+        "text": "Using sharpening filters on digital photos."
+      },
+      {
+        "id": "d",
+        "text": "Running operating systems from USB flash drives."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Edge computing decentralizes processing by analyzing data locally at the edge of the network where physical phenomena occur.",
+    "noteRef": "iot-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q26",
+    "loId": "iot-01-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An autonomous mining haul truck uses LIDAR to detect obstacles and apply emergency brakes. Why can this collision prevention system NOT be hosted in a remote cloud datacenter?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because cloud databases do not support LIDAR point clouds."
+      },
+      {
+        "id": "b",
+        "text": "Because network latency and variable wireless coverage could delay braking decisions by hundreds of milliseconds, resulting in a fatal collision."
+      },
+      {
+        "id": "c",
+        "text": "Because autonomous vehicles are legally barred from using internet connections."
+      },
+      {
+        "id": "d",
+        "text": "Because LIDAR signals cannot travel over copper cables."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Safety-critical reflex actions require single-digit millisecond deterministic latency and immunity to WAN network dropouts.",
+    "noteRef": "iot-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q27",
+    "loId": "iot-01-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does Edge Computing contribute to data privacy and regulatory compliance (like GDPR or HIPAA)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It deletes all user data immediately upon collection."
+      },
+      {
+        "id": "b",
+        "text": "Sensitive raw telemetry (audio, video, biometrics) can be processed locally to extract metadata, ensuring raw identifiable data never leaves the local perimeter."
+      },
+      {
+        "id": "c",
+        "text": "It grants diplomatic immunity to IoT devices."
+      },
+      {
+        "id": "d",
+        "text": "It converts private data into public blockchain transactions."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "By keeping raw data local and only transmitting aggregated or anonymized insights, edge computing satisfies strict data sovereignty and privacy mandates.",
+    "noteRef": "iot-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q28",
+    "loId": "iot-01-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which trade-offs and engineering challenges are associated with deploying Edge Computing architectures? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Edge devices have constrained memory, storage, and thermal dissipation budgets compared to cloud servers."
+      },
+      {
+        "id": "b",
+        "text": "Deploying, managing, and securing remote firmware updates across thousands of distributed edge nodes is complex."
+      },
+      {
+        "id": "c",
+        "text": "Edge devices are physically accessible to adversaries in uncontrolled environments."
+      },
+      {
+        "id": "d",
+        "text": "Edge computing mathematically increases network bandwidth usage by 1000%."
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Hardware constraints, fleet management complexity, and physical vulnerability are primary edge challenges. Bandwidth usage is decreased, not increased.",
+    "noteRef": "iot-01-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q29",
+    "loId": "iot-01-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why do hardware debug ports (UART and JTAG) left accessible on production IoT circuit boards pose a severe security risk?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because they short-circuit the battery if touched."
+      },
+      {
+        "id": "b",
+        "text": "Because an attacker with physical access can connect a serial adapter to gain an unauthenticated root shell or extract device firmware."
+      },
+      {
+        "id": "c",
+        "text": "Because they transmit Wi-Fi passwords over radio frequencies."
+      },
+      {
+        "id": "d",
+        "text": "Because they prevent the device from booting in warm climates."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "UART and JTAG test pads provide direct low-level serial access to processor registers and consoles, often bypassing all software login screens.",
+    "noteRef": "iot-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q30",
+    "loId": "iot-01-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An attacker uses an inexpensive SPI flash clip on a smart lock's PCB to read the 8-pin flash memory chip. If firmware is unencrypted, what can the attacker discover?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the manufacturer's phone number."
+      },
+      {
+        "id": "b",
+        "text": "The complete executable binary, hardcoded Wi-Fi passwords, private API keys, and device cryptographic secrets."
+      },
+      {
+        "id": "c",
+        "text": "Nothing, because SPI chips wipe themselves when unpowered."
+      },
+      {
+        "id": "d",
+        "text": "The battery percentage only."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "External SPI flash chips hold persistent non-volatile data in cleartext unless on-the-fly hardware flash encryption is enabled.",
+    "noteRef": "iot-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q31",
+    "loId": "iot-01-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does Hardware \"Secure Boot\" protect an embedded microcontroller from running compromised code?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By requiring the user to type a 16-character password on startup."
+      },
+      {
+        "id": "b",
+        "text": "By using an immutable public key burned into silicon eFuses to cryptographically verify the digital signature of the bootloader and firmware before execution."
+      },
+      {
+        "id": "c",
+        "text": "By checking that the power supply voltage is exactly 5.0V."
+      },
+      {
+        "id": "d",
+        "text": "By connecting to cloud servers during boot."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Secure Boot creates a root of trust in hardware: if the firmware signature does not match the immutable vendor key in eFuses, the processor refuses to execute.",
+    "noteRef": "iot-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q32",
+    "loId": "iot-01-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which security practices harden physical IoT hardware against local attack surfaces? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disabling JTAG and UART interfaces in production silicon eFuses"
+      },
+      {
+        "id": "b",
+        "text": "Enabling hardware flash encryption (AES-XTS) so probed SPI memory yields only ciphertext"
+      },
+      {
+        "id": "c",
+        "text": "Generating unique, non-default random credentials per device during factory provisioning"
+      },
+      {
+        "id": "d",
+        "text": "Printing default admin credentials on the exterior casing of all devices"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Disabling debug ports, encrypting flash storage, and provisioning unique credentials neutralize common hardware and botnet attack vectors.",
+    "noteRef": "iot-01-lo08",
+    "reviewed": false
+  }
+]

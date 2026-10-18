@@ -1,0 +1,33 @@
+---
+loId: "aiml-01-lo01"
+title: "Machine Learning vs Hand-Coded Rules"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Traditional software engineering relies on humans discovering rules and writing explicit conditionals: `Data + Rules = Answers`. Machine learning turns this dynamic inside out: we present an optimization algorithm with examples of inputs and ground-truth targets, and the computer computes the mathematical parameters that map inputs to outputs: `Data + Answers = Rules`. This replaces fragile nested if/else statements with continuous numerical optimization.
+
+### Worked Example
+Consider spam filtering:
+```python
+# Classical programming (rule-based):
+def is_spam_rule(email):
+    if "FREE MONEY" in email.text and email.sender_reputation < 0.2:
+        return True
+    return False
+
+# Machine learning (data-driven model):
+def is_spam_ml(email, weights, bias):
+    features = extract_feature_vector(email) # [word_counts, link_ratio, header_entropy]
+    score = sum(w * x for w, x in zip(weights, features)) + bias
+    return score > 0.0 # Parameters w and b learned automatically from historical data
+```
+
+### Common Mistake
+Assuming machine learning models "understand" concepts like a human. An ML model is strictly an empirical function approximator mapping multidimensional numbers to other numbers via statistical correlation.
+
+### Check Yourself
+If you need to process tax brackets defined by statutory law, should you use ML or rule-based code? (Rule-based: statutory laws have exact, deterministic logic with zero ambiguity and zero tolerance for statistical error).

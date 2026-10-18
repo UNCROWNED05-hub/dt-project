@@ -1,24 +1,130 @@
 {
   "what-ai-ml-really-are": {
-    "lastChecked": "2026-10-02T12:00:00Z",
+    "lastChecked": "2026-10-18T16:39:24.475Z",
     "topPick": {
-      "videoId": "aircAruvnKk",
-      "title": "But what is a neural network? | Chapter 1, Deep learning",
-      "channelTitle": "3Blue1Brown",
-      "duration": "19:13",
-      "publishedAt": "2017-10-05T18:00:00Z",
-      "thumbnailUrl": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
-      "score": 0.942,
-      "scoreBreakdown": {
-        "engagement": 0.98,
-        "traction": 0.89,
-        "authority": 1.0,
-        "freshness": 0.86,
-        "syllabusFit": 0.98
-      },
-      "whyTopPick": "Unmatched visual exposition of weight tensors, activations, and continuous parameter adjustment from first principles."
+      "videoId": "GIsg-ZUy0MY",
+      "title": "Machine Learning for Everybody – Full Course",
+      "channelTitle": "freeCodeCamp.org",
+      "duration": "3:53:00",
+      "publishedAt": "2022-04-26T14:00:00Z",
+      "thumbnailUrl": "https://i.ytimg.com/vi/GIsg-ZUy0MY/hqdefault.jpg",
+      "score": 0.884,
+      "description": "Learn Machine Learning from scratch! Covers supervised, unsupervised, loss functions, gradient descent, overfitting, metrics, and ethics.",
+      "tags": [
+        "machine learning",
+        "supervised learning",
+        "loss function",
+        "gradient descent",
+        "overfitting",
+        "precision",
+        "recall",
+        "dataset split",
+        "ethics"
+      ],
+      "markers": [
+        {
+          "seconds": 0,
+          "timeStr": "00:00",
+          "title": "Introduction to Machine Learning & Paradigms"
+        },
+        {
+          "seconds": 510,
+          "timeStr": "08:30",
+          "title": "Supervised, Unsupervised, and Reinforcement Learning"
+        },
+        {
+          "seconds": 1695,
+          "timeStr": "28:15",
+          "title": "Features, Labels, and Dataset Splits (Train/Val/Test)"
+        },
+        {
+          "seconds": 3300,
+          "timeStr": "55:00",
+          "title": "Parametric Models: Weights, Biases, and Activation Functions"
+        },
+        {
+          "seconds": 5040,
+          "timeStr": "1:24:00",
+          "title": "Loss Functions, Mean Squared Error, and Cross-Entropy"
+        },
+        {
+          "seconds": 6750,
+          "timeStr": "1:52:30",
+          "title": "Gradient Descent Optimization and Learning Rate Tuning"
+        },
+        {
+          "seconds": 8410,
+          "timeStr": "2:20:10",
+          "title": "Overfitting, Underfitting, and Regularization (L1/L2, Dropout)"
+        },
+        {
+          "seconds": 10200,
+          "timeStr": "2:50:00",
+          "title": "Evaluation Metrics: Accuracy, Precision, Recall, and F1-Score"
+        },
+        {
+          "seconds": 12120,
+          "timeStr": "3:22:00",
+          "title": "Ethics, Algorithmic Bias, and Preventing Data Leakage"
+        }
+      ]
     },
     "alternates": [
+      {
+        "videoId": "aircAruvnKk",
+        "title": "But what is a neural network? | Chapter 1, Deep learning",
+        "channelTitle": "3Blue1Brown",
+        "duration": "19:13",
+        "publishedAt": "2017-10-05T18:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg",
+        "score": 0.942,
+        "scoreBreakdown": {
+          "engagement": 0.98,
+          "traction": 0.89,
+          "authority": 1,
+          "freshness": 0.86,
+          "syllabusFit": 0.98
+        },
+        "whyTopPick": "Unmatched visual exposition of weight tensors, activations, and continuous parameter adjustment from first principles.",
+        "description": "What are neural networks really doing? We unpack neurons, weights, biases, activations, and loss functions from first principles.",
+        "tags": [
+          "neural network",
+          "machine learning",
+          "deep learning",
+          "weights",
+          "biases",
+          "loss function",
+          "gradient descent",
+          "activation function"
+        ],
+        "markers": [
+          {
+            "seconds": 0,
+            "timeStr": "0:00",
+            "title": "Introduction to Artificial Neural Networks"
+          },
+          {
+            "seconds": 195,
+            "timeStr": "3:15",
+            "title": "Neurons, Weights, and Biases in Layers"
+          },
+          {
+            "seconds": 525,
+            "timeStr": "8:45",
+            "title": "Activation Functions: Sigmoid and ReLU"
+          },
+          {
+            "seconds": 800,
+            "timeStr": "13:20",
+            "title": "Loss Functions and Cost Computation"
+          },
+          {
+            "seconds": 1000,
+            "timeStr": "16:40",
+            "title": "Gradient Descent Preview and Summary"
+          }
+        ]
+      },
       {
         "videoId": "IHZwWFHWa-w",
         "title": "Gradient descent, how neural networks learn | Chapter 2, Deep learning",
@@ -26,16 +132,43 @@
         "duration": "21:01",
         "publishedAt": "2017-10-16T18:00:00Z",
         "thumbnailUrl": "https://i.ytimg.com/vi/IHZwWFHWa-w/hqdefault.jpg",
-        "score": 0.912
-      },
-      {
-        "videoId": "GIsg-ZUy0MY",
-        "title": "Machine Learning for Everybody – Full Course",
-        "channelTitle": "freeCodeCamp.org",
-        "duration": "3:53:00",
-        "publishedAt": "2022-04-26T14:00:00Z",
-        "thumbnailUrl": "https://i.ytimg.com/vi/GIsg-ZUy0MY/hqdefault.jpg",
-        "score": 0.884
+        "score": 0.912,
+        "description": "Chapter 2 of Deep Learning series: exploring gradient descent, learning rates, loss functions, and optimization.",
+        "tags": [
+          "gradient descent",
+          "deep learning",
+          "optimization",
+          "learning rate",
+          "loss function",
+          "weights"
+        ],
+        "markers": [
+          {
+            "seconds": 0,
+            "timeStr": "0:00",
+            "title": "Introduction to Gradient Descent"
+          },
+          {
+            "seconds": 180,
+            "timeStr": "3:00",
+            "title": "Visualizing the Cost Surface and Loss Functions"
+          },
+          {
+            "seconds": 450,
+            "timeStr": "7:30",
+            "title": "Stepping Downhill: Learning Rate and Partial Derivatives"
+          },
+          {
+            "seconds": 800,
+            "timeStr": "13:20",
+            "title": "Stochastic Gradient Descent and Mini-Batches"
+          },
+          {
+            "seconds": 1100,
+            "timeStr": "18:20",
+            "title": "Connection to Network Weights and Biases"
+          }
+        ]
       }
     ]
   },
@@ -82,8 +215,8 @@
       "score": 0.956,
       "scoreBreakdown": {
         "engagement": 0.99,
-        "traction": 0.90,
-        "authority": 1.0,
+        "traction": 0.9,
+        "authority": 1,
         "freshness": 0.89,
         "syllabusFit": 0.99
       },
@@ -114,9 +247,9 @@
       "scoreBreakdown": {
         "engagement": 0.92,
         "traction": 0.89,
-        "authority": 0.90,
+        "authority": 0.9,
         "freshness": 0.91,
-        "syllabusFit": 0.90
+        "syllabusFit": 0.9
       },
       "whyTopPick": "Realistic industry workflow resolving dirty formats, duplicate entries, and categorical encoding."
     },
@@ -235,11 +368,11 @@
       "duration": "8:26",
       "publishedAt": "2017-12-07T18:00:00Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/KuXjwB4LzSA/hqdefault.jpg",
-      "score": 0.910,
+      "score": 0.91,
       "scoreBreakdown": {
         "engagement": 0.92,
         "traction": 0.85,
-        "authority": 0.90,
+        "authority": 0.9,
         "freshness": 0.87,
         "syllabusFit": 0.97
       },
@@ -260,7 +393,7 @@
       "scoreBreakdown": {
         "engagement": 0.99,
         "traction": 0.95,
-        "authority": 1.0,
+        "authority": 1,
         "freshness": 0.98,
         "syllabusFit": 0.99
       },

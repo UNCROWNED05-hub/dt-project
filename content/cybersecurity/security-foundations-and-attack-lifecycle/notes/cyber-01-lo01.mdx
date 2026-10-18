@@ -1,0 +1,27 @@
+---
+loId: "cyber-01-lo01"
+title: "The CIA Triad and Non-Repudiation"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Information security rests on three classical pillars:
+1. **Confidentiality**: Ensuring data is accessible strictly to authorized entities (enforced via encryption, access control lists).
+2. **Integrity**: Guaranteeing data has not been modified, tampered with, or corrupted in transit or storage (enforced via cryptographic hashes, digital signatures).
+3. **Availability**: Ensuring systems and resources are reliably accessible to authorized users when needed (enforced via redundancy, DDoS mitigation, failover clusters).
+**Non-repudiation** guarantees that an author or sender cannot deny having created or dispatched a message, proven mathematically via private key digital signatures.
+
+### Worked Example
+Evaluating security impacts on an automated ATM:
+- Confidentiality violation: An adversary taps the network cable and intercepts customer PIN numbers in cleartext.
+- Integrity violation: An attacker tampers with the transaction packet in transit to change a withdrawal amount from $20 to $2,000.
+- Availability violation: A denial-of-service flood overwhelms the ATM authorization gateway, preventing all legitimate banking customers from withdrawing cash.
+
+### Common Mistake
+Treating confidentiality as the only goal of security. Encrypting a database does nothing to protect it if an attacker can wipe the hard drive (destroying Availability) or silently alter values (destroying Integrity).
+
+### Check Yourself
+If an adversary alters your website's database records without reading confidential data, which pillar of the CIA triad was violated? (Integrity).

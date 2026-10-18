@@ -1,0 +1,26 @@
+---
+loId: "aiml-01-lo06"
+title: "Underfitting, Overfitting, and Inductive Bias"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Generalization is the model's ability to perform accurately on previously unseen data.
+- **Underfitting (High Bias)**: Model is too simplistic (e.g. fitting a straight line to quadratic data) and fails to capture the true underlying pattern, performing poorly on both training and test data.
+- **Overfitting (High Variance)**: Model is overly complex (e.g. high-degree polynomial) and memorizes noise in the training set, achieving near-zero training error but catastrophic test error.
+- **Inductive Bias**: The set of fundamental assumptions an algorithm employs to generalize beyond training observations (e.g. linear models assume relationships are linear; convolutional models assume local spatial invariance).
+
+### Worked Example
+Analyzing model loss curves over 100 epochs:
+- Epoch 10: Train Loss 0.50, Val Loss 0.52 (Healthy learning)
+- Epoch 50: Train Loss 0.20, Val Loss 0.23 (Optimal balance point)
+- Epoch 100: Train Loss 0.02, Val Loss 0.65 (Severe Overfitting: training loss keeps dropping while validation loss explodes).
+
+### Common Mistake
+Judging model performance purely by training set accuracy. A lookup table has 100% training accuracy but zero generalization capability.
+
+### Check Yourself
+If your training error is 1% and validation error is 32%, what failure mode are you experiencing? (Overfitting).

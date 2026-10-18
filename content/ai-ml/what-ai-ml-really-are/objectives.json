@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "chapterId": "ai-01",
+  "objectives": [
+    {
+      "id": "aiml-01-lo01",
+      "order": 1,
+      "title": "Define Machine Learning as statistical parameter optimization vs explicit hand-coded rules",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["machine learning", "traditional programming", "hand-coded rules", "statistical mapping", "parameters"],
+      "aliases": ["ML paradigm", "data-driven programming"],
+      "estMinutes": 8
+    },
+    {
+      "id": "aiml-01-lo02",
+      "order": 2,
+      "title": "Distinguish between Supervised, Unsupervised, and Reinforcement Learning paradigms",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["supervised learning", "unsupervised learning", "reinforcement learning", "labeled data", "clustering", "reward function"],
+      "aliases": ["learning paradigms", "ML taxonomy"],
+      "prerequisites": ["aiml-01-lo01"],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-01-lo03",
+      "order": 3,
+      "title": "Explain how a parameterized model function computes predictions using weights and biases",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["model function", "weights", "biases", "linear combination", "affine transformation", "activations"],
+      "aliases": ["parameterized model", "linear model"],
+      "prerequisites": ["aiml-01-lo01"],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-01-lo04",
+      "order": 4,
+      "title": "Evaluate model error using Loss and Cost functions such as Mean Squared Error (MSE)",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["loss function", "cost function", "mean squared error", "mse", "residual", "objective function"],
+      "aliases": ["error metric", "loss surface"],
+      "prerequisites": ["aiml-01-lo03"],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-01-lo05",
+      "order": 5,
+      "title": "Trace how Gradient Descent iteratively updates parameters along the negative gradient",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["gradient descent", "learning rate", "negative gradient", "weight update", "optimization step", "partial derivative"],
+      "aliases": ["steepest descent", "parameter update rule"],
+      "prerequisites": ["aiml-01-lo04"],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-01-lo06",
+      "order": 6,
+      "title": "Diagnose generalization failures: Underfitting, Overfitting, and Inductive Bias",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["overfitting", "underfitting", "generalization", "inductive bias", "bias-variance tradeoff", "model capacity"],
+      "aliases": ["generalization error", "bias variance"],
+      "prerequisites": ["aiml-01-lo03"],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-01-lo07",
+      "order": 7,
+      "title": "Structure reliable evaluation pipelines using Train, Validation, and Test dataset splits",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["train split", "validation set", "test set", "data leakage", "out-of-sample evaluation", "holdout"],
+      "aliases": ["data splitting", "evaluation protocol"],
+      "prerequisites": ["aiml-01-lo06"],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-01-lo08",
+      "order": 8,
+      "title": "Analyze why non-linear decision boundaries require hidden layers and activation functions",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": ["decision boundary", "linear separability", "hidden layers", "activation function", "non-linearity", "xor problem"],
+      "aliases": ["representation capacity", "multi-layer perceptron"],
+      "prerequisites": ["aiml-01-lo03", "aiml-01-lo05"],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-01-lo09",
+      "order": 9,
+      "title": "Compare Stochastic Gradient Descent (SGD) and mini-batch optimization variants",
+      "bloom": "analyze",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": ["stochastic gradient descent", "mini-batch", "batch size", "vectorization", "epoch"],
+      "aliases": ["SGD", "batch gradient descent"],
+      "prerequisites": ["aiml-01-lo05"],
+      "estMinutes": 15
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+---
+loId: "iot-01-lo06"
+title: "Constrained Messaging Protocols: MQTT vs CoAP vs HTTP"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Traditional web protocols like HTTP are poorly suited for constrained edge nodes due to heavy headers, TCP handshake overhead, and request-response polling.
+- **MQTT (Message Queuing Telemetry Transport)**: Light publish/subscribe protocol over TCP. Clients connect to a central **Broker**. Publishers publish messages to hierarchical topics (e.g. `sensors/building1/floor2/temp`); subscribers receive matching topic updates instantly. Tiny 2-byte header overhead. Features three Quality of Service (QoS 0, 1, 2) levels and persistent KeepAlive.
+- **CoAP (Constrained Application Protocol)**: RESTful protocol designed for ultra-constrained nodes operating over lightweight UDP. Supports GET, POST, PUT, DELETE with compact binary headers.
+- **HTTP/REST**: Heavy ASCII text headers, requires opening and tearing down TCP connections or keeping persistent HTTP/2 streams open. Reserved for high-bandwidth edge gateways.
+
+### Worked Example
+MQTT topic hierarchy and subscription:
+- Publishing node sends temperature $22.4$: `factory/line3/oven/temp`
+- Central monitoring dashboard subscribes to wildcard: `factory/+/+/temp`
+- Maintenance service subscribes to all oven events: `factory/line3/oven/#`
+The broker handles all fan-out routing without sensors needing to know who is listening.
+
+### Common Mistake
+Using QoS 2 ("exactly once" delivery) for high-frequency continuous sensor readings. QoS 2 requires a 4-step handshake, dramatically increasing network latency and battery consumption. Continuous sensor telemetry is best suited for QoS 0 or QoS 1.
+
+### Check Yourself
+Does an MQTT sensor publish directly to other sensors, or to a central broker? (To a central broker, which routes messages to subscribers based on topics).

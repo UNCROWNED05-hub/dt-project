@@ -1,0 +1,28 @@
+---
+loId: "iot-01-lo07"
+title: "Edge Computing Trade-Offs"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Edge computing moves data processing and intelligence from centralized cloud datacenters directly onto local nodes or local network gateways.
+**Advantages**:
+1. **Ultra-Low Latency**: Decisions are made in milliseconds locally without waiting for round-trip WAN packet routing (critical for industrial safety shutoffs and autonomous vehicles).
+2. **Bandwidth Conservation**: Local filtering reduces gigabytes of raw sensor noise to concise summary events before transmission.
+3. **Offline Autonomy**: Systems remain operational even when WAN internet connectivity drops.
+4. **Data Privacy**: Sensitive audio, video, or biometric telemetry is processed locally without leaving the premises.
+**Trade-offs**: Constrained memory and compute on edge devices, complex firmware update deployments, and physical security risks.
+
+### Worked Example
+Industrial vibration monitoring on an offshore turbine:
+- Cloud-centric model: Stream 20,000 accelerometer samples/sec over satellite uplink ($10,000/month in satellite bandwidth fees; fails if satellite link drops).
+- Edge computing model: Microcontroller computes Fast Fourier Transform (FFT) locally every second, detects bearing wear harmonic peaks, and sends a 4-byte health status code once per hour over satellite. Bandwidth reduced by 99.99%.
+
+### Common Mistake
+Assuming edge computing means moving *all* compute out of the cloud. Modern architectures use a hybrid approach: edge handles sub-second real-time filtering and control; cloud handles multi-year longitudinal analytics, machine learning training, and cross-site optimization.
+
+### Check Yourself
+What is the primary operational advantage of edge computing for emergency shutdown systems in industrial factories? (Ultra-low deterministic latency and offline autonomy without depending on internet connectivity).

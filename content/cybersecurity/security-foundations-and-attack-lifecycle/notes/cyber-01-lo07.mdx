@@ -1,0 +1,26 @@
+---
+loId: "cyber-01-lo07"
+title: "Least Privilege and Zero Trust Architecture"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Traditional perimeter security operates on the "castle-and-moat" model: hard exterior, soft interior. **Zero Trust** replaces this with the core mandate: *"Never Trust, Always Verify"*.
+Key principles:
+1. **Principle of Least Privilege (PoLP)**: Users and services are granted only the minimum permissions necessary to execute their assigned duties for the shortest necessary duration.
+2. **Explicit Verification**: Every access request is authenticated, authorized, and encrypted based on user identity, device health, and behavioral context.
+3. **Assume Breach**: Architect networks assuming an attacker is already inside the internal subnet, using microsegmentation to prevent lateral movement.
+
+### Worked Example
+Configuring database access under Least Privilege:
+- Bad practice: Application web server connects to PostgreSQL using `postgres` superuser credentials with full DDL/DROP table rights.
+- Least Privilege: Application connects using `app_user` restricted strictly to `SELECT, INSERT, UPDATE` on 4 specific application tables with no permissions on schema or system tables.
+
+### Common Mistake
+Assuming internal VPN subnets can be implicitly trusted. Once an adversary compromises one workstation on a flat VPN, they can freely scan and pivot to domain controllers and database servers.
+
+### Check Yourself
+Under Zero Trust, when a corporate laptop connects from the internal office Wi-Fi, is its access automatically trusted? (No; all requests must still explicitly authenticate, verify device posture, and enforce least-privilege authorization).

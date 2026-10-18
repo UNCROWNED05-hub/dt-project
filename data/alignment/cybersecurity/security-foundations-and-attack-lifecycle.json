@@ -1,0 +1,282 @@
+{
+  "inWWhr5tnEA": {
+    "videoId": "inWWhr5tnEA",
+    "objectivesVersion": 1,
+    "confidence": "high",
+    "signals": [
+      "creator_chapters_9"
+    ],
+    "coreCoverage": 0.88,
+    "mustHaveMissing": [
+      "cyber-01-lo04"
+    ],
+    "coverage": {
+      "cyber-01-lo01": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "The CIA Triad: Confidentiality, Integrity, Availability",
+            "t": 600
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "cia triad"
+          }
+        ]
+      },
+      "cyber-01-lo02": {
+        "status": "covered",
+        "score": 0.8,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Threat Actors, Vectors, and Attack Surface Analysis",
+            "t": 1500
+          }
+        ]
+      },
+      "cyber-01-lo03": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Threat Actors, Vectors, and Attack Surface Analysis",
+            "t": 1500
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "threat vectors"
+          }
+        ]
+      },
+      "cyber-01-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo05": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Threat Actors, Vectors, and Attack Surface Analysis",
+            "t": 1500
+          },
+          {
+            "kind": "marker",
+            "text": "Vulnerability Assessment and CVE Scanners",
+            "t": 5100
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "threat vectors"
+          }
+        ]
+      },
+      "cyber-01-lo06": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Symmetric and Asymmetric Encryption, Hashes, and Signatures",
+            "t": 3900
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "cryptography"
+          }
+        ]
+      },
+      "cyber-01-lo07": {
+        "status": "covered",
+        "score": 0.8,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Authentication, MFA, and Principle of Least Privilege",
+            "t": 2700
+          }
+        ]
+      },
+      "cyber-01-lo08": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Network Defense: Firewalls, DMZs, and Defense-in-Depth",
+            "t": 6300
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "firewalls"
+          }
+        ]
+      },
+      "cyber-01-lo09": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Incident Response Lifecycle: Detect, Contain, Eradicate, Recover",
+            "t": 7500
+          },
+          {
+            "kind": "description",
+            "text": "Comprehensive cyber security course covering CIA triad, threat vectors, authe..."
+          },
+          {
+            "kind": "tag",
+            "text": "incident response"
+          }
+        ]
+      }
+    },
+    "order": [
+      "cyber-01-lo01",
+      "cyber-01-lo02",
+      "cyber-01-lo03",
+      "cyber-01-lo05",
+      "cyber-01-lo07",
+      "cyber-01-lo06",
+      "cyber-01-lo08",
+      "cyber-01-lo09"
+    ]
+  },
+  "2_lswM1S264": {
+    "videoId": "2_lswM1S264",
+    "objectivesVersion": 1,
+    "confidence": "medium",
+    "signals": [
+      "creator_chapters_4"
+    ],
+    "coreCoverage": 0.38,
+    "mustHaveMissing": [
+      "cyber-01-lo02",
+      "cyber-01-lo04",
+      "cyber-01-lo06",
+      "cyber-01-lo07",
+      "cyber-01-lo08"
+    ],
+    "coverage": {
+      "cyber-01-lo01": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "The CIA Triad Pillars",
+            "t": 120
+          },
+          {
+            "kind": "description",
+            "text": "Quick overview of cyber security fundamentals including the CIA triad and com..."
+          },
+          {
+            "kind": "tag",
+            "text": "cia triad"
+          }
+        ]
+      },
+      "cyber-01-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo03": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Common Threat Vectors & Malware",
+            "t": 270
+          },
+          {
+            "kind": "description",
+            "text": "Quick overview of cyber security fundamentals including the CIA triad and com..."
+          },
+          {
+            "kind": "tag",
+            "text": "threat vectors"
+          }
+        ]
+      },
+      "cyber-01-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo05": {
+        "status": "covered",
+        "score": 0.95,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Common Threat Vectors & Malware",
+            "t": 270
+          },
+          {
+            "kind": "description",
+            "text": "Quick overview of cyber security fundamentals including the CIA triad and com..."
+          },
+          {
+            "kind": "tag",
+            "text": "threat vectors"
+          }
+        ]
+      },
+      "cyber-01-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "cyber-01-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "cyber-01-lo01",
+      "cyber-01-lo03",
+      "cyber-01-lo05"
+    ]
+  }
+}

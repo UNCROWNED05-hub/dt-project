@@ -1,0 +1,26 @@
+---
+loId: "aiml-01-lo02"
+title: "Supervised, Unsupervised, and Reinforcement Learning"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Machine learning branches into three foundational learning paradigms:
+1. **Supervised Learning**: Model receives paired examples $(x_i, y_i)$ where $y_i$ is a known supervisor label. Used for regression (continuous outputs) and classification (discrete classes).
+2. **Unsupervised Learning**: Model receives unlabeled observations $x_i$ and seeks latent structure, groupings (clustering), or reduced dimensionality (PCA).
+3. **Reinforcement Learning**: An autonomous agent takes actions in a dynamic environment, guided by scalar reward signals to discover optimal policies over time.
+
+### Worked Example
+Classifying credit card transactions:
+- Supervised: Training on 1,000,000 transactions with human-audited labels: `0 = legitimate, 1 = fraudulent`.
+- Unsupervised: Clustering transactions into 5 natural behavioral clusters without any prior fraud tags to spot anomalous outliers.
+- Reinforcement: An automated trading agent placing limit orders and receiving positive rewards on portfolio net yield.
+
+### Common Mistake
+Confusing unsupervised clustering with classification. Classification always requires pre-existing ground truth labels; clustering discovers mathematical clusters purely from input geometry.
+
+### Check Yourself
+You want to group 50,000 unread support tickets into customer topic categories without predefined labels. Which paradigm do you select? (Unsupervised clustering or topic modeling).

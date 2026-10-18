@@ -1,0 +1,302 @@
+{
+  "6mBO2vqLv38": {
+    "videoId": "6mBO2vqLv38",
+    "objectivesVersion": 1,
+    "confidence": "medium",
+    "signals": [
+      "creator_chapters_5"
+    ],
+    "coreCoverage": 0.44,
+    "mustHaveMissing": [
+      "iot-01-lo03",
+      "iot-01-lo04",
+      "iot-01-lo05",
+      "iot-01-lo06",
+      "iot-01-lo08"
+    ],
+    "coverage": {
+      "iot-01-lo01": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "4-Layer IoT Architecture Overview",
+            "t": 90
+          },
+          {
+            "kind": "title",
+            "text": "What is IoT (Internet of Things) and How Does it Work? - In 6 Minutes",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Learn what IoT is, the 4-layer architecture, sensors, actuators, connectivity..."
+          },
+          {
+            "kind": "tag",
+            "text": "iot"
+          }
+        ]
+      },
+      "iot-01-lo02": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Sensors and Actuators in Action",
+            "t": 180
+          },
+          {
+            "kind": "description",
+            "text": "Learn what IoT is, the 4-layer architecture, sensors, actuators, connectivity..."
+          },
+          {
+            "kind": "tag",
+            "text": "sensors"
+          }
+        ]
+      },
+      "iot-01-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo06": {
+        "status": "partial",
+        "score": 0.5,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Network Connectivity: MQTT, CoAP, and HTTP",
+            "t": 270
+          }
+        ]
+      },
+      "iot-01-lo07": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Edge Computing vs Cloud Processing",
+            "t": 330
+          },
+          {
+            "kind": "description",
+            "text": "Learn what IoT is, the 4-layer architecture, sensors, actuators, connectivity..."
+          },
+          {
+            "kind": "tag",
+            "text": "edge computing"
+          }
+        ]
+      },
+      "iot-01-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-01-lo01",
+      "iot-01-lo02",
+      "iot-01-lo06",
+      "iot-01-lo07"
+    ]
+  },
+  "QSIPGoOiVkE": {
+    "videoId": "QSIPGoOiVkE",
+    "objectivesVersion": 1,
+    "confidence": "high",
+    "signals": [
+      "creator_chapters_9"
+    ],
+    "coreCoverage": 0.69,
+    "mustHaveMissing": [
+      "iot-01-lo03",
+      "iot-01-lo05",
+      "iot-01-lo08"
+    ],
+    "coverage": {
+      "iot-01-lo01": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Introduction to IoT Ecosystem",
+            "t": 0
+          },
+          {
+            "kind": "marker",
+            "text": "4-Layer IoT Architecture: Perception to Application",
+            "t": 90
+          },
+          {
+            "kind": "marker",
+            "text": "IoT Protocols: MQTT, CoAP, HTTP, and LoRaWAN",
+            "t": 450
+          },
+          {
+            "kind": "marker",
+            "text": "Edge Computing vs Cloud Gateways",
+            "t": 570
+          },
+          {
+            "kind": "marker",
+            "text": "IoT Security: Firmware, Device Identity, and Encryption",
+            "t": 810
+          },
+          {
+            "kind": "marker",
+            "text": "Real-World Industrial IoT Deployment Patterns",
+            "t": 880
+          },
+          {
+            "kind": "title",
+            "text": "IoT Architecture | Internet of Things Architecture Explained | IoT Tutorial | Edureka",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP prot..."
+          },
+          {
+            "kind": "tag",
+            "text": "iot architecture"
+          }
+        ]
+      },
+      "iot-01-lo02": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Sensors, Actuators, and Signal Conditioning",
+            "t": 210
+          },
+          {
+            "kind": "description",
+            "text": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP prot..."
+          },
+          {
+            "kind": "tag",
+            "text": "sensors"
+          }
+        ]
+      },
+      "iot-01-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo04": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Microcontrollers vs Microprocessors (ESP32 & Raspberry Pi)",
+            "t": 330
+          },
+          {
+            "kind": "description",
+            "text": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP prot..."
+          },
+          {
+            "kind": "tag",
+            "text": "microcontroller"
+          }
+        ]
+      },
+      "iot-01-lo05": {
+        "status": "partial",
+        "score": 0.5,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "IoT Protocols: MQTT, CoAP, HTTP, and LoRaWAN",
+            "t": 450
+          }
+        ]
+      },
+      "iot-01-lo06": {
+        "status": "covered",
+        "score": 0.75,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "IoT Protocols: MQTT, CoAP, HTTP, and LoRaWAN",
+            "t": 450
+          },
+          {
+            "kind": "description",
+            "text": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP prot..."
+          }
+        ]
+      },
+      "iot-01-lo07": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Edge Computing vs Cloud Gateways",
+            "t": 570
+          },
+          {
+            "kind": "tag",
+            "text": "edge computing"
+          }
+        ]
+      },
+      "iot-01-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-01-lo09": {
+        "status": "covered",
+        "score": 0.9,
+        "evidence": [
+          {
+            "kind": "marker",
+            "text": "Power Budgeting, Sleep Modes, and Energy Harvesting",
+            "t": 690
+          },
+          {
+            "kind": "description",
+            "text": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP prot..."
+          }
+        ]
+      }
+    },
+    "order": [
+      "iot-01-lo01",
+      "iot-01-lo02",
+      "iot-01-lo04",
+      "iot-01-lo05",
+      "iot-01-lo06",
+      "iot-01-lo07",
+      "iot-01-lo09"
+    ]
+  }
+}

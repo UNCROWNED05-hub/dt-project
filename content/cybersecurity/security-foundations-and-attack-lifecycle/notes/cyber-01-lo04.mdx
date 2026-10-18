@@ -1,0 +1,30 @@
+---
+loId: "cyber-01-lo04"
+title: "Cyber Kill Chain and MITRE ATT&CK"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+Modern intrusions progress through structured operational phases:
+**Lockheed Martin Cyber Kill Chain**:
+1. *Reconnaissance* (harvesting emails, scanning ports)
+2. *Weaponization* (coupling exploit with payload)
+3. *Delivery* (spear-phishing email, drive-by download)
+4. *Exploitation* (triggering code execution on target)
+5. *Installation* (establishing backdoor persistence)
+6. *Command & Control (C2)* (remote communication channel)
+7. *Actions on Objectives* (data exfiltration, ransomware encryption).
+**MITRE ATT&CK** provides a matrix of real-world adversary tactics, techniques, and procedures (TTPs) mapping how attackers navigate enterprise environments.
+
+### Worked Example
+Breaking the Kill Chain early:
+If defensive controls block an attacker at phase 3 (*Delivery* via an email sandbox filter), phases 4 through 7 can never execute. Defensive leverage is highest when detection occurs early in the chain.
+
+### Common Mistake
+Focusing all security spending on perimeter prevention. If an attacker breaches the perimeter (e.g. stolen employee VPN credentials), defenders must have detection capabilities for internal lateral movement and exfiltration.
+
+### Check Yourself
+At what stage of the Kill Chain does an adversary establish outbound communication to receive remote instructions from their server? (Command & Control / C2).

@@ -16,17 +16,112 @@
         "freshness": 0.88,
         "syllabusFit": 0.96
       },
-      "whyTopPick": "Clear structural overview decomposing perception layers, network gateways, and cloud platforms."
+      "whyTopPick": "Clear structural overview decomposing perception layers, network gateways, and cloud platforms.",
+      "description": "Learn what IoT is, the 4-layer architecture, sensors, actuators, connectivity protocols, and edge computing.",
+      "tags": [
+        "iot",
+        "internet of things",
+        "architecture",
+        "sensors",
+        "actuators",
+        "mqtt",
+        "edge computing"
+      ],
+      "markers": [
+        {
+          "seconds": 0,
+          "timeStr": "0:00",
+          "title": "Introduction to Internet of Things"
+        },
+        {
+          "seconds": 90,
+          "timeStr": "1:30",
+          "title": "4-Layer IoT Architecture Overview"
+        },
+        {
+          "seconds": 180,
+          "timeStr": "3:00",
+          "title": "Sensors and Actuators in Action"
+        },
+        {
+          "seconds": 270,
+          "timeStr": "4:30",
+          "title": "Network Connectivity: MQTT, CoAP, and HTTP"
+        },
+        {
+          "seconds": 330,
+          "timeStr": "5:30",
+          "title": "Edge Computing vs Cloud Processing"
+        }
+      ]
     },
     "alternates": [
       {
-        "videoId": "6mBO2vqLv38",
-        "title": "What is IoT (Internet of Things) and How Does it Work? - In 6 Minutes",
-        "channelTitle": "Simplilearn",
-        "duration": "6:14",
-        "publishedAt": "2021-01-20T14:00:00Z",
-        "thumbnailUrl": "https://i.ytimg.com/vi/6mBO2vqLv38/hqdefault.jpg",
-        "score": 0.892
+        "videoId": "QSIPGoOiVkE",
+        "title": "IoT Architecture | Internet of Things Architecture Explained | IoT Tutorial | Edureka",
+        "channelTitle": "edureka!",
+        "duration": "15:30",
+        "publishedAt": "2021-04-12T10:00:00Z",
+        "thumbnailUrl": "https://i.ytimg.com/vi/QSIPGoOiVkE/hqdefault.jpg",
+        "score": 0.915,
+        "description": "In-depth guide to IoT Architecture: sensors, microcontrollers, MQTT/CoAP protocols, edge compute, low power budgets, and device security.",
+        "tags": [
+          "iot architecture",
+          "sensors",
+          "actuators",
+          "microcontroller",
+          "mqtt",
+          "edge computing",
+          "power management",
+          "iot security"
+        ],
+        "markers": [
+          {
+            "seconds": 0,
+            "timeStr": "0:00",
+            "title": "Introduction to IoT Ecosystem"
+          },
+          {
+            "seconds": 90,
+            "timeStr": "1:30",
+            "title": "4-Layer IoT Architecture: Perception to Application"
+          },
+          {
+            "seconds": 210,
+            "timeStr": "3:30",
+            "title": "Sensors, Actuators, and Signal Conditioning"
+          },
+          {
+            "seconds": 330,
+            "timeStr": "5:30",
+            "title": "Microcontrollers vs Microprocessors (ESP32 & Raspberry Pi)"
+          },
+          {
+            "seconds": 450,
+            "timeStr": "7:30",
+            "title": "IoT Protocols: MQTT, CoAP, HTTP, and LoRaWAN"
+          },
+          {
+            "seconds": 570,
+            "timeStr": "9:30",
+            "title": "Edge Computing vs Cloud Gateways"
+          },
+          {
+            "seconds": 690,
+            "timeStr": "11:30",
+            "title": "Power Budgeting, Sleep Modes, and Energy Harvesting"
+          },
+          {
+            "seconds": 810,
+            "timeStr": "13:30",
+            "title": "IoT Security: Firmware, Device Identity, and Encryption"
+          },
+          {
+            "seconds": 880,
+            "timeStr": "14:40",
+            "title": "Real-World Industrial IoT Deployment Patterns"
+          }
+        ]
       }
     ]
   },
@@ -64,7 +159,7 @@
       "scoreBreakdown": {
         "engagement": 0.99,
         "traction": 0.92,
-        "authority": 1.0,
+        "authority": 1,
         "freshness": 0.89,
         "syllabusFit": 0.98
       },
@@ -112,10 +207,10 @@
       "duration": "14:50",
       "publishedAt": "2021-08-31T15:00:00Z",
       "thumbnailUrl": "https://i.ytimg.com/vi/IY_061x_J_0/hqdefault.jpg",
-      "score": 0.940,
+      "score": 0.94,
       "scoreBreakdown": {
         "engagement": 0.96,
-        "traction": 0.90,
+        "traction": 0.9,
         "authority": 0.96,
         "freshness": 0.89,
         "syllabusFit": 0.98
@@ -180,7 +275,7 @@
         "engagement": 0.95,
         "traction": 0.87,
         "authority": 0.96,
-        "freshness": 0.90,
+        "freshness": 0.9,
         "syllabusFit": 0.94
       },
       "whyTopPick": "Hands-on pipeline feeding sensor telemetry into time-series buckets with live gauges."
@@ -201,7 +296,7 @@
         "engagement": 0.95,
         "traction": 0.88,
         "authority": 0.96,
-        "freshness": 0.90,
+        "freshness": 0.9,
         "syllabusFit": 0.96
       },
       "whyTopPick": "Quantizing neural models to fit inside 520KB of SRAM on an ESP32 chip."

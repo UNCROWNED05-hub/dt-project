@@ -101,6 +101,7 @@ export function runAlignmentPipeline(options = { dryRun: false }) {
           description: video.description || video.whyTopPick || video.title,
           tags: video.tags || [],
           duration: video.duration,
+          markers: video.markers || [],
         };
 
         const alignment = evaluateVideoAlignment(videoMeta, objectives, config, videoOverride);

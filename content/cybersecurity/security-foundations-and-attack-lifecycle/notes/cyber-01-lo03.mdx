@@ -1,0 +1,27 @@
+---
+loId: "cyber-01-lo03"
+title: "Attack Surface and Ingress Vectors"
+reviewed: false
+sources:
+  - title: "Vellum Academy Curriculum Standards"
+    url: "https://vellum.academy/sources"
+---
+
+### Core Idea
+An **Attack Surface** is the sum total of all reachable points where an unauthorized entity can attempt to enter or extract data. An **Attack Vector** is the specific pathway or mechanism used to exploit a weakness.
+Key vectors include:
+- Phishing and social engineering (human layer)
+- Unpatched external-facing web applications (software layer)
+- Exposed management ports like RDP/SSH to the public internet (network layer)
+- Misconfigured cloud storage buckets and weak IAM permissions (cloud layer).
+
+### Worked Example
+Reducing attack surface for a production web server:
+- Initial state: SSH (port 22) open to 0.0.0.0/0, database (port 5432) open to public, web app (port 80, 443).
+- Hardened state: Close port 5432 to public, move port 22 behind a zero-trust bastion VPN with hardware MFA, enforce HTTPS on 443, close port 80. Attack surface reduced by 75%.
+
+### Common Mistake
+Believing an unused service or closed port has zero risk. If an orphaned daemon is listening on an internal interface without updates, an attacker who establishes a foothold can pivot to it immediately.
+
+### Check Yourself
+What is the difference between an attack surface and an attack vector? (The attack surface is the totality of exposed endpoints; the attack vector is the specific vehicle or exploit path used to breach it).
