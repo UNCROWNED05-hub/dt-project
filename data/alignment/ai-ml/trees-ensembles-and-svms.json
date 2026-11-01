@@ -1,0 +1,135 @@
+{
+  "_L39rN6gz7Y": {
+    "videoId": "_L39rN6gz7Y",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "aiml-06-lo01",
+      "aiml-06-lo02",
+      "aiml-06-lo04"
+    ],
+    "coverage": {
+      "aiml-06-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo03": {
+        "status": "covered",
+        "score": 0.98,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "StatQuest: Random Forests Part 1 - Building, using and evaluating",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Masterclass explanation of bagging, out-of-bag error estimation, and feature ..."
+          }
+        ]
+      },
+      "aiml-06-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-06-lo03"
+    ]
+  },
+  "J4Wdy0Wc_xQ": {
+    "videoId": "J4Wdy0Wc_xQ",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "aiml-06-lo01",
+      "aiml-06-lo02",
+      "aiml-06-lo03",
+      "aiml-06-lo04"
+    ],
+    "coverage": {
+      "aiml-06-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-06-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": []
+  }
+}

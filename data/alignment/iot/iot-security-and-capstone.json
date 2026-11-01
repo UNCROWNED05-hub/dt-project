@@ -1,0 +1,71 @@
+{
+  "3j0_4Z8mHw8": {
+    "videoId": "3j0_4Z8mHw8",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.06,
+    "mustHaveMissing": [
+      "iot-10-lo01",
+      "iot-10-lo02",
+      "iot-10-lo03",
+      "iot-10-lo04",
+      "iot-10-lo08"
+    ],
+    "coverage": {
+      "iot-10-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo03": {
+        "status": "partial",
+        "score": 0.5,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Explains secure boot keys, flash encryption, and encrypted MQTT transport ove..."
+          }
+        ]
+      },
+      "iot-10-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-10-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-10-lo03"
+    ]
+  }
+}

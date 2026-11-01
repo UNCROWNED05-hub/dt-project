@@ -1,0 +1,136 @@
+{
+  "fNk_zzaMoSs": {
+    "videoId": "fNk_zzaMoSs",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "aiml-03-lo01",
+      "aiml-03-lo02",
+      "aiml-03-lo03",
+      "aiml-03-lo07"
+    ],
+    "coverage": {
+      "aiml-03-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": []
+  },
+  "kYB8IZa5AuE": {
+    "videoId": "kYB8IZa5AuE",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "aiml-03-lo01",
+      "aiml-03-lo02",
+      "aiml-03-lo03",
+      "aiml-03-lo07"
+    ],
+    "coverage": {
+      "aiml-03-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-03-lo09": {
+        "status": "covered",
+        "score": 0.78,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Linear transformations and matrices | Chapter 3, Essence of linear algebra",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Linear transformations and matrices | Chapter 3, Essence of linear algebra"
+          }
+        ]
+      }
+    },
+    "order": [
+      "aiml-03-lo09"
+    ]
+  }
+}

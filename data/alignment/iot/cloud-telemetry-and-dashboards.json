@@ -1,0 +1,71 @@
+{
+  "wH4bB1wKk8c": {
+    "videoId": "wH4bB1wKk8c",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.06,
+    "mustHaveMissing": [
+      "iot-08-lo01",
+      "iot-08-lo02",
+      "iot-08-lo03",
+      "iot-08-lo05"
+    ],
+    "coverage": {
+      "iot-08-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo03": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Build an IoT Dashboard with Node-RED and InfluxDB",
+            "t": 0
+          }
+        ]
+      },
+      "iot-08-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-08-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-08-lo03"
+    ]
+  }
+}

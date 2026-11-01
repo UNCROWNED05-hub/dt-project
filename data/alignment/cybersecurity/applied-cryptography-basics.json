@@ -1,0 +1,142 @@
+{
+  "jhXCTbFnK0o": {
+    "videoId": "jhXCTbFnK0o",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "sec-04-lo02",
+      "sec-04-lo03",
+      "sec-04-lo05"
+    ],
+    "coverage": {
+      "sec-04-lo01": {
+        "status": "covered",
+        "score": 0.8,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Public Key Cryptography - Computerphile",
+            "t": 0
+          }
+        ]
+      },
+      "sec-04-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "sec-04-lo01"
+    ]
+  },
+  "b4b8ktEV4Bg": {
+    "videoId": "b4b8ktEV4Bg",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "sec-04-lo01",
+      "sec-04-lo02",
+      "sec-04-lo03"
+    ],
+    "coverage": {
+      "sec-04-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo05": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Diffie Hellman - Computerphile",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Diffie Hellman - Computerphile"
+          }
+        ]
+      },
+      "sec-04-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-04-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "sec-04-lo05"
+    ]
+  }
+}

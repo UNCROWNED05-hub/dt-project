@@ -1,0 +1,124 @@
+{
+  "rloTR_c2W8A": {
+    "videoId": "rloTR_c2W8A",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "sec-02-lo01",
+      "sec-02-lo02",
+      "sec-02-lo03",
+      "sec-02-lo06"
+    ],
+    "coverage": {
+      "sec-02-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": []
+  },
+  "IPvYjXCsTg8": {
+    "videoId": "IPvYjXCsTg8",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "sec-02-lo01",
+      "sec-02-lo02",
+      "sec-02-lo03",
+      "sec-02-lo06"
+    ],
+    "coverage": {
+      "sec-02-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-02-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": []
+  }
+}

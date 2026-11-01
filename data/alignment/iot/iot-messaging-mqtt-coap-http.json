@@ -1,0 +1,72 @@
+{
+  "EIxdz-2rhLs": {
+    "videoId": "EIxdz-2rhLs",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "iot-07-lo01",
+      "iot-07-lo02",
+      "iot-07-lo03",
+      "iot-07-lo04",
+      "iot-07-lo06"
+    ],
+    "coverage": {
+      "iot-07-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-07-lo08": {
+        "status": "none",
+        "score": 0.28,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "MQTT Protocol Tutorial for Beginners - IoT",
+            "t": 0
+          }
+        ]
+      },
+      "iot-07-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-07-lo08"
+    ]
+  }
+}

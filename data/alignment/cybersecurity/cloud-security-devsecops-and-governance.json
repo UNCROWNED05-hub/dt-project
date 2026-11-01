@@ -1,0 +1,74 @@
+{
+  "a9__D53WsUs": {
+    "videoId": "a9__D53WsUs",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "sec-11-lo01",
+      "sec-11-lo02",
+      "sec-11-lo04"
+    ],
+    "coverage": {
+      "sec-11-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo05": {
+        "status": "covered",
+        "score": 0.7,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "DevSecOps Explained in 7 Minutes",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Clear enterprise overview of shifting security left in automated CI/CD deploy..."
+          }
+        ]
+      },
+      "sec-11-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-11-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "sec-11-lo05"
+    ]
+  }
+}

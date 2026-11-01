@@ -1,0 +1,70 @@
+{
+  "fSytzGwwBVw": {
+    "videoId": "fSytzGwwBVw",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.06,
+    "mustHaveMissing": [
+      "aiml-07-lo01",
+      "aiml-07-lo02",
+      "aiml-07-lo03",
+      "aiml-07-lo04"
+    ],
+    "coverage": {
+      "aiml-07-lo01": {
+        "status": "partial",
+        "score": 0.5,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Crystal-clear demonstration of underfitting versus overfitting trade-offs."
+          }
+        ]
+      },
+      "aiml-07-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-07-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-07-lo01"
+    ]
+  }
+}

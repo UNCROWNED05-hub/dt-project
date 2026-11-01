@@ -1,0 +1,74 @@
+{
+  "FgakZw6K1QQ": {
+    "videoId": "FgakZw6K1QQ",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "aiml-08-lo01",
+      "aiml-08-lo02",
+      "aiml-08-lo05"
+    ],
+    "coverage": {
+      "aiml-08-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo06": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Principal Component Analysis (PCA), Step-by-Step",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "The most widely referenced intuitive walkthrough of eigenvalues and projectio..."
+          }
+        ]
+      },
+      "aiml-08-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-08-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-08-lo06"
+    ]
+  }
+}

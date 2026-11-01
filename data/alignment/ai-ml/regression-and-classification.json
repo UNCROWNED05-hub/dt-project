@@ -1,0 +1,148 @@
+{
+  "7xHsLq3PwUQ": {
+    "videoId": "7xHsLq3PwUQ",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.19,
+    "mustHaveMissing": [
+      "aiml-05-lo02",
+      "aiml-05-lo03",
+      "aiml-05-lo04"
+    ],
+    "coverage": {
+      "aiml-05-lo01": {
+        "status": "covered",
+        "score": 0.64,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Linear Regression, Clearly Explained!!!",
+            "t": 0
+          }
+        ]
+      },
+      "aiml-05-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo07": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Clear step-by-step breakdown of sum of squared residuals, R-squared, and p-va..."
+          }
+        ]
+      },
+      "aiml-05-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-05-lo01",
+      "aiml-05-lo07"
+    ]
+  },
+  "yIYKR4sgzI8": {
+    "videoId": "yIYKR4sgzI8",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "aiml-05-lo01",
+      "aiml-05-lo02",
+      "aiml-05-lo03"
+    ],
+    "coverage": {
+      "aiml-05-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo04": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Logistic Regression Details Pt1: Coefficients",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Logistic Regression Details Pt1: Coefficients"
+          }
+        ]
+      },
+      "aiml-05-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-05-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-05-lo04"
+    ]
+  }
+}

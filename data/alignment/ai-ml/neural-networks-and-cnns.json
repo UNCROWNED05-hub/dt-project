@@ -1,0 +1,81 @@
+{
+  "KuXjwB4LzSA": {
+    "videoId": "KuXjwB4LzSA",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.19,
+    "mustHaveMissing": [
+      "aiml-09-lo01",
+      "aiml-09-lo02",
+      "aiml-09-lo03",
+      "aiml-09-lo05"
+    ],
+    "coverage": {
+      "aiml-09-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-09-lo07": {
+        "status": "covered",
+        "score": 0.78,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Convolutional Neural Networks (CNNs) explained",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Visual matrix kernels demonstrating spatial filter convolutions, stride, and ..."
+          }
+        ]
+      },
+      "aiml-09-lo08": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Visual matrix kernels demonstrating spatial filter convolutions, stride, and ..."
+          }
+        ]
+      },
+      "aiml-09-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-09-lo07",
+      "aiml-09-lo08"
+    ]
+  }
+}

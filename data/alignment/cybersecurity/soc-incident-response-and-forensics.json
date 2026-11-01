@@ -1,0 +1,76 @@
+{
+  "M3bBq7vWwJ4": {
+    "videoId": "M3bBq7vWwJ4",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "sec-10-lo01",
+      "sec-10-lo02",
+      "sec-10-lo04",
+      "sec-10-lo06"
+    ],
+    "coverage": {
+      "sec-10-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo02": {
+        "status": "none",
+        "score": 0.25,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Real-world telemetry log triage and escalation containment steps in an enterp..."
+          }
+        ]
+      },
+      "sec-10-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo04": {
+        "status": "none",
+        "score": 0.25,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Real-world telemetry log triage and escalation containment steps in an enterp..."
+          }
+        ]
+      },
+      "sec-10-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-10-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "sec-10-lo02",
+      "sec-10-lo04"
+    ]
+  }
+}

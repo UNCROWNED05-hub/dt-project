@@ -1,0 +1,136 @@
+{
+  "k9H5_KqCq38": {
+    "videoId": "k9H5_KqCq38",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "iot-03-lo01",
+      "iot-03-lo02",
+      "iot-03-lo03",
+      "iot-03-lo08"
+    ],
+    "coverage": {
+      "iot-03-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": []
+  },
+  "nL34zDTPkcs": {
+    "videoId": "nL34zDTPkcs",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "iot-03-lo01",
+      "iot-03-lo02",
+      "iot-03-lo03",
+      "iot-03-lo08"
+    ],
+    "coverage": {
+      "iot-03-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo06": {
+        "status": "covered",
+        "score": 1,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Getting Started with ESP32 (Arduino IDE)",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Getting Started with ESP32 (Arduino IDE)"
+          }
+        ]
+      },
+      "iot-03-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-03-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-03-lo06"
+    ]
+  }
+}

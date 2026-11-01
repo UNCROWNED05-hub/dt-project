@@ -1,0 +1,149 @@
+{
+  "QUT1VHiLmmI": {
+    "videoId": "QUT1VHiLmmI",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0,
+    "mustHaveMissing": [
+      "aiml-02-lo01",
+      "aiml-02-lo02",
+      "aiml-02-lo03",
+      "aiml-02-lo04"
+    ],
+    "coverage": {
+      "aiml-02-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo03": {
+        "status": "none",
+        "score": 0.25,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Rigorous practical walkthrough of array shapes, broadcasting rules, and memor..."
+          }
+        ]
+      },
+      "aiml-02-lo04": {
+        "status": "none",
+        "score": 0.25,
+        "evidence": [
+          {
+            "kind": "description",
+            "text": "Rigorous practical walkthrough of array shapes, broadcasting rules, and memor..."
+          }
+        ]
+      },
+      "aiml-02-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-02-lo03",
+      "aiml-02-lo04"
+    ]
+  },
+  "vmEHCJofslg": {
+    "videoId": "vmEHCJofslg",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "aiml-02-lo01",
+      "aiml-02-lo02",
+      "aiml-02-lo03",
+      "aiml-02-lo04"
+    ],
+    "coverage": {
+      "aiml-02-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo05": {
+        "status": "covered",
+        "score": 0.65,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Pandas & Python for Data Analysis by Example",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Pandas & Python for Data Analysis by Example"
+          }
+        ]
+      },
+      "aiml-02-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "aiml-02-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "aiml-02-lo05"
+    ]
+  }
+}

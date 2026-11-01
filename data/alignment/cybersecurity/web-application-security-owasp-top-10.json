@@ -1,0 +1,71 @@
+{
+  "3QnD2c4Xovk": {
+    "videoId": "3QnD2c4Xovk",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.06,
+    "mustHaveMissing": [
+      "sec-06-lo01",
+      "sec-06-lo02",
+      "sec-06-lo03",
+      "sec-06-lo05"
+    ],
+    "coverage": {
+      "sec-06-lo01": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "SQL Injection - Computerphile",
+            "t": 0
+          }
+        ]
+      },
+      "sec-06-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "sec-06-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "sec-06-lo01"
+    ]
+  }
+}

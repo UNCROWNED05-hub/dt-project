@@ -179,9 +179,7 @@
     "coreCoverage": 0.5,
     "mustHaveMissing": [
       "aiml-01-lo01",
-      "aiml-01-lo02",
-      "aiml-01-lo06",
-      "aiml-01-lo07"
+      "aiml-01-lo02"
     ],
     "coverage": {
       "aiml-01-lo01": {
@@ -309,10 +307,7 @@
     "coreCoverage": 0.38,
     "mustHaveMissing": [
       "aiml-01-lo01",
-      "aiml-01-lo02",
-      "aiml-01-lo06",
-      "aiml-01-lo07",
-      "aiml-01-lo08"
+      "aiml-01-lo02"
     ],
     "coverage": {
       "aiml-01-lo01": {

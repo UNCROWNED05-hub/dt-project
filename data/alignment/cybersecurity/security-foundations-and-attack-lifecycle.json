@@ -180,9 +180,7 @@
     "mustHaveMissing": [
       "cyber-01-lo02",
       "cyber-01-lo04",
-      "cyber-01-lo06",
-      "cyber-01-lo07",
-      "cyber-01-lo08"
+      "cyber-01-lo06"
     ],
     "coverage": {
       "cyber-01-lo01": {

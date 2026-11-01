@@ -1,0 +1,71 @@
+{
+  "B_H9SfZG_H0": {
+    "videoId": "B_H9SfZG_H0",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "iot-09-lo01",
+      "iot-09-lo02",
+      "iot-09-lo03",
+      "iot-09-lo04"
+    ],
+    "coverage": {
+      "iot-09-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo05": {
+        "status": "covered",
+        "score": 0.64,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "Introduction to TinyML with Edge Impulse",
+            "t": 0
+          }
+        ]
+      },
+      "iot-09-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-09-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-09-lo05"
+    ]
+  }
+}

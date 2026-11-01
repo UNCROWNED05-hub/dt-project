@@ -1,0 +1,86 @@
+{
+  "IY_061x_J_0": {
+    "videoId": "IY_061x_J_0",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.19,
+    "mustHaveMissing": [
+      "iot-05-lo01",
+      "iot-05-lo02",
+      "iot-05-lo03",
+      "iot-05-lo04",
+      "iot-05-lo06"
+    ],
+    "coverage": {
+      "iot-05-lo01": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "SPI, I2C, and UART: Communication Protocols Explained",
+            "t": 0
+          }
+        ]
+      },
+      "iot-05-lo02": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "SPI, I2C, and UART: Communication Protocols Explained",
+            "t": 0
+          }
+        ]
+      },
+      "iot-05-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-05-lo04": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "SPI, I2C, and UART: Communication Protocols Explained",
+            "t": 0
+          }
+        ]
+      },
+      "iot-05-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-05-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-05-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-05-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-05-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-05-lo01",
+      "iot-05-lo02",
+      "iot-05-lo04"
+    ]
+  }
+}

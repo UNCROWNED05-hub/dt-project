@@ -8,11 +8,8 @@
     ],
     "coreCoverage": 0.44,
     "mustHaveMissing": [
-      "iot-01-lo03",
       "iot-01-lo04",
-      "iot-01-lo05",
-      "iot-01-lo06",
-      "iot-01-lo08"
+      "iot-01-lo05"
     ],
     "coverage": {
       "iot-01-lo01": {
@@ -130,9 +127,7 @@
     ],
     "coreCoverage": 0.69,
     "mustHaveMissing": [
-      "iot-01-lo03",
-      "iot-01-lo05",
-      "iot-01-lo08"
+      "iot-01-lo05"
     ],
     "coverage": {
       "iot-01-lo01": {

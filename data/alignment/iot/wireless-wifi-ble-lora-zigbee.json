@@ -1,0 +1,86 @@
+{
+  "1xYl2m1_nQc": {
+    "videoId": "1xYl2m1_nQc",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.19,
+    "mustHaveMissing": [
+      "iot-06-lo01",
+      "iot-06-lo02",
+      "iot-06-lo04",
+      "iot-06-lo05",
+      "iot-06-lo08"
+    ],
+    "coverage": {
+      "iot-06-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-06-lo02": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "BLE vs LoRa vs Zigbee vs Wi-Fi for IoT Projects",
+            "t": 0
+          }
+        ]
+      },
+      "iot-06-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-06-lo04": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "BLE vs LoRa vs Zigbee vs Wi-Fi for IoT Projects",
+            "t": 0
+          }
+        ]
+      },
+      "iot-06-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-06-lo06": {
+        "status": "partial",
+        "score": 0.4,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "BLE vs LoRa vs Zigbee vs Wi-Fi for IoT Projects",
+            "t": 0
+          }
+        ]
+      },
+      "iot-06-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-06-lo08": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-06-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-06-lo02",
+      "iot-06-lo04",
+      "iot-06-lo06"
+    ]
+  }
+}

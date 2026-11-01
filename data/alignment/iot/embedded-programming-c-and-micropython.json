@@ -1,0 +1,75 @@
+{
+  "wW_n_4iO6k0": {
+    "videoId": "wW_n_4iO6k0",
+    "objectivesVersion": 1,
+    "confidence": "low",
+    "signals": [],
+    "coreCoverage": 0.13,
+    "mustHaveMissing": [
+      "iot-04-lo01",
+      "iot-04-lo02",
+      "iot-04-lo03",
+      "iot-04-lo05"
+    ],
+    "coverage": {
+      "iot-04-lo01": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo02": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo03": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo04": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo05": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo06": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo07": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      },
+      "iot-04-lo08": {
+        "status": "covered",
+        "score": 0.65,
+        "evidence": [
+          {
+            "kind": "title",
+            "text": "MicroPython on ESP32 - Getting Started Tutorial",
+            "t": 0
+          },
+          {
+            "kind": "description",
+            "text": "Practical REPL workflows, memory allocation caveats, and GPIO controlling via..."
+          }
+        ]
+      },
+      "iot-04-lo09": {
+        "status": "none",
+        "score": 0,
+        "evidence": []
+      }
+    },
+    "order": [
+      "iot-04-lo08"
+    ]
+  }
+}
