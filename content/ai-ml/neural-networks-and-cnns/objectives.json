@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "chapterId": "ai-09",
+  "objectives": [
+    {
+      "id": "aiml-09-lo01",
+      "order": 1,
+      "title": "Explain artificial neuron anatomy and linear combination",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "perceptron",
+        "weights",
+        "bias",
+        "linear combination"
+      ],
+      "aliases": [
+        "artificial neuron",
+        "affine transformation"
+      ],
+      "prerequisites": [
+        "aiml-03-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-09-lo02",
+      "order": 2,
+      "title": "Compare non-linear activation functions (ReLU, Sigmoid, Softmax)",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "relu",
+        "sigmoid",
+        "softmax",
+        "activation function"
+      ],
+      "aliases": [
+        "non-linearity",
+        "vanishing gradient"
+      ],
+      "prerequisites": [
+        "aiml-09-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-09-lo03",
+      "order": 3,
+      "title": "Trace forward propagation through multi-layer perceptrons",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "forward pass",
+        "mlp",
+        "hidden layers"
+      ],
+      "aliases": [
+        "feedforward network",
+        "deep forward propagation"
+      ],
+      "prerequisites": [
+        "aiml-09-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-09-lo04",
+      "order": 4,
+      "title": "Formulate loss functions for regression and multi-class classification",
+      "bloom": "formulate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "loss functions",
+        "cross-entropy",
+        "mean squared error"
+      ],
+      "aliases": [
+        "log loss",
+        "objective function"
+      ],
+      "prerequisites": [
+        "aiml-05-lo04"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-09-lo05",
+      "order": 5,
+      "title": "Trace gradient backpropagation via the chain rule",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "backpropagation",
+        "chain rule",
+        "gradients",
+        "computational graph"
+      ],
+      "aliases": [
+        "backward pass",
+        "reverse-mode automatic differentiation"
+      ],
+      "prerequisites": [
+        "aiml-03-lo07"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-09-lo06",
+      "order": 6,
+      "title": "Optimize weight updates using SGD, Momentum, and Adam",
+      "bloom": "optimize",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "adam",
+        "momentum",
+        "stochastic gradient descent",
+        "learning rate"
+      ],
+      "aliases": [
+        "adaptive learning rates",
+        "rmsprop",
+        "optimizer update"
+      ],
+      "prerequisites": [
+        "aiml-09-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-09-lo07",
+      "order": 7,
+      "title": "Apply 2D convolution operations with filters and padding",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "convolution",
+        "kernel",
+        "stride",
+        "padding",
+        "cnn"
+      ],
+      "aliases": [
+        "2d convolution",
+        "feature map extraction"
+      ],
+      "prerequisites": [
+        "aiml-09-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-09-lo08",
+      "order": 8,
+      "title": "Design pooling layers and feature maps for computer vision",
+      "bloom": "design",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "max pooling",
+        "receptive field",
+        "spatial invariance"
+      ],
+      "aliases": [
+        "average pooling",
+        "downsampling"
+      ],
+      "prerequisites": [
+        "aiml-09-lo07"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-09-lo09",
+      "order": 9,
+      "title": "Mitigate internal covariate shift using Batch Normalization and Dropout",
+      "bloom": "mitigate",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "batch normalization",
+        "dropout",
+        "regularization"
+      ],
+      "aliases": [
+        "batchnorm",
+        "co-adaptation"
+      ],
+      "prerequisites": [
+        "aiml-09-lo03"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

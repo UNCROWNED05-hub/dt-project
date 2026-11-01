@@ -1,0 +1,35 @@
+---
+loId: "aiml-09-lo06"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+Optimizers determine how weight gradients translate into parameter adjustments. Standard Stochastic Gradient Descent (SGD) updates parameters along the negative gradient: $\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla_{\mathbf{w}} L$. SGD with Momentum accumulates a velocity vector to accelerate through shallow ravines and dampen oscillations. Adam (Adaptive Moment Estimation) combines momentum and adaptive per-parameter learning rates using running estimates of the first and second moments of the gradients.
+
+### Worked Example
+Comparing SGD and SGD with Momentum parameter updates:
+
+```python
+w = 5.0
+grad = 2.0
+lr = 0.1
+
+# Standard SGD update
+w_sgd = w - lr * grad  # 5.0 - 0.2 = 4.8
+
+# Momentum update (beta = 0.9, previous velocity = 1.0)
+beta = 0.9
+v_prev = 1.0
+v = beta * v_prev + lr * grad  # 0.9*1.0 + 0.1*2.0 = 1.1
+w_mom = w - v                   # 5.0 - 1.1 = 3.9
+
+print("Standard SGD parameter:", round(w_sgd, 2))
+print("Momentum parameter:", round(w_mom, 2))
+```
+
+### Common Mistake
+Setting the learning rate $\eta$ too high when using Adam. Although Adam adapts per-parameter scale factors, an excessive learning rate can still cause loss divergence or numerical instability.
+
+### Check Yourself
+What role does the second moment vector $v_t$ (sum of squared past gradients) play in the Adam optimizer? It scales down the learning rate for parameters with large, frequent gradient updates.

@@ -1,0 +1,35 @@
+---
+loId: "aiml-08-lo01"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+Supervised learning requires ground-truth labels to optimize a predictive mapping. In contrast, unsupervised learning processes unlabelled feature vectors to discover latent structural geometry, probability densities, or natural cluster boundaries without external targets. Clustering partitions data points into subsets where intra-cluster similarity is maximized while inter-cluster similarity is minimized.
+
+### Worked Example
+Suppose an e-commerce platform wants to discover customer behavioral cohorts without predefined categories. Features include purchase frequency and average basket size:
+
+```python
+import numpy as np
+
+# Feature matrix X with 4 unlabelled customer vectors
+# [purchases_per_month, avg_spend_usd]
+X = np.array([
+    [1.0, 20.0],
+    [2.0, 25.0],
+    [15.0, 300.0],
+    [18.0, 320.0]
+])
+
+# Unsupervised models discover two natural cohorts (low/high activity)
+# without target label y
+cohort_split = X[:, 0] > 5.0
+print("High-frequency cohort indices:", np.where(cohort_split)[0].tolist())
+```
+
+### Common Mistake
+Assuming unsupervised clustering can infer external semantics automatically. An algorithm detects geometric proximity in feature space; assigning business meaning (such as "loyal VIP buyers" or "at-risk churners") requires human domain interpretation and qualitative validation.
+
+### Check Yourself
+Can K-means clustering optimize accuracy against ground-truth labels if target classes are never provided during training? No, clustering minimizes geometric dispersion, not supervisory classification error.

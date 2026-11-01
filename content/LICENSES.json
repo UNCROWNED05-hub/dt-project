@@ -75,5 +75,16 @@
     "dateAccessed": "2026-10-02",
     "chaptersUsedIn": ["iot-architecture-and-physical-computing", "electronics-sensors-and-actuators", "microcontrollers-esp32-and-arduino"],
     "notes": "GPIO control methods, non-blocking millis timer idioms, and bus pinout configurations."
+  },
+  {
+    "id": "lic-08",
+    "title": "Attention Is All You Need & Hugging Face Transformers Documentation",
+    "author": "Vaswani et al. & Hugging Face",
+    "url": "https://huggingface.co/docs/transformers",
+    "license": "Apache 2.0",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["transformers-llms-and-responsible-ai"],
+    "notes": "Transformer attention formulations, tokenization patterns, and LoRA adaptation principles."
   }
 ]

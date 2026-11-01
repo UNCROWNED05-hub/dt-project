@@ -1,0 +1,35 @@
+---
+loId: "aiml-09-lo05"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+Backpropagation is reverse-mode automatic differentiation applied to the computational graph of a neural network. By applying the calculus chain rule backward from the scalar loss $L$, the algorithm computes partial derivatives $\frac{\partial L}{\partial \mathbf{W}^{[l]}}$ and $\frac{\partial L}{\partial \mathbf{b}^{[l]}}$ for every parameter layer without recomputing redundant intermediate Jacobian terms.
+
+### Worked Example
+Tracing gradient flow through a simple computational chain $L = (a - y)^2$ where $a = \text{ReLU}(z)$ and $z = w \cdot x$:
+
+```python
+# Forward values
+x = 2.0
+w = 3.0
+y = 10.0
+z = w * x       # 6.0
+a = max(0, z)   # 6.0
+L = (a - y) ** 2 # (6 - 10)^2 = 16.0
+
+# Backward pass via chain rule: dL/dw = (dL/da) * (da/dz) * (dz/dw)
+dL_da = 2.0 * (a - y)    # 2 * (6 - 10) = -8.0
+da_dz = 1.0 if z > 0 else 0.0 # 1.0 (since z=6 > 0)
+dz_dw = x                # 2.0
+
+dL_dw = dL_da * da_dz * dz_dw
+print("Gradient dL/dw:", dL_dw)  # -8.0 * 1.0 * 2.0 = -16.0
+```
+
+### Common Mistake
+Believing backpropagation updates weights directly. Backpropagation only computes gradients. An optimizer (such as SGD or Adam) uses those gradients to perform the parameter updates.
+
+### Check Yourself
+If neuron pre-activation $z = -2.0$ with standard ReLU, what is $\frac{\partial a}{\partial z}$ during backpropagation? Zero (gradient is blocked).

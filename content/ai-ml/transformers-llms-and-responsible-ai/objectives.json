@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "chapterId": "ai-10",
+  "objectives": [
+    {
+      "id": "aiml-10-lo01",
+      "order": 1,
+      "title": "Explain the scaled dot-product self-attention mechanism",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "self-attention",
+        "query key value",
+        "scaled dot-product"
+      ],
+      "aliases": [
+        "attention mechanism",
+        "qkv projection"
+      ],
+      "prerequisites": [
+        "aiml-09-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-10-lo02",
+      "order": 2,
+      "title": "Compare encoder-decoder architectures with decoder-only causal models",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "transformer",
+        "causal masking",
+        "encoder-decoder",
+        "decoder-only"
+      ],
+      "aliases": [
+        "autoregressive model",
+        "bert vs gpt architecture"
+      ],
+      "prerequisites": [
+        "aiml-10-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-10-lo03",
+      "order": 3,
+      "title": "Distinguish pre-training from parameter-efficient fine-tuning (LoRA)",
+      "bloom": "distinguish",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "pre-training",
+        "fine-tuning",
+        "lora",
+        "peft"
+      ],
+      "aliases": [
+        "low-rank adaptation",
+        "instruction tuning"
+      ],
+      "prerequisites": [
+        "aiml-10-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-10-lo04",
+      "order": 4,
+      "title": "Apply tokenization strategies and positional encodings",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "bpe",
+        "tokenization",
+        "positional encoding",
+        "rope"
+      ],
+      "aliases": [
+        "subword tokenization",
+        "byte-pair encoding"
+      ],
+      "prerequisites": [
+        "aiml-10-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-10-lo05",
+      "order": 5,
+      "title": "Formulate effective prompt engineering and in-context learning patterns",
+      "bloom": "formulate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "few-shot",
+        "chain-of-thought",
+        "prompt engineering",
+        "in-context learning"
+      ],
+      "aliases": [
+        "cot reasoning",
+        "system prompts"
+      ],
+      "prerequisites": [
+        "aiml-10-lo03"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-10-lo06",
+      "order": 6,
+      "title": "Detect hallucinations, bias, and alignment failure modes",
+      "bloom": "detect",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "hallucination",
+        "alignment",
+        "bias",
+        "safety"
+      ],
+      "aliases": [
+        "model hallucination",
+        "rlhf",
+        "jailbreak"
+      ],
+      "prerequisites": [
+        "aiml-10-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-10-lo07",
+      "order": 7,
+      "title": "Evaluate model generation using temperature, top-p, and perplexity",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "temperature",
+        "top-p",
+        "nucleus sampling",
+        "perplexity"
+      ],
+      "aliases": [
+        "sampling parameters",
+        "log-likelihood evaluation"
+      ],
+      "prerequisites": [
+        "aiml-10-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-10-lo08",
+      "order": 8,
+      "title": "Assess responsible AI guardrails, red-teaming, and safety evaluations",
+      "bloom": "assess",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "guardrails",
+        "red-teaming",
+        "responsible ai",
+        "toxicity"
+      ],
+      "aliases": [
+        "ai safety evaluation",
+        "content moderation"
+      ],
+      "prerequisites": [
+        "aiml-10-lo06"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-10-lo09",
+      "order": 9,
+      "title": "Quantize weight matrices (FP16, INT8, INT4) for low-latency inference",
+      "bloom": "quantize",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "quantization",
+        "int4",
+        "int8",
+        "gguf",
+        "awq"
+      ],
+      "aliases": [
+        "model compression",
+        "post-training quantization"
+      ],
+      "prerequisites": [
+        "aiml-10-lo03"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

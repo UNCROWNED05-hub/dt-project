@@ -1,0 +1,31 @@
+---
+loId: "aiml-09-lo01"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+An artificial neuron is the foundational computational unit of neural networks. It computes an affine combination of input features: $z = \sum_{j=1}^D w_j x_j + b = \mathbf{w}^T \mathbf{x} + b$, where $\mathbf{w}$ represents learnable synaptic weights and $b$ is a learnable scalar bias. Without weights, inputs cannot be scaled by importance; without bias, the decision plane is strictly forced to intersect the origin $(0,0)$.
+
+### Worked Example
+Calculating the pre-activation $z$ of a single neuron:
+
+```python
+import numpy as np
+
+# Input vector x and learned parameters w, b
+x = np.array([2.0, -1.0, 3.0])
+w = np.array([0.5, 2.0, -1.0])
+b = 1.5
+
+# Affine transformation z = w^T * x + b
+z = np.dot(w, x) + b
+# z = (2.0*0.5) + (-1.0*2.0) + (3.0*-1.0) + 1.5 = 1.0 - 2.0 - 3.0 + 1.5 = -2.5
+print("Neuron pre-activation z:", round(z, 2))  # -2.5
+```
+
+### Common Mistake
+Confusing pre-activation $z$ with post-activation $a$. The affine sum $z = \mathbf{w}^T \mathbf{x} + b$ is strictly linear. Passing $z$ through an activation function $a = \sigma(z)$ is what provides non-linear expressive capacity.
+
+### Check Yourself
+If all weights $\mathbf{w}$ are zero and bias $b = 3.5$, what is the pre-activation output $z$ for any arbitrary input $\mathbf{x}$? $z = 3.5$.

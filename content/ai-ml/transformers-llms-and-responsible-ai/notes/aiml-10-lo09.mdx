@@ -1,0 +1,32 @@
+---
+loId: "aiml-10-lo09"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Full-precision models store weights in 32-bit (FP32, 4 bytes per param) or 16-bit (FP16/BF16, 2 bytes per param) floating-point numbers. Post-Training Quantization compresses weights to 8-bit (INT8, 1 byte) or 4-bit (INT4, 0.5 bytes) integers using techniques like AWQ (Activation-aware Weight Quantization) or GPTQ. This cuts GPU memory footprints by up to 75% with negligible degradation in perplexity.
+*Last verified: February 2026.*
+
+### Worked Example
+Calculating GPU memory requirements for a 7-billion parameter model:
+
+```python
+params = 7e9 # 7 billion parameters
+
+# FP16: 2 bytes per parameter
+vram_fp16_gb = (params * 2) / (1024 ** 3) # ~13.04 GB
+
+# 4-bit quantization (INT4): 0.5 bytes per parameter
+vram_int4_gb = (params * 0.5) / (1024 ** 3) # ~3.26 GB
+
+print("VRAM required (FP16):", round(vram_fp16_gb, 2), "GB")
+print("VRAM required (INT4):", round(vram_int4_gb, 2), "GB")
+```
+
+### Common Mistake
+Assuming quantization requires retraining from scratch. Post-Training Quantization (PTQ) calibrates integer scale factors on a small sample of representative validation text in a few minutes without full gradient optimization.
+
+### Check Yourself
+Approximately how much GPU VRAM does a 7B parameter model require when quantized to 4-bit precision (INT4)? Around 3.5 to 4 GB (including runtime KV-cache overhead).

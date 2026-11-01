@@ -1,0 +1,29 @@
+---
+loId: "aiml-08-lo09"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+While t-SNE and basic UMAP produce compelling 2D exploratory visualizations, they have severe limitations in production inference pipelines. Traditional t-SNE is a transductive non-parametric algorithm: it does not learn a fixed, parametric projection function $\mathbf{z} = f(\mathbf{x})$ that can transform new, unseen streaming observations without refitting the entire dataset.
+
+### Worked Example
+Illustrating the out-of-sample mapping challenge:
+
+```python
+# PCA provides an explicit matrix projection operator:
+# z_new = x_new @ W_components
+# This executes in O(D * K) time with zero retraining.
+
+# Standard t-SNE optimizes point coordinates directly:
+# Points are variables in gradient descent.
+# Given a new single vector x_stream, t-SNE has no direct matrix transform!
+can_project_new_sample_directly_with_matrix = False
+print("Can raw t-SNE project single new row via static matrix?", can_project_new_sample_directly_with_matrix)
+```
+
+### Common Mistake
+Extracting 2D t-SNE coordinates from historical training data and feeding them as core input features into a real-time production serving model. When new query vectors arrive in production, computing their coordinates is unstable, non-deterministic, or computationally prohibitive.
+
+### Check Yourself
+Which dimensionality reduction technique should you choose if low-latency production pipelines must project new incoming requests onto a compressed feature space? Linear PCA (or an inductive parametric Autoencoder).

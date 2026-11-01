@@ -1,0 +1,31 @@
+---
+loId: "aiml-08-lo05"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+Hierarchical agglomerative clustering builds a bottom-up cluster hierarchy without pre-specifying $K$. Every point begins in its own isolated cluster. Iteratively, the two closest clusters are merged according to a linkage criterion (such as single, complete, average, or Ward's variance minimization). The merging history is visualized as a tree called a dendrogram.
+
+### Worked Example
+Interpreting dendrogram horizontal cutoffs to derive discrete clusters:
+
+```python
+# Dendrogram merge heights:
+# Merge A (items 1 & 2): distance 0.8
+# Merge B (items 3 & 4): distance 1.2
+# Merge C (cluster A & cluster B): distance 5.5
+
+def get_cluster_count(cut_threshold, merge_distances):
+    # Splits occur when merge distance exceeds horizontal cut threshold
+    merges_above = sum(1 for d in merge_distances if d > cut_threshold)
+    return merges_above + 1
+
+print("Clusters at cut height 3.0:", get_cluster_count(3.0, [0.8, 1.2, 5.5])) # 2
+```
+
+### Common Mistake
+Believing hierarchical clustering scales efficiently to millions of rows. Standard agglomerative algorithms exhibit $\mathcal{O}(N^2)$ memory and $\mathcal{O}(N^3)$ computational complexity, making direct unbatched execution on large databases impractical.
+
+### Check Yourself
+How do you obtain 3 clusters from an agglomerative dendrogram? Draw a horizontal line cutting across three vertical dendrogram branches.

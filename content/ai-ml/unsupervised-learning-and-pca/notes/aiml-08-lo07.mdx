@@ -1,0 +1,37 @@
+---
+loId: "aiml-08-lo07"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+Dimensionality reduction via PCA projects a centered data matrix $\mathbf{X}_{N \times D}$ onto a subspace formed by the top $K$ principal eigenvectors $\mathbf{W}_{D \times K}$. The resulting coordinates $\mathbf{Z}_{N \times K} = \mathbf{X}\mathbf{W}$ preserve maximal variance while compressing feature dimensions. The reconstruction error measures information lost when mapping back to the original space via $\hat{\mathbf{X}} = \mathbf{Z}\mathbf{W}^T$.
+
+### Worked Example
+Projecting 2D data onto the primary principal component:
+
+```python
+import numpy as np
+
+# Centered 2D observations
+X = np.array([[2.0, 2.0], [-2.0, -2.0], [4.0, 4.0]])
+
+# First principal component direction vector (unit length)
+w1 = np.array([[1.0 / np.sqrt(2)], [1.0 / np.sqrt(2)]])
+
+# Projection into 1D space: Z = X @ W
+Z = np.dot(X, w1)
+print("1D coordinates Z:
+", Z.round(2))
+
+# Reconstruction in original 2D space: X_hat = Z @ W.T
+X_hat = np.dot(Z, w1.T)
+reconstruction_error = np.mean((X - X_hat) ** 2)
+print("Reconstruction MSE:", round(reconstruction_error, 4)) # 0.0 (perfect alignment)
+```
+
+### Common Mistake
+Assuming PCA projection always improves classification accuracy. PCA is completely unsupervised; the direction of highest variance may be orthogonal to the decision boundary separating target classes.
+
+### Check Yourself
+What are the matrix dimensions of transformed data $Z$ when projecting 1000 rows with 50 features down to 5 principal components? $1000 \times 5$.

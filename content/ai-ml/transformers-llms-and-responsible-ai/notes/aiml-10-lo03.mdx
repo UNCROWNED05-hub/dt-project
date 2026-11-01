@@ -1,0 +1,35 @@
+---
+loId: "aiml-10-lo03"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Pre-training trains a massive base model on trillions of tokens using self-supervised next-token prediction, consuming massive compute. Full fine-tuning updates all model parameters for a downstream task, which requires immense GPU VRAM. Parameter-Efficient Fine-Tuning (PEFT), particularly Low-Rank Adaptation (LoRA), freezes original weights $\mathbf{W}_0$ and injects trainable low-rank rank-decomposition matrices: $\Delta \mathbf{W} = \mathbf{B}\mathbf{A}$, updating less than 1% of total parameters.
+*Last verified: February 2026.*
+
+### Worked Example
+Illustrating parameter compression with LoRA:
+
+```python
+# Original weight matrix dimension: 4096 x 4096
+d_in = 4096
+d_out = 4096
+full_params = d_in * d_out # 16,777,216 parameters
+
+# LoRA rank r = 8 decomposition (B @ A)
+r = 8
+lora_A_params = d_in * r  # 4096 * 8 = 32,768
+lora_B_params = r * d_out # 8 * 4096 = 32,768
+lora_total = lora_A_params + lora_B_params # 65,536
+
+compression_ratio = full_params / lora_total
+print("LoRA parameter reduction factor:", round(compression_ratio, 1)) # 256.0x fewer params
+```
+
+### Common Mistake
+Believing LoRA degrades inference latency. At deployment, the adapter matrix product $\mathbf{B}\mathbf{A}$ can be mathematically added directly into the frozen weights $\mathbf{W} = \mathbf{W}_0 + \frac{\alpha}{r}\mathbf{B}\mathbf{A}$, resulting in zero additional latency during serving.
+
+### Check Yourself
+If a base model has 70 billion parameters, does LoRA require updating all 70B parameters during training? No, only the low-rank adapter matrices (typically 0.1% to 1% of total weights).

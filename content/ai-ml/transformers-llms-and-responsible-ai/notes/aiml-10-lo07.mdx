@@ -1,0 +1,38 @@
+---
+loId: "aiml-10-lo07"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Sampling parameters regulate how next-token probability distributions are converted into text tokens. Temperature scales logits before softmax ($z_i / T$): $T \to 0$ leads to greedy deterministic selection, while high $T$ flattens the distribution for creative generation. Top-$p$ (nucleus sampling) dynamically truncates the candidate pool to the smallest set of tokens whose cumulative probability exceeds $p$. Perplexity measures how surprised a language model is by a test text.
+*Last verified: February 2026.*
+
+### Worked Example
+Simulating Temperature logit scaling:
+
+```python
+import numpy as np
+
+logits = np.array([3.0, 1.0, 0.5])
+
+def get_probs(logits, T):
+    scaled = logits / T
+    exp_s = np.exp(scaled - np.max(scaled))
+    return exp_s / np.sum(exp_s)
+
+# Low temperature (close to greedy, sharp peak)
+p_cold = get_probs(logits, T=0.2)
+# High temperature (diverse, flatter distribution)
+p_hot = get_probs(logits, T=2.0)
+
+print("Top probability at T=0.2:", round(p_cold[0], 3)) # > 0.99
+print("Top probability at T=2.0:", round(p_hot[0], 3))  # ~ 0.55
+```
+
+### Common Mistake
+Setting Temperature to 0 while expecting creative, varied brainstorming suggestions. A temperature of 0 produces deterministic greedy decoding where the highest probability token is always picked.
+
+### Check Yourself
+If a test text has low perplexity according to a language model, does that mean the model found the text predictable or highly surprising? Highly predictable (low perplexity = high likelihood).

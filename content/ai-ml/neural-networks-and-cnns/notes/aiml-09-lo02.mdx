@@ -1,0 +1,33 @@
+---
+loId: "aiml-09-lo02"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+Without non-linear activation functions, any deep stack of linear layers collapses mathematically into a single equivalent linear transformation. Rectified Linear Unit ($\text{ReLU}(z) = \max(0, z)$) is the standard default for hidden layers because its derivative is $1$ for $z > 0$, avoiding the vanishing gradient problem. Sigmoid maps scalars to $(0, 1)$ for binary targets, and Softmax normalizes logits into a categorical probability distribution summing to $1.0$.
+
+### Worked Example
+Comparing ReLU and Softmax activations:
+
+```python
+import numpy as np
+
+# Hidden layer pre-activations
+z_hidden = np.array([-3.0, 0.0, 4.5])
+a_relu = np.maximum(0, z_hidden)
+print("ReLU outputs:", a_relu.tolist())  # [0.0, 0.0, 4.5]
+
+# Output logits for 3 classes
+logits = np.array([2.0, 1.0, 0.1])
+exp_z = np.exp(logits - np.max(logits))  # numerically stable exp
+probs = exp_z / np.sum(exp_z)
+print("Softmax probabilities:", probs.round(3).tolist())
+print("Sum of probabilities:", round(np.sum(probs), 2))  # 1.0
+```
+
+### Common Mistake
+Using Sigmoid or Tanh across dozens of deep hidden layers. When inputs have large magnitudes, their gradients saturate near zero ($\sigma'(z) \approx 0$), causing vanishing gradients that stall backpropagation.
+
+### Check Yourself
+What is the derivative of the standard ReLU function when $z = 5.0$? Exactly $1.0$.

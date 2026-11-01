@@ -1,0 +1,34 @@
+---
+loId: "aiml-10-lo04"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Language models do not process raw text characters or full words directly. Modern LLMs use subword tokenization algorithms like Byte-Pair Encoding (BPE), which iteratively merges frequent character pairs into subword vocabulary chunks. Because self-attention is permutation-invariant, Transformers require Positional Encodings (such as absolute sinusoidal encodings or Rotary Position Embeddings, RoPE) added or applied to token representations so the model distinguishes word order.
+*Last verified: February 2026.*
+
+### Worked Example
+Demonstrating subword token splitting:
+
+```python
+# Subword tokenizers split rare or compound words into recognized sub-tokens
+# e.g., "vectorization" -> ["vector", "ization"]
+# "unsupervised" -> ["un", "supervised"]
+
+vocab = {"un": 101, "supervised": 204, "learning": 305}
+tokens = ["un", "supervised", "learning"]
+input_ids = [vocab[t] for t in tokens]
+
+# Positional indices 0, 1, 2 ensure word order is known
+positions = list(range(len(input_ids)))
+print("Token IDs:", input_ids)
+print("Position Indices:", positions)
+```
+
+### Common Mistake
+Assuming identical words always produce identical single tokens. Depending on capitalization, leading whitespace, or uncommon prefixes, " Apple", "Apple", and "apple" map to distinct token IDs in BPE vocabularies.
+
+### Check Yourself
+Why can't vanilla self-attention distinguish between the sentences "dog bites man" and "man bites dog" without positional encodings? Because scaled dot-product attention computes set-based pairwise relationships without intrinsic sequence order.

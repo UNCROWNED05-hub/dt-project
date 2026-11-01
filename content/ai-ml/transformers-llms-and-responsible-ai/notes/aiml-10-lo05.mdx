@@ -1,0 +1,34 @@
+---
+loId: "aiml-10-lo05"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Prompt engineering designs structured text inputs to steer autoregressive LLM completions without updating model weights. In-context learning patterns include Zero-Shot (direct instructions), Few-Shot (providing 2 to 5 exemplary input-output demonstrations), and Chain-of-Thought (CoT, prompting the model to generate intermediate reasoning steps before delivering the final answer).
+*Last verified: February 2026.*
+
+### Worked Example
+Structuring a robust Chain-of-Thought few-shot prompt:
+
+```python
+prompt = """
+Q: A store has 20 apples. It sells 8 and receives 5 fresh ones. How many apples remain?
+A: Let's think step by step:
+1. Initial apples: 20
+2. Sold 8: 20 - 8 = 12
+3. Received 5: 12 + 5 = 17
+Therefore, 17 apples remain.
+
+Q: A cloud server starts 10 VMs. 3 crash and 6 new ones are provisioned. How many are active?
+A: Let's think step by step:
+"""
+print("Prompt length characters:", len(prompt))
+```
+
+### Common Mistake
+Expecting complex multi-step arithmetic or logical deductions from zero-shot prompts without intermediate reasoning tokens. Autoregressive models allocate computation per token; without scratchpad tokens, the model must predict the final answer in a single forward pass.
+
+### Check Yourself
+What phrase is famously used in zero-shot Chain-of-Thought prompting to trigger step-by-step reasoning? "Let's think step by step."

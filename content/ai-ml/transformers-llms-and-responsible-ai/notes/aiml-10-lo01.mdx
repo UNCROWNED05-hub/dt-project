@@ -1,0 +1,45 @@
+---
+loId: "aiml-10-lo01"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+The Transformer architecture replaces recurrence with Self-Attention. Each input token is projected into three distinct vectors: Query ($\mathbf{Q}$), Key ($\mathbf{K}$), and Value ($\mathbf{V}$). Scaled dot-product attention computes compatibility scores between all queries and keys, scales by $\sqrt{d_k}$ to prevent gradient saturation, applies Softmax to form attention weights, and computes a weighted sum over values:
+$$\text{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}}\right)\mathbf{V}$$
+*Last verified: February 2026.*
+
+### Worked Example
+Computing scaled dot-product attention for two tokens ($d_k = 4$):
+
+```python
+import numpy as np
+
+# Q and K matrices for 2 tokens with head dimension d_k = 4
+Q = np.array([[1.0, 0.0, 1.0, 0.0], [0.0, 2.0, 0.0, 2.0]])
+K = np.array([[1.0, 0.0, 1.0, 0.0], [0.0, 1.0, 0.0, 1.0]])
+V = np.array([[10.0, 0.0], [0.0, 20.0]])
+d_k = 4.0
+
+# 1. Dot product: Q @ K.T
+scores = np.dot(Q, K.T) # [[2.0, 0.0], [0.0, 4.0]]
+
+# 2. Scale by sqrt(d_k) = 2.0
+scaled_scores = scores / np.sqrt(d_k) # [[1.0, 0.0], [0.0, 2.0]]
+
+# 3. Softmax over rows
+exp_s = np.exp(scaled_scores)
+weights = exp_s / np.sum(exp_s, axis=-1, keepdims=True)
+
+# 4. Multiply by V
+output = np.dot(weights, V)
+print("Attention weights token 0:
+", weights[0].round(3))
+```
+
+### Common Mistake
+Omitting the $\sqrt{d_k}$ scaling denominator. As dimension $d_k$ grows large, dot product magnitudes explode, pushing the Softmax into extreme regions where gradients vanish.
+
+### Check Yourself
+If $d_k = 64$, what is the scaling divisor $\sqrt{d_k}$? Exactly 8.0.

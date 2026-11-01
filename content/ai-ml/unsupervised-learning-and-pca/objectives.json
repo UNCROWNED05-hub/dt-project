@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "chapterId": "ai-08",
+  "objectives": [
+    {
+      "id": "aiml-08-lo01",
+      "order": 1,
+      "title": "Explain the goals and mechanisms of unsupervised clustering vs supervised learning",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "unsupervised learning",
+        "clustering",
+        "unlabeled data"
+      ],
+      "aliases": [
+        "cluster analysis",
+        "latent grouping"
+      ],
+      "prerequisites": [
+        "aiml-01-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-08-lo02",
+      "order": 2,
+      "title": "Implement K-means clustering and compute cluster centroids",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "k-means",
+        "centroids",
+        "euclidean distance"
+      ],
+      "aliases": [
+        "lloyd algorithm",
+        "k-means iteration"
+      ],
+      "prerequisites": [
+        "aiml-08-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-08-lo03",
+      "order": 3,
+      "title": "Select optimal cluster counts using the elbow method and inertia",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "elbow method",
+        "inertia",
+        "within-cluster sum of squares"
+      ],
+      "aliases": [
+        "wcss",
+        "distortion curve"
+      ],
+      "prerequisites": [
+        "aiml-08-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-08-lo04",
+      "order": 4,
+      "title": "Evaluate cluster quality using the silhouette score",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "silhouette coefficient",
+        "cluster separation",
+        "cohesion"
+      ],
+      "aliases": [
+        "silhouette analysis",
+        "intra-cluster distance"
+      ],
+      "prerequisites": [
+        "aiml-08-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-08-lo05",
+      "order": 5,
+      "title": "Construct hierarchical clusters and interpret dendrogram linkages",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "hierarchical clustering",
+        "dendrogram",
+        "agglomerative"
+      ],
+      "aliases": [
+        "ward linkage",
+        "complete linkage",
+        "divisive clustering"
+      ],
+      "prerequisites": [
+        "aiml-08-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-08-lo06",
+      "order": 6,
+      "title": "Calculate principal components to maximize explained variance",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "pca",
+        "eigenvalues",
+        "explained variance ratio"
+      ],
+      "aliases": [
+        "principal component analysis",
+        "covariance matrix decomposition"
+      ],
+      "prerequisites": [
+        "aiml-03-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "aiml-08-lo07",
+      "order": 7,
+      "title": "Transform high-dimensional feature spaces using PCA projection",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "pca projection",
+        "dimensionality reduction",
+        "reconstruction loss"
+      ],
+      "aliases": [
+        "orthogonal projection",
+        "subspace projection"
+      ],
+      "prerequisites": [
+        "aiml-08-lo06"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-08-lo08",
+      "order": 8,
+      "title": "Analyze non-linear embeddings using t-SNE and UMAP",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "t-sne",
+        "umap",
+        "manifold learning",
+        "perplexity"
+      ],
+      "aliases": [
+        "non-linear dimensionality reduction",
+        "stochastic neighbor embedding"
+      ],
+      "prerequisites": [
+        "aiml-08-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-08-lo09",
+      "order": 9,
+      "title": "Assess production limitations and stability of non-linear embeddings",
+      "bloom": "assess",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "embedding stability",
+        "inductive bias",
+        "out-of-sample mapping"
+      ],
+      "aliases": [
+        "t-sne caveats",
+        "feature store embeddings"
+      ],
+      "prerequisites": [
+        "aiml-08-lo08"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

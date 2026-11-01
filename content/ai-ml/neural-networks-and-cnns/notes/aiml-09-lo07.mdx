@@ -1,0 +1,39 @@
+---
+loId: "aiml-09-lo07"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+Convolutional Neural Networks (CNNs) process grid-structured data like images. A 2D convolution slides a small learnable parameter tensor (a kernel or filter, e.g. $3 \times 3$) across the input feature map, computing element-wise dot products. Parameter sharing and local receptive fields allow CNNs to achieve translation equivariance while requiring drastically fewer parameters than fully-connected layers.
+
+### Worked Example
+Computing a 2D convolution step with a $2 \times 2$ kernel:
+
+```python
+import numpy as np
+
+# 2x2 image patch
+patch = np.array([
+    [1.0, 2.0],
+    [0.0, 3.0]
+])
+
+# 2x2 edge detection kernel
+kernel = np.array([
+    [1.0, -1.0],
+    [1.0, -1.0]
+])
+bias = 0.5
+
+# Element-wise multiplication and sum plus bias
+conv_out = np.sum(patch * kernel) + bias
+# (1*1 + 2*-1 + 0*1 + 3*-1) + 0.5 = (1 - 2 + 0 - 3) + 0.5 = -4 + 0.5 = -3.5
+print("Convolved activation:", round(conv_out, 2))  # -3.5
+```
+
+### Common Mistake
+Confusing 'valid' padding with 'same' padding. Valid padding performs no border zero-padding, causing output dimensions to shrink by $(K-1)$. Same padding zero-pads boundaries so output spatial dimensions match input dimensions (when stride=1).
+
+### Check Yourself
+What is the spatial size of the output feature map when a $32 \times 32$ image is convolved with a $5 \times 5$ kernel using valid padding (stride=1)? $32 - 5 + 1 = 28 \times 28$.

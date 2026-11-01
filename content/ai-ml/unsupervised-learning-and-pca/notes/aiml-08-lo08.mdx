@@ -1,0 +1,34 @@
+---
+loId: "aiml-08-lo08"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+Linear methods like PCA fail to unfold non-linear manifolds (such as concentric circles or Swiss-roll geometries). t-Distributed Stochastic Neighbor Embedding (t-SNE) and Uniform Manifold Approximation and Projection (UMAP) map high-dimensional relationships to 2D/3D visual coordinates by preserving local neighborhood probabilities while using heavy-tailed distributions in low-dimensional space to prevent crowding.
+
+### Worked Example
+Analyzing neighborhood preservation in low-dimensional representations:
+
+```python
+import numpy as np
+
+# High-dimensional distance matrix excerpt between 3 points
+D_high = np.array([
+    [0.0, 1.2, 8.5],
+    [1.2, 0.0, 8.1],
+    [8.5, 8.1, 0.0]
+])
+
+# Nearest neighbor in high dimensions for index 0 is index 1 (distance 1.2)
+nn_high = np.argsort(D_high[0])[1]
+
+# In a good 2D t-SNE projection, point 0 and point 1 remain closest neighbors
+print("Nearest high-dimensional neighbor of point 0:", nn_high)
+```
+
+### Common Mistake
+Treating global distances between distant clusters in a t-SNE plot as quantitative physical distances. t-SNE primarily prioritizes local neighborhood structure; inter-cluster empty space depends heavily on perplexity settings and optimization initialization.
+
+### Check Yourself
+Why is UMAP frequently preferred over t-SNE for exploratory workflows? UMAP scales more efficiently computationally and better preserves global topological structure.

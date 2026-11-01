@@ -1,0 +1,34 @@
+---
+loId: "aiml-08-lo02"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+The K-means algorithm (Lloyd's heuristic) partitions $N$ observations into $K$ disjoint clusters. It alternates between two steps until convergence: assignment, where each sample is assigned to its nearest centroid using Euclidean distance, and update, where each centroid is recalculated as the arithmetic mean of all vectors assigned to that cluster.
+
+### Worked Example
+Assigning 1D data points to two candidate cluster centers:
+
+```python
+import numpy as np
+
+points = np.array([2.0, 4.0, 10.0, 12.0])
+c1, c2 = 1.0, 15.0  # initial cluster centers
+
+# Step 1: Assignment based on absolute distance
+assignments = [0 if abs(p - c1) < abs(p - c2) else 1 for p in points]
+
+# Step 2: Centroid recomputation
+new_c1 = points[np.array(assignments) == 0].mean()
+new_c2 = points[np.array(assignments) == 1].mean()
+
+print("Cluster 1 mean:", round(new_c1, 2))  # 3.0
+print("Cluster 2 mean:", round(new_c2, 2))  # 11.0
+```
+
+### Common Mistake
+Failing to standardize feature scales prior to distance calculation. If feature A spans $[0, 10000]$ and feature B spans $[0, 1]$, distance is completely dominated by feature A, rendering feature B geometrically irrelevant.
+
+### Check Yourself
+What happens during Lloyd's algorithm if an update step moves none of the cluster centroids? The algorithm has reached local convergence and terminates.

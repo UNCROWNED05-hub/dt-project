@@ -1,0 +1,1067 @@
+[
+  {
+    "loId": "aiml-08-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q01",
+    "stem": "What is the primary defining characteristic of unsupervised learning compared to supervised learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Training data contains only feature vectors without external target labels or feedback."
+      },
+      {
+        "id": "b",
+        "text": "Loss is calculated using categorical cross-entropy against known targets."
+      },
+      {
+        "id": "c",
+        "text": "Models require manual hyperparameter tuning of learning rates on validation targets."
+      },
+      {
+        "id": "d",
+        "text": "Data points are guaranteed to belong to linearly separable classes."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Unsupervised learning operates on feature matrices without ground-truth label targets to uncover latent structure.",
+    "noteRef": "aiml-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q02",
+    "stem": "A fintech data scientist wants to cluster credit card transactions to discover anomalous purchasing behaviors. No labeled fraud database exists. Which strategy matches this scenario?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Train a supervised XGBoost classifier using dummy random 0 and 1 labels."
+      },
+      {
+        "id": "b",
+        "text": "Apply unsupervised clustering to detect sparse or distant transaction groupings without relying on fraud labels."
+      },
+      {
+        "id": "c",
+        "text": "Use ordinary least squares regression to predict transaction timestamps."
+      },
+      {
+        "id": "d",
+        "text": "Compute classification accuracy on an unlabelled validation set."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Without ground-truth fraud labels, unsupervised methods group points by feature geometry and detect sparse outliers.",
+    "noteRef": "aiml-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "aiml-08-q03",
+    "stem": "Which of the following tasks represent valid applications of unsupervised learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Segmenting customer bases into unlabelled behavioral cohorts"
+      },
+      {
+        "id": "b",
+        "text": "Compressing high-dimensional sensor data to 2 principal components"
+      },
+      {
+        "id": "c",
+        "text": "Discovering latent topic groupings across unlabelled text documents"
+      },
+      {
+        "id": "d",
+        "text": "Predicting house prices from square footage and bedroom count labels"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Customer segmentation, PCA compression, and topic modeling are unsupervised; house price prediction with targets is supervised regression.",
+    "noteRef": "aiml-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q04",
+    "stem": "Why can't clustering algorithms be directly validated using supervised metrics such as precision, recall, or cross-entropy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Clustering algorithms always yield zero numerical variance."
+      },
+      {
+        "id": "b",
+        "text": "Euclidean distance cannot be computed across multi-dimensional arrays."
+      },
+      {
+        "id": "c",
+        "text": "Unsupervised datasets lack target class labels to compare predictions against."
+      },
+      {
+        "id": "d",
+        "text": "Gradient descent cannot be formulated for unsupervised objectives."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Supervised metrics require known target labels, which do not exist in unlabelled clustering tasks.",
+    "noteRef": "aiml-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q05",
+    "stem": "In standard K-means clustering (Lloyd's algorithm), what are the two alternating phases of each iteration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Forward propagation of inputs, followed by backpropagation of gradients."
+      },
+      {
+        "id": "b",
+        "text": "Splitting tree nodes by Gini impurity, followed by cost-complexity pruning."
+      },
+      {
+        "id": "c",
+        "text": "Sorting eigenvalues in descending order, followed by vector projection."
+      },
+      {
+        "id": "d",
+        "text": "Assignment of points to nearest centroids, followed by updating centroids to the mean of their assigned points."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Lloyd's algorithm alternates between assigning points to the nearest center and recalculating centers as cluster means.",
+    "noteRef": "aiml-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-08-q06",
+    "stem": "Three 1D observations [2.0, 4.0, 9.0] are assigned to Cluster 1. What is the updated centroid value for Cluster 1 after the update step?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5.0"
+      },
+      {
+        "id": "b",
+        "text": "4.0"
+      },
+      {
+        "id": "c",
+        "text": "7.5"
+      },
+      {
+        "id": "d",
+        "text": "15.0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The updated centroid is the arithmetic mean: (2.0 + 4.0 + 9.0) / 3 = 15.0 / 3 = 5.0.",
+    "noteRef": "aiml-08-lo02",
+    "verify": "((2.0 + 4.0 + 9.0) / 3.0 === 5.0)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q07",
+    "stem": "An engineer clusters customer data using annual salary ($20,000 to $200,000) and age (18 to 75). Why does K-means produce clusters based almost entirely on salary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Salary is mathematically correlated with inertia while age is orthogonal."
+      },
+      {
+        "id": "b",
+        "text": "Euclidean distances are dominated by salary because its numeric range is thousands of times larger than age."
+      },
+      {
+        "id": "c",
+        "text": "K-means cannot accept integer features."
+      },
+      {
+        "id": "d",
+        "text": "Centroid recomputation ignores variables with fewer than three digits."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Without feature scaling, large numeric ranges dwarf smaller scales in Euclidean distance computations.",
+    "noteRef": "aiml-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q08",
+    "stem": "Why does standard K-means often produce sub-optimal clusterings when initialized with poorly chosen starting centroids?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Inertia increases with each iteration under poor initialization."
+      },
+      {
+        "id": "b",
+        "text": "Euclidean distance fails when centroids are initialized near the dataset center."
+      },
+      {
+        "id": "c",
+        "text": "Lloyd's algorithm converges to a local minimum of inertia rather than guaranteeing the global optimum."
+      },
+      {
+        "id": "d",
+        "text": "K-means requires all clusters to have strictly identical sample counts."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "K-means is sensitive to starting points and converges to local minima, which is why k-means++ and multiple initializations are used.",
+    "noteRef": "aiml-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q09",
+    "stem": "What does inertia measure in K-means clustering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The proportion of total variance explained by the top eigenvector."
+      },
+      {
+        "id": "b",
+        "text": "The ratio of inter-cluster separation to intra-cluster density."
+      },
+      {
+        "id": "c",
+        "text": "The execution time required for Lloyd's algorithm to reach convergence."
+      },
+      {
+        "id": "d",
+        "text": "The sum of squared Euclidean distances between each point and its assigned cluster centroid."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Inertia (or within-cluster sum of squares WCSS) aggregates squared distances from each point to its assigned centroid.",
+    "noteRef": "aiml-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-08-q10",
+    "stem": "A cluster contains two points with values 2.0 and 6.0. Its centroid is 4.0. What is the within-cluster sum of squared errors (inertia contribution) for this cluster?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8.0"
+      },
+      {
+        "id": "b",
+        "text": "4.0"
+      },
+      {
+        "id": "c",
+        "text": "16.0"
+      },
+      {
+        "id": "d",
+        "text": "2.0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Squared errors: (2.0 - 4.0)^2 + (6.0 - 4.0)^2 = (-2)^2 + 2^2 = 4 + 4 = 8.0.",
+    "noteRef": "aiml-08-lo03",
+    "verify": "(Math.pow(2.0 - 4.0, 2) + Math.pow(6.0 - 4.0, 2) === 8.0)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q11",
+    "stem": "Testing K values from 1 to 5 yields inertias: K=1: 500, K=2: 240, K=3: 110, K=4: 100, K=5: 92. Where is the optimal elbow?",
+    "options": [
+      {
+        "id": "a",
+        "text": "K = 5, because inertia reaches its lowest recorded numeric value."
+      },
+      {
+        "id": "b",
+        "text": "K = 3, because the marginal reduction in inertia drops sharply from 130 to 10 afterwards."
+      },
+      {
+        "id": "c",
+        "text": "K = 1, because it preserves maximum intra-cluster variance."
+      },
+      {
+        "id": "d",
+        "text": "K = 2, because inertia dropped by more than 50% from K=1."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "From K=2 to 3 inertia drops by 130; from K=3 to 4 it drops by only 10, creating an elbow at K=3.",
+    "noteRef": "aiml-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q12",
+    "stem": "Why is picking the cluster count K that strictly minimizes inertia an invalid strategy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Minimizing inertia causes the algorithm to diverge into infinite loops."
+      },
+      {
+        "id": "b",
+        "text": "Inertia can only be evaluated when K is a power of 2."
+      },
+      {
+        "id": "c",
+        "text": "Inertia decreases monotonically and reaches zero when K equals the number of training samples N."
+      },
+      {
+        "id": "d",
+        "text": "The scikit-learn API throws an exception when inertia is below 1.0."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "If K = N, every sample is its own centroid with zero distance and zero inertia, providing no grouping value.",
+    "noteRef": "aiml-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q13",
+    "stem": "What is the theoretical range of the silhouette coefficient for a sample?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.0 to 100.0"
+      },
+      {
+        "id": "b",
+        "text": "-Infinity to +Infinity"
+      },
+      {
+        "id": "c",
+        "text": "0.0 to 1.0"
+      },
+      {
+        "id": "d",
+        "text": "-1.0 to +1.0"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The silhouette coefficient is bounded between -1.0 (probable misclassification) and +1.0 (dense, well-separated cluster).",
+    "noteRef": "aiml-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-08-q14",
+    "stem": "For point i, intra-cluster distance a(i) is 2.0 and nearest-cluster distance b(i) is 6.0. What is the silhouette coefficient s(i)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.67"
+      },
+      {
+        "id": "b",
+        "text": "0.33"
+      },
+      {
+        "id": "c",
+        "text": "1.00"
+      },
+      {
+        "id": "d",
+        "text": "-0.67"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "s(i) = (b - a) / max(a, b) = (6.0 - 2.0) / 6.0 = 4.0 / 6.0 = 0.667.",
+    "noteRef": "aiml-08-lo04",
+    "verify": "(Math.round(((6.0 - 2.0) / 6.0) * 100) / 100 === 0.67)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q15",
+    "stem": "A clustering run yields an average silhouette score of -0.35. How should the engineering team interpret this result?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The clusters are exceptionally compact and isolated."
+      },
+      {
+        "id": "b",
+        "text": "Many points are closer to samples in neighboring clusters than to members of their assigned cluster."
+      },
+      {
+        "id": "c",
+        "text": "The feature matrix was scaled appropriately using standard z-scores."
+      },
+      {
+        "id": "d",
+        "text": "The algorithm successfully converged to the global optimum of inertia."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Negative silhouette values mean points are closer on average to neighboring clusters, indicating bad clustering.",
+    "noteRef": "aiml-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "aiml-08-q16",
+    "stem": "Which of the following statements regarding the silhouette coefficient are true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A value near +1 indicates samples are well matched to their own cluster and distant from neighboring clusters"
+      },
+      {
+        "id": "b",
+        "text": "Unlike inertia, silhouette score can penalize models with overly large K values"
+      },
+      {
+        "id": "c",
+        "text": "Computing silhouette score requires calculating pairwise distances between observations"
+      },
+      {
+        "id": "d",
+        "text": "Silhouette score can only be calculated when true class labels are available"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Silhouette evaluates intra- and inter-cluster pairwise distances without true labels, and penalizes poor partitions.",
+    "noteRef": "aiml-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q17",
+    "stem": "What tree diagram visualizes the nested sequence of merges in hierarchical clustering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ROC curve"
+      },
+      {
+        "id": "b",
+        "text": "Scree plot"
+      },
+      {
+        "id": "c",
+        "text": "Dendrogram"
+      },
+      {
+        "id": "d",
+        "text": "Confusion matrix"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A dendrogram illustrates hierarchical agglomerative merges where branch height corresponds to merge distance.",
+    "noteRef": "aiml-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q18",
+    "stem": "An analyst cuts a dendrogram horizontally at a height that bisects exactly 4 vertical tree branches. How many clusters are created?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 clusters"
+      },
+      {
+        "id": "b",
+        "text": "8 clusters"
+      },
+      {
+        "id": "c",
+        "text": "16 clusters"
+      },
+      {
+        "id": "d",
+        "text": "4 clusters"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Each intersected vertical branch represents one distinct cluster at that cut threshold.",
+    "noteRef": "aiml-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "aiml-08-q19",
+    "stem": "What linkage criterion in hierarchical agglomerative clustering minimizes the total within-cluster variance when joining two clusters?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ward linkage"
+      },
+      {
+        "id": "b",
+        "text": "Single linkage"
+      },
+      {
+        "id": "c",
+        "text": "Complete linkage"
+      },
+      {
+        "id": "d",
+        "text": "Average linkage"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Ward's linkage selects the pair of clusters to merge that minimizes the increase in total within-cluster sum of squares.",
+    "noteRef": "aiml-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q20",
+    "stem": "What computational complexity limitation makes raw hierarchical agglomerative clustering difficult to scale to 500,000 observations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It requires solving a non-convex neural backpropagation graph."
+      },
+      {
+        "id": "b",
+        "text": "It requires O(N^2) memory to store pairwise distances and O(N^2) to O(N^3) time complexity."
+      },
+      {
+        "id": "c",
+        "text": "It requires all features to have zero covariance."
+      },
+      {
+        "id": "d",
+        "text": "It cannot execute without 10-fold cross validation targets."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Storing and updating the full pairwise distance matrix scales quadratically with dataset row count N.",
+    "noteRef": "aiml-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q21",
+    "stem": "What mathematical property characterizes the first principal component (PC1) in PCA?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It passes through the origin and minimizes the sum of absolute values."
+      },
+      {
+        "id": "b",
+        "text": "It is parallel to the target label vector y."
+      },
+      {
+        "id": "c",
+        "text": "It points in the orthogonal direction that maximizes the variance of the projected data."
+      },
+      {
+        "id": "d",
+        "text": "It connects the cluster centroids found by K-means."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "PC1 is the linear combination of features that captures the largest possible variance in the dataset.",
+    "noteRef": "aiml-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-08-q22",
+    "stem": "A 3-feature covariance matrix has eigenvalues 12.0, 6.0, and 2.0. What percentage of total variance is explained by the first two principal components?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60%"
+      },
+      {
+        "id": "b",
+        "text": "75%"
+      },
+      {
+        "id": "c",
+        "text": "50%"
+      },
+      {
+        "id": "d",
+        "text": "90%"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Total variance = 12 + 6 + 2 = 20. Top 2 PCs = (12 + 6) / 20 = 18 / 20 = 0.90 (90%).",
+    "noteRef": "aiml-08-lo06",
+    "verify": "(((12.0 + 6.0) / (12.0 + 6.0 + 2.0)) === 0.9)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q23",
+    "stem": "A dataset has features with variances: income (var = 1,000,000) and age (var = 25). If PCA is run without standardizing features, what will occur?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PC1 will align almost entirely along the income axis simply due to its unscaled numerical magnitude."
+      },
+      {
+        "id": "b",
+        "text": "PCA will fail with a singular matrix division by zero error."
+      },
+      {
+        "id": "c",
+        "text": "The explained variance ratio will be equally split at 50% each."
+      },
+      {
+        "id": "d",
+        "text": "Age will be dropped automatically by scikit-learn."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "PCA maximizes raw variance; unstandardized high-variance features dominate eigenvectors artificially.",
+    "noteRef": "aiml-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q24",
+    "stem": "Why are all principal components mutually orthogonal to one another?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Orthogonality is enforced by L1 Lasso penalties during coordinate descent."
+      },
+      {
+        "id": "b",
+        "text": "They correspond to eigenvectors of a symmetric real covariance matrix with distinct eigenvalues."
+      },
+      {
+        "id": "c",
+        "text": "They are calculated using greedy forward stepwise selection."
+      },
+      {
+        "id": "d",
+        "text": "Because all features in the input matrix were strictly independent."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The spectral theorem guarantees that eigenvectors of a symmetric real matrix (covariance matrix) are mutually orthogonal.",
+    "noteRef": "aiml-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q25",
+    "stem": "Given centered data X (N x D) and top K eigenvectors W (D x K), how is the projected lower-dimensional representation Z computed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Z = W @ X"
+      },
+      {
+        "id": "b",
+        "text": "Z = X @ X^T"
+      },
+      {
+        "id": "c",
+        "text": "Z = X @ W"
+      },
+      {
+        "id": "d",
+        "text": "Z = W @ W^T"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Matrix multiplication of centered data X (N x D) with projection matrix W (D x K) yields Z of dimension (N x K).",
+    "noteRef": "aiml-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo07",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-08-q26",
+    "stem": "If you project a dataset of 500 rows and 40 features down to 4 principal components, how many total numbers exist in the projected matrix Z?",
+    "options": [
+      {
+        "id": "a",
+        "text": "20000"
+      },
+      {
+        "id": "b",
+        "text": "500"
+      },
+      {
+        "id": "c",
+        "text": "160"
+      },
+      {
+        "id": "d",
+        "text": "2000"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Dimension of Z is 500 x 4 = 2,000 elements.",
+    "noteRef": "aiml-08-lo07",
+    "verify": "(500 * 4 === 2000)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q27",
+    "stem": "An ML pipeline compresses 100 tabular features to 10 principal components before training a logistic regression model. Why might classification accuracy drop?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PCA maximizes overall feature variance without knowledge of target labels, potentially discarding low-variance predictive signals."
+      },
+      {
+        "id": "b",
+        "text": "Logistic regression cannot process principal component inputs."
+      },
+      {
+        "id": "c",
+        "text": "PCA introduces severe multi-collinearity among components."
+      },
+      {
+        "id": "d",
+        "text": "Linear projections always cause overfitting on training sets."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Unsupervised PCA preserves large variance directions, which do not necessarily align with class discriminability.",
+    "noteRef": "aiml-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q28",
+    "stem": "How is reconstruction error (information loss) computed after projecting X to Z and reconstructing X_hat = Z @ W^T?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The sum of singular values divided by batch size."
+      },
+      {
+        "id": "b",
+        "text": "Mean squared error between original centered X and reconstructed X_hat."
+      },
+      {
+        "id": "c",
+        "text": "The cross-entropy between projection weights W and eigenvectors."
+      },
+      {
+        "id": "d",
+        "text": "The determinant of projection matrix W."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Reconstruction error measures the residual Frobenius norm or mean squared error between original X and reconstructed X_hat.",
+    "noteRef": "aiml-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-08-q29",
+    "stem": "Why are non-linear embedding algorithms like t-SNE and UMAP used instead of PCA for complex manifolds?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They guarantee 100% explained variance in exactly 1 dimension."
+      },
+      {
+        "id": "b",
+        "text": "They train much faster than linear matrix decomposition on large matrices."
+      },
+      {
+        "id": "c",
+        "text": "They can unfold non-linear geometric structures (like Swiss rolls) by preserving local neighborhood probabilities."
+      },
+      {
+        "id": "d",
+        "text": "They provide convex global optimization guarantees."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "t-SNE and UMAP model local manifold topologies that linear planes in PCA cannot represent.",
+    "noteRef": "aiml-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-08-q30",
+    "stem": "A researcher adjusts the perplexity hyperparameter in t-SNE from 5 to 50. What does perplexity control?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The learning rate of the gradient descent optimizer."
+      },
+      {
+        "id": "b",
+        "text": "The number of output dimensions in the embedded space."
+      },
+      {
+        "id": "c",
+        "text": "The L2 penalty applied to low-dimensional coordinates."
+      },
+      {
+        "id": "d",
+        "text": "The effective number of local neighbors each point considers when constructing conditional probabilities."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Perplexity balances attention between local and broader neighborhood structures in high-dimensional space.",
+    "noteRef": "aiml-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "aiml-08-q31",
+    "stem": "Which of the following are recognized differences between t-SNE and UMAP?",
+    "options": [
+      {
+        "id": "a",
+        "text": "UMAP generally scales better computationally to larger datasets than standard t-SNE"
+      },
+      {
+        "id": "b",
+        "text": "UMAP tends to preserve global data topology better than t-SNE"
+      },
+      {
+        "id": "c",
+        "text": "Both techniques are primarily used for low-dimensional exploratory visualization"
+      },
+      {
+        "id": "d",
+        "text": "t-SNE produces an exact linear orthogonal projection matrix"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "UMAP is faster and preserves more global structure; both are non-linear embedding algorithms.",
+    "noteRef": "aiml-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-08-q32",
+    "stem": "Why does t-SNE use a Student-t distribution rather than a Gaussian distribution in the low-dimensional embedding space?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Its heavy tails alleviate the crowding problem by allowing moderate distances in high dimensions to spread out in 2D."
+      },
+      {
+        "id": "b",
+        "text": "Student-t distributions have faster analytical gradient computations."
+      },
+      {
+        "id": "c",
+        "text": "Gaussian distributions cannot be evaluated in 2 dimensions."
+      },
+      {
+        "id": "d",
+        "text": "It prevents coordinates from becoming negative numbers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The heavy tail of the Student-t distribution prevents points from collapsing into a dense central crowd.",
+    "noteRef": "aiml-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "aiml-08-q33",
+    "stem": "Why is traditional t-SNE considered 'transductive' rather than 'inductive' in machine learning workflows?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It requires target labels for inductive cross-entropy loss calculation."
+      },
+      {
+        "id": "b",
+        "text": "It directly optimizes coordinates for the specific points in the training set and does not learn a parameterized mapping function for new points."
+      },
+      {
+        "id": "c",
+        "text": "It transfers weights across pre-trained neural network layers."
+      },
+      {
+        "id": "d",
+        "text": "It inducts new clusters by evaluating tree leaf splits."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Standard t-SNE optimizes embedding coordinates for the given batch and cannot transform new unseen streaming samples without refitting.",
+    "noteRef": "aiml-08-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-08-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "aiml-08-q34",
+    "stem": "A microservice receives 500 feature requests per second and must project them into 8 dimensions in under 5ms. Why is PCA chosen over t-SNE for this pipeline?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PCA has non-linear activation functions that accelerate neural matrix units."
+      },
+      {
+        "id": "b",
+        "text": "t-SNE produces complex imaginary coordinates under low latency."
+      },
+      {
+        "id": "c",
+        "text": "PCA transforms new vectors via a single static matrix multiplication (Z = X @ W), whereas standard t-SNE cannot project out-of-sample points."
+      },
+      {
+        "id": "d",
+        "text": "PCA is guaranteed to yield 100% silhouette score."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Linear PCA learns a fixed projection matrix W that enables instantaneous out-of-sample inference.",
+    "noteRef": "aiml-08-lo09",
+    "reviewed": false
+  }
+]

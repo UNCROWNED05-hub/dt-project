@@ -1,0 +1,44 @@
+---
+loId: "aiml-10-lo02"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Transformers generally fall into three structural paradigms:
+1. Encoder-only (e.g., BERT): bidirectional attention where every token attends to all tokens, ideal for classification and embeddings.
+2. Encoder-Decoder (e.g., T5): an encoder processes input context while a cross-attention decoder generates output, ideal for translation.
+3. Decoder-only (e.g., GPT, LLaMA): autoregressive causal models where a lower-triangular attention mask prevents tokens from attending to future tokens, standard for generative text synthesis.
+*Last verified: February 2026.*
+
+### Worked Example
+Applying a causal attention mask to prevent future token leakage:
+
+```python
+import numpy as np
+
+# Sequence of 3 tokens: raw dot product scores
+raw_scores = np.array([
+    [5.0, 2.0, 1.0],
+    [3.0, 6.0, 2.0],
+    [1.0, 4.0, 7.0]
+])
+
+# Upper triangular causal mask with -infinity
+mask = np.triu(np.ones((3, 3)), k=1) * -1e9
+masked_scores = raw_scores + mask
+
+# Softmax sets masked positions to exactly 0.0 probability
+exp_m = np.exp(masked_scores - np.max(masked_scores, axis=-1, keepdims=True))
+attn_probs = exp_m / np.sum(exp_m, axis=-1, keepdims=True)
+
+print("Token 0 attention (can only see itself):
+", attn_probs[0].round(2)) # [1.0, 0.0, 0.0]
+```
+
+### Common Mistake
+Attempting to generate long-form generative text with pure bidirectional encoder models. Without causal masking, bidirectional models leak future tokens during generation and cannot generate autoregressively in an efficient manner.
+
+### Check Yourself
+Which token positions can token 3 attend to in a causal decoder model? Tokens 1, 2, and 3 (past tokens and itself).

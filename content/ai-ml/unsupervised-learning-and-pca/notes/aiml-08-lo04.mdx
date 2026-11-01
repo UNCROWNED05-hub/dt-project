@@ -1,0 +1,26 @@
+---
+loId: "aiml-08-lo04"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+The silhouette coefficient evaluates clustering quality independently of monotonically decreasing inertia. For sample $i$, let $a(i)$ be the mean intra-cluster distance to points in its own cluster, and $b(i)$ be the mean distance to points in the nearest neighboring cluster. The silhouette score is $s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$, bounded between $-1$ and $+1$.
+
+### Worked Example
+Computing the silhouette coefficient for a single point:
+
+```python
+a_i = 1.5   # average distance to members of same cluster
+b_i = 4.5   # average distance to members of nearest rival cluster
+
+# Silhouette formula
+s_i = (b_i - a_i) / max(a_i, b_i)
+print("Silhouette coefficient:", round(s_i, 3))  # (4.5 - 1.5)/4.5 = 0.667
+```
+
+### Common Mistake
+Interpreting a negative silhouette score as acceptable. A negative score indicates that sample $i$ is, on average, closer to points in a neighboring cluster than to points in its assigned cluster, signaling outright misclassification.
+
+### Check Yourself
+What does an average dataset silhouette coefficient near $+1.0$ indicate? Dense, tightly clustered points with substantial geometric separation between distinct clusters.

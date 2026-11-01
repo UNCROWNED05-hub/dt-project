@@ -1,0 +1,1066 @@
+[
+  {
+    "loId": "aiml-09-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q01",
+    "stem": "What mathematical operation does an artificial neuron perform before passing its value to an activation function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An affine linear combination: the dot product of weights and inputs plus a scalar bias."
+      },
+      {
+        "id": "b",
+        "text": "Eigenvector decomposition of the input covariance matrix."
+      },
+      {
+        "id": "c",
+        "text": "Calculation of Euclidean distance to the nearest cluster centroid."
+      },
+      {
+        "id": "d",
+        "text": "A recursive binary split maximizing Gini impurity."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "An artificial neuron computes z = w^T * x + b, which is an affine linear transformation.",
+    "noteRef": "aiml-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q02",
+    "stem": "A neuron has inputs x = [3.0, 2.0], weights w = [2.0, -1.0], and bias b = 0.5. What is the pre-activation value z?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3.5"
+      },
+      {
+        "id": "b",
+        "text": "4.5"
+      },
+      {
+        "id": "c",
+        "text": "5.0"
+      },
+      {
+        "id": "d",
+        "text": "8.5"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "z = (3.0 * 2.0) + (2.0 * -1.0) + 0.5 = 6.0 - 2.0 + 0.5 = 4.5.",
+    "noteRef": "aiml-09-lo01",
+    "verify": "((3.0 * 2.0) + (2.0 * -1.0) + 0.5 === 4.5)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q03",
+    "stem": "A student builds a single neuron model without a bias term (b = 0). What geometric constraint does this impose on the decision boundary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The decision boundary becomes parabolic."
+      },
+      {
+        "id": "b",
+        "text": "The weights are constrained to sum to 1.0."
+      },
+      {
+        "id": "c",
+        "text": "The hyperplane decision boundary is forced to pass directly through the coordinate origin (0, 0)."
+      },
+      {
+        "id": "d",
+        "text": "Gradients cannot be computed via backpropagation."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Setting b = 0 forces w^T * x = 0, meaning the decision boundary must intersect the origin.",
+    "noteRef": "aiml-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q04",
+    "stem": "Why can a single-layer perceptron without hidden layers never solve the XOR logic classification problem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Single perceptrons can only process positive real values."
+      },
+      {
+        "id": "b",
+        "text": "Binary inputs cause division by zero during loss computation."
+      },
+      {
+        "id": "c",
+        "text": "The perceptron learning rule requires continuous target variables."
+      },
+      {
+        "id": "d",
+        "text": "XOR is not linearly separable, and a single linear hyperplane cannot partition its classes."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "XOR requires a non-linear decision boundary; single-layer perceptrons can only form linear separation hyperplanes.",
+    "noteRef": "aiml-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q05",
+    "stem": "What is the mathematical definition of the Rectified Linear Unit (ReLU) activation function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "f(z) = max(0, z)"
+      },
+      {
+        "id": "b",
+        "text": "f(z) = 1 / (1 + exp(-z))"
+      },
+      {
+        "id": "c",
+        "text": "f(z) = (exp(z) - exp(-z)) / (exp(z) + exp(-z))"
+      },
+      {
+        "id": "d",
+        "text": "f(z) = exp(z) / sum(exp(z))"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "ReLU returns 0 for negative inputs and passes positive values linearly unchanged: max(0, z).",
+    "noteRef": "aiml-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q06",
+    "stem": "A deep 20-layer neural network uses Sigmoid activation in all hidden layers. During training, early layers learn almost nothing. What is the root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exploding activations: Sigmoid outputs exceed 100 on deep forward passes."
+      },
+      {
+        "id": "b",
+        "text": "Vanishing gradients: Sigmoid derivatives saturate near zero for large inputs, attenuating backpropagated gradients."
+      },
+      {
+        "id": "c",
+        "text": "Dead neuron collapse: Sigmoid sets all negative inputs to exactly 0."
+      },
+      {
+        "id": "d",
+        "text": "The model ran out of memory storing matrix determinants."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The derivative of Sigmoid has a maximum value of 0.25; chaining 20 such terms attenuates gradients to near zero.",
+    "noteRef": "aiml-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "aiml-09-q07",
+    "stem": "Which of the following activation functions output values bounded strictly between 0 and 1?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sigmoid"
+      },
+      {
+        "id": "b",
+        "text": "Softmax (each individual class probability)"
+      },
+      {
+        "id": "c",
+        "text": "Standard ReLU"
+      },
+      {
+        "id": "d",
+        "text": "Hyperbolic Tangent (Tanh)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "Sigmoid and Softmax probabilities are bounded in (0, 1). ReLU is [0, inf), and Tanh is (-1, 1).",
+    "noteRef": "aiml-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q08",
+    "stem": "Why does the 'Dying ReLU' problem occur during training?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The activation function explodes to positive infinity when z > 1."
+      },
+      {
+        "id": "b",
+        "text": "The Softmax normalizer divides by zero when class counts are odd."
+      },
+      {
+        "id": "c",
+        "text": "If a neuron's weights receive a large update that keeps z <= 0 for all dataset inputs, its gradient is permanently 0."
+      },
+      {
+        "id": "d",
+        "text": "Backpropagation cannot compute the chain rule for piecewise functions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "When z <= 0, ReLU gradient is 0. If a neuron never activates positively on any training point, it cannot update its weights.",
+    "noteRef": "aiml-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q09",
+    "stem": "In a Multi-Layer Perceptron, what happens if all hidden layers use purely linear activation functions (f(z) = z)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The network achieves universal approximation capacity."
+      },
+      {
+        "id": "b",
+        "text": "Backpropagation fails due to singular matrices."
+      },
+      {
+        "id": "c",
+        "text": "The model overfits completely to training noise."
+      },
+      {
+        "id": "d",
+        "text": "The multi-layer network mathematically collapses into a single linear regression model."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A composition of linear functions is strictly linear: W2 @ (W1 @ x) = (W2 @ W1) @ x = W_eff @ x.",
+    "noteRef": "aiml-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q10",
+    "stem": "An MLP has 10 input features, a hidden layer of 32 neurons with bias, and an output layer of 2 neurons with bias. How many total learnable parameters exist?",
+    "options": [
+      {
+        "id": "a",
+        "text": "418"
+      },
+      {
+        "id": "b",
+        "text": "320"
+      },
+      {
+        "id": "c",
+        "text": "352"
+      },
+      {
+        "id": "d",
+        "text": "450"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Layer 1: (10 * 32) + 32 = 352. Layer 2: (32 * 2) + 2 = 66. Total = 352 + 66 = 418.",
+    "noteRef": "aiml-09-lo03",
+    "verify": "(((10 * 32) + 32) + ((32 * 2) + 2) === 418)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q11",
+    "stem": "A batch of 64 images, each with 784 flattened pixels, is passed to an MLP hidden layer with 128 neurons. What is the shape of the resulting activation tensor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(784, 128)"
+      },
+      {
+        "id": "b",
+        "text": "(64, 128)"
+      },
+      {
+        "id": "c",
+        "text": "(64, 784)"
+      },
+      {
+        "id": "d",
+        "text": "(128, 64)"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Multiplying (64, 784) by weight matrix (784, 128) yields output activations of shape (64, 128).",
+    "noteRef": "aiml-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q12",
+    "stem": "What does the Universal Approximation Theorem state about feedforward neural networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Any deep network can achieve zero training error in fewer than 100 epochs."
+      },
+      {
+        "id": "b",
+        "text": "Linear networks can approximate non-linear distributions if trained with Adam."
+      },
+      {
+        "id": "c",
+        "text": "A network with a single hidden layer and non-linear activations can approximate any continuous function on a compact subset of R^n to arbitrary precision given enough neurons."
+      },
+      {
+        "id": "d",
+        "text": "Convolutional layers are mathematically required to approximate spatial functions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The theorem proves that a single non-linear hidden layer with sufficient width is a universal function approximator.",
+    "noteRef": "aiml-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q13",
+    "stem": "Which loss function is the standard choice for multi-class classification with mutually exclusive target categories?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mean Squared Error"
+      },
+      {
+        "id": "b",
+        "text": "Huber Loss"
+      },
+      {
+        "id": "c",
+        "text": "Hinge Loss"
+      },
+      {
+        "id": "d",
+        "text": "Categorical Cross-Entropy"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Categorical cross-entropy paired with Softmax output is the standard loss for multi-class classification.",
+    "noteRef": "aiml-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q14",
+    "stem": "A model predicts target class probability p = 0.5 for an observation whose true label is 1. Given ln(0.5) = -0.693, what is the cross-entropy loss?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.693"
+      },
+      {
+        "id": "b",
+        "text": "0.500"
+      },
+      {
+        "id": "c",
+        "text": "0.250"
+      },
+      {
+        "id": "d",
+        "text": "1.000"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Loss = -ln(0.5) = -(-0.6931...) = 0.693.",
+    "noteRef": "aiml-09-lo04",
+    "verify": "(Math.round(-Math.log(0.5) * 1000) / 1000 === 0.693)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q15",
+    "stem": "An engineer trains a house price predictor and notices that a few extreme luxury home outliers distort weight updates drastically under MSE loss. What loss function provides robust mitigation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Binary Cross-Entropy"
+      },
+      {
+        "id": "b",
+        "text": "Huber Loss or Mean Absolute Error (MAE)"
+      },
+      {
+        "id": "c",
+        "text": "Categorical Cross-Entropy"
+      },
+      {
+        "id": "d",
+        "text": "Cosine Similarity Loss"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "MAE and Huber loss grow linearly rather than quadratically for large residuals, mitigating outlier distortion.",
+    "noteRef": "aiml-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q16",
+    "stem": "Why does pairing Softmax output with Cross-Entropy loss produce clean, linear error gradients during backpropagation (d L / d z_i = y_hat_i - y_i)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Hessian matrix becomes identity."
+      },
+      {
+        "id": "b",
+        "text": "The chain rule sets intermediate Jacobian determinants to zero."
+      },
+      {
+        "id": "c",
+        "text": "The logarithm in cross-entropy perfectly cancels the exponential function in softmax denominator during differentiation."
+      },
+      {
+        "id": "d",
+        "text": "Softmax probabilities are converted into binary step functions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Differentiating -log(softmax(z)) yields the clean gradient (p_i - y_i), preventing gradient saturation.",
+    "noteRef": "aiml-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q17",
+    "stem": "What mathematical principle enables backpropagation to calculate parameter gradients across chained neural network layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Central Limit Theorem"
+      },
+      {
+        "id": "b",
+        "text": "Bayes' Theorem"
+      },
+      {
+        "id": "c",
+        "text": "The Law of Large Numbers"
+      },
+      {
+        "id": "d",
+        "text": "The calculus Chain Rule"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Backpropagation applies the calculus chain rule recursively backward from loss through intermediate composite functions.",
+    "noteRef": "aiml-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q18",
+    "stem": "In a computational graph: dL/da = 4.0, da/dz = 0.5, and dz/dw = 3.0. According to the chain rule, what is the parameter gradient dL/dw?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6.0"
+      },
+      {
+        "id": "b",
+        "text": "7.5"
+      },
+      {
+        "id": "c",
+        "text": "12.0"
+      },
+      {
+        "id": "d",
+        "text": "2.0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "dL/dw = (dL/da) * (da/dz) * (dz/dw) = 4.0 * 0.5 * 3.0 = 6.0.",
+    "noteRef": "aiml-09-lo05",
+    "verify": "(4.0 * 0.5 * 3.0 === 6.0)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q19",
+    "stem": "During backpropagation, an intermediate neuron has pre-activation z = -5.0 with standard ReLU activation. How does this affect gradient flow to earlier layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The gradient is multiplied by -5.0, causing exploding gradients."
+      },
+      {
+        "id": "b",
+        "text": "The gradient through this neuron becomes 0, blocking backpropagation to any upstream weights connected solely to it."
+      },
+      {
+        "id": "c",
+        "text": "The gradient is converted into positive 5.0."
+      },
+      {
+        "id": "d",
+        "text": "The optimizer resets the neuron's bias to 1.0."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "ReLU derivative is 0 for z < 0. Multiplying upstream gradients by 0 stops backpropagation through that path.",
+    "noteRef": "aiml-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q20",
+    "stem": "Why is reverse-mode automatic differentiation (backpropagation) computationally superior to forward-mode differentiation for deep neural networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It avoids evaluating non-linear activation functions."
+      },
+      {
+        "id": "b",
+        "text": "It requires no memory storage for intermediate activations."
+      },
+      {
+        "id": "c",
+        "text": "It computes gradients for millions of parameters in a single backward pass rather than requiring a separate forward pass per parameter."
+      },
+      {
+        "id": "d",
+        "text": "It converts matrix multiplications into scalar additions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "When output dimension is 1 (scalar loss) and parameter count is huge (millions), reverse-mode scales as O(1) passes vs O(P) passes for forward-mode.",
+    "noteRef": "aiml-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q21",
+    "stem": "How does SGD with Momentum modify standard stochastic gradient descent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It increases the batch size by 2x after every training epoch."
+      },
+      {
+        "id": "b",
+        "text": "It clips gradients to strictly positive numbers."
+      },
+      {
+        "id": "c",
+        "text": "It calculates second derivatives using the exact Hessian matrix."
+      },
+      {
+        "id": "d",
+        "text": "It accumulates an exponential moving average of past gradients to maintain directional velocity and dampen oscillations."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Momentum acts like a heavy ball rolling down a loss valley, smoothing high-frequency oscillations.",
+    "noteRef": "aiml-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q22",
+    "stem": "Under standard SGD with learning rate lr = 0.05, a parameter w = 2.0 receives gradient grad = 4.0. What is the updated parameter value?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.8"
+      },
+      {
+        "id": "b",
+        "text": "2.2"
+      },
+      {
+        "id": "c",
+        "text": "1.6"
+      },
+      {
+        "id": "d",
+        "text": "0.2"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "w_new = w - (lr * grad) = 2.0 - (0.05 * 4.0) = 2.0 - 0.20 = 1.8.",
+    "noteRef": "aiml-09-lo06",
+    "verify": "((2.0 - (0.05 * 4.0)) === 1.8)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q23",
+    "stem": "An NLP model encounters sparse features where rare words update infrequently. Why does the Adam optimizer outperform vanilla SGD on this workload?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Adam converts sparse inputs into dense convolutional tensors."
+      },
+      {
+        "id": "b",
+        "text": "Adam maintains individual adaptive learning rates per parameter, scaling up updates for infrequently updated weights."
+      },
+      {
+        "id": "c",
+        "text": "Adam resets weights of rare words to zero after every epoch."
+      },
+      {
+        "id": "d",
+        "text": "Adam eliminates the need for backpropagation."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Adam divides by the square root of the second moment (running variance), giving larger effective steps to infrequently updated parameters.",
+    "noteRef": "aiml-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "aiml-09-q24",
+    "stem": "Which of the following components are integrated into the Adam optimizer update formula?",
+    "options": [
+      {
+        "id": "a",
+        "text": "First moment estimate (exponentially decaying average of past gradients)"
+      },
+      {
+        "id": "b",
+        "text": "Second moment estimate (exponentially decaying average of squared past gradients)"
+      },
+      {
+        "id": "c",
+        "text": "Bias correction terms to compensate for initialization at zero"
+      },
+      {
+        "id": "d",
+        "text": "Exact inversion of the Hessian curvature matrix"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Adam uses first and second moments with bias correction; it does not compute second-order Hessian inversions.",
+    "noteRef": "aiml-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q25",
+    "stem": "What core architectural advantage allows 2D convolutional layers to process images with vastly fewer weights than fully connected layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The elimination of non-linear activation functions."
+      },
+      {
+        "id": "b",
+        "text": "Direct storage of images in compressed JPEG format."
+      },
+      {
+        "id": "c",
+        "text": "Local receptive fields and weight sharing across spatial positions."
+      },
+      {
+        "id": "d",
+        "text": "Conversion of pixels to orthogonal principal components."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A small kernel is reused across all spatial locations, achieving translation equivariance with parameter sharing.",
+    "noteRef": "aiml-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo07",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q26",
+    "stem": "An input image of spatial dimensions 28x28 is convolved with a 5x5 kernel using stride 1 and valid padding (zero padding = 0). What is the output spatial width?",
+    "options": [
+      {
+        "id": "a",
+        "text": "28"
+      },
+      {
+        "id": "b",
+        "text": "23"
+      },
+      {
+        "id": "c",
+        "text": "14"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Output dimension = W - K + 1 = 28 - 5 + 1 = 24.",
+    "noteRef": "aiml-09-lo07",
+    "verify": "(28 - 5 + 1 === 24)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q27",
+    "stem": "A computer vision model must maintain identical spatial resolution (H x W) after passing through a 3x3 convolution layer with stride 1. What padding mode must be selected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Same padding (padding = 1 on all borders)"
+      },
+      {
+        "id": "b",
+        "text": "Valid padding (padding = 0)"
+      },
+      {
+        "id": "c",
+        "text": "Double padding (padding = 3)"
+      },
+      {
+        "id": "d",
+        "text": "Reflective stride downsampling"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "For kernel size 3, padding of 1 zero on each border preserves original dimensions: (W - 3 + 2*1)/1 + 1 = W.",
+    "noteRef": "aiml-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q28",
+    "stem": "How many learnable parameters (including bias) exist in a conv layer that maps 16 input channels to 32 output feature maps using 3x3 kernels?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1,536"
+      },
+      {
+        "id": "b",
+        "text": "4,640"
+      },
+      {
+        "id": "c",
+        "text": "9,216"
+      },
+      {
+        "id": "d",
+        "text": "512"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Weights = (3 * 3 * 16 * 32) = 4,608. Biases = 32. Total = 4,608 + 32 = 4,640.",
+    "noteRef": "aiml-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-09-q29",
+    "stem": "What is the primary function of a Max Pooling layer in a Convolutional Neural Network?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To update convolution filter weights using backpropagation."
+      },
+      {
+        "id": "b",
+        "text": "To normalize channel activations to zero mean."
+      },
+      {
+        "id": "c",
+        "text": "To spatially downsample feature maps, reducing compute and conferring small translation invariance."
+      },
+      {
+        "id": "d",
+        "text": "To increase the channel depth of feature maps."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Max pooling downsamples spatial height and width while retaining the strongest activations across channels.",
+    "noteRef": "aiml-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-09-q30",
+    "stem": "A 2x2 max pooling operation with stride 2 is applied to the patch [[2, 7], [9, 4]]. What scalar value is output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "7"
+      },
+      {
+        "id": "b",
+        "text": "22"
+      },
+      {
+        "id": "c",
+        "text": "5.5"
+      },
+      {
+        "id": "d",
+        "text": "9"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Max pooling outputs the maximum element: max(2, 7, 9, 4) = 9.",
+    "noteRef": "aiml-09-lo08",
+    "verify": "(Math.max(2, 7, 9, 4) === 9)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "aiml-09-q31",
+    "stem": "A developer inspects a PyTorch CNN model summary and notices that the MaxPool2d layer has 0 learnable parameters. Is this expected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, pooling operations are non-parametric mathematical aggregations without weights or biases."
+      },
+      {
+        "id": "b",
+        "text": "No, pooling layers require learnable threshold parameters."
+      },
+      {
+        "id": "c",
+        "text": "No, PyTorch forgot to initialize the pooling kernels."
+      },
+      {
+        "id": "d",
+        "text": "Yes, but only if batch normalization is placed before pooling."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Pooling layers execute deterministic aggregations (max or average) with zero learnable weights.",
+    "noteRef": "aiml-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "aiml-09-q32",
+    "stem": "How does cascading alternating convolution and pooling layers expand a deep neuron's 'effective receptive field'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It doubles the resolution of input images."
+      },
+      {
+        "id": "b",
+        "text": "Downsampling aggregates larger spatial patches of the original raw input image into each subsequent layer coordinate."
+      },
+      {
+        "id": "c",
+        "text": "It prevents gradients from propagating back to the input."
+      },
+      {
+        "id": "d",
+        "text": "It converts 2D feature maps into 1D recurrence vectors."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Each pooling step halves spatial dimensions, so subsequent small kernels see a progressively broader region of the original input.",
+    "noteRef": "aiml-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "aiml-09-q33",
+    "stem": "What operational change must be made to Dropout layers when deploying a trained model for inference?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The dropout rate p must be set to 1.0."
+      },
+      {
+        "id": "b",
+        "text": "Weights must be divided by the number of inference batches."
+      },
+      {
+        "id": "c",
+        "text": "Dropout must be deactivated so all neurons participate and activations pass without stochastic zero-masking."
+      },
+      {
+        "id": "d",
+        "text": "Activations must be multiplied by random Gaussian noise."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Dropout is an active regularizer only during training; at inference, all neurons are enabled to give deterministic predictions.",
+    "noteRef": "aiml-09-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-09-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "aiml-09-q34",
+    "stem": "A deep ResNet model trains successfully with Batch Normalization, but crashes during single-sample real-time production inference. What was misconfigured?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Batch normalization cannot be applied to residual connections."
+      },
+      {
+        "id": "b",
+        "text": "The learning rate was not decayed to zero."
+      },
+      {
+        "id": "c",
+        "text": "The input tensor lacked GPU pinned memory."
+      },
+      {
+        "id": "d",
+        "text": "The model was left in training mode, attempting to compute batch statistics on a batch size of 1 where variance is zero."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "In training mode, BatchNorm computes variance across the batch. With batch size 1, variance is 0. Calling eval() uses learned running statistics.",
+    "noteRef": "aiml-09-lo09",
+    "reviewed": false
+  }
+]

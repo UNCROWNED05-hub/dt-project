@@ -1,0 +1,34 @@
+---
+loId: "aiml-08-lo03"
+reviewed: false
+sources: ["lic-03"]
+---
+
+### Core Idea
+Inertia (within-cluster sum of squares, WCSS) measures the total squared Euclidean distance between each sample and its assigned centroid. As $K$ increases, inertia monotonically decreases, reaching zero when $K=N$. The elbow method plots inertia against $K$ to identify the point of diminishing returns where marginal variance explained drops sharply.
+
+### Worked Example
+Calculating inertia for assigned clusters:
+
+```python
+import numpy as np
+
+# Cluster 0 points and centroid
+c0 = 2.0
+pts0 = np.array([1.0, 2.0, 3.0])
+wcss0 = np.sum((pts0 - c0) ** 2)  # (1-2)^2 + (2-2)^2 + (3-2)^2 = 2.0
+
+# Cluster 1 points and centroid
+c1 = 10.0
+pts1 = np.array([9.0, 11.0])
+wcss1 = np.sum((pts1 - c1) ** 2)  # (9-10)^2 + (11-10)^2 = 2.0
+
+total_inertia = wcss0 + wcss1
+print("Total Inertia:", round(total_inertia, 2))  # 4.0
+```
+
+### Common Mistake
+Selecting the minimum inertia directly. Minimum inertia is trivially achieved by setting $K = N$ where every point is its own centroid, resulting in severe overfitting and zero explanatory clustering value.
+
+### Check Yourself
+If increasing $K$ from 3 to 4 reduces inertia from 100 to 98, while increasing $K$ from 2 to 3 reduced inertia from 250 to 100, which value of $K$ represents the candidate elbow? $K = 3$.

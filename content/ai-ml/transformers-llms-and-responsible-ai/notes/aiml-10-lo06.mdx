@@ -1,0 +1,32 @@
+---
+loId: "aiml-10-lo06"
+reviewed: false
+lastVerified: "2026-03"
+sources: ["lic-08"]
+---
+
+### Core Idea
+Hallucination refers to an LLM generating plausible-sounding but factually fabricated statements, non-existent citations, or invalid code APIs. This stems from the fundamental training objective: predicting statistically probable next tokens rather than validating factual truth. Alignment techniques like RLHF (Reinforcement Learning from Human Feedback) and DPO (Direct Preference Optimization) steer models toward helpfulness, honesty, and harmlessness.
+*Last verified: February 2026.*
+
+### Worked Example
+Detecting hallucinated output via verification heuristics:
+
+```python
+# Real Python API check simulation
+real_apis = {"pandas": ["read_csv", "DataFrame", "concat"]}
+
+def verify_code_api(package, func_name):
+    if func_name not in real_apis.get(package, []):
+        return "POSSIBLE HALLUCINATION: Non-existent method"
+    return "VERIFIED API"
+
+print(verify_code_api("pandas", "read_csv"))        # VERIFIED API
+print(verify_code_api("pandas", "read_magical_sql")) # POSSIBLE HALLUCINATION
+```
+
+### Common Mistake
+Treating an LLM as a relational database or search engine. LLMs are generative statistical parametric engines; without Retrieval-Augmented Generation (RAG) grounding or external verification tools, hallucination risk is always present.
+
+### Check Yourself
+How does Retrieval-Augmented Generation (RAG) reduce hallucinations in production applications? It grounds the model's generation in retrieved factual context documents supplied directly in the prompt.

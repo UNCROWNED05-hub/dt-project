@@ -1,0 +1,36 @@
+---
+loId: "aiml-09-lo09"
+reviewed: false
+sources: ["lic-01"]
+---
+
+### Core Idea
+Deep networks often suffer from internal covariate shift and co-adaptation of weights. Batch Normalization standardizes intermediate activations across each mini-batch to have zero mean and unit variance, followed by learnable scale $\gamma$ and shift $\beta$ parameters. Dropout randomly sets a fraction $p$ of hidden activations to zero during training, forcing neurons to learn robust features without co-depending on specific adjacent activations.
+
+### Worked Example
+Evaluating inverted dropout forward scaling during training:
+
+```python
+import numpy as np
+
+activations = np.array([2.0, 4.0, 6.0, 8.0])
+p_drop = 0.5
+keep_prob = 1.0 - p_drop
+
+# Random binary mask (e.g. keeping indices 1 and 3)
+mask = np.array([0.0, 1.0, 0.0, 1.0])
+
+# Inverted dropout scales retained activations by (1 / keep_prob)
+train_out = (activations * mask) / keep_prob
+print("Training output with inverted dropout:", train_out.tolist()) # [0.0, 8.0, 0.0, 16.0]
+
+# At test time, no dropout mask is applied; raw activations pass through directly
+test_out = activations
+print("Test time output:", test_out.tolist())
+```
+
+### Common Mistake
+Leaving Dropout or Batch Normalization in training mode during model evaluation. In evaluation mode (model.eval() in PyTorch), dropout must be disabled and BatchNorm must use running population statistics rather than mini-batch statistics.
+
+### Check Yourself
+Why is inverted dropout preferred over scaling activations during inference? It scales activations during training so test-time inference requires zero extra arithmetic operations.
