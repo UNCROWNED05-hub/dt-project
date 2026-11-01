@@ -8,11 +8,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Cloud Application Layer"
+        "text": "Perception Layer"
       },
       {
         "id": "b",
-        "text": "Perception Layer"
+        "text": "Cloud Application Layer"
       },
       {
         "id": "c",
@@ -24,7 +24,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "The Perception Layer contains physical sensors (converting physical inputs to electrical signals) and actuators (producing physical outputs).",
     "noteRef": "iot-01-lo01",
@@ -39,11 +39,11 @@
     "options": [
       {
         "id": "a",
-        "text": "The Edge Gateway Layer"
+        "text": "The DNS Nameserver"
       },
       {
         "id": "b",
-        "text": "The DNS Nameserver"
+        "text": "The Edge Gateway Layer"
       },
       {
         "id": "c",
@@ -55,7 +55,7 @@
       }
     ],
     "answer": [
-      "a"
+      "b"
     ],
     "explanation": "Edge Gateways aggregate, filter, and extract features from high-frequency sensor streams before sending summary metrics across the network.",
     "noteRef": "iot-01-lo01",
@@ -74,11 +74,11 @@
       },
       {
         "id": "b",
-        "text": "To transport telemetry packets between edge devices/gateways and central cloud platforms across protocols like Ethernet, Cellular, or LPWAN."
+        "text": "To convert analog voltage into mechanical rotation."
       },
       {
         "id": "c",
-        "text": "To convert analog voltage into mechanical rotation."
+        "text": "To transport telemetry packets between edge devices/gateways and central cloud platforms across protocols like Ethernet, Cellular, or LPWAN."
       },
       {
         "id": "d",
@@ -86,7 +86,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "The Network Layer provides the connectivity and routing fabric transmitting data between edge nodes and cloud systems.",
     "noteRef": "iot-01-lo01",
@@ -138,7 +138,7 @@
       },
       {
         "id": "b",
-        "text": "Sensors measure physical phenomena and produce electrical signals; actuators accept electrical signals to create physical movement or action."
+        "text": "Sensors require internet connection; actuators do not."
       },
       {
         "id": "c",
@@ -146,11 +146,11 @@
       },
       {
         "id": "d",
-        "text": "Sensors require internet connection; actuators do not."
+        "text": "Sensors measure physical phenomena and produce electrical signals; actuators accept electrical signals to create physical movement or action."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Sensors are inputs (measuring real-world states); actuators are outputs (modifying real-world states).",
     "noteRef": "iot-01-lo02",
@@ -165,11 +165,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Sensor: heating element switch; Actuator: digital temperature probe."
+        "text": "Sensor: digital temperature probe; Actuator: heating element switch/relay."
       },
       {
         "id": "b",
-        "text": "Sensor: digital temperature probe; Actuator: heating element switch/relay."
+        "text": "Sensor: heating element switch; Actuator: digital temperature probe."
       },
       {
         "id": "c",
@@ -181,7 +181,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "The temperature probe senses thermal energy (input); the switch/relay actuates the heater (output).",
     "noteRef": "iot-01-lo02",
@@ -264,11 +264,11 @@
       },
       {
         "id": "b",
-        "text": "To sample a continuous analog input voltage and quantize it into a discrete digital numerical value."
+        "text": "To amplify audio signals."
       },
       {
         "id": "c",
-        "text": "To amplify audio signals."
+        "text": "To sample a continuous analog input voltage and quantize it into a discrete digital numerical value."
       },
       {
         "id": "d",
@@ -276,7 +276,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "An ADC measures continuous electrical voltage and converts it into a discrete integer value (e.g. 0 to 1023 for a 10-bit converter).",
     "noteRef": "iot-01-lo03",
@@ -295,7 +295,7 @@
       },
       {
         "id": "b",
-        "text": "512"
+        "text": "1650"
       },
       {
         "id": "c",
@@ -303,11 +303,11 @@
       },
       {
         "id": "d",
-        "text": "1650"
+        "text": "512"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "A 10-bit range spans 0 to 1023 (1024 steps). 1.65V is exactly half of 3.3V, so the ADC value is 1024 / 2 = 512.",
     "noteRef": "iot-01-lo03",
@@ -421,11 +421,11 @@
       },
       {
         "id": "b",
-        "text": "Because MCUs running bare-metal or RTOS provide hard real-time deterministic latency, whereas general-purpose OS schedulers can introduce unpredictable delays."
+        "text": "Because microcontrollers are physically heavier."
       },
       {
         "id": "c",
-        "text": "Because microcontrollers are physically heavier."
+        "text": "Because MCUs running bare-metal or RTOS provide hard real-time deterministic latency, whereas general-purpose OS schedulers can introduce unpredictable delays."
       },
       {
         "id": "d",
@@ -433,7 +433,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "Safety-critical applications require hard real-time guarantees where interrupts and code execution deadlines are mathematically deterministic.",
     "noteRef": "iot-01-lo04",
@@ -456,15 +456,15 @@
       },
       {
         "id": "c",
-        "text": "1 to 15 Microamps"
+        "text": "Zero (perpetual motion)"
       },
       {
         "id": "d",
-        "text": "Zero (perpetual motion)"
+        "text": "1 to 15 Microamps"
       }
     ],
     "answer": [
-      "c"
+      "d"
     ],
     "explanation": "In deep sleep modes with clocks gated and core power removed, modern MCUs draw only a few microamps (running an RTC timer), enabling years of battery operation.",
     "noteRef": "iot-01-lo04",
@@ -512,11 +512,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Cost vs Color"
+        "text": "Range, Bandwidth, and Power Consumption form a trilemma where maximizing two necessitates sacrificing the third."
       },
       {
         "id": "b",
-        "text": "Range, Bandwidth, and Power Consumption form a trilemma where maximizing two necessitates sacrificing the third."
+        "text": "Cost vs Color"
       },
       {
         "id": "c",
@@ -528,7 +528,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Transmitting higher bandwidth across longer distances requires exponentially more radio frequency power.",
     "noteRef": "iot-01-lo05",
@@ -547,11 +547,11 @@
       },
       {
         "id": "b",
-        "text": "Bluetooth Low Energy (BLE)"
+        "text": "LoRaWAN"
       },
       {
         "id": "c",
-        "text": "LoRaWAN"
+        "text": "Bluetooth Low Energy (BLE)"
       },
       {
         "id": "d",
@@ -559,7 +559,7 @@
       }
     ],
     "answer": [
-      "c"
+      "b"
     ],
     "explanation": "LoRaWAN provides sub-GHz long-range coverage (up to 15km line-of-sight) with minimal power draw, ideal for low-payload rural telemetry.",
     "noteRef": "iot-01-lo05",
@@ -574,7 +574,7 @@
     "options": [
       {
         "id": "a",
-        "text": "Mesh network topology where mains-powered nodes act as routers relaying packets for neighbors."
+        "text": "Star network topology connecting directly to cell towers."
       },
       {
         "id": "b",
@@ -582,7 +582,7 @@
       },
       {
         "id": "c",
-        "text": "Star network topology connecting directly to cell towers."
+        "text": "Mesh network topology where mains-powered nodes act as routers relaying packets for neighbors."
       },
       {
         "id": "d",
@@ -590,7 +590,7 @@
       }
     ],
     "answer": [
-      "a"
+      "c"
     ],
     "explanation": "Mesh topologies allow nodes to route packets across multiple hops, extending effective network reach throughout buildings.",
     "noteRef": "iot-01-lo05",
@@ -642,7 +642,7 @@
       },
       {
         "id": "b",
-        "text": "Publish / Subscribe pattern mediated by a central Broker"
+        "text": "Master-slave clock line switching"
       },
       {
         "id": "c",
@@ -650,11 +650,11 @@
       },
       {
         "id": "d",
-        "text": "Master-slave clock line switching"
+        "text": "Publish / Subscribe pattern mediated by a central Broker"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "MQTT decouples senders (publishers) from receivers (subscribers) through named topics routed by a central MQTT broker.",
     "noteRef": "iot-01-lo06",
@@ -700,11 +700,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Because UDP eliminates connection handshake overhead and packet keepalive state, reducing radio-on time on energy-constrained nodes."
+        "text": "Because TCP packets cannot cross fiber optic cables."
       },
       {
         "id": "b",
-        "text": "Because TCP packets cannot cross fiber optic cables."
+        "text": "Because UDP eliminates connection handshake overhead and packet keepalive state, reducing radio-on time on energy-constrained nodes."
       },
       {
         "id": "c",
@@ -716,7 +716,7 @@
       }
     ],
     "answer": [
-      "a"
+      "b"
     ],
     "explanation": "UDP avoids the 3-way handshake and continuous state of TCP, allowing low-power nodes to wake up, fire a quick packet, and immediately return to deep sleep.",
     "noteRef": "iot-01-lo06",
@@ -764,7 +764,7 @@
     "options": [
       {
         "id": "a",
-        "text": "Moving compute and analytics close to where data is generated (on local gateways or devices) rather than exclusively in central cloud datacenters."
+        "text": "Using sharpening filters on digital photos."
       },
       {
         "id": "b",
@@ -772,7 +772,7 @@
       },
       {
         "id": "c",
-        "text": "Using sharpening filters on digital photos."
+        "text": "Moving compute and analytics close to where data is generated (on local gateways or devices) rather than exclusively in central cloud datacenters."
       },
       {
         "id": "d",
@@ -780,7 +780,7 @@
       }
     ],
     "answer": [
-      "a"
+      "c"
     ],
     "explanation": "Edge computing decentralizes processing by analyzing data locally at the edge of the network where physical phenomena occur.",
     "noteRef": "iot-01-lo07",
@@ -799,7 +799,7 @@
       },
       {
         "id": "b",
-        "text": "Because network latency and variable wireless coverage could delay braking decisions by hundreds of milliseconds, resulting in a fatal collision."
+        "text": "Because LIDAR signals cannot travel over copper cables."
       },
       {
         "id": "c",
@@ -807,11 +807,11 @@
       },
       {
         "id": "d",
-        "text": "Because LIDAR signals cannot travel over copper cables."
+        "text": "Because network latency and variable wireless coverage could delay braking decisions by hundreds of milliseconds, resulting in a fatal collision."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Safety-critical reflex actions require single-digit millisecond deterministic latency and immunity to WAN network dropouts.",
     "noteRef": "iot-01-lo07",
@@ -826,11 +826,11 @@
     "options": [
       {
         "id": "a",
-        "text": "It deletes all user data immediately upon collection."
+        "text": "Sensitive raw telemetry (audio, video, biometrics) can be processed locally to extract metadata, ensuring raw identifiable data never leaves the local perimeter."
       },
       {
         "id": "b",
-        "text": "Sensitive raw telemetry (audio, video, biometrics) can be processed locally to extract metadata, ensuring raw identifiable data never leaves the local perimeter."
+        "text": "It deletes all user data immediately upon collection."
       },
       {
         "id": "c",
@@ -842,7 +842,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "By keeping raw data local and only transmitting aggregated or anonymized insights, edge computing satisfies strict data sovereignty and privacy mandates.",
     "noteRef": "iot-01-lo07",
@@ -925,11 +925,11 @@
       },
       {
         "id": "b",
-        "text": "The complete executable binary, hardcoded Wi-Fi passwords, private API keys, and device cryptographic secrets."
+        "text": "Nothing, because SPI chips wipe themselves when unpowered."
       },
       {
         "id": "c",
-        "text": "Nothing, because SPI chips wipe themselves when unpowered."
+        "text": "The complete executable binary, hardcoded Wi-Fi passwords, private API keys, and device cryptographic secrets."
       },
       {
         "id": "d",
@@ -937,7 +937,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "External SPI flash chips hold persistent non-volatile data in cleartext unless on-the-fly hardware flash encryption is enabled.",
     "noteRef": "iot-01-lo08",
@@ -956,7 +956,7 @@
       },
       {
         "id": "b",
-        "text": "By using an immutable public key burned into silicon eFuses to cryptographically verify the digital signature of the bootloader and firmware before execution."
+        "text": "By connecting to cloud servers during boot."
       },
       {
         "id": "c",
@@ -964,11 +964,11 @@
       },
       {
         "id": "d",
-        "text": "By connecting to cloud servers during boot."
+        "text": "By using an immutable public key burned into silicon eFuses to cryptographically verify the digital signature of the bootloader and firmware before execution."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Secure Boot creates a root of trust in hardware: if the firmware signature does not match the immutable vendor key in eFuses, the processor refuses to execute.",
     "noteRef": "iot-01-lo08",
@@ -1005,6 +1005,100 @@
     ],
     "explanation": "Disabling debug ports, encrypting flash storage, and provisioning unique credentials neutralize common hardware and botnet attack vectors.",
     "noteRef": "iot-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q33",
+    "loId": "iot-01-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Which ESP32 subsystem remains powered during Deep Sleep mode to awaken the device after a programmed delay?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The RTC controller, timer, and Ultra-Low-Power (ULP) coprocessor."
+      },
+      {
+        "id": "b",
+        "text": "The primary dual-core Xtensa CPU."
+      },
+      {
+        "id": "c",
+        "text": "The 2.4 GHz Wi-Fi baseband radio."
+      },
+      {
+        "id": "d",
+        "text": "The high-speed SPI flash interface."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Deep sleep powers down the main CPU and Wi-Fi radio, maintaining only the RTC domain (~10-15µA) to monitor timers or external wake pins.",
+    "noteRef": "iot-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q34",
+    "loId": "iot-01-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "An environmental monitor requires 100mA when transmitting and 20µA in deep sleep. Why would leaving an unused GPIO pin floating during sleep degrade battery longevity?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Floating pins cause flash memory wear-leveling corruption."
+      },
+      {
+        "id": "b",
+        "text": "Floating input pins hover near threshold voltages, inducing parasitic shoot-through currents in the input buffer."
+      },
+      {
+        "id": "c",
+        "text": "Floating pins automatically trigger Wi-Fi re-association handshakes."
+      },
+      {
+        "id": "d",
+        "text": "Floating pins increase antenna impedance."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Floating digital CMOS inputs float between VDD and GND, causing both NMOS and PMOS transistors in the input buffer to partially conduct.",
+    "noteRef": "iot-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "iot-01-q35",
+    "loId": "iot-01-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A 3.3V microcontroller ADC reads a sensor output across an equal 10kΩ-to-10kΩ voltage divider connected to a 5.0V input signal. What voltage is presented at the ADC pin?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.25V"
+      },
+      {
+        "id": "b",
+        "text": "2.50V"
+      },
+      {
+        "id": "c",
+        "text": "3.30V"
+      },
+      {
+        "id": "d",
+        "text": "5.00V"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "V_out = V_in * (R2 / (R1 + R2)) = 5.0V * (10000 / 20000) = 2.50V, which is safely within the 3.3V ADC range.",
+    "noteRef": "iot-01-lo02",
+    "verify": "(5.0 * (10000 / (10000 + 10000))) === 2.5",
     "reviewed": false
   }
 ]

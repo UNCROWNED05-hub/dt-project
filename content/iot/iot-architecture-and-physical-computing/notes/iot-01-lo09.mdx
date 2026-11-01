@@ -1,0 +1,33 @@
+---
+loId: "iot-01-lo09"
+title: "Microcontroller Sleep Modes & Power Budgets"
+reviewed: false
+sources:
+  - title: "Arduino Reference & ESP32 Technical Documentation"
+    url: "https://www.arduino.cc/reference/en/"
+---
+
+### Core Idea
+Battery-operated IoT edge devices cannot continuously run at full 160MHz or 240MHz CPU frequencies without depleting standard lithium batteries within days. Embedded microcontrollers support tiered low-power modes: Active mode (CPU, radio, peripherals active: ~80-150mA), Light Sleep (CPU clock gated, RAM retained: ~0.8-2mA), and Deep Sleep (CPU and radios off, only Ultra-Low-Power coprocessor and RTC timer running: ~5-15µA). Devices sleep for predetermined intervals, wake to take a sensor reading, transmit data, and return to deep sleep immediately.
+
+### Worked Example
+Calculating average current and battery longevity:
+```python
+# Active: 120mA for 2 seconds (sensor read + Wi-Fi publish)
+# Deep sleep: 0.015mA (15µA) for 58 seconds
+t_active = 2.0; i_active = 120.0
+t_sleep = 58.0; i_sleep = 0.015
+t_cycle = t_active + t_sleep
+
+i_avg = (i_active * t_active + i_sleep * t_sleep) / t_cycle
+# i_avg ≈ 4.014 mA
+
+battery_capacity_mah = 2000.0 # Standard 18650 cell
+operating_hours = battery_capacity_mah / i_avg # ≈ 498 hours (~20.7 days)
+```
+
+### Common Mistake
+Leaving unused GPIO pins floating during deep sleep. Floating pins can float at intermediate voltages, causing excessive CMOS leakage currents that quickly drain the battery.
+
+### Check Yourself
+Which subsystem remains powered during ESP32 Deep Sleep to trigger scheduled timer wakeups? (The Real-Time Clock / RTC domain and ULP coprocessor).

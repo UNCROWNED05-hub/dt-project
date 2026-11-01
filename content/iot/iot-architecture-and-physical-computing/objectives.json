@@ -9,8 +9,19 @@
       "bloom": "understand",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["iot architecture", "perception layer", "edge gateway", "network layer", "cloud layer", "telemetry"],
-      "aliases": ["IoT stack", "four-tier model", "IoT"],
+      "keywords": [
+        "iot architecture",
+        "perception layer",
+        "edge gateway",
+        "network layer",
+        "cloud layer",
+        "telemetry"
+      ],
+      "aliases": [
+        "IoT stack",
+        "four-tier model",
+        "IoT"
+      ],
       "estMinutes": 8
     },
     {
@@ -20,9 +31,22 @@
       "bloom": "understand",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["sensors", "actuators", "transducers", "physical phenomena", "solenoid", "relay", "thermistor"],
-      "aliases": ["physical transducers", "sensing and actuation"],
-      "prerequisites": ["iot-01-lo01"],
+      "keywords": [
+        "sensors",
+        "actuators",
+        "transducers",
+        "physical phenomena",
+        "solenoid",
+        "relay",
+        "thermistor"
+      ],
+      "aliases": [
+        "physical transducers",
+        "sensing and actuation"
+      ],
+      "prerequisites": [
+        "iot-01-lo01"
+      ],
       "estMinutes": 10
     },
     {
@@ -31,10 +55,24 @@
       "title": "Distinguish Analog ADC voltage quantization from Digital sensor communication protocols (I2C, SPI, UART)",
       "bloom": "apply",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["analog sensor", "digital sensor", "adc", "quantization", "i2c", "spi", "uart", "bit resolution"],
-      "aliases": ["sensor interfaces", "serial communication"],
-      "prerequisites": ["iot-01-lo02"],
+      "mustHave": false,
+      "keywords": [
+        "analog sensor",
+        "digital sensor",
+        "adc",
+        "quantization",
+        "i2c",
+        "spi",
+        "uart",
+        "bit resolution"
+      ],
+      "aliases": [
+        "sensor interfaces",
+        "serial communication"
+      ],
+      "prerequisites": [
+        "iot-01-lo02"
+      ],
       "estMinutes": 14
     },
     {
@@ -44,9 +82,22 @@
       "bloom": "analyze",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["mcu", "microcontroller", "microprocessor", "rtos", "bare-metal", "deterministic latency", "cortex-m"],
-      "aliases": ["embedded compute", "MCU vs MPU"],
-      "prerequisites": ["iot-01-lo01"],
+      "keywords": [
+        "mcu",
+        "microcontroller",
+        "microprocessor",
+        "rtos",
+        "bare-metal",
+        "deterministic latency",
+        "cortex-m"
+      ],
+      "aliases": [
+        "embedded compute",
+        "MCU vs MPU"
+      ],
+      "prerequisites": [
+        "iot-01-lo01"
+      ],
       "estMinutes": 12
     },
     {
@@ -56,9 +107,22 @@
       "bloom": "evaluate",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["wireless protocol", "ble", "bluetooth low energy", "zigbee", "lorawan", "cellular iot", "range vs bandwidth"],
-      "aliases": ["iot connectivity", "lpwan"],
-      "prerequisites": ["iot-01-lo01"],
+      "keywords": [
+        "wireless protocol",
+        "ble",
+        "bluetooth low energy",
+        "zigbee",
+        "lorawan",
+        "cellular iot",
+        "range vs bandwidth"
+      ],
+      "aliases": [
+        "iot connectivity",
+        "lpwan"
+      ],
+      "prerequisites": [
+        "iot-01-lo01"
+      ],
       "estMinutes": 14
     },
     {
@@ -67,10 +131,24 @@
       "title": "Evaluate Constrained Messaging Protocols: MQTT (pub/sub, broker) vs CoAP (UDP REST) vs HTTP",
       "bloom": "analyze",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["mqtt", "coap", "publish subscribe", "broker", "qos", "packet overhead", "keepalive"],
-      "aliases": ["messaging protocols", "MQTT vs HTTP"],
-      "prerequisites": ["iot-01-lo01", "iot-01-lo05"],
+      "mustHave": false,
+      "keywords": [
+        "mqtt",
+        "coap",
+        "publish subscribe",
+        "broker",
+        "qos",
+        "packet overhead",
+        "keepalive"
+      ],
+      "aliases": [
+        "messaging protocols",
+        "MQTT vs HTTP"
+      ],
+      "prerequisites": [
+        "iot-01-lo01",
+        "iot-01-lo05"
+      ],
       "estMinutes": 14
     },
     {
@@ -79,10 +157,23 @@
       "title": "Analyze Edge Computing trade-offs: local inference latency and network bandwidth vs central cloud compute",
       "bloom": "evaluate",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["edge computing", "fog computing", "local processing", "bandwidth optimization", "latency reduction", "cloud offload"],
-      "aliases": ["edge intelligence", "edge vs cloud"],
-      "prerequisites": ["iot-01-lo01", "iot-01-lo04"],
+      "mustHave": false,
+      "keywords": [
+        "edge computing",
+        "fog computing",
+        "local processing",
+        "bandwidth optimization",
+        "latency reduction",
+        "cloud offload"
+      ],
+      "aliases": [
+        "edge intelligence",
+        "edge vs cloud"
+      ],
+      "prerequisites": [
+        "iot-01-lo01",
+        "iot-01-lo04"
+      ],
       "estMinutes": 12
     },
     {
@@ -91,10 +182,24 @@
       "title": "Identify Physical Hardware and Firmware Attack Surfaces (unprotected UART/JTAG, cleartext flash, default credentials)",
       "bloom": "analyze",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["hardware security", "firmware extraction", "jtag", "uart", "secure boot", "flash encryption", "hardcoded credentials"],
-      "aliases": ["iot attack surface", "hardware hacking"],
-      "prerequisites": ["iot-01-lo01", "iot-01-lo04"],
+      "mustHave": false,
+      "keywords": [
+        "hardware security",
+        "firmware extraction",
+        "jtag",
+        "uart",
+        "secure boot",
+        "flash encryption",
+        "hardcoded credentials"
+      ],
+      "aliases": [
+        "iot attack surface",
+        "hardware hacking"
+      ],
+      "prerequisites": [
+        "iot-01-lo01",
+        "iot-01-lo04"
+      ],
       "estMinutes": 12
     },
     {
@@ -104,9 +209,21 @@
       "bloom": "apply",
       "tier": "extension",
       "mustHave": false,
-      "keywords": ["power budget", "deep sleep", "quiescent current", "milliamp hours", "rtc wakeup", "battery longevity"],
-      "aliases": ["low-power design", "sleep current"],
-      "prerequisites": ["iot-01-lo04"],
+      "keywords": [
+        "power budget",
+        "deep sleep",
+        "quiescent current",
+        "milliamp hours",
+        "rtc wakeup",
+        "battery longevity"
+      ],
+      "aliases": [
+        "low-power design",
+        "sleep current"
+      ],
+      "prerequisites": [
+        "iot-01-lo04"
+      ],
       "estMinutes": 15
     }
   ]

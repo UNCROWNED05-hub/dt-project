@@ -47,3 +47,29 @@ This ledger tracks every requirement, proving test, and verification status for 
 | **T5A-19** | Fixtures & Edge Cases: (a) strong video with creator chapters, (b) partial coverage, (c) no metadata, (d) off-topic, (e) challenger that outranks #1 but misses mustHave LO, (f) challenger that qualifies. | `tests/unit/fixtures-cases.test.mjs` | **PASSED** | 6/6 fixture tests passed covering scenarios (a) through (f) cleanly. |
 | **T5A-20** | Zero-Defect Regressions: Real clicks/touches, 0 console errors, 0 hydration warnings, clean lint, clean types, clean build; all existing suites pass (E1 smoke, E2 tier nav, E3 search, E9 cursor, E10 contrast, manual-only idle test). | Full regression suite execution | **PASSED** | 43/43 SSG build clean; 0 console errors; E1 smoke (24/24), E2 tier nav (24/24), E3 search (7/7), E9 cursor (100%), E10 contrast (1712/1712 nodes, 0 failures), manual-only idle motion (100%), 18/18 unit tests passed. |
 
+## Task 5B: Author Objectives, Notes and Quizzes for Every Chapter (All 3 Courses)
+
+| ID | Requirement Description | Proving Test / Verification Method | Status | Evidence / Notes |
+|---|---|---|---|---|
+| **T5B-01** | Git checkpointing: tag `before-task-5b` created, commits after each batch. | `git tag -l` and `git log` | **IN PROGRESS** | Tag `before-task-5b` created. |
+| **T5B-02** | Hard rules: original/openly licensed content with LICENSES.json entry, zero transcript/video-wording use, no copied exam questions, reviewed: false. | Code/content audit | **PENDING** | Strictly verified across all chapters. |
+| **T5B-03** | Fact integrity: no fabricated facts, versions, CVE numbers, API names, prices, or statistics. Version-specific info checked against official sources. | Content audit & review packets | **PENDING** | To be verified in review packets. |
+| **T5B-04** | Course safety rules: Cybersecurity (defensive/legal only, labs/VMs only, zero weaponized exploits); IoT (mains voltage, battery, soldering safety); AI/ML (runnable code, library versions in comments). | Validator check & review audit | **PENDING** | Safety checks built into validator. |
+| **T5B-05** | Objectives standard: 8-12 core + 0-4 extension LOs per chapter, beginner-to-advanced order, verb-led, 5-15 min testable, 3-5 mustHave, keywords, aliases, prerequisites. | `scripts/validate-content.mjs` | **PENDING** | Validator enforces LO structure and counts. |
+| **T5B-06** | Notes standard: 1 block per LO (150-350 words), Core idea, Worked example (runnable code), Common mistake, Check yourself. Fast-moving chapters have last-verified date and official docs. | `scripts/validate-content.mjs` | **PENDING** | Validator checks sections and word counts. |
+| **T5B-07** | Questions standard: >= 4 per core LO (1/2/2/3 difficulties), >= 2 per extension LO. Mix of single, multi, scenario, numeric. 1 correct + 3 plausible distractors for single, no all/none of above. | `scripts/validate-content.mjs` | **PENDING** | Question bank validator rules. |
+| **T5B-08** | Question distribution & verify: No answer position > 35% of chapter's single-choice answers. Explanation 1-3 sentences with noteRef. Numeric/code answers have runnable verify block. | `scripts/validate-content.mjs` | **PENDING** | Position distribution and code verification tests. |
+| **T5B-09** | Stem uniqueness: No duplicate or near-duplicate question stems (similarity >= 0.9 flagged). | `scripts/validate-content.mjs` | **PENDING** | Jaccard token similarity check. |
+| **T5B-10** | Content validator (`scripts/validate-content`): Validates schemas, LO note blocks, question counts, option counts, answer bounds, word counts, verify blocks, LICENSES.json. | `scripts/validate-content.mjs` | **PENDING** | Built and executed on all chapters. |
+| **T5B-11** | Composition validator: composeQuiz returns valid quiz for (a) video covering all core LOs, (b) covering half, (c) covering mustHaves. | `scripts/validate-content.mjs` | **PENDING** | Fixture composition tests per chapter. |
+| **T5B-12** | AI & ML Course authoring (10 chapters): Complete objectives, notes, and quiz banks matching chapter checklists 1-10. | `scripts/validate-content.mjs` ai-ml | **PENDING** | Batch-by-batch authoring. |
+| **T5B-13** | Cybersecurity Course authoring (11 chapters): Complete objectives, notes, and quiz banks matching chapter checklists 1-11. | `scripts/validate-content.mjs` cybersecurity | **PENDING** | Batch-by-batch authoring. |
+| **T5B-14** | IoT Course authoring (10 chapters): Complete objectives, notes, and quiz banks matching chapter checklists 1-10. | `scripts/validate-content.mjs` iot | **PENDING** | Batch-by-batch authoring. |
+| **T5B-15** | Review packet `REVIEW_ai-ml.md`: Per chapter LO list, counts, licenses, uncertainties, 5 random questions. | Markdown review packet | **PENDING** | Generated after AI & ML course completion. |
+| **T5B-16** | Review packet `REVIEW_cybersecurity.md`: Per chapter LO list, counts, licenses, uncertainties, 5 random questions. | Markdown review packet | **PENDING** | Generated after Cybersecurity course completion. |
+| **T5B-17** | Review packet `REVIEW_iot.md`: Per chapter LO list, counts, licenses, uncertainties, 5 random questions. | Markdown review packet | **PENDING** | Generated after IoT course completion. |
+| **T5B-18** | Alignment & ranking pipeline: Run `scripts/align-videos.mjs` across all 31 chapters with zero failures. | `scripts/align-videos.mjs` | **PENDING** | Full video alignment run. |
+| **T5B-19** | Zero regressions & production build: 43/43 SSG build clean, zero console errors, zero hydration mismatches, clean lint, clean tsc. | `npm run build`, `npm run lint`, `npx tsc --noEmit` | **PENDING** | Production verification. |
+| **T5B-20** | Full test suite verification: Contrast audit, smoke test, cursor test, tier nav, and unit tests all pass cleanly. | Full test suite execution | **PENDING** | Regression suite green. |
+
+

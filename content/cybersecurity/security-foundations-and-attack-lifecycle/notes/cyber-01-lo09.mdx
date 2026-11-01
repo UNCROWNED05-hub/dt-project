@@ -1,0 +1,28 @@
+---
+loId: "cyber-01-lo09"
+title: "Forensic Evidence Triage & Chain of Custody"
+reviewed: false
+sources:
+  - title: "NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide"
+    url: "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
+---
+
+### Core Idea
+When security incidents escalate, defenders must preserve digital evidence so that findings withstand internal audits and legal proceedings. Chain of custody is the chronological documentation recording every individual who collected, accessed, analyzed, and transferred a piece of physical or digital evidence. Volatile evidence—such as running processes, network connections, and unencrypted memory—must be captured first using order of volatility principles before powered systems are isolated or powered off.
+
+### Worked Example
+Capturing cryptographic hashes to verify forensic integrity:
+```bash
+# Calculate SHA-256 hash immediately upon disk image capture
+sha256sum /mnt/evidence/compromised_host.raw > /secure/custody/host_initial.sha256
+
+# Before starting forensic examination on a copy, verify bit-for-bit authenticity
+sha256sum -c /secure/custody/host_initial.sha256
+# Returns: /mnt/evidence/compromised_host.raw: OK
+```
+
+### Common Mistake
+Rebooting a compromised system to "cleanse" it before collecting RAM. Rebooting permanently destroys volatile memory containing active malware payloads, decrypted API keys, and established command-and-control sockets.
+
+### Check Yourself
+Why should digital forensics investigators never execute analysis software directly on the original evidentiary drive? (Direct execution alters file access timestamps, registry keys, and temporary memory blocks, corrupting evidence authenticity).

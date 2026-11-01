@@ -1,0 +1,34 @@
+---
+loId: "aiml-01-lo09"
+title: "Stochastic & Mini-Batch Gradient Descent"
+reviewed: false
+sources:
+  - title: "Dive into Deep Learning (D2L.ai)"
+    url: "https://d2l.ai/"
+---
+
+### Core Idea
+Full-batch gradient descent computes gradients across the entire dataset before making a single parameter update. When datasets scale to gigabytes, this becomes computationally prohibitive. Stochastic Gradient Descent (SGD) updates parameters using a single randomly chosen training sample at each step, introducing high variance that can escape shallow local minima. Mini-batch Gradient Descent strikes an optimal balance by computing vector gradients over small slices (typically 32 to 512 examples), leveraging modern GPU tensor parallelization while maintaining steady convergence.
+
+### Worked Example
+Consider training on a dataset of 1,024 samples with batch size 64:
+```python
+# Dataset size N = 1024, Batch size B = 64
+# Steps per epoch = 1024 / 64 = 16 updates per epoch
+import numpy as np
+
+def train_epoch(X, y, weights, batch_size=64, lr=0.01):
+    indices = np.random.permutation(len(X))
+    for start_idx in range(0, len(X), batch_size):
+        batch_idx = indices[start_idx:start_idx + batch_size]
+        X_batch, y_batch = X[batch_idx], y[batch_idx]
+        grad = (2.0 / len(X_batch)) * X_batch.T @ (X_batch @ weights - y_batch)
+        weights -= lr * grad
+    return weights
+```
+
+### Common Mistake
+Confusing iterations with epochs. An iteration is a single weight update over one mini-batch, whereas an epoch is one complete traversal across the entire training dataset.
+
+### Check Yourself
+If a dataset contains 6,400 examples and you train with a mini-batch size of 32, how many parameter updates occur per epoch? (6,400 / 32 = 200 updates per epoch).

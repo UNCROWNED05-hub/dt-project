@@ -8,11 +8,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Classical software only runs in binary, whereas machine learning runs in interpreted text."
+        "text": "Classical engineering feeds explicit human rules and input data to produce answers; machine learning feeds input data and answers to discover statistical rules and parameters."
       },
       {
         "id": "b",
-        "text": "Classical engineering feeds explicit human rules and input data to produce answers; machine learning feeds input data and answers to discover statistical rules and parameters."
+        "text": "Classical software only runs in binary, whereas machine learning runs in interpreted text."
       },
       {
         "id": "c",
@@ -24,7 +24,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "In classical coding, humans hand-craft explicit conditional rules. In ML, parameter optimization statistically discovers the relationship between inputs and ground-truth targets.",
     "noteRef": "aiml-01-lo01",
@@ -43,11 +43,11 @@
       },
       {
         "id": "b",
-        "text": "Because microprocessors prohibit writing more than 100 conditional branches in a single function."
+        "text": "Because natural perceptual signals contain continuous high-dimensional variations that are practically impossible to capture with human-crafted if/else trees."
       },
       {
         "id": "c",
-        "text": "Because natural perceptual signals contain continuous high-dimensional variations that are practically impossible to capture with human-crafted if/else trees."
+        "text": "Because microprocessors prohibit writing more than 100 conditional branches in a single function."
       },
       {
         "id": "d",
@@ -55,7 +55,7 @@
       }
     ],
     "answer": [
-      "c"
+      "b"
     ],
     "explanation": "Real-world perceptual data (pixels, audio waveforms) has infinite subtle variations that break deterministic manual rule systems.",
     "noteRef": "aiml-01-lo01",
@@ -74,11 +74,11 @@
       },
       {
         "id": "b",
-        "text": "Deterministic rule-based code, because statutory wage law is an exact, rule-bound system requiring 100% mathematical precision with zero tolerance for statistical error."
+        "text": "Machine learning, because deterministic code cannot perform arithmetic addition."
       },
       {
         "id": "c",
-        "text": "Machine learning, because deterministic code cannot perform arithmetic addition."
+        "text": "Deterministic rule-based code, because statutory wage law is an exact, rule-bound system requiring 100% mathematical precision with zero tolerance for statistical error."
       },
       {
         "id": "d",
@@ -86,7 +86,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "When requirements are deterministic, strictly codified in statutory regulations, and require zero tolerance for statistical approximations, classical rule-based programming is strictly superior.",
     "noteRef": "aiml-01-lo01",
@@ -138,7 +138,7 @@
       },
       {
         "id": "b",
-        "text": "Supervised Learning"
+        "text": "Heuristic Search"
       },
       {
         "id": "c",
@@ -146,11 +146,11 @@
       },
       {
         "id": "d",
-        "text": "Heuristic Search"
+        "text": "Supervised Learning"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Supervised learning operates with an explicit answer key (target labels paired with input features).",
     "noteRef": "aiml-01-lo02",
@@ -165,11 +165,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Supervised logistic regression"
+        "text": "Unsupervised clustering (e.g. k-means or DBSCAN)"
       },
       {
         "id": "b",
-        "text": "Unsupervised clustering (e.g. k-means or DBSCAN)"
+        "text": "Supervised logistic regression"
       },
       {
         "id": "c",
@@ -181,7 +181,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Discovering inherent latent groups or clusters in unlabeled data is the textbook application of unsupervised learning.",
     "noteRef": "aiml-01-lo02",
@@ -200,11 +200,11 @@
       },
       {
         "id": "b",
-        "text": "RL does not utilize neural networks under any circumstances."
+        "text": "RL learns through active environmental interactions and delayed scalar rewards, rather than fixed static pairs of inputs and correct answers."
       },
       {
         "id": "c",
-        "text": "RL learns through active environmental interactions and delayed scalar rewards, rather than fixed static pairs of inputs and correct answers."
+        "text": "RL does not utilize neural networks under any circumstances."
       },
       {
         "id": "d",
@@ -212,7 +212,7 @@
       }
     ],
     "answer": [
-      "c"
+      "b"
     ],
     "explanation": "In RL, an agent discovers high-performing policies through dynamic exploration and reward signals rather than an explicit static training dataset of correct answers.",
     "noteRef": "aiml-01-lo02",
@@ -264,11 +264,11 @@
       },
       {
         "id": "b",
-        "text": "It shifts the model prediction up or down independently of the input features x, allowing the line to intercept the y-axis away from the origin."
+        "text": "It penalizes the size of weights to prevent overfitting."
       },
       {
         "id": "c",
-        "text": "It penalizes the size of weights to prevent overfitting."
+        "text": "It shifts the model prediction up or down independently of the input features x, allowing the line to intercept the y-axis away from the origin."
       },
       {
         "id": "d",
@@ -276,7 +276,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "The bias term b provides an affine offset, decoupling the function from being forced through the origin (0, 0).",
     "noteRef": "aiml-01-lo03",
@@ -299,15 +299,15 @@
       },
       {
         "id": "c",
-        "text": "b"
+        "text": "w1 + w2"
       },
       {
         "id": "d",
-        "text": "w1 + w2"
+        "text": "b"
       }
     ],
     "answer": [
-      "c"
+      "d"
     ],
     "explanation": "Since w1*(0) + w2*(0) = 0, y_hat reduces strictly to b.",
     "noteRef": "aiml-01-lo03",
@@ -322,11 +322,11 @@
     "options": [
       {
         "id": "a",
-        "text": "$280,000"
+        "text": "$330,000"
       },
       {
         "id": "b",
-        "text": "$330,000"
+        "text": "$280,000"
       },
       {
         "id": "c",
@@ -338,7 +338,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "y_hat = 250*(1000) + 15000*(2) + 50000 = 250,000 + 30,000 + 50,000 = $330,000.",
     "noteRef": "aiml-01-lo03",
@@ -353,11 +353,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Vectorization allows SIMD and GPU hardware to compute thousands of parameter calculations in parallel rather than slow sequential loops."
+        "text": "Vectorization removes the need to compute loss functions."
       },
       {
         "id": "b",
-        "text": "Vectorization removes the need to compute loss functions."
+        "text": "Vectorization allows SIMD and GPU hardware to compute thousands of parameter calculations in parallel rather than slow sequential loops."
       },
       {
         "id": "c",
@@ -369,7 +369,7 @@
       }
     ],
     "answer": [
-      "a"
+      "b"
     ],
     "explanation": "Modern hardware (CPUs with AVX, GPUs, TPUs) is architected for massively parallel matrix operations. Vectorized operations run orders of magnitude faster than Python for-loops.",
     "noteRef": "aiml-01-lo03",
@@ -384,7 +384,7 @@
     "options": [
       {
         "id": "a",
-        "text": "To ensure negative and positive errors do not cancel out, and to penalize large outliers quadratically."
+        "text": "To convert continuous numbers into discrete categorical classes."
       },
       {
         "id": "b",
@@ -392,7 +392,7 @@
       },
       {
         "id": "c",
-        "text": "To convert continuous numbers into discrete categorical classes."
+        "text": "To ensure negative and positive errors do not cancel out, and to penalize large outliers quadratically."
       },
       {
         "id": "d",
@@ -400,7 +400,7 @@
       }
     ],
     "answer": [
-      "a"
+      "c"
     ],
     "explanation": "Squaring guarantees non-negative loss values (preventing +5 and -5 from summing to 0) and punishes larger errors more aggressively than small ones.",
     "noteRef": "aiml-01-lo04",
@@ -419,7 +419,7 @@
       },
       {
         "id": "b",
-        "text": "10.0"
+        "text": "20.0"
       },
       {
         "id": "c",
@@ -427,11 +427,11 @@
       },
       {
         "id": "d",
-        "text": "20.0"
+        "text": "10.0"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Errors: (12 - 10) = 2 -> squared: 4. (16 - 20) = -4 -> squared: 16. Total sum = 20. Mean = 20 / 2 = 10.0.",
     "noteRef": "aiml-01-lo04",
@@ -446,11 +446,11 @@
     "options": [
       {
         "id": "a",
-        "text": "A loss function is used for classification; a cost function is only for regression."
+        "text": "A loss function computes discrepancy for a single training sample; a cost function aggregates the loss across the entire dataset or batch."
       },
       {
         "id": "b",
-        "text": "A loss function computes discrepancy for a single training sample; a cost function aggregates the loss across the entire dataset or batch."
+        "text": "A loss function is used for classification; a cost function is only for regression."
       },
       {
         "id": "c",
@@ -462,7 +462,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Conventionally, loss refers to error on a single instance L(y_hat, y), while cost J(theta) is the average loss across the whole training set.",
     "noteRef": "aiml-01-lo04",
@@ -477,11 +477,11 @@
     "options": [
       {
         "id": "a",
-        "text": "When the dataset contains severe corrupt outliers that should not disproportionately dominate gradient updates."
+        "text": "When the target variables are binary 0 or 1 labels."
       },
       {
         "id": "b",
-        "text": "When the target variables are binary 0 or 1 labels."
+        "text": "When the dataset contains severe corrupt outliers that should not disproportionately dominate gradient updates."
       },
       {
         "id": "c",
@@ -493,7 +493,7 @@
       }
     ],
     "answer": [
-      "a"
+      "b"
     ],
     "explanation": "MSE squares residuals, so an extreme anomaly or bad data point exerts an enormous gradient pull. MAE grows linearly, making it far more robust to outliers.",
     "noteRef": "aiml-01-lo04",
@@ -512,11 +512,11 @@
       },
       {
         "id": "b",
-        "text": "Because the gradient vector points in the direction of steepest increase; moving in the negative gradient direction decreases the loss."
+        "text": "Because the learning rate alpha is always a negative number."
       },
       {
         "id": "c",
-        "text": "Because the learning rate alpha is always a negative number."
+        "text": "Because the gradient vector points in the direction of steepest increase; moving in the negative gradient direction decreases the loss."
       },
       {
         "id": "d",
@@ -524,7 +524,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "The gradient vector points uphill (steepest ascent). To minimize cost, we must move in the opposite direction (steepest descent).",
     "noteRef": "aiml-01-lo05",
@@ -543,7 +543,7 @@
       },
       {
         "id": "b",
-        "text": "4.4"
+        "text": "0.6"
       },
       {
         "id": "c",
@@ -551,11 +551,11 @@
       },
       {
         "id": "d",
-        "text": "0.6"
+        "text": "4.4"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "w_new = 5.0 - (0.1 * 6.0) = 5.0 - 0.6 = 4.4.",
     "noteRef": "aiml-01-lo05",
@@ -669,11 +669,11 @@
       },
       {
         "id": "b",
-        "text": "Overfitting caused by excessive model capacity relative to the small quantity of training observations."
+        "text": "Gradient vanishing caused by negative learning rate."
       },
       {
         "id": "c",
-        "text": "Gradient vanishing caused by negative learning rate."
+        "text": "Overfitting caused by excessive model capacity relative to the small quantity of training observations."
       },
       {
         "id": "d",
@@ -681,7 +681,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "A high-degree polynomial has immense degrees of freedom and will oscillate wildly between sample points to achieve zero training error, destroying generalization.",
     "noteRef": "aiml-01-lo06",
@@ -700,7 +700,7 @@
       },
       {
         "id": "b",
-        "text": "The set of explicit mathematical assumptions an algorithm uses to predict outputs on unseen inputs outside the training set."
+        "text": "The electrical interference caused by GPU power transformers."
       },
       {
         "id": "c",
@@ -708,11 +708,11 @@
       },
       {
         "id": "d",
-        "text": "The electrical interference caused by GPU power transformers."
+        "text": "The set of explicit mathematical assumptions an algorithm uses to predict outputs on unseen inputs outside the training set."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Inductive bias encompasses all prior assumptions built into the model architecture (e.g. linearity in linear regression, locality in CNNs) that allow generalization.",
     "noteRef": "aiml-01-lo06",
@@ -890,7 +890,7 @@
       },
       {
         "id": "b",
-        "text": "Because XOR outputs are not linearly separable; no single straight decision boundary can isolate the positive outputs from negative outputs."
+        "text": "Because linear models cannot compute addition."
       },
       {
         "id": "c",
@@ -898,11 +898,11 @@
       },
       {
         "id": "d",
-        "text": "Because linear models cannot compute addition."
+        "text": "Because XOR outputs are not linearly separable; no single straight decision boundary can isolate the positive outputs from negative outputs."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "In 2D space, the coordinates (0,1) and (1,0) have label 1, while (0,0) and (1,1) have label 0. It is geometrically impossible to separate them with a single straight line.",
     "noteRef": "aiml-01-lo08",
@@ -917,11 +917,11 @@
     "options": [
       {
         "id": "a",
-        "text": "The weights explode to infinity on the first forward pass."
+        "text": "The composition of consecutive linear transformations is mathematically equivalent to a single linear transformation (W5 * ... * W1 * x = W_effective * x)."
       },
       {
         "id": "b",
-        "text": "The composition of consecutive linear transformations is mathematically equivalent to a single linear transformation (W5 * ... * W1 * x = W_effective * x)."
+        "text": "The weights explode to infinity on the first forward pass."
       },
       {
         "id": "c",
@@ -933,7 +933,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Matrix multiplication is associative and closed under composition. Without non-linear activations between layers, 100 linear layers collapse into 1 single matrix multiplication.",
     "noteRef": "aiml-01-lo08",
@@ -1001,6 +1001,100 @@
     ],
     "explanation": "ReLU, Sigmoid, and Tanh provide the essential non-linearities required for Universal Approximation. The identity function f(z) = z is linear.",
     "noteRef": "aiml-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-01-q33",
+    "loId": "aiml-01-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does mini-batch gradient descent achieve superior training throughput on modern GPUs compared to single-sample stochastic gradient descent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because mini-batching converts non-convex loss surfaces into convex planes."
+      },
+      {
+        "id": "b",
+        "text": "Because mini-batches eliminate the need to compute partial derivatives."
+      },
+      {
+        "id": "c",
+        "text": "Because mini-batch execution utilizes parallel SIMD tensor hardware to process multiple observations simultaneously."
+      },
+      {
+        "id": "d",
+        "text": "Because GPUs cannot execute single-sample arithmetic."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Modern GPUs feature wide vector ALUs and tensor cores that parallelize matrix multiplications across mini-batch matrices.",
+    "noteRef": "aiml-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-01-q34",
+    "loId": "aiml-01-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "In machine learning optimization, what distinguishes an 'epoch' from an 'iteration'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An epoch refers to saving weights to disk, while an iteration refers to model deployment."
+      },
+      {
+        "id": "b",
+        "text": "An iteration processes all data, while an epoch processes one sample."
+      },
+      {
+        "id": "c",
+        "text": "An epoch only occurs during test evaluation, whereas iterations occur during training."
+      },
+      {
+        "id": "d",
+        "text": "An iteration is a single parameter update step over one mini-batch, whereas an epoch is one full pass through the entire training dataset."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "An epoch completes when all training examples have been seen once. If a dataset has 1,000 samples and batch size is 100, an epoch takes 10 iterations.",
+    "noteRef": "aiml-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-01-q35",
+    "loId": "aiml-01-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A linear model predicts outputs [3.0, 5.0, 8.0] for three targets [2.0, 5.0, 10.0]. What is the Mean Squared Error (MSE)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.00"
+      },
+      {
+        "id": "b",
+        "text": "1.67"
+      },
+      {
+        "id": "c",
+        "text": "2.33"
+      },
+      {
+        "id": "d",
+        "text": "5.00"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Residuals are (3-2)=1, (5-5)=0, (8-10)=-2. Squared residuals are 1, 0, 4. MSE = (1 + 0 + 4) / 3 = 5/3 ≈ 1.67.",
+    "noteRef": "aiml-01-lo04",
+    "verify": "Math.abs(((Math.pow(3 - 2, 2) + Math.pow(5 - 5, 2) + Math.pow(8 - 10, 2)) / 3) - 1.6666666666666667) < 0.01",
     "reviewed": false
   }
 ]

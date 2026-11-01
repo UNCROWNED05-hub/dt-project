@@ -8,11 +8,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Confidentiality"
+        "text": "Integrity"
       },
       {
         "id": "b",
-        "text": "Integrity"
+        "text": "Confidentiality"
       },
       {
         "id": "c",
@@ -24,7 +24,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Integrity guarantees that information is authentic and has not been altered or tampered with by unauthorized actors.",
     "noteRef": "cyber-01-lo01",
@@ -70,7 +70,7 @@
     "options": [
       {
         "id": "a",
-        "text": "Availability"
+        "text": "Non-repudiation"
       },
       {
         "id": "b",
@@ -78,7 +78,7 @@
       },
       {
         "id": "c",
-        "text": "Non-repudiation"
+        "text": "Availability"
       },
       {
         "id": "d",
@@ -86,7 +86,7 @@
       }
     ],
     "answer": [
-      "a"
+      "c"
     ],
     "explanation": "Availability ensures authorized users have timely, reliable access to critical assets and services when needed.",
     "noteRef": "cyber-01-lo01",
@@ -138,7 +138,7 @@
       },
       {
         "id": "b",
-        "text": "APTs possess substantial funding, specialized personnel, custom zero-day exploits, and pursue long-term stealthy objectives."
+        "text": "APTs do not target government or defense infrastructure."
       },
       {
         "id": "c",
@@ -146,11 +146,11 @@
       },
       {
         "id": "d",
-        "text": "APTs do not target government or defense infrastructure."
+        "text": "APTs possess substantial funding, specialized personnel, custom zero-day exploits, and pursue long-term stealthy objectives."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "APTs represent state-sponsored or elite teams with sustained campaigns, high discipline, advanced evasion techniques, and immense resources.",
     "noteRef": "cyber-01-lo02",
@@ -165,11 +165,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Nation-state military intelligence unit"
+        "text": "Opportunistic hacktivist or script kiddie using public exploit scripts"
       },
       {
         "id": "b",
-        "text": "Opportunistic hacktivist or script kiddie using public exploit scripts"
+        "text": "Nation-state military intelligence unit"
       },
       {
         "id": "c",
@@ -181,7 +181,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Opportunistic scanning, low technical barrier, and broad defacement for attention/ideology fit the script kiddie / hacktivist archetype.",
     "noteRef": "cyber-01-lo02",
@@ -264,11 +264,11 @@
       },
       {
         "id": "b",
-        "text": "The sum total of all reachable vulnerabilities and exposed entry points across software, hardware, networks, and humans."
+        "text": "The number of computer screens in the security operations center."
       },
       {
         "id": "c",
-        "text": "The number of computer screens in the security operations center."
+        "text": "The sum total of all reachable vulnerabilities and exposed entry points across software, hardware, networks, and humans."
       },
       {
         "id": "d",
@@ -276,7 +276,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "The attack surface encompasses all potential entryways that an adversary could target or probe for vulnerabilities.",
     "noteRef": "cyber-01-lo03",
@@ -295,7 +295,7 @@
       },
       {
         "id": "b",
-        "text": "Spear Phishing / Social Engineering"
+        "text": "Man-in-the-Middle arp spoofing"
       },
       {
         "id": "c",
@@ -303,11 +303,11 @@
       },
       {
         "id": "d",
-        "text": "Man-in-the-Middle arp spoofing"
+        "text": "Spear Phishing / Social Engineering"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Spear phishing targets specific individuals with deceptive, context-tailored social engineering communications to manipulate human psychology.",
     "noteRef": "cyber-01-lo03",
@@ -421,11 +421,11 @@
       },
       {
         "id": "b",
-        "text": "MITRE ATT&CK provides a granular, non-linear knowledge base of adversary Tactics, Techniques, and Procedures (TTPs) based on real-world observations."
+        "text": "MITRE ATT&CK is an automated antivirus program."
       },
       {
         "id": "c",
-        "text": "MITRE ATT&CK is an automated antivirus program."
+        "text": "MITRE ATT&CK provides a granular, non-linear knowledge base of adversary Tactics, Techniques, and Procedures (TTPs) based on real-world observations."
       },
       {
         "id": "d",
@@ -433,7 +433,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "While the Kill Chain is a high-level sequential phase model, ATT&CK is a deep matrix detailing hundreds of specific adversary techniques and defensive mitigations.",
     "noteRef": "cyber-01-lo04",
@@ -452,7 +452,7 @@
       },
       {
         "id": "b",
-        "text": "Lateral Movement and Privilege Escalation"
+        "text": "Weapon delivery"
       },
       {
         "id": "c",
@@ -460,11 +460,11 @@
       },
       {
         "id": "d",
-        "text": "Weapon delivery"
+        "text": "Lateral Movement and Privilege Escalation"
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Pivoting from an initial foothold through intermediate systems toward higher-value targets constitutes Lateral Movement and Privilege Escalation.",
     "noteRef": "cyber-01-lo04",
@@ -545,11 +545,11 @@
       },
       {
         "id": "b",
-        "text": "Because Threat exposure is near-zero and potential business Impact is negligible, mitigating the raw vulnerability severity."
+        "text": "Because Linux is immune to cyberattacks."
       },
       {
         "id": "c",
-        "text": "Because Linux is immune to cyberattacks."
+        "text": "Because Threat exposure is near-zero and potential business Impact is negligible, mitigating the raw vulnerability severity."
       },
       {
         "id": "d",
@@ -557,7 +557,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "A critical vulnerability without threat accessibility or valuable assets represents minimal actual organizational risk.",
     "noteRef": "cyber-01-lo05",
@@ -572,7 +572,7 @@
     "options": [
       {
         "id": "a",
-        "text": "CVSS (Common Vulnerability Scoring System)"
+        "text": "DNSSEC"
       },
       {
         "id": "b",
@@ -584,11 +584,11 @@
       },
       {
         "id": "d",
-        "text": "DNSSEC"
+        "text": "CVSS (Common Vulnerability Scoring System)"
       }
     ],
     "answer": [
-      "a"
+      "d"
     ],
     "explanation": "CVSS evaluates vulnerability characteristics (attack vector, complexity, privileges required, confidentiality/integrity/availability impact) to generate a standardized score.",
     "noteRef": "cyber-01-lo05",
@@ -636,11 +636,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Symmetric encryption uses numbers; asymmetric encryption uses letters."
+        "text": "Symmetric uses a single secret key for both encryption and decryption; asymmetric uses a public/private key pair."
       },
       {
         "id": "b",
-        "text": "Symmetric uses a single secret key for both encryption and decryption; asymmetric uses a public/private key pair."
+        "text": "Symmetric encryption uses numbers; asymmetric encryption uses letters."
       },
       {
         "id": "c",
@@ -652,7 +652,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Symmetric relies on one shared secret key. Asymmetric uses paired keys where data encrypted with the public key can only be decrypted by the matching private key.",
     "noteRef": "cyber-01-lo06",
@@ -698,7 +698,7 @@
     "options": [
       {
         "id": "a",
-        "text": "Alice encrypts with Bob's public key; Alice signs with Alice's private key."
+        "text": "Alice encrypts with Bob's private key; Bob signs with Alice's public key."
       },
       {
         "id": "b",
@@ -706,7 +706,7 @@
       },
       {
         "id": "c",
-        "text": "Alice encrypts with Bob's private key; Bob signs with Alice's public key."
+        "text": "Alice encrypts with Bob's public key; Alice signs with Alice's private key."
       },
       {
         "id": "d",
@@ -714,7 +714,7 @@
       }
     ],
     "answer": [
-      "a"
+      "c"
     ],
     "explanation": "Encrypting with Bob's public key ensures only Bob can decrypt with his private key. Signing with Alice's private key allows anyone with her public key to verify her authorship.",
     "noteRef": "cyber-01-lo06",
@@ -733,7 +733,7 @@
       },
       {
         "id": "b",
-        "text": "A CA acts as a trusted third party that signs digital certificates, binding a verified organization identity to its public key."
+        "text": "A CA monitors user web browsing for advertising."
       },
       {
         "id": "c",
@@ -741,11 +741,11 @@
       },
       {
         "id": "d",
-        "text": "A CA monitors user web browsing for advertising."
+        "text": "A CA acts as a trusted third party that signs digital certificates, binding a verified organization identity to its public key."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Without CAs, attackers could impersonate any domain (Man-in-the-Middle) by presenting self-generated public keys. The CA's digital signature certifies identity authenticity.",
     "noteRef": "cyber-01-lo06",
@@ -760,11 +760,11 @@
     "options": [
       {
         "id": "a",
-        "text": "Users should have administrator rights so they are not blocked during work hours."
+        "text": "Every user, service, and process should be granted only the minimum permissions necessary to perform their legitimate duties."
       },
       {
         "id": "b",
-        "text": "Every user, service, and process should be granted only the minimum permissions necessary to perform their legitimate duties."
+        "text": "Users should have administrator rights so they are not blocked during work hours."
       },
       {
         "id": "c",
@@ -776,7 +776,7 @@
       }
     ],
     "answer": [
-      "b"
+      "a"
     ],
     "explanation": "Restricting permissions to the absolute minimum necessary contains blast radius if an account or service is compromised.",
     "noteRef": "cyber-01-lo07",
@@ -826,11 +826,11 @@
       },
       {
         "id": "b",
-        "text": "Creating an 'app_writer' user with INSERT and SELECT rights on the users table only, with no DROP, ALTER, or access to other tables."
+        "text": "Disabling database authentication completely."
       },
       {
         "id": "c",
-        "text": "Disabling database authentication completely."
+        "text": "Creating an 'app_writer' user with INSERT and SELECT rights on the users table only, with no DROP, ALTER, or access to other tables."
       },
       {
         "id": "d",
@@ -838,7 +838,7 @@
       }
     ],
     "answer": [
-      "b"
+      "c"
     ],
     "explanation": "Limiting the application to strictly required tables and operations ensures an SQL injection vulnerability cannot be leveraged to DROP tables or read other schemas.",
     "noteRef": "cyber-01-lo07",
@@ -890,7 +890,7 @@
       },
       {
         "id": "b",
-        "text": "To deploy layered, redundant defensive controls so that the failure of any single control does not result in total system compromise."
+        "text": "To replace software firewalls with physical locks."
       },
       {
         "id": "c",
@@ -898,11 +898,11 @@
       },
       {
         "id": "d",
-        "text": "To replace software firewalls with physical locks."
+        "text": "To deploy layered, redundant defensive controls so that the failure of any single control does not result in total system compromise."
       }
     ],
     "answer": [
-      "b"
+      "d"
     ],
     "explanation": "Defense-in-depth recognizes that any single defensive measure can fail; layered controls ensure backup protection and detection at every step.",
     "noteRef": "cyber-01-lo08",
@@ -1001,6 +1001,100 @@
     ],
     "explanation": "Encryption, network isolation, and privileged access management provide layered defense. Disabling audit logging destroys detective and compliance capabilities.",
     "noteRef": "cyber-01-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q33",
+    "loId": "cyber-01-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why must digital forensics examiners preserve volatile memory (RAM) before shutting down an actively compromised workstation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because operating system kernels cannot boot without RAM logs."
+      },
+      {
+        "id": "b",
+        "text": "Because solid-state drives physically erase themselves when power is cut."
+      },
+      {
+        "id": "c",
+        "text": "Because volatile RAM contains running process state, injected in-memory DLLs, and active network connections that disappear upon power loss."
+      },
+      {
+        "id": "d",
+        "text": "Because BIOS firmware requires RAM hashes to authenticate users."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Volatile memory holds active artifacts—such as unencrypted payload code and C2 sockets—that are erased when power is severed.",
+    "noteRef": "cyber-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q34",
+    "loId": "cyber-01-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "What is the primary objective of establishing a documented chain of custody during a cyber incident investigation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt all captured network packets with asymmetric keys."
+      },
+      {
+        "id": "b",
+        "text": "To benchmark forensic hard drive transfer speeds."
+      },
+      {
+        "id": "c",
+        "text": "To notify threat actors that their intrusion has been identified."
+      },
+      {
+        "id": "d",
+        "text": "To prove the unbroken, verified handling of evidence so its authenticity and integrity are legally indisputable."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Chain of custody tracks every transfer and custody holder with timestamps and hashes, proving evidence was never tampered with.",
+    "noteRef": "cyber-01-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "cyber-01-q35",
+    "loId": "cyber-01-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An organization models Single Loss Expectancy (SLE) as $40,000 for a server failure, with an Annualized Rate of Occurrence (ARO) of 0.25 (once every 4 years). What is the Annualized Loss Expectancy (ALE)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$5,000"
+      },
+      {
+        "id": "b",
+        "text": "$10,000"
+      },
+      {
+        "id": "c",
+        "text": "$20,000"
+      },
+      {
+        "id": "d",
+        "text": "$160,000"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Annualized Loss Expectancy (ALE) = SLE * ARO = $40,000 * 0.25 = $10,000.",
+    "noteRef": "cyber-01-lo05",
+    "verify": "(40000 * 0.25) === 10000",
     "reviewed": false
   }
 ]

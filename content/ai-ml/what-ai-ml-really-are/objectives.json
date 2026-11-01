@@ -9,8 +9,17 @@
       "bloom": "understand",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["machine learning", "traditional programming", "hand-coded rules", "statistical mapping", "parameters"],
-      "aliases": ["ML paradigm", "data-driven programming"],
+      "keywords": [
+        "machine learning",
+        "traditional programming",
+        "hand-coded rules",
+        "statistical mapping",
+        "parameters"
+      ],
+      "aliases": [
+        "ML paradigm",
+        "data-driven programming"
+      ],
       "estMinutes": 8
     },
     {
@@ -20,9 +29,21 @@
       "bloom": "analyze",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["supervised learning", "unsupervised learning", "reinforcement learning", "labeled data", "clustering", "reward function"],
-      "aliases": ["learning paradigms", "ML taxonomy"],
-      "prerequisites": ["aiml-01-lo01"],
+      "keywords": [
+        "supervised learning",
+        "unsupervised learning",
+        "reinforcement learning",
+        "labeled data",
+        "clustering",
+        "reward function"
+      ],
+      "aliases": [
+        "learning paradigms",
+        "ML taxonomy"
+      ],
+      "prerequisites": [
+        "aiml-01-lo01"
+      ],
       "estMinutes": 10
     },
     {
@@ -31,10 +52,22 @@
       "title": "Explain how a parameterized model function computes predictions using weights and biases",
       "bloom": "understand",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["model function", "weights", "biases", "linear combination", "affine transformation", "activations"],
-      "aliases": ["parameterized model", "linear model"],
-      "prerequisites": ["aiml-01-lo01"],
+      "mustHave": false,
+      "keywords": [
+        "model function",
+        "weights",
+        "biases",
+        "linear combination",
+        "affine transformation",
+        "activations"
+      ],
+      "aliases": [
+        "parameterized model",
+        "linear model"
+      ],
+      "prerequisites": [
+        "aiml-01-lo01"
+      ],
       "estMinutes": 10
     },
     {
@@ -44,9 +77,21 @@
       "bloom": "apply",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["loss function", "cost function", "mean squared error", "mse", "residual", "objective function"],
-      "aliases": ["error metric", "loss surface"],
-      "prerequisites": ["aiml-01-lo03"],
+      "keywords": [
+        "loss function",
+        "cost function",
+        "mean squared error",
+        "mse",
+        "residual",
+        "objective function"
+      ],
+      "aliases": [
+        "error metric",
+        "loss surface"
+      ],
+      "prerequisites": [
+        "aiml-01-lo03"
+      ],
       "estMinutes": 12
     },
     {
@@ -56,9 +101,21 @@
       "bloom": "apply",
       "tier": "core",
       "mustHave": true,
-      "keywords": ["gradient descent", "learning rate", "negative gradient", "weight update", "optimization step", "partial derivative"],
-      "aliases": ["steepest descent", "parameter update rule"],
-      "prerequisites": ["aiml-01-lo04"],
+      "keywords": [
+        "gradient descent",
+        "learning rate",
+        "negative gradient",
+        "weight update",
+        "optimization step",
+        "partial derivative"
+      ],
+      "aliases": [
+        "steepest descent",
+        "parameter update rule"
+      ],
+      "prerequisites": [
+        "aiml-01-lo04"
+      ],
       "estMinutes": 14
     },
     {
@@ -67,10 +124,22 @@
       "title": "Diagnose generalization failures: Underfitting, Overfitting, and Inductive Bias",
       "bloom": "evaluate",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["overfitting", "underfitting", "generalization", "inductive bias", "bias-variance tradeoff", "model capacity"],
-      "aliases": ["generalization error", "bias variance"],
-      "prerequisites": ["aiml-01-lo03"],
+      "mustHave": false,
+      "keywords": [
+        "overfitting",
+        "underfitting",
+        "generalization",
+        "inductive bias",
+        "bias-variance tradeoff",
+        "model capacity"
+      ],
+      "aliases": [
+        "generalization error",
+        "bias variance"
+      ],
+      "prerequisites": [
+        "aiml-01-lo03"
+      ],
       "estMinutes": 12
     },
     {
@@ -79,10 +148,22 @@
       "title": "Structure reliable evaluation pipelines using Train, Validation, and Test dataset splits",
       "bloom": "apply",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["train split", "validation set", "test set", "data leakage", "out-of-sample evaluation", "holdout"],
-      "aliases": ["data splitting", "evaluation protocol"],
-      "prerequisites": ["aiml-01-lo06"],
+      "mustHave": false,
+      "keywords": [
+        "train split",
+        "validation set",
+        "test set",
+        "data leakage",
+        "out-of-sample evaluation",
+        "holdout"
+      ],
+      "aliases": [
+        "data splitting",
+        "evaluation protocol"
+      ],
+      "prerequisites": [
+        "aiml-01-lo06"
+      ],
       "estMinutes": 10
     },
     {
@@ -91,10 +172,23 @@
       "title": "Analyze why non-linear decision boundaries require hidden layers and activation functions",
       "bloom": "analyze",
       "tier": "core",
-      "mustHave": true,
-      "keywords": ["decision boundary", "linear separability", "hidden layers", "activation function", "non-linearity", "xor problem"],
-      "aliases": ["representation capacity", "multi-layer perceptron"],
-      "prerequisites": ["aiml-01-lo03", "aiml-01-lo05"],
+      "mustHave": false,
+      "keywords": [
+        "decision boundary",
+        "linear separability",
+        "hidden layers",
+        "activation function",
+        "non-linearity",
+        "xor problem"
+      ],
+      "aliases": [
+        "representation capacity",
+        "multi-layer perceptron"
+      ],
+      "prerequisites": [
+        "aiml-01-lo03",
+        "aiml-01-lo05"
+      ],
       "estMinutes": 14
     },
     {
@@ -104,9 +198,20 @@
       "bloom": "analyze",
       "tier": "extension",
       "mustHave": false,
-      "keywords": ["stochastic gradient descent", "mini-batch", "batch size", "vectorization", "epoch"],
-      "aliases": ["SGD", "batch gradient descent"],
-      "prerequisites": ["aiml-01-lo05"],
+      "keywords": [
+        "stochastic gradient descent",
+        "mini-batch",
+        "batch size",
+        "vectorization",
+        "epoch"
+      ],
+      "aliases": [
+        "SGD",
+        "batch gradient descent"
+      ],
+      "prerequisites": [
+        "aiml-01-lo05"
+      ],
       "estMinutes": 15
     }
   ]

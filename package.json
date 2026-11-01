@@ -11,6 +11,8 @@
     "audit:contrast": "node scripts/contrast-audit.mjs",
     "refresh:videos": "node scripts/refresh-videos.mjs",
     "align:videos": "node scripts/align-videos.mjs",
+    "validate:content": "npx tsx scripts/validate-content.mjs",
+    "validate-content": "npx tsx scripts/validate-content.mjs",
     "build:search": "node scripts/build-search-index.mjs"
   },
   "dependencies": {
