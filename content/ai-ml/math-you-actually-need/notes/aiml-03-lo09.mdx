@@ -1,0 +1,47 @@
+---
+loId: "aiml-03-lo09"
+title: "Determinants, Eigenvalues, and Dimensionality Reduction"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Matrices transform geometry by stretching, rotating, and shearing vectors. For most vectors $\mathbf{v}$, multiplying by matrix $\mathbf{A}$ changes both their length and direction. However, certain special vectors maintain their exact directional orientation, undergoing only scalar stretching. These are **Eigenvectors**.
+
+Mathematically, a non-zero vector $\mathbf{v}$ is an eigenvector of square matrix $\mathbf{A}$ with corresponding **eigenvalue** $\lambda$ if:
+$$\mathbf{A}\mathbf{v} = \lambda \mathbf{v}$$
+Rearranging gives the characteristic equation:
+$$(\mathbf{A} - \lambda \mathbf{I})\mathbf{v} = \mathbf{0} \implies \det(\mathbf{A} - \lambda \mathbf{I}) = 0$$
+
+The **determinant** $\det(\mathbf{A})$ measures the scaling factor of volume under transformation $\mathbf{A}$. If $\det(\mathbf{A}) = 0$, the matrix collapses at least one dimension into a flat subspace and is non-invertible.
+
+In machine learning, decomposing a data covariance matrix $\Sigma$ into its eigenvectors and eigenvalues is the exact mathematical foundation of Principal Component Analysis (PCA): eigenvectors identify the orthogonal axes of maximum variance, while eigenvalues quantify the variance magnitude along each axis.
+
+### Worked Example
+Computing eigenvalues and eigenvectors in NumPy:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Symmetric 2x2 covariance matrix
+cov = np.array([[3.0, 1.0], [1.0, 3.0]])
+
+# Eigen decomposition
+eigenvalues, eigenvectors = np.linalg.eigh(cov)
+print(f"Eigenvalues: {eigenvalues}")     # [2.0, 4.0]
+print(f"Eigenvectors:\n{eigenvectors}") # Unit vectors along principal axes
+
+# Verify A @ v = lambda * v for the first eigenvector
+v0 = eigenvectors[:, 0]
+lambda0 = eigenvalues[0]
+print(f"A @ v0:      {cov @ v0}")
+print(f"lambda0 * v0:{lambda0 * v0}") # Exact equality
+```
+
+### Common Mistake
+Assuming every square matrix has real-valued eigenvalues. Non-symmetric matrices representing pure rotations produce complex conjugate eigenvalues with imaginary components.
+
+### Check Yourself
+In Principal Component Analysis, which eigenvectors are retained as the principal components? (The eigenvectors corresponding to the largest eigenvalues, representing maximum data variance).

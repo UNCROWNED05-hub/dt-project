@@ -1,0 +1,45 @@
+---
+loId: "aiml-02-lo08"
+title: "Robust CSV Ingestion: Delimiters, Headers, and Chunking"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+The comma-separated values (CSV) format is the standard interchange representation for raw tabular datasets. However, real-world CSV files frequently exhibit parsing challenges: non-standard delimiters (tabs, pipes, semicolons), missing headers, malformed null strings, and files exceeding available system RAM.
+
+The `pd.read_csv()` function provides extensive parameterization to handle these irregularities:
+- `sep` / `delimiter`: Regex-compatible delimiter character.
+- `na_values`: List of strings to interpret as missing NaN values (e.g., `["NA", "?", "null", ""]`).
+- `parse_dates`: Automatically coerces ISO strings into datetime64 objects.
+- `chunksize`: Ingests multi-gigabyte datasets incrementally as an iterator of manageable sub-DataFrames, preventing out-of-memory crashes.
+
+### Worked Example
+Parsing a custom CSV with missing values and chunked processing:
+```python
+# pandas==2.2.2
+import pandas as pd
+import io
+
+csv_data = """id;score;status
+101;98.5;pass
+102;?;fail
+103;84.0;pass
+"""
+
+# Parsing semicolon delimiter and treating '?' as null NaN
+df = pd.read_csv(io.StringIO(csv_data), sep=";", na_values=["?"])
+print(f"Missing count:\n{df.isna().sum()}")
+
+# Chunked processing for massive files:
+# for chunk in pd.read_csv('huge_file.csv', chunksize=10_000):
+#     process_features(chunk)
+```
+
+### Common Mistake
+Attempting to load a 10GB CSV file directly with standard `pd.read_csv('file.csv')` on a machine with 8GB RAM, causing an unrecoverable Operating System Out-Of-Memory (OOM) kill.
+
+### Check Yourself
+Which `pd.read_csv` parameter enables streaming large CSV files in manageable mini-batches rather than loading the full dataset at once? (`chunksize`).

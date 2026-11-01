@@ -1,0 +1,35 @@
+---
+loId: "aiml-02-lo01"
+title: "NumPy Array Architecture: Shape, Dtype, and Strides"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+At the foundation of Python scientific computing is the NumPy ndarray. Unlike standard Python lists—which store fragmented pointers to scattered object wrappers—an ndarray represents a contiguous block of homogeneous memory managed directly by compiled C code. 
+
+The structure of an ndarray is defined by three core attributes:
+1. **Dtype**: The uniform data type (such as float32, float64, or int64) that determines how many raw bytes represent each individual number.
+2. **Shape**: A tuple of integers describing the size along each dimension (e.g., (100, 32) represents 100 rows by 32 columns).
+3. **Strides**: A tuple indicating how many bytes must be jumped in physical memory to advance one index along each respective axis. In a standard row-major (C-order) float64 array of shape (3, 4), the stride tuple is (32, 8).
+
+### Worked Example
+Inspecting raw array memory layout:
+```python
+# numpy==1.26.4
+import numpy as np
+
+arr = np.zeros((3, 4), dtype=np.float64)
+print(f"Shape: {arr.shape}")       # (3, 4)
+print(f"Dtype: {arr.dtype}")       # float64 (8 bytes per item)
+print(f"Strides: {arr.strides}")   # (32, 8) -> 4*8=32 bytes per row
+print(f"Memory size: {arr.nbytes} bytes") # 3*4*8 = 96 bytes
+```
+
+### Common Mistake
+Assuming Python lists and NumPy arrays offer comparable performance. Python list lookups involve dynamic pointer dereferencing and reference count checks on every single item, introducing 10x-100x overhead.
+
+### Check Yourself
+If an array of shape (4, 5) has dtype float32 (4 bytes per element), what is its C-order stride tuple? ((20, 4), because advancing one row requires skipping 5 elements * 4 bytes = 20 bytes).

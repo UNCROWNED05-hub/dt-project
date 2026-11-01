@@ -1,0 +1,41 @@
+---
+loId: "aiml-02-lo09"
+title: "Exploratory Data Visualization with Matplotlib and Seaborn"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Visual inspection is an indispensable phase of exploratory data analysis (EDA). Plotting distributions reveals skewness, multimodality, and extreme outliers that summary statistics alone conceal.
+
+**Matplotlib** provides the underlying object-oriented rendering canvas (`Figure` and `Axes`), giving complete procedural control over coordinates, ticks, and layouts. **Seaborn** sits atop Matplotlib, providing declarative high-level statistical plotting primitives tailored directly to Pandas DataFrames. Essential exploratory visualizations include:
+1. **Histograms & KDEs**: Display continuous feature distributions and probability densities.
+2. **Scatter Plots**: Reveal bivariate relationships, clustering patterns, and non-linear associations.
+3. **Heatmaps**: Display correlation matrices ($r in [-1, 1]$) across feature dimensions to diagnose collinearity.
+
+### Worked Example
+Generating an exploratory correlation heatmap:
+```python
+# matplotlib==3.8.4, seaborn==0.13.2
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame(np.random.randn(100, 4), columns=["x1", "x2", "x3", "x4"])
+corr = df.corr()
+
+fig, ax = plt.subplots(figsize=(6, 5))
+sns.heatmap(corr, annot=True, cmap="coolwarm", vmin=-1, vmax=1, ax=ax)
+ax.set_title("Feature Correlation Matrix")
+# plt.show() # In interactive environments
+plt.close(fig)
+```
+
+### Common Mistake
+Relying exclusively on aggregate summary metrics (like mean and variance) without visualizing distributions, missing hidden patterns like Anscombe's quartet.
+
+### Check Yourself
+What visualization is best suited to rapidly inspect pairwise Pearson correlation coefficients across dozens of continuous features simultaneously? (A correlation heatmap).

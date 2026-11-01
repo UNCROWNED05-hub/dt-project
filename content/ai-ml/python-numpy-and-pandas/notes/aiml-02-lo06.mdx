@@ -1,0 +1,44 @@
+---
+loId: "aiml-02-lo06"
+title: "Tabular Selection and Filtering: loc, iloc, and Query"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Extracting specific observations and features from a DataFrame requires deterministic indexers. Pandas provides two primary accessors: `.loc` for label-based selection and `.iloc` for integer position-based selection.
+
+- **`df.loc[row_labels, col_labels]`**: Selects data using explicit index names and column header strings. Slicing with `.loc` is inclusive of both endpoints (`'a':'c'` includes `'c'`).
+- **`df.iloc[row_positions, col_positions]`**: Selects data using 0-based integer coordinates. Slicing with `.iloc` follows standard Python half-open semantics (`0:3` includes indices 0, 1, and 2, omitting 3).
+
+For conditional filtering, boolean expressions can be passed directly into brackets or evaluated concisely using `.query()`. Query strings parse expressions against DataFrame column namespaces, minimizing temporary object allocation.
+
+### Worked Example
+Demonstrating label vs positional selection and query filtering:
+```python
+# pandas==2.2.2
+import pandas as pd
+
+df = pd.DataFrame({
+    "department": ["Eng", "Sales", "Eng", "HR"],
+    "salary": [110000, 75000, 130000, 65000]
+}, index=["e1", "e2", "e3", "e4"])
+
+# 1. Label-based selection (.loc)
+print(df.loc["e1":"e2", ["salary"]]) # Inclusive of e2
+
+# 2. Integer position selection (.iloc)
+print(df.iloc[0:2, 1]) # Excludes index 2
+
+# 3. Query expression
+high_earners = df.query("salary > 100000 and department == 'Eng'")
+print(high_earners)
+```
+
+### Common Mistake
+Confusing `.loc` and `.iloc` on DataFrames that have integer-based indices, leading to off-by-one errors or looking up index labels rather than positional rows.
+
+### Check Yourself
+If an index has string labels `['a', 'b', 'c', 'd']`, does `df.loc['a':'c']` return 2 rows or 3 rows? (3 rows: label-based `.loc` slicing is inclusive of both endpoints).

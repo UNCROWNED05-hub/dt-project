@@ -1,0 +1,1106 @@
+[
+  {
+    "id": "aiml-03-q01",
+    "loId": "aiml-03-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What geometric property does the vector dot product $\\mathbf{u} \\cdot \\mathbf{v}$ directly measure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The directional alignment and projection of one vector along another."
+      },
+      {
+        "id": "b",
+        "text": "The cross-sectional area of the unit sphere."
+      },
+      {
+        "id": "c",
+        "text": "The ratio of primes contained within the vector indices."
+      },
+      {
+        "id": "d",
+        "text": "The memory bandwidth required to store float arrays."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The dot product measures the projection of vector u along v, proportional to the cosine of the angle between them.",
+    "noteRef": "aiml-03-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q02",
+    "loId": "aiml-03-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is Cosine Similarity widely preferred over Euclidean Distance for measuring similarity between document text embeddings?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because cosine similarity cannot output negative numbers."
+      },
+      {
+        "id": "b",
+        "text": "Because cosine similarity normalizes by vector magnitude, remaining invariant to overall document word count."
+      },
+      {
+        "id": "c",
+        "text": "Because Euclidean distance requires infinite dimensional arrays."
+      },
+      {
+        "id": "d",
+        "text": "Because cosine similarity is an integer-only metric."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Cosine similarity measures vector angle rather than magnitude, ensuring two documents with the same topic focus match regardless of document length.",
+    "noteRef": "aiml-03-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q03",
+    "loId": "aiml-03-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have two vectors $\\mathbf{a} = [2, 0]$ and $\\mathbf{b} = [0, 5]$. What is their dot product, and what geometric relationship does it indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "7, representing their Manhattan sum."
+      },
+      {
+        "id": "b",
+        "text": "10, indicating parallel alignment."
+      },
+      {
+        "id": "c",
+        "text": "0, indicating that the two vectors are completely orthogonal (perpendicular at 90 degrees)."
+      },
+      {
+        "id": "d",
+        "text": "-1, indicating opposite directions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Dot product = 2*0 + 0*5 = 0. When the dot product of non-zero vectors is zero, the vectors are orthogonal (perpendicular).",
+    "noteRef": "aiml-03-lo01",
+    "verify": "(2 * 0 + 0 * 5 === 0)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q04",
+    "loId": "aiml-03-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "What is the Euclidean ($L_2$) norm of the 3D vector $\\mathbf{v} = [3.0, 4.0, 12.0]$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "13.0"
+      },
+      {
+        "id": "b",
+        "text": "19.0"
+      },
+      {
+        "id": "c",
+        "text": "144.0"
+      },
+      {
+        "id": "d",
+        "text": "169.0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "\\|v\\|_2 = sqrt(3^2 + 4^2 + 12^2) = sqrt(9 + 16 + 144) = sqrt(169) = 13.0.",
+    "noteRef": "aiml-03-lo01",
+    "verify": "(Math.sqrt(3*3 + 4*4 + 12*12) === 13)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q05",
+    "loId": "aiml-03-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What condition must be satisfied for matrix multiplication $\\mathbf{A} \\mathbf{B}$ to be mathematically defined?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The determinants of both matrices must equal 1."
+      },
+      {
+        "id": "b",
+        "text": "Both matrices must have identical square dimensions $(N, N)$."
+      },
+      {
+        "id": "c",
+        "text": "Matrix $\\mathbf{A}$ must have more rows than matrix $\\mathbf{B}$."
+      },
+      {
+        "id": "d",
+        "text": "The number of columns in $\\mathbf{A}$ must equal the number of rows in $\\mathbf{B}$."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Inner dimensions must match: if A has shape (M, K), B must have shape (K, N) to allow valid vector dot products.",
+    "noteRef": "aiml-03-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q06",
+    "loId": "aiml-03-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is matrix multiplication generally described as non-commutative?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because in general, $\\mathbf{A}\\mathbf{B} \\neq \\mathbf{B}\\mathbf{A}$, and often $\\mathbf{B}\\mathbf{A}$ is not even dimensionally defined."
+      },
+      {
+        "id": "b",
+        "text": "Because matrix products cannot be inverted."
+      },
+      {
+        "id": "c",
+        "text": "Because multiplication only works on row vectors."
+      },
+      {
+        "id": "d",
+        "text": "Because scalar constants cannot be factored out."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Multiplying A by B applies transformation B followed by A. Reversing the order produces different spatial transformations.",
+    "noteRef": "aiml-03-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q07",
+    "loId": "aiml-03-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A neural network layer receives a mini-batch matrix $\\mathbf{X}$ of shape (32, 128) and applies weight matrix $\\mathbf{W}$ to produce hidden activations $\\mathbf{H}$ of shape (32, 64). What must be the shape of $\\mathbf{W}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(64, 128)"
+      },
+      {
+        "id": "b",
+        "text": "(128, 64)"
+      },
+      {
+        "id": "c",
+        "text": "(32, 64)"
+      },
+      {
+        "id": "d",
+        "text": "(128, 32)"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "(32, 128) @ (128, 64) produces (32, 64). Inner dimension 128 contracts, leaving outer dimensions (32, 64).",
+    "noteRef": "aiml-03-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q08",
+    "loId": "aiml-03-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following algebraic properties hold true for matrix transposition?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$(\\mathbf{A}^T)^T = \\mathbf{A}$"
+      },
+      {
+        "id": "b",
+        "text": "$(\\mathbf{A} \\mathbf{B})^T = \\mathbf{B}^T \\mathbf{A}^T$"
+      },
+      {
+        "id": "c",
+        "text": "$(\\mathbf{A} + \\mathbf{B})^T = \\mathbf{A}^T + \\mathbf{B}^T$"
+      },
+      {
+        "id": "d",
+        "text": "$(\\mathbf{A} \\mathbf{B})^T = \\mathbf{A}^T \\mathbf{B}^T$"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Transposing a product reverses the multiplication order: (AB)^T = B^T A^T. Options a, b, and c are true mathematical identities.",
+    "noteRef": "aiml-03-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q09",
+    "loId": "aiml-03-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In Bayes' Theorem $P(A | B) = \\frac{P(B | A) P(A)}{P(B)}$, what is the term $P(A)$ called?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Likelihood function"
+      },
+      {
+        "id": "b",
+        "text": "The Posterior probability"
+      },
+      {
+        "id": "c",
+        "text": "The Prior probability"
+      },
+      {
+        "id": "d",
+        "text": "The Marginal evidence"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "P(A) represents our initial baseline belief in hypothesis A before observing any empirical evidence B.",
+    "noteRef": "aiml-03-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q10",
+    "loId": "aiml-03-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What does the 'Likelihood' term $P(B | A)$ quantify in Bayesian inference?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The probability of hypothesis $A$ given that evidence $B$ failed."
+      },
+      {
+        "id": "b",
+        "text": "The overall frequency of hypothesis $A$ across the entire universe."
+      },
+      {
+        "id": "c",
+        "text": "The error rate of our hardware sensor."
+      },
+      {
+        "id": "d",
+        "text": "The probability of observing evidence $B$ given that hypothesis $A$ is true."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Likelihood evaluates how consistent the observed data B is under the assumption that hypothesis A holds true.",
+    "noteRef": "aiml-03-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q11",
+    "loId": "aiml-03-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A medical test has 99% sensitivity $P(+|D)=0.99$ and 95% specificity $P(-|\\neg D)=0.95$. A rare disease has prior prevalence $P(D)=0.001$. What is the marginal probability $P(+)$ of testing positive?",
+    "options": [
+      {
+        "id": "a",
+        "text": "P(+) = 0.99*0.001 + 0.05*0.999 = 0.00099 + 0.04995 = 0.05094 (about 5.1%)"
+      },
+      {
+        "id": "b",
+        "text": "P(+) = 0.99 (99%)"
+      },
+      {
+        "id": "c",
+        "text": "P(+) = 0.001 (0.1%)"
+      },
+      {
+        "id": "d",
+        "text": "P(+) = 0.50 (50%)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Total probability integrates true positives (0.99 * 0.001) and false positives (0.05 * 0.999) across the population.",
+    "noteRef": "aiml-03-lo03",
+    "verify": "Math.abs((0.99 * 0.001 + 0.05 * 0.999) - 0.05094) < 0.0001",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q12",
+    "loId": "aiml-03-lo03",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Using the values above ($P(D)=0.001$, $P(+|D)=0.99$, $P(+)=0.05094$), what is the posterior probability $P(D|+)$ that a person with a positive test actually has the disease?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.0194 (about 1.94%)"
+      },
+      {
+        "id": "b",
+        "text": "0.9900 (99%)"
+      },
+      {
+        "id": "c",
+        "text": "0.5000 (50%)"
+      },
+      {
+        "id": "d",
+        "text": "0.1000 (10%)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "P(D|+) = (0.99 * 0.001) / 0.05094 = 0.00099 / 0.05094 ≈ 0.0194. Despite 99% test accuracy, rare prevalence makes false positives dominate.",
+    "noteRef": "aiml-03-lo03",
+    "verify": "Math.abs(((0.99 * 0.001) / 0.05094) - 0.01943) < 0.001",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q13",
+    "loId": "aiml-03-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why does sample variance divide by $N-1$ instead of $N$ in standard statistics?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because Python 0-indexed arrays have length $N-1$."
+      },
+      {
+        "id": "b",
+        "text": "To correct for sample bias (Bessel's correction) since deviations are measured against the sample mean rather than the true population mean."
+      },
+      {
+        "id": "c",
+        "text": "To account for float rounding precision."
+      },
+      {
+        "id": "d",
+        "text": "To eliminate negative variance values."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Dividing by N-1 compensates for using the sample mean, ensuring the sample variance is an unbiased estimator of true population variance.",
+    "noteRef": "aiml-03-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q14",
+    "loId": "aiml-03-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What information is captured along the diagonal of a $D \\times D$ Covariance Matrix $\\Sigma$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All zeros."
+      },
+      {
+        "id": "b",
+        "text": "The mean values of each feature."
+      },
+      {
+        "id": "c",
+        "text": "The individual variances $\\sigma_i^2$ of each respective feature."
+      },
+      {
+        "id": "d",
+        "text": "The eigenvalues of the dataset."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The covariance of a feature with itself is its variance: Cov(X_i, X_i) = Var(X_i). Thus diagonal entries are feature variances.",
+    "noteRef": "aiml-03-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q15",
+    "loId": "aiml-03-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "Two features $X$ (house square footage) and $Y$ (sale price) have a positive covariance of $+450,000$. What does this positive sign indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Square footage cannot be used in linear regression."
+      },
+      {
+        "id": "b",
+        "text": "Larger houses cause higher tax penalties."
+      },
+      {
+        "id": "c",
+        "text": "The price decreases as footage increases."
+      },
+      {
+        "id": "d",
+        "text": "Larger houses generally associate with higher sale prices."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Positive covariance indicates that both variables tend to increase and decrease together.",
+    "noteRef": "aiml-03-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q16",
+    "loId": "aiml-03-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following statements regarding variance and standard deviation are mathematically accurate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Standard deviation shares the exact same physical measurement units as the underlying feature data."
+      },
+      {
+        "id": "b",
+        "text": "Variance is always non-negative ($\\sigma^2 \\ge 0$)."
+      },
+      {
+        "id": "c",
+        "text": "If all samples in a dataset have identical values, variance is exactly 0."
+      },
+      {
+        "id": "d",
+        "text": "Variance can be negative if data points lie below zero."
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Variance squares deviations and is strictly non-negative; standard deviation takes the square root, returning to original feature units.",
+    "noteRef": "aiml-03-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q17",
+    "loId": "aiml-03-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Under a Gaussian Normal distribution, approximately what percentage of all observations fall within $\\pm 1$ standard deviation of the mean?",
+    "options": [
+      {
+        "id": "a",
+        "text": "68.27%"
+      },
+      {
+        "id": "b",
+        "text": "95.45%"
+      },
+      {
+        "id": "c",
+        "text": "50.00%"
+      },
+      {
+        "id": "d",
+        "text": "99.73%"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The empirical 68-95-99.7 rule specifies that approximately 68.27% of observations lie within 1 standard deviation of the mean.",
+    "noteRef": "aiml-03-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q18",
+    "loId": "aiml-03-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What mathematical transformation converts an arbitrary Normal distribution $\\mathcal{N}(\\mu, \\sigma^2)$ into the Standard Normal form $\\mathcal{N}(0, 1)$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Min-Max normalization: $\\frac{x - \\min}{\\max - \\min}$."
+      },
+      {
+        "id": "b",
+        "text": "Z-score standardization: $z = \\frac{x - \\mu}{\\sigma}$."
+      },
+      {
+        "id": "c",
+        "text": "Logarithmic transformation: $\\ln(x)$."
+      },
+      {
+        "id": "d",
+        "text": "Softmax scaling."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Subtracting the mean centers the distribution at 0; dividing by standard deviation scales variance to exactly 1.",
+    "noteRef": "aiml-03-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q19",
+    "loId": "aiml-03-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A student scores 85 on an ML exam with mean 70 and standard deviation 10. What is their z-score, and how is it interpreted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "z = 0.85, representing their percentile rank."
+      },
+      {
+        "id": "b",
+        "text": "z = +15, meaning they scored 15 points above passing."
+      },
+      {
+        "id": "c",
+        "text": "z = +1.5, meaning their score is 1.5 standard deviations above the class mean."
+      },
+      {
+        "id": "d",
+        "text": "z = -1.5, meaning their score was below average."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "z = (85 - 70) / 10 = +1.5. Positive z-scores indicate performance above the sample mean.",
+    "noteRef": "aiml-03-lo05",
+    "verify": "((85 - 70) / 10 === 1.5)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q20",
+    "loId": "aiml-03-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following properties describe a Gaussian (Normal) probability distribution?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The distribution is completely symmetric around its mean $\\mu$"
+      },
+      {
+        "id": "b",
+        "text": "Mean, median, and mode are all equal at the peak"
+      },
+      {
+        "id": "c",
+        "text": "The total area under the probability density curve equals 1.0"
+      },
+      {
+        "id": "d",
+        "text": "Values outside $\\mu \\pm 3\\sigma$ can never mathematically occur"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Gaussian distributions have symmetric tails with unit total area. Tail probabilities extend asymptotically to infinity, so extreme values can occur.",
+    "noteRef": "aiml-03-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q21",
+    "loId": "aiml-03-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In calculus, what does the first derivative $f'(x)$ represent geometrically?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The distance from the origin."
+      },
+      {
+        "id": "b",
+        "text": "The total area enclosed beneath the function curve."
+      },
+      {
+        "id": "c",
+        "text": "The curvature of the coordinate axis."
+      },
+      {
+        "id": "d",
+        "text": "The slope of the tangent line to the curve at point $x$."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The derivative represents the instantaneous slope of the function at that exact point.",
+    "noteRef": "aiml-03-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q22",
+    "loId": "aiml-03-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "If the derivative of a cost function at weight $w=5$ is $L'(5) = +4.0$, how should gradient descent adjust $w$ to reduce cost?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Decrease $w$ (move in the negative direction)."
+      },
+      {
+        "id": "b",
+        "text": "Increase $w$ (move in the positive direction)."
+      },
+      {
+        "id": "c",
+        "text": "Keep $w$ unchanged; the function has converged."
+      },
+      {
+        "id": "d",
+        "text": "Reset $w$ to zero."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Because the slope is positive, increasing w increases loss. Therefore, gradient descent moves opposite the slope: w_new = w - lr * (+4.0).",
+    "noteRef": "aiml-03-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q23",
+    "loId": "aiml-03-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "Consider loss function $L(w) = 3w^2 - 12w + 7$. What is the analytical derivative $\\frac{dL}{dw}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3w - 12"
+      },
+      {
+        "id": "b",
+        "text": "6w - 12"
+      },
+      {
+        "id": "c",
+        "text": "6w^2 - 12"
+      },
+      {
+        "id": "d",
+        "text": "6w"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "By the power rule, d/dw (3w^2) = 6w, d/dw (-12w) = -12, and derivative of constant 7 is 0. Result is 6w - 12.",
+    "noteRef": "aiml-03-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q24",
+    "loId": "aiml-03-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following derivative calculations are correct based on fundamental calculus rules?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$\\frac{d}{dx} (5x^3) = 15x^2$"
+      },
+      {
+        "id": "b",
+        "text": "$\\frac{d}{dx} (\\ln(x)) = \\frac{1}{x}$"
+      },
+      {
+        "id": "c",
+        "text": "$\\frac{d}{dx} (e^x) = e^x$"
+      },
+      {
+        "id": "d",
+        "text": "$\\frac{d}{dx} (x^4) = 4x^4$"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Power rule gives d/dx (x^4) = 4x^3, so option d is false. Options a, b, and c are correct calculus identities.",
+    "noteRef": "aiml-03-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q25",
+    "loId": "aiml-03-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "How is a partial derivative $\\frac{\\partial f}{\\partial x}$ computed when a function depends on multiple variables $f(x, y)$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Divide $f(x)$ by $f(y)$."
+      },
+      {
+        "id": "b",
+        "text": "Differentiate both $x$ and $y$ simultaneously and add the results."
+      },
+      {
+        "id": "c",
+        "text": "Differentiate with respect to $x$ while treating $y$ as a fixed constant."
+      },
+      {
+        "id": "d",
+        "text": "Replace $y$ with zero before differentiating."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Partial differentiation isolates one variable, holding all other variables constant.",
+    "noteRef": "aiml-03-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q26",
+    "loId": "aiml-03-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What geometric direction does the gradient vector $\\nabla f(\\mathbf{w})$ point toward on a loss surface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Directly toward the coordinate origin."
+      },
+      {
+        "id": "b",
+        "text": "The direction of steepest descent."
+      },
+      {
+        "id": "c",
+        "text": "Tangent to the contour lines with zero rate of change."
+      },
+      {
+        "id": "d",
+        "text": "The direction of steepest ascent (greatest rate of increase)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The gradient points in the direction of greatest increase. Gradient descent moves in the opposite direction (-grad) to minimize loss.",
+    "noteRef": "aiml-03-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q27",
+    "loId": "aiml-03-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have cost function $f(x, y) = 2x^2 + 3y^2$. At point $(x=1, y=2)$, what is the gradient vector $\\nabla f$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[4, 12]"
+      },
+      {
+        "id": "b",
+        "text": "[2, 6]"
+      },
+      {
+        "id": "c",
+        "text": "[4, 6]"
+      },
+      {
+        "id": "d",
+        "text": "[8, 12]"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "df/dx = 4x; at x=1, df/dx = 4. df/dy = 6y; at y=2, df/dy = 12. Gradient vector is [4, 12].",
+    "noteRef": "aiml-03-lo07",
+    "verify": "(4 * 1 === 4 && 6 * 2 === 12)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q28",
+    "loId": "aiml-03-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following statements about gradient vectors $\\nabla L(\\mathbf{w})$ are true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The length (norm) of the gradient vector indicates how steep the slope is"
+      },
+      {
+        "id": "b",
+        "text": "At an unconstrained local minimum, the gradient vector is the zero vector $\\mathbf{0}$"
+      },
+      {
+        "id": "c",
+        "text": "The gradient vector is orthogonal to the contour lines (level curves) of the function"
+      },
+      {
+        "id": "d",
+        "text": "The gradient vector only exists for linear functions"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Gradients are orthogonal to level curves, zero at local extrema, and their magnitude indicates steepness.",
+    "noteRef": "aiml-03-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q29",
+    "loId": "aiml-03-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In machine learning backpropagation, what calculus principle allows errors to be propagated backwards through nested function layers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Central Limit Theorem."
+      },
+      {
+        "id": "b",
+        "text": "The Chain Rule of differentiation."
+      },
+      {
+        "id": "c",
+        "text": "L'Hopital's Rule."
+      },
+      {
+        "id": "d",
+        "text": "Euler's Identity."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The Chain Rule calculates derivatives of composite functions by multiplying intermediate Jacobian derivatives.",
+    "noteRef": "aiml-03-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q30",
+    "loId": "aiml-03-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "If loss $L$ depends on $u$, and $u$ depends on weight $w$, how is $\\frac{\\partial L}{\\partial w}$ expressed via the Chain Rule?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial u} / \\frac{\\partial u}{\\partial w}$"
+      },
+      {
+        "id": "b",
+        "text": "$\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial u} + \\frac{\\partial u}{\\partial w}$"
+      },
+      {
+        "id": "c",
+        "text": "$\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial u} \\cdot \\frac{\\partial u}{\\partial w}$"
+      },
+      {
+        "id": "d",
+        "text": "$\\frac{\\partial L}{\\partial w} = (\\frac{\\partial L}{\\partial u})^2$"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The rate of change of L with respect to w is the product of the rate of change of L with respect to u and u with respect to w.",
+    "noteRef": "aiml-03-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q31",
+    "loId": "aiml-03-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A neuron computes $z = w x$. The loss is $L = \\frac{1}{2}(z - y)^2$. If $x = 3.0$, $w = 2.0$, and $y = 4.0$, what is the gradient $\\frac{\\partial L}{\\partial w}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "dL/dw = -6.0"
+      },
+      {
+        "id": "b",
+        "text": "dL/dw = +2.0"
+      },
+      {
+        "id": "c",
+        "text": "dL/dw = +12.0"
+      },
+      {
+        "id": "d",
+        "text": "dL/dw = (6.0 - 4.0) * 3.0 = +6.0"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "z = 2*3 = 6. dL/dz = z - y = 6 - 4 = 2. dz/dw = x = 3. By Chain Rule, dL/dw = (dL/dz)*(dz/dw) = 2 * 3 = 6.0.",
+    "noteRef": "aiml-03-lo08",
+    "verify": "((2.0 * 3.0 - 4.0) * 3.0 === 6.0)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q32",
+    "loId": "aiml-03-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Why does the multivariate Chain Rule sum over multiple paths when calculating $\\frac{\\partial L}{\\partial x}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because variable $x$ may feed into multiple intermediate nodes that each contribute to the final loss $L$"
+      },
+      {
+        "id": "b",
+        "text": "To capture all paths of causal influence through the computational graph"
+      },
+      {
+        "id": "c",
+        "text": "Because matrix products are strictly associative"
+      },
+      {
+        "id": "d",
+        "text": "To convert partial derivatives into complex numbers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "When a variable fans out to multiple downstream nodes, total derivative accumulates the sum of gradient products across all paths.",
+    "noteRef": "aiml-03-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q33",
+    "loId": "aiml-03-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What geometric relationship defines an eigenvector $\\mathbf{v}$ and eigenvalue $\\lambda$ of matrix $\\mathbf{A}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Matrix multiplication stretches $\\mathbf{v}$ by scalar $\\lambda$ without rotating its spatial direction: $\\mathbf{A}\\mathbf{v} = \\lambda \\mathbf{v}$."
+      },
+      {
+        "id": "b",
+        "text": "Vector $\\mathbf{v}$ is perpendicular to all rows of $\\mathbf{A}$."
+      },
+      {
+        "id": "c",
+        "text": "$\\mathbf{A}$ and $\\mathbf{v}$ have identical row dimensions."
+      },
+      {
+        "id": "d",
+        "text": "The length of vector $\\mathbf{v}$ always equals 0."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "An eigenvector maintains its exact direction when transformed by matrix A, being scaled only by factor lambda.",
+    "noteRef": "aiml-03-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q34",
+    "loId": "aiml-03-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "What does a matrix determinant $\\det(\\mathbf{A}) = 0$ signify about the geometric transformation represented by $\\mathbf{A}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The transformation reflects vectors across the origin without changing volume."
+      },
+      {
+        "id": "b",
+        "text": "The transformation collapses volume into a lower-dimensional subspace, meaning the matrix is singular and cannot be inverted."
+      },
+      {
+        "id": "c",
+        "text": "The matrix contains only positive numbers."
+      },
+      {
+        "id": "d",
+        "text": "The transformation preserves Euclidean distances perfectly."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A zero determinant indicates that space is squashed to lower dimensions, making the transformation non-invertible.",
+    "noteRef": "aiml-03-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-03-q35",
+    "loId": "aiml-03-lo09",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "What is the determinant of the 2x2 matrix $\\begin{pmatrix} 4 & 2 \\\\ 1 & 3 \\end{pmatrix}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "14"
+      },
+      {
+        "id": "c",
+        "text": "12"
+      },
+      {
+        "id": "d",
+        "text": "2"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "det = (4 * 3) - (2 * 1) = 12 - 2 = 10.",
+    "noteRef": "aiml-03-lo09",
+    "verify": "(4 * 3 - 2 * 1 === 10)",
+    "reviewed": false
+  }
+]

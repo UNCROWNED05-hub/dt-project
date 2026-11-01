@@ -1,0 +1,50 @@
+---
+loId: "aiml-02-lo07"
+title: "Data Aggregation and Relational Operations: GroupBy and Merges"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Data transformation in ML workflows frequently involves grouping categorical cohorts and joining relational tables. Pandas implements the classic **Split-Apply-Combine** pattern through `.groupby()`.
+
+1. **Split**: The dataset is partitioned into logical buckets based on distinct key values in one or more grouping columns.
+2. **Apply**: A summary function (such as mean, sum, std, or custom aggregations) is applied independently across each subgroup.
+3. **Combine**: The aggregated metrics are assembled into a single cohesive output DataFrame.
+
+For multi-table pipelines, `pd.merge()` executes SQL-style relational joins (inner, left, right, outer) along shared key columns, handling cardinality variations and matching keys automatically.
+
+### Worked Example
+Performing cohort aggregation and relational merging:
+```python
+# pandas==2.2.2
+import pandas as pd
+
+# Employees table
+emp = pd.DataFrame({
+    "emp_id": [101, 102, 103, 104],
+    "dept_id": ["D1", "D2", "D1", "D2"],
+    "performance": [4.2, 3.8, 4.9, 4.1]
+})
+
+# Departments table
+depts = pd.DataFrame({
+    "dept_id": ["D1", "D2"],
+    "dept_name": ["Engineering", "Product"]
+})
+
+# 1. Relational Merge (Inner Join)
+merged = pd.merge(emp, depts, on="dept_id")
+
+# 2. GroupBy aggregation
+dept_summary = merged.groupby("dept_name")["performance"].agg(["mean", "count"])
+print(dept_summary)
+```
+
+### Common Mistake
+Executing iterative row-by-row loops over unique categories instead of vectorized `.groupby()`, degrading performance by orders of magnitude on large tables.
+
+### Check Yourself
+In the Split-Apply-Combine pattern, what stage computes statistical metrics like mean or standard deviation on individual partitions? (The Apply stage).

@@ -1,0 +1,42 @@
+---
+loId: "aiml-03-lo02"
+title: "Matrix Multiplication and Linear Transformations"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Matrices represent linear transformations that rotate, scale, shear, and project vector spaces. In machine learning, dense neural layers compute affine transformations: $\mathbf{y} = \mathbf{X}\mathbf{W} + \mathbf{b}$.
+
+For matrix multiplication $\mathbf{C} = \mathbf{A}\mathbf{B}$ to be mathematically valid, the **inner dimensions must match**:
+- If $\mathbf{A}$ has shape $(M, K)$ and $\mathbf{B}$ has shape $(K, N)$, the resulting matrix $\mathbf{C}$ has shape $(M, N)$.
+- Each element $C_{ij}$ is computed as the vector dot product of row $i$ of $\mathbf{A}$ and column $j$ of $\mathbf{B}$:
+$$C_{ij} = \sum_{k=1}^K A_{ik} B_{kj}$$
+
+Matrix multiplication is associative $((\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C}))$ and distributive, but strictly **non-commutative** (in general, $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$). The **transpose** $\mathbf{A}^T$ flips axes such that $(A^T)_{ji} = A_{ij}$, satisfying $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T \mathbf{A}^T$.
+
+### Worked Example
+Executing batch matrix multiplication with dimension checks:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Batch of 4 samples, 3 input features
+X = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 0, 1]]) # (4, 3)
+
+# Weight matrix mapping 3 inputs to 2 hidden neurons
+W = np.array([[0.1, 0.2], [0.3, 0.4], [0.5, 0.6]])          # (3, 2)
+
+# Matrix product: (4, 3) @ (3, 2) -> (4, 2)
+output = X @ W
+print(f"Output shape: {output.shape}") # (4, 2)
+print(output)
+```
+
+### Common Mistake
+Attempting to multiply matrices of shapes $(3, 4)$ and $(3, 2)$ directly. Inner dimensions 4 and 3 do not match. The first matrix must be transposed to $(4, 3)$ or the pipeline restructured.
+
+### Check Yourself
+If matrix $A$ is shape $(16, 64)$ and matrix $B$ is shape $(64, 10)$, what is the shape of $A B$? ($(16, 10)$).

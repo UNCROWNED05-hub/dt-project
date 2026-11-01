@@ -1,0 +1,43 @@
+---
+loId: "aiml-02-lo04"
+title: "Vectorization vs Interpreted Python Loops"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Standard Python executes bytecode sequentially through the CPython interpreter loop. In each loop iteration, Python must evaluate variable types, resolve dynamically bound methods, and manage garbage collection reference counters. When computing millions of mathematical operations across training records, this dynamic interpretation overhead cripples execution speed.
+
+Vectorization delegates array operations to compiled, contiguous C or Fortran routines. Under the hood, modern CPU architectures provide Single Instruction, Multiple Data (SIMD) instruction sets (such as AVX-512 or ARM NEON) that process 4, 8, or 16 floating-point values in a single hardware cycle. By expressing algorithms as high-level array operations (e.g., dot products, matrix multiplications, and universal functions), code runs at bare-metal hardware speeds.
+
+### Worked Example
+Benchmarking loop vs vectorized dot product:
+```python
+# numpy==1.26.4
+import numpy as np
+import time
+
+a = np.random.randn(100_000)
+b = np.random.randn(100_000)
+
+# 1. Python loop
+start = time.perf_counter()
+loop_sum = sum(x * y for x, y in zip(a, b))
+loop_time = time.perf_counter() - start
+
+# 2. Vectorized NumPy operation
+start = time.perf_counter()
+vec_sum = a @ b
+vec_time = time.perf_counter() - start
+
+print(f"Speedup: {loop_time / vec_time:.1f}x faster with vectorization")
+# Typically 50x to 150x speedup
+```
+
+### Common Mistake
+Writing explicit nested for-loops across matrix rows and columns when implementing cost functions or transformations, sacrificing native SIMD parallelism.
+
+### Check Yourself
+What CPU architectural feature enables vectorized NumPy operations to calculate multiple float multiplications in a single instruction cycle? (SIMD: Single Instruction, Multiple Data registers).

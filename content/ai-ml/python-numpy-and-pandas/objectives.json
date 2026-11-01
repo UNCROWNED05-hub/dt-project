@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "chapterId": "ai-02",
+  "objectives": [
+    {
+      "id": "aiml-02-lo01",
+      "order": 1,
+      "title": "Construct and manipulate multi-dimensional NumPy arrays using shape, dtype, and strides",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ndarray",
+        "shape",
+        "dtype",
+        "strides",
+        "memory layout",
+        "C-order"
+      ],
+      "aliases": [
+        "numpy array creation",
+        "tensor memory layout"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-02-lo02",
+      "order": 2,
+      "title": "Apply NumPy array indexing, slicing, and boolean masking to filter tensor data",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "boolean masking",
+        "fancy indexing",
+        "slicing",
+        "view vs copy",
+        "sub-array"
+      ],
+      "aliases": [
+        "tensor slicing",
+        "conditional array indexing"
+      ],
+      "prerequisites": [
+        "aiml-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-02-lo03",
+      "order": 3,
+      "title": "Calculate element-wise array operations using NumPy broadcasting semantics and dimension rules",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "broadcasting",
+        "trailing dimensions",
+        "dimension expansion",
+        "newaxis",
+        "element-wise"
+      ],
+      "aliases": [
+        "numpy broadcasting",
+        "shape alignment"
+      ],
+      "prerequisites": [
+        "aiml-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-02-lo04",
+      "order": 4,
+      "title": "Vectorize numerical algorithms to eliminate Python interpreted loops and accelerate execution",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "vectorization",
+        "SIMD",
+        "loop elimination",
+        "C extension",
+        "throughput"
+      ],
+      "aliases": [
+        "array vectorization",
+        "loop replacement"
+      ],
+      "prerequisites": [
+        "aiml-02-lo01",
+        "aiml-02-lo03"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-02-lo05",
+      "order": 5,
+      "title": "Structure tabular datasets using Pandas Series and DataFrame schemas",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "pandas",
+        "DataFrame",
+        "Series",
+        "index",
+        "column types",
+        "dtypes"
+      ],
+      "aliases": [
+        "tabular data structures",
+        "pandas schema"
+      ],
+      "prerequisites": [
+        "aiml-02-lo01"
+      ],
+      "estMinutes": 8
+    },
+    {
+      "id": "aiml-02-lo06",
+      "order": 6,
+      "title": "Filter, project, and transform tabular records using Pandas loc, iloc, and query expressions",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "loc",
+        "iloc",
+        "query",
+        "boolean indexing",
+        "label selection",
+        "column assignment"
+      ],
+      "aliases": [
+        "pandas filtering",
+        "data selection"
+      ],
+      "prerequisites": [
+        "aiml-02-lo05"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-02-lo07",
+      "order": 7,
+      "title": "Aggregate and reshape relational data using Pandas groupby, pivot tables, and merge operations",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "groupby",
+        "aggregation",
+        "merge",
+        "join",
+        "pivot table",
+        "split-apply-combine"
+      ],
+      "aliases": [
+        "data aggregation",
+        "pandas joins"
+      ],
+      "prerequisites": [
+        "aiml-02-lo05",
+        "aiml-02-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-02-lo08",
+      "order": 8,
+      "title": "Parse delimited CSV files handling missing delimiters, headers, and type inference",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "read_csv",
+        "delimiter",
+        "parse_dates",
+        "na_values",
+        "chunksize",
+        "csv parsing"
+      ],
+      "aliases": [
+        "csv ingestion",
+        "pandas file io"
+      ],
+      "prerequisites": [
+        "aiml-02-lo05"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-02-lo09",
+      "order": 9,
+      "title": "Plot numerical distributions and feature correlations using Matplotlib and Seaborn interfaces",
+      "bloom": "apply",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "matplotlib",
+        "seaborn",
+        "histogram",
+        "scatter plot",
+        "heatmap",
+        "correlation matrix"
+      ],
+      "aliases": [
+        "data visualization",
+        "exploratory plotting"
+      ],
+      "prerequisites": [
+        "aiml-02-lo05"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

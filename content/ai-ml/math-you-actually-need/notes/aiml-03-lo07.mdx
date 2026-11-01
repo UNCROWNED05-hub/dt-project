@@ -1,0 +1,48 @@
+---
+loId: "aiml-03-lo07"
+title: "Multivariable Calculus: Partial Derivatives and the Gradient Vector"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Real machine learning models depend on millions of parameters $\mathbf{w} = [w_1, w_2, \dots, w_D]$. When a function $f(\mathbf{w})$ takes multiple inputs, a standard derivative cannot be computed in isolation. Instead, we compute **partial derivatives** $\frac{\partial f}{\partial w_i}$.
+
+A partial derivative treats all other variables as fixed constants while differentiating with respect to the variable of interest. For example, for $f(x, y) = 3x^2 y + 4y^3$:
+$$\frac{\partial f}{\partial x} = 6xy, \quad \frac{\partial f}{\partial y} = 3x^2 + 12y^2$$
+
+The **Gradient Vector** $\nabla f$ stacks all individual partial derivatives into a single vector pointing in the direction of steepest ascent:
+$$\nabla f(\mathbf{w}) = \left[ \frac{\partial f}{\partial w_1}, \frac{\partial f}{\partial w_2}, \dots, \frac{\partial f}{\partial w_D} \right]^T$$
+To minimize error, Gradient Descent steps in the exact opposite direction of the gradient:
+$$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L(\mathbf{w})$$
+
+### Worked Example
+Computing multivariable gradients analytically:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Loss function: L(w1, w2) = (w1 - 3)^2 + 2*(w2 + 1)^2
+def loss(w):
+    return (w[0] - 3.0)**2 + 2.0 * (w[1] + 1.0)**2
+
+def compute_gradient(w):
+    # dL/dw1 = 2*(w1 - 3)
+    # dL/dw2 = 4*(w2 + 1)
+    return np.array([2.0 * (w[0] - 3.0), 4.0 * (w[1] + 1.0)])
+
+current_w = np.array([0.0, 0.0])
+grad = compute_gradient(current_w) # [-6.0, 4.0]
+# Stepping in negative gradient direction reduces loss:
+lr = 0.1
+new_w = current_w - lr * grad # [0.6, -0.4]
+print(f"Initial Loss: {loss(current_w):.2f}, Updated Loss: {loss(new_w):.2f}")
+```
+
+### Common Mistake
+Differentiating other variables instead of holding them strictly constant when calculating partial derivatives.
+
+### Check Yourself
+In which geometric direction does the negative gradient vector $-\nabla L(\mathbf{w})$ point? (In the direction of steepest descent across the multidimensional loss surface).

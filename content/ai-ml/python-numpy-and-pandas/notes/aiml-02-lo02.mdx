@@ -1,0 +1,41 @@
+---
+loId: "aiml-02-lo02"
+title: "Array Slicing, Views, and Boolean Masking"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Extracting subsets of tensors is a continuous requirement in machine learning pipelines. NumPy provides two primary extraction paradigms: basic slicing and advanced indexing.
+
+Basic slicing using colon notation (e.g., `arr[1:5, :]`) creates a **view** rather than a copy. A view shares the identical physical memory buffer as the parent array, merely modifying the shape, offset, and strides. Modifying elements inside a sliced view directly mutates the original array in place, guaranteeing zero memory allocation overhead.
+
+Conversely, advanced indexing—such as integer arrays or boolean masking (e.g., `arr[arr > 0.5]`)—constructs an independent **copy** of the selected elements. Boolean masks must match the dimensions of the indexed axes; each true value extracts the corresponding scalar into a newly allocated output tensor.
+
+### Worked Example
+Demonstrating views vs copies in array operations:
+```python
+# numpy==1.26.4
+import numpy as np
+
+data = np.array([[10, 20, 30], [40, 50, 60]])
+
+# 1. Basic slice creates a VIEW
+view_row = data[0, :]
+view_row[0] = 999
+print(data[0, 0]) # 999 -> Parent mutated!
+
+# 2. Boolean mask creates an independent COPY
+mask = data > 50
+filtered = data[mask]
+filtered[0] = -1
+print(data[1, 1]) # 50 -> Parent remains untouched
+```
+
+### Common Mistake
+Modifying a sliced sub-array and unexpectedly corrupting the original master training dataset because basic slicing does not duplicate underlying buffer memory.
+
+### Check Yourself
+Does `subset = tensor[:, 0:10]` allocate new memory for array elements? (No, standard colon slicing returns an in-memory view with modified strides, not a data copy).

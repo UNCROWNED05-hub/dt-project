@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "aiml-02-q01",
+    "loId": "aiml-02-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What physical memory characteristic distinguishes a NumPy ndarray from a native Python list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "NumPy arrays occupy a contiguous block of homogeneous memory, whereas Python lists store scattered pointers to individual object wrappers."
+      },
+      {
+        "id": "b",
+        "text": "NumPy arrays are stored in non-volatile SSD flash memory rather than RAM."
+      },
+      {
+        "id": "c",
+        "text": "Python lists require GPU hardware, while NumPy arrays only execute on CPUs."
+      },
+      {
+        "id": "d",
+        "text": "NumPy arrays can only store positive integer numbers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "NumPy allocates a contiguous memory buffer of uniform primitive types, enabling efficient cache locality and C-level vectorized execution.",
+    "noteRef": "aiml-02-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q02",
+    "loId": "aiml-02-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In NumPy array internals, what do 'strides' represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The maximum iteration depth permitted in recursive functions."
+      },
+      {
+        "id": "b",
+        "text": "The byte step offsets required to jump in memory to reach the next element along each array dimension."
+      },
+      {
+        "id": "c",
+        "text": "The total number of CPU clock cycles needed to evaluate a dot product."
+      },
+      {
+        "id": "d",
+        "text": "The compression ratio applied to serialized float tensors."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Strides are a tuple of byte offsets indicating how far to jump in physical memory to advance one index along each respective dimension.",
+    "noteRef": "aiml-02-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q03",
+    "loId": "aiml-02-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You allocate a float64 array of shape (5, 4) in standard C-order (row-major). What is its strides tuple?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(8, 32), because column strides always take precedence in row-major layout."
+      },
+      {
+        "id": "b",
+        "text": "(40, 8), because each float64 is 8 bytes and there are 5 rows."
+      },
+      {
+        "id": "c",
+        "text": "(32, 8), because each float64 is 8 bytes, so moving 1 row requires jumping 4 elements * 8 bytes = 32 bytes."
+      },
+      {
+        "id": "d",
+        "text": "(4, 8), representing raw element counts."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "In C-order, float64 elements are 8 bytes. Advancing one row skips 4 column elements: 4 * 8 = 32 bytes. Advancing one column skips 8 bytes.",
+    "noteRef": "aiml-02-lo01",
+    "verify": "(4 * 8 === 32)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q04",
+    "loId": "aiml-02-lo01",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following attributes are fundamental metadata properties that govern a NumPy ndarray?",
+    "options": [
+      {
+        "id": "a",
+        "text": "shape (tuple of dimension lengths)"
+      },
+      {
+        "id": "b",
+        "text": "dtype (data type descriptor)"
+      },
+      {
+        "id": "c",
+        "text": "strides (byte step offsets per axis)"
+      },
+      {
+        "id": "d",
+        "text": "bfloat16_compilation_target (mandatory CUDA compiler flag)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "An ndarray's memory view is dictated by its shape, data type (dtype), and stride offsets across dimensions.",
+    "noteRef": "aiml-02-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q05",
+    "loId": "aiml-02-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the key functional difference between slicing an array with `arr[0:5]` and indexing it with `arr[mask]`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Masking can only select positive integers."
+      },
+      {
+        "id": "b",
+        "text": "Boolean masking executes faster than colon slicing."
+      },
+      {
+        "id": "c",
+        "text": "Colon slicing modifies the array dtype, while masking preserves it."
+      },
+      {
+        "id": "d",
+        "text": "Basic colon slicing returns a zero-copy memory view, whereas boolean masking creates an independent allocated copy."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Standard slicing creates a view that references the original buffer without copying data. Advanced indexing (such as boolean masking) allocates a fresh copy.",
+    "noteRef": "aiml-02-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q06",
+    "loId": "aiml-02-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "If you modify an element in a view generated via `sub = matrix[:, 0:2]`, what happens to `matrix`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The corresponding element in `matrix` is also mutated in place."
+      },
+      {
+        "id": "b",
+        "text": "Nothing; views are strictly isolated copies."
+      },
+      {
+        "id": "c",
+        "text": "Python raises a ReadOnlyMemoryError."
+      },
+      {
+        "id": "d",
+        "text": "The entire matrix resets to all zeros."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Because views share the exact same underlying memory buffer, modifying a view directly updates the parent array.",
+    "noteRef": "aiml-02-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q07",
+    "loId": "aiml-02-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have a 1D array `values = np.array([12, -4, 25, 0, -8, 19])`. Which expression extracts only strictly positive values?",
+    "options": [
+      {
+        "id": "a",
+        "text": "values.filter(positive=True)"
+      },
+      {
+        "id": "b",
+        "text": "values[values > 0]"
+      },
+      {
+        "id": "c",
+        "text": "values[0:values.max()]"
+      },
+      {
+        "id": "d",
+        "text": "values.where(values == 0)"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Passing the boolean condition `values > 0` as a mask extracts all elements where the condition evaluates to True.",
+    "noteRef": "aiml-02-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q08",
+    "loId": "aiml-02-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following NumPy indexing operations produce an independent COPY rather than a VIEW?",
+    "options": [
+      {
+        "id": "a",
+        "text": "arr[arr > 10] (boolean masking)"
+      },
+      {
+        "id": "b",
+        "text": "arr[[0, 2, 4]] (fancy integer list indexing)"
+      },
+      {
+        "id": "c",
+        "text": "arr[1:5, :] (basic colon slicing)"
+      },
+      {
+        "id": "d",
+        "text": "arr[::2] (strided step slicing)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "Boolean masks and integer index arrays trigger advanced indexing, which creates newly allocated copies. Colon and step slices produce views.",
+    "noteRef": "aiml-02-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q09",
+    "loId": "aiml-02-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "How does NumPy evaluate whether two arrays of different shapes can be broadcast together?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Broadcasting only works if both arrays are 1D vectors."
+      },
+      {
+        "id": "b",
+        "text": "Both arrays must contain the exact same total number of elements."
+      },
+      {
+        "id": "c",
+        "text": "It compares dimension lengths from right to left, requiring dimensions to be equal or one of them to be 1."
+      },
+      {
+        "id": "d",
+        "text": "It compares dimension lengths from left to right, ignoring all odd numbers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Broadcasting rules compare trailing dimensions from right to left. Two dimensions are compatible if they are equal or if one is 1.",
+    "noteRef": "aiml-02-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q10",
+    "loId": "aiml-02-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is the resulting shape when an array of shape (4, 1, 8) is added to an array of shape (1, 6, 8)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ValueError (incompatible shapes)"
+      },
+      {
+        "id": "b",
+        "text": "(4, 6, 16)"
+      },
+      {
+        "id": "c",
+        "text": "(24, 8)"
+      },
+      {
+        "id": "d",
+        "text": "(4, 6, 8)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Comparing dimensions from right to left: 8 and 8 match; 1 and 6 expand to 6; 4 and 1 expand to 4. Result is (4, 6, 8).",
+    "noteRef": "aiml-02-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q11",
+    "loId": "aiml-02-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have a feature matrix `X` of shape (100, 5) and want to subtract a feature mean vector `mu` of shape (5,). Will `X - mu` broadcast cleanly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, because the trailing dimension of `mu` (5) matches the trailing dimension of `X` (5)."
+      },
+      {
+        "id": "b",
+        "text": "No, `mu` must be explicitly reshaped to (100, 5) before arithmetic is allowed."
+      },
+      {
+        "id": "c",
+        "text": "No, subtraction cannot be broadcast in NumPy; only addition is supported."
+      },
+      {
+        "id": "d",
+        "text": "Yes, but only if all values in `mu` are integers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Shape (5,) is treated as (1, 5) when aligned against (100, 5), allowing clean broadcast subtraction across all 100 rows.",
+    "noteRef": "aiml-02-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q12",
+    "loId": "aiml-02-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An array of shape (3, 1) containing values [[2], [4], [6]] is multiplied by an array of shape (1, 2) containing [[10, 20]]. What is the sum of all elements in the resulting broadcasted array?",
+    "options": [
+      {
+        "id": "a",
+        "text": "120"
+      },
+      {
+        "id": "b",
+        "text": "360"
+      },
+      {
+        "id": "c",
+        "text": "720"
+      },
+      {
+        "id": "d",
+        "text": "180"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The broadcasted matrix is [[20, 40], [40, 80], [60, 120]]. Sum = 20 + 40 + 40 + 80 + 60 + 120 = 360.",
+    "noteRef": "aiml-02-lo03",
+    "verify": "(20 + 40 + 40 + 80 + 60 + 120 === 360)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q13",
+    "loId": "aiml-02-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why does vectorizing code with NumPy typically run 50x-100x faster than writing standard Python for-loops?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because NumPy compresses integers into 2-bit binary codes."
+      },
+      {
+        "id": "b",
+        "text": "Because NumPy replaces interpreted dynamic type dispatch with compiled C loops and CPU SIMD parallel instructions."
+      },
+      {
+        "id": "c",
+        "text": "Because Python for-loops automatically pause for 1 millisecond on every iteration."
+      },
+      {
+        "id": "d",
+        "text": "Because NumPy executes over cloud network clusters."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Vectorized operations bypass CPython interpreter overhead and leverage contiguous memory with hardware SIMD vector registers.",
+    "noteRef": "aiml-02-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q14",
+    "loId": "aiml-02-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What CPU hardware capability is directly harnessed when executing vectorized array multiplications in NumPy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hard disk write-caching buffers."
+      },
+      {
+        "id": "b",
+        "text": "Quantum register superposition."
+      },
+      {
+        "id": "c",
+        "text": "SIMD (Single Instruction, Multiple Data) execution units like AVX or NEON."
+      },
+      {
+        "id": "d",
+        "text": "Dynamic BIOS clock multipliers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "SIMD instructions allow modern CPU cores to perform arithmetic across multiple vector elements in a single clock cycle.",
+    "noteRef": "aiml-02-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q15",
+    "loId": "aiml-02-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An engineer writes a loop `for i in range(len(X)): diffs[i] = X[i] - y[i]`. How should this calculation be refactored for optimal speed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "diffs = np.vectorize(lambda a, b: a - b)(X, y)"
+      },
+      {
+        "id": "b",
+        "text": "diffs = [X[i] - y[i] for i in range(len(X))]"
+      },
+      {
+        "id": "c",
+        "text": "diffs = list(map(lambda a, b: a - b, X, y))"
+      },
+      {
+        "id": "d",
+        "text": "diffs = X - y"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Native array subtraction `X - y` delegates execution entirely to compiled C SIMD routines, avoiding all Python function call overhead.",
+    "noteRef": "aiml-02-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q16",
+    "loId": "aiml-02-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following factors contribute to performance degradation in naive Python iterative mathematical loops?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dynamic type checking on every iteration step"
+      },
+      {
+        "id": "b",
+        "text": "Repeated reference counting and memory pointer lookups"
+      },
+      {
+        "id": "c",
+        "text": "Lack of contiguous memory SIMD hardware vectorization"
+      },
+      {
+        "id": "d",
+        "text": "Mandatory GPU thread synchronization"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "CPython loops repeatedly inspect dynamic types, manipulate pointer wrappers, and fail to utilize CPU vector registers.",
+    "noteRef": "aiml-02-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q17",
+    "loId": "aiml-02-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In the Pandas library, how are a Series and a DataFrame structurally related?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A DataFrame is a 2D table composed of multiple 1D Series sharing a common row index."
+      },
+      {
+        "id": "b",
+        "text": "A Series can only store string data, while a DataFrame only stores floats."
+      },
+      {
+        "id": "c",
+        "text": "A DataFrame is an encrypted binary file, while a Series is plain text."
+      },
+      {
+        "id": "d",
+        "text": "A Series contains multiple DataFrames stacked along the z-axis."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A DataFrame is essentially an ordered collection of columns, where each column is an individual Series sharing a common Index.",
+    "noteRef": "aiml-02-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q18",
+    "loId": "aiml-02-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What happens when you create a Pandas Series from a Python dictionary like `{'a': 10, 'b': 20}`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pandas discards the keys and assigns default integer indices 0 and 1."
+      },
+      {
+        "id": "b",
+        "text": "The dictionary keys become the Series Index, and the values become the data."
+      },
+      {
+        "id": "c",
+        "text": "Pandas raises a TypeError because dictionaries are unordered."
+      },
+      {
+        "id": "d",
+        "text": "The values become column headers."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "When instantiating a Series from a dictionary, the dictionary keys naturally form the explicit label Index.",
+    "noteRef": "aiml-02-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q19",
+    "loId": "aiml-02-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have a DataFrame `df` with 1,000 rows and 4 columns: 'id' (int64), 'name' (object), 'score' (float64), and 'active' (bool). What does `df.dtypes` output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A 4x4 correlation matrix."
+      },
+      {
+        "id": "b",
+        "text": "A single string specifying the dominant data type."
+      },
+      {
+        "id": "c",
+        "text": "A Series mapping each column name to its respective data type."
+      },
+      {
+        "id": "d",
+        "text": "An error, because DataFrames cannot hold mixed types."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`df.dtypes` returns a Series listing the specific data type of each column in the DataFrame.",
+    "noteRef": "aiml-02-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q20",
+    "loId": "aiml-02-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are valid characteristics of a Pandas Index?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It can contain non-unique duplicate labels"
+      },
+      {
+        "id": "b",
+        "text": "It can be hierarchical (MultiIndex) with multiple levels"
+      },
+      {
+        "id": "c",
+        "text": "It provides fast hash-based or binary search lookup for label alignment"
+      },
+      {
+        "id": "d",
+        "text": "It must always be an array of contiguous 32-bit integers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Pandas indices support duplicates, multi-level hierarchies, and arbitrary label types (strings, timestamps, integers).",
+    "noteRef": "aiml-02-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q21",
+    "loId": "aiml-02-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the primary difference between `.loc` and `.iloc` accessors in Pandas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`.loc` only works on numeric data types."
+      },
+      {
+        "id": "b",
+        "text": "`.loc` is for rows, while `.iloc` is only for columns."
+      },
+      {
+        "id": "c",
+        "text": "`.iloc` is deprecated in modern Pandas versions."
+      },
+      {
+        "id": "d",
+        "text": "`.loc` uses label-based indexing, whereas `.iloc` uses 0-based integer positional coordinates."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`.loc` selects by index and column labels, while `.iloc` selects strictly by integer position coordinates.",
+    "noteRef": "aiml-02-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q22",
+    "loId": "aiml-02-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "When slicing rows using `.loc['start':'end']`, how are the slice endpoints handled?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both 'start' and 'end' labels are inclusive in the returned subset."
+      },
+      {
+        "id": "b",
+        "text": "The 'end' label is strictly excluded, following standard Python half-open intervals."
+      },
+      {
+        "id": "c",
+        "text": "Neither endpoint is included."
+      },
+      {
+        "id": "d",
+        "text": "Inclusion depends on whether the index is alphabetically sorted."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Unlike standard Python positional slices, Pandas label-based `.loc` slicing is inclusive of both boundary labels.",
+    "noteRef": "aiml-02-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q23",
+    "loId": "aiml-02-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You want to select all customers in `df` who are older than 30 and have an account balance over 50,000. Which expression executes this correctly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "df[df['age'] > 30 and df['balance'] > 50000]"
+      },
+      {
+        "id": "b",
+        "text": "df.query('age > 30 and balance > 50000')"
+      },
+      {
+        "id": "c",
+        "text": "df.select(age > 30, balance > 50000)"
+      },
+      {
+        "id": "d",
+        "text": "df.filter(where='age > 30 & balance > 50000')"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`.query('age > 30 and balance > 50000')` evaluates clean boolean expressions against column names. Option b fails because Python's keyword `and` cannot evaluate element-wise boolean arrays (it requires bitwise `&`).",
+    "noteRef": "aiml-02-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q24",
+    "loId": "aiml-02-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following expressions will raise an error when filtering a Pandas DataFrame `df` with multiple conditions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "df[df['age'] > 25 & df['income'] > 50000] (missing parentheses around bitwise conditions)"
+      },
+      {
+        "id": "b",
+        "text": "df[df['age'] > 25 and df['income'] > 50000] (using logical 'and' instead of bitwise '&')"
+      },
+      {
+        "id": "c",
+        "text": "df[(df['age'] > 25) & (df['income'] > 50000)]"
+      },
+      {
+        "id": "d",
+        "text": "df.query('age > 25 and income > 50000')"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "In Python, bitwise `&` has higher precedence than comparison operators, so omitting parentheses in option a causes operator precedence errors. Option b fails because logical `and` cannot evaluate truth value of Series.",
+    "noteRef": "aiml-02-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q25",
+    "loId": "aiml-02-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What three conceptual phases define the Split-Apply-Combine paradigm in Pandas `groupby` operations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Normalize features, train gradient descent, and evaluate accuracy."
+      },
+      {
+        "id": "b",
+        "text": "Encrypt data, transmit across network sockets, and decrypt."
+      },
+      {
+        "id": "c",
+        "text": "Partition data into groups, calculate a metric on each partition, and merge results into a single table."
+      },
+      {
+        "id": "d",
+        "text": "Drop duplicates, replace missing values with median, and plot."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Split partitions data by key, Apply computes aggregations on partitions, and Combine reassembles results into a DataFrame.",
+    "noteRef": "aiml-02-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q26",
+    "loId": "aiml-02-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In `pd.merge(df1, df2, on='user_id', how='left')`, what happens to rows in `df1` that have no matching `user_id` in `df2`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They are duplicated 10 times."
+      },
+      {
+        "id": "b",
+        "text": "They are completely discarded from the output."
+      },
+      {
+        "id": "c",
+        "text": "Pandas raises a KeyNotFoundError."
+      },
+      {
+        "id": "d",
+        "text": "They are preserved in the result, with NaN values populated for all `df2` columns."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A left outer join retains all records from the left DataFrame (`df1`), padding unmatched columns from `df2` with NaN.",
+    "noteRef": "aiml-02-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q27",
+    "loId": "aiml-02-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have a transactions DataFrame with columns `['store_id', 'department', 'sales']`. You want the mean and total sales per store and department. Which statement computes this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "df.groupby(['store_id', 'department'])['sales'].agg(['mean', 'sum'])"
+      },
+      {
+        "id": "b",
+        "text": "df.aggregate(store_id, department, sales='mean+sum')"
+      },
+      {
+        "id": "c",
+        "text": "df.pivot(index='sales', columns='store_id')"
+      },
+      {
+        "id": "d",
+        "text": "df.filter(['store_id', 'department']).sum()"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Grouping by multiple columns and chaining `.agg(['mean', 'sum'])` computes both statistics for each distinct group.",
+    "noteRef": "aiml-02-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q28",
+    "loId": "aiml-02-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following join types are supported natively by `pd.merge()`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "how='inner' (intersection of keys)"
+      },
+      {
+        "id": "b",
+        "text": "how='outer' (union of keys)"
+      },
+      {
+        "id": "c",
+        "text": "how='left' (preserves all left keys)"
+      },
+      {
+        "id": "d",
+        "text": "how='asynchronous_stream' (socket stream merge)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Pandas supports inner, outer, left, and right relational joins via `pd.merge()`.",
+    "noteRef": "aiml-02-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q29",
+    "loId": "aiml-02-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Which parameter in `pd.read_csv()` allows you to parse non-comma tabular files, such as tab-delimited (TSV) logs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`encoding='tsv'`"
+      },
+      {
+        "id": "b",
+        "text": "`sep='\\t'` (or `delimiter='\\t'`)"
+      },
+      {
+        "id": "c",
+        "text": "`format='tab'`"
+      },
+      {
+        "id": "d",
+        "text": "`mode='split'`"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The `sep` or `delimiter` parameter specifies the delimiter character used in the file.",
+    "noteRef": "aiml-02-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q30",
+    "loId": "aiml-02-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why would you specify `chunksize=50_000` when invoking `pd.read_csv()` on a 20GB dataset on a personal computer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It automatically trains a linear regression model on each chunk."
+      },
+      {
+        "id": "b",
+        "text": "It forces Pandas to compress the file into a zip archive on disk."
+      },
+      {
+        "id": "c",
+        "text": "It streams the file in successive 50,000-row DataFrames, preventing memory exhaustion and OOM crashes."
+      },
+      {
+        "id": "d",
+        "text": "It bypasses CPU caches to write directly to GPU memory."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The `chunksize` parameter returns an iterable TextFileReader that yields sub-DataFrames, enabling out-of-core batch processing.",
+    "noteRef": "aiml-02-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q31",
+    "loId": "aiml-02-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A legacy dataset represents missing numerical data with strings 'UNKNOWN', '?', and 'N/A'. How can you instruct `pd.read_csv` to treat these as NaN automatically?",
+    "options": [
+      {
+        "id": "a",
+        "text": "pd.read_csv('data.csv', null_regex='.*')"
+      },
+      {
+        "id": "b",
+        "text": "pd.read_csv('data.csv', drop_missing=True)"
+      },
+      {
+        "id": "c",
+        "text": "pd.read_csv('data.csv', clean_strings=True)"
+      },
+      {
+        "id": "d",
+        "text": "pd.read_csv('data.csv', na_values=['UNKNOWN', '?', 'N/A'])"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`na_values` accepts a collection of custom string indicators to interpret as null values upon initial ingestion.",
+    "noteRef": "aiml-02-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q32",
+    "loId": "aiml-02-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following parameters are available in `pd.read_csv` to control type parsing and schema ingestion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "dtype (explicit column type mapping dictionary)"
+      },
+      {
+        "id": "b",
+        "text": "parse_dates (list of columns to parse into datetime64)"
+      },
+      {
+        "id": "c",
+        "text": "usecols (subset of columns to load into memory)"
+      },
+      {
+        "id": "d",
+        "text": "auto_impute_with_deep_learning"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "`dtype`, `parse_dates`, and `usecols` allow precise control over data types and memory footprint during CSV reading.",
+    "noteRef": "aiml-02-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q33",
+    "loId": "aiml-02-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "When diagnosing multicollinearity among dozens of continuous training features, which Seaborn chart provides the most rapid visual diagnostic?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A heatmap of the pairwise correlation matrix (`sns.heatmap(df.corr())`)."
+      },
+      {
+        "id": "b",
+        "text": "A 1D boxplot of the index column."
+      },
+      {
+        "id": "c",
+        "text": "A pie chart showing missing values."
+      },
+      {
+        "id": "d",
+        "text": "A step line chart of memory usage."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A correlation heatmap graphically presents Pearson coefficients between all pairs of features, highlighting redundant collinear predictors.",
+    "noteRef": "aiml-02-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q34",
+    "loId": "aiml-02-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "In Matplotlib's object-oriented hierarchy, what is the distinction between a `Figure` and an `Axes`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An `Axes` represents 3D data, while a `Figure` only represents 1D text."
+      },
+      {
+        "id": "b",
+        "text": "A `Figure` is the overall canvas window, while an `Axes` is an individual subplot region with its own coordinate space."
+      },
+      {
+        "id": "c",
+        "text": "A `Figure` is created only in Jupyter Notebooks, while an `Axes` is for command line terminals."
+      },
+      {
+        "id": "d",
+        "text": "There is no difference; they are aliases for the same object."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "In Matplotlib, the `Figure` is the top-level container holding all visual elements, while an `Axes` represents a specific plot area with axes lines, ticks, and labels.",
+    "noteRef": "aiml-02-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-02-q35",
+    "loId": "aiml-02-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A DataFrame contains 50 rows. A boolean filter selects 30% of the rows. From this subset, an `.iloc[0:5]` slice is taken. How many rows are in the final slice?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "15"
+      },
+      {
+        "id": "c",
+        "text": "10"
+      },
+      {
+        "id": "d",
+        "text": "25"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "50 * 0.30 = 15 rows. Slicing with `.iloc[0:5]` selects 5 rows (indices 0, 1, 2, 3, 4).",
+    "noteRef": "aiml-02-lo06",
+    "verify": "(Math.min(50 * 0.30, 5) === 5)",
+    "reviewed": false
+  }
+]

@@ -1,0 +1,51 @@
+---
+loId: "aiml-03-lo08"
+title: "The Multivariate Chain Rule and Error Gradient Flow"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Deep learning models are composed of nested function layers: $\hat{y} = f_3(f_2(f_1(x; w_1); w_2); w_3)$. Computing parameter gradients for early layers requires propagating derivatives backwards through intermediate variables using the **Chain Rule**.
+
+If $y = f(u)$ and $u = g(x)$, the single-variable Chain Rule states:
+$$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$
+
+In multivariate systems where an intermediate vector $\mathbf{u}$ affects the loss $L$, the total derivative accumulates over all paths:
+$$\frac{\partial L}{\partial x} = \sum_{i} \frac{\partial L}{\partial u_i} \frac{\partial u_i}{\partial x}$$
+
+In matrix form, if $\mathbf{z} = \mathbf{X}\mathbf{W}$ and $L = \text{MSE}(\mathbf{z})$, the derivative of the loss with respect to weight matrix $\mathbf{W}$ is:
+$$\frac{\partial L}{\partial \mathbf{W}} = \mathbf{X}^T \left( \frac{\partial L}{\partial \mathbf{z}} \right)$$
+This matrix formulation powers the Backpropagation algorithm, calculating gradients across billions of parameters in a single reverse sweep.
+
+### Worked Example
+Tracing the chain rule through a single linear neuron:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Forward pass:
+x = 2.0; w = 3.0; b = 1.0; target = 10.0
+
+z = w * x + b               # z = 3*2 + 1 = 7.0
+loss = 0.5 * (z - target)**2 # L = 0.5 * (7 - 10)^2 = 4.5
+
+# Backward pass via Chain Rule:
+# dL/dz = z - target = -3.0
+dL_dz = z - target
+
+# dz/dw = x = 2.0
+dz_dw = x
+
+# dL/dw = (dL/dz) * (dz/dw) = -3.0 * 2.0 = -6.0
+dL_dw = dL_dz * dz_dw
+print(f"dL/dw: {dL_dw}") # -6.0
+```
+
+### Common Mistake
+Multiplying Jacobian matrices in the wrong algebraic order, violating non-commutative matrix dimension constraints during backpropagation passes.
+
+### Check Yourself
+If $\frac{\partial L}{\partial z} = 4$ and $\frac{\partial z}{\partial w} = 3$, what is $\frac{\partial L}{\partial w}$ via the Chain Rule? ($4 \times 3 = 12$).

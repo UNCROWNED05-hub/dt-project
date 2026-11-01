@@ -1,0 +1,43 @@
+---
+loId: "aiml-02-lo03"
+title: "NumPy Broadcasting Semantics and Dimension Alignment"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Broadcasting is NumPy's mechanism for executing element-wise operations between tensors of differing shapes without allocating unnecessary memory duplications. Instead of explicitly tiling smaller arrays to match larger matrices, broadcasting computes arithmetic virtually by setting internal strides to zero along broadcasted axes.
+
+To determine compatibility, NumPy compares tensor dimensions element-wise from right to left (trailing dimensions):
+1. Two dimensions are compatible if they are equal, or
+2. One of the dimensions is exactly 1.
+
+When a dimension is 1, it is conceptually stretched to match the larger size. If a tensor has fewer dimensions than another, its shape is prepended with 1s on the left until dimensions match. If trailing dimensions conflict (e.g., 3 vs 4), NumPy raises a `ValueError: operands could not be broadcast together`.
+
+### Worked Example
+Broadcasting a feature bias vector across a mini-batch matrix:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Batch of 3 samples with 2 features: shape (3, 2)
+X = np.array([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]])
+
+# 1D Bias vector: shape (2,) -> prepended to (1, 2) -> broadcasted to (3, 2)
+bias = np.array([0.5, -0.5])
+
+# Element-wise addition across all 3 rows simultaneously
+output = X + bias
+print(output)
+# [[1.5, 1.5],
+#  [3.5, 3.5],
+#  [5.5, 5.5]]
+```
+
+### Common Mistake
+Attempting to broadcast shapes (4, 3) and (4,) directly. Because broadcasting aligns trailing dimensions from right to left, 3 and 4 conflict. You must explicitly reshape the second array to (4, 1).
+
+### Check Yourself
+Can an array of shape (8, 1, 64) broadcast with an array of shape (8, 16, 1)? (Yes, yielding an output shape of (8, 16, 64) because all dimensions are equal or 1).

@@ -1,0 +1,48 @@
+---
+loId: "aiml-03-lo05"
+title: "Continuous Uncertainties and the Gaussian Normal Distribution"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+The Gaussian (Normal) distribution is the ubiquitous distribution in machine learning. By the Central Limit Theorem, the sum of independent random variables converges to a Normal distribution regardless of their underlying generative forms.
+
+The Gaussian Probability Density Function (PDF) is parameterized completely by its mean $\mu$ and variance $\sigma^2$:
+$$p(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)$$
+
+Key geometric properties:
+1. **Symmetry**: The distribution is symmetric about its peak at $x = \mu$.
+2. **Empirical 68-95-99.7 Rule**: Approximately 68.27% of values fall within $\mu \pm 1\sigma$, 95.45% within $\mu \pm 2\sigma$, and 99.73% within $\mu \pm 3\sigma$.
+3. **Z-Score Normalization**: Any observation $x$ can be standardized into standard normal form $\mathcal{N}(0, 1)$ via:
+$$z = \frac{x - \mu}{\sigma}$$
+Z-score scaling prevents features with large numeric scales (e.g., annual revenue) from dominating gradient descent over smaller features.
+
+### Worked Example
+Computing Gaussian probabilities and z-scores:
+```python
+# scipy==1.13.1, numpy==1.26.4
+import numpy as np
+from scipy import stats
+
+mu, sigma = 50.0, 10.0
+sample = 65.0
+
+# Calculate z-score
+z = (sample - mu) / sigma # (65 - 50) / 10 = 1.5
+
+# Probability density at sample point
+density = stats.norm.pdf(sample, loc=mu, scale=sigma)
+
+# Cumulative probability P(X <= 65)
+p_cumulative = stats.norm.cdf(sample, loc=mu, scale=sigma)
+print(f"Z-score: {z}, PDF: {density:.5f}, Cumulative: {p_cumulative:.4f}")
+```
+
+### Common Mistake
+Confusing probability density ($f(x)$) with discrete probability ($P(X=x)$). For continuous distributions, the probability of obtaining any exact real scalar is zero; non-zero probabilities exist only over continuous integration intervals.
+
+### Check Yourself
+Under a standard Gaussian distribution, what percentage of observations lie within two standard deviations of the mean? (Approximately 95.45%).

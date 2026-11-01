@@ -1,0 +1,46 @@
+---
+loId: "aiml-03-lo03"
+title: "Conditional Probability and Bayes Theorem in Machine Learning"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Machine learning algorithms quantify uncertainty using probability theory. The fundamental building block is conditional probability: the likelihood of event $A$ occurring given that event $B$ has already occurred:
+$$P(A | B) = \frac{P(A \cap B)}{P(B)}$$
+
+Rearranging this relationship yields **Bayes' Theorem**, the mathematical foundation of Bayesian inference, Naive Bayes classifiers, and probabilistic machine learning:
+$$P(A | B) = \frac{P(B | A) P(A)}{P(B)}$$
+
+Where:
+- $P(A)$ is the **Prior**: our baseline belief in hypothesis $A$ before observing new evidence.
+- $P(B | A)$ is the **Likelihood**: the probability of observing evidence $B$ if hypothesis $A$ is true.
+- $P(B)$ is the **Marginal Evidence**: the total probability of observing $B$ across all possible hypotheses: $P(B) = \sum P(B | A_i) P(A_i)$.
+- $P(A | B)$ is the **Posterior**: our updated belief in hypothesis $A$ after observing evidence $B$.
+
+### Worked Example
+Calculating posterior spam probability given a suspicious keyword:
+```python
+# Prior probability an email is spam: P(Spam) = 0.20
+p_spam = 0.20
+p_ham = 0.80
+
+# Likelihood keyword "VIAGRA" appears: P(Word|Spam)=0.60, P(Word|Ham)=0.01
+p_word_given_spam = 0.60
+p_word_given_ham = 0.01
+
+# Total marginal probability of the word: P(Word)
+p_word = (p_word_given_spam * p_spam) + (p_word_given_ham * p_ham) # 0.12 + 0.008 = 0.128
+
+# Posterior probability: P(Spam|Word)
+posterior_spam = (p_word_given_spam * p_spam) / p_word
+print(f"Posterior P(Spam|Word): {posterior_spam:.4f}") # 0.12 / 0.128 = 0.9375
+```
+
+### Common Mistake
+Assuming $P(A | B) = P(B | A)$. The probability that someone has a fever given they have malaria is nearly 100%, but the probability that someone has malaria given they have a fever is low in non-endemic regions.
+
+### Check Yourself
+If an test has a false positive rate, why does low disease prevalence reduce the posterior probability of illness given a positive test? (Because the rare prior probability $P(\text{Disease})$ heavily suppresses the posterior numerator).

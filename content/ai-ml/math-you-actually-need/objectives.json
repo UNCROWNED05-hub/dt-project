@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "chapterId": "ai-03",
+  "objectives": [
+    {
+      "id": "aiml-03-lo01",
+      "order": 1,
+      "title": "Calculate vector dot products, projections, and geometric norms ($L_1$, $L_2$)",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "vector dot product",
+        "L1 norm",
+        "L2 norm",
+        "Euclidean distance",
+        "cosine similarity",
+        "inner product"
+      ],
+      "aliases": [
+        "vector geometry",
+        "vector norms"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-03-lo02",
+      "order": 2,
+      "title": "Compute matrix multiplications and transpose operations adhering to inner-dimension constraints",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "matrix multiplication",
+        "transpose",
+        "dimension compatibility",
+        "linear map",
+        "affine transform"
+      ],
+      "aliases": [
+        "matrix algebra",
+        "tensor contractions"
+      ],
+      "prerequisites": [
+        "aiml-03-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-03-lo03",
+      "order": 3,
+      "title": "Calculate conditional probabilities and posterior distributions using Bayes' Theorem",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "Bayes theorem",
+        "conditional probability",
+        "prior",
+        "likelihood",
+        "posterior",
+        "marginal probability"
+      ],
+      "aliases": [
+        "Bayesian inference",
+        "conditional likelihood"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-03-lo04",
+      "order": 4,
+      "title": "Measure central tendency and dispersion using mean, variance, covariance, and standard deviation",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "sample mean",
+        "variance",
+        "standard deviation",
+        "covariance matrix",
+        "dispersion",
+        "Bessel correction"
+      ],
+      "aliases": [
+        "summary statistics",
+        "variance calculation"
+      ],
+      "prerequisites": [
+        "aiml-03-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-03-lo05",
+      "order": 5,
+      "title": "Model continuous uncertainties using Gaussian Normal distributions and probability density functions",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "Gaussian distribution",
+        "Normal distribution",
+        "probability density function",
+        "PDF",
+        "standard score",
+        "z-score"
+      ],
+      "aliases": [
+        "bell curve",
+        "normal distribution"
+      ],
+      "prerequisites": [
+        "aiml-03-lo04"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-03-lo06",
+      "order": 6,
+      "title": "Derive single-variable derivatives to interpret instantaneous rates of change and tangent slopes",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "derivative",
+        "rate of change",
+        "tangent line",
+        "power rule",
+        "infinitesimal",
+        "slope"
+      ],
+      "aliases": [
+        "calculus slope",
+        "differentiation"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-03-lo07",
+      "order": 7,
+      "title": "Calculate partial derivatives and assemble multi-variable gradient vectors ($nabla f$)",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "partial derivative",
+        "gradient vector",
+        "del operator",
+        "steepest ascent",
+        "loss surface",
+        "multivariate calculus"
+      ],
+      "aliases": [
+        "gradient calculus",
+        "multivariable derivative"
+      ],
+      "prerequisites": [
+        "aiml-03-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-03-lo08",
+      "order": 8,
+      "title": "Apply the multivariate Chain Rule to trace error gradient propagation through composite functions",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "chain rule",
+        "composite function",
+        "backpropagation intuition",
+        "intermediate variable",
+        "gradient product"
+      ],
+      "aliases": [
+        "derivative chain rule",
+        "gradient flow"
+      ],
+      "prerequisites": [
+        "aiml-03-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-03-lo09",
+      "order": 9,
+      "title": "Compute matrix determinants and eigenvalues to analyze linear transformations and variance axes",
+      "bloom": "analyze",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "eigenvalue",
+        "eigenvector",
+        "determinant",
+        "principal axes",
+        "characteristic equation",
+        "linear transformation"
+      ],
+      "aliases": [
+        "spectral decomposition",
+        "eigen analysis"
+      ],
+      "prerequisites": [
+        "aiml-03-lo02"
+      ],
+      "estMinutes": 15
+    }
+  ]
+}

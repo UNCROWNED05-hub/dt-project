@@ -1,0 +1,41 @@
+---
+loId: "aiml-02-lo05"
+title: "Pandas Tabular Schemas: Series and DataFrames"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+While NumPy provides raw multidimensional numeric tensors, real-world data pipelines require heterogeneous column types, named features, and relational indexing. The Pandas library introduces two primary abstractions designed specifically for structured tabular data: the Series and the DataFrame.
+
+A **Series** is a one-dimensional labeled array capable of holding any data type (integers, strings, floats, Python objects). It pairs a sequence of data values with an explicit relational index. 
+
+A **DataFrame** is a two-dimensional tabular data structure composed of an ordered collection of columns, where each column is an individual Series sharing a common row Index. Under the hood, Pandas groups columns of identical primitive data types into contiguous NumPy arrays (via the BlockManager or modern PyArrow backends), delivering rapid vectorized column operations alongside intuitive dictionary-like access.
+
+### Worked Example
+Constructing and inspecting a Pandas DataFrame:
+```python
+# pandas==2.2.2
+import pandas as pd
+
+data = {
+    "age": [25, 34, 45],
+    "income": [65000.0, 92000.0, 120000.0],
+    "churned": [False, True, False]
+}
+
+df = pd.DataFrame(data, index=["cust_1", "cust_2", "cust_3"])
+print(df.dtypes)
+# age          int64
+# income     float64
+# churned       bool
+print(df.shape) # (3, 3)
+```
+
+### Common Mistake
+Treating a DataFrame column as a standard Python dictionary instead of a typed Series, causing performance bottlenecks and broken vector operations.
+
+### Check Yourself
+What structural component allows a Pandas DataFrame to align records across multiple disparate columns when performing relational joins? (The common shared Index).

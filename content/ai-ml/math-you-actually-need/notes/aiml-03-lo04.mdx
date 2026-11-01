@@ -1,0 +1,48 @@
+---
+loId: "aiml-03-lo04"
+title: "Measures of Dispersion: Variance, Covariance, and Standard Deviation"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Summary statistics summarize multidimensional distributions into scalar descriptors. The **sample mean** $\mu = \frac{1}{N} \sum x_i$ locates central tendency, but tells nothing about data dispersion.
+
+**Variance** ($\sigma^2$) measures the average squared deviation from the mean:
+$$\sigma^2 = \frac{1}{N-1} \sum_{i=1}^N (x_i - \mu)^2$$
+The division by $N-1$ (Bessel's correction) provides an unbiased estimator for sample populations. **Standard deviation** ($\sigma = \sqrt{\sigma^2}$) restores dispersion to the original measurement units.
+
+In multi-feature datasets, **Covariance** measures the joint directional variability of two features $X$ and $Y$:
+$$\text{Cov}(X, Y) = \frac{1}{N-1} \sum (x_i - \bar{x})(y_i - \bar{y})$$
+Positive covariance indicates features rise and fall together; negative covariance indicates an inverse relationship. The $D \times D$ **Covariance Matrix** $\Sigma$ captures all pairwise feature interactions, forming the core mathematical input for Principal Component Analysis (PCA).
+
+### Worked Example
+Calculating variance and covariance matrix in NumPy:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# 2 features across 4 samples
+data = np.array([
+    [10.0, 100.0],
+    [12.0, 110.0],
+    [14.0, 125.0],
+    [16.0, 140.0]
+])
+
+var_x = np.var(data[:, 0], ddof=1) # ddof=1 enables N-1 Bessel correction
+std_x = np.std(data[:, 0], ddof=1)
+
+# Covariance matrix between feature 0 and feature 1
+cov_matrix = np.cov(data, rowvar=False)
+print(f"Variance: {var_x:.2f}, StdDev: {std_x:.2f}")
+print(f"Covariance Matrix:\n{cov_matrix}")
+```
+
+### Common Mistake
+Forgetting Bessel's correction (`ddof=1` in NumPy) when estimating population variance from small sample batches, systematically underestimating actual population spread.
+
+### Check Yourself
+If two independent features have zero linear relationship, what is their expected covariance? (Zero).
