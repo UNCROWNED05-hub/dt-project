@@ -1,0 +1,27 @@
+---
+loId: "sec-02-lo01"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Defensive network analysis relies on layered abstraction models. The 7-layer OSI model provides a conceptual taxonomy: Physical (L1), Data Link (L2), Network (L3), Transport (L4), Session (L5), Presentation (L6), and Application (L7). The practical 4-layer TCP/IP model simplifies this into Network Access, Internet, Transport, and Application. During transmission, data undergoes encapsulation: each layer prepends its own header (e.g., L2 Ethernet frame wrapping L3 IP packet wrapping L4 TCP segment).
+
+### Worked Example
+Tracing protocol encapsulation down the stack:
+```python
+layers = {
+    "L7_Application": "HTTP GET /index.html",
+    "L4_Transport": "TCP Source Port: 52140 -> Dest Port: 443",
+    "L3_Network": "IPv4 Source: 192.168.1.50 -> Dest: 93.184.216.34",
+    "L2_DataLink": "Ethernet MAC: 00:1A:2B:3C:4D:5E -> Gate: 00:1A:2B:AA:BB:CC"
+}
+print("L3 destination IP:", layers["L3_Network"].split("-> Dest: ")[1])
+print("L4 destination Port:", layers["L4_Transport"].split("-> Dest Port: ")[1])
+```
+
+### Common Mistake
+Assuming IP addresses alone can deliver a frame across a local switch. Local area switches operate exclusively at Layer 2 using Media Access Control (MAC) addresses; IP addresses only facilitate logical routing across Layer 3 boundaries.
+
+### Check Yourself
+At which OSI layer does an IP router make forwarding decisions? Layer 3 (Network Layer).

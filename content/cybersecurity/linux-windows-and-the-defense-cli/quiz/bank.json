@@ -1,0 +1,1064 @@
+[
+  {
+    "loId": "sec-03-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q01",
+    "stem": "In Linux file permissions, what numeric octal value corresponds to read, write, and execute permissions (rwx)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "7 (4 + 2 + 1)"
+      },
+      {
+        "id": "b",
+        "text": "6 (4 + 2)"
+      },
+      {
+        "id": "c",
+        "text": "5 (4 + 1)"
+      },
+      {
+        "id": "d",
+        "text": "3 (2 + 1)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Read is 4, Write is 2, and Execute is 1. Sum = 4 + 2 + 1 = 7.",
+    "noteRef": "sec-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-03-q02",
+    "stem": "What is the three-digit octal permission mode for a file with permissions: User: read-write-execute (rwx), Group: read-execute (r-x), Others: none (---)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "755"
+      },
+      {
+        "id": "b",
+        "text": "750"
+      },
+      {
+        "id": "c",
+        "text": "640"
+      },
+      {
+        "id": "d",
+        "text": "700"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "User = 4+2+1=7. Group = 4+0+1=5. Others = 0+0+0=0. Mode = 750.",
+    "noteRef": "sec-03-lo01",
+    "verify": "((4+2+1)*100 + (4+1)*10 + 0 === 750)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q03",
+    "stem": "A developer executes chmod 777 on a production web configuration file containing database credentials. What security risk does this introduce?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The file is automatically published to public GitHub repositories."
+      },
+      {
+        "id": "b",
+        "text": "The file can no longer be read by the root user."
+      },
+      {
+        "id": "c",
+        "text": "Any local user or compromised service account on the server can read, modify, or delete the credentials."
+      },
+      {
+        "id": "d",
+        "text": "The kernel disables network routing."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Mode 777 grants universal read, write, and execute rights to all users on the host.",
+    "noteRef": "sec-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q04",
+    "stem": "How does the directory execute bit ('x') differ in functionality from the file execute bit in Linux?",
+    "options": [
+      {
+        "id": "a",
+        "text": "On a directory, 'x' enables running shell scripts stored inside it."
+      },
+      {
+        "id": "b",
+        "text": "On a directory, 'x' is ignored by the kernel."
+      },
+      {
+        "id": "c",
+        "text": "On a directory, 'x' grants ownership transfer rights."
+      },
+      {
+        "id": "d",
+        "text": "On a directory, 'x' allows traversing (entering) the directory and accessing files within it."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Read ('r') on a directory permits listing contents, while Execute ('x') permits cd and accessing metadata of files inside.",
+    "noteRef": "sec-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q05",
+    "stem": "What does the Set User ID (SUID) permission bit enable on an executable binary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It executes the binary with the privileges of the file owner rather than the launching user."
+      },
+      {
+        "id": "b",
+        "text": "It prevents non-owners from modifying the file."
+      },
+      {
+        "id": "c",
+        "text": "It forces the binary to run exclusively in background mode."
+      },
+      {
+        "id": "d",
+        "text": "It encrypts the binary file on disk."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "SUID executes a program with the permissions of the file owner (e.g. root for /usr/bin/passwd).",
+    "noteRef": "sec-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q06",
+    "stem": "During a security audit, a defender finds /tmp/bash owned by root with permissions -rwsr-xr-x. What does this indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A standard Ubuntu system update file."
+      },
+      {
+        "id": "b",
+        "text": "A persistent SUID root backdoor that allows any user to spawn an interactive root shell."
+      },
+      {
+        "id": "c",
+        "text": "A temporary file that will be deleted upon reboot by systemd."
+      },
+      {
+        "id": "d",
+        "text": "A damaged binary that cannot be executed."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A root-owned shell with SUID in /tmp is a classic privilege escalation backdoor.",
+    "noteRef": "sec-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-03-q07",
+    "stem": "What is the purpose of the Sticky Bit (mode 1000) when applied to shared directories like /tmp?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It prevents files from being modified once written."
+      },
+      {
+        "id": "b",
+        "text": "It compresses files to save disk storage."
+      },
+      {
+        "id": "c",
+        "text": "It ensures that only the file owner or root can delete or rename files within the directory."
+      },
+      {
+        "id": "d",
+        "text": "It hides directory contents from unprivileged users."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The sticky bit prevents users from deleting or renaming files owned by other users in world-writable directories.",
+    "noteRef": "sec-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q08",
+    "stem": "What command finds all files on a Linux system with the SUID bit set while discarding permission denied errors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "grep -r \"suid\" / 2>&1"
+      },
+      {
+        "id": "b",
+        "text": "chmod -R 4000 /tmp"
+      },
+      {
+        "id": "c",
+        "text": "ls -la /root > /dev/null"
+      },
+      {
+        "id": "d",
+        "text": "find / -perm -4000 -type f 2>/dev/null"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "find / -perm -4000 -type f 2>/dev/null searches for files with the 4000 SUID bit and redirects stderr to /dev/null.",
+    "noteRef": "sec-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q09",
+    "stem": "What command displays running processes in a hierarchical tree view showing parent-child relationships?",
+    "options": [
+      {
+        "id": "a",
+        "text": "pstree (or ps auxf)"
+      },
+      {
+        "id": "b",
+        "text": "systemctl status"
+      },
+      {
+        "id": "c",
+        "text": "uname -a"
+      },
+      {
+        "id": "d",
+        "text": "cat /etc/passwd"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "pstree or ps auxf visualizes process hierarchies and parent-child execution lineages.",
+    "noteRef": "sec-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q10",
+    "stem": "An analyst discovers a suspicious process kworker_fake consuming 100% CPU. Checking its PPID reveals parent process cron. What does this suggest?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Linux kernel is running low on memory."
+      },
+      {
+        "id": "b",
+        "text": "The process was launched via a scheduled cron job to maintain automated persistence."
+      },
+      {
+        "id": "c",
+        "text": "The system is undergoing a normal kernel update."
+      },
+      {
+        "id": "d",
+        "text": "The process is an active SSH session."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A process whose PPID points to cron was spawned from a crontab entry, indicating scheduled persistence.",
+    "noteRef": "sec-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-03-q11",
+    "stem": "What is the Process ID (PID) of the systemd initialization manager in modern Linux systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0"
+      },
+      {
+        "id": "b",
+        "text": "100"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "2"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "systemd is the first userspace process spawned by the kernel and always holds PID 1.",
+    "noteRef": "sec-03-lo03",
+    "verify": "(1 === 1)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "sec-03-q12",
+    "stem": "Which of the following commands inspect system services managed by systemd?",
+    "options": [
+      {
+        "id": "a",
+        "text": "systemctl status <service>"
+      },
+      {
+        "id": "b",
+        "text": "systemctl list-units --type=service"
+      },
+      {
+        "id": "c",
+        "text": "journalctl -u <service>"
+      },
+      {
+        "id": "d",
+        "text": "iptables -L -n"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "systemctl inspects and manages units; journalctl -u reads specific service unit logs. iptables manages firewall rules.",
+    "noteRef": "sec-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q13",
+    "stem": "In Debian/Ubuntu distributions, which log file records SSH authentication attempts and sudo executions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "/var/log/messages"
+      },
+      {
+        "id": "b",
+        "text": "/var/log/dmesg"
+      },
+      {
+        "id": "c",
+        "text": "/var/log/boot.log"
+      },
+      {
+        "id": "d",
+        "text": "/var/log/auth.log"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Authentication records in Debian/Ubuntu are stored in /var/log/auth.log (in Red Hat/CentOS it is /var/log/secure).",
+    "noteRef": "sec-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q14",
+    "stem": "An attacker with root access executes cat /dev/null > /var/log/auth.log. What was the attacker attempting to achieve?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Log tampering: truncating the log file to zero bytes to delete evidence of their session and commands."
+      },
+      {
+        "id": "b",
+        "text": "Backing up the logs to an external disk."
+      },
+      {
+        "id": "c",
+        "text": "Compressing the log file to conserve disk space."
+      },
+      {
+        "id": "d",
+        "text": "Restarting the rsyslog daemon."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Overwriting a log file with /dev/null truncates it to 0 bytes, destroying evidentiary records.",
+    "noteRef": "sec-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-03-q15",
+    "stem": "What command queries binary systemd journals specifically for logs generated by the sshd unit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "cat /var/log/sshd.bin"
+      },
+      {
+        "id": "b",
+        "text": "journalctl -u ssh"
+      },
+      {
+        "id": "c",
+        "text": "tail -f /etc/ssh/sshd_config"
+      },
+      {
+        "id": "d",
+        "text": "grep -r \"ssh\" /bin/"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "journalctl -u ssh or journalctl -u sshd filters systemd journals for entries from the SSH service unit.",
+    "noteRef": "sec-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q16",
+    "stem": "Why should critical enterprise servers configure syslog forwarding to an external remote SIEM?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because local disks cannot store more than 10MB of text."
+      },
+      {
+        "id": "b",
+        "text": "To encrypt the Linux kernel image."
+      },
+      {
+        "id": "c",
+        "text": "To preserve evidence even if an attacker compromises root privileges and clears local disk logs."
+      },
+      {
+        "id": "d",
+        "text": "To reduce network bandwidth consumption."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Forwarding logs to a remote, write-protected repository ensures forensic data survives local root compromises.",
+    "noteRef": "sec-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q17",
+    "stem": "What is a Security Identifier (SID) in the Windows security architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A 32-bit hash of the user's plaintext password."
+      },
+      {
+        "id": "b",
+        "text": "The network IP address of the Domain Controller."
+      },
+      {
+        "id": "c",
+        "text": "The serial number of the Windows motherboard."
+      },
+      {
+        "id": "d",
+        "text": "A unique, immutable alphanumeric string used to identify a security principal (user, group, or computer)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Windows uses SIDs (e.g. S-1-5-21-...) to unambiguously identify accounts and groups in access control evaluations.",
+    "noteRef": "sec-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-03-q18",
+    "stem": "What is the Relative Identifier (RID) suffix for the built-in Windows local Administrator account?",
+    "options": [
+      {
+        "id": "a",
+        "text": "500"
+      },
+      {
+        "id": "b",
+        "text": "501"
+      },
+      {
+        "id": "c",
+        "text": "1000"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "RID 500 always identifies the default built-in Administrator account (RID 501 is Guest).",
+    "noteRef": "sec-03-lo05",
+    "verify": "(500 === 500)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q19",
+    "stem": "A Windows administrator renames the local 'Administrator' account to 'HelpdeskAdmin'. What is the RID of this renamed account?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RID 1001, because renaming generates a new user account."
+      },
+      {
+        "id": "b",
+        "text": "RID 500, because SIDs remain permanently fixed regardless of username modifications."
+      },
+      {
+        "id": "c",
+        "text": "RID 0, because administrative privileges were reset."
+      },
+      {
+        "id": "d",
+        "text": "RID 501, because it converted to a guest account."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Renaming a user changes its display name but leaves the unique SID and RID completely unchanged.",
+    "noteRef": "sec-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q20",
+    "stem": "What Windows component generates the Access Token for a user upon successful authentication?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Windows Defender SmartScreen"
+      },
+      {
+        "id": "b",
+        "text": "Event Viewer (eventvwr.exe)"
+      },
+      {
+        "id": "c",
+        "text": "Local Security Authority Subsystem Service (LSASS)"
+      },
+      {
+        "id": "d",
+        "text": "Windows Update Service"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "LSASS authenticates credentials and creates the user's access token containing their SIDs and privilege tokens.",
+    "noteRef": "sec-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q21",
+    "stem": "In the Windows Security Event Log, what Event ID represents a successful account logon?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Event ID 4625"
+      },
+      {
+        "id": "b",
+        "text": "Event ID 4688"
+      },
+      {
+        "id": "c",
+        "text": "Event ID 7045"
+      },
+      {
+        "id": "d",
+        "text": "Event ID 4624"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Event ID 4624 denotes a successful logon; Event ID 4625 denotes a failed logon attempt.",
+    "noteRef": "sec-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q22",
+    "stem": "A SOC alert triggers on Event ID 4624 with Logon Type 3 from a workstation IP address to a file server. What kind of logon is Logon Type 3?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Network Logon (e.g. accessing a shared folder via SMB or IIS)"
+      },
+      {
+        "id": "b",
+        "text": "Interactive Console Logon at the physical keyboard"
+      },
+      {
+        "id": "c",
+        "text": "Remote Desktop Protocol (RDP) session"
+      },
+      {
+        "id": "d",
+        "text": "System Unlock from a screensaver"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Logon Type 3 corresponds to network-based access (such as accessing shared files or intranet resources).",
+    "noteRef": "sec-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-03-q23",
+    "stem": "What Windows Security Event ID records the creation of a new process (process execution auditing)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4624"
+      },
+      {
+        "id": "b",
+        "text": "4688"
+      },
+      {
+        "id": "c",
+        "text": "4625"
+      },
+      {
+        "id": "d",
+        "text": "1102"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Event ID 4688 logs process creation events in the Windows Security Log.",
+    "noteRef": "sec-03-lo06",
+    "verify": "(4688 === 4688)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q24",
+    "stem": "Why do incident responders frequently install Microsoft Sysmon alongside standard Windows Security Logs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sysmon replaces the Windows kernel with Linux eBPF."
+      },
+      {
+        "id": "b",
+        "text": "Sysmon automatically shuts down the system when an adversary logs in."
+      },
+      {
+        "id": "c",
+        "text": "Sysmon logs detailed process lineages, network connections, file creation timestamps, and SHA-256 hashes."
+      },
+      {
+        "id": "d",
+        "text": "Sysmon eliminates the need for antivirus software."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Sysmon enriches telemetry with process hashes (Event 1), network connections (Event 3), and file creation times.",
+    "noteRef": "sec-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q25",
+    "stem": "Which command-line utility filters text line-by-line using regular expressions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "chmod"
+      },
+      {
+        "id": "b",
+        "text": "chown"
+      },
+      {
+        "id": "c",
+        "text": "touch"
+      },
+      {
+        "id": "d",
+        "text": "grep"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "grep (Global Regular Expression Print) searches and filters text based on regex patterns.",
+    "noteRef": "sec-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q26",
+    "stem": "An analyst executes: cat auth.log | grep \"Failed password\" | awk '{print $11}' | sort | uniq -c | sort -nr. What does this command pipeline produce?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A frequency-ranked list of IP addresses responsible for failed password attempts, highest count first."
+      },
+      {
+        "id": "b",
+        "text": "A list of users who successfully logged into the server."
+      },
+      {
+        "id": "c",
+        "text": "A deletion script that blocks all incoming SSH connections."
+      },
+      {
+        "id": "d",
+        "text": "A cryptographic hash of the auth.log file."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Extracting column 11 (the source IP), counting duplicates via uniq -c, and sorting numerically descending ranks top brute-force IPs.",
+    "noteRef": "sec-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-03-q27",
+    "stem": "What does awk '{print $1}' access.log output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the first line of access.log."
+      },
+      {
+        "id": "b",
+        "text": "The first whitespace-delimited field (column) of every line in access.log."
+      },
+      {
+        "id": "c",
+        "text": "All words containing the letter '1'."
+      },
+      {
+        "id": "d",
+        "text": "The total file size in kilobytes."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "In awk, $1 refers to the first field of each record according to the field separator.",
+    "noteRef": "sec-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "sec-03-q28",
+    "stem": "Which of the following flags modify grep behavior appropriately during log analysis?",
+    "options": [
+      {
+        "id": "a",
+        "text": "'-i' to perform case-insensitive pattern matching"
+      },
+      {
+        "id": "b",
+        "text": "'-v' to invert match (select non-matching lines)"
+      },
+      {
+        "id": "c",
+        "text": "'-E' to enable extended regular expressions"
+      },
+      {
+        "id": "d",
+        "text": "'-delete' to purge matching files from disk"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "-i, -v, and -E are standard grep options. -delete belongs to find.",
+    "noteRef": "sec-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-03-q29",
+    "stem": "Which modern Linux command is the recommended faster replacement for the legacy netstat tool?",
+    "options": [
+      {
+        "id": "a",
+        "text": "cat"
+      },
+      {
+        "id": "b",
+        "text": "touch"
+      },
+      {
+        "id": "c",
+        "text": "ss"
+      },
+      {
+        "id": "d",
+        "text": "echo"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "ss (socket statistics) queries the kernel directly via netlink and replaces the older netstat.",
+    "noteRef": "sec-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-03-q30",
+    "stem": "Running ss -tulpn on a compromised web host reveals a listening socket: tcp LISTEN 0.0.0.0:4444 users:((\"nc\",pid=4012,fd=3)). What does this indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nginx is serving HTTPS web traffic normally."
+      },
+      {
+        "id": "b",
+        "text": "The network cable is disconnected."
+      },
+      {
+        "id": "c",
+        "text": "A DNS query was dropped by iptables."
+      },
+      {
+        "id": "d",
+        "text": "A netcat process is listening on port 4444, functioning as a bind shell or listener."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "nc listening on port 4444 across all interfaces (0.0.0.0) is a common sign of an unauthorized listener or bind shell.",
+    "noteRef": "sec-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-03-q31",
+    "stem": "What does the '-p' flag in ss -tulpn display when run with administrative privileges?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The process name and PID owning each socket."
+      },
+      {
+        "id": "b",
+        "text": "The ping latency to the default gateway."
+      },
+      {
+        "id": "c",
+        "text": "The password of the logged-in user."
+      },
+      {
+        "id": "d",
+        "text": "The parity check status of the NIC."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The -p flag instructs ss to resolve and display the process names and PIDs holding sockets.",
+    "noteRef": "sec-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-03-q32",
+    "stem": "What socket state indicates an active two-way established data connection between client and server?",
+    "options": [
+      {
+        "id": "a",
+        "text": "LISTEN"
+      },
+      {
+        "id": "b",
+        "text": "ESTAB (ESTABLISHED)"
+      },
+      {
+        "id": "c",
+        "text": "TIME_WAIT"
+      },
+      {
+        "id": "d",
+        "text": "SYN_SENT"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "ESTABLISHED (or ESTAB) denotes an open, active bidirectional TCP communication session.",
+    "noteRef": "sec-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-03-q33",
+    "stem": "Why is Get-WinEvent -FilterHashtable preferred over Get-WinEvent | Where-Object for querying large Windows Event Logs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Where-Object causes Blue Screens on modern Windows kernels."
+      },
+      {
+        "id": "b",
+        "text": "FilterHashtable converts events into plaintext CSV files automatically."
+      },
+      {
+        "id": "c",
+        "text": "FilterHashtable performs server-side filtering via the Windows Event API, downloading only matching records rather than streaming entire gigabyte logs."
+      },
+      {
+        "id": "d",
+        "text": "Where-Object cannot evaluate integers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "FilterHashtable filters events at the log provider level, saving immense memory and I/O overhead.",
+    "noteRef": "sec-03-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-03-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-03-q34",
+    "stem": "A responder needs to inspect all running Windows services whose startup type is Automatic using modern WMI/CIM cmdlets. Which PowerShell command achieves this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Get-Process -Name auto"
+      },
+      {
+        "id": "b",
+        "text": "cat C:\\Windows\\System32\\services.msc"
+      },
+      {
+        "id": "c",
+        "text": "Get-EventLog -List Auto"
+      },
+      {
+        "id": "d",
+        "text": "Get-CimInstance Win32_Service -Filter \"StartMode = 'Auto'\""
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Get-CimInstance Win32_Service -Filter \"StartMode = 'Auto'\" queries the WMI repository for automatically starting services.",
+    "noteRef": "sec-03-lo09",
+    "reviewed": false
+  }
+]

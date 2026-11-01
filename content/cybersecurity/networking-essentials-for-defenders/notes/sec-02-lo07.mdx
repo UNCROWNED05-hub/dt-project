@@ -1,0 +1,25 @@
+---
+loId: "sec-02-lo07"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Classless Inter-Domain Routing (CIDR) notation expresses IP subnets by appending a prefix length (e.g., /24) indicating the number of fixed network bits in a 32-bit IPv4 address. The remaining (32 - prefix) bits address individual hosts. The total address pool is 2^(32 - prefix), with two addresses reserved for the network identifier (all host bits 0) and the broadcast address (all host bits 1), yielding 2^(32 - prefix) - 2 usable host addresses.
+
+### Worked Example
+Calculating host capacity for a /28 subnet:
+```python
+prefix = 28
+host_bits = 32 - prefix # 4 bits
+total_addresses = 2 ** host_bits # 16 addresses
+usable_hosts = total_addresses - 2 # 14 usable hosts
+print("Subnet /28 total addresses:", total_addresses)
+print("Subnet /28 usable host capacity:", usable_hosts)
+```
+
+### Common Mistake
+Assigning the network address or broadcast address to an individual host interface. Network appliances drop or fail to route unicast traffic directed to reserved all-zeros or all-ones host suffixes.
+
+### Check Yourself
+How many usable host IP addresses are available in a /24 subnet? Exactly 254 usable hosts (2^8 - 2 = 256 - 2 = 254).

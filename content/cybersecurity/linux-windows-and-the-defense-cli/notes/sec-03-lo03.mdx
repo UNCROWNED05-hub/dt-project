@@ -1,0 +1,30 @@
+---
+loId: "sec-03-lo03"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Every Linux process has a Process ID (PID) and a Parent Process ID (PPID). The root process systemd (PID 1) initializes the user space and supervises system services. Defenders use ps, top, and systemctl to identify anomalous processes, orphan processes whose parents terminated unexpectedly, or unauthorized background daemons masquerading under legitimate system names.
+
+### Worked Example
+Inspecting process parent-child relationships programmatically:
+```python
+processes = [
+    {"pid": 1, "ppid": 0, "cmd": "/sbin/init", "user": "root"},
+    {"pid": 542, "ppid": 1, "cmd": "/usr/sbin/sshd", "user": "root"},
+    {"pid": 1205, "ppid": 542, "cmd": "sshd: analyst", "user": "analyst"},
+    {"pid": 1206, "ppid": 1205, "cmd": "-bash", "user": "analyst"},
+    {"pid": 2840, "ppid": 1, "cmd": "/tmp/crypto_miner", "user": "nobody"}
+]
+
+for p in processes:
+    if p["ppid"] == 1 and p["cmd"].startswith("/tmp/"):
+        print(f"SUSPICIOUS ORPHAN PROCESS: PID {p['pid']} ({p['cmd']})")
+```
+
+### Common Mistake
+Killing a malicious process without investigating its parent PID or persistence mechanisms (such as cron jobs or systemd service units). If the persistence mechanism is active, the process will respawn immediately upon termination.
+
+### Check Yourself
+What PID is assigned to the initial initialization system process (such as systemd) in Linux? PID 1.

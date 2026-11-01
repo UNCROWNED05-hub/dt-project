@@ -1,0 +1,30 @@
+---
+loId: "sec-03-lo09"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+PowerShell provides an object-oriented defensive administrative environment on Windows. Instead of parsing raw character streams, PowerShell passes structured objects along the pipeline. Defenders use Get-WinEvent with FilterHashtables to extract specific security event records efficiently without loading entire gigabyte logs into memory, and Get-CimInstance to inspect persistent services, auto-start registry keys, and running processes.
+
+### Worked Example
+Formulating an efficient Get-WinEvent FilterHashtable query:
+```powershell
+# Querying Windows Security log for failed logon events (Event ID 4625)
+# in the past 24 hours using structured hashtable filtering:
+
+$filter = @{
+    LogName = 'Security'
+    Id = 4625
+    StartTime = (Get-Date).AddDays(-1)
+}
+
+# Pipeline streams structured .NET event objects:
+# Get-WinEvent -FilterHashtable $filter | Select-Object TimeCreated, Message -First 10
+```
+
+### Common Mistake
+Piping raw Get-WinEvent -LogName Security into Where-Object { $_.Id -eq 4625 }. This downloads hundreds of thousands of unrelated events into memory before filtering, causing immense disk and CPU thrashing compared to server-side -FilterHashtable.
+
+### Check Yourself
+Why is -FilterHashtable dramatically faster than piping Get-WinEvent into Where-Object? It pushes filtering down to the Windows Event Log API at the kernel level rather than loading all raw records into memory.

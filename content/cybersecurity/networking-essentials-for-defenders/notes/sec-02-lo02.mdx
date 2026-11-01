@@ -1,0 +1,31 @@
+---
+loId: "sec-02-lo02"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+IP headers (L3) encapsulate routing and addressing metadata, including Source/Destination IP, Version (IPv4/IPv6), and Time-to-Live (TTL), which decrements at every routing hop to prevent routing loops. At Layer 4, TCP provides connection-oriented, ordered delivery with sequence/acknowledgment numbers and control flags (SYN, ACK, FIN, RST). UDP provides minimal connectionless overhead without sequencing or guaranteed retransmissions, suited for streaming and DNS lookups.
+
+### Worked Example
+Parsing basic IP and TCP header offsets in a defensive context:
+```python
+packet_metadata = {
+    "ip_version": 4,
+    "ip_ttl": 64,
+    "ip_proto": 6,       # Protocol 6 = TCP, 17 = UDP, 1 = ICMP
+    "src_ip": "10.0.0.15",
+    "dst_ip": "10.0.0.1",
+    "tcp_flags": ["SYN"],
+    "tcp_seq": 1000
+}
+is_low_ttl = packet_metadata["ip_ttl"] <= 1
+print("Is packet near drop threshold?", is_low_ttl)
+print("Protocol name:", "TCP" if packet_metadata["ip_proto"] == 6 else "Other")
+```
+
+### Common Mistake
+Expecting UDP to guarantee in-order delivery. UDP packets can arrive out of order, be duplicated, or be dropped silently without notification at the transport layer; application-layer logic must handle recovery if needed.
+
+### Check Yourself
+What IP protocol number indicates that the encapsulated payload is a TCP segment? Protocol 6 (UDP is 17).

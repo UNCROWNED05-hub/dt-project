@@ -1,0 +1,1066 @@
+[
+  {
+    "loId": "sec-02-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q01",
+    "stem": "At which layer of the OSI model does an IP router make packet forwarding decisions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Network Layer (Layer 3)"
+      },
+      {
+        "id": "b",
+        "text": "Data Link Layer (Layer 2)"
+      },
+      {
+        "id": "c",
+        "text": "Transport Layer (Layer 4)"
+      },
+      {
+        "id": "d",
+        "text": "Application Layer (Layer 7)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Routers operate at Layer 3 (Network Layer) evaluating logical IP destination addresses to make routing decisions.",
+    "noteRef": "sec-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q02",
+    "stem": "A security analyst inspects an ethernet frame in Wireshark. Which order correctly describes the encapsulation from outermost header to payload?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IP Header (L3) -> Ethernet Header (L2) -> TCP Header (L4) -> HTTP Data (L7)"
+      },
+      {
+        "id": "b",
+        "text": "Ethernet Header (L2) -> IP Header (L3) -> TCP Header (L4) -> HTTP Data (L7)"
+      },
+      {
+        "id": "c",
+        "text": "HTTP Data (L7) -> TCP Header (L4) -> IP Header (L3) -> Ethernet Header (L2)"
+      },
+      {
+        "id": "d",
+        "text": "TCP Header (L4) -> IP Header (L3) -> Ethernet Header (L2) -> HTTP Data (L7)"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Packets on an Ethernet cable wrap Layer 3 inside Layer 2 frames, which enclose Layer 4 segments containing application data.",
+    "noteRef": "sec-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-02-q03",
+    "stem": "Which of the following layers are defined in the standard 4-layer TCP/IP model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Network Access / Link Layer"
+      },
+      {
+        "id": "b",
+        "text": "Internet Layer"
+      },
+      {
+        "id": "c",
+        "text": "Transport Layer"
+      },
+      {
+        "id": "d",
+        "text": "Session Layer"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "The TCP/IP model consists of Network Access, Internet, Transport, and Application layers. Session is in OSI.",
+    "noteRef": "sec-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q04",
+    "stem": "Why can't Layer 2 Ethernet switches forward frames across different IP subnets without a Layer 3 routing boundary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ethernet frames cannot carry IPv4 payloads."
+      },
+      {
+        "id": "b",
+        "text": "Layer 2 frames have no parity check bits."
+      },
+      {
+        "id": "c",
+        "text": "Switches only inspect destination MAC addresses within the local broadcast domain and lack IP routing tables."
+      },
+      {
+        "id": "d",
+        "text": "MAC addresses expire after 60 seconds."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Standard Layer 2 switches switch frames based on MAC address tables; crossing logical IP networks requires L3 routing.",
+    "noteRef": "sec-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q05",
+    "stem": "What is the primary function of the Time-to-Live (TTL) field in an IPv4 header?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt the payload during transit."
+      },
+      {
+        "id": "b",
+        "text": "To measure round-trip ping latency in milliseconds."
+      },
+      {
+        "id": "c",
+        "text": "To synchronize sequence numbers between sender and receiver."
+      },
+      {
+        "id": "d",
+        "text": "To prevent packets from circulating endlessly in routing loops by decrementing at each hop."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Each router decrements TTL by 1. If TTL hits 0, the packet is discarded and an ICMP Time Exceeded message is sent.",
+    "noteRef": "sec-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q06",
+    "stem": "A network engineer needs a transport protocol for live video streaming where occasional dropped frames are acceptable but low latency is critical. Which protocol should be chosen?",
+    "options": [
+      {
+        "id": "a",
+        "text": "UDP, because it avoids the retransmission delays and connection overhead of TCP."
+      },
+      {
+        "id": "b",
+        "text": "TCP, because sequence numbers ensure uninterrupted playback."
+      },
+      {
+        "id": "c",
+        "text": "ICMP, because diagnostic packets have zero overhead."
+      },
+      {
+        "id": "d",
+        "text": "ARP, because it broadcasts directly to all local screens."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "UDP provides connectionless streaming without waiting for retransmissions of lost packets.",
+    "noteRef": "sec-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-02-q07",
+    "stem": "What is the standard minimum header size (in bytes) of an IPv4 packet without optional fields?",
+    "options": [
+      {
+        "id": "a",
+        "text": "16"
+      },
+      {
+        "id": "b",
+        "text": "20"
+      },
+      {
+        "id": "c",
+        "text": "32"
+      },
+      {
+        "id": "d",
+        "text": "64"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The base IPv4 header is 20 bytes long (5 32-bit words).",
+    "noteRef": "sec-02-lo02",
+    "verify": "(20 === 20)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q08",
+    "stem": "What protocol numbers in the IPv4 Protocol field identify TCP and UDP respectively?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Protocol 1 for TCP, Protocol 2 for UDP"
+      },
+      {
+        "id": "b",
+        "text": "Protocol 80 for TCP, Protocol 443 for UDP"
+      },
+      {
+        "id": "c",
+        "text": "Protocol 6 for TCP, Protocol 17 for UDP"
+      },
+      {
+        "id": "d",
+        "text": "Protocol 17 for TCP, Protocol 6 for UDP"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "IANA specifies Protocol 6 for TCP and Protocol 17 for UDP in the IP header protocol field.",
+    "noteRef": "sec-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q09",
+    "stem": "What is the correct sequence of control flags exchanged during a standard TCP Three-Way Handshake?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ACK -> SYN -> SYN-ACK"
+      },
+      {
+        "id": "b",
+        "text": "SYN -> ACK -> FIN"
+      },
+      {
+        "id": "c",
+        "text": "RST -> SYN -> ACK"
+      },
+      {
+        "id": "d",
+        "text": "SYN -> SYN-ACK -> ACK"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "TCP connects via client SYN, server response SYN-ACK, and client confirmation ACK.",
+    "noteRef": "sec-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-02-q10",
+    "stem": "A client initiates a TCP connection with Initial Sequence Number (ISN) 5000. What acknowledgment number must the server send in its SYN-ACK response?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5001"
+      },
+      {
+        "id": "b",
+        "text": "5000"
+      },
+      {
+        "id": "c",
+        "text": "5002"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The receiver acknowledges a SYN by incrementing the sequence number by 1: 5000 + 1 = 5001.",
+    "noteRef": "sec-02-lo03",
+    "verify": "(5000 + 1 === 5001)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q11",
+    "stem": "A server receives thousands of SYN packets from spoofed IP addresses without ever receiving subsequent ACK packets. What attack is taking place?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DNS Cache Poisoning"
+      },
+      {
+        "id": "b",
+        "text": "TCP SYN Flood Denial of Service"
+      },
+      {
+        "id": "c",
+        "text": "ARP Spoofing Man-in-the-Middle"
+      },
+      {
+        "id": "d",
+        "text": "SQL Injection Data Exfiltration"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A SYN flood exhausts server connection tables (backlog queues) with half-open connections that never complete the handshake.",
+    "noteRef": "sec-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q12",
+    "stem": "What TCP flag indicates an immediate, ungraceful termination of a connection without waiting for unfinished data transfers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "FIN (Finish)"
+      },
+      {
+        "id": "b",
+        "text": "URG (Urgent)"
+      },
+      {
+        "id": "c",
+        "text": "RST (Reset)"
+      },
+      {
+        "id": "d",
+        "text": "PSH (Push)"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The RST flag aborts a connection abruptly; FIN gracefully closes a connection after pending packets are acknowledged.",
+    "noteRef": "sec-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q13",
+    "stem": "Which DNS record type maps a domain hostname to an IPv4 address?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AAAA Record"
+      },
+      {
+        "id": "b",
+        "text": "MX Record"
+      },
+      {
+        "id": "c",
+        "text": "PTR Record"
+      },
+      {
+        "id": "d",
+        "text": "A Record"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "An 'A' record maps a hostname to an IPv4 address; 'AAAA' maps to an IPv6 address.",
+    "noteRef": "sec-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q14",
+    "stem": "An enterprise deploys a mail server. Which DNS record must be published so external servers know where to route incoming SMTP emails?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MX (Mail Exchange) Record"
+      },
+      {
+        "id": "b",
+        "text": "CNAME Record"
+      },
+      {
+        "id": "c",
+        "text": "SOA Record"
+      },
+      {
+        "id": "d",
+        "text": "NS Record"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "MX records designate the mail servers responsible for accepting email on behalf of a domain.",
+    "noteRef": "sec-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-02-q15",
+    "stem": "Which of the following components are part of the hierarchical DNS resolution chain for an uncached query?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Root Nameservers"
+      },
+      {
+        "id": "b",
+        "text": "Top-Level Domain (TLD) Nameservers"
+      },
+      {
+        "id": "c",
+        "text": "Authoritative Domain Nameservers"
+      },
+      {
+        "id": "d",
+        "text": "BGP Autonomous Systems"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "A recursive lookup queries Root servers, then TLD servers (.com, .org), and finally the authoritative nameserver.",
+    "noteRef": "sec-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q16",
+    "stem": "How does DNSSEC protect recursive resolvers from DNS Cache Poisoning attacks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It encrypts all DNS traffic using AES-256."
+      },
+      {
+        "id": "b",
+        "text": "It cryptographically signs DNS records using public-key cryptography to verify data integrity and origin authenticity."
+      },
+      {
+        "id": "c",
+        "text": "It blocks all queries originating from UDP port 53."
+      },
+      {
+        "id": "d",
+        "text": "It forces TTL values to be 0 for all records."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "DNSSEC uses digital signatures (RRSIG records) tied to a chain of trust to validate that DNS responses were not tampered with.",
+    "noteRef": "sec-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q17",
+    "stem": "What is the primary role of the Address Resolution Protocol (ARP) in a local area network?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Routing packets across public internet backbones."
+      },
+      {
+        "id": "b",
+        "text": "Assigning dynamic IP addresses to new network clients."
+      },
+      {
+        "id": "c",
+        "text": "Resolving a known Layer 3 IP address to a physical Layer 2 MAC address."
+      },
+      {
+        "id": "d",
+        "text": "Translating private IP addresses to public IPs using NAT."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "ARP maps IP addresses to physical MAC hardware addresses within a local Layer 2 broadcast domain.",
+    "noteRef": "sec-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q18",
+    "stem": "An attacker on the local subnet transmits unsolicited gratuitous ARP replies claiming the default gateway IP belongs to their MAC. What attack is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Smurf ICMP Amplification"
+      },
+      {
+        "id": "b",
+        "text": "VLAN Hopping"
+      },
+      {
+        "id": "c",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "ARP Cache Poisoning / ARP Spoofing"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "ARP spoofing tricks local hosts into associating the gateway's IP with the attacker's MAC address to intercept traffic.",
+    "noteRef": "sec-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-02-q19",
+    "stem": "What managed switch feature prevents ARP poisoning by validating ARP packets against the DHCP snooping database?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dynamic ARP Inspection (DAI)"
+      },
+      {
+        "id": "b",
+        "text": "Spanning Tree Protocol (STP)"
+      },
+      {
+        "id": "c",
+        "text": "Port Mirroring (SPAN)"
+      },
+      {
+        "id": "d",
+        "text": "Link Aggregation (LACP)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Dynamic ARP Inspection (DAI) inspects ARP packets on untrusted switch ports and drops forged mappings.",
+    "noteRef": "sec-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q20",
+    "stem": "Why do ARP requests use the broadcast MAC address FF:FF:FF:FF:FF:FF?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt the ARP frame payload."
+      },
+      {
+        "id": "b",
+        "text": "Because the requesting host does not yet know which physical device holds the target IP address."
+      },
+      {
+        "id": "c",
+        "text": "To force intermediate routers to forward the frame across subnets."
+      },
+      {
+        "id": "d",
+        "text": "Because switches discard unicast frames."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Since the destination MAC is unknown, broadcasting ensures every station on the local segment receives the query.",
+    "noteRef": "sec-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q21",
+    "stem": "Which well-known port is utilized by default for Secure Shell (SSH) remote administrative access?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Port 23"
+      },
+      {
+        "id": "b",
+        "text": "Port 80"
+      },
+      {
+        "id": "c",
+        "text": "Port 22"
+      },
+      {
+        "id": "d",
+        "text": "Port 443"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "SSH operates on TCP port 22; unencrypted Telnet uses port 23.",
+    "noteRef": "sec-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q22",
+    "stem": "A firewall audit reveals unexpected inbound traffic allowed to port 3389. What service is exposed to the internet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Server Message Block (SMB)"
+      },
+      {
+        "id": "b",
+        "text": "Domain Name System (DNS)"
+      },
+      {
+        "id": "c",
+        "text": "PostgreSQL Database"
+      },
+      {
+        "id": "d",
+        "text": "Microsoft Remote Desktop Protocol (RDP)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "TCP port 3389 is the default listening port for Microsoft RDP.",
+    "noteRef": "sec-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-02-q23",
+    "stem": "Which of the following ports are classified as 'Well-Known Ports' (ports 0 to 1023)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Port 53 (DNS)"
+      },
+      {
+        "id": "b",
+        "text": "Port 443 (HTTPS)"
+      },
+      {
+        "id": "c",
+        "text": "Port 445 (SMB)"
+      },
+      {
+        "id": "d",
+        "text": "Port 8080 (HTTP Alternate)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Ports 53, 443, and 445 are under 1024 (well-known). Port 8080 is a registered/ephemeral range port.",
+    "noteRef": "sec-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q24",
+    "stem": "Under what transport protocols does the Domain Name System (DNS) operate for standard queries versus zone transfers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "UDP 53 for standard small queries, and TCP 53 for zone transfers or large responses exceeding 512 bytes."
+      },
+      {
+        "id": "b",
+        "text": "TCP 53 exclusively for all DNS operations."
+      },
+      {
+        "id": "c",
+        "text": "UDP 53 exclusively for all DNS operations."
+      },
+      {
+        "id": "d",
+        "text": "ICMP port 53 for queries and HTTP port 80 for transfers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Standard lookups use UDP 53 for speed; zone transfers (AXFR) and large responses fail over to TCP 53 for reliability.",
+    "noteRef": "sec-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q25",
+    "stem": "In IPv4 CIDR notation, what does the suffix in 192.168.10.0/24 represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The maximum number of routers on the subnet."
+      },
+      {
+        "id": "b",
+        "text": "The number of bits dedicated to the network prefix."
+      },
+      {
+        "id": "c",
+        "text": "The total number of available host interfaces."
+      },
+      {
+        "id": "d",
+        "text": "The default TTL value for all packets."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The /24 suffix indicates that 24 of the 32 IPv4 bits represent the network portion, leaving 8 bits for host addresses.",
+    "noteRef": "sec-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo07",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-02-q26",
+    "stem": "How many USABLE host IP addresses exist in a /26 IPv4 subnet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "64"
+      },
+      {
+        "id": "b",
+        "text": "30"
+      },
+      {
+        "id": "c",
+        "text": "62"
+      },
+      {
+        "id": "d",
+        "text": "126"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Host bits = 32 - 26 = 6 bits. Total = 2^6 = 64. Usable hosts = 64 - 2 = 62.",
+    "noteRef": "sec-02-lo07",
+    "verify": "(Math.pow(2, 32 - 26) - 2 === 62)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q27",
+    "stem": "A network engineer wants to configure a point-to-point link between two routers without wasting IP address space. Which CIDR subnet prefix provides exactly 2 usable host addresses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "/28"
+      },
+      {
+        "id": "b",
+        "text": "/29"
+      },
+      {
+        "id": "c",
+        "text": "/31"
+      },
+      {
+        "id": "d",
+        "text": "/30"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A /30 subnet has 4 total addresses: 1 network, 1 broadcast, and exactly 2 usable host IPs (2^(32-30) - 2 = 2).",
+    "noteRef": "sec-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q28",
+    "stem": "What is the broadcast address for the subnet 192.168.1.128/25?",
+    "options": [
+      {
+        "id": "a",
+        "text": "192.168.1.255"
+      },
+      {
+        "id": "b",
+        "text": "192.168.1.128"
+      },
+      {
+        "id": "c",
+        "text": "192.168.1.192"
+      },
+      {
+        "id": "d",
+        "text": "192.168.2.255"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A /25 spans 128 addresses. Subnet starts at 192.168.1.128 and ends at the broadcast address 192.168.1.255.",
+    "noteRef": "sec-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-02-q29",
+    "stem": "Which utility sends ICMP Echo Request packets and listens for ICMP Echo Replies to test network connectivity?",
+    "options": [
+      {
+        "id": "a",
+        "text": "netstat"
+      },
+      {
+        "id": "b",
+        "text": "ping"
+      },
+      {
+        "id": "c",
+        "text": "curl"
+      },
+      {
+        "id": "d",
+        "text": "nslookup"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The ping utility generates ICMP Echo Requests (Type 8) and validates receiving Echo Replies (Type 0).",
+    "noteRef": "sec-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-02-q30",
+    "stem": "How does the traceroute utility map intermediate routers between a host and destination?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It asks the root DNS servers for the routing path."
+      },
+      {
+        "id": "b",
+        "text": "It injects BGP routing table updates into local switches."
+      },
+      {
+        "id": "c",
+        "text": "It sends packets with incrementally increasing TTL values starting at 1, capturing ICMP Time Exceeded replies from each hop."
+      },
+      {
+        "id": "d",
+        "text": "It queries the destination router's ARP cache directly."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "By setting TTL=1, the first router drops the packet and returns ICMP Time Exceeded; TTL=2 reveals the second, and so on.",
+    "noteRef": "sec-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-02-q31",
+    "stem": "What is the ICMP Type number for an Echo Reply packet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8"
+      },
+      {
+        "id": "b",
+        "text": "11"
+      },
+      {
+        "id": "c",
+        "text": "3"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Echo Reply is Type 0; Echo Request is Type 8.",
+    "noteRef": "sec-02-lo08",
+    "verify": "(0 === 0)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-02-q32",
+    "stem": "Why does blocking all ICMP traffic at an enterprise firewall break Path MTU Discovery (PMTUD)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Routers cannot return ICMP 'Destination Unreachable: Fragmentation Needed' messages, causing packets exceeding the MTU to be dropped silently."
+      },
+      {
+        "id": "b",
+        "text": "DNS resolution requires ICMP Echo messages."
+      },
+      {
+        "id": "c",
+        "text": "TCP handshakes cannot establish without ICMP ACK messages."
+      },
+      {
+        "id": "d",
+        "text": "Ethernet switches stop updating their MAC address tables."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "PMTUD depends on ICMP Type 3 Code 4 to signal when packets exceed the maximum transmission unit size.",
+    "noteRef": "sec-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-02-q33",
+    "stem": "What four message types comprise the complete DHCP lease exchange?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SYN, SYN-ACK, ACK, FIN"
+      },
+      {
+        "id": "b",
+        "text": "Discover, Offer, Request, Acknowledge (DORA)"
+      },
+      {
+        "id": "c",
+        "text": "Query, Response, Authorize, Bind"
+      },
+      {
+        "id": "d",
+        "text": "Hello, Challenge, Response, Permit"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "DHCP client and server exchange Discover, Offer, Request, and Acknowledge messages.",
+    "noteRef": "sec-02-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-02-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-02-q34",
+    "stem": "An attacker plugs an unauthorized wireless router into an office ethernet port, handing out incorrect gateway IPs to coworkers. What security control mitigates this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disabling ICMP on the default router."
+      },
+      {
+        "id": "b",
+        "text": "Installing an SSL certificate on all endpoints."
+      },
+      {
+        "id": "c",
+        "text": "DHCP Snooping on the switch, designating user ports as untrusted and dropping unauthorized DHCP Offer messages."
+      },
+      {
+        "id": "d",
+        "text": "Increasing DNS TTL values to 24 hours."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "DHCP Snooping drops DHCP server messages (Offers/ACKs) originating from untrusted client-facing switch ports.",
+    "noteRef": "sec-02-lo09",
+    "reviewed": false
+  }
+]

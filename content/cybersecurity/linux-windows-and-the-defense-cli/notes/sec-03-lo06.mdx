@@ -1,0 +1,31 @@
+---
+loId: "sec-03-lo06"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Windows Security Event Logs record structured operational telemetry essential for incident response. Core event IDs include:
+- Event ID 4624: Successful Account Logon (with Logon Types, e.g., Type 2 Interactive, Type 3 Network, Type 10 RemoteInteractive/RDP).
+- Event ID 4625: Failed Account Logon.
+- Event ID 4688: A new process has been created (recording process name, parent process, and command-line arguments when process auditing is enabled).
+
+### Worked Example
+Analyzing logon events for suspicious Remote Desktop sessions:
+```python
+events = [
+    {"event_id": 4624, "user": "corp\analyst", "logon_type": 2, "ip": "127.0.0.1"},
+    {"event_id": 4624, "user": "corp\admin", "logon_type": 10, "ip": "203.0.113.88"},
+    {"event_id": 4625, "user": "corp\admin", "logon_type": 3, "ip": "203.0.113.88"}
+]
+
+for ev in events:
+    if ev["event_id"] == 4624 and ev["logon_type"] == 10:
+        print(f"ALERT: Remote Interactive (RDP) logon detected for {ev['user']} from {ev['ip']}")
+```
+
+### Common Mistake
+Relying solely on Event ID 4688 without enabling command-line process auditing via Group Policy. Without command-line argument logging, Event ID 4688 only captures binary filenames (e.g., powershell.exe) without revealing encoded malicious arguments.
+
+### Check Yourself
+Which Windows Logon Type designates an interactive Remote Desktop (RDP) session? Logon Type 10.

@@ -1,0 +1,26 @@
+---
+loId: "sec-02-lo04"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+The Domain Name System (DNS) maps human-readable domain names to numerical IP addresses. A client query proceeds from local cache to a recursive resolver, which queries authoritative root servers, Top-Level Domain (TLD) servers, and authoritative domain nameservers. Key record types include A (IPv4), AAAA (IPv6), CNAME (canonical alias), MX (mail exchange), and TXT (used for SPF and domain verification).
+
+### Worked Example
+Inspecting DNS lookup responses programmatically:
+```python
+dns_records = [
+    {"name": "example.com", "type": "A", "ttl": 300, "data": "93.184.216.34"},
+    {"name": "www.example.com", "type": "CNAME", "ttl": 3600, "data": "example.com"},
+    {"name": "example.com", "type": "TXT", "ttl": 3600, "data": "v=spf1 -all"}
+]
+resolved_ips = [r["data"] for r in dns_records if r["type"] == "A"]
+print("Resolved IPv4 addresses:", resolved_ips)
+```
+
+### Common Mistake
+Overlooking DNS caching TTL values. If a defender updates an authoritative record during incident response, clients with unexpired cached responses will continue routing traffic to the old IP until their local TTL expires.
+
+### Check Yourself
+Which DNS record type is commonly queried to verify domain ownership and configure SPF email authentication? TXT record.

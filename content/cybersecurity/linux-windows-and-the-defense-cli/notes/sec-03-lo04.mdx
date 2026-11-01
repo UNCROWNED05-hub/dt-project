@@ -1,0 +1,27 @@
+---
+loId: "sec-03-lo04"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Linux hosts record security telemetry in centralized text logs under /var/log/ and binary systemd journals. Key log files include /var/log/auth.log (Debian/Ubuntu) or /var/log/secure (RHEL/CentOS) for authentication events, SSH logins, and sudo elevation attempts. Defenders review failed password entries, repeated root login attempts, and unexpected session openings using tools like journalctl -u ssh.
+
+### Worked Example
+Parsing failed SSH authentication entries from log data:
+```python
+log_lines = [
+    "Oct 24 10:15:02 web01 sshd[4201]: Failed password for invalid user admin from 198.51.100.25 port 42102",
+    "Oct 24 10:15:05 web01 sshd[4204]: Failed password for invalid user admin from 198.51.100.25 port 42104",
+    "Oct 24 10:15:09 web01 sshd[4208]: Accepted publickey for analyst from 10.0.0.50 port 51230"
+]
+
+failed_attempts = [l for l in log_lines if "Failed password" in l]
+print("Count of failed brute-force attempts:", len(failed_attempts))
+```
+
+### Common Mistake
+Failing to forward logs to a remote SIEM or write-once storage. If an adversary gains root access, one of their initial actions is often truncating or altering local log files in /var/log/ to conceal activity.
+
+### Check Yourself
+In Debian and Ubuntu systems, what is the default log file path for SSH authentication and sudo command records? /var/log/auth.log.

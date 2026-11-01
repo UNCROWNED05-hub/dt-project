@@ -1,0 +1,24 @@
+---
+loId: "sec-02-lo06"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Transport layer ports (0-65535) allow operating systems to multiplex network connections across distinct applications. Ports 0-1023 are Well-Known Ports reserved for privileged services. Defenders must recognize baseline standard services: SSH (22), DNS (53), HTTP (80), HTTPS (443), SMB (445), and RDP (3389). Unapproved listening ports indicate unauthorized services or backdoors.
+
+### Worked Example
+Auditing listening network ports against an approved baseline:
+```python
+approved_ports = {22: "SSH", 80: "HTTP", 443: "HTTPS"}
+observed_listening_ports = [22, 80, 443, 3389, 445]
+unapproved = [p for p in observed_listening_ports if p not in approved_ports]
+for port in unapproved:
+    print(f"DEFENSE WARNING: Unapproved listening port detected: {port}")
+```
+
+### Common Mistake
+Assuming services always run on their standard ports. Threat actors frequently host command-and-control listeners on port 443 or 80 to blend in with legitimate outbound web traffic, requiring deep packet inspection (DPI) rather than simple port filtering.
+
+### Check Yourself
+What standard port is utilized by Microsoft Server Message Block (SMB) for file sharing and remote administration? Port 445.

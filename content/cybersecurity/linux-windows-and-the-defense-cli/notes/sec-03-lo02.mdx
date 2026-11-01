@@ -1,0 +1,31 @@
+---
+loId: "sec-03-lo02"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Beyond standard rwx permissions, Linux provides three special permission bits:
+1. SUID (Set User ID, octal 4000): causes a binary to execute with the privileges of the file owner (commonly root) rather than the launching user.
+2. SGID (Set Group ID, octal 2000): executes with the group privileges of the file, or forces new files in a directory to inherit the parent directory's group.
+3. Sticky Bit (octal 1000): prevents non-owners from deleting or renaming files in a shared directory (e.g., /tmp).
+
+### Worked Example
+Auditing SUID binaries in a laboratory environment:
+```python
+installed_binaries = [
+    {"name": "/usr/bin/passwd", "mode": "4755", "owner": "root", "status": "Legitimate SUID"},
+    {"name": "/usr/bin/ping", "mode": "0755", "owner": "root", "status": "Normal binary"},
+    {"name": "/tmp/custom_bash", "mode": "4777", "owner": "root", "status": "CRITICAL: Backdoor SUID"}
+]
+
+for b in installed_binaries:
+    if b["mode"].startswith("4") and b["status"].startswith("CRITICAL"):
+        print("Privilege escalation threat flagged:", b["name"])
+```
+
+### Common Mistake
+Setting the SUID bit on shell scripts or script interpreters. If an unprivileged user can control environment variables or arguments passed to a root SUID binary, it creates an immediate privilege escalation vector.
+
+### Check Yourself
+What character appears in place of the user execute bit ('x') in ls -l output when SUID is enabled on an executable file? A lowercase 's' (or 'S' if user execute was not set).

@@ -1,0 +1,28 @@
+---
+loId: "sec-03-lo08"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Investigating compromised systems requires live socket inspection. The modern ss utility (and legacy netstat) interrogates the Linux kernel's TCP/IP stack to list listening ports, active established connections, and associated Process IDs (ss -tulpn). Analyzing foreign IP addresses, uncommon port numbers, and unauthorized listening daemons identifies active command-and-control channels or unauthorized network listeners.
+
+### Worked Example
+Filtering listening network sockets for unauthorized services:
+```python
+open_sockets = [
+    {"proto": "tcp", "state": "LISTEN", "local": "0.0.0.0:22", "pid": 542, "proc": "sshd"},
+    {"proto": "tcp", "state": "LISTEN", "local": "0.0.0.0:443", "pid": 980, "proc": "nginx"},
+    {"proto": "tcp", "state": "ESTAB", "local": "10.0.0.15:48201", "foreign": "198.51.100.99:4444", "pid": 3120, "proc": "nc"}
+]
+
+for sock in open_sockets:
+    if sock["state"] == "ESTAB" and sock["proc"] == "nc":
+        print(f"SUSPICIOUS REVERSE SHELL: Process {sock['proc']} connected to {sock['foreign']}")
+```
+
+### Common Mistake
+Running netstat or ss without administrative privileges (sudo). Unprivileged users can observe socket states but will not be shown the underlying process names or PIDs associated with sockets owned by other system users.
+
+### Check Yourself
+What flag combination in ss displays listening TCP and UDP sockets with numeric addresses and process identifiers? ss -tulpn (TCP, UDP, Listening, Process, Numeric).

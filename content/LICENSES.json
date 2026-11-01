@@ -86,5 +86,16 @@
     "dateAccessed": "2026-10-02",
     "chaptersUsedIn": ["transformers-llms-and-responsible-ai"],
     "notes": "Transformer attention formulations, tokenization patterns, and LoRA adaptation principles."
+  },
+  {
+    "id": "lic-09",
+    "title": "IETF RFC Standards (RFC 791 IPv4, RFC 793 TCP, RFC 826 ARP, RFC 1035 DNS)",
+    "author": "Internet Engineering Task Force (IETF)",
+    "url": "https://www.ietf.org/",
+    "license": "IETF Trust Provisions",
+    "licenseUrl": "https://trustee.ietf.org/documents/trust-legal-provisions/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["networking-essentials-for-defenders", "linux-windows-and-the-defense-cli"],
+    "notes": "Standard networking protocol specifications, packet header formats, and socket state definitions."
   }
 ]

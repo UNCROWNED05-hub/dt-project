@@ -1,0 +1,39 @@
+---
+loId: "sec-02-lo03"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+TCP establishes bidirectional reliable communication using a Three-Way Handshake:
+1. Client sends a SYN segment with an Initial Sequence Number (ISN_c).
+2. Server responds with a SYN-ACK segment, acknowledging ISN_c + 1 and providing its own ISN_s.
+3. Client replies with an ACK acknowledging ISN_s + 1.
+Connection teardown occurs gracefully using FIN and ACK exchanges from both sides, or abruptly via a Reset (RST) flag when an unauthorized or unexpected packet is received.
+
+### Worked Example
+Tracking sequence number transitions during handshake:
+```python
+client_isn = 2500
+syn_packet = {"flags": "SYN", "seq": client_isn}
+
+server_isn = 8000
+syn_ack_packet = {
+    "flags": "SYN-ACK",
+    "seq": server_isn,
+    "ack": client_isn + 1  # 2501
+}
+
+ack_packet = {
+    "flags": "ACK",
+    "seq": client_isn + 1,  # 2501
+    "ack": server_isn + 1   # 8001
+}
+print("Final ACK number sent by client:", ack_packet["ack"])  # 8001
+```
+
+### Common Mistake
+Interpreting a RST flag as normal termination. A RST flag signals an abnormal condition, such as a connection attempt to a closed port, an expired firewall state timeout, or deliberate session termination by an inline security appliance.
+
+### Check Yourself
+In a SYN flood attack, which step of the three-way handshake does the malicious sender deliberately omit? The final ACK step, leaving embryonic half-open sockets on the server.

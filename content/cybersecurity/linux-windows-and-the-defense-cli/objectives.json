@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "chapterId": "sec-03",
+  "objectives": [
+    {
+      "id": "sec-03-lo01",
+      "order": 1,
+      "title": "Explain Linux user, group, and other file permissions and octal modes",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "linux permissions",
+        "chmod",
+        "octal notation",
+        "rwx"
+      ],
+      "aliases": [
+        "file mode bits",
+        "ugo permissions"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-03-lo02",
+      "order": 2,
+      "title": "Audit special Linux permission bits including SUID, SGID, and Sticky",
+      "bloom": "audit",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "suid",
+        "sgid",
+        "sticky bit",
+        "privilege escalation"
+      ],
+      "aliases": [
+        "special permissions",
+        "setuid binary"
+      ],
+      "prerequisites": [
+        "sec-03-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo03",
+      "order": 3,
+      "title": "Inspect Linux running processes, parent hierarchies, and system services",
+      "bloom": "inspect",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ps",
+        "top",
+        "systemctl",
+        "pid",
+        "ppid"
+      ],
+      "aliases": [
+        "process tree",
+        "systemd service management"
+      ],
+      "prerequisites": [
+        "sec-03-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo04",
+      "order": 4,
+      "title": "Analyze essential Linux security log files and authentication events",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "auth.log",
+        "syslog",
+        "journalctl",
+        "failed login"
+      ],
+      "aliases": [
+        "linux audit logs",
+        "secure log"
+      ],
+      "prerequisites": [
+        "sec-03-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo05",
+      "order": 5,
+      "title": "Examine the Windows security model, Security Identifiers (SIDs), and Access Tokens",
+      "bloom": "examine",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "sid",
+        "access token",
+        "uac",
+        "security descriptor"
+      ],
+      "aliases": [
+        "windows auth model",
+        "security identifier"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo06",
+      "order": 6,
+      "title": "Query Windows Event Logs for logon and process creation event IDs",
+      "bloom": "query",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "event id 4624",
+        "event id 4625",
+        "event id 4688",
+        "sysmon"
+      ],
+      "aliases": [
+        "security log event ids",
+        "windows telemetry"
+      ],
+      "prerequisites": [
+        "sec-03-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo07",
+      "order": 7,
+      "title": "Filter security log streams using defensive CLI utilities (grep, awk, cut)",
+      "bloom": "filter",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "grep",
+        "awk",
+        "cut",
+        "sort",
+        "uniq",
+        "cli text processing"
+      ],
+      "aliases": [
+        "log triage cli",
+        "bash log parsing"
+      ],
+      "prerequisites": [
+        "sec-03-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-03-lo08",
+      "order": 8,
+      "title": "Inspect active network socket connections and listening ports via netstat and ss",
+      "bloom": "inspect",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "netstat",
+        "ss",
+        "listening ports",
+        "established sockets"
+      ],
+      "aliases": [
+        "socket inspection",
+        "listening sockets cli"
+      ],
+      "prerequisites": [
+        "sec-02-lo06"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-03-lo09",
+      "order": 9,
+      "title": "Formulate defensive PowerShell queries with Get-WinEvent and Get-CimInstance",
+      "bloom": "formulate",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "powershell",
+        "get-winevent",
+        "get-ciminstance",
+        "defense automation"
+      ],
+      "aliases": [
+        "windows defense cli",
+        "powershell security triage"
+      ],
+      "prerequisites": [
+        "sec-03-lo06"
+      ],
+      "estMinutes": 14
+    }
+  ]
+}

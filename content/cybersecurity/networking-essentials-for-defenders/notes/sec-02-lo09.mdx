@@ -1,0 +1,33 @@
+---
+loId: "sec-02-lo09"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+The Dynamic Host Configuration Protocol (DHCP) automatically assigns IP addresses, subnet masks, default gateways, and DNS resolvers to hosts using a four-step DORA exchange:
+1. Discover (Client broadcast)
+2. Offer (Server unicast/broadcast)
+3. Request (Client broadcast)
+4. Acknowledge (Server unicast/broadcast)
+Uncontrolled networks risk rogue DHCP servers delivering malicious gateway configurations. DHCP Snooping on switches mitigates this by classifying switch ports as trusted or untrusted.
+
+### Worked Example
+Simulating DHCP Snooping port filtering logic:
+```python
+port_config = {
+    "FastEthernet0/1": {"trusted": True, "device": "Authorized DHCP Server"},
+    "FastEthernet0/2": {"trusted": False, "device": "User Workstation"}
+}
+def handle_dhcp_offer(port):
+    if not port_config[port]["trusted"]:
+        return "DROP: Rogue DHCP Offer received on untrusted port!"
+    return "FORWARD: Legitimate DHCP Offer from trusted uplink."
+print(handle_dhcp_offer("FastEthernet0/2")) # DROP
+```
+
+### Common Mistake
+Failing to enable DHCP Snooping before deploying Dynamic ARP Inspection (DAI). DAI relies directly on the DHCP Snooping database to validate IP-to-MAC bindings; enabling DAI without snooping drops legitimate network traffic.
+
+### Check Yourself
+What are the four sequential message phases of a standard DHCP lease exchange? Discover, Offer, Request, Acknowledge (DORA).

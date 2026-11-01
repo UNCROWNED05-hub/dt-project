@@ -1,0 +1,32 @@
+---
+loId: "sec-03-lo01"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+The Linux Discretionary Access Control (DAC) model evaluates permissions across three principal categories: User (owner), Group, and Others (world). Each tier possesses three permission bits: Read (r=4), Write (w=2), and Execute (x=1). Combining these values produces an octal mode between 0 and 7. For example, chmod 750 grants read-write-execute (4+2+1=7) to the owner, read-and-execute (4+1=5) to the group, and zero access (0) to others.
+
+### Worked Example
+Calculating octal permission values:
+```python
+def rwx_to_octal(perm_str):
+    mapping = {'r': 4, 'w': 2, 'x': 1, '-': 0}
+    val = 0
+    for char in perm_str:
+        val += mapping.get(char, 0)
+    return val
+
+user_bits = rwx_to_octal("rwx")   # 4 + 2 + 1 = 7
+group_bits = rwx_to_octal("r-x")  # 4 + 0 + 1 = 5
+other_bits = rwx_to_octal("---")  # 0 + 0 + 0 = 0
+
+octal_mode = f"{user_bits}{group_bits}{other_bits}"
+print("Octal mode string:", octal_mode)  # "750"
+```
+
+### Common Mistake
+Granting global write permissions (chmod 777) to fix application permissions errors. Permitting universal write access allows any unprivileged user or compromised service account on the system to modify or overwrite sensitive executable files.
+
+### Check Yourself
+What octal permission mode corresponds to standard non-executable read-write file access for owner only (rw-------)? Mode 600 (4+2=6).

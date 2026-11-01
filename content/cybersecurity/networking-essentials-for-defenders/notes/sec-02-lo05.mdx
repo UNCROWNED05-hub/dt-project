@@ -1,0 +1,28 @@
+---
+loId: "sec-02-lo05"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+The Address Resolution Protocol (ARP) translates known Layer 3 IP addresses into local Layer 2 MAC addresses within a broadcast domain. Because ARP is stateless and lacks authentication, hosts trust gratuitous ARP replies unconditionally, creating vulnerability to ARP spoofing (cache poisoning) where an adversary impersonates the default gateway. Defenses include Dynamic ARP Inspection (DAI) on managed switches and static ARP table bindings.
+
+### Worked Example
+Checking an ARP cache table for duplicated MAC addresses:
+```python
+arp_table = {
+    "192.168.1.1": "00:11:22:33:44:55",    # Default gateway
+    "192.168.1.50": "aa:bb:cc:dd:ee:ff",   # Workstation
+    "192.168.1.99": "00:11:22:33:44:55"    # Suspicious duplicate MAC
+}
+macs = list(arp_table.values())
+duplicate_macs = set([m for m in macs if macs.count(m) > 1])
+if duplicate_macs:
+    print("ALERT: ARP spoofing detected for MAC:", duplicate_macs)
+```
+
+### Common Mistake
+Assuming ARP requests cross routed subnets. ARP broadcast packets (FF:FF:FF:FF:FF:FF) are confined strictly to the local Layer 2 broadcast domain; routers do not forward ARP requests across network interfaces.
+
+### Check Yourself
+What enterprise switch security feature validates ARP packets against a trusted DHCP snooping binding database? Dynamic ARP Inspection (DAI).

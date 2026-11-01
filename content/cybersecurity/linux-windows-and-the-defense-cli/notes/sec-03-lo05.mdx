@@ -1,0 +1,31 @@
+---
+loId: "sec-03-lo05"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+The Windows security architecture uses Security Identifiers (SIDs) to uniquely identify security principals (users, groups, machines) across a domain or local system. When a user authenticates, the Local Security Authority Subsystem Service (LSASS) issues an Access Token containing the user's SID, group SIDs, and granted privileges. The Security Reference Monitor (SRM) compares this token against the Discretionary Access Control List (DACL) on securable objects (files, registry keys) before granting access.
+
+### Worked Example
+Inspecting a Windows SID structure:
+```python
+def analyze_rid(sid_str):
+    rid = int(sid_str.split("-")[-1])
+    if rid == 500:
+        return "Built-in Administrator"
+    elif rid == 501:
+        return "Built-in Guest"
+    elif rid >= 1000:
+        return "Custom User or Group"
+    return "Well-Known Security Principal"
+
+print("S-1-5-21-123456789-500:", analyze_rid("S-1-5-21-123456789-500"))
+print("S-1-5-21-123456789-1004:", analyze_rid("S-1-5-21-123456789-1004"))
+```
+
+### Common Mistake
+Assuming renaming the Administrator account changes its underlying SID. The Relative Identifier (RID) 500 remains permanently fixed regardless of username modifications, allowing defenders and security tools to track accounts reliably.
+
+### Check Yourself
+What Windows kernel subsystem enforces access validation by comparing a user's access token against an object's DACL? The Security Reference Monitor (SRM).

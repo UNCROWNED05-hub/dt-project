@@ -1,0 +1,39 @@
+---
+loId: "sec-03-lo07"
+reviewed: false
+sources: ["lic-09"]
+---
+
+### Core Idea
+Defensive command-line triage relies on streaming text pipelines:
+- grep: filters lines matching regular expression patterns.
+- awk: processes structured columnar fields and performs conditional arithmetic.
+- cut: extracts delimited character or field slices.
+- sort and uniq -c: aggregates and counts unique occurrences (e.g., tallying the top source IP addresses attempting brute-force logons).
+
+### Worked Example
+Constructing a pipeline to extract top attacking IP addresses from web logs:
+```python
+log_entries = [
+    "192.168.1.50 - - [24/Oct] \"GET /admin HTTP/1.1\" 401 512",
+    "198.51.100.22 - - [24/Oct] \"POST /login HTTP/1.1\" 401 512",
+    "198.51.100.22 - - [24/Oct] \"POST /login HTTP/1.1\" 401 512",
+    "198.51.100.22 - - [24/Oct] \"POST /login HTTP/1.1\" 401 512",
+    "10.0.0.5 - - [24/Oct] \"GET /index.html HTTP/1.1\" 200 4096"
+]
+
+ip_counts = {}
+for line in log_entries:
+    if " 401 " in line:
+        ip = line.split()[0]
+        ip_counts[ip] = ip_counts.get(ip, 0) + 1
+
+sorted_ips = sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)
+print("Top failed logon source IP:", sorted_ips[0]) # ('198.51.100.22', 3)
+```
+
+### Common Mistake
+Using unquoted regular expressions in grep that get expanded or misinterpreted by the shell before execution, leading to silent syntax errors or missing search targets.
+
+### Check Yourself
+What flag is passed to uniq in a Unix pipeline to prefix lines with their occurrence count? -c (uniq -c).

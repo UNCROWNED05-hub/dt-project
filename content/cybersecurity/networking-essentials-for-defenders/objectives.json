@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "chapterId": "sec-02",
+  "objectives": [
+    {
+      "id": "sec-02-lo01",
+      "order": 1,
+      "title": "Explain the OSI and TCP/IP layered networking models",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "osi model",
+        "tcp/ip model",
+        "encapsulation",
+        "protocol stack"
+      ],
+      "aliases": [
+        "7-layer model",
+        "packet encapsulation"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-02-lo02",
+      "order": 2,
+      "title": "Dissect IP, TCP, and UDP packet headers for defensive analysis",
+      "bloom": "dissect",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ip header",
+        "tcp header",
+        "udp header",
+        "ttl",
+        "flags"
+      ],
+      "aliases": [
+        "packet header analysis",
+        "header inspection"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-02-lo03",
+      "order": 3,
+      "title": "Trace the TCP three-way handshake and connection teardown flags",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "three-way handshake",
+        "syn",
+        "syn-ack",
+        "ack",
+        "fin",
+        "rst"
+      ],
+      "aliases": [
+        "tcp connection establishment",
+        "tcp teardown"
+      ],
+      "prerequisites": [
+        "sec-02-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-02-lo04",
+      "order": 4,
+      "title": "Analyze DNS resolution flows and query transaction records",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "dns resolution",
+        "a record",
+        "cname",
+        "authoritative nameserver"
+      ],
+      "aliases": [
+        "recursive resolver",
+        "dns query flow"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-02-lo05",
+      "order": 5,
+      "title": "Examine ARP protocol mapping and ARP poisoning mitigation",
+      "bloom": "examine",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "arp table",
+        "mac address",
+        "dynamic arp inspection",
+        "spoofing"
+      ],
+      "aliases": [
+        "address resolution protocol",
+        "dai"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-02-lo06",
+      "order": 6,
+      "title": "Audit standard network service ports and transport protocol assignments",
+      "bloom": "audit",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "well-known ports",
+        "ssh 22",
+        "dns 53",
+        "https 443",
+        "smb 445"
+      ],
+      "aliases": [
+        "port enumeration",
+        "iana port assignments"
+      ],
+      "prerequisites": [
+        "sec-02-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-02-lo07",
+      "order": 7,
+      "title": "Calculate IPv4 subnet masks and CIDR network host capacities",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cidr",
+        "subnet mask",
+        "broadcast address",
+        "usable hosts"
+      ],
+      "aliases": [
+        "ip subnetting",
+        "network prefix"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-02-lo08",
+      "order": 8,
+      "title": "Inspect ICMP control messages and diagnostic echo requests",
+      "bloom": "inspect",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "icmp",
+        "echo request",
+        "time exceeded",
+        "traceroute",
+        "ping"
+      ],
+      "aliases": [
+        "internet control message protocol",
+        "network diagnostics"
+      ],
+      "prerequisites": [
+        "sec-02-lo02"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-02-lo09",
+      "order": 9,
+      "title": "Trace DHCP four-step lease allocation (DORA) and DHCP snooping",
+      "bloom": "trace",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "dhcp",
+        "dora",
+        "dhcp snooping",
+        "rogue dhcp server"
+      ],
+      "aliases": [
+        "dynamic host configuration",
+        "dhcp lease flow"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}
