@@ -1,0 +1,28 @@
+---
+loId: "sec-07-lo05"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Network segmentation confines traffic into isolated broadcast domains, containing malware lateral movement. Virtual Local Area Networks (VLANs) divide physical switches into logical Layer 2 broadcast domains. The IEEE 802.1Q standard inserts a 4-byte VLAN tag into the Ethernet frame header (containing a 12-bit VLAN ID, supporting up to 4094 VLANs). Switch ports are configured as:
+1. Access Ports: Connect to endpoints (laptops, servers) and handle untagged frames for a single VLAN.
+2. Trunk Ports: Carry multiplexed tagged frames across switches and routers.
+
+### Worked Example
+Inspecting IEEE 802.1Q Ethernet frame tag fields:
+```python
+def parse_8021q_tag(vlan_id, priority=0):
+    # 802.1Q header: 16-bit TPID (0x8100) + 3-bit PCP + 1-bit DEI + 12-bit VID
+    tpid = "0x8100"
+    return f"Ethernet II -> 802.1Q Tag [TPID: {tpid}, VLAN_ID: {vlan_id}, Priority: {priority}]"
+
+print(parse_8021q_tag(vlan_id=10)) # Finance VLAN
+print(parse_8021q_tag(vlan_id=20)) # Engineering VLAN
+```
+
+### Common Mistake
+Leaving unassigned switch ports in the default native VLAN (VLAN 1). If untagged ports share the default VLAN, attackers can exploit double-tagging attacks or hop across default management domains.
+
+### Check Yourself
+What IEEE standard specifies the 4-byte tagging encapsulation format used for VLAN trunking? IEEE 802.1Q.

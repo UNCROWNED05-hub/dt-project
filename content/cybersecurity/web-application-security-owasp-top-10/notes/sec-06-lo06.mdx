@@ -1,0 +1,40 @@
+---
+loId: "sec-06-lo06"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Server-Side Request Forgery (SSRF) occurs when a web application accepts a user-supplied URL and fetches data from it without adequate validation. Adversaries exploit SSRF to coerce the backend server into initiating HTTP requests against internal, loopback (127.0.0.1), or private cloud metadata services. In cloud environments (AWS, GCP, Azure), querying http://169.254.169.254 allows attackers to steal temporary IAM cloud instance credentials. Defenses include strictly whitelisting allowed destination hostnames and enforcing IMDSv2.
+
+### Worked Example
+Simulating an SSRF destination URL validation filter:
+```python
+from urllib.parse import urlparse
+import ipaddress
+
+def is_safe_url(target_url):
+    parsed = urlparse(target_url)
+    hostname = parsed.hostname
+    if not hostname:
+        return False, "Invalid URL"
+    
+    # Block loopback, link-local metadata (169.254.x.x), and private RFC1918 IPs
+    try:
+        ip = ipaddress.ip_address(hostname)
+        if ip.is_loopback or ip.is_private or ip.is_link_local:
+            return False, f"BLOCKED: Target IP {ip} is internal or cloud metadata!"
+    except ValueError:
+        pass # Domain name resolution check required
+        
+    return True, "URL allowed for fetching"
+
+print(is_safe_url("http://169.254.169.254/latest/meta-data/")) # BLOCKED
+print(is_safe_url("https://api.external-vendor.com/data"))       # Allowed
+```
+
+### Common Mistake
+Attempting to block internal addresses using basic regex strings like 'localhost'. Adversaries bypass simple keyword checks using alternate encodings such as 127.0.0.1, 0177.0.0.1, 2130706433, or DNS rebinding techniques.
+
+### Check Yourself
+What standard IPv4 link-local IP address is used by major cloud providers to host instance metadata services? 169.254.169.254.

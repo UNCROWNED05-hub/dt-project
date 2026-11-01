@@ -1,0 +1,36 @@
+---
+loId: "sec-07-lo06"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+A Demilitarized Zone (DMZ) is a perimeter network segment that separates public-facing services (web servers, mail relays, DNS resolvers) from the trusted internal corporate network. In a classic dual-firewall architecture:
+- External Firewall allows internet users to access only specific ports on DMZ hosts.
+- Internal Firewall strictly blocks unsolicited connections originating from the DMZ into the internal corporate network.
+If an external web server in the DMZ is compromised, the attacker cannot pivot directly into internal Active Directory domain controllers.
+
+### Worked Example
+Evaluating traffic routing policies across DMZ boundaries:
+```python
+def evaluate_perimeter_firewall(source_zone, dest_zone, port):
+    # Rule 1: Internet -> DMZ: Allow Web traffic
+    if source_zone == "INTERNET" and dest_zone == "DMZ" and port in [80, 443]:
+        return "PERMIT"
+    # Rule 2: DMZ -> Internal: Strictly Block unsolicited connections
+    if source_zone == "DMZ" and dest_zone == "INTERNAL":
+        return "DENY: DMZ host blocked from initiating connections to internal LAN"
+    # Rule 3: Internal -> DMZ: Allow administration
+    if source_zone == "INTERNAL" and dest_zone == "DMZ":
+        return "PERMIT"
+    return "DENY"
+
+print("Internet accessing DMZ Web Server:", evaluate_perimeter_firewall("INTERNET", "DMZ", 443))
+print("Compromised DMZ server pivoting to Internal LAN:", evaluate_perimeter_firewall("DMZ", "INTERNAL", 445))
+```
+
+### Common Mistake
+Allowing DMZ servers to initiate direct connections to internal database servers. If the DMZ server is compromised, attackers can query the database directly. Database queries should be handled via a secure API broker or pull model.
+
+### Check Yourself
+In a secure DMZ architecture, what traffic direction is strictly blocked by the internal firewall? Unsolicited connections initiated from the DMZ into the internal network.

@@ -1,0 +1,28 @@
+---
+loId: "sec-06-lo09"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Modern web applications incorporate hundreds of open-source third-party dependencies (npm, PyPI, Maven). Vulnerabilities in third-party libraries (such as the Log4j vulnerability) expose applications to remote compromise even if proprietary in-house code is secure. Software Composition Analysis (SCA) tools generate a Software Bill of Materials (SBOM) and continuously audit dependency trees against public Common Vulnerabilities and Exposures (CVE) databases.
+
+### Worked Example
+Simulating automated dependency audit logic:
+```python
+# Dependency manifest audit
+installed_packages = [
+    {"name": "requests", "version": "2.31.0", "known_cves": []},
+    {"name": "vulnerable-xml-parser", "version": "1.0.2", "known_cves": ["CVE-2024-9912"]}
+]
+
+for pkg in installed_packages:
+    if pkg["known_cves"]:
+        print(f"SUPPLY CHAIN ALERT: Package {pkg['name']} has critical CVEs: {pkg['known_cves']}")
+```
+
+### Common Mistake
+Assuming vendor libraries are secure because they were downloaded from official package managers. Package registries routinely suffer from dependency confusion attacks, typo-squatting, and malicious account takeovers.
+
+### Check Yourself
+What automated tooling analyzes application dependencies to detect known security vulnerabilities and license non-compliance? Software Composition Analysis (SCA).

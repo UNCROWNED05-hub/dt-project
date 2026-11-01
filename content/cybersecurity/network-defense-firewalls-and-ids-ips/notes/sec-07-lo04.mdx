@@ -1,0 +1,29 @@
+---
+loId: "sec-07-lo04"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Open-source network sensors like Snort and Suricata use structured signature rules to detect malicious traffic. A standard rule consists of a Rule Header (Action, Protocol, Source IP/Port, Direction, Dest IP/Port) and Rule Options enclosed in parentheses (msg, content, nocase, sid, rev). For example:
+alert tcp any any -> 10.0.1.0/24 80 (msg:"ATTACK SQLi OR pattern detected"; content:"OR 1=1"; nocase; sid:1000001; rev:1;)
+Suricata extends Snort rules with multi-threading and native HTTP/TLS protocol keyword parsing.
+
+### Worked Example
+Parsing a Snort detection rule syntax:
+```python
+rule = 'alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS 80 (msg:"WEB-ATTACK /etc/passwd access attempt"; content:"/etc/passwd"; sid:1000002; rev:1;)'
+
+header, options = rule.split("(", 1)
+options = options.rstrip(")")
+
+print("Rule Header:", header.strip())
+print("Detection Message:", [opt for opt in options.split(";") if "msg:" in opt][0].strip())
+print("Signature ID (SID):", [opt for opt in options.split(";") if "sid:" in opt][0].strip())
+```
+
+### Common Mistake
+Writing short, generic content rules (e.g. content:"admin") without anchor keywords or protocol constraints. Generic content matches trigger massive volumes of false-positive alerts on benign web pages, overwhelming SOC analysts.
+
+### Check Yourself
+What keyword in a Snort or Suricata rule uniquely identifies the signature in the detection database? sid (Signature ID).

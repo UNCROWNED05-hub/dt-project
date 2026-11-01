@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "chapterId": "sec-06",
+  "objectives": [
+    {
+      "id": "sec-06-lo01",
+      "order": 1,
+      "title": "Explain the OWASP Top 10 web application risk classification",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "owasp top 10",
+        "broken access control",
+        "cryptographic failures",
+        "injection"
+      ],
+      "aliases": [
+        "owasp classification",
+        "web vulnerabilities taxonomy"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-06-lo02",
+      "order": 2,
+      "title": "Mitigate SQL Injection using parameterized queries and prepared statements",
+      "bloom": "mitigate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "sqli",
+        "prepared statements",
+        "parameterized queries",
+        "input validation"
+      ],
+      "aliases": [
+        "sql injection defense",
+        "sql parameterization"
+      ],
+      "prerequisites": [
+        "sec-06-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-06-lo03",
+      "order": 3,
+      "title": "Differentiate Cross-Site Scripting (XSS) variants: Stored, Reflected, and DOM-based",
+      "bloom": "differentiate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "xss",
+        "stored xss",
+        "reflected xss",
+        "dom xss",
+        "contextual encoding"
+      ],
+      "aliases": [
+        "cross-site scripting",
+        "xss taxonomy"
+      ],
+      "prerequisites": [
+        "sec-06-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-06-lo04",
+      "order": 4,
+      "title": "Apply defensive browser protections including Content Security Policy (CSP)",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "csp",
+        "content security policy",
+        "http headers",
+        "x-content-type-options"
+      ],
+      "aliases": [
+        "browser security headers",
+        "csp policy"
+      ],
+      "prerequisites": [
+        "sec-06-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-06-lo05",
+      "order": 5,
+      "title": "Prevent Cross-Site Request Forgery (CSRF) using anti-CSRF tokens and SameSite cookies",
+      "bloom": "prevent",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "csrf",
+        "anti-csrf token",
+        "samesite cookie",
+        "synchronizer token"
+      ],
+      "aliases": [
+        "cross-site request forgery",
+        "csrf defense"
+      ],
+      "prerequisites": [
+        "sec-05-lo08"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-06-lo06",
+      "order": 6,
+      "title": "Analyze Server-Side Request Forgery (SSRF) and cloud metadata exfiltration",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "ssrf",
+        "cloud metadata",
+        "169.254.169.254",
+        "internal network pivoting"
+      ],
+      "aliases": [
+        "server-side request forgery",
+        "metadata service attack"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-06-lo07",
+      "order": 7,
+      "title": "Mitigate Insecure Direct Object References (IDOR) through server-side access control",
+      "bloom": "mitigate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "idor",
+        "broken object level authorization",
+        "bola",
+        "access control"
+      ],
+      "aliases": [
+        "object level authorization",
+        "parameter tampering defense"
+      ],
+      "prerequisites": [
+        "sec-05-lo07"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-06-lo08",
+      "order": 8,
+      "title": "Identify security misconfigurations, default credentials, and verbose error traces",
+      "bloom": "identify",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "security misconfiguration",
+        "default credentials",
+        "stack traces",
+        "directory listing"
+      ],
+      "aliases": [
+        "hardening web servers",
+        "information disclosure"
+      ],
+      "prerequisites": [
+        "sec-06-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-06-lo09",
+      "order": 9,
+      "title": "Assess software supply chain risks and vulnerable third-party components (SCA)",
+      "bloom": "assess",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "supply chain security",
+        "sbom",
+        "sca",
+        "vulnerable components",
+        "cve"
+      ],
+      "aliases": [
+        "software composition analysis",
+        "dependency auditing"
+      ],
+      "prerequisites": [
+        "sec-06-lo01"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

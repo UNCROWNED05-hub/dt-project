@@ -1,0 +1,30 @@
+---
+loId: "sec-07-lo08"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Virtual Private Networks (VPNs) create encrypted tunnels across public networks:
+1. IPsec (Internet Protocol Security): Operates at Layer 3 using Encapsulating Security Payload (ESP) and Internet Key Exchange (IKEv2). Highly robust, hardware-accelerated, standard for site-to-site office links.
+2. OpenVPN: Operates in user space over SSL/TLS (Layer 4/5), versatile and capable of tunneling over UDP or TCP port 443 to bypass restrictive firewalls.
+3. WireGuard: A modern, minimalist VPN protocol built directly into the Linux kernel. It utilizes state-of-the-art cryptography (Noise protocol, ChaCha20, Curve25519) with vastly smaller codebase (~4,000 lines vs 100,000+ for OpenVPN/IPsec), delivering high speed and low latency.
+
+### Worked Example
+Comparing VPN protocol implementations:
+```python
+vpn_protocols = {
+    "IPsec": {"layer": "Layer 3 (Network)", "common_use": "Site-to-site gateway tunnels", "crypto": "AES-CBC/GCM, IKEv2"},
+    "OpenVPN": {"layer": "Layer 4/5 (Transport/App)", "common_use": "Client remote access", "crypto": "OpenSSL TLS"},
+    "WireGuard": {"layer": "Layer 3 (Kernel)", "common_use": "High-speed modern tunnels", "crypto": "ChaCha20, Curve25519"}
+}
+
+for name, details in vpn_protocols.items():
+    print(f"VPN {name} -> {details['common_use']} ({details['crypto']})")
+```
+
+### Common Mistake
+Routing all remote employee internet traffic (including video calls and streaming) through the corporate VPN tunnel when split-tunneling is not properly planned, saturating office bandwidth.
+
+### Check Yourself
+What modern, high-speed VPN protocol is built directly into the Linux kernel with a minimalist codebase utilizing ChaCha20 and Curve25519? WireGuard.

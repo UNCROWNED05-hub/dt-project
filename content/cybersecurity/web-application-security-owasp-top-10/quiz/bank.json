@@ -1,0 +1,1059 @@
+[
+  {
+    "loId": "sec-06-lo01",
+    "type": "numeric",
+    "difficulty": 1,
+    "id": "sec-06-q01",
+    "stem": "How many critical risk categories are formally prioritized in the foundational OWASP Top 10 framework?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "5"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "100"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The OWASP Top 10 framework specifically curates and ranks the ten most critical web application security risks.",
+    "noteRef": "sec-06-lo01",
+    "verify": "(10 === 10)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q02",
+    "stem": "An attacker modifies their HTTP request parameter from role=user to role=admin and gains full administrative privileges. Under which OWASP Top 10 category is this classified?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cryptographic Failures"
+      },
+      {
+        "id": "b",
+        "text": "Broken Access Control"
+      },
+      {
+        "id": "c",
+        "text": "Security Logging Failures"
+      },
+      {
+        "id": "d",
+        "text": "Server-Side Request Forgery"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Failing to restrict user role elevation is a direct violation of access control policies.",
+    "noteRef": "sec-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-06-q03",
+    "stem": "Which of the following are primary categories included in the OWASP Top 10?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Injection"
+      },
+      {
+        "id": "b",
+        "text": "Cryptographic Failures"
+      },
+      {
+        "id": "c",
+        "text": "Security Misconfiguration"
+      },
+      {
+        "id": "d",
+        "text": "Wireless Frequency Jamming"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Injection, Cryptographic Failures, and Security Misconfiguration are standard OWASP Top 10 categories.",
+    "noteRef": "sec-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q04",
+    "stem": "Why does the OWASP Top 10 emphasize 'Insecure Design' as a distinct category separate from implementation flaws?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Insecure design only applies to graphical UI mockups."
+      },
+      {
+        "id": "b",
+        "text": "It prevents developers from using Python."
+      },
+      {
+        "id": "c",
+        "text": "Flawed architectural design (e.g. missing threat modeling or business logic controls) cannot be fixed by perfect code implementation alone."
+      },
+      {
+        "id": "d",
+        "text": "Design flaws only occur in hardware microchips."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Insecure design represents fundamental architecture omissions that bug fixes cannot remediate without redesign.",
+    "noteRef": "sec-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q05",
+    "stem": "What is the primary architectural defense against SQL Injection vulnerabilities?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Client-side JavaScript input trimming"
+      },
+      {
+        "id": "b",
+        "text": "Converting SQL databases to CSV files"
+      },
+      {
+        "id": "c",
+        "text": "Disabling database indexing"
+      },
+      {
+        "id": "d",
+        "text": "Parameterized queries (prepared statements)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Parameterized queries separate SQL code structure from user data, making SQL injection impossible.",
+    "noteRef": "sec-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q06",
+    "stem": "A developer filters user inputs by stripping single quotes: input.replace(\"'\", \"\"). Why is this defense insufficient against SQL injection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Numeric SQL injection queries do not require quotes (e.g., WHERE id = 1 OR 1=1), and alternate encodings can bypass string stripping."
+      },
+      {
+        "id": "b",
+        "text": "Single quotes are mandatory in all HTTP packets."
+      },
+      {
+        "id": "c",
+        "text": "Databases refuse to process strings without quotes."
+      },
+      {
+        "id": "d",
+        "text": "It causes memory corruption in the SQL parser."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Blocklist sanitization fails because SQL injection can occur without single quotes in numeric contexts.",
+    "noteRef": "sec-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q07",
+    "stem": "What type of SQL injection occurs when an application exhibits no returned data on the screen but shows different response times based on injected SLEEP() commands?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Error-based SQL Injection"
+      },
+      {
+        "id": "b",
+        "text": "Time-based Blind SQL Injection"
+      },
+      {
+        "id": "c",
+        "text": "UNION-based SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "Second-order Stored Injection"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Time-based blind SQLi infers truth by measuring delayed database execution pauses.",
+    "noteRef": "sec-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q08",
+    "stem": "Why are Object-Relational Mappers (ORMs) generally effective at preventing SQL injection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They compile Python code directly into C++ binaries."
+      },
+      {
+        "id": "b",
+        "text": "They run databases entirely in memory."
+      },
+      {
+        "id": "c",
+        "text": "They generate parameterized prepared statements by default for standard database queries."
+      },
+      {
+        "id": "d",
+        "text": "They convert all input values to uppercase."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Modern ORMs use prepared statements under the hood, protecting developers from manual concatenation errors.",
+    "noteRef": "sec-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q09",
+    "stem": "Which type of Cross-Site Scripting (XSS) permanently saves the malicious payload into the application database?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Reflected XSS"
+      },
+      {
+        "id": "b",
+        "text": "DOM-based XSS"
+      },
+      {
+        "id": "c",
+        "text": "Blind SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "Stored (Persistent) XSS"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Stored XSS stores the payload on the server (e.g. in a comment or profile field) to execute against future visitors.",
+    "noteRef": "sec-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q10",
+    "stem": "A web app reads parameters from window.location.hash and passes them directly to document.getElementById('output').innerHTML without server involvement. What vulnerability exists?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DOM-based Cross-Site Scripting (DOM XSS)"
+      },
+      {
+        "id": "b",
+        "text": "Reflected XSS"
+      },
+      {
+        "id": "c",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "Server-Side Request Forgery"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "DOM XSS occurs completely within client-side JavaScript when an untrusted source flows into an unsafe execution sink.",
+    "noteRef": "sec-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q11",
+    "stem": "What primary defense prevents Cross-Site Scripting when rendering untrusted user data into an HTML document body?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Installing an SSL certificate on the web server"
+      },
+      {
+        "id": "b",
+        "text": "Context-aware HTML entity encoding (e.g. converting '<' to '&lt;')"
+      },
+      {
+        "id": "c",
+        "text": "Hashing user input with SHA-256"
+      },
+      {
+        "id": "d",
+        "text": "Encrypting the database disk with BitLocker"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Context-aware encoding ensures characters like < and > are treated as literal printable characters, not executable tags.",
+    "noteRef": "sec-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q12",
+    "stem": "What high-severity impact can an attacker achieve by successfully executing XSS in a victim's authenticated browser session?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Formatting the victim's local hard drive."
+      },
+      {
+        "id": "b",
+        "text": "Overwriting BIOS firmware on the web server."
+      },
+      {
+        "id": "c",
+        "text": "Stealing non-HttpOnly session tokens, capturing keystrokes, and executing unauthorized API actions on the victim's behalf."
+      },
+      {
+        "id": "d",
+        "text": "Shutting down the cloud provider's data center."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "XSS executes arbitrary JavaScript in the victim's browser context, enabling session hijacking and credential theft.",
+    "noteRef": "sec-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q13",
+    "stem": "What HTTP response header restricts which external domains and scripts a browser is allowed to execute?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Server"
+      },
+      {
+        "id": "b",
+        "text": "Content-Type"
+      },
+      {
+        "id": "c",
+        "text": "Cache-Control"
+      },
+      {
+        "id": "d",
+        "text": "Content-Security-Policy (CSP)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Content-Security-Policy defines trusted script sources and execution boundaries to mitigate XSS.",
+    "noteRef": "sec-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q14",
+    "stem": "An attacker injects `<script>evil()</script>` into a web page, but the browser refuses to execute it because the script tag lacks a cryptographically random nonce. What header blocked this attack?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Content-Security-Policy with script-src 'nonce-...'"
+      },
+      {
+        "id": "b",
+        "text": "Access-Control-Allow-Origin"
+      },
+      {
+        "id": "c",
+        "text": "Strict-Transport-Security"
+      },
+      {
+        "id": "d",
+        "text": "X-XSS-Protection: 0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A nonce-based CSP blocks any inline script that does not match the server's per-request cryptographic nonce.",
+    "noteRef": "sec-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q15",
+    "stem": "What HTTP header prevents browsers from MIME-sniffing a response away from the declared content-type (e.g. treating an uploaded image as HTML)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "X-Frame-Options: DENY"
+      },
+      {
+        "id": "b",
+        "text": "X-Content-Type-Options: nosniff"
+      },
+      {
+        "id": "c",
+        "text": "Allow: GET, POST"
+      },
+      {
+        "id": "d",
+        "text": "Connection: keep-alive"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The `nosniff` header instructs browsers to strictly respect the server's declared MIME type.",
+    "noteRef": "sec-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q16",
+    "stem": "Why does including 'unsafe-inline' in a CSP script-src directive severely weaken its defensive value?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It disables HTTPS encryption."
+      },
+      {
+        "id": "b",
+        "text": "It forces the browser to download Flash plugins."
+      },
+      {
+        "id": "c",
+        "text": "It allows all inline `<script>` tags and event handlers to execute, enabling classic injected XSS payloads."
+      },
+      {
+        "id": "d",
+        "text": "It causes the CSS styling to fail."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "'unsafe-inline' permits inline script tags, dismantling CSP's protection against injected script attacks.",
+    "noteRef": "sec-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q17",
+    "stem": "What is Cross-Site Request Forgery (CSRF)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Stealing an SSL certificate from a web server."
+      },
+      {
+        "id": "b",
+        "text": "Flooding a network switch with ARP broadcast packets."
+      },
+      {
+        "id": "c",
+        "text": "Injecting SQL commands into a database query."
+      },
+      {
+        "id": "d",
+        "text": "Tricking a victim's authenticated browser into executing unwanted state-changing actions on a trusted web application."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "CSRF exploits ambient session cookies to submit unauthorized transactions from external malicious sites.",
+    "noteRef": "sec-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q18",
+    "stem": "A malicious site contains `<img src='https://bank.com/transfer?amount=5000&to=attacker'>`. When a logged-in bank user visits, money is transferred. What defense stops this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Requiring anti-CSRF tokens for state-changing requests and setting SameSite=Strict on session cookies."
+      },
+      {
+        "id": "b",
+        "text": "Increasing the web server RAM."
+      },
+      {
+        "id": "c",
+        "text": "Using SHA-256 to hash the user's password."
+      },
+      {
+        "id": "d",
+        "text": "Shortening the domain name."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Anti-CSRF tokens and SameSite cookies block unauthorized cross-site requests from executing actions.",
+    "noteRef": "sec-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q19",
+    "stem": "How does setting the cookie attribute SameSite=Strict defend against CSRF attacks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It prevents users from logging in on mobile devices."
+      },
+      {
+        "id": "b",
+        "text": "The browser will not send the cookie on any cross-site request originating from an external site."
+      },
+      {
+        "id": "c",
+        "text": "It encrypts the cookie using RSA-4096."
+      },
+      {
+        "id": "d",
+        "text": "It deletes the cookie after 5 seconds."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "SameSite=Strict ensures cookies are only transmitted when the origin in the browser URL matches the cookie domain.",
+    "noteRef": "sec-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q20",
+    "stem": "Why does the Synchronizer Token Pattern successfully block cross-site request forgery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tokens expire after 1 millisecond."
+      },
+      {
+        "id": "b",
+        "text": "Tokens can only be generated by the client's GPU."
+      },
+      {
+        "id": "c",
+        "text": "The Same-Origin Policy prevents an external malicious website from reading the authentic token embedded in the legitimate application form."
+      },
+      {
+        "id": "d",
+        "text": "It requires all web requests to use DNSSEC."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Because attackers cannot read the token from cross-origin origins, they cannot forge requests containing the valid token.",
+    "noteRef": "sec-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q21",
+    "stem": "What is Server-Side Request Forgery (SSRF)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An attacker stealing DNS records from a root nameserver."
+      },
+      {
+        "id": "b",
+        "text": "A brute-force dictionary attack against SSH."
+      },
+      {
+        "id": "c",
+        "text": "A corrupted Ethernet cable dropping frames."
+      },
+      {
+        "id": "d",
+        "text": "A flaw where a vulnerable web server is coerced into making unintended network requests to internal or external systems."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "SSRF exploits the server's network location and trust to fetch unauthorized resources from internal networks or services.",
+    "noteRef": "sec-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q22",
+    "stem": "An attacker exploits an SSRF vulnerability on an AWS-hosted web app to query `http://169.254.169.254/latest/meta-data/`. What high-value data is targeted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Temporary IAM cloud role credentials and API secret access keys."
+      },
+      {
+        "id": "b",
+        "text": "The physical serial number of the data center rack."
+      },
+      {
+        "id": "c",
+        "text": "The client's credit card CVV number."
+      },
+      {
+        "id": "d",
+        "text": "The Linux kernel source code."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The cloud metadata IP (169.254.169.254) issues temporary IAM role credentials that can grant access to cloud infrastructure.",
+    "noteRef": "sec-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q23",
+    "stem": "What AWS feature mitigates SSRF attacks against instance metadata by requiring a session token obtained via HTTP PUT (session-oriented)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AWS CloudTrail"
+      },
+      {
+        "id": "b",
+        "text": "IMDSv2 (Instance Metadata Service Version 2)"
+      },
+      {
+        "id": "c",
+        "text": "Amazon GuardDuty"
+      },
+      {
+        "id": "d",
+        "text": "Amazon Route 53"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "IMDSv2 requires an HTTP PUT request with a custom header to fetch a session token, defeating typical GET-only SSRF flaws.",
+    "noteRef": "sec-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q24",
+    "stem": "How can developers defend web servers against SSRF when the application must fetch remote user-provided URLs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disable TLS encryption."
+      },
+      {
+        "id": "b",
+        "text": "Run the web server as root."
+      },
+      {
+        "id": "c",
+        "text": "Enforce strict destination hostname whitelists and block resolution to loopback, link-local, and private RFC 1918 IP addresses."
+      },
+      {
+        "id": "d",
+        "text": "Compress all URL strings using Gzip."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Validating resolved IPs to ensure they do not point to internal, private, or metadata addresses stops SSRF attacks.",
+    "noteRef": "sec-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q25",
+    "stem": "What vulnerability occurs when an application exposes a database record ID directly in a URL parameter without checking authorization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "id": "b",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "c",
+        "text": "Buffer Overflow"
+      },
+      {
+        "id": "d",
+        "text": "Insecure Direct Object Reference (IDOR)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "IDOR exposes internal record keys without validating that the authenticated requester owns or is authorized to view that record.",
+    "noteRef": "sec-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q26",
+    "stem": "An API endpoint `/api/documents/8901` allows any authenticated user to view document 8901 simply by incrementing the ID number. How should developers fix this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Implement server-side authorization checks verifying that the requested document belongs to the authenticated user's organization."
+      },
+      {
+        "id": "b",
+        "text": "Encrypt the URL path using rot13."
+      },
+      {
+        "id": "c",
+        "text": "Disable the HTTP GET method across the entire internet."
+      },
+      {
+        "id": "d",
+        "text": "Delete all documents older than 24 hours."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Server-side ownership verification must ensure the authenticated user has explicit rights to the requested object ID.",
+    "noteRef": "sec-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q27",
+    "stem": "In the context of modern REST APIs, what does the acronym BOLA stand for?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Binary Object Link Architecture"
+      },
+      {
+        "id": "b",
+        "text": "Broken Object Level Authorization"
+      },
+      {
+        "id": "c",
+        "text": "Basic Online Login Authentication"
+      },
+      {
+        "id": "d",
+        "text": "Broadcast Overhead Limitation Algorithm"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "BOLA (Broken Object Level Authorization) is the modern industry term for IDOR, holding the #1 spot in the OWASP API Top 10.",
+    "noteRef": "sec-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q28",
+    "stem": "Why does replacing predictable integer IDs (e.g. 101) with random UUIDs fail to provide complete security on its own against IDOR?",
+    "options": [
+      {
+        "id": "a",
+        "text": "UUIDs can only be generated on Windows servers."
+      },
+      {
+        "id": "b",
+        "text": "Databases cannot index UUID strings."
+      },
+      {
+        "id": "c",
+        "text": "Obscurity is not authorization: if an attacker obtains a UUID (via logs, referrer headers, or APIs), the server still lacks permission validation."
+      },
+      {
+        "id": "d",
+        "text": "UUIDs are automatically decrypted by web browsers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "UUIDs prevent sequential guessing but do not enforce access control; server-side permission checks are still mandatory.",
+    "noteRef": "sec-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-06-q29",
+    "stem": "What security risk occurs when a production web framework runs with debug mode enabled?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The web server hardware overclocks automatically."
+      },
+      {
+        "id": "b",
+        "text": "HTTP requests are converted to UDP."
+      },
+      {
+        "id": "c",
+        "text": "Operating system patches are automatically uninstalled."
+      },
+      {
+        "id": "d",
+        "text": "Detailed stack traces and internal environment variables (such as database credentials) are exposed to external users upon errors."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Debug mode discloses internal file paths, framework versions, and sensitive configuration variables in error tracebacks.",
+    "noteRef": "sec-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-06-q30",
+    "stem": "A pentester browses to https://target.com/static/ and discovers an open directory listing showing all backup zip files. What vulnerability is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Security Misconfiguration (Directory Listing Enabled)"
+      },
+      {
+        "id": "b",
+        "text": "Cross-Site Scripting"
+      },
+      {
+        "id": "c",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "Buffer Overflow"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Leaving web server directory browsing enabled is a classic security misconfiguration exposing sensitive files.",
+    "noteRef": "sec-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q31",
+    "stem": "What HTTP header instructs web browsers to only connect to a site over secure HTTPS connections for a specified duration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "X-Powered-By"
+      },
+      {
+        "id": "b",
+        "text": "Strict-Transport-Security (HSTS)"
+      },
+      {
+        "id": "c",
+        "text": "Server"
+      },
+      {
+        "id": "d",
+        "text": "ETag"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "HTTP Strict Transport Security (HSTS) enforces HTTPS and protects against SSL-stripping man-in-the-middle attacks.",
+    "noteRef": "sec-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-06-q32",
+    "stem": "Why should informative server banners (such as 'Server: Apache/2.4.41 (Ubuntu)') be suppressed or obfuscated in production environments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They consume excessive HTTP packet bandwidth."
+      },
+      {
+        "id": "b",
+        "text": "They cause DNS queries to fail."
+      },
+      {
+        "id": "c",
+        "text": "They leak exact software versions to attackers, enabling rapid identification of unpatched CVE vulnerabilities."
+      },
+      {
+        "id": "d",
+        "text": "Web browsers reject HTTP responses containing server names."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Detailed version banners assist adversaries in matching known CVE exploits to running services.",
+    "noteRef": "sec-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-06-q33",
+    "stem": "What is a Software Bill of Materials (SBOM)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A financial invoice sent to cloud hosting providers."
+      },
+      {
+        "id": "b",
+        "text": "A list of employee login passwords."
+      },
+      {
+        "id": "c",
+        "text": "A compiled binary file that runs on Linux."
+      },
+      {
+        "id": "d",
+        "text": "A formal, structured inventory of all third-party components, open-source libraries, and dependencies included in an application."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "An SBOM provides transparency into software supply chain components and dependency trees.",
+    "noteRef": "sec-06-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-06-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-06-q34",
+    "stem": "A critical zero-day vulnerability (like Log4Shell) is disclosed in a common Java logging library. How does a company with an automated Software Composition Analysis (SCA) tool respond quickly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The SCA database instantly searches all project SBOMs to pinpoint exactly which microservices run the affected library version."
+      },
+      {
+        "id": "b",
+        "text": "It restarts all physical servers in the data center."
+      },
+      {
+        "id": "c",
+        "text": "It converts all Java applications into Python."
+      },
+      {
+        "id": "d",
+        "text": "It blocks all network traffic on port 443."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "SCA tooling tracks dependency inventories across code repositories, allowing immediate identification of vulnerable library versions.",
+    "noteRef": "sec-06-lo09",
+    "reviewed": false
+  }
+]

@@ -1,0 +1,34 @@
+---
+loId: "sec-07-lo02"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Traditional firewalls operate strictly at Layers 3 and 4, inspecting IP addresses and port numbers. Next-Generation Firewalls (NGFW) integrate Deep Packet Inspection (DPI) capable of analyzing Layer 7 application protocols regardless of port numbers. An NGFW can differentiate legitimate HTTPS web traffic from encrypted malware command-and-control, Tor tunneling, or unauthorized file uploads executing over port 443. NGFWs typically integrate inline IPS, TLS decryption/inspection, and threat intelligence feeds.
+
+### Worked Example
+Simulating Layer 7 application recognition:
+```python
+# Telemetry: Inbound connection on port 443
+packet = {
+    "src_ip": "10.0.1.20",
+    "dst_port": 443,
+    "l7_payload_magic": b"TOR_CIRCUIT_ESTABLISH"
+}
+
+def ngfw_evaluate(pkt):
+    # Layer 4 check: Port 443 appears legitimate (HTTPS)
+    # Layer 7 Deep Packet Inspection: Payload analysis reveals unauthorized protocol
+    if b"TOR" in pkt["l7_payload_magic"]:
+        return "BLOCK: Unauthorized Tor protocol detected over port 443"
+    return "ALLOW: Legitimate HTTPS application traffic"
+
+print("NGFW Decision:", ngfw_evaluate(packet))
+```
+
+### Common Mistake
+Assuming port-based rules provide complete control. Adversaries and peer-to-peer applications frequently tunnel traffic over ports 80 or 443 to bypass legacy Layer 4 firewalls; Layer 7 application inspection is necessary to identify true protocols.
+
+### Check Yourself
+At which OSI layer does a Next-Generation Firewall (NGFW) inspect application payloads to detect tunneled protocols? Layer 7 (Application Layer).

@@ -1,0 +1,32 @@
+---
+loId: "sec-06-lo05"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Cross-Site Request Forgery (CSRF) tricks an authenticated victim's browser into submitting unauthorized HTTP state-changing requests to a vulnerable application (e.g., transferring funds or changing an email address). Browsers automatically attach ambient session cookies to cross-site requests. Defenses include:
+1. Anti-CSRF Tokens: Cryptographically random, unique tokens embedded in forms that must match server-side session tokens upon submission (Synchronizer Token Pattern).
+2. SameSite Cookie Attribute: Setting SameSite=Strict or SameSite=Lax prevents browsers from attaching session cookies to cross-origin requests.
+
+### Worked Example
+Evaluating SameSite cookie attributes during session creation:
+```python
+def set_secure_session_cookie(token):
+    # Hardened session cookie attributes:
+    cookie = (
+        f"session_id={token}; "
+        "Secure; "        # Only transmit over HTTPS
+        "HttpOnly; "      # Prevent JavaScript document.cookie access
+        "SameSite=Strict" # Block cross-site request cookie attachment
+    )
+    return cookie
+
+print("Set-Cookie header:", set_secure_session_cookie("sess_9823412ab"))
+```
+
+### Common Mistake
+Relying on HTTP GET requests for state-changing actions (e.g. /transfer?amount=1000&to=bob). GET requests can be triggered trivially via simple <img> or <link> tags on external malicious web pages, bypassing many CSRF defenses. State modifications must use POST/PUT with CSRF tokens.
+
+### Check Yourself
+What cookie attribute instructs the browser not to attach the cookie to cross-site requests, mitigating CSRF? SameSite (Strict or Lax).

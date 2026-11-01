@@ -1,0 +1,36 @@
+---
+loId: "sec-06-lo02"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+SQL Injection occurs when untrusted user input is directly concatenated or formatted into a database query string, allowing an attacker to manipulate query syntax and structure. The definitive architectural defense is Parameterized Queries (Prepared Statements). Parameterization sends query structure and user data over distinct channels to the database engine. The database treats input parameters strictly as literal data values, making it syntactically impossible for input to alter query logic regardless of quote characters.
+
+### Worked Example
+Contrasting vulnerable string concatenation with parameterized prepared statements:
+```python
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE users (id INT, username TEXT, role TEXT)")
+cursor.execute("INSERT INTO users VALUES (1, 'admin', 'administrator')")
+
+# INSECURE VULNERABLE APPROACH:
+# user_input = "' OR '1'='1"
+# query = f"SELECT * FROM users WHERE username = '{user_input}'"
+
+# DEFENSIVE PARAMETERIZED QUERY:
+safe_query = "SELECT * FROM users WHERE username = ?"
+user_input = "analyst"
+cursor.execute(safe_query, (user_input,))
+rows = cursor.fetchall()
+print("Parameterized query execution successful, results count:", len(rows))
+```
+
+### Common Mistake
+Relying on blocklists or regex stripping of quotes (' or --). Attackers routinely bypass simple blacklist filters using alternative encodings, double quotes, null bytes, or alternate SQL keywords. Parameterization is the only complete defense.
+
+### Check Yourself
+Why do prepared statements neutralize SQL injection? Because the database compiles the SQL query structure before binding user inputs as literal data values.

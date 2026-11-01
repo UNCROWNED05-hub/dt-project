@@ -1,0 +1,1062 @@
+[
+  {
+    "loId": "sec-07-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q01",
+    "stem": "What capability distinguishes a stateful firewall from a basic stateless packet filter?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It maintains a dynamic state table tracking active connections to automatically permit legitimate return traffic."
+      },
+      {
+        "id": "b",
+        "text": "It converts IPv4 packets into IPv6."
+      },
+      {
+        "id": "c",
+        "text": "It encrypts all passing network packets with AES-256."
+      },
+      {
+        "id": "d",
+        "text": "It operates exclusively on physical fiber optic cables."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Stateful firewalls track session states, allowing reply packets matching active connections without opening static inbound ports.",
+    "noteRef": "sec-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q02",
+    "stem": "An administrator deploys a stateless firewall rule allowing outbound TCP port 80 traffic. Users report websites never load. What configuration was omitted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Enabling DNSSEC on the client laptops."
+      },
+      {
+        "id": "b",
+        "text": "A stateless inbound rule allowing return traffic from port 80 to high ephemeral client ports (>1024)."
+      },
+      {
+        "id": "c",
+        "text": "Assigning static public IP addresses to every user."
+      },
+      {
+        "id": "d",
+        "text": "Configuring a BGP routing protocol."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Stateless firewalls do not track sessions; return traffic is dropped unless explicitly permitted by an inbound rule.",
+    "noteRef": "sec-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-07-q03",
+    "stem": "What fields typically define a connection state entry (the '5-tuple') in a stateful firewall table?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MAC Address, Subnet Mask, Default Gateway, DNS Server, and DHCP Lease"
+      },
+      {
+        "id": "b",
+        "text": "Username, Password, Domain, Workstation, and Session Token"
+      },
+      {
+        "id": "c",
+        "text": "Source IP, Destination IP, Source Port, Destination Port, and Protocol"
+      },
+      {
+        "id": "d",
+        "text": "HTTP Method, URL Path, Status Code, User Agent, and Cookie"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The 5-tuple (src IP, dst IP, src port, dst port, transport protocol) uniquely identifies a network session.",
+    "noteRef": "sec-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q04",
+    "stem": "Why are stateless Access Control Lists (ACLs) still utilized on core backbone routers despite the advantages of stateful firewalls?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Routers cannot process TCP packets."
+      },
+      {
+        "id": "b",
+        "text": "Stateful firewalls cannot filter UDP packets."
+      },
+      {
+        "id": "c",
+        "text": "Stateless ACLs provide built-in malware sandboxing."
+      },
+      {
+        "id": "d",
+        "text": "Stateless packet filtering executes at wire speed in router hardware (ASICs) without memory overhead for millions of state table entries."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Stateless ACLs require zero state memory tracking, making them extremely fast for line-rate backbone routing.",
+    "noteRef": "sec-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q05",
+    "stem": "What core feature sets Next-Generation Firewalls (NGFW) apart from traditional Layer 3/4 stateful firewalls?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Deep Packet Inspection capable of identifying Layer 7 applications regardless of port numbers."
+      },
+      {
+        "id": "b",
+        "text": "The ability to route packets between subnets."
+      },
+      {
+        "id": "c",
+        "text": "Hardware cooling fans."
+      },
+      {
+        "id": "d",
+        "text": "Support for Ethernet cables."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "NGFWs inspect application payloads (Layer 7), identifying protocols and blocking threats even on non-standard ports.",
+    "noteRef": "sec-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q06",
+    "stem": "An employee uses an SSH proxy tunneled over port 443 to bypass corporate filtering. A legacy firewall allows the traffic. Why does an NGFW block it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Port 443 is blocked by default on all NGFWs."
+      },
+      {
+        "id": "b",
+        "text": "The NGFW inspects the Layer 7 protocol signature, recognizes SSH traffic instead of TLS, and enforces application blocking policies."
+      },
+      {
+        "id": "c",
+        "text": "The NGFW deletes the employee's Active Directory account."
+      },
+      {
+        "id": "d",
+        "text": "SSH cannot execute over port 443."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Application-aware NGFWs classify traffic by actual payload signatures, detecting protocol tunneling on mismatched ports.",
+    "noteRef": "sec-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-07-q07",
+    "stem": "Which of the following security capabilities are commonly integrated into modern Next-Generation Firewalls?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Intrusion Prevention System (IPS)"
+      },
+      {
+        "id": "b",
+        "text": "SSL/TLS Decryption and Inspection"
+      },
+      {
+        "id": "c",
+        "text": "Threat Intelligence Feed Integration"
+      },
+      {
+        "id": "d",
+        "text": "Automated Hard Drive BitLocker Encryption"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "NGFWs integrate IPS, TLS inspection, and threat intelligence; endpoint disk encryption is handled on the host.",
+    "noteRef": "sec-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q08",
+    "stem": "How does an NGFW perform SSL/TLS decryption (TLS Inspection) on outbound traffic without triggering browser certificate warnings?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It cracks the server's private RSA key using rainbow tables."
+      },
+      {
+        "id": "b",
+        "text": "It forces the website to send plaintext HTTP."
+      },
+      {
+        "id": "c",
+        "text": "An enterprise Root CA certificate is installed on client workstations, allowing the NGFW to dynamically re-sign inspected certificates."
+      },
+      {
+        "id": "d",
+        "text": "It resets the workstation's system clock."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "By trusting the enterprise proxy CA, endpoints accept certificates dynamically generated by the NGFW during outbound TLS inspection.",
+    "noteRef": "sec-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q09",
+    "stem": "What is the primary operational difference between an IDS and an IPS?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An IDS only inspects wireless networks while an IPS only inspects fiber."
+      },
+      {
+        "id": "b",
+        "text": "An IPS cannot generate log records."
+      },
+      {
+        "id": "c",
+        "text": "An IDS requires an internet connection to function."
+      },
+      {
+        "id": "d",
+        "text": "An IDS passively monitors traffic copies and generates alerts; an IPS sits inline and actively drops malicious packets."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "IDS is passive out-of-band monitoring (alerting); IPS is active inline enforcement (blocking).",
+    "noteRef": "sec-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q10",
+    "stem": "A network engineer configures a switch SPAN (port mirroring) port to copy all server traffic to a monitoring appliance. What type of sensor is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Passive Network Intrusion Detection System (NIDS)"
+      },
+      {
+        "id": "b",
+        "text": "Inline Network Intrusion Prevention System (NIPS)"
+      },
+      {
+        "id": "c",
+        "text": "Proxy Server"
+      },
+      {
+        "id": "d",
+        "text": "Stateful NAT Gateway"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Receiving mirrored traffic copies via a SPAN port is the hallmark of a passive out-of-band NIDS.",
+    "noteRef": "sec-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-07-q11",
+    "stem": "What risk arises when deploying an Intrusion Prevention System (IPS) inline with overly aggressive or unvetted rules?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The IPS hardware will catch fire."
+      },
+      {
+        "id": "b",
+        "text": "False positives can block critical legitimate business traffic, causing unintended service outages."
+      },
+      {
+        "id": "c",
+        "text": "The network switch will revert to hub mode."
+      },
+      {
+        "id": "d",
+        "text": "All network cables must be replaced with shielded pairs."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "False positives on inline blocking devices directly interrupt business operations.",
+    "noteRef": "sec-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q12",
+    "stem": "How can a passive NIDS attempt to terminate a detected malicious TCP connection despite being deployed out-of-band?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By disabling the target server's NIC remotely."
+      },
+      {
+        "id": "b",
+        "text": "By corrupting the switch firmware."
+      },
+      {
+        "id": "c",
+        "text": "By injecting spoofed TCP RST (Reset) packets to both endpoints to tear down the socket."
+      },
+      {
+        "id": "d",
+        "text": "By deleting the client's DNS cache."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "TCP reset injection transmits forged RST segments to both client and server, terminating the connection asynchronously.",
+    "noteRef": "sec-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q13",
+    "stem": "In Snort and Suricata rule syntax, what field uniquely identifies the signature in the rule database?",
+    "options": [
+      {
+        "id": "a",
+        "text": "rev (Revision)"
+      },
+      {
+        "id": "b",
+        "text": "classtype"
+      },
+      {
+        "id": "c",
+        "text": "msg"
+      },
+      {
+        "id": "d",
+        "text": "sid (Signature ID)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The `sid` option assigns a unique numeric identifier to the rule (custom rules typically start at 1,000,000).",
+    "noteRef": "sec-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q14",
+    "stem": "An analyst writes a Snort rule: `alert tcp any any -> any 80 (msg:\"SQLi\"; content:\"union select\"; sid:1000005;)`. An attacker sends `UNION SELECT` and bypasses detection. What modifier was missing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "nocase (to enable case-insensitive content matching)"
+      },
+      {
+        "id": "b",
+        "text": "hex (to convert to binary)"
+      },
+      {
+        "id": "c",
+        "text": "fast_pattern"
+      },
+      {
+        "id": "d",
+        "text": "depth:10"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Without the `nocase` modifier, Snort content matching is strictly case-sensitive.",
+    "noteRef": "sec-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-07-q15",
+    "stem": "In standard Snort convention, custom locally-authored rule SIDs should begin at what minimum numeric value to avoid conflicts with official rulesets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100"
+      },
+      {
+        "id": "b",
+        "text": "1000000"
+      },
+      {
+        "id": "c",
+        "text": "1000"
+      },
+      {
+        "id": "d",
+        "text": "500"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Snort reserves SIDs below 1,000,000 for official Sourcefire/Talos rules; local custom rules start at 1,000,000.",
+    "noteRef": "sec-07-lo04",
+    "verify": "(1000000 === 1000000)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q16",
+    "stem": "What major architectural advantage does Suricata offer over classic single-threaded Snort engines?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It runs without a network card."
+      },
+      {
+        "id": "b",
+        "text": "It automatically rewrites SQL queries."
+      },
+      {
+        "id": "c",
+        "text": "Native multi-threaded packet processing capable of scaling across multi-core server CPUs."
+      },
+      {
+        "id": "d",
+        "text": "It eliminates the need for signature rules."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Suricata was architected natively for multi-threading, processing high-throughput 10Gbps+ links across multiple CPU cores.",
+    "noteRef": "sec-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q17",
+    "stem": "What is the primary function of a Virtual Local Area Network (VLAN)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt wireless passwords."
+      },
+      {
+        "id": "b",
+        "text": "To assign public IP addresses automatically."
+      },
+      {
+        "id": "c",
+        "text": "To boost Ethernet cable speeds from 1Gbps to 10Gbps."
+      },
+      {
+        "id": "d",
+        "text": "To logically partition a physical switch into isolated Layer 2 broadcast domains."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "VLANs segment physical switches into separate logical broadcast domains, isolating network traffic.",
+    "noteRef": "sec-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q18",
+    "stem": "An enterprise network switch connects to a server carrying traffic for both the Sales VLAN (ID 10) and Finance VLAN (ID 20) over a single cable. How must this switch port be configured?",
+    "options": [
+      {
+        "id": "a",
+        "text": "As an 802.1Q Trunk Port"
+      },
+      {
+        "id": "b",
+        "text": "As an Access Port"
+      },
+      {
+        "id": "c",
+        "text": "As a Half-Duplex Port"
+      },
+      {
+        "id": "d",
+        "text": "As a Loopback Port"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Trunk ports multiplex multiple VLANs over a single link by appending 802.1Q tags to Ethernet frames.",
+    "noteRef": "sec-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-07-q19",
+    "stem": "How many bits are allocated for the VLAN Identifier (VID) field in an IEEE 802.1Q header?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8"
+      },
+      {
+        "id": "b",
+        "text": "12"
+      },
+      {
+        "id": "c",
+        "text": "16"
+      },
+      {
+        "id": "d",
+        "text": "4"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The 802.1Q tag uses 12 bits for the VLAN ID, supporting up to 4094 unique VLANs (2^12 - 2).",
+    "noteRef": "sec-07-lo05",
+    "verify": "(12 === 12)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q20",
+    "stem": "Why should network engineers disable DTP (Dynamic Trunking Protocol) and change the default native VLAN away from VLAN 1?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because VLAN 1 cannot carry IP traffic."
+      },
+      {
+        "id": "b",
+        "text": "To prevent switches from overheating."
+      },
+      {
+        "id": "c",
+        "text": "To prevent unauthorized VLAN Hopping attacks where an attacker tricks the switch into establishing an unapproved trunk."
+      },
+      {
+        "id": "d",
+        "text": "Because 802.1Q does not support numbers lower than 2."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Disabling DTP and modifying the native VLAN mitigates switch spoofing and double-tagging VLAN hopping attacks.",
+    "noteRef": "sec-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q21",
+    "stem": "What is the primary security objective of a Demilitarized Zone (DMZ)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Encrypting all internal employee email."
+      },
+      {
+        "id": "b",
+        "text": "Accelerating web server DNS caching."
+      },
+      {
+        "id": "c",
+        "text": "Providing public Wi-Fi without passwords."
+      },
+      {
+        "id": "d",
+        "text": "Isolating public-facing edge servers so that a compromise does not grant direct access to the internal trusted network."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A DMZ creates a buffer subnetwork; if a public-facing server is breached, the attacker remains isolated from the internal LAN.",
+    "noteRef": "sec-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q22",
+    "stem": "An attacker compromises a DMZ web server via a web vulnerability. When they attempt to scan internal subnet 10.0.0.0/24, all packets are dropped. What component enforced this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The internal firewall separating the DMZ from the internal corporate network."
+      },
+      {
+        "id": "b",
+        "text": "The external internet gateway."
+      },
+      {
+        "id": "c",
+        "text": "The web server's SSL certificate."
+      },
+      {
+        "id": "d",
+        "text": "The client browser's CSP policy."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The internal firewall blocks unsolicited traffic initiated from DMZ hosts into internal corporate subnets.",
+    "noteRef": "sec-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-07-q23",
+    "stem": "Which of the following services are typically deployed inside a DMZ network segment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Public Web Servers (HTTP/HTTPS)"
+      },
+      {
+        "id": "b",
+        "text": "External Mail Relays (SMTP)"
+      },
+      {
+        "id": "c",
+        "text": "Public DNS Servers"
+      },
+      {
+        "id": "d",
+        "text": "Active Directory Domain Controllers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Web, mail, and public DNS are external-facing DMZ services. Domain Controllers hold master identities and belong on the internal LAN.",
+    "noteRef": "sec-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q24",
+    "stem": "Why is a two-firewall (dual-homed perimeter) DMZ architecture considered superior to a single 3-legged firewall architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Two firewalls double the network bandwidth."
+      },
+      {
+        "id": "b",
+        "text": "Using firewalls from two different vendors ensures that a single vendor zero-day flaw does not compromise both perimeter and internal networks."
+      },
+      {
+        "id": "c",
+        "text": "It allows web traffic to bypass encryption."
+      },
+      {
+        "id": "d",
+        "text": "It eliminates the need for routing tables."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Defense-in-depth: deploying dual firewalls from different vendors prevents a single software exploit from breaching both boundaries.",
+    "noteRef": "sec-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q25",
+    "stem": "What principle summarizes the Zero Trust security architecture (NIST SP 800-207)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Trust but verify"
+      },
+      {
+        "id": "b",
+        "text": "Security through obscurity"
+      },
+      {
+        "id": "c",
+        "text": "Never trust, always verify"
+      },
+      {
+        "id": "d",
+        "text": "Default permit all internal traffic"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Zero Trust removes implicit trust from network location, requiring continuous authentication and validation.",
+    "noteRef": "sec-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q26",
+    "stem": "A company replaces full-network VPN tunnels with a system that grants authenticated employees access strictly to specific authorized applications. What is this technology?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hub-and-spoke Telnet"
+      },
+      {
+        "id": "b",
+        "text": "Dynamic ARP Inspection"
+      },
+      {
+        "id": "c",
+        "text": "Stateless Packet ACL"
+      },
+      {
+        "id": "d",
+        "text": "Zero Trust Network Access (ZTNA)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "ZTNA provisions application-specific micro-tunnels rather than placing remote users onto the broader corporate subnet.",
+    "noteRef": "sec-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-07-q27",
+    "stem": "What is 'microsegmentation' in modern virtualized data centers and cloud environments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Isolating individual workloads or virtual machines using software-defined firewalls, preventing lateral movement within the same subnet."
+      },
+      {
+        "id": "b",
+        "text": "Splitting optical fibers into microscopic strands."
+      },
+      {
+        "id": "c",
+        "text": "Dividing passwords into 2-character pieces."
+      },
+      {
+        "id": "d",
+        "text": "Limiting packet sizes to under 64 bytes."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Microsegmentation applies granular security policies to individual workloads, stopping lateral spread inside shared data centers.",
+    "noteRef": "sec-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q28",
+    "stem": "In a Zero Trust evaluation, which of the following criteria are verified before granting access to a corporate resource?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Only the user's IP address."
+      },
+      {
+        "id": "b",
+        "text": "User identity, MFA status, device security health posture, and contextual risk factors."
+      },
+      {
+        "id": "c",
+        "text": "Only whether the device is connected via an Ethernet cable."
+      },
+      {
+        "id": "d",
+        "text": "The CPU model of the server."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Zero Trust dynamically checks identity, MFA, endpoint compliance (patches, EDR status), and risk context.",
+    "noteRef": "sec-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-07-q29",
+    "stem": "Which modern VPN protocol is implemented directly inside the Linux kernel with a minimal ~4,000-line codebase utilizing modern cryptography (ChaCha20, Curve25519)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "OpenVPN"
+      },
+      {
+        "id": "b",
+        "text": "PPTP"
+      },
+      {
+        "id": "c",
+        "text": "WireGuard"
+      },
+      {
+        "id": "d",
+        "text": "L2TP"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "WireGuard is a modern, lightweight, high-performance in-kernel VPN protocol designed for simplicity and auditability.",
+    "noteRef": "sec-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-07-q30",
+    "stem": "An enterprise needs a reliable site-to-site VPN connecting two regional office routers across the internet. Which Layer 3 protocol suite is the industry standard for this link?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Telnet"
+      },
+      {
+        "id": "b",
+        "text": "WEP"
+      },
+      {
+        "id": "c",
+        "text": "SNMPv1"
+      },
+      {
+        "id": "d",
+        "text": "IPsec (with IKEv2 and ESP)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "IPsec with IKEv2 is the proven, hardware-accelerated standard for router-to-router site-to-site tunnels.",
+    "noteRef": "sec-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-07-q31",
+    "stem": "What IPsec protocol provides data confidentiality (encryption), integrity, and authentication for tunneled packet payloads?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Encapsulating Security Payload (ESP)"
+      },
+      {
+        "id": "b",
+        "text": "Authentication Header (AH) alone"
+      },
+      {
+        "id": "c",
+        "text": "Internet Control Message Protocol (ICMP)"
+      },
+      {
+        "id": "d",
+        "text": "Address Resolution Protocol (ARP)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "ESP (IP protocol 50) provides encryption and authentication; AH (protocol 51) provides integrity only without encryption.",
+    "noteRef": "sec-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-07-q32",
+    "stem": "Why can OpenVPN successfully connect through restrictive enterprise firewalls that block standard IPsec traffic?",
+    "options": [
+      {
+        "id": "a",
+        "text": "OpenVPN disables IP packet headers."
+      },
+      {
+        "id": "b",
+        "text": "OpenVPN can run over standard TCP port 443, making its packets appear identical to normal HTTPS web traffic."
+      },
+      {
+        "id": "c",
+        "text": "OpenVPN uses satellite radio frequencies."
+      },
+      {
+        "id": "d",
+        "text": "OpenVPN is an approved Windows kernel service."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "By utilizing TCP port 443 with TLS, OpenVPN easily traverses firewalls that drop native IPsec protocols (IKE UDP 500, ESP 50).",
+    "noteRef": "sec-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-07-q33",
+    "stem": "What is the primary function of Port Address Translation (PAT / Source NAT) on an enterprise internet router?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Encrypting all outgoing corporate email."
+      },
+      {
+        "id": "b",
+        "text": "Preventing SQL injection attacks on web servers."
+      },
+      {
+        "id": "c",
+        "text": "Mapping thousands of internal private IP addresses to a single public IP address using unique source port numbers."
+      },
+      {
+        "id": "d",
+        "text": "Translating domain names into MAC addresses."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "PAT multiplexes multiple private IP devices onto one public IP by allocating distinct source ports.",
+    "noteRef": "sec-07-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-07-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-07-q34",
+    "stem": "A company's 10,000 workstations share a single public IP via PAT. At peak hours, new outbound web connections fail intermittently. What is the root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The internet backbone ran out of fiber optic bandwidth."
+      },
+      {
+        "id": "b",
+        "text": "The workstations' Ethernet cards entered sleep mode."
+      },
+      {
+        "id": "c",
+        "text": "DNS root servers blocked the corporate domain."
+      },
+      {
+        "id": "d",
+        "text": "Source Port Exhaustion: the NAT gateway has exhausted the ~65,000 available ephemeral port allocations for that single public IP."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A single IP has 65,535 ports; heavy outbound traffic exhausts available ports, causing connection drops.",
+    "noteRef": "sec-07-lo09",
+    "reviewed": false
+  }
+]

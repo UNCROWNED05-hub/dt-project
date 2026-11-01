@@ -1,0 +1,29 @@
+---
+loId: "sec-07-lo07"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Traditional perimeter security relies on a 'castle-and-moat' model where internal traffic is implicitly trusted. Zero Trust Architecture (ZTA, NIST SP 800-207) operates on the core principle: 'Never trust, always verify'. Zero Trust Network Access (ZTNA) replaces broad network-level VPN access with fine-grained application-level access. Microsegmentation isolates workloads down to individual virtual machines or containers using software-defined firewalls, preventing lateral movement even inside the same data center subnet.
+
+### Worked Example
+Contrasting legacy VPN vs Zero Trust Network Access (ZTNA):
+```python
+user = {"identity": "analyst", "mfa_verified": True, "device_health": "compliant"}
+
+def evaluate_ztna(user_context, target_app):
+    # Evaluates identity, device health, and specific application permissions
+    if user_context["mfa_verified"] and user_context["device_health"] == "compliant":
+        if target_app == "jira_ticketing":
+            return "PERMIT: Authorized for specific application only"
+    return "DENY: No lateral network access granted"
+
+print("ZTNA Access Decision:", evaluate_ztna(user, "jira_ticketing"))
+```
+
+### Common Mistake
+Assuming Zero Trust is a single software product that can be purchased and installed. Zero Trust is an architectural framework requiring identity verification, device health auditing, microsegmentation, and continuous monitoring across all layers.
+
+### Check Yourself
+What foundational principle defines the Zero Trust security philosophy? 'Never trust, always verify.'

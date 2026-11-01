@@ -1,0 +1,27 @@
+---
+loId: "sec-06-lo01"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+The Open Web Application Security Project (OWASP) Top 10 documents the most critical security risks facing web applications. In the modern standard, Broken Access Control ranks as the number-one threat category, reflecting widespread failures to enforce object and functional authorization. Other premier categories include Cryptographic Failures (protecting data in transit and at rest), Injection (SQL, NoSQL, and command injection), Insecure Design, and Security Misconfiguration. Defenders use the framework to prioritize defensive engineering and code audits.
+
+### Worked Example
+Auditing application vulnerabilities against OWASP categories:
+```python
+findings = [
+    {"endpoint": "/api/user", "issue": "Missing user ID validation", "category": "A01:Broken Access Control"},
+    {"endpoint": "/search", "issue": "Unsanitized user string in raw SQL", "category": "A03:Injection"},
+    {"endpoint": "/login", "issue": "Passes password over plaintext HTTP", "category": "A02:Cryptographic Failures"}
+]
+
+for f in findings:
+    print(f"Risk Tier: {f['category']} -> Endpoint: {f['endpoint']}")
+```
+
+### Common Mistake
+Treating the OWASP Top 10 as an exhaustive checklist. Web security extends far beyond ten categories; specialized architectures (APIs, microservices, cloud lambdas) have dedicated risk taxonomies (like the OWASP API Security Top 10).
+
+### Check Yourself
+Which vulnerability category holds the #1 ranking in the contemporary OWASP Top 10? Broken Access Control.

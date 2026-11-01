@@ -1,0 +1,32 @@
+---
+loId: "sec-06-lo04"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Content Security Policy (CSP) is an HTTP response header that restricts the resources (scripts, images, stylesheets, frames) a browser is permitted to load and execute for a given origin. A robust CSP restricts script execution strictly to verified sources or scripts bearing a unique cryptographic nonce (script-src 'self' 'nonce-random123'), while disallowing unsafe inline scripts ('unsafe-inline') and eval() ('unsafe-eval'). Additional headers include X-Content-Type-Options: nosniff to stop MIME-sniffing attacks.
+
+### Worked Example
+Constructing a hardened Content Security Policy header:
+```python
+# Defensive CSP Header configuration
+csp_directives = [
+    "default-src 'self'",
+    "script-src 'self' 'nonce-rAnd0mN0nc3Str1ng'",
+    "style-src 'self'",
+    "object-src 'none'",        # Blocks legacy Flash/Java applets
+    "frame-ancestors 'none'",   # Prevents Clickjacking / iframe embedding
+    "base-uri 'self'"
+]
+
+csp_header = "; ".join(csp_directives)
+print("Configured CSP Header:
+Content-Security-Policy:", csp_header)
+```
+
+### Common Mistake
+Using 'unsafe-inline' in script-src directives. Allowing unsafe inline scripts invalidates the primary defense of CSP against Cross-Site Scripting, enabling injected script tags to execute freely.
+
+### Check Yourself
+What CSP directive specifies allowed origins for JavaScript code execution? script-src.

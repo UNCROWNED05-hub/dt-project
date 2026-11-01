@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "chapterId": "sec-07",
+  "objectives": [
+    {
+      "id": "sec-07-lo01",
+      "order": 1,
+      "title": "Distinguish stateless packet filtering from stateful firewall inspection",
+      "bloom": "distinguish",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "stateless firewall",
+        "stateful inspection",
+        "connection state table",
+        "packet filtering"
+      ],
+      "aliases": [
+        "stateful packet filtering",
+        "firewall state table"
+      ],
+      "prerequisites": [
+        "sec-02-lo03"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-07-lo02",
+      "order": 2,
+      "title": "Evaluate Next-Generation Firewalls (NGFW) and deep packet inspection",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ngfw",
+        "deep packet inspection",
+        "application awareness",
+        "layer 7 firewall"
+      ],
+      "aliases": [
+        "next gen firewall",
+        "dpi inspection"
+      ],
+      "prerequisites": [
+        "sec-07-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-07-lo03",
+      "order": 3,
+      "title": "Compare Intrusion Detection Systems (IDS) with Intrusion Prevention Systems (IPS)",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ids",
+        "ips",
+        "inline inspection",
+        "span port",
+        "passive monitoring"
+      ],
+      "aliases": [
+        "intrusion detection vs prevention",
+        "nids vs nips"
+      ],
+      "prerequisites": [
+        "sec-07-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-07-lo04",
+      "order": 4,
+      "title": "Formulate signature-based detection rules using Snort and Suricata syntax",
+      "bloom": "formulate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "snort rule",
+        "suricata",
+        "rule syntax",
+        "content matching",
+        "sid"
+      ],
+      "aliases": [
+        "ids rule authoring",
+        "snort signature"
+      ],
+      "prerequisites": [
+        "sec-07-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-07-lo05",
+      "order": 5,
+      "title": "Design network segmentation using Virtual LANs (VLANs) and 802.1Q tagging",
+      "bloom": "design",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "vlan",
+        "802.1q",
+        "trunk port",
+        "access port",
+        "network segmentation"
+      ],
+      "aliases": [
+        "virtual lan",
+        "vlan tagging"
+      ],
+      "prerequisites": [
+        "sec-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-07-lo06",
+      "order": 6,
+      "title": "Architect Demilitarized Zones (DMZ) for public-facing edge services",
+      "bloom": "architect",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "dmz",
+        "perimeter security",
+        "bastion host",
+        "dual-homed firewall"
+      ],
+      "aliases": [
+        "demilitarized zone",
+        "perimeter architecture"
+      ],
+      "prerequisites": [
+        "sec-07-lo05"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-07-lo07",
+      "order": 7,
+      "title": "Implement Zero Trust Network Access (ZTNA) and microsegmentation",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "zero trust",
+        "ztna",
+        "microsegmentation",
+        "never trust always verify"
+      ],
+      "aliases": [
+        "zero trust architecture",
+        "software defined perimeter"
+      ],
+      "prerequisites": [
+        "sec-07-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-07-lo08",
+      "order": 8,
+      "title": "Compare Virtual Private Network (VPN) tunneling protocols: IPsec, OpenVPN, and WireGuard",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "vpn",
+        "ipsec",
+        "wireguard",
+        "openvpn",
+        "tunneling",
+        "esp"
+      ],
+      "aliases": [
+        "vpn protocols",
+        "secure tunneling"
+      ],
+      "prerequisites": [
+        "sec-04-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-07-lo09",
+      "order": 9,
+      "title": "Analyze Network Address Translation (NAT) and stateful port exhaustion",
+      "bloom": "analyze",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "nat",
+        "pat",
+        "port exhaustion",
+        "rfc 1918",
+        "source nat"
+      ],
+      "aliases": [
+        "network address translation",
+        "ip masquerading"
+      ],
+      "prerequisites": [
+        "sec-02-lo07"
+      ],
+      "estMinutes": 10
+    }
+  ]
+}

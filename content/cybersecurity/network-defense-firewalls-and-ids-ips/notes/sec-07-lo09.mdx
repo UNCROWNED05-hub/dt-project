@@ -1,0 +1,34 @@
+---
+loId: "sec-07-lo09"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Network Address Translation (NAT), specifically Port Address Translation (PAT / Source NAT), maps thousands of private RFC 1918 IP addresses (e.g., 10.0.0.0/8, 192.168.0.0/16) onto a single public IP address by rewriting Layer 3 IP headers and Layer 4 source ports. Stateful NAT gateways track mappings in translation tables. Under heavy concurrent outbound connection volume, NAT gateways risk Source Port Exhaustion (running out of the ~65,000 available ephemeral ports), resulting in dropped outbound sessions.
+
+### Worked Example
+Simulating NAT port translation table tracking:
+```python
+# NAT translation table: (Private IP, Private Port) -> (Public IP, Translated Port)
+nat_table = {
+    ("10.0.1.15", 48102): ("203.0.113.5", 10001),
+    ("10.0.1.22", 48102): ("203.0.113.5", 10002)
+}
+
+def translate_outbound(src_ip, src_port):
+    mapping = nat_table.get((src_ip, src_port))
+    if mapping:
+        public_ip, translated_port = mapping
+        return f"Rewritten Packet: Source {public_ip}:{translated_port}"
+    return "Port allocation required"
+
+print(translate_outbound("10.0.1.15", 48102))
+print(translate_outbound("10.0.1.22", 48102))
+```
+
+### Common Mistake
+Assuming NAT acts as a complete replacement for a firewall. While NAT hides internal IP addresses from unsolicited inbound packets, it does not inspect packet payloads, block malware, or enforce application-layer security policies.
+
+### Check Yourself
+What condition occurs when a busy NAT gateway runs out of available ephemeral source ports to map outbound connections? Source Port Exhaustion.

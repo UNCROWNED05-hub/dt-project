@@ -1,0 +1,38 @@
+---
+loId: "sec-06-lo07"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Insecure Direct Object References (IDOR), classified under Broken Access Control, occur when applications expose internal database identifiers directly in URL parameters or API bodies (e.g., /api/order/5402) without verifying that the authenticated user possesses authorization to interact with that specific object. Mitigation requires server-side access control checks binding requested records to the user's verified session identity, or using cryptographically random GUIDs/UUIDs paired with authorization checks.
+
+### Worked Example
+Implementing server-side object ownership verification:
+```python
+# Mock database order records
+orders_db = {
+    5401: {"user_id": "usr_alice", "total": "$120.00"},
+    5402: {"user_id": "usr_bob", "total": "$350.00"}
+}
+
+def retrieve_order(authenticated_user_id, order_id):
+    order = orders_db.get(order_id)
+    if not order:
+        return "404 Not Found"
+    
+    # Server-side authorization verification
+    if order["user_id"] != authenticated_user_id:
+        return "403 Forbidden: You do not own this order record"
+        
+    return f"200 OK: Order details {order['total']}"
+
+print("Alice accessing Alice's order:", retrieve_order("usr_alice", 5401))
+print("Alice accessing Bob's order:", retrieve_order("usr_alice", 5402))
+```
+
+### Common Mistake
+Relying on unguessable UUIDs alone without access control checks. While UUIDs make guessing IDs harder, if an attacker discovers an ID via a leak or network log, the absence of server-side authorization still permits unauthorized access.
+
+### Check Yourself
+True or False: Replacing sequential integer IDs with UUIDs completely eliminates the need for server-side object authorization checks? False.

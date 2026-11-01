@@ -1,0 +1,34 @@
+---
+loId: "sec-07-lo03"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS) monitor network telemetry for malicious activity:
+1. NIDS (Network IDS): Deployed passively out-of-band via a network TAP or switch SPAN (mirror) port. It inspects duplicate packet copies and generates security alerts, but cannot actively drop malicious packets inline.
+2. NIPS (Network IPS): Deployed inline directly along the primary network path. Every packet traverses the sensor. Upon detecting an exploit signature or malicious threshold, the IPS can drop packets in real time and reset TCP connections before they reach the target.
+
+### Worked Example
+Comparing passive IDS alert vs inline IPS drop actions:
+```python
+# Detection engine finding
+detection = {"signature": "EXPLOIT_APACHE_STRUTS_CMD", "target": "10.0.1.10"}
+
+def handle_ids(event):
+    # Passive TAP monitoring
+    return f"NIDS ACTION: Logged alert to SIEM for {event['signature']} (Packet passed through)"
+
+def handle_ips(event):
+    # Inline sensor enforcement
+    return f"NIPS ACTION: Dropped packet inline for {event['signature']} (Target protected)"
+
+print(handle_ids(detection))
+print(handle_ips(detection))
+```
+
+### Common Mistake
+Deploying an IPS with unvalidated or overly aggressive heuristic signatures in blocking mode. A high false-positive rate on an inline IPS can drop legitimate corporate traffic, creating self-inflicted denial-of-service outages.
+
+### Check Yourself
+Which network monitoring system is deployed inline along the primary traffic path to actively drop malicious packets in real time? Intrusion Prevention System (IPS).

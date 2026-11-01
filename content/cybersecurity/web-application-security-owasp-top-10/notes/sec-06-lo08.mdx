@@ -1,0 +1,33 @@
+---
+loId: "sec-06-lo08"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Security Misconfigurations occur when systems are deployed with default accounts, unneeded enabled features, missing security headers, or overly permissive error handling. In production environments, detailed application stack traces (debug mode) leak internal file paths, framework versions, database schemas, and source code excerpts to external users. Hardening requires disabling debug mode, removing sample files, disabling directory listing, and changing vendor default passwords.
+
+### Worked Example
+Auditing HTTP security headers for missing configurations:
+```python
+response_headers = {
+    "Server": "Apache/2.4.41 (Ubuntu)",
+    "Content-Type": "text/html; charset=UTF-8"
+}
+
+required_security_headers = [
+    "Content-Security-Policy",
+    "X-Content-Type-Options",
+    "Strict-Transport-Security",
+    "X-Frame-Options"
+]
+
+missing_headers = [h for h in required_security_headers if h not in response_headers]
+print("Misconfiguration alert: Missing security headers:", missing_headers)
+```
+
+### Common Mistake
+Leaving DEBUG = True in production frameworks (like Django or Flask). When an unexpected exception occurs, the framework outputs an interactive debugger or detailed traceback revealing database connection strings and environment secrets.
+
+### Check Yourself
+What HTTP security header instructs browsers to strictly communicate with a domain exclusively over HTTPS for a specified duration? Strict-Transport-Security (HSTS).

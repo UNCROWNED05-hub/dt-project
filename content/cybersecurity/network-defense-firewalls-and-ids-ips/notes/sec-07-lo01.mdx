@@ -1,0 +1,35 @@
+---
+loId: "sec-07-lo01"
+reviewed: false
+sources: ["lic-05"]
+---
+
+### Core Idea
+Firewalls inspect and control network traffic passing across security boundaries:
+1. Stateless Packet Filtering: Evaluates each packet in total isolation based on static Layer 3/4 header fields (Source IP, Dest IP, Port, Protocol). It cannot determine if an incoming packet is part of an ongoing legitimate session.
+2. Stateful Inspection: Maintains a dynamic Connection State Table tracking active bidirectional sessions (e.g. TCP handshakes, sequence numbers, timer windows). When an internal host initiates an outbound connection, the stateful firewall automatically permits the corresponding inbound reply traffic without requiring open incoming ports.
+
+### Worked Example
+Simulating stateful firewall connection table evaluation:
+```python
+# Firewall dynamic state table
+state_table = {
+    ("10.0.1.50", 54102, "93.184.216.34", 443, "TCP"): "ESTABLISHED"
+}
+
+def inspect_inbound_packet(src_ip, src_port, dst_ip, dst_port, proto):
+    # Inbound return traffic has reversed source and destination tuples
+    session_key = (dst_ip, dst_port, src_ip, src_port, proto)
+    if session_key in state_table:
+        return "PERMIT: Established session return traffic"
+    return "DROP: Unsolicited inbound packet"
+
+print(inspect_inbound_packet("93.184.216.34", 443, "10.0.1.50", 54102, "TCP")) # PERMIT
+print(inspect_inbound_packet("198.51.100.9", 80, "10.0.1.50", 80, "TCP"))       # DROP
+```
+
+### Common Mistake
+Configuring stateless ACLs for bidirectional communication without accounting for return traffic. In stateless filtering, administrators must manually open all high ephemeral ports (>1024) inbound, creating significant security exposure.
+
+### Check Yourself
+What dynamic internal data structure allows stateful firewalls to recognize and allow return traffic for established connections? The Connection State Table.
