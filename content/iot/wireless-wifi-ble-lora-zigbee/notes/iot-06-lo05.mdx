@@ -1,0 +1,41 @@
+---
+loId: "iot-06-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+LoRaWAN is the open media access control (MAC) and network protocol standard built on top of physical LoRa modulation:
+1. Star-of-Stars Network Topology: End devices broadcast packets over unlicensed sub-GHz ISM bands (868MHz EU, 915MHz US, 865MHz India). Multiple multi-channel Gateways receive the packets and forward them over IP/cellular backhaul to a centralized Network Server (e.g., The Things Network - TTN).
+2. Device Classes:
+   - Class A (All): Battery-powered devices. Uplink-driven: node wakes up, transmits, and opens two short downlink receive windows ($RX_1$ and $RX_2$). Lowest power.
+   - Class B (Beacon): Node synchronizes with periodic gateway time beacons to open scheduled downlink receive slots.
+   - Class C (Continuous): Node keeps its receiver open continuously when not transmitting. Highest power, requires permanent mains power.
+3. Activation Methods:
+   - Over-The-Air Activation (OTAA - Recommended): Dynamic cryptographic handshake. Device securely exchanges Join-Request/Join-Accept frames using its Device EUI, Join EUI, and AppKey to derive dynamic session keys (NwkSKey, AppSKey).
+   - Activation By Personalization (ABP): Hardcodes static session keys onto the device. Vulnerable to replay attacks and lacks re-keying security.
+4. Duty Cycle Regulations: Sub-GHz bands legally restrict transmission airtime (e.g., strictly $le 1\%$ duty cycle in Europe and India).
+
+### Worked Example
+Calculating legal duty cycle limits for LoRaWAN:
+```python
+def verify_duty_cycle(packet_airtime_ms, interval_seconds, max_duty_percent=1.0):
+    total_time_ms = interval_seconds * 1000.0
+    duty_cycle_percent = (packet_airtime_ms / total_time_ms) * 100.0
+    return {
+        "duty_cycle": round(duty_cycle_percent, 3),
+        "compliant": duty_cycle_percent <= max_duty_percent
+    }
+
+# 300ms packet transmitted every 60 seconds
+res = verify_duty_cycle(packet_airtime_ms=300, interval_seconds=60)
+print(f"Duty Cycle: {res['duty_cycle']}% | Legal: {res['compliant']}")
+# 0.5% | Legal (under 1.0% limit)
+```
+
+### Common Mistake
+Transmitting LoRaWAN packets without respecting the 1% regulatory duty cycle limit, risking confiscation of equipment and statutory fines from national telecommunications authorities.
+
+### Check Yourself
+Why is Over-The-Air Activation (OTAA) significantly more secure than Activation By Personalization (ABP) in LoRaWAN?

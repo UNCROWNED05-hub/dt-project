@@ -1,0 +1,41 @@
+---
+loId: "iot-06-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Short-range home automation and industrial telemetry utilize IEEE 802.15.4 mesh networks to extend coverage without high-power radios:
+1. IEEE 802.15.4 Foundation: Defines the physical and MAC layers operating on the $2.4\text{GHz}$ band across 16 channels, delivering up to $250\text{kbps}$ at low power ($<10\text{mA}$).
+2. Zigbee: A mature, full-stack application standard operating on 802.15.4.
+   - Roles: Zigbee Coordinator (starts the network, holds trust keys), Zigbee Routers (mains-powered routing nodes that forward packets), and Zigbee End Devices (sleepy battery-operated sensors).
+   - Limitation: Lacks native IP addressing; requires a specialized gateway to translate Zigbee clusters into TCP/IP web commands.
+3. Thread: A modern, open IPv6-based mesh networking protocol:
+   - Native IPv6: Every Thread node possesses a unique 128-bit IPv6 address via 6LoWPAN (IPv6 over Low-Power Wireless Personal Area Networks), communicating directly with cloud servers without application-layer translation gateways.
+   - Self-Healing: If a Thread Border Router or Leader fails, the mesh dynamically promotes another router without network disruption.
+4. Matter Standard: An industry-wide unifying application layer running natively over Thread and Wi-Fi, allowing devices from Apple, Google, and Amazon to interoperate seamlessly.
+
+### Worked Example
+Mesh routing topology representation in Python:
+```python
+class MeshNode:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role # Leader, Router, EndDevice
+
+nodes = [
+    MeshNode("Border_Router", "Leader"),
+    MeshNode("Kitchen_Light", "Router"),
+    MeshNode("Window_Sensor", "SleepyEndDevice")
+]
+
+for n in nodes:
+    print(f"Node: {n.name} | Role: {n.role}")
+```
+
+### Common Mistake
+Configuring battery-operated sensors as mesh routers in Zigbee or Thread; routers must keep their radio receiver powered continuously to forward third-party packets, draining a coin cell in under 48 hours. Battery devices must always be configured as Sleepy End Devices.
+
+### Check Yourself
+What primary architectural advantage does Thread offer over traditional Zigbee in terms of IP network addressing?

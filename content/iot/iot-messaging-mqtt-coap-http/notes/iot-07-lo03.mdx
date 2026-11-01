@@ -1,0 +1,37 @@
+---
+loId: "iot-07-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+MQTT Quality of Service (QoS) guarantees message delivery reliability across unreliable, lossy wireless networks:
+1. QoS 0 - At Most Once (Fire-and-Forget):
+   - Handshake: Single `PUBLISH` packet sent from client to broker. No acknowledgment, no retry.
+   - Characteristics: Lowest bandwidth, lowest latency, but messages are lost if network drops.
+   - Use Case: High-frequency periodic telemetry (e.g. ambient temperature reading every 2 seconds).
+2. QoS 1 - At Least Once (Acknowledged Delivery):
+   - Handshake: Client sends `PUBLISH` (with unique Packet ID); broker replies with `PUBACK`. If `PUBACK` is not received within a timeout, client re-transmits with the duplicate flag (`DUP=1`).
+   - Characteristics: Guarantees delivery, but duplicate messages may arrive if ACKs are dropped.
+   - Use Case: Critical threshold alerts, door open events, sensor failure alarms.
+3. QoS 2 - Exactly Once (Assured Delivery):
+   - Handshake: A strict 4-step dual handshake: `PUBLISH` $\rightarrow$ `PUBREC` (received) $\rightarrow$ `PUBREL` (release) $\rightarrow$ `PUBCOMP` (complete).
+   - Characteristics: Guarantees message arrives exactly once with zero duplicates. Highest bandwidth overhead.
+   - Use Case: Billing transactions, medical alarms, industrial valve actuations.
+
+### Worked Example
+QoS handshake comparison summary:
+```text
+QoS Level    Guarantee        Packets Exchanged    Bandwidth    Risk
+-------------------------------------------------------------------------------
+QoS 0        At most once     1 (PUBLISH)          Minimal      Packet loss
+QoS 1        At least once    2 (PUBLISH, PUBACK)  Low          Duplicate messages
+QoS 2        Exactly once     4 (PUB,REC,REL,COMP) High         High latency
+```
+
+### Common Mistake
+Using QoS 2 for routine temperature telemetry; the 4-way packet handshake generates excessive cellular data traffic and drains battery power with zero practical operational benefit.
+
+### Check Yourself
+Why can a subscriber receive duplicate messages when using MQTT QoS 1?

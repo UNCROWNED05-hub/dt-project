@@ -1,0 +1,1128 @@
+[
+  {
+    "loId": "iot-07-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q01",
+    "stem": "In the MQTT publish/subscribe model, what component receives published messages and routes them to interested subscribers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Message Broker"
+      },
+      {
+        "id": "b",
+        "text": "Web browser"
+      },
+      {
+        "id": "c",
+        "text": "DNS nameserver"
+      },
+      {
+        "id": "d",
+        "text": "Hardware write blocker"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The MQTT broker acts as the central hub routing messages from publishers to matching subscribers.",
+    "noteRef": "iot-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q02",
+    "stem": "An IoT temperature sensor publishes data every minute. The backend database server restarts for updates for 5 minutes. Why does the sensor continue operating without crashing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the temperature sensor runs on solar power."
+      },
+      {
+        "id": "b",
+        "text": "Because the publisher is decoupled in space and synchronization from subscribers via the message broker."
+      },
+      {
+        "id": "c",
+        "text": "Because MQTT disables database updates."
+      },
+      {
+        "id": "d",
+        "text": "Because the sensor converts into a broker automatically."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Pub/sub decoupling ensures publishers do not depend on subscribers being online or reachable.",
+    "noteRef": "iot-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-07-q03",
+    "stem": "Which of the following are the three decoupling dimensions provided by the MQTT publish/subscribe architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Space decoupling (endpoints do not need each other's IP address)"
+      },
+      {
+        "id": "b",
+        "text": "Time decoupling (endpoints do not need to be online concurrently)"
+      },
+      {
+        "id": "c",
+        "text": "Synchronization decoupling (publishing does not block local thread execution)"
+      },
+      {
+        "id": "d",
+        "text": "Radio decoupling (operating without antennas)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Space, time, and synchronization decoupling are the classic pub/sub architecture principles.",
+    "noteRef": "iot-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q04",
+    "stem": "Why is a decoupled pub/sub architecture significantly more scalable for 100,000 IoT sensors than peer-to-peer client-server polling?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because brokers generate free bandwidth."
+      },
+      {
+        "id": "b",
+        "text": "Because client-server polling is banned by ISO standards."
+      },
+      {
+        "id": "c",
+        "text": "Sensors connect only to the broker rather than managing dynamic IP addresses, firewalls, and direct sessions with every consuming application."
+      },
+      {
+        "id": "d",
+        "text": "Pub/sub eliminates the need for power supplies."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Brokers reduce network connection complexity from $O(N^2)$ point-to-point connections to $O(N)$ connections to the broker.",
+    "noteRef": "iot-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q05",
+    "stem": "Which wildcard character in an MQTT subscription matches all remaining hierarchical levels below it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "+ (Single-level wildcard)"
+      },
+      {
+        "id": "b",
+        "text": "* (Asterisk)"
+      },
+      {
+        "id": "c",
+        "text": "? (Question mark)"
+      },
+      {
+        "id": "d",
+        "text": "# (Multi-level wildcard)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`#` matches all remaining sub-levels in a topic tree and must be placed at the end of the subscription.",
+    "noteRef": "iot-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q06",
+    "stem": "An engineer subscribes to topic `factory/+/temperature`. Which of the following published messages will be received?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`factory/line1/temperature`"
+      },
+      {
+        "id": "b",
+        "text": "`factory/line1/subzone/temperature`"
+      },
+      {
+        "id": "c",
+        "text": "`factory/temperature`"
+      },
+      {
+        "id": "d",
+        "text": "`office/line1/temperature`"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The `+` wildcard matches exactly one level (`line1`), so `factory/line1/temperature` matches.",
+    "noteRef": "iot-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-07-q07",
+    "stem": "Why should IoT architects avoid creating MQTT topics with a leading forward slash (e.g. `/home/kitchen/temp`)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Leading slashes crash the MQTT broker."
+      },
+      {
+        "id": "b",
+        "text": "It introduces an unnecessary empty string as the root level, causing confusion with standard `home/kitchen/temp` subscriptions."
+      },
+      {
+        "id": "c",
+        "text": "Leading slashes double data transmission costs."
+      },
+      {
+        "id": "d",
+        "text": "Leading slashes are reserved for HTTP."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A leading slash creates an empty level before the slash, introducing subtle topic matching bugs.",
+    "noteRef": "iot-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q08",
+    "stem": "What occurs if a client attempts to PUBLISH a message to a topic containing wildcards like `factory/+/temp`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The message is broadcast to all devices simultaneously."
+      },
+      {
+        "id": "b",
+        "text": "The broker creates a new topic named '+'."
+      },
+      {
+        "id": "c",
+        "text": "The broker rejects the publish or closes the connection because wildcards are strictly permitted only in subscriptions, never in publish topics."
+      },
+      {
+        "id": "d",
+        "text": "The message is encrypted."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "MQTT specification Section 3.3.2.1 forbids wildcards in publish topic names; they are subscription filters only.",
+    "noteRef": "iot-07-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q09",
+    "stem": "Which MQTT Quality of Service level provides 'At Most Once' delivery with no acknowledgments (fire-and-forget)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "QoS 1"
+      },
+      {
+        "id": "b",
+        "text": "QoS 2"
+      },
+      {
+        "id": "c",
+        "text": "QoS 3"
+      },
+      {
+        "id": "d",
+        "text": "QoS 0"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "QoS 0 sends a single unacknowledged PUBLISH packet without retries.",
+    "noteRef": "iot-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q10",
+    "stem": "An industrial furnace sends a critical 'OVERHEAT_EMERGENCY' alarm. It must be guaranteed to arrive, but receiving it twice is harmless. Which QoS level is optimal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "QoS 1 (At least once delivery with PUBACK)"
+      },
+      {
+        "id": "b",
+        "text": "QoS 0"
+      },
+      {
+        "id": "c",
+        "text": "QoS 2"
+      },
+      {
+        "id": "d",
+        "text": "QoS 4"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "QoS 1 guarantees delivery via retries while avoiding the 4-way latency of QoS 2.",
+    "noteRef": "iot-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-07-q11",
+    "stem": "How many total protocol packets are exchanged between client and broker during a single complete MQTT QoS 2 transaction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "2"
+      },
+      {
+        "id": "d",
+        "text": "8"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "QoS 2 uses a 4-packet flow: PUBLISH, PUBREC, PUBREL, and PUBCOMP.",
+    "noteRef": "iot-07-lo03",
+    "verify": "(4 === 4)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q12",
+    "stem": "Why does MQTT QoS 2 guarantee exactly-once delivery without duplicate arrivals even during network drops?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because QoS 2 runs on dedicated fiber cables."
+      },
+      {
+        "id": "b",
+        "text": "Because subscribers delete duplicate numbers automatically."
+      },
+      {
+        "id": "c",
+        "text": "It employs a dual two-phase commit handshake (PUBLISH/PUBREC followed by PUBREL/PUBCOMP) where state is held until both sides confirm completion."
+      },
+      {
+        "id": "d",
+        "text": "Because packets are assigned MAC addresses."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The 4-way handshake separates receipt confirmation from message release, ensuring deduplication.",
+    "noteRef": "iot-07-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q13",
+    "stem": "What is an MQTT Retained Message?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A message saved permanently in a relational database."
+      },
+      {
+        "id": "b",
+        "text": "A message that cannot be deleted."
+      },
+      {
+        "id": "c",
+        "text": "An encrypted password."
+      },
+      {
+        "id": "d",
+        "text": "A message stored by the broker as the last known good state for a topic and immediately sent to any future subscriber."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Retained messages provide immediate state to newly subscribing clients without waiting for updates.",
+    "noteRef": "iot-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q14",
+    "stem": "A battery-powered weather station suddenly loses power due to battery failure. How does the dashboard discover that the station went offline?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The broker detects the missed Keep-Alive ping and automatically publishes the pre-registered Last Will and Testament (LWT) message."
+      },
+      {
+        "id": "b",
+        "text": "The weather station sends an email before dying."
+      },
+      {
+        "id": "c",
+        "text": "The dashboard pings the weather station with a multimeter."
+      },
+      {
+        "id": "d",
+        "text": "The sensor restarts automatically."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "LWT is triggered by the broker when ungraceful disconnection or keepalive timeout occurs.",
+    "noteRef": "iot-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-07-q15",
+    "stem": "How can a client delete an existing Retained Message on a specific MQTT topic?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Restart the MQTT broker."
+      },
+      {
+        "id": "b",
+        "text": "Publish an empty (zero-byte) payload with the Retained flag set to true on that topic."
+      },
+      {
+        "id": "c",
+        "text": "Unsubscribe from the topic."
+      },
+      {
+        "id": "d",
+        "text": "Send a PINGREQ packet."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Publishing a zero-byte payload with `retain = true` signals the broker to purge the retained message.",
+    "noteRef": "iot-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q16",
+    "stem": "If a client configures a Keep-Alive interval of 60 seconds, after what duration of complete inactivity does the broker terminate the session and fire the LWT?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60 seconds"
+      },
+      {
+        "id": "b",
+        "text": "120 seconds"
+      },
+      {
+        "id": "c",
+        "text": "90 seconds (1.5 times the Keep-Alive duration)"
+      },
+      {
+        "id": "d",
+        "text": "24 hours"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "MQTT specification dictates that brokers wait 1.5 * Keep-Alive period before assuming client loss.",
+    "noteRef": "iot-07-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q17",
+    "stem": "What transport-layer protocol does the Constrained Application Protocol (CoAP, RFC 7252) use natively?",
+    "options": [
+      {
+        "id": "a",
+        "text": "TCP (Transmission Control Protocol)"
+      },
+      {
+        "id": "b",
+        "text": "ICMP"
+      },
+      {
+        "id": "c",
+        "text": "HTTP"
+      },
+      {
+        "id": "d",
+        "text": "UDP (User Datagram Protocol)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "CoAP runs over UDP to eliminate connection overhead and support lightweight datagrams.",
+    "noteRef": "iot-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-07-q18",
+    "stem": "How many bytes are in the mandatory base binary header of a CoAP packet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "64"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The base CoAP binary header is exactly 4 bytes (Ver, Type, Token Length, Code, Message ID).",
+    "noteRef": "iot-07-lo05",
+    "verify": "(4 === 4)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q19",
+    "stem": "A CoAP client sends a GET request to `/sensors/temp` with the Observe option enabled. What behavior does the CoAP server exhibit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The server reboots immediately."
+      },
+      {
+        "id": "b",
+        "text": "The server pushes updated temperature packets autonomously to the client whenever the value changes without further GET requests."
+      },
+      {
+        "id": "c",
+        "text": "The server converts into an MQTT broker."
+      },
+      {
+        "id": "d",
+        "text": "The server deletes the temperature sensor."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "CoAP Observe (RFC 7641) synthesizes publish/subscribe behavior over UDP REST endpoints.",
+    "noteRef": "iot-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q20",
+    "stem": "How does CoAP achieve reliable delivery over an inherently unreliable UDP transport layer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By switching to satellite radio automatically."
+      },
+      {
+        "id": "b",
+        "text": "By using gold-plated Ethernet cables."
+      },
+      {
+        "id": "c",
+        "text": "Using Confirmable (CON) messages that require an Acknowledgment (ACK) response with matching Message ID, re-transmitting with exponential backoff if dropped."
+      },
+      {
+        "id": "d",
+        "text": "UDP packets never drop."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Confirmable (CON) frames add a lightweight application-level ACK and retransmission mechanism on top of UDP.",
+    "noteRef": "iot-07-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q21",
+    "stem": "What is the minimum fixed header size of an MQTT control packet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "128 bytes"
+      },
+      {
+        "id": "b",
+        "text": "54 bytes"
+      },
+      {
+        "id": "c",
+        "text": "1 byte"
+      },
+      {
+        "id": "d",
+        "text": "2 bytes"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The MQTT fixed header consists of exactly 2 bytes (Packet Type/Flags and Remaining Length).",
+    "noteRef": "iot-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q22",
+    "stem": "A battery-powered sensor needs to transmit 5 bytes of data every 10 minutes over cellular. An HTTP POST request sends ~500 bytes of headers, while MQTT sends ~15 bytes. Why is HTTP ill-suited here?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Massive ASCII header bloat and TCP 3-way handshakes exhaust cellular data quotas and deplete battery charge prematurely."
+      },
+      {
+        "id": "b",
+        "text": "HTTP is not compatible with cellular modems."
+      },
+      {
+        "id": "c",
+        "text": "HTTP only supports English characters."
+      },
+      {
+        "id": "d",
+        "text": "HTTP cannot transmit numbers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "HTTP's verbose text headers create severe overhead, transmitting 30x more data than binary protocols like MQTT.",
+    "noteRef": "iot-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-07-q23",
+    "stem": "Which of the following factors make MQTT superior to HTTP for bidirectional IoT control applications (like switching lights)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Event-driven push delivery (actuators receive commands instantly without polling)"
+      },
+      {
+        "id": "b",
+        "text": "Persistent TCP connection (avoids repeated connection setup round-trips)"
+      },
+      {
+        "id": "c",
+        "text": "Built-in disconnection detection via Last Will and Testament"
+      },
+      {
+        "id": "d",
+        "text": "Ability to run without electricity"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Push delivery, persistent sessions, and LWT make MQTT ideal for low-latency bidirectional control.",
+    "noteRef": "iot-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q24",
+    "stem": "In which specific IoT scenario is standard HTTP/REST genuinely preferred over MQTT?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Battery-powered soil moisture sensors sending 2 bytes per day."
+      },
+      {
+        "id": "b",
+        "text": "Downloading large multi-megabyte Over-The-Air (OTA) firmware binaries over Wi-Fi from web CDNs."
+      },
+      {
+        "id": "c",
+        "text": "Closed-loop drone motor stabilization."
+      },
+      {
+        "id": "d",
+        "text": "Underground water meters."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "HTTP excels at bulk binary transfers (OTA updates) leveraging existing web CDNs, range requests, and caching.",
+    "noteRef": "iot-07-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q25",
+    "stem": "What is CBOR (Concise Binary Object Representation, RFC 8949)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A type of lithium battery."
+      },
+      {
+        "id": "b",
+        "text": "A wireless radio antenna."
+      },
+      {
+        "id": "c",
+        "text": "A binary data serialization format modeled after JSON's data types that produces smaller payloads without string key bloat."
+      },
+      {
+        "id": "d",
+        "text": "A mechanical relay."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "CBOR encodes JSON-like structured data into a compact binary format designed for constrained systems.",
+    "noteRef": "iot-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q26",
+    "stem": "An engineer packs four telemetry readings (node ID, temperature, humidity, battery) into an 8-byte raw C binary struct instead of a 60-byte JSON string. What percentage bandwidth reduction is achieved?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50%"
+      },
+      {
+        "id": "b",
+        "text": "10%"
+      },
+      {
+        "id": "c",
+        "text": "0%"
+      },
+      {
+        "id": "d",
+        "text": "Approximately 86%"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "(60 - 8) / 60 = 52 / 60 = 86.67% bandwidth reduction.",
+    "noteRef": "iot-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-07-q27",
+    "stem": "Which of the following binary serialization formats are commonly used to optimize payloads in resource-constrained IoT systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Protocol Buffers (Protobuf / nanopb)"
+      },
+      {
+        "id": "b",
+        "text": "CBOR (Concise Binary Object Representation)"
+      },
+      {
+        "id": "c",
+        "text": "MessagePack"
+      },
+      {
+        "id": "d",
+        "text": "Uncompressed BMP image files"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Protobuf, CBOR, and MessagePack are efficient binary serialization formats for IoT.",
+    "noteRef": "iot-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q28",
+    "stem": "Why does parsing text-based JSON payloads consume significantly more RAM and CPU cycles on microcontrollers than unpacking binary formats?",
+    "options": [
+      {
+        "id": "a",
+        "text": "JSON requires lexical tokenization, string searching, and dynamic heap allocation to parse numbers from ASCII characters."
+      },
+      {
+        "id": "b",
+        "text": "JSON can only be parsed in Python."
+      },
+      {
+        "id": "c",
+        "text": "Microcontrollers cannot read text."
+      },
+      {
+        "id": "d",
+        "text": "JSON requires internet access to decode."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Text parsers iterate through strings and convert characters to numbers dynamically, taxing MCU CPU and heap.",
+    "noteRef": "iot-07-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-07-q29",
+    "stem": "What standard network port is assigned by IANA for secure MQTT over TLS (MQTTS)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1883"
+      },
+      {
+        "id": "b",
+        "text": "8883"
+      },
+      {
+        "id": "c",
+        "text": "443"
+      },
+      {
+        "id": "d",
+        "text": "80"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Port 1883 is unencrypted MQTT; Port 8883 is standardized for encrypted MQTT over TLS (MQTTS).",
+    "noteRef": "iot-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q30",
+    "stem": "An IoT architecture on AWS IoT Core mandates mutual TLS (mTLS). In addition to the broker's root CA certificate, what must each physical device possess?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A credit card number."
+      },
+      {
+        "id": "b",
+        "text": "A public domain name."
+      },
+      {
+        "id": "c",
+        "text": "A unique X.509 client certificate and associated private key."
+      },
+      {
+        "id": "d",
+        "text": "An HDMI display."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Mutual TLS requires both client and server to authenticate each other using X.509 certificates.",
+    "noteRef": "iot-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-07-q31",
+    "stem": "Why is running `client.setInsecure()` dangerous when deploying ESP32 devices communicating over MQTTS?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It breaks the Wi-Fi connection."
+      },
+      {
+        "id": "b",
+        "text": "It erases the flash memory."
+      },
+      {
+        "id": "c",
+        "text": "It causes the ESP32 to overheat."
+      },
+      {
+        "id": "d",
+        "text": "It disables all X.509 certificate validation, leaving the connection vulnerable to man-in-the-middle interception."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`setInsecure()` skips certificate authority checks, allowing spoofed brokers to intercept traffic.",
+    "noteRef": "iot-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q32",
+    "stem": "Why do hardware security modules (like the Microchip ATECC608A) enhance mTLS security in IoT devices?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They store private cryptographic keys in tamper-resistant physical silicon, preventing extraction even if firmware is dumped."
+      },
+      {
+        "id": "b",
+        "text": "They double Wi-Fi transmission speed."
+      },
+      {
+        "id": "c",
+        "text": "They generate electricity from heat."
+      },
+      {
+        "id": "d",
+        "text": "They eliminate the need for software code."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Secure elements store private keys in hardware with active tamper shields, preventing extraction via physical attacks.",
+    "noteRef": "iot-07-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-07-q33",
+    "stem": "What open-source C-based MQTT message broker is widely deployed on Raspberry Pi and edge gateways?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Apache Cassandra"
+      },
+      {
+        "id": "b",
+        "text": "Eclipse Mosquitto"
+      },
+      {
+        "id": "c",
+        "text": "PostgreSQL"
+      },
+      {
+        "id": "d",
+        "text": "VLC Media Player"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Eclipse Mosquitto is a lightweight, widely adopted open-source MQTT message broker.",
+    "noteRef": "iot-07-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-07-q34",
+    "stem": "An engineer starts a fresh Mosquitto 2.0 broker using default settings. Microcontrollers on the local Wi-Fi cannot connect. What setting is required in `mosquitto.conf`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Setting CPU clock speed to 10 GHz."
+      },
+      {
+        "id": "b",
+        "text": "Disabling the network switch."
+      },
+      {
+        "id": "c",
+        "text": "An explicit `listener 1883 0.0.0.0` directive to bind the port across all network interfaces."
+      },
+      {
+        "id": "d",
+        "text": "Formatting the hard drive."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Mosquitto 2.x defaults to loopback-only binding; listening on `0.0.0.0` is required for external LAN clients.",
+    "noteRef": "iot-07-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-07-q35",
+    "stem": "Which of the following configuration options can be enforced in `mosquitto.conf`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`allow_anonymous false` (mandating username/password authentication)"
+      },
+      {
+        "id": "b",
+        "text": "`password_file /etc/mosquitto/passwd` (hashed user credential store)"
+      },
+      {
+        "id": "c",
+        "text": "`persistence true` (persisting retained messages and subscriptions across restarts)"
+      },
+      {
+        "id": "d",
+        "text": "`water_cooling_mode on`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Anonymous access control, password files, and disk persistence are standard Mosquitto features.",
+    "noteRef": "iot-07-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-07-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-07-q36",
+    "stem": "What command-line tool included with Mosquitto is used to generate salted password hashes for client authentication?",
+    "options": [
+      {
+        "id": "a",
+        "text": "openssl_gen"
+      },
+      {
+        "id": "b",
+        "text": "bcrypt_cli"
+      },
+      {
+        "id": "c",
+        "text": "shadow_gen"
+      },
+      {
+        "id": "d",
+        "text": "mosquitto_passwd"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`mosquitto_passwd` generates and manages encrypted password files for the Mosquitto broker.",
+    "noteRef": "iot-07-lo09",
+    "reviewed": false
+  }
+]

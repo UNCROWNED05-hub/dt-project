@@ -1,0 +1,44 @@
+---
+loId: "iot-07-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+MQTT topics are UTF-8 hierarchical strings separated by forward slashes (`/`), forming structured data classification trees:
+1. Topic Hierarchy Design:
+   Structure topics from general to specific:
+   `company / facility / building / floor / room / device_id / metric`
+   Example: `enterprise/delhi/tower_a/floor3/room302/ac_unit/temp`
+2. Wildcard Filtering for Subscribers:
+   Subscribers use wildcards to aggregate streams across fleets without subscribing to thousands of individual topics:
+   - Single-Level Wildcard (`+`): Matches exactly one hierarchical level between slashes.
+     - `factory/+/temperature` matches `factory/sensor01/temperature` and `factory/sensor02/temperature`, but NOT `factory/sensor01/sub/temperature`.
+   - Multi-Level Wildcard (`#`): Matches all remaining hierarchical sub-levels. Must be placed as the final character in the topic string.
+     - `factory/building_a/#` matches all telemetry, alerts, and commands generated inside building A.
+3. Best Practices: Never start a topic with a leading slash (`/factory`), as it creates an empty root string level; never use wildcards in publish topics.
+
+### Worked Example
+Testing MQTT topic matching in Python:
+```python
+def match_topic(pattern, topic):
+    p_parts = pattern.split('/')
+    t_parts = topic.split('/')
+    for i, p in enumerate(p_parts):
+        if p == '#':
+            return True
+        if i >= len(t_parts) or (p != '+' and p != t_parts[i]):
+            return False
+    return len(p_parts) == len(t_parts)
+
+pattern = "facility/+/temperature"
+print(match_topic(pattern, "facility/room1/temperature")) # True
+print(match_topic(pattern, "facility/room1/humidity"))    # False
+```
+
+### Common Mistake
+Subscribing to the root wildcard `#` on an enterprise production broker; flooding a low-memory microcontroller with tens of thousands of irrelevant enterprise messages exhausts its memory and causes a crash.
+
+### Check Yourself
+How does the single-level wildcard (`+`) differ from the multi-level wildcard (`#`) in MQTT subscriptions?

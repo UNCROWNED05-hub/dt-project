@@ -1,0 +1,54 @@
+---
+loId: "iot-06-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Wi-Fi enables high-throughput Internet Protocol (TCP/IP) connectivity on IoT microcontrollers, operating across two primary radio modes:
+1. Station Mode (STA): The ESP32 acts as a standard wireless network client, associating with an external Wi-Fi router/Access Point to obtain an IP address via DHCP and access internet cloud endpoints.
+2. Access Point Mode (AP): The ESP32 hosts its own $802.11$ wireless local network (SSID and optional WPA2 password), assigning IP addresses to nearby client devices (smartphones, laptops) on a private subnet (typically `192.168.4.1`).
+3. Captive Portal Provisioning (WiFiManager):
+   Hardcoding Wi-Fi credentials into firmware is brittle and insecure. When the device powers up and cannot connect to a stored network, it automatically boots into AP mode and spins up a local DNS and HTTP web server:
+   - A connecting smartphone automatically receives a captive portal prompt.
+   - The user selects their home Wi-Fi network from a scanned SSID list and types the password.
+   - The ESP32 saves the credentials to non-volatile flash (NVS) and restarts into STA mode.
+
+### Worked Example
+Arduino C++ Wi-Fi connection with timeout fallback:
+```cpp
+#include <WiFi.h>
+
+const char* ssid = "Home_Network";
+const char* password = "SecretPassword123";
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  uint32_t start_time = millis();
+  while (WiFi.status() != WL_CONNECTED && (millis() - start_time < 10000)) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.printf("
+Connected! IP Address: %s
+", WiFi.localIP().toString().c_str());
+  } else {
+    Serial.println("
+Failed to connect. Launching AP Config Portal...");
+  }
+}
+
+void loop() {}
+```
+
+### Common Mistake
+Hardcoding production Wi-Fi SSIDs and passwords into open-source Git repositories; anyone viewing the repo gains plaintext credentials to private local networks.
+
+### Check Yourself
+What is the difference between ESP32 Station (STA) mode and Access Point (AP) mode?

@@ -1,0 +1,43 @@
+---
+loId: "iot-07-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Data serialization formats dictate payload size, CPU parsing overhead, and network transmission costs:
+1. JSON (JavaScript Object Notation):
+   - Advantages: Human-readable, native to web dashboards, supported by all backend frameworks.
+   - Disadvantages: Highly verbose due to repeated ASCII key names (`"temperature": 24.5`), slow text parsing on 8-bit/32-bit MCUs, bloated payload size.
+2. CBOR (Concise Binary Object Representation, RFC 8949):
+   - A binary data format modeled after JSON's data types (integers, floats, maps, arrays).
+   - Encodes data into compact binary tags, cutting payload size by $40\% - 60\%$ while eliminating floating-point string formatting overhead.
+3. Protocol Buffers (Protobuf - Google):
+   - Uses pre-compiled schema files (`.proto`) to serialize strongly typed binary messages with integer field tags instead of string keys.
+   - Achieves maximum compression and blazing-fast decoding on microcontrollers (e.g. using `nanopb`).
+
+### Worked Example
+Comparing payload sizes in Python:
+```python
+import json
+
+data = {"dev_id": "SN-042", "temp": 24.55, "hum": 62, "battery": 95}
+
+# JSON serialization
+json_bytes = json.dumps(data).encode('utf-8')
+print(f"JSON Payload Size: {len(json_bytes)} bytes -> {json_bytes.decode()}")
+# 58 bytes
+
+# Compact raw binary packing (8 bytes total)
+import struct
+bin_bytes = struct.pack(">HfhB", 42, 24.55, 62, 95)
+print(f"Packed Binary Size: {len(bin_bytes)} bytes")
+# 8 bytes (~86% bandwidth savings!)
+```
+
+### Common Mistake
+Sending uncompressed, verbose JSON with long descriptive keys over expensive satellite or cellular IoT links; compressing or switching to binary serialization cuts cellular data bills by more than half.
+
+### Check Yourself
+What primary advantage does CBOR or packed binary serialization provide over standard JSON in constrained IoT networks?

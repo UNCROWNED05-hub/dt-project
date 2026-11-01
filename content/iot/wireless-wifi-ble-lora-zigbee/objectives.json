@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "chapterId": "iot-06",
+  "objectives": [
+    {
+      "id": "iot-06-lo01",
+      "order": 1,
+      "title": "Configure ESP32 Wi-Fi station (STA) and access point (AP) modes and captive portal provisioning",
+      "bloom": "configure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "wifi provisioning",
+        "sta mode",
+        "ap mode",
+        "captive portal",
+        "wifimanager"
+      ],
+      "aliases": [
+        "esp32 wifi modes",
+        "wireless credential provisioning"
+      ],
+      "prerequisites": [
+        "iot-03-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-06-lo02",
+      "order": 2,
+      "title": "Structure Bluetooth Low Energy (BLE) Generic Attribute Profile (GATT) services, characteristics, and UUIDs",
+      "bloom": "structure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ble",
+        "gatt",
+        "gap",
+        "service uuid",
+        "characteristic",
+        "descriptors"
+      ],
+      "aliases": [
+        "bluetooth low energy",
+        "ble gatt architecture"
+      ],
+      "prerequisites": [
+        "iot-03-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-06-lo03",
+      "order": 3,
+      "title": "Program BLE advertising packets, notifications, and indications on ESP32",
+      "bloom": "program",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "ble advertising",
+        "notify vs indicate",
+        "ble client",
+        "ble server",
+        "advertising interval"
+      ],
+      "aliases": [
+        "ble notifications",
+        "esp32 ble programming"
+      ],
+      "prerequisites": [
+        "iot-06-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-06-lo04",
+      "order": 4,
+      "title": "Analyze Chirp Spread Spectrum (CSS) modulation, Spreading Factor (SF), and LoRa link budgets",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "lora",
+        "chirp spread spectrum",
+        "spreading factor",
+        "link budget",
+        "snr"
+      ],
+      "aliases": [
+        "lora modulation",
+        "css physics",
+        "spreading factor calculation"
+      ],
+      "prerequisites": [
+        "iot-01-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-06-lo05",
+      "order": 5,
+      "title": "Construct LoRaWAN end-device topologies across Class A, B, and C architectures",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "lorawan",
+        "class a b c",
+        "otaa vs abp",
+        "gateway",
+        "network server",
+        "duty cycle limit"
+      ],
+      "aliases": [
+        "lorawan architecture",
+        "otaa join"
+      ],
+      "prerequisites": [
+        "iot-06-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-06-lo06",
+      "order": 6,
+      "title": "Evaluate IEEE 802.15.4 mesh networking: Zigbee, Thread, 6LoWPAN, and Matter",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "zigbee",
+        "thread",
+        "matter",
+        "802.15.4",
+        "mesh routing",
+        "6lowpan"
+      ],
+      "aliases": [
+        "mesh networking",
+        "thread vs zigbee"
+      ],
+      "prerequisites": [
+        "iot-01-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-06-lo07",
+      "order": 7,
+      "title": "Deploy Cellular IoT nodes using NB-IoT (Cat-NB1/NB2) and LTE-M with Power Saving Mode (PSM)",
+      "bloom": "deploy",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cellular iot",
+        "nb-iot",
+        "lte-m",
+        "psm",
+        "edrx",
+        "at commands"
+      ],
+      "aliases": [
+        "cellular m2m",
+        "narrowband iot"
+      ],
+      "prerequisites": [
+        "iot-05-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-06-lo08",
+      "order": 8,
+      "title": "Calculate wireless trade-offs across Range, Data Rate, and Power Consumption using Friis and Shannon models",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "wireless trade-offs",
+        "friis transmission",
+        "shannon-hartley",
+        "path loss",
+        "battery lifespan"
+      ],
+      "aliases": [
+        "range vs bandwidth",
+        "wireless comparison matrix"
+      ],
+      "prerequisites": [
+        "iot-06-lo01",
+        "iot-06-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-06-lo09",
+      "order": 9,
+      "title": "Design antenna matching circuits and adhere to regional wireless regulatory emission standards",
+      "bloom": "design",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "antenna matching",
+        "pi network",
+        "vswr",
+        "fcc ce compliance",
+        "ism bands"
+      ],
+      "aliases": [
+        "rf antenna matching",
+        "rf regulatory compliance"
+      ],
+      "prerequisites": [
+        "iot-06-lo08"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "chapterId": "iot-07",
+  "objectives": [
+    {
+      "id": "iot-07-lo01",
+      "order": 1,
+      "title": "Analyze the Publish/Subscribe messaging architecture and message broker decoupling principles",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "mqtt pub sub",
+        "broker decoupling",
+        "mosquitto",
+        "spatial decoupling",
+        "temporal decoupling"
+      ],
+      "aliases": [
+        "publish subscribe architecture",
+        "mqtt broker role"
+      ],
+      "prerequisites": [
+        "iot-06-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-07-lo02",
+      "order": 2,
+      "title": "Construct hierarchical MQTT topic trees with single-level (+) and multi-level (#) wildcards",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "mqtt topics",
+        "single-level wildcard",
+        "multi-level wildcard",
+        "topic namespace",
+        "topic design"
+      ],
+      "aliases": [
+        "mqtt topic hierarchy",
+        "topic wildcards"
+      ],
+      "prerequisites": [
+        "iot-07-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-07-lo03",
+      "order": 3,
+      "title": "Evaluate MQTT Quality of Service (QoS 0, QoS 1, QoS 2) handshake mechanics and bandwidth trade-offs",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "qos 0",
+        "qos 1",
+        "qos 2",
+        "puback",
+        "pubrec pubrel pubcomp",
+        "at least once"
+      ],
+      "aliases": [
+        "mqtt qos levels",
+        "qos handshake"
+      ],
+      "prerequisites": [
+        "iot-07-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-07-lo04",
+      "order": 4,
+      "title": "Implement MQTT Retained Messages, Last Will and Testament (LWT), and Keep-Alive ping mechanisms",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "retained message",
+        "last will and testament",
+        "lwt",
+        "keep-alive",
+        "pingreq pingresp"
+      ],
+      "aliases": [
+        "mqtt lwt",
+        "mqtt advanced features"
+      ],
+      "prerequisites": [
+        "iot-07-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-07-lo05",
+      "order": 5,
+      "title": "Examine Constrained Application Protocol (CoAP RFC 7252) RESTful messaging over UDP",
+      "bloom": "examine",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "coap",
+        "rfc 7252",
+        "rest over udp",
+        "confirmable con",
+        "non-confirmable non",
+        "coap observe"
+      ],
+      "aliases": [
+        "coap protocol",
+        "constrained application protocol"
+      ],
+      "prerequisites": [
+        "iot-07-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-07-lo06",
+      "order": 6,
+      "title": "Compare HTTP/REST protocol overhead against MQTT and CoAP in constrained battery networks",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "http vs mqtt",
+        "protocol overhead",
+        "tcp handshake",
+        "http header bloat",
+        "battery drain"
+      ],
+      "aliases": [
+        "iot protocol comparison",
+        "http vs mqtt vs coap"
+      ],
+      "prerequisites": [
+        "iot-07-lo03",
+        "iot-07-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-07-lo07",
+      "order": 7,
+      "title": "Design lightweight telemetry serialization payloads: JSON, Protocol Buffers, and CBOR",
+      "bloom": "design",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "json vs cbor",
+        "protocol buffers",
+        "binary serialization",
+        "payload size",
+        "bandwidth optimization"
+      ],
+      "aliases": [
+        "iot payload design",
+        "cbor vs json"
+      ],
+      "prerequisites": [
+        "iot-04-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-07-lo08",
+      "order": 8,
+      "title": "Secure MQTT communications using Transport Layer Security (MQTTS port 8883) and mutual authentication",
+      "bloom": "secure",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "mqtts",
+        "tls port 8883",
+        "x509 client certificate",
+        "mutual tls",
+        "mtls"
+      ],
+      "aliases": [
+        "secure mqtt",
+        "mqtt over tls"
+      ],
+      "prerequisites": [
+        "sec-04-lo05",
+        "iot-07-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-07-lo09",
+      "order": 9,
+      "title": "Deploy a local Eclipse Mosquitto MQTT message broker on Docker or Linux single-board computers",
+      "bloom": "deploy",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "mosquitto",
+        "mosquitto.conf",
+        "local broker",
+        "mqtt client test",
+        "sub-pub testing"
+      ],
+      "aliases": [
+        "mosquitto broker deployment",
+        "local mqtt broker"
+      ],
+      "prerequisites": [
+        "iot-07-lo01"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

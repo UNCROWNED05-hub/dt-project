@@ -1,0 +1,35 @@
+---
+loId: "iot-07-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Comparing HTTP/REST, MQTT, and CoAP reveals critical performance gaps in bandwidth and power efficiency for battery-powered IoT devices:
+1. HTTP Overhead in IoT:
+   - TCP 3-Way Handshake: Every new HTTP request requires a SYN, SYN-ACK, ACK exchange ($3$ round trips) before sending data.
+   - Verbose Headers: A minimal HTTP/1.1 POST includes hundreds of bytes of ASCII text headers (`Host`, `User-Agent`, `Accept`, `Content-Length`). Sending a 5-byte payload (`24.5C`) requires over $400\text{ bytes}$ of wire data!
+   - Polling Inefficiency: HTTP is request-response; checking for actuator commands requires frequent polling, destroying battery life.
+2. MQTT Efficiency:
+   - A single persistent TCP connection handles multiple messages.
+   - Binary fixed header is only $2\text{ bytes}$, reducing protocol overhead by over $95\%$ compared to HTTP.
+   - Event-driven push: Actuator commands arrive instantly without polling.
+3. CoAP Efficiency:
+   - UDP-based with zero connection overhead and a compact 4-byte header, offering the highest battery efficiency for periodic sleeping sensors.
+
+### Worked Example
+Bandwidth overhead comparison for transmitting a 10-byte telemetry reading:
+```text
+Protocol       Transport    Header Overhead    Total Bytes Sent    Connection Model
+------------------------------------------------------------------------------------
+HTTP/1.1       TCP          ~350 - 600 bytes   ~450+ bytes         New conn / Keep-Alive
+MQTT (QoS 0)   TCP          2 bytes            12 bytes            Persistent session
+CoAP (NON)     UDP          4 bytes            14 bytes            Connectionless datagram
+```
+
+### Common Mistake
+Deploying standard HTTP POST requests on an NB-IoT cellular connection to send temperature every 5 minutes; data overhead consumes monthly cellular quotas in days and drains batteries 10x faster than MQTT or CoAP.
+
+### Check Yourself
+Why is the 2-byte binary header of MQTT drastically more efficient than an HTTP/1.1 POST header for sending sensor telemetry?

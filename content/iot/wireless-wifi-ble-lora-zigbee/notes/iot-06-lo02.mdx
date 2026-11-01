@@ -1,0 +1,36 @@
+---
+loId: "iot-06-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Bluetooth Low Energy (BLE) is optimized for ultra-low power, short-range ($<10\text{m}$) point-to-point and star wireless topologies:
+1. Generic Access Profile (GAP): Governs connection establishment and advertising:
+   - Peripheral (Broadcaster / Server): Advertises its presence and accepts incoming connections (e.g., smart fitness bands, heart rate monitors).
+   - Central (Observer / Client): Scans for advertisements and initiates connections (e.g., smartphone, gateway).
+2. Generic Attribute Profile (GATT): Defines the structured data exchange hierarchy once connected:
+   - Profile: A formal collection of one or more Services (e.g., Environmental Sensing Profile).
+   - Service: A logical grouping of data items (e.g., Battery Service, Heart Rate Service). Identified by a 16-bit UUID (Bluetooth SIG standardized) or a custom 128-bit UUID.
+   - Characteristic: The fundamental data container containing a single value, permission flags (Read, Write, Notify, Indicate), and metadata.
+   - Descriptors: Optional metadata providing human-readable descriptions or enabling push notifications (Client Characteristic Configuration Descriptor, CCCD).
+
+### Worked Example
+Structure of a standard BLE GATT data model:
+```text
+GATT Profile: Environmental Monitor
+├── Service: Battery Service (UUID 0x180F)
+│   └── Characteristic: Battery Level (UUID 0x2A19) [Read, Notify]
+│       └── Value: 85 (Percentage)
+└── Service: Custom Sensor Service (UUID 4fafc201-1fb5-459e-8fcc-c5c9c331914b)
+    └── Characteristic: Temperature (UUID beb5483e-36e1-4688-b7f5-ea07361b26a8) [Read, Notify]
+        ├── Value: 24.5 (°C)
+        └── CCCD Descriptor (UUID 0x2902): Notifications Enabled
+```
+
+### Common Mistake
+Attempting to use 16-bit UUIDs for proprietary vendor services; 16-bit UUIDs are reserved exclusively by the Bluetooth SIG for standard profiles and collide with existing devices. Custom services must use unique 128-bit UUIDs.
+
+### Check Yourself
+What are the three structural tiers of the BLE GATT data hierarchy?

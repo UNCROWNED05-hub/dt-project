@@ -1,0 +1,35 @@
+---
+loId: "iot-07-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+MQTT incorporates specialized features to track device connection health and preserve current system state:
+1. Retained Messages:
+   When publishing with the Retained flag set (`retain = true`), the broker stores that message as the "last known good state" for that topic. When a new client subscribes to that topic hours or days later, the broker immediately dispatches the retained message, eliminating the need to wait for the next periodic sensor cycle. Only ONE retained message exists per topic; publishing an empty payload with `retain = true` deletes it.
+2. Last Will and Testament (LWT):
+   During initial `CONNECT`, the client deposits an LWT message and topic with the broker (e.g., topic `node01/status`, payload `"offline"`). If the client disconnects gracefully (`DISCONNECT`), the LWT is discarded. If the client disconnects ungracefully (battery dies, cable cut, Wi-Fi drops), the broker immediately publishes the LWT to notify the entire network of the failure.
+3. Keep-Alive & PINGREQ:
+   Clients specify a Keep-Alive interval (e.g., $60\text{s}$). If no data is published, the client sends a 2-byte `PINGREQ`, and the broker replies with `PINGRESP`. If the broker receives nothing for $1.5 \times \text{Keep-Alive}$, it terminates the session and triggers the LWT.
+
+### Worked Example
+Configuring Last Will and Testament and Retained Message in Python:
+```python
+import paho.mqtt.client as mqtt
+
+client = mqtt.Client(client_id="Solar_Node_01")
+# Register LWT before connecting
+client.will_set("nodes/solar01/status", payload="OFFLINE", qos=1, retain=True)
+
+client.connect("mqtt.example.com", 1883, keepalive=60)
+# Publish active status as retained
+client.publish("nodes/solar01/status", payload="ONLINE", qos=1, retain=True)
+```
+
+### Common Mistake
+Confusing retained messages with historical databases; MQTT brokers only retain the single most recent message per topic. To store time-series history, route messages to InfluxDB or TimescaleDB.
+
+### Check Yourself
+Under what exact circumstance does an MQTT broker publish a client's Last Will and Testament (LWT) message?

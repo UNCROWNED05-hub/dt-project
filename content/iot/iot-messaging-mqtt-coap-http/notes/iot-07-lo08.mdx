@@ -1,0 +1,43 @@
+---
+loId: "iot-07-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Standard MQTT transmits plaintext usernames, passwords, and sensor readings over port 1883, leaving systems exposed to packet sniffing and unauthorized actuation:
+1. MQTTS (MQTT over TLS):
+   Encrypts all transport traffic using TLS (Transport Layer Security) over standard port 8883:
+   - Server Authentication: The client validates the broker's X.509 digital certificate against a trusted Certificate Authority (CA) root, preventing man-in-the-middle attacks.
+   - Encryption: Protects credentials and telemetry payloads in transit with AES-GCM encryption.
+2. Mutual TLS (mTLS / Client Certificates):
+   High-security IoT architectures (such as AWS IoT Core) mandate mutual authentication. The device must present its own unique X.509 client certificate and private key stored in secure hardware (ATECC608 secure element) to prove its identity before the broker accepts the connection.
+3. TLS Overhead on Microcontrollers:
+   TLS handshakes require asymmetric RSA or ECC cryptography, consuming several kilobytes of SRAM and 1-2 seconds of CPU compute time during initial connection. Keep sessions alive to avoid frequent re-handshakes.
+
+### Worked Example
+Connecting an ESP32 to MQTTS with root CA verification in Arduino C++:
+```cpp
+#include <WiFiClientSecure.h>
+#include <PubSubClient.h>
+
+const char* mqtt_server = "broker.hivemq.com";
+const char* root_ca = "-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----";
+
+WiFiClientSecure espClient;
+PubSubClient client(espClient);
+
+void setup() {
+  espClient.setCACert(root_ca); // Validate broker authenticity
+  client.setServer(mqtt_server, 8883); // Secure TLS port
+}
+```
+
+### Common Mistake
+Using `espClient.setInsecure()` in production; this disables all TLS certificate verification, leaving the device completely vulnerable to man-in-the-middle interception.
+
+### Check Yourself
+Why is MQTTS configured on port 8883 rather than the standard unencrypted port 1883?

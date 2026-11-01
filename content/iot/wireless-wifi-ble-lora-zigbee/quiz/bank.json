@@ -1,0 +1,1128 @@
+[
+  {
+    "loId": "iot-06-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q01",
+    "stem": "In which Wi-Fi mode does an ESP32 create its own local wireless network so nearby smartphones can connect to it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Access Point (AP) mode"
+      },
+      {
+        "id": "b",
+        "text": "Station (STA) mode"
+      },
+      {
+        "id": "c",
+        "text": "Monitor mode"
+      },
+      {
+        "id": "d",
+        "text": "Sleep mode"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "In Access Point (AP) mode, the ESP32 acts as a router hosting its own SSID and subnet.",
+    "noteRef": "iot-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q02",
+    "stem": "An IoT smart lamp cannot connect to a homeowner's router. It launches a Captive Portal web page allowing the homeowner to select their Wi-Fi SSID and enter credentials. What mechanism enables this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bluetooth satellite uplink."
+      },
+      {
+        "id": "b",
+        "text": "An automated provisioning framework (like WiFiManager) combining SoftAP, internal DNS redirection, and a local web server."
+      },
+      {
+        "id": "c",
+        "text": "A physical SIM card inside the bulb."
+      },
+      {
+        "id": "d",
+        "text": "Firmware flashing over audio signals."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "WiFiManager boots an AP and DNS server that intercepts HTTP traffic to present a credential configuration portal.",
+    "noteRef": "iot-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-06-q03",
+    "stem": "Which of the following Wi-Fi operational states can an ESP32 simultaneously operate in?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Station (STA) mode connecting to an existing home router"
+      },
+      {
+        "id": "b",
+        "text": "Access Point (AP) mode broadcasting a configuration network (AP+STA mode)"
+      },
+      {
+        "id": "c",
+        "text": "Deep sleep with radios transmitting at 100% power"
+      },
+      {
+        "id": "d",
+        "text": "Sub-GHz LoRaWAN Class C"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "ESP32 supports simultaneous dual AP+STA mode; deep sleep powers off radios entirely.",
+    "noteRef": "iot-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q04",
+    "stem": "Where are Wi-Fi network credentials safely persisted on an ESP32 so they survive power outages without hardcoding them into source code?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In volatile CPU registers."
+      },
+      {
+        "id": "b",
+        "text": "In the computer's web browser cookies."
+      },
+      {
+        "id": "c",
+        "text": "In Non-Volatile Storage (NVS) flash partition."
+      },
+      {
+        "id": "d",
+        "text": "On the router's power cable."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "NVS flash stores key-value pairs persistently across power cycles on the ESP32.",
+    "noteRef": "iot-06-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q05",
+    "stem": "What is the structural hierarchy of the BLE Generic Attribute Profile (GATT)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Packets contain Frames, which contain IP addresses."
+      },
+      {
+        "id": "b",
+        "text": "Services contain Profiles, which contain Transistors."
+      },
+      {
+        "id": "c",
+        "text": "Descriptors contain Microcontrollers."
+      },
+      {
+        "id": "d",
+        "text": "Profile contains Services, which contain Characteristics, which contain Descriptors and Values."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "GATT organizes data hierarchically into Profiles, Services, Characteristics, and Descriptors.",
+    "noteRef": "iot-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q06",
+    "stem": "An engineer is defining a custom proprietary telemetry service for an industrial crane. Which UUID format must be assigned to avoid colliding with official Bluetooth SIG profiles?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A randomly generated unique 128-bit UUID (e.g., 4fafc201-1fb5-459e-8fcc-c5c9c331914b)."
+      },
+      {
+        "id": "b",
+        "text": "A 16-bit UUID like 0x180F."
+      },
+      {
+        "id": "c",
+        "text": "A 4-bit integer."
+      },
+      {
+        "id": "d",
+        "text": "An email address."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "16-bit UUIDs are reserved by Bluetooth SIG; custom vendor profiles must use random 128-bit UUIDs.",
+    "noteRef": "iot-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-06-q07",
+    "stem": "In the BLE Generic Access Profile (GAP), which role scans the airwaves for advertisement packets and initiates connections?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Peripheral (Broadcaster / Server)"
+      },
+      {
+        "id": "b",
+        "text": "Central (Observer / Client)"
+      },
+      {
+        "id": "c",
+        "text": "Transistor"
+      },
+      {
+        "id": "d",
+        "text": "Beacon tag"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "GAP Central devices scan for advertisements and initiate incoming connections to Peripherals.",
+    "noteRef": "iot-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q08",
+    "stem": "What is the function of a BLE Characteristic's Client Characteristic Configuration Descriptor (CCCD, UUID 0x2902)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It sets the radio antenna transmission power."
+      },
+      {
+        "id": "b",
+        "text": "It encrypts the microcontroller's RAM."
+      },
+      {
+        "id": "c",
+        "text": "It allows a client to subscribe to or unsubscribe from asynchronous Notifications and Indications."
+      },
+      {
+        "id": "d",
+        "text": "It stores the device's battery serial number."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Clients write 0x0001 (notify) or 0x0002 (indicate) to CCCD to enable autonomous push notifications.",
+    "noteRef": "iot-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q09",
+    "stem": "How many dedicated RF physical channels are reserved for BLE advertising packets in the 2.4 GHz spectrum?",
+    "options": [
+      {
+        "id": "a",
+        "text": "79 channels"
+      },
+      {
+        "id": "b",
+        "text": "1 channel"
+      },
+      {
+        "id": "c",
+        "text": "16 channels"
+      },
+      {
+        "id": "d",
+        "text": "3 channels (Channels 37, 38, and 39)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "BLE reserves channels 37, 38, and 39 for advertising, spaced apart to avoid Wi-Fi channel overlap.",
+    "noteRef": "iot-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q10",
+    "stem": "A fitness tracker transmits heart rate updates to a smartphone 5 times every second. Which mechanism provides the lowest energy consumption?",
+    "options": [
+      {
+        "id": "a",
+        "text": "BLE Notifications (fire-and-forget push without requiring link-layer acknowledgment)."
+      },
+      {
+        "id": "b",
+        "text": "BLE Indications requiring round-trip acknowledgment for every packet."
+      },
+      {
+        "id": "c",
+        "text": "Smartphone polling the characteristic with continuous Read requests."
+      },
+      {
+        "id": "d",
+        "text": "Opening a full HTTP server on the fitness tracker."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Notifications push data autonomously without waiting for client ACK, minimizing radio on-time.",
+    "noteRef": "iot-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-06-q11",
+    "stem": "What is the maximum payload size of a legacy BLE 4.x primary advertising packet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1500 bytes"
+      },
+      {
+        "id": "b",
+        "text": "31 bytes"
+      },
+      {
+        "id": "c",
+        "text": "1024 bytes"
+      },
+      {
+        "id": "d",
+        "text": "8 bytes"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Legacy BLE advertisement packets have a hard maximum user payload of 31 bytes.",
+    "noteRef": "iot-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q12",
+    "stem": "What is the fundamental functional difference between BLE Notifications and BLE Indications?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Notifications only work on Android; Indications only work on iOS."
+      },
+      {
+        "id": "b",
+        "text": "Indications do not require radio signals."
+      },
+      {
+        "id": "c",
+        "text": "Indications require an explicit link-layer acknowledgment from the client before the next packet can be sent, whereas Notifications do not."
+      },
+      {
+        "id": "d",
+        "text": "Notifications consume 100 times more battery than Indications."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Indications guarantee delivery via application-level ACKs; notifications provide unacknowledged streaming.",
+    "noteRef": "iot-06-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q13",
+    "stem": "What radio modulation technique is used by the LoRa physical layer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Orthogonal Frequency Division Multiplexing (OFDM)"
+      },
+      {
+        "id": "b",
+        "text": "Amplitude Modulation (AM)"
+      },
+      {
+        "id": "c",
+        "text": "Binary Phase Shift Keying (BPSK)"
+      },
+      {
+        "id": "d",
+        "text": "Chirp Spread Spectrum (CSS)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "LoRa uses Chirp Spread Spectrum (CSS), sweeping carrier frequency linearly over time to resist interference.",
+    "noteRef": "iot-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q14",
+    "stem": "An environmental monitor is placed 12 kilometers away from the nearest LoRa gateway in a hilly forest. Which Spreading Factor should be selected to maximize receiver sensitivity?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SF12"
+      },
+      {
+        "id": "b",
+        "text": "SF7"
+      },
+      {
+        "id": "c",
+        "text": "SF4"
+      },
+      {
+        "id": "d",
+        "text": "SF1"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "SF12 provides maximum spreading, decoding signals down to -20dB below noise floor at the cost of slow throughput.",
+    "noteRef": "iot-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-06-q15",
+    "stem": "How many chips represent one symbol in a LoRa transmission configured with Spreading Factor SF7?",
+    "options": [
+      {
+        "id": "a",
+        "text": "7"
+      },
+      {
+        "id": "b",
+        "text": "128"
+      },
+      {
+        "id": "c",
+        "text": "64"
+      },
+      {
+        "id": "d",
+        "text": "256"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Chips per symbol = 2^SF = 2^7 = 128 chips.",
+    "noteRef": "iot-06-lo04",
+    "verify": "(2 ** 7 === 128)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q16",
+    "stem": "Why does increasing LoRa Spreading Factor from SF7 to SF12 increase battery consumption for a fixed-size payload?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Higher SF requires charging the battery to higher voltages."
+      },
+      {
+        "id": "b",
+        "text": "SF12 disables sleep modes permanently."
+      },
+      {
+        "id": "c",
+        "text": "Higher spreading factors dramatically increase packet on-air transmission time (by up to ~30x), keeping the power-hungry RF power amplifier on much longer."
+      },
+      {
+        "id": "d",
+        "text": "Because the antenna resistance increases."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Symbol duration doubles with each SF step; a packet taking 40ms on SF7 takes >1000ms on SF12, consuming 30x more energy.",
+    "noteRef": "iot-06-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q17",
+    "stem": "Which LoRaWAN device class is optimized for the lowest power consumption by opening receive windows only after transmitting an uplink?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Class B"
+      },
+      {
+        "id": "b",
+        "text": "Class C"
+      },
+      {
+        "id": "c",
+        "text": "Class D"
+      },
+      {
+        "id": "d",
+        "text": "Class A"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Class A is strictly uplink-driven; receive slots open only after transmissions, allowing deep sleep at all other times.",
+    "noteRef": "iot-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q18",
+    "stem": "An engineer configures a LoRaWAN sensor in Europe (868 MHz band) where regulations enforce a 1% duty cycle. If the packet airtime is 500ms, what is the minimum interval between successive transmissions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50 seconds"
+      },
+      {
+        "id": "b",
+        "text": "5 seconds"
+      },
+      {
+        "id": "c",
+        "text": "1 second"
+      },
+      {
+        "id": "d",
+        "text": "10 minutes"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Airtime / Interval <= 0.01 -> Interval >= 0.5s / 0.01 = 50 seconds.",
+    "noteRef": "iot-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-06-q19",
+    "stem": "Which of the following keys and identifiers are required to perform an Over-The-Air Activation (OTAA) Join in LoRaWAN 1.0.x?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Device EUI (DevEUI) unique hardware address"
+      },
+      {
+        "id": "b",
+        "text": "Application / Join EUI (JoinEUI)"
+      },
+      {
+        "id": "c",
+        "text": "Application Key (AppKey) 128-bit root secret"
+      },
+      {
+        "id": "d",
+        "text": "Wi-Fi WPA2 password"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "DevEUI, JoinEUI, and AppKey are the three cryptographic identities used in the OTAA Join handshake.",
+    "noteRef": "iot-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q20",
+    "stem": "Why is Over-The-Air Activation (OTAA) strongly preferred over Activation By Personalization (ABP) in production LoRaWAN deployments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "OTAA does not require a gateway."
+      },
+      {
+        "id": "b",
+        "text": "OTAA dynamically derives fresh session keys (NwkSKey and AppSKey) upon join, prevents replay attacks via JoinNonce, and allows remote re-keying."
+      },
+      {
+        "id": "c",
+        "text": "OTAA transmits 100 times faster."
+      },
+      {
+        "id": "d",
+        "text": "ABP devices cannot run on batteries."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "OTAA uses cryptographic nonces to generate dynamic session keys, eliminating replay attacks and static key leakage.",
+    "noteRef": "iot-06-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q21",
+    "stem": "What physical and MAC layer standard forms the foundation of Zigbee and Thread wireless networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IEEE 802.11"
+      },
+      {
+        "id": "b",
+        "text": "IEEE 802.3"
+      },
+      {
+        "id": "c",
+        "text": "IEEE 802.15.4"
+      },
+      {
+        "id": "d",
+        "text": "Bluetooth v5.0"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "IEEE 802.15.4 specifies the physical and MAC layers for low-rate wireless personal area networks.",
+    "noteRef": "iot-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q22",
+    "stem": "A smart home startup chooses Thread over Zigbee for their new IoT lighting products. What primary architectural feature does Thread provide natively?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Support for 4K video streaming."
+      },
+      {
+        "id": "b",
+        "text": "100-kilometer radio transmission."
+      },
+      {
+        "id": "c",
+        "text": "Elimination of all wireless security."
+      },
+      {
+        "id": "d",
+        "text": "Native end-to-end IPv6 addressing via 6LoWPAN, allowing direct IP routing to cloud servers without translation gateways."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Thread implements 6LoWPAN, granting every mesh device a native IPv6 address without translation middleboxes.",
+    "noteRef": "iot-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-06-q23",
+    "stem": "Which of the following node roles exist within a standard Zigbee wireless mesh network?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zigbee Coordinator (starts the network and manages security keys)"
+      },
+      {
+        "id": "b",
+        "text": "Zigbee Router (mains-powered node forwarding packets across the mesh)"
+      },
+      {
+        "id": "c",
+        "text": "Zigbee End Device (sleepy battery-operated sensor node)"
+      },
+      {
+        "id": "d",
+        "text": "Cellular Base Station"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Zigbee topologies comprise one Coordinator, multiple Routers, and low-power End Devices.",
+    "noteRef": "iot-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q24",
+    "stem": "What is Matter in the modern smart home IoT ecosystem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An open, royalty-free application-layer connectivity standard running on top of Wi-Fi, Ethernet, and Thread to ensure cross-vendor smart home interoperability."
+      },
+      {
+        "id": "b",
+        "text": "A physical battery manufacturing chemical."
+      },
+      {
+        "id": "c",
+        "text": "A replacement for physical copper wire."
+      },
+      {
+        "id": "d",
+        "text": "A proprietary Apple-only protocol."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Matter unifies smart home devices across Apple, Google, Amazon, and others over Thread and Wi-Fi.",
+    "noteRef": "iot-06-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q25",
+    "stem": "What is the carrier channel bandwidth allocated to a Narrowband IoT (NB-IoT) carrier?",
+    "options": [
+      {
+        "id": "a",
+        "text": "20 MHz"
+      },
+      {
+        "id": "b",
+        "text": "200 kHz"
+      },
+      {
+        "id": "c",
+        "text": "1.4 MHz"
+      },
+      {
+        "id": "d",
+        "text": "5 GHz"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "NB-IoT uses a narrow 200 kHz carrier slice, equivalent to one standard GSM channel or LTE resource block.",
+    "noteRef": "iot-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q26",
+    "stem": "A utility company installs 10,000 smart water meters located inside deep basement concrete pits. Which cellular technology is best suited for penetrating thick walls and soil?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5G mmWave."
+      },
+      {
+        "id": "b",
+        "text": "Bluetooth Low Energy."
+      },
+      {
+        "id": "c",
+        "text": "NB-IoT (with its +20dB link budget gain over conventional GSM)."
+      },
+      {
+        "id": "d",
+        "text": "Home Wi-Fi."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "NB-IoT achieves extraordinary link margins through repeated retransmissions and narrowband power concentration.",
+    "noteRef": "iot-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-06-q27",
+    "stem": "What is Power Saving Mode (PSM) in 3GPP Cellular IoT standards?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Turning off the cell tower."
+      },
+      {
+        "id": "b",
+        "text": "Charging the battery from radio waves."
+      },
+      {
+        "id": "c",
+        "text": "Reducing SIM card physical size."
+      },
+      {
+        "id": "d",
+        "text": "A deep sleep mode where the modem stays registered with the cellular network while drawing microamps without radio reception."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "PSM keeps the device registered in the core network while sleeping for days, eliminating reconnection overhead.",
+    "noteRef": "iot-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q28",
+    "stem": "Why is LTE-M (Cat-M1) preferred over NB-IoT for real-time asset tracking on moving delivery trucks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "LTE-M supports seamless connected-mode cell handover during motion, whereas NB-IoT drops and reconnects when switching cell towers."
+      },
+      {
+        "id": "b",
+        "text": "LTE-M does not require a SIM card."
+      },
+      {
+        "id": "c",
+        "text": "NB-IoT only functions in outer space."
+      },
+      {
+        "id": "d",
+        "text": "LTE-M operates on solar power directly."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "LTE-M supports full mobility and cell handover; NB-IoT requires re-attaching when leaving a cell sector.",
+    "noteRef": "iot-06-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-06-q29",
+    "stem": "According to the Friis transmission equation, how does received signal power (Pr) scale with distance (d) in free space?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pr increases linearly with distance (d)."
+      },
+      {
+        "id": "b",
+        "text": "Pr is inversely proportional to the square of distance (1 / d^2)."
+      },
+      {
+        "id": "c",
+        "text": "Pr is completely independent of distance."
+      },
+      {
+        "id": "d",
+        "text": "Pr is proportional to d^4."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Free-space path loss dictates that received signal power decays with the inverse square of distance ($1/d^2$).",
+    "noteRef": "iot-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q30",
+    "stem": "An engineer needs to transmit 500 KB firmware updates over the air in under 5 seconds to a smart meter located 10 meters away. Which wireless technology must be chosen?",
+    "options": [
+      {
+        "id": "a",
+        "text": "LoRaWAN operating at SF12 (250 bps)."
+      },
+      {
+        "id": "b",
+        "text": "Zigbee End Device."
+      },
+      {
+        "id": "c",
+        "text": "Wi-Fi (providing 10-54+ Mbps throughput)."
+      },
+      {
+        "id": "d",
+        "text": "Sub-GHz 100 baud FSK."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "500 KB in 5 seconds requires >800 kbps data rate, which only Wi-Fi (or high-speed BLE) can deliver.",
+    "noteRef": "iot-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-06-q31",
+    "stem": "Which of the following physical characteristics apply to Sub-GHz radio frequencies (e.g. 868 MHz) compared to 2.4 GHz frequencies?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Lower free-space path loss over distance"
+      },
+      {
+        "id": "b",
+        "text": "Superior penetration through solid walls and concrete obstacles"
+      },
+      {
+        "id": "c",
+        "text": "Physically larger quarter-wave antenna size (~8.6 cm vs ~3.1 cm)"
+      },
+      {
+        "id": "d",
+        "text": "Higher maximum theoretical data bandwidth"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Sub-GHz achieves lower path loss and better penetration with longer antennas; higher bandwidth belongs to 2.4GHz.",
+    "noteRef": "iot-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q32",
+    "stem": "What principle from the Shannon-Hartley theorem explains why LoRa can decode signals below the thermal noise floor (-20 dB SNR)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Noise does not exist in sub-GHz bands."
+      },
+      {
+        "id": "b",
+        "text": "LoRa uses quantum entanglement."
+      },
+      {
+        "id": "c",
+        "text": "Shannon's theorem only applies to copper wires."
+      },
+      {
+        "id": "d",
+        "text": "Trading channel bandwidth for signal-to-noise ratio: spreading a narrow information bit across a wide frequency chirp bandwidth allows signal reconstruction even when noise exceeds signal amplitude."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Spread spectrum techniques spread narrow data over wide bandwidth, extracting signals from noise via correlation.",
+    "noteRef": "iot-06-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-06-q33",
+    "stem": "What target characteristic impedance is universally standard for RF transmission lines connecting transceiver ICs to antennas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50 Ohms"
+      },
+      {
+        "id": "b",
+        "text": "75 Ohms"
+      },
+      {
+        "id": "c",
+        "text": "10k Ohms"
+      },
+      {
+        "id": "d",
+        "text": "0 Ohms"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "50 Ohms is the universal standard for RF microstrip traces, balancing power handling and signal attenuation.",
+    "noteRef": "iot-06-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-06-q34",
+    "stem": "A prototype IoT PCB achieves an antenna VSWR (Voltage Standing Wave Ratio) of 4.5:1. What problem does this indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The antenna is working with 100% efficiency."
+      },
+      {
+        "id": "b",
+        "text": "Severe RF impedance mismatch causing massive power reflection back into the transceiver, drastically cutting range and risking damage to the amplifier."
+      },
+      {
+        "id": "c",
+        "text": "The battery is fully charged."
+      },
+      {
+        "id": "d",
+        "text": "The board is ready for commercial shipment."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "VSWR > 2.0 indicates poor matching; 4.5:1 reflects over 40% of RF power back, degrading range severely.",
+    "noteRef": "iot-06-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-06-q35",
+    "stem": "Which regulatory compliance bodies govern radio frequency emissions and spectrum licensing for commercial IoT devices?",
+    "options": [
+      {
+        "id": "a",
+        "text": "FCC (Federal Communications Commission) in the United States"
+      },
+      {
+        "id": "b",
+        "text": "CE / RED (Radio Equipment Directive) in the European Union"
+      },
+      {
+        "id": "c",
+        "text": "WPC (Wireless Planning & Coordination) in India"
+      },
+      {
+        "id": "d",
+        "text": "W3C (World Wide Web Consortium)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "FCC (US), CE (Europe), and WPC (India) enforce national RF emissions standards; W3C manages web standards.",
+    "noteRef": "iot-06-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-06-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-06-q36",
+    "stem": "Why are Pi-matching filter networks (shunt capacitor - series inductor - shunt capacitor) incorporated between the RF pin and antenna?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To calculate mathematical Pi."
+      },
+      {
+        "id": "b",
+        "text": "To eliminate the need for an antenna."
+      },
+      {
+        "id": "c",
+        "text": "To tune out parasitic PCB reactances and transform complex load impedance cleanly into a pure 50-Ohm resistive match."
+      },
+      {
+        "id": "d",
+        "text": "To convert DC into AC."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Pi-networks provide flexible impedance transformation to tune antennas to 50 Ohms across real PCB substrates.",
+    "noteRef": "iot-06-lo09",
+    "reviewed": false
+  }
+]

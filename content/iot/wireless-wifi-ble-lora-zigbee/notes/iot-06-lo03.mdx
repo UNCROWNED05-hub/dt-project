@@ -1,0 +1,55 @@
+---
+loId: "iot-06-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+BLE peripherals communicate asynchronously through broadcast advertisements and push data streams:
+1. BLE Advertising: Peripherals broadcast small Advertising Data Packets (up to 31 bytes) across three dedicated RF channels (37, 38, 39). Packets contain device name, flags, and advertised Service UUIDs. Increasing the advertising interval (e.g., from $20\text{ms}$ to $1000\text{ms}$) slashes standby power consumption by over $90\%$.
+2. Notifications vs. Indications:
+   - Notifications: The server pushes updated characteristic values to connected clients without waiting for an acknowledgment. Fast, lightweight, low-power, but packets can be dropped under heavy RF interference.
+   - Indications: The server pushes data and requires an explicit link-layer acknowledgment from the client before sending the next packet. Guarantees delivery at the cost of higher latency and power.
+3. Client Characteristic Configuration Descriptor (CCCD, UUID `0x2902`): A client must write `0x0001` into this 2-byte descriptor to explicitly subscribe to notifications on that characteristic.
+
+### Worked Example
+ESP32 BLE Server sending periodic notifications in Arduino C++:
+```cpp
+#include <BLEDevice.h>
+#include <BLEServer.h>
+#include <BLE2902.h>
+
+#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
+#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+
+BLECharacteristic *pCharacteristic;
+bool deviceConnected = false;
+
+void setup() {
+  BLEDevice::init("ESP32_Sensor");
+  BLEServer *pServer = BLEDevice::createServer();
+  BLEService *pService = pServer->createService(SERVICE_UUID);
+
+  pCharacteristic = pService->createCharacteristic(
+                      CHARACTERISTIC_UUID,
+                      BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_NOTIFY
+                    );
+  pCharacteristic->addDescriptor(new BLE2902());
+  pService->start();
+  pServer->getAdvertising()->start();
+}
+
+void notify_temperature(float temp) {
+  char buf[8];
+  snprintf(buf, sizeof(buf), "%.1f", temp);
+  pCharacteristic->setValue(buf);
+  pCharacteristic->notify();
+}
+```
+
+### Common Mistake
+Polling a BLE characteristic continuously via rapid Read requests from a smartphone app; polling drains peripheral battery rapidly. Always subscribe to Notifications so the peripheral pushes updates only when values change.
+
+### Check Yourself
+What is the difference between a BLE Notification and a BLE Indication?

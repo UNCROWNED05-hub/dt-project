@@ -1,0 +1,39 @@
+---
+loId: "iot-07-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+The Constrained Application Protocol (CoAP, RFC 7252) brings the RESTful web architecture to microcontrollers over UDP:
+1. REST over UDP Architecture:
+   Unlike MQTT (which runs over connection-oriented TCP), CoAP operates over lightweight User Datagram Protocol (UDP). It eliminates TCP handshake overhead, connection state tables, and heavy keep-alive packets, making it ideal for sleepy devices and satellite links.
+2. Compact 4-Byte Binary Header:
+   CoAP replaces verbose ASCII HTTP headers with a fixed 4-byte binary header specifying Version, Message Type, Code (e.g., `0.01 GET`, `0.02 POST`, `2.05 Content`), and Message ID.
+3. Message Reliability Types:
+   - Confirmable (CON): Requires an immediate Acknowledgment (ACK) response with matching Message ID; automatically re-transmits with exponential backoff if lost.
+   - Non-Confirmable (NON): Fire-and-forget datagram without acknowledgment.
+4. CoAP Observe (RFC 7641):
+   Allows a client to register interest in a resource (e.g., `GET /sensors/temp` with Observe option). The CoAP server autonomously pushes state updates whenever the resource changes, effectively synthesizing pub/sub over UDP.
+
+### Worked Example
+CoAP 4-byte header structure:
+```text
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Ver| T |  TKL  |      Code     |          Message ID           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   Ver = 2 bits (CoAP version 1)
+   T   = 2 bits (Type: CON=0, NON=1, ACK=2, RST=3)
+   TKL = 4 bits (Token Length: 0-8 bytes)
+   Code = 8 bits (Class.Detail, e.g. 0.01 for GET, 2.05 for Content)
+   Message ID = 16 bits (Deduplication and ACK correlation)
+```
+
+### Common Mistake
+Using CoAP over networks with strict stateful firewalls that aggressively drop unsolicited inbound UDP packets, blocking CoAP Observe notifications.
+
+### Check Yourself
+What primary network layer difference distinguishes CoAP (UDP-based) from MQTT (TCP-based)?

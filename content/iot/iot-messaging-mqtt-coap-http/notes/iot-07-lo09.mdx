@@ -1,0 +1,41 @@
+---
+loId: "iot-07-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Deploying an on-premise message broker ensures low-latency, private IoT data distribution without dependency on third-party cloud infrastructure:
+1. Eclipse Mosquitto: A lightweight, open-source C implementation of an MQTT broker supporting MQTT v3.1.1 and v5.0. Consumes less than 10MB of RAM, making it suitable for Raspberry Pi, edge gateways, or cloud servers.
+2. Core Configuration (`mosquitto.conf`):
+   - `listener 1883 0.0.0.0`: Binds the broker to listen for unencrypted connections across all network interfaces.
+   - `allow_anonymous false`: Disables anonymous logins, enforcing authentication.
+   - `password_file /etc/mosquitto/passwd`: Points to the hashed password database generated via `mosquitto_passwd`.
+3. Command-Line Testing Tools:
+   - `mosquitto_sub`: Subscribes to topics and displays incoming streams in real time.
+   - `mosquitto_pub`: Publishes test messages to verify network delivery.
+
+### Worked Example
+Docker Compose file deploying a local Mosquitto broker:
+```yaml
+version: '3.8'
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: local-mqtt-broker
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+```
+
+### Common Mistake
+Deploying Mosquitto v2.0+ with default configuration and expecting external network devices to connect; Mosquitto 2.x defaults to listening only on `127.0.0.1` and rejects remote connections unless an explicit `listener` is configured in `mosquitto.conf`.
+
+### Check Yourself
+What configuration directive must be declared in `mosquitto.conf` to allow remote network devices to connect on port 1883?

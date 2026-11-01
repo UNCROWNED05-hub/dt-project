@@ -1,0 +1,35 @@
+---
+loId: "iot-06-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Deploying custom RF hardware requires impedance-matched antenna layouts and adherence to international electromagnetic compatibility (EMC) regulations:
+1. Characteristic Impedance Matching ($50\,\Omega$):
+   Microstrip transmission lines connecting the radio transceiver IC to the antenna must maintain a precise $50\,\Omega$ characteristic impedance. Impedance mismatches create signal reflections measured by the Voltage Standing Wave Ratio (VSWR). A VSWR $>2.0$ reflects significant RF power back into the transceiver, burning the final power amplifier stage and cutting range.
+2. Pi-Matching Networks: A three-component matching filter (inductors and capacitors in a Pi configuration) is placed between transceiver and antenna to tune out complex parasitic reactances on prototype PCBs.
+3. Regulatory Certification (FCC, CE, WPC):
+   - Unlicensed ISM Bands: Frequencies reserved for Industrial, Scientific, and Medical use (2.4GHz global, 868MHz Europe, 915MHz North America, 865-867MHz India).
+   - Spurious Emissions: Transmitters must comply with strict out-of-band harmonic emission limits to prevent interfering with aviation and mobile communications.
+
+### Worked Example
+Evaluating Voltage Standing Wave Ratio (VSWR) from reflection coefficient in Python:
+```python
+def calculate_vswr(reflection_coefficient):
+    gamma = abs(reflection_coefficient)
+    if gamma >= 1.0:
+        return float('inf')
+    vswr = (1.0 + gamma) / (1.0 - gamma)
+    return round(vswr, 2)
+
+# Testing matching network with reflection coefficient Gamma = 0.1
+print(f"Antenna VSWR: {calculate_vswr(0.1)}") # 1.22:1 (Excellent RF match)
+```
+
+### Common Mistake
+Running digital or high-speed SPI traces directly under an unshielded PCB trace antenna, coupling high-frequency digital clock harmonics directly into the radio front-end and desensitizing the receiver.
+
+### Check Yourself
+What is the ideal characteristic impedance target for RF traces connecting a transceiver to an antenna?

@@ -1,0 +1,39 @@
+---
+loId: "iot-07-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Message Queuing Telemetry Transport (MQTT) is an OASIS standard binary publish/subscribe messaging protocol designed by IBM and Arcom for resource-constrained remote telemetry:
+1. The Publish/Subscribe Model:
+   Replaces rigid client-server connections with a decoupled broker-mediated topology:
+   - Publishers: Devices that collect sensor telemetry and publish messages to named topic strings without knowing who will receive them.
+   - Subscribers: Client applications or backend databases that register interest in specific topics to receive incoming messages.
+   - Message Broker: The central routing engine (e.g., Mosquitto, EMQX, HiveMQ) that receives all published packets, filters them by topic, and dispatches them to matching subscribed clients.
+2. The Three Decoupling Dimensions:
+   - Space Decoupling: Publisher and subscriber do not need to know each other's IP address or hostname.
+   - Time Decoupling: Publisher and subscriber do not need to be online at the same time (supported via QoS and retained messages).
+   - Synchronization Decoupling: Publishing operations are non-blocking; devices publish and immediately resume local execution without waiting for subscriber processing.
+
+### Worked Example
+Publish/subscribe broker distribution in Python using `paho-mqtt`:
+```python
+import paho.mqtt.client as mqtt
+
+# Publisher node
+client = mqtt.Client()
+client.connect("broker.hivemq.com", 1883, 60)
+
+# Publish temperature payload to topic
+client.publish("factory/sensor01/temperature", payload="24.8", qos=1)
+client.disconnect()
+print("Telemetry published successfully!")
+```
+
+### Common Mistake
+Attempting to establish direct TCP peer-to-peer connections between 1,000 battery-operated sensor nodes; without a central pub/sub broker, managing $N \times N$ dynamic IP addresses across roaming nodes is impossible.
+
+### Check Yourself
+What are the three dimensions of architectural decoupling provided by the MQTT publish/subscribe model?

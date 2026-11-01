@@ -1,0 +1,37 @@
+---
+loId: "iot-06-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+When assets roam across continents or operate outside private Wi-Fi and LoRa gateways, Cellular IoT provides universal, licensed-spectrum connectivity:
+1. Narrowband IoT (NB-IoT / LTE Cat-NB1 & Cat-NB2):
+   - Bandwidth: Operates within a tiny $200\text{kHz}$ carrier slice (often deployed in LTE guard bands).
+   - Throughput: Low data rates ($sim 20-100\text{kbps}$).
+   - Propagation: Excellent deep indoor and underground penetration ($+20\text{dB}$ link margin over standard GSM). Optimized for stationary meters (water, gas).
+2. LTE-M (Cat-M1):
+   - Bandwidth: $1.4\text{MHz}$ carrier channel delivering up to $1\text{Mbps}$.
+   - Mobility: Supports full cell handover during movement, voice calls (VoLTE), and higher throughput. Ideal for vehicle fleet tracking and asset logistics.
+3. Energy Conservation Mechanisms:
+   - Power Saving Mode (PSM): The cellular modem enters a deep sleep state where it completely disconnects from the RF carrier for hours or days while remaining registered with the mobile network core, drawing $<5\mu\text{A}$.
+   - extended Discontinuous Reception (eDRX): Extends paging listening intervals up to 40 minutes, reducing paging receiver wakeups.
+
+### Worked Example
+Configuring NB-IoT modem via standard 3GPP AT commands over UART:
+```text
+AT+CPIN?              // Check SIM card PIN status -> +CPIN: READY
+AT+CSQ                // Check signal quality (RSSI) -> +CSQ: 24,99
+AT+CGATT=1            // Attach to cellular packet service -> OK
+AT+CPSMS=1,,,"00100001","00000100" // Configure PSM timer (Periodic TAU 1 hour, Active 8s)
+AT+CSTT="iot.carrier.com" // Configure APN
+AT+CIICR              // Bring up wireless GPRS connection
+AT+CIFSR              // Get assigned IP address -> 10.45.22.189
+```
+
+### Common Mistake
+Attempting to use standard consumer smartphone SIM cards in cellular IoT modems; consumer SIMs lack Power Saving Mode (PSM) provisioning and network operators disable SIMs that exhibit bursty M2M telemetry patterns. Always use dedicated M2M/eSIM profiles.
+
+### Check Yourself
+What is the difference between NB-IoT and LTE-M in terms of mobility and throughput?

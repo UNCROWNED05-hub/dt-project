@@ -1,0 +1,38 @@
+---
+loId: "iot-06-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+LoRa (Long Range) is a physical-layer proprietary radio modulation technology developed by Semtech that achieves multi-kilometer transmission with milliwatt power:
+1. Chirp Spread Spectrum (CSS) Physics: Instead of modulating frequency directly, LoRa transmits frequency chirps—pulses whose carrier frequency continuously sweeps linearly upwards (up-chirp) or downwards (down-chirp) across a defined bandwidth ($BW$, typically $125\text{kHz}, 250\text{kHz}$, or $500\text{kHz}$).
+2. Spreading Factor (SF7 to SF12): Dictates the number of chirps used to encode each bit of information:
+   $$2^{\text{SF}} \text{ chips per symbol}$$
+   - Lower SF (SF7): High data rate (up to $5.4\text{kbps}$), short on-air time ($<50\text{ms}$), lowest battery consumption, shortest range.
+   - Higher SF (SF12): Ultra-slow data rate ($sim 250\text{bps}$), long on-air time ($>1\text{second}$), maximum sensitivity (decoding signals down to $-20\text{dB}$ below thermal noise floor), longest range ($>15\text{km}$ line-of-sight).
+3. Link Budget & Noise Resilience: LoRa achieves link budgets exceeding $150\text{dB}$, allowing signals to be successfully reconstructed even when buried deep beneath ambient environmental radio noise.
+
+### Worked Example
+Calculating symbol duration and airtime in Python:
+```python
+def calculate_lora_symbol_time(sf, bandwidth_hz):
+    # Symbol time Ts = 2^SF / BW
+    chips_per_symbol = 2 ** sf
+    symbol_time_seconds = chips_per_symbol / bandwidth_hz
+    return round(symbol_time_seconds * 1000, 2) # in milliseconds
+
+# Compare SF7 vs SF12 at 125 kHz bandwidth
+ts_sf7 = calculate_lora_symbol_time(sf=7, bandwidth_hz=125000)
+ts_sf12 = calculate_lora_symbol_time(sf=12, bandwidth_hz=125000)
+
+print(f"SF7 Symbol Time: {ts_sf7} ms | SF12 Symbol Time: {ts_sf12} ms")
+# SF7: 1.02 ms vs SF12: 32.77 ms (32x longer airtime)
+```
+
+### Common Mistake
+Using SF12 for high-frequency sensor reporting; transmitting every 10 seconds at SF12 violates legal radio duty cycle regulations and exhausts the node's battery in weeks.
+
+### Check Yourself
+How does increasing the LoRa Spreading Factor from SF7 to SF12 impact radio range, on-air time, and data throughput?

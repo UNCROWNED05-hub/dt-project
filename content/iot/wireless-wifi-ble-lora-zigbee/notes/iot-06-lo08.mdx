@@ -1,0 +1,43 @@
+---
+loId: "iot-06-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems, LoRa Alliance, and OASIS MQTT Standards"
+---
+
+### Core Idea
+Wireless network design is governed by immutable laws of physics linking range, bandwidth, and energy consumption:
+1. The Shannon-Hartley Channel Capacity Theorem:
+   $$C = B \log_2 \left(1 + \frac{S}{N}\right)$$
+   Where $C$ is theoretical channel capacity (bits/sec), $B$ is channel bandwidth (Hz), and $\frac{S}{N}$ is the signal-to-noise power ratio. Transmitting high data rates requires either a wide frequency channel (e.g. Wi-Fi: $20\text{MHz}$) or high transmission power. Narrowband protocols (LoRa: $125\text{kHz}$, NB-IoT: $200\text{kHz}$) trade data throughput for exceptional sensitivity and multi-kilometer range.
+2. The Friis Transmission Equation (Free-Space Path Loss):
+   $$\frac{P_r}{P_t} = G_t G_r \left(\frac{\lambda}{4\pi d}\right)^2$$
+   Received power ($P_r$) decays proportionally to the square of distance ($d^2$) and wavelength squared ($\lambda^2 = \frac{c^2}{f^2}$). Lower carrier frequencies (sub-GHz: $868\text{MHz}$) suffer significantly less atmospheric attenuation and penetrate solid walls far better than $2.4\text{GHz}$ or $5\text{GHz}$ signals.
+3. Decision Rule:
+   - High speed, short range, mains power: Wi-Fi.
+   - Low speed, short range, coin cell: BLE.
+   - Low speed, long range ($>10\text{km}$), multi-year battery: LoRaWAN.
+
+### Worked Example
+Python script calculating free space path loss (FSPL) in decibels:
+```python
+import math
+
+def calculate_fspl_db(distance_km, frequency_mhz):
+    # FSPL(dB) = 20*log10(d) + 20*log10(f) + 32.44
+    fspl = 20 * math.log10(distance_km) + 20 * math.log10(frequency_mhz) + 32.44
+    return round(fspl, 2)
+
+# Compare 1km path loss at 868 MHz (LoRa) vs 2400 MHz (Wi-Fi)
+loss_lora = calculate_fspl_db(distance_km=1.0, frequency_mhz=868.0)
+loss_wifi = calculate_fspl_db(distance_km=1.0, frequency_mhz=2400.0)
+
+print(f"Path Loss at 1km: LoRa (868MHz) = {loss_lora} dB | Wi-Fi (2.4GHz) = {loss_wifi} dB")
+# LoRa suffers ~8.8 dB less path loss (nearly 8x stronger received power!)
+```
+
+### Common Mistake
+Selecting $2.4\text{GHz}$ Wi-Fi for an underground water meter sensor; high carrier frequencies attenuate drastically in soil and concrete, resulting in zero connectivity.
+
+### Check Yourself
+According to the Friis transmission equation, why do Sub-GHz radios (e.g. 868MHz) travel further than 2.4GHz radios at equivalent transmission power?
