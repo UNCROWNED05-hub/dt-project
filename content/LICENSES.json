@@ -97,5 +97,16 @@
     "dateAccessed": "2026-10-02",
     "chaptersUsedIn": ["networking-essentials-for-defenders", "linux-windows-and-the-defense-cli"],
     "notes": "Standard networking protocol specifications, packet header formats, and socket state definitions."
+  },
+  {
+    "id": "lic-10",
+    "title": "FIRST Common Vulnerability Scoring System (CVSS v3.1) Specification & MITRE ATT&CK",
+    "author": "FIRST.Org, Inc. & MITRE Corporation",
+    "url": "https://www.first.org/cvss/v3.1/specification-document",
+    "license": "Creative Commons Attribution 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "dateAccessed": "2026-10-02",
+    "chaptersUsedIn": ["malware-phishing-and-threat-intel", "vulnerability-assessment-and-lab-pentesting"],
+    "notes": "CVSS metric scoring equations, exploitability weights, and ATT&CK matrix tactics."
   }
 ]

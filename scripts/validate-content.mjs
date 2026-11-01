@@ -42,7 +42,8 @@ const VERBS = new Set([
   'compute', 'execute', 'deconstruct', 'contrast', 'prevent', 'counter',
   'architect', 'establish', 'orchestrate', 'instrument', 'triage',
   'filter', 'aggregate', 'plot', 'standardize', 'address', 'extend',
-  'maximize', 'transform', 'calibrate', 'balance', 'regularize', 'prune', 'combine'
+  'maximize', 'transform', 'calibrate', 'balance', 'regularize', 'prune', 'combine',
+  'extract', 'prioritize', 'conduct'
 ]);
 
 // Jaccard similarity for question stems
