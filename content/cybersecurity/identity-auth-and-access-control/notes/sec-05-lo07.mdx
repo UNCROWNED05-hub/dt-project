@@ -1,0 +1,39 @@
+---
+loId: "sec-05-lo07"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Privilege escalation occurs when an attacker gains permissions beyond those intended:
+1. Vertical Privilege Escalation: A standard user elevates their privileges to a higher-level role, such as escalating from an unprivileged web account to system administrator (root or SYSTEM).
+2. Horizontal Privilege Escalation: A user accesses data or functions belonging to another user with identical privilege levels (e.g. Insecure Direct Object References, IDOR, where modifying user_id=101 to user_id=102 exposes another customer's invoice).
+
+### Worked Example
+Demonstrating an Insecure Direct Object Reference (IDOR) horizontal escalation flaw:
+```python
+# Vulnerable server endpoint logic:
+invoices = {
+    101: {"owner": "alice", "amount": "$450"},
+    102: {"owner": "bob", "amount": "$900"}
+}
+
+def insecure_get_invoice(authenticated_user, requested_invoice_id):
+    # Flaw: returns data without verifying ownership!
+    return invoices.get(requested_invoice_id, "Not found")
+
+def secure_get_invoice(authenticated_user, requested_invoice_id):
+    invoice = invoices.get(requested_invoice_id)
+    if not invoice or invoice["owner"] != authenticated_user:
+        return "403 Forbidden: Unauthorized access"
+    return invoice
+
+print("Insecure result:", insecure_get_invoice("alice", 102)) # Leaks Bob's invoice!
+print("Secure result:", secure_get_invoice("alice", 102))     # Blocked!
+```
+
+### Common Mistake
+Assuming client-side UI parameter hiding prevents horizontal privilege escalation. Adversaries inspect and modify HTTP request parameters directly in web proxies; object-level authorization must be enforced on every server-side endpoint.
+
+### Check Yourself
+What type of privilege escalation occurs when a standard user gains root or administrator capabilities? Vertical privilege escalation.

@@ -1,0 +1,31 @@
+---
+loId: "sec-04-lo03"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+A cryptographic hash function is a deterministic one-way mathematical function that maps arbitrary-length inputs to a fixed-size digest (e.g., SHA-256 outputs 256 bits). Essential security properties include:
+1. Pre-image resistance: Computationally infeasible to reverse engineer input x from hash h(x).
+2. Second pre-image resistance: Given x1, infeasible to find a distinct x2 such that h(x1) = h(x2).
+3. Collision resistance: Infeasible to find any two arbitrary inputs that yield the same hash digest.
+4. Avalanche effect: A 1-bit alteration in the input changes approximately 50% of output bits.
+
+### Worked Example
+Demonstrating the avalanche effect in Python with SHA-256:
+```python
+import hashlib
+
+h1 = hashlib.sha256(b"admin").hexdigest()
+h2 = hashlib.sha256(b"Admin").hexdigest()
+
+print("Hash 1 ('admin'):", h1[:16], "...")
+print("Hash 2 ('Admin'):", h2[:16], "...")
+# Changing single uppercase 'A' flips almost half the bits completely
+```
+
+### Common Mistake
+Using deprecated, cryptographically broken algorithms like MD5 or SHA-1 for digital signatures or security certificates. Known practical collision attacks allow adversaries to construct forged certificates sharing identical MD5 or SHA-1 hashes.
+
+### Check Yourself
+What security property is violated when an attacker finds two different input files that produce the exact same hash digest? Collision resistance.

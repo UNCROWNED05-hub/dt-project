@@ -1,0 +1,36 @@
+---
+loId: "sec-04-lo05"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Diffie-Hellman (DH) and Elliptic Curve Diffie-Hellman (ECDH) allow two parties to establish a shared secret over an insecure channel without transmitting the secret itself. In ephemeral ECDH (ECDHE), each party generates a temporary, single-use keypair. Alice sends public point A, Bob sends public point B. Each computes the shared coordinate S = aB = bA. Because private keys are discarded immediately after session setup, ECDHE provides Perfect Forward Secrecy (PFS): future compromise of long-term server private keys cannot decrypt previously recorded network traffic.
+
+### Worked Example
+Illustrating the Diffie-Hellman mathematical principle:
+```python
+# Conceptual modular arithmetic DH:
+g = 5    # public base
+p = 23   # public prime modulus
+
+# Alice selects private a = 6, Bob selects private b = 15
+a_priv = 6
+b_priv = 15
+
+# Exchange public values
+A_pub = (g ** a_priv) % p  # 5^6 % 23 = 8
+B_pub = (g ** b_priv) % p  # 5^15 % 23 = 19
+
+# Both independently compute shared secret S
+s_alice = (B_pub ** a_priv) % p # 19^6 % 23 = 2
+s_bob = (A_pub ** b_priv) % p   # 8^15 % 23 = 2
+
+print("Shared secret match:", s_alice == s_bob) # True (Secret is 2)
+```
+
+### Common Mistake
+Assuming plain Diffie-Hellman prevents Man-in-the-Middle (MitM) attacks on its own. Diffie-Hellman provides key exchange but lacks identity authentication; without digital signatures or certificates to authenticate the exchange, an active attacker can negotiate separate keys with each side.
+
+### Check Yourself
+What security guarantee ensures that past recorded encrypted sessions cannot be decrypted if the server's private certificate is compromised in the future? Perfect Forward Secrecy (PFS).

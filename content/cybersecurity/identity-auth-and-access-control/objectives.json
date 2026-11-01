@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "chapterId": "sec-05",
+  "objectives": [
+    {
+      "id": "sec-05-lo01",
+      "order": 1,
+      "title": "Classify authentication factors across knowledge, possession, and inherence",
+      "bloom": "classify",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "authentication factors",
+        "knowledge",
+        "possession",
+        "inherence"
+      ],
+      "aliases": [
+        "auth categories",
+        "three factors of auth"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-05-lo02",
+      "order": 2,
+      "title": "Evaluate Multi-Factor Authentication (MFA) mechanisms and bypass attacks",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "mfa",
+        "totp",
+        "sms 2fa",
+        "push fatigue",
+        "sim swapping"
+      ],
+      "aliases": [
+        "2fa methods",
+        "mfa fatigue attack"
+      ],
+      "prerequisites": [
+        "sec-05-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-05-lo03",
+      "order": 3,
+      "title": "Implement secure password hashing using salting and key stretching (Argon2, bcrypt)",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "password hashing",
+        "salt",
+        "bcrypt",
+        "argon2",
+        "key stretching",
+        "work factor"
+      ],
+      "aliases": [
+        "credential hashing",
+        "password storage"
+      ],
+      "prerequisites": [
+        "sec-04-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-05-lo04",
+      "order": 4,
+      "title": "Compare federated identity protocols: SAML, OAuth 2.0, and OpenID Connect (OIDC)",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "saml",
+        "oauth 2.0",
+        "oidc",
+        "sso",
+        "identity federation"
+      ],
+      "aliases": [
+        "federated auth",
+        "single sign-on"
+      ],
+      "prerequisites": [
+        "sec-05-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-05-lo05",
+      "order": 5,
+      "title": "Differentiate access control models (DAC, MAC, RBAC, ABAC)",
+      "bloom": "differentiate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "dac",
+        "mac",
+        "rbac",
+        "abac",
+        "access control models"
+      ],
+      "aliases": [
+        "authorization models",
+        "role-based access control"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-05-lo06",
+      "order": 6,
+      "title": "Apply the principle of least privilege across operational roles",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "least privilege",
+        "privilege separation",
+        "just-in-time access"
+      ],
+      "aliases": [
+        "minimal privilege",
+        "privilege scoping"
+      ],
+      "prerequisites": [
+        "sec-05-lo05"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-05-lo07",
+      "order": 7,
+      "title": "Analyze horizontal and vertical privilege escalation vectors",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "privilege escalation",
+        "vertical escalation",
+        "horizontal escalation",
+        "idor"
+      ],
+      "aliases": [
+        "elevation of privilege",
+        "lateral account takeover"
+      ],
+      "prerequisites": [
+        "sec-05-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-05-lo08",
+      "order": 8,
+      "title": "Audit session management, token lifecycles, and JWT security",
+      "bloom": "audit",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "jwt",
+        "session management",
+        "token expiration",
+        "refresh token"
+      ],
+      "aliases": [
+        "json web token",
+        "token lifecycle"
+      ],
+      "prerequisites": [
+        "sec-04-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-05-lo09",
+      "order": 9,
+      "title": "Configure FIDO2 and WebAuthn hardware security keys",
+      "bloom": "configure",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "fido2",
+        "webauthn",
+        "passkeys",
+        "hardware security keys",
+        "phishing-resistant"
+      ],
+      "aliases": [
+        "phishing resistant mfa",
+        "yubikey authentication"
+      ],
+      "prerequisites": [
+        "sec-05-lo02"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

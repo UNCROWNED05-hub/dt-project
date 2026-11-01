@@ -1,0 +1,1062 @@
+[
+  {
+    "loId": "sec-05-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q01",
+    "stem": "Which of the following represents an authentication factor from the 'Inherence' category?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Retinal scan or fingerprint biometric"
+      },
+      {
+        "id": "b",
+        "text": "A complex alphanumeric password"
+      },
+      {
+        "id": "c",
+        "text": "A hardware smartcard"
+      },
+      {
+        "id": "d",
+        "text": "A 6-digit SMS verification code"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Inherence represents biological or physiological characteristics (something you are) such as fingerprints or retinal scans.",
+    "noteRef": "sec-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q02",
+    "stem": "An enterprise login portal requires employees to enter their domain password and answer a pre-configured security question ('What was your first car?'). Does this meet the standard for Multi-Factor Authentication (MFA)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, because two distinct questions were answered."
+      },
+      {
+        "id": "b",
+        "text": "No, both credentials belong to the same category: knowledge factors (something you know)."
+      },
+      {
+        "id": "c",
+        "text": "Yes, because security questions are stored as cryptographic hashes."
+      },
+      {
+        "id": "d",
+        "text": "No, because passwords cannot be combined with text."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "True MFA requires distinct factor categories (e.g. knowledge + possession). Two knowledge secrets do not constitute MFA.",
+    "noteRef": "sec-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-05-q03",
+    "stem": "Which of the following combinations qualify as valid two-factor authentication (two distinct factor categories)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Password (knowledge) + Hardware security key (possession)"
+      },
+      {
+        "id": "b",
+        "text": "Smartcard (possession) + Fingerprint scan (inherence)"
+      },
+      {
+        "id": "c",
+        "text": "Password (knowledge) + TOTP authenticator app (possession)"
+      },
+      {
+        "id": "d",
+        "text": "Password (knowledge) + Security PIN (knowledge)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Combinations across knowledge, possession, and inherence are valid MFA. Password + PIN uses only knowledge factors.",
+    "noteRef": "sec-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q04",
+    "stem": "Why are security questions (e.g., 'What was your mother's maiden name?') considered weak authentication credentials?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They require special cryptographic hardware to evaluate."
+      },
+      {
+        "id": "b",
+        "text": "They expire every 30 seconds like TOTP."
+      },
+      {
+        "id": "c",
+        "text": "Answers are static facts often discoverable through public records, social engineering, or social media profiling."
+      },
+      {
+        "id": "d",
+        "text": "They violate relational database normalization rules."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Biographical details are easily researched by adversaries through open-source intelligence (OSINT).",
+    "noteRef": "sec-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q05",
+    "stem": "What attack involves deceiving a mobile carrier into porting a victim's phone number to an attacker-controlled device to intercept 2FA codes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Push Bombing"
+      },
+      {
+        "id": "b",
+        "text": "SYN Flooding"
+      },
+      {
+        "id": "c",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "SIM Swapping"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "SIM swapping tricks telecom support into reassigning the victim's phone number to intercept SMS codes.",
+    "noteRef": "sec-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q06",
+    "stem": "An employee receives 50 consecutive mobile push notifications at 3:00 AM asking to approve an enterprise login. Annoyed, they tap 'Approve'. What attack succeeded?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MFA Fatigue (Push Bombing)"
+      },
+      {
+        "id": "b",
+        "text": "Credential Stuffing"
+      },
+      {
+        "id": "c",
+        "text": "DNS Cache Poisoning"
+      },
+      {
+        "id": "d",
+        "text": "Buffer Overflow"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "MFA fatigue overwhelms users with push alerts until they inadvertently approve access to silence the notifications.",
+    "noteRef": "sec-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-05-q07",
+    "stem": "What is the standard time-step window (in seconds) used by RFC 6238 Time-based One-Time Password (TOTP) generators?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60"
+      },
+      {
+        "id": "b",
+        "text": "30"
+      },
+      {
+        "id": "c",
+        "text": "15"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Standard TOTP authenticators regenerate a new 6-digit code every 30 seconds.",
+    "noteRef": "sec-05-lo02",
+    "verify": "(30 === 30)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q08",
+    "stem": "How does modern reverse-proxy phishing (such as Evilginx) defeat standard TOTP multi-factor authentication?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It decrypts the server's master TOTP seed using quantum factoring."
+      },
+      {
+        "id": "b",
+        "text": "It resets the victim's phone clock."
+      },
+      {
+        "id": "c",
+        "text": "It proxies the login in real-time, capturing the valid OTP code, submitting it to the real service, and stealing the resulting session cookies."
+      },
+      {
+        "id": "d",
+        "text": "It intercepts cellular radio frequencies directly."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A reverse proxy relays real-time authentication exchanges, capturing the authenticated session cookie.",
+    "noteRef": "sec-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q09",
+    "stem": "What is the primary function of adding a cryptographic salt to passwords before hashing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt the password using symmetric AES keys."
+      },
+      {
+        "id": "b",
+        "text": "To shorten passwords to fit inside 32-bit registers."
+      },
+      {
+        "id": "c",
+        "text": "To allow administrators to recover lost passwords in plaintext."
+      },
+      {
+        "id": "d",
+        "text": "To ensure that identical passwords produce distinct hashes and neutralize precomputed rainbow table attacks."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Salting ensures unique hashes for identical passwords, rendering precomputed rainbow tables useless.",
+    "noteRef": "sec-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q10",
+    "stem": "An engineering team is building a user registration system. Which algorithm is specifically recommended for secure password storage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Argon2id (or bcrypt)"
+      },
+      {
+        "id": "b",
+        "text": "SHA-256 without iterations"
+      },
+      {
+        "id": "c",
+        "text": "MD5"
+      },
+      {
+        "id": "d",
+        "text": "AES-ECB"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Argon2id and bcrypt are memory-hard, computationally intensive functions designed specifically for password hashing.",
+    "noteRef": "sec-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-05-q11",
+    "stem": "In bcrypt password hashing, increasing the cost factor (work factor) parameter from 10 to 11 has what effect on computation time?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "4"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Bcrypt work factor scales exponentially: each increment of 1 doubles (2x) the required hash computation time.",
+    "noteRef": "sec-05-lo03",
+    "verify": "(Math.pow(2, 11) / Math.pow(2, 10) === 2)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q12",
+    "stem": "Why are memory-hard algorithms like Argon2id significantly more resistant to GPU and ASIC cracking rigs than plain SHA-256?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They cannot be compiled into machine bytecode."
+      },
+      {
+        "id": "b",
+        "text": "They reject connections originating from PCI Express slots."
+      },
+      {
+        "id": "c",
+        "text": "They require large amounts of RAM per hash evaluation, saturating memory bandwidth and limiting parallel GPU threads."
+      },
+      {
+        "id": "d",
+        "text": "They generate variable-length outputs that crash GPUs."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Memory hardness limits parallel GPU/ASIC cores by creating severe memory access bottlenecks.",
+    "noteRef": "sec-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q13",
+    "stem": "What is the primary role of OpenID Connect (OIDC) relative to the OAuth 2.0 framework?",
+    "options": [
+      {
+        "id": "a",
+        "text": "OIDC replaces TCP transport with UDP."
+      },
+      {
+        "id": "b",
+        "text": "OIDC encrypts SQL database connections."
+      },
+      {
+        "id": "c",
+        "text": "OIDC eliminates the need for user passwords completely."
+      },
+      {
+        "id": "d",
+        "text": "OIDC adds an identity authentication layer and ID Token on top of OAuth 2.0 authorization."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "OAuth 2.0 is an authorization framework; OpenID Connect extends it to provide federated authentication.",
+    "noteRef": "sec-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q14",
+    "stem": "A company implements Single Sign-On (SSO) across enterprise web portals using signed XML documents exchanged between an IdP and SP. What protocol is being used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SAML 2.0"
+      },
+      {
+        "id": "b",
+        "text": "RADIUS"
+      },
+      {
+        "id": "c",
+        "text": "SNMPv3"
+      },
+      {
+        "id": "d",
+        "text": "Telnet"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Security Assertion Markup Language (SAML 2.0) uses XML assertions for enterprise federated identity.",
+    "noteRef": "sec-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-05-q15",
+    "stem": "What token in an OAuth 2.0 flow is presented by a client to access protected backend API resources on behalf of a user?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ID Token"
+      },
+      {
+        "id": "b",
+        "text": "Access Token"
+      },
+      {
+        "id": "c",
+        "text": "Kerberos TGT"
+      },
+      {
+        "id": "d",
+        "text": "X.509 Root Certificate"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The Access Token grants authorized access to specific API resources within defined scopes.",
+    "noteRef": "sec-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q16",
+    "stem": "Why is using an OAuth 2.0 Access Token as proof of user authentication a dangerous architectural antipattern?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Access Tokens cannot be verified by APIs."
+      },
+      {
+        "id": "b",
+        "text": "Access Tokens expire in less than 1 second."
+      },
+      {
+        "id": "c",
+        "text": "An Access Token only conveys delegated resource permissions, not user identity or authentication context verification."
+      },
+      {
+        "id": "d",
+        "text": "Access Tokens must be transmitted in plaintext."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Access tokens authorize resource access; without OpenID Connect ID tokens, they cannot verify identity or authentication event provenance.",
+    "noteRef": "sec-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q17",
+    "stem": "In which access control model does the resource owner have full personal discretion over granting permissions to other users?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mandatory Access Control (MAC)"
+      },
+      {
+        "id": "b",
+        "text": "Role-Based Access Control (RBAC)"
+      },
+      {
+        "id": "c",
+        "text": "Attribute-Based Access Control (ABAC)"
+      },
+      {
+        "id": "d",
+        "text": "Discretionary Access Control (DAC)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "In DAC (such as standard Linux file modes), file owners set permissions at their own discretion.",
+    "noteRef": "sec-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q18",
+    "stem": "A military system enforces access based strictly on security clearances (Secret, Top Secret) and object classification labels enforced centrally by the OS kernel. What model is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mandatory Access Control (MAC)"
+      },
+      {
+        "id": "b",
+        "text": "Discretionary Access Control (DAC)"
+      },
+      {
+        "id": "c",
+        "text": "Rule-Based Networking Control (RBNC)"
+      },
+      {
+        "id": "d",
+        "text": "Open Source Authorization (OSA)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Mandatory Access Control (MAC) enforces central classification labels regardless of user discretion (e.g. SELinux).",
+    "noteRef": "sec-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-05-q19",
+    "stem": "Which of the following attributes can be dynamically evaluated by an Attribute-Based Access Control (ABAC) policy engine?",
+    "options": [
+      {
+        "id": "a",
+        "text": "User attributes (department, clearance level)"
+      },
+      {
+        "id": "b",
+        "text": "Resource attributes (sensitivity classification, owner)"
+      },
+      {
+        "id": "c",
+        "text": "Environmental attributes (time of day, client IP geolocation)"
+      },
+      {
+        "id": "d",
+        "text": "CPU clock frequency of the client machine"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "ABAC evaluates user, resource, action, and environmental metadata to make dynamic access decisions.",
+    "noteRef": "sec-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q20",
+    "stem": "What is the primary operational advantage of Role-Based Access Control (RBAC) in an enterprise with 50,000 employees?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It prevents users from using passwords."
+      },
+      {
+        "id": "b",
+        "text": "Permissions are managed by assigning rights to roles rather than configuring thousands of individual user access lists directly."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need for network firewalls."
+      },
+      {
+        "id": "d",
+        "text": "It automatically patches software vulnerabilities."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "RBAC simplifies administrative overhead by decoupling access rights from individual user accounts into roles.",
+    "noteRef": "sec-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q21",
+    "stem": "What is the core premise of the Principle of Least Privilege?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All users should share a common administrator password."
+      },
+      {
+        "id": "b",
+        "text": "Permissions should be granted universally to avoid access tickets."
+      },
+      {
+        "id": "c",
+        "text": "Users and processes should be granted only the minimal permissions necessary to perform their assigned functions."
+      },
+      {
+        "id": "d",
+        "text": "Privileged accounts should never be logged."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Least privilege restricts rights to the bare minimum required, minimizing damage if an account is compromised.",
+    "noteRef": "sec-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q22",
+    "stem": "An automated web scraping script only needs to write logs to /var/log/scraper.log. Running the script as root violates what fundamental security concept?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Non-repudiation"
+      },
+      {
+        "id": "b",
+        "text": "Avalanche effect"
+      },
+      {
+        "id": "c",
+        "text": "Forward secrecy"
+      },
+      {
+        "id": "d",
+        "text": "Least Privilege"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Running the script as root grants total system control rather than the minimal needed file permissions.",
+    "noteRef": "sec-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-05-q23",
+    "stem": "What security control divides critical business tasks (such as authorizing and executing financial wire transfers) among separate individuals?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Separation of Duties"
+      },
+      {
+        "id": "b",
+        "text": "Mandatory Access Control"
+      },
+      {
+        "id": "c",
+        "text": "Single Sign-On"
+      },
+      {
+        "id": "d",
+        "text": "FIDO2 WebAuthn"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Separation of duties requires multiple authorized parties to complete critical actions, preventing rogue actions or single-point fraud.",
+    "noteRef": "sec-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q24",
+    "stem": "How does Just-In-Time (JIT) access management reinforce least privilege for systems administrators?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It resets server root passwords every 60 seconds."
+      },
+      {
+        "id": "b",
+        "text": "It grants elevated permissions temporarily upon verified request, automatically revoking them when the maintenance window expires."
+      },
+      {
+        "id": "c",
+        "text": "It forces administrators to use hardware keys exclusively on weekends."
+      },
+      {
+        "id": "d",
+        "text": "It disables logging during administrative sessions."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "JIT access eliminates permanent standing administrative privileges, granting rights only when needed.",
+    "noteRef": "sec-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q25",
+    "stem": "What type of privilege escalation occurs when an attacker elevates from a regular user account to full root or administrator privileges?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Horizontal Privilege Escalation"
+      },
+      {
+        "id": "b",
+        "text": "Lateral Session Hijacking"
+      },
+      {
+        "id": "c",
+        "text": "Vertical Privilege Escalation"
+      },
+      {
+        "id": "d",
+        "text": "Cross-Site Scripting"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Vertical privilege escalation involves gaining higher-level rights (e.g. standard user to root/admin).",
+    "noteRef": "sec-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q26",
+    "stem": "Alice modifies the URL from /view_statement?account_id=101 to /view_statement?account_id=102 and successfully views Bob's private statement. What vulnerability is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vertical Privilege Escalation"
+      },
+      {
+        "id": "b",
+        "text": "Cross-Site Request Forgery (CSRF)"
+      },
+      {
+        "id": "c",
+        "text": "SQL Injection"
+      },
+      {
+        "id": "d",
+        "text": "Insecure Direct Object Reference (IDOR) / Horizontal Privilege Escalation"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Viewing another user's records at the same privilege level via parameter tampering is horizontal privilege escalation / IDOR.",
+    "noteRef": "sec-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-05-q27",
+    "stem": "What is the root cause of Insecure Direct Object Reference (IDOR) vulnerabilities?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Missing server-side access control verification that the requesting user owns or is authorized to view the requested object."
+      },
+      {
+        "id": "b",
+        "text": "Failure to encrypt network traffic with TLS."
+      },
+      {
+        "id": "c",
+        "text": "Using SHA-256 for password hashing."
+      },
+      {
+        "id": "d",
+        "text": "Running web servers on port 80."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "IDOR occurs when servers retrieve objects directly from database identifiers without validating user authorization.",
+    "noteRef": "sec-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q28",
+    "stem": "How can web application developers systematically defend against horizontal privilege escalation (IDOR)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hide the ID parameter in HTML form fields."
+      },
+      {
+        "id": "b",
+        "text": "Enforce strict server-side session-to-object ownership checks on every request, or use unguessable indirect object mappings."
+      },
+      {
+        "id": "c",
+        "text": "Disable right-clicking on web pages."
+      },
+      {
+        "id": "d",
+        "text": "Store account numbers as Roman numerals."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Validating ownership against the authenticated session on every transaction prevents unauthorized access.",
+    "noteRef": "sec-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-05-q29",
+    "stem": "What are the three parts of a JSON Web Token (JWT) separated by periods?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Username, Password, and Domain"
+      },
+      {
+        "id": "b",
+        "text": "Issuer, Subject, and CA"
+      },
+      {
+        "id": "c",
+        "text": "Header, Payload, and Signature"
+      },
+      {
+        "id": "d",
+        "text": "Public Key, Private Key, and Nonce"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A JWT is composed of Header, Payload, and Signature joined by periods (header.payload.signature).",
+    "noteRef": "sec-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-05-q30",
+    "stem": "An API server accepts JWT tokens and evaluates their payload without validating the cryptographic signature. What can an attacker do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Crash the database with SQL injection."
+      },
+      {
+        "id": "b",
+        "text": "Read the server's private RSA key."
+      },
+      {
+        "id": "c",
+        "text": "Decrypt all past network traffic."
+      },
+      {
+        "id": "d",
+        "text": "Modify the payload claims (e.g. changing role to 'admin' or user_id to 1) and impersonate any user on the platform."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "If signature verification is skipped, attackers can alter payload JSON claims arbitrarily without detection.",
+    "noteRef": "sec-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-05-q31",
+    "stem": "Why should developers NEVER store sensitive plaintext secrets or credit card numbers in standard JWT payloads?",
+    "options": [
+      {
+        "id": "a",
+        "text": "JWT payloads are merely Base64URL-encoded (not encrypted) and can be easily decoded and read by anyone."
+      },
+      {
+        "id": "b",
+        "text": "JWT tokens are deleted after 10 milliseconds."
+      },
+      {
+        "id": "c",
+        "text": "Web browsers discard tokens containing numbers."
+      },
+      {
+        "id": "d",
+        "text": "It causes the token signature to fail."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Standard JWTs are signed for integrity, not encrypted for secrecy; anyone can decode Base64URL payload strings.",
+    "noteRef": "sec-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-05-q32",
+    "stem": "What standard claim in a JWT payload specifies the timestamp after which the token must be rejected as expired?",
+    "options": [
+      {
+        "id": "a",
+        "text": "'iat' (Issued At)"
+      },
+      {
+        "id": "b",
+        "text": "'exp' (Expiration Time)"
+      },
+      {
+        "id": "c",
+        "text": "'nbf' (Not Before)"
+      },
+      {
+        "id": "d",
+        "text": "'iss' (Issuer)"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The 'exp' claim holds the Unix timestamp expiration; servers must reject tokens once current time exceeds exp.",
+    "noteRef": "sec-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-05-q33",
+    "stem": "How do FIDO2 and WebAuthn hardware security keys achieve complete phishing resistance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They block incoming network packets from unknown IP subnets."
+      },
+      {
+        "id": "b",
+        "text": "They transmit biometric scans directly to Certificate Authorities."
+      },
+      {
+        "id": "c",
+        "text": "The browser cryptographically binds the authentication response to the exact website origin, refusing to authenticate on spoofed or lookalike domains."
+      },
+      {
+        "id": "d",
+        "text": "They change domain DNS records dynamically."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "FIDO2 credentials are bound to specific origin URLs; the browser enforces this, defeating reverse-proxy phishing kits.",
+    "noteRef": "sec-05-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-05-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-05-q34",
+    "stem": "A company wants to eliminate passwords entirely for employees using FIDO2 Passkeys. What cryptographic mechanism is stored on the user's authenticator device?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The user's plaintext password stored in encrypted flash memory."
+      },
+      {
+        "id": "b",
+        "text": "A shared AES-256 key identical across all company employees."
+      },
+      {
+        "id": "c",
+        "text": "An unhashed copy of the company's Active Directory database."
+      },
+      {
+        "id": "d",
+        "text": "A unique private key per origin, with only the matching public key registered on the company server."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Passkeys use public-key cryptography; the device holds the private key and signs challenge nonces for the server.",
+    "noteRef": "sec-05-lo09",
+    "reviewed": false
+  }
+]

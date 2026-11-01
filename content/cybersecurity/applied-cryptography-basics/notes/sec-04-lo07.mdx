@@ -1,0 +1,30 @@
+---
+loId: "sec-04-lo07"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Public Key Infrastructure (PKI) binds cryptographic public keys to verified identities (such as domain names or organizations) via digital certificates adhering to the X.509 standard. A Certificate Authority (CA) signs an entity's certificate with the CA's private key. Operating systems and web browsers maintain a Root CA Trust Store. During validation, clients verify the certificate path upward to a trusted root CA. Revocation is checked via Certificate Revocation Lists (CRLs) or Online Certificate Status Protocol (OCSP) stapling.
+
+### Worked Example
+Inspecting core fields of an X.509 digital certificate:
+```python
+certificate_fields = {
+    "Subject": "CN=example.com, O=Example Inc",
+    "Issuer": "CN=Let's Encrypt Authority X3, O=Let's Encrypt",
+    "Validity": {"NotBefore": "2026-01-01", "NotAfter": "2026-04-01"},
+    "SubjectAlternativeNames": ["example.com", "www.example.com"],
+    "PublicKeyAlgorithm": "ECDSA with curve P-256",
+    "SignatureAlgorithm": "sha256WithRSAEncryption"
+}
+
+print("Verified Domain:", certificate_fields["Subject"])
+print("Issuing CA:", certificate_fields["Issuer"])
+```
+
+### Common Mistake
+Ignoring certificate validation errors in development scripts (e.g., verify=False in Python requests). Disabling certificate validation bypasses PKI chain checks completely, leaving connections vulnerable to trivial Man-in-the-Middle eavesdropping.
+
+### Check Yourself
+What mechanism allows a web server to provide cached, CA-signed revocation status directly to the browser during the TLS handshake? OCSP Stapling.

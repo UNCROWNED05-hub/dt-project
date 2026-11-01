@@ -1,0 +1,34 @@
+---
+loId: "sec-04-lo04"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Hashing alone validates data integrity against accidental corruption, but does not protect against an active adversary who can alter both the message and its accompanying hash digest. A Hash-based Message Authentication Code (HMAC) incorporates a shared secret cryptographic key with a nested hashing construction: HMAC(K, m) = H((K xor opad) || H((K xor ipad) || m)). This guarantees both message integrity and sender authenticity.
+
+### Worked Example
+Computing and verifying an HMAC tag:
+```python
+import hmac
+import hashlib
+
+secret_key = b"super_secret_shared_key_42"
+message = b"transfer_funds: $500 to account_982"
+
+# Sender computes HMAC tag
+tag = hmac.new(secret_key, message, hashlib.sha256).hexdigest()
+
+# Receiver verifies with same key and constant-time comparison
+def verify(msg, received_tag, key):
+    expected = hmac.new(key, msg, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, received_tag)
+
+print("Is message authentic and unaltered?", verify(message, tag, secret_key)) # True
+```
+
+### Common Mistake
+Comparing cryptographic MACs using standard variable-time string equality operators (==). Standard string comparisons terminate early upon encountering the first mismatched character, introducing timing attacks that allow attackers to guess tags byte by byte. Use constant-time comparison functions like hmac.compare_digest.
+
+### Check Yourself
+Why does an attacker unable to know the secret key fail to forge a valid HMAC tag for an altered message? Because computing the valid outer and inner hash digests requires possession of secret key K.

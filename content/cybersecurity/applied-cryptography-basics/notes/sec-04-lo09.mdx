@@ -1,0 +1,33 @@
+---
+loId: "sec-04-lo09"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Real-world cryptographic failures rarely stem from breaking mathematical algorithms like AES or RSA; they result from flawed implementation antipatterns:
+1. Hardcoded cryptographic keys or API secrets inside client-side source code or mobile binaries.
+2. 'Homebrew crypto': Inventing custom encryption algorithms rather than using vetted open-source libraries (e.g. libsodium, cryptography).
+3. Insufficient entropy: Using predictable pseudo-random number generators (like Python random) rather than cryptographically secure ones (os.urandom, secrets).
+4. Nonce reuse: Repeating initialization vectors across multiple encryption operations.
+
+### Worked Example
+Demonstrating secure vs insecure random number generation:
+```python
+import random
+import secrets
+
+# INSECURE: Linear Congruential Generator / Mersenne Twister (predictable state)
+insecure_token = random.getrandbits(128)
+
+# SECURE: CSPRNG seeded from OS entropy pool (/dev/urandom)
+secure_token = secrets.token_hex(16)
+
+print("Cryptographically secure random token:", secure_token)
+```
+
+### Common Mistake
+Using Python's default random module to generate password reset tokens, session IDs, or encryption keys. The Mersenne Twister algorithm can have its internal state completely determined after observing 624 consecutive outputs.
+
+### Check Yourself
+Which Python standard library module is specifically designed to generate cryptographically strong random numbers suitable for keys and tokens? The secrets module.

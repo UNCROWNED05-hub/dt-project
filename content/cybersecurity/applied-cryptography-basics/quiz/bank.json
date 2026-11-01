@@ -1,0 +1,1063 @@
+[
+  {
+    "loId": "sec-04-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q01",
+    "stem": "What is the defining characteristic of symmetric encryption compared to asymmetric encryption?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A single shared secret key is used for both encryption and decryption."
+      },
+      {
+        "id": "b",
+        "text": "Two mathematically paired public and private keys are required."
+      },
+      {
+        "id": "c",
+        "text": "Encryption can only be executed on integer data."
+      },
+      {
+        "id": "d",
+        "text": "Decryption requires an internet connection to a root Certificate Authority."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Symmetric ciphers (e.g., AES) utilize the exact same secret key for encrypting and decrypting data.",
+    "noteRef": "sec-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q02",
+    "stem": "A cloud storage service needs to encrypt petabytes of stored disk data at rest with minimal CPU overhead. Which cipher family should be deployed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Asymmetric RSA-4096 encryption"
+      },
+      {
+        "id": "b",
+        "text": "Symmetric block ciphers such as AES-256"
+      },
+      {
+        "id": "c",
+        "text": "Diffie-Hellman key exchange"
+      },
+      {
+        "id": "d",
+        "text": "MD5 hashing"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Symmetric ciphers like AES-256 are hardware-accelerated (AES-NI) and drastically faster than asymmetric algorithms for bulk data.",
+    "noteRef": "sec-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-04-q03",
+    "stem": "Which of the following cryptographic algorithms are classified as asymmetric (public-key) algorithms?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RSA"
+      },
+      {
+        "id": "b",
+        "text": "Elliptic Curve Cryptography (ECC / ECDSA)"
+      },
+      {
+        "id": "c",
+        "text": "Diffie-Hellman (DH)"
+      },
+      {
+        "id": "d",
+        "text": "Advanced Encryption Standard (AES)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "RSA, ECC, and Diffie-Hellman use public/private key pairs; AES is a symmetric block cipher.",
+    "noteRef": "sec-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q04",
+    "stem": "In a hybrid encryption scheme, why is asymmetric cryptography paired with symmetric cryptography?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Asymmetric crypto encrypts the data while symmetric crypto signs the public certificate."
+      },
+      {
+        "id": "b",
+        "text": "Symmetric ciphers cannot be transmitted over TCP/IP networks."
+      },
+      {
+        "id": "c",
+        "text": "Asymmetric crypto securely exchanges a symmetric session key, while symmetric crypto encrypts the actual high-volume data efficiently."
+      },
+      {
+        "id": "d",
+        "text": "To eliminate the need for initialization vectors."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Hybrid encryption leverages the key-distribution benefits of public keys and the computational throughput of symmetric keys.",
+    "noteRef": "sec-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q05",
+    "stem": "Why is Electronic Codebook (ECB) mode considered cryptographically insecure for encrypting structured files or images?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It requires keys longer than 1024 bits."
+      },
+      {
+        "id": "b",
+        "text": "It can only encrypt data once before deleting the key."
+      },
+      {
+        "id": "c",
+        "text": "It cannot run on multi-core processors."
+      },
+      {
+        "id": "d",
+        "text": "Identical plaintext blocks always produce identical ciphertext blocks, preserving visual and data patterns."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "ECB encrypts each block independently without randomization, leaking patterns (e.g. the ECB penguin).",
+    "noteRef": "sec-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q06",
+    "stem": "An engineer designs an API encryption protocol. They need a mode that encrypts data while also detecting any unauthorized tampering with ciphertext or headers. What should they select?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AES-GCM (Galois/Counter Mode)"
+      },
+      {
+        "id": "b",
+        "text": "AES-ECB (Electronic Codebook)"
+      },
+      {
+        "id": "c",
+        "text": "AES-CBC without HMAC"
+      },
+      {
+        "id": "d",
+        "text": "DES-OFB (Output Feedback)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "AES-GCM is an AEAD mode providing both confidentiality and built-in cryptographic authentication.",
+    "noteRef": "sec-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-04-q07",
+    "stem": "What is the fixed block size (in bits) operated on by the Advanced Encryption Standard (AES) regardless of key length?",
+    "options": [
+      {
+        "id": "a",
+        "text": "64"
+      },
+      {
+        "id": "b",
+        "text": "128"
+      },
+      {
+        "id": "c",
+        "text": "256"
+      },
+      {
+        "id": "d",
+        "text": "512"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "AES operates on fixed 128-bit blocks (16 bytes) across all key sizes (128, 192, and 256 bits).",
+    "noteRef": "sec-04-lo02",
+    "verify": "(128 === 128)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q08",
+    "stem": "What catastrophic security failure occurs if an application reuses the same Nonce and Key pair across multiple AES-GCM encryptions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The CPU triggers an unrecoverable kernel panic."
+      },
+      {
+        "id": "b",
+        "text": "The ciphertext expands by 400% in file size."
+      },
+      {
+        "id": "c",
+        "text": "The authentication subkey can be recovered, allowing adversaries to forge valid ciphertexts."
+      },
+      {
+        "id": "d",
+        "text": "The cipher defaults to plaintext transmission."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Nonce reuse in GCM breaks authentication and allows keystream recovery, destroying both confidentiality and integrity.",
+    "noteRef": "sec-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q09",
+    "stem": "What property of a cryptographic hash function ensures that a small 1-bit modification to the input alters roughly 50% of the output bits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Pigeonhole Principle"
+      },
+      {
+        "id": "b",
+        "text": "Homomorphic Encryption"
+      },
+      {
+        "id": "c",
+        "text": "Malleability"
+      },
+      {
+        "id": "d",
+        "text": "The Avalanche Effect"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The avalanche effect ensures small input changes produce uncorrelated, drastically different hash digests.",
+    "noteRef": "sec-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-04-q10",
+    "stem": "How many bits are in the output hash digest produced by SHA-256?",
+    "options": [
+      {
+        "id": "a",
+        "text": "256"
+      },
+      {
+        "id": "b",
+        "text": "128"
+      },
+      {
+        "id": "c",
+        "text": "512"
+      },
+      {
+        "id": "d",
+        "text": "64"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "SHA-256 outputs a fixed 256-bit digest (32 bytes / 64 hexadecimal characters).",
+    "noteRef": "sec-04-lo03",
+    "verify": "(256 === 256)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q11",
+    "stem": "A security analyst notices that a legacy system verifies software patches using MD5 hashes. Why should this be upgraded immediately to SHA-256?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MD5 hashes can only be computed on Windows XP."
+      },
+      {
+        "id": "b",
+        "text": "MD5 has practical collision vulnerabilities, allowing attackers to forge malicious binaries sharing the MD5 hash of legitimate patches."
+      },
+      {
+        "id": "c",
+        "text": "SHA-256 automatically installs operating system updates."
+      },
+      {
+        "id": "d",
+        "text": "MD5 encryption keys expire after 30 days."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Practical collision attacks exist against MD5, making it completely untrusted for integrity verification.",
+    "noteRef": "sec-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q12",
+    "stem": "What is 'Pre-image Resistance' in cryptographic hash functions?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Given input x, it is easy to find another input y that produces the same hash."
+      },
+      {
+        "id": "b",
+        "text": "The hash digest must always be smaller than the original input."
+      },
+      {
+        "id": "c",
+        "text": "Given an arbitrary hash digest h, it is computationally infeasible to find an input x such that hash(x) = h."
+      },
+      {
+        "id": "d",
+        "text": "The hash function must run in constant time regardless of input size."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Pre-image resistance (the one-way property) guarantees you cannot mathematically invert a hash digest back to its input.",
+    "noteRef": "sec-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q13",
+    "stem": "What does an HMAC provide that a standalone cryptographic hash (like SHA-256 alone) cannot?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Confidentiality and encryption of plaintext payloads."
+      },
+      {
+        "id": "b",
+        "text": "Lossless compression of large files."
+      },
+      {
+        "id": "c",
+        "text": "Automatic correction of corrupted network packets."
+      },
+      {
+        "id": "d",
+        "text": "Proof of sender authenticity and resistance against tampering by unauthorized third parties."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "HMAC combines a shared secret key with a hash function, verifying both data integrity and origin authenticity.",
+    "noteRef": "sec-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q14",
+    "stem": "A web application checks received HMAC tags using: if (user_tag == expected_tag). Why is this vulnerable to a timing side-channel attack?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Standard equality terminates at the first mismatched character, allowing an attacker to guess the valid tag byte by byte by measuring response latency."
+      },
+      {
+        "id": "b",
+        "text": "The equality operator crashes the web server when comparing hexadecimal characters."
+      },
+      {
+        "id": "c",
+        "text": "It leaks the user's password in server error logs."
+      },
+      {
+        "id": "d",
+        "text": "It resets the HMAC secret key to null."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Variable-time string comparisons leak timing differences per character; constant-time comparison must be used.",
+    "noteRef": "sec-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-04-q15",
+    "stem": "What mathematical construction protects HMAC against length extension attacks that affect plain Merkle-Damgard hashes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recursive RSA modular exponentiation."
+      },
+      {
+        "id": "b",
+        "text": "A nested two-pass hashing structure with inner and outer key pads: H(K xor opad || H(K xor ipad || m))."
+      },
+      {
+        "id": "c",
+        "text": "Adding 1024 random zero bytes to the end of every message."
+      },
+      {
+        "id": "d",
+        "text": "Encrypting the hash with AES-ECB."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The nested construction H(K_out || H(K_in || m)) prevents adversaries from extending the state of the inner hash.",
+    "noteRef": "sec-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q16",
+    "stem": "If Alice and Bob share a secret key K, can an external eavesdropper Eve modify a message in transit and generate a valid HMAC tag?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, by inverting the SHA-256 hash."
+      },
+      {
+        "id": "b",
+        "text": "Yes, by submitting an expired X.509 certificate."
+      },
+      {
+        "id": "c",
+        "text": "No, because generating the valid tag requires knowledge of secret key K."
+      },
+      {
+        "id": "d",
+        "text": "No, but only if the message is sent over UDP."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Without the secret key, computing a valid HMAC for a modified message is computationally infeasible.",
+    "noteRef": "sec-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q17",
+    "stem": "What is the primary function of the Diffie-Hellman (DH) protocol?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Signing software binaries with digital certificates."
+      },
+      {
+        "id": "b",
+        "text": "Encrypting hard drives using hardware TPM chips."
+      },
+      {
+        "id": "c",
+        "text": "Validating domain ownership via DNS TXT records."
+      },
+      {
+        "id": "d",
+        "text": "Enabling two parties to securely establish a shared secret key over an unencrypted public channel."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Diffie-Hellman allows two parties to compute a shared secret across an insecure channel without transmitting the secret itself.",
+    "noteRef": "sec-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q18",
+    "stem": "A TLS session uses Ephemeral Elliptic Curve Diffie-Hellman (ECDHE). Six months later, the server's private certificate is compromised. Can the attacker decrypt the recorded traffic?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, because ECDHE provides Perfect Forward Secrecy; ephemeral keys were discarded immediately after each session."
+      },
+      {
+        "id": "b",
+        "text": "Yes, because the long-term private key decrypts all past sessions."
+      },
+      {
+        "id": "c",
+        "text": "Yes, by replaying the ClientHello packet."
+      },
+      {
+        "id": "d",
+        "text": "No, but only if the client was running Linux."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Ephemeral Diffie-Hellman keys are discarded after session negotiation, ensuring Perfect Forward Secrecy.",
+    "noteRef": "sec-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-04-q19",
+    "stem": "What mathematical advantage does Elliptic Curve Cryptography (ECC) provide over traditional RSA?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Complete immunity to quantum computer attacks."
+      },
+      {
+        "id": "b",
+        "text": "Equivalent cryptographic security with drastically smaller key sizes (e.g. 256-bit ECC matches 3072-bit RSA), reducing compute and bandwidth."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need for hash functions."
+      },
+      {
+        "id": "d",
+        "text": "It allows encryption without a public key."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "ECC provides high security with much smaller key lengths (256-bit ECC is comparable to 3072-bit RSA).",
+    "noteRef": "sec-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q20",
+    "stem": "Why does unauthenticated Diffie-Hellman fail to protect against an active Man-in-the-Middle (MitM) attacker?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Diffie-Hellman math is only solvable for even numbers."
+      },
+      {
+        "id": "b",
+        "text": "The discrete logarithm problem can be solved in polynomial time on consumer CPUs."
+      },
+      {
+        "id": "c",
+        "text": "The attacker can intercept the exchange and negotiate separate shared keys independently with both Alice and Bob."
+      },
+      {
+        "id": "d",
+        "text": "Routers drop Diffie-Hellman packets automatically."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Without digital signatures or PKI authentication, an adversary can impersonate both sides in separate DH exchanges.",
+    "noteRef": "sec-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q21",
+    "stem": "What cryptographic key is used by the signer to generate a valid digital signature on a document?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The signer's public key"
+      },
+      {
+        "id": "b",
+        "text": "The recipient's public key"
+      },
+      {
+        "id": "c",
+        "text": "The recipient's private key"
+      },
+      {
+        "id": "d",
+        "text": "The signer's private key"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A digital signature is created by encrypting the document hash with the signer's private key.",
+    "noteRef": "sec-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q22",
+    "stem": "A contractor digitally signs a code release with their private key. Later, they claim they never wrote the code. What security property contradicts this claim?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Non-repudiation"
+      },
+      {
+        "id": "b",
+        "text": "Confidentiality"
+      },
+      {
+        "id": "c",
+        "text": "High Availability"
+      },
+      {
+        "id": "d",
+        "text": "Obfuscation"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Non-repudiation ensures a signer cannot deny the authenticity of their signature since only they possess their private key.",
+    "noteRef": "sec-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-04-q23",
+    "stem": "Which of the following assurances are provided by a valid digital signature?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Origin authenticity (proves who signed it)"
+      },
+      {
+        "id": "b",
+        "text": "Data integrity (detects any tampering since signing)"
+      },
+      {
+        "id": "c",
+        "text": "Non-repudiation (signer cannot easily deny having signed it)"
+      },
+      {
+        "id": "d",
+        "text": "Confidentiality (hides document content from public view)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Digital signatures provide authenticity, integrity, and non-repudiation; they do not encrypt or conceal the message content.",
+    "noteRef": "sec-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q24",
+    "stem": "Why do digital signature algorithms sign the cryptographic hash of a document rather than the raw document bytes directly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Asymmetric private keys can only process ASCII characters."
+      },
+      {
+        "id": "b",
+        "text": "Asymmetric operations are computationally slow and limited in payload size, whereas hashing creates a small, fixed-size digest instantly."
+      },
+      {
+        "id": "c",
+        "text": "Hashing prevents the recipient from reading the document."
+      },
+      {
+        "id": "d",
+        "text": "Because the X.509 standard forbids signing files larger than 1 kilobyte."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Hashing condenses arbitrary-length documents into a fixed 32-byte digest, making asymmetric signing fast and scalable.",
+    "noteRef": "sec-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q25",
+    "stem": "What is the standard format specification for digital certificates used in Public Key Infrastructure (PKI)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RFC 1918"
+      },
+      {
+        "id": "b",
+        "text": "IEEE 802.11"
+      },
+      {
+        "id": "c",
+        "text": "X.509"
+      },
+      {
+        "id": "d",
+        "text": "POSIX.1"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "X.509 is the ITU-T standard format defining the structure of public-key certificates.",
+    "noteRef": "sec-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q26",
+    "stem": "A user visits https://internal.corp and receives an 'Untrusted Certificate Authority' warning. The certificate is valid and unexpired. What is the cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The server is running AES-ECB mode."
+      },
+      {
+        "id": "b",
+        "text": "The user's DNS query failed to resolve an A record."
+      },
+      {
+        "id": "c",
+        "text": "The network switch disabled Dynamic ARP Inspection."
+      },
+      {
+        "id": "d",
+        "text": "The browser trust store does not contain the Root Certificate Authority that issued the internal certificate."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "If the issuing Root CA certificate is not installed in the client's trusted root store, the chain of trust fails validation.",
+    "noteRef": "sec-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-04-q27",
+    "stem": "What mechanism allows a web server to deliver a timestamped, CA-signed proof of certificate validity directly to clients during the TLS handshake?",
+    "options": [
+      {
+        "id": "a",
+        "text": "OCSP Stapling"
+      },
+      {
+        "id": "b",
+        "text": "Certificate Revocation List (CRL) download"
+      },
+      {
+        "id": "c",
+        "text": "Diffie-Hellman exchange"
+      },
+      {
+        "id": "d",
+        "text": "DNSSEC zone transfer"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "OCSP Stapling has the server query the CA periodically and append (staple) the signed validity proof into the TLS handshake.",
+    "noteRef": "sec-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q28",
+    "stem": "What certificate field specifies additional domain hostnames and subdomains covered by a single SSL/TLS certificate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Common Name (CN)"
+      },
+      {
+        "id": "b",
+        "text": "Subject Alternative Name (SAN)"
+      },
+      {
+        "id": "c",
+        "text": "Key Usage"
+      },
+      {
+        "id": "d",
+        "text": "Serial Number"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Subject Alternative Name (SAN) lists all domains, subdomains, or IP addresses validated by the certificate.",
+    "noteRef": "sec-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-04-q29",
+    "stem": "How many network round trips (RTT) are required to complete a full standard TLS 1.3 handshake?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 RTT"
+      },
+      {
+        "id": "b",
+        "text": "3 RTT"
+      },
+      {
+        "id": "c",
+        "text": "1 RTT"
+      },
+      {
+        "id": "d",
+        "text": "0 RTT always"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "TLS 1.3 optimizes connection establishment to 1 round trip (1-RTT) by sending key shares in the initial ClientHello.",
+    "noteRef": "sec-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-04-q30",
+    "stem": "How many round trips (RTT) were required for a standard TLS 1.2 handshake before application data could be sent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "0"
+      },
+      {
+        "id": "d",
+        "text": "2"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "TLS 1.2 required 2 full round trips (2-RTT) to negotiate cipher suites and exchange key parameters.",
+    "noteRef": "sec-04-lo08",
+    "verify": "(2 === 2)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-04-q31",
+    "stem": "An enterprise security architect audits TLS 1.3 configurations. Which legacy feature will they find has been completely removed in TLS 1.3?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Static RSA key exchange and CBC block cipher modes"
+      },
+      {
+        "id": "b",
+        "text": "Ephemeral Diffie-Hellman key exchanges"
+      },
+      {
+        "id": "c",
+        "text": "AES-GCM encryption"
+      },
+      {
+        "id": "d",
+        "text": "X.509 digital certificates"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "TLS 1.3 eliminated static RSA key exchange (which lacked forward secrecy) and vulnerable CBC block modes.",
+    "noteRef": "sec-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-04-q32",
+    "stem": "Why does standard TLS 1.3 still leak the domain name of the destination website to passive network observers without Encrypted Client Hello (ECH)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DNS queries cannot be encrypted."
+      },
+      {
+        "id": "b",
+        "text": "The Server Name Indication (SNI) extension is transmitted unencrypted in the initial plaintext ClientHello message."
+      },
+      {
+        "id": "c",
+        "text": "IP routing tables require domain names in packet headers."
+      },
+      {
+        "id": "d",
+        "text": "TCP handshakes transmit URLs in the SYN flag."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "SNI indicates the target virtual host in plaintext within ClientHello; ECH encrypts this parameter to preserve privacy.",
+    "noteRef": "sec-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-04-q33",
+    "stem": "Why should developers never design their own custom encryption algorithms ('homebrew crypto') for production applications?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Operating systems forbid compiling custom math libraries."
+      },
+      {
+        "id": "b",
+        "text": "CPUs only support AES instruction sets."
+      },
+      {
+        "id": "c",
+        "text": "Vetted algorithms like AES have withstood decades of rigorous cryptanalysis, whereas custom ciphers almost always contain subtle mathematical flaws."
+      },
+      {
+        "id": "d",
+        "text": "Custom algorithms cannot output bytes."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Vetted cryptographic primitives have undergone extensive peer review; custom algorithms almost inevitably introduce fatal vulnerabilities.",
+    "noteRef": "sec-04-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-04-lo09",
+    "type": "scenario",
+    "difficulty": 3,
+    "id": "sec-04-q34",
+    "stem": "A developer generates password reset tokens using Python's default `random` module (`random.randint(100000, 999999)`). What vulnerability exists?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Python's random module only generates negative numbers."
+      },
+      {
+        "id": "b",
+        "text": "The tokens expire immediately upon creation."
+      },
+      {
+        "id": "c",
+        "text": "It causes memory leaks in the Python garbage collector."
+      },
+      {
+        "id": "d",
+        "text": "The pseudo-random number generator (Mersenne Twister) is not cryptographically secure and its internal state can be predicted."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Standard pseudo-random generators are predictable; cryptographically secure generators (e.g. `secrets` module) must be used.",
+    "noteRef": "sec-04-lo09",
+    "reviewed": false
+  }
+]

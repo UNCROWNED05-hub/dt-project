@@ -1,0 +1,39 @@
+---
+loId: "sec-05-lo03"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Storing plaintext or simply hashed passwords (e.g. SHA-256) is a critical security failure. Modern credential storage requires:
+1. Cryptographic Salt: A unique, cryptographically random value appended to each password prior to hashing, defeating precomputed rainbow table attacks.
+2. Key Stretching / Work Factor: Deliberately computationally intensive algorithms (such as Argon2id, bcrypt, or PBKDF2) that require substantial CPU time and memory, making offline brute-force and GPU dictionary cracking economically impractical.
+
+### Worked Example
+Simulating salt and work factor mechanics in credential storage:
+```python
+import hashlib
+import os
+
+password = "UserP@ssw0rd!2026"
+# Generate unique 16-byte random salt per user
+salt = os.urandom(16)
+
+# PBKDF2 key stretching with 600,000 iterations of SHA-256
+stretched_hash = hashlib.pbkdf2_hmac(
+    'sha256',
+    password.encode('utf-8'),
+    salt,
+    iterations=600000
+)
+
+# Salt and hash are stored together in database
+print("Salt length (bytes):", len(salt))
+print("Derived key length (bytes):", len(stretched_hash))
+```
+
+### Common Mistake
+Using fast general-purpose hashing functions like SHA-256 or SHA-3 for password storage without key stretching. Modern GPUs can compute billions of SHA-256 hashes per second, cracking short passwords in minutes. Purpose-built password hashing functions like Argon2id or bcrypt force high computational and memory costs.
+
+### Check Yourself
+What is the primary security benefit of appending a unique cryptographic salt to every user's password before hashing? It defeats precomputed rainbow table attacks and ensures identical passwords produce distinct hash digests.

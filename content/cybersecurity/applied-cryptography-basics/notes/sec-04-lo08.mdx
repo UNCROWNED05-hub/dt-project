@@ -1,0 +1,30 @@
+---
+loId: "sec-04-lo08"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+TLS 1.3 drastically simplifies and hardens the transport encryption handshake compared to TLS 1.2:
+1. Reduced round trips: Normal handshakes complete in a single round trip (1-RTT) rather than two.
+2. Removal of obsolete algorithms: RSA key exchange, static Diffie-Hellman, CBC block modes, and RC4 are completely removed.
+3. Mandatory Forward Secrecy: Only ephemeral Diffie-Hellman (ECDHE/DHE) key exchanges are supported.
+4. Encrypted extensions: Almost the entire handshake after ClientHello/ServerHello is encrypted under temporary handshake keys.
+
+### Worked Example
+Comparing TLS 1.2 vs TLS 1.3 handshake parameters:
+```python
+tls_features = {
+    "TLS 1.2": {"handshake_rtt": 2, "supports_rsa_key_exchange": True, "supports_cbc": True},
+    "TLS 1.3": {"handshake_rtt": 1, "supports_rsa_key_exchange": False, "supports_cbc": False}
+}
+
+print("TLS 1.3 RTT latency:", tls_features["TLS 1.3"]["handshake_rtt"])
+print("Is insecure static RSA allowed in TLS 1.3?", tls_features["TLS 1.3"]["supports_rsa_key_exchange"])
+```
+
+### Common Mistake
+Believing TLS 1.3 protects against Server Name Indication (SNI) leakage without Encrypted Client Hello (ECH). In standard TLS 1.3, the initial ClientHello message transmits the target domain name in plaintext, allowing network observers to see which hostname is being visited.
+
+### Check Yourself
+How many round trips (RTT) are required to complete a full standard cryptographic handshake in TLS 1.3? Exactly 1 round trip (1-RTT).

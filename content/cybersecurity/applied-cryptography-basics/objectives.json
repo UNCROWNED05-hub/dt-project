@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "chapterId": "sec-04",
+  "objectives": [
+    {
+      "id": "sec-04-lo01",
+      "order": 1,
+      "title": "Distinguish symmetric from asymmetric cryptographic encryption",
+      "bloom": "distinguish",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "symmetric encryption",
+        "asymmetric encryption",
+        "public key",
+        "private key"
+      ],
+      "aliases": [
+        "shared secret encryption",
+        "public key cryptography"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-04-lo02",
+      "order": 2,
+      "title": "Compare symmetric cipher block modes (ECB, CBC, GCM)",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "aes",
+        "block cipher",
+        "ecb",
+        "cbc",
+        "gcm",
+        "authenticated encryption"
+      ],
+      "aliases": [
+        "cipher modes",
+        "aead modes"
+      ],
+      "prerequisites": [
+        "sec-04-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-04-lo03",
+      "order": 3,
+      "title": "Explain cryptographic hash function properties and collision resistance",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "hash function",
+        "sha-256",
+        "pre-image resistance",
+        "collision resistance"
+      ],
+      "aliases": [
+        "one-way hash",
+        "avalanche effect"
+      ],
+      "prerequisites": [
+        "sec-04-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-04-lo04",
+      "order": 4,
+      "title": "Calculate message authentication codes using HMAC and key hashing",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "hmac",
+        "mac",
+        "message authentication",
+        "data integrity"
+      ],
+      "aliases": [
+        "keyed hash",
+        "tamper detection"
+      ],
+      "prerequisites": [
+        "sec-04-lo03"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "sec-04-lo05",
+      "order": 5,
+      "title": "Trace asymmetric key exchanges using Diffie-Hellman and Elliptic Curves",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "diffie-hellman",
+        "ecdh",
+        "ephemeral keys",
+        "forward secrecy"
+      ],
+      "aliases": [
+        "key exchange protocol",
+        "elliptic curve cryptography"
+      ],
+      "prerequisites": [
+        "sec-04-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-04-lo06",
+      "order": 6,
+      "title": "Analyze digital signatures for integrity, authenticity, and non-repudiation",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "digital signature",
+        "rsa signature",
+        "ecdsa",
+        "non-repudiation"
+      ],
+      "aliases": [
+        "asymmetric signing",
+        "signature verification"
+      ],
+      "prerequisites": [
+        "sec-04-lo03",
+        "sec-04-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-04-lo07",
+      "order": 7,
+      "title": "Dissect Public Key Infrastructure (PKI) and X.509 certificate chains",
+      "bloom": "dissect",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "pki",
+        "x.509",
+        "certificate authority",
+        "root ca",
+        "crl",
+        "ocsp"
+      ],
+      "aliases": [
+        "certificate chain of trust",
+        "tls certificates"
+      ],
+      "prerequisites": [
+        "sec-04-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-04-lo08",
+      "order": 8,
+      "title": "Trace the modern TLS 1.3 cryptographic handshake",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "tls 1.3",
+        "tls handshake",
+        "client hello",
+        "server hello",
+        "session keys"
+      ],
+      "aliases": [
+        "transport layer security",
+        "tls connection establishment"
+      ],
+      "prerequisites": [
+        "sec-04-lo05",
+        "sec-04-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-04-lo09",
+      "order": 9,
+      "title": "Identify common cryptographic vulnerabilities and insecure implementations",
+      "bloom": "identify",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "hardcoded keys",
+        "homebrew crypto",
+        "nonce reuse",
+        "padding oracle"
+      ],
+      "aliases": [
+        "crypto flaws",
+        "crypto antipatterns"
+      ],
+      "prerequisites": [
+        "sec-04-lo02"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

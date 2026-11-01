@@ -1,0 +1,31 @@
+---
+loId: "sec-05-lo06"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+The Principle of Least Privilege dictates that any user, program, or system process should be granted only the minimal set of privileges strictly necessary to complete its legitimate tasks, and only for the minimum necessary duration. Operational practices enforcing least privilege include:
+1. Separation of duties: Preventing single individuals from having sole control over critical transactions.
+2. Privilege separation: Splitting applications into unprivileged worker processes and isolated privileged supervisor processes.
+3. Just-In-Time (JIT) access: Granting elevated administrative rights temporarily with automated expiration.
+
+### Worked Example
+Auditing IAM cloud permissions for least privilege violations:
+```python
+# AWS IAM policy simulation
+iam_policies = [
+    {"user": "developer_alice", "action": "s3:GetObject", "resource": "arn:aws:s3:::app-assets/*"},
+    {"user": "intern_bob", "action": "*", "resource": "*"} # Wildcard violation
+]
+
+for p in iam_policies:
+    if p["action"] == "*" and p["resource"] == "*":
+        print(f"CRITICAL LEAST PRIVILEGE VIOLATION: Full admin wildcard granted to {p['user']}")
+```
+
+### Common Mistake
+Assigning broad administrative rights ('Administrator' or '*:*' wildcard permissions) during troubleshooting and leaving those privileges permanently attached to accounts after the issue is resolved.
+
+### Check Yourself
+What security architecture grants administrative permissions temporarily on-demand for a specific task and automatically revokes them upon completion? Just-In-Time (JIT) Privileged Access Management.

@@ -1,0 +1,35 @@
+---
+loId: "sec-05-lo05"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Authorization models govern which principals can execute operations on resources:
+1. DAC (Discretionary Access Control): Resource owners have discretion over who is granted access (standard Linux file permissions).
+2. MAC (Mandatory Access Control): Access is constrained by centralized system security labels and classifications (e.g., Top Secret vs Confidential; enforced by SELinux).
+3. RBAC (Role-Based Access Control): Permissions are assigned to organizational roles (e.g., Auditor, Editor), and users are assigned to roles.
+4. ABAC (Attribute-Based Access Control): Dynamic decisions based on evaluating policies over attributes of the user, resource, action, and environment (e.g. time, IP location).
+
+### Worked Example
+Evaluating an Attribute-Based Access Control (ABAC) policy:
+```python
+user = {"role": "analyst", "ip": "10.0.1.50", "department": "SOC"}
+resource = {"type": "incident_report", "classification": "internal"}
+environment = {"current_hour": 14} # 2:00 PM
+
+def evaluate_abac(u, r, env):
+    # Policy: SOC analysts can access internal reports between 8am and 6pm from internal IP
+    if u["department"] == "SOC" and r["classification"] == "internal":
+        if 8 <= env["current_hour"] <= 18 and u["ip"].startswith("10."):
+            return "PERMIT"
+    return "DENY"
+
+print("Access evaluation:", evaluate_abac(user, resource, environment)) # PERMIT
+```
+
+### Common Mistake
+Hardcoding user IDs directly into authorization checks rather than assigning permissions through roles or attribute policies. Direct user-level access lists become impossible to audit, maintain, or revoke systematically when personnel change.
+
+### Check Yourself
+Which access control model dynamically evaluates user attributes, resource metadata, and environmental conditions (such as time and location) to determine access? Attribute-Based Access Control (ABAC).

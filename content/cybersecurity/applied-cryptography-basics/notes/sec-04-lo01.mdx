@@ -1,0 +1,31 @@
+---
+loId: "sec-04-lo01"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Cryptography provides data confidentiality, integrity, authenticity, and non-repudiation. Symmetric cryptography uses a single shared secret key for both encryption and decryption (e.g., AES-256, ChaCha20). It is computationally fast and ideal for encrypting high-volume data streams. Asymmetric cryptography (public-key cryptography) utilizes a mathematically linked key pair: a public key available to anyone for encryption or signature verification, and a private key kept strictly confidential for decryption or signing (e.g., RSA, ECC).
+
+### Worked Example
+Contrasting key requirements in symmetric vs asymmetric schemes:
+```python
+# Symmetric: 1 shared key known to Alice and Bob
+shared_key = "k3y_s3cr3t_256bit"
+
+# Asymmetric: 2 distinct keys
+alice_keypair = {
+    "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...",  # Shared publicly
+    "private_key": "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCB..."  # Kept private
+}
+
+# Message encrypted with Alice's public key can ONLY be decrypted with Alice's private key
+print("Can sender decrypt with public key?", False)
+print("Can receiver decrypt with private key?", True)
+```
+
+### Common Mistake
+Attempting to encrypt multi-gigabyte databases or network sessions directly with RSA asymmetric ciphers. Asymmetric operations are computationally slow and limited to payloads smaller than the key modulus; modern protocols use hybrid encryption where asymmetric crypto exchanges a fast symmetric session key.
+
+### Check Yourself
+If Alice encrypts a message with Bob's public key, who holds the only key capable of decrypting it? Bob (using his private key).

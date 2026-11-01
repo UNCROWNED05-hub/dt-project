@@ -1,0 +1,33 @@
+---
+loId: "sec-05-lo01"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Authentication validates an identity claim across three fundamental factor categories:
+1. Knowledge factor (something you know): Passwords, PINs, passphrases, and security question answers.
+2. Possession factor (something you have): Hardware security tokens (YubiKey), Time-based One-Time Password (TOTP) authenticator apps, smartcards, or registered smartphones.
+3. Inherence factor (something you are): Biometric characteristics such as fingerprint scans, facial geometry, retina patterns, or voiceprints.
+True Multi-Factor Authentication (MFA) requires distinct factors from two or more different categories.
+
+### Worked Example
+Classifying authentication combinations for MFA compliance:
+```python
+def evaluate_mfa(factors):
+    # Distinct factor categories: knowledge, possession, inherence
+    categories = set(factors)
+    return len(categories) >= 2
+
+# Example 1: Password + PIN (two knowledge factors)
+print("Is Password + PIN true MFA?", evaluate_mfa(["knowledge", "knowledge"])) # False
+
+# Example 2: Password + Hardware Key (knowledge + possession)
+print("Is Password + Hardware Key true MFA?", evaluate_mfa(["knowledge", "possession"])) # True
+```
+
+### Common Mistake
+Assuming requiring a password and a PIN constitutes two-factor authentication. Both credentials belong to the same category (knowledge factors). If an adversary compromises a user's workstation via keylogging, both secrets are compromised simultaneously.
+
+### Check Yourself
+Which authentication factor category encompasses fingerprint and facial recognition biometrics? Inherence (something you are).

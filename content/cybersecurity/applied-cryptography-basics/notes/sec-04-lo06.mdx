@@ -1,0 +1,29 @@
+---
+loId: "sec-04-lo06"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+A digital signature provides authenticity, integrity, and non-repudiation. To sign a message, the signer computes a cryptographic hash of the document and encrypts the digest with their private key. Any recipient holding the signer's corresponding public key decrypts the signature to recover the original digest and compares it against a fresh hash of the document. If they match, the recipient is mathematically assured the message originated from the private key holder and was not altered in transit.
+
+### Worked Example
+Tracing the digital signature verification flow:
+```python
+# 1. Document hash
+doc = b"Firmware update version 2.4.0 verified"
+doc_hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+# 2. Signing: Signer encrypts hash with Private Key
+simulated_signature = {"signed_by": "Vendor_Private_Key", "digest": doc_hash}
+
+# 3. Verification: Recipient checks signature with Vendor Public Key
+is_valid = (simulated_signature["digest"] == doc_hash)
+print("Firmware authenticity verified:", is_valid)
+```
+
+### Common Mistake
+Encrypting the entire document directly with the private key instead of signing its hash digest. Asymmetric encryption is computationally expensive; hashing condenses arbitrary-length files into small 32-byte digests for instant signing.
+
+### Check Yourself
+Which key does the author of a message use to generate a digital signature? The author's private key.

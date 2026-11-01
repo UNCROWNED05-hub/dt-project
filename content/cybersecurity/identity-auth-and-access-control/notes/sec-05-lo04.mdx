@@ -1,0 +1,37 @@
+---
+loId: "sec-05-lo04"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Identity federation enables Single Sign-On (SSO) across organizational boundaries:
+1. SAML 2.0: XML-based standard widely used in enterprise IT for authentication assertions between an Identity Provider (IdP) and a Service Provider (SP).
+2. OAuth 2.0: Authorization framework that issues scoped Access Tokens to third-party applications without sharing user passwords.
+3. OpenID Connect (OIDC): An identity authentication layer built directly on top of OAuth 2.0. While OAuth 2.0 issues Access Tokens for authorization, OIDC adds an ID Token (a signed JWT) containing user identity assertions.
+
+### Worked Example
+Comparing OAuth 2.0 vs OpenID Connect (OIDC) token purposes:
+```python
+tokens = {
+    "access_token": {
+        "standard": "OAuth 2.0",
+        "purpose": "Authorization (API resource access, e.g. read:calendar)",
+        "intended_audience": "Resource Server (API)"
+    },
+    "id_token": {
+        "standard": "OpenID Connect (OIDC)",
+        "purpose": "Authentication (User identity claims, e.g. email, sub)",
+        "intended_audience": "Client Application"
+    }
+}
+
+for name, details in tokens.items():
+    print(f"{name}: {details['standard']} -> {details['purpose']}")
+```
+
+### Common Mistake
+Using OAuth 2.0 Access Tokens for user authentication without OpenID Connect. An Access Token confirms that permission was delegated to an API; it does not authenticate the user's identity or verify when and how they logged in.
+
+### Check Yourself
+Which token in an OpenID Connect (OIDC) flow conveys authenticated user identity claims to the client application? The ID Token (JWT).

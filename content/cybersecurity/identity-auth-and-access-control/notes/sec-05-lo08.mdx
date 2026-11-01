@@ -1,0 +1,40 @@
+---
+loId: "sec-05-lo08"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+JSON Web Tokens (JWT, RFC 7519) are compact, URL-safe tokens commonly used in stateless API authentication. A JWT consists of three Base64URL-encoded parts separated by dots: Header, Payload, and Signature. Key security considerations include:
+1. Signature Verification: The server must cryptographically verify the signature before processing claims.
+2. Algorithm Confusion: Rejecting alg: 'none' and preventing RSA public keys from being interpreted as HMAC secrets.
+3. Expiration enforcement: Checking exp timestamps strictly to prevent replay of captured tokens.
+
+### Worked Example
+Inspecting JWT components and verifying expiration:
+```python
+import time
+
+# Decoded sample JWT payload
+jwt_payload = {
+    "sub": "user_49102",
+    "name": "Alex",
+    "role": "analyst",
+    "exp": 1770000000 # Unix timestamp expiration
+}
+
+def is_token_valid(payload):
+    current_time = int(time.time())
+    if current_time >= payload.get("exp", 0):
+        return False, "Token has expired"
+    return True, "Token is active"
+
+valid, msg = is_token_valid(jwt_payload)
+print("Token validity check:", msg)
+```
+
+### Common Mistake
+Storing sensitive application secrets or passwords inside JWT payloads without encryption. JWT tokens are signed for integrity, but standard JWT payloads are merely Base64URL-encoded and can be read by anyone who inspects the token.
+
+### Check Yourself
+What are the three dot-separated structural components of a standard JSON Web Token? Header, Payload, and Signature.

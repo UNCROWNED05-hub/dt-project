@@ -1,0 +1,33 @@
+---
+loId: "sec-05-lo09"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+FIDO2 and the W3C Web Authentication (WebAuthn) API provide phishing-resistant authentication using public-key cryptography. During registration, a hardware security key (or platform authenticator like TouchID) generates an asymmetric key pair scoped strictly to the website's Origin (domain). During login, the website issues a cryptographic challenge. The authenticator signs the challenge with its private key only after user presence (e.g. touch or biometric) is confirmed. Because the browser enforces domain binding, credentials cannot be phished by lookalike spoofed domains.
+
+### Worked Example
+Simulating WebAuthn origin validation logic:
+```python
+# WebAuthn strictly binds credentials to the exact browser origin
+registered_credential = {
+    "origin": "https://auth.company.com",
+    "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A..."
+}
+
+def verify_webauthn_origin(client_origin):
+    # Phishing site: https://auth.company-security-login.com
+    if client_origin != registered_credential["origin"]:
+        return "AUTHENTICATION REJECTED: Origin mismatch! Phishing attempt blocked."
+    return "AUTHENTICATION ACCEPTED: Verified domain binding."
+
+print(verify_webauthn_origin("https://auth.company.com")) # ACCEPTED
+print(verify_webauthn_origin("https://auth.phishing-fake.com")) # REJECTED
+```
+
+### Common Mistake
+Believing standard TOTP authenticator apps are immune to phishing. Adversaries deploying real-time reverse-proxy phishing kits (such as Evilginx) intercept both passwords and 6-digit TOTP codes, immediately replaying them to the real site to steal session cookies. FIDO2/WebAuthn prevents this via cryptographic origin binding.
+
+### Check Yourself
+Why cannot an attacker steal FIDO2 credentials using a lookalike phishing website? The browser automatically binds the authentication challenge to the genuine domain origin, refusing to use the credential on a spoofed domain.

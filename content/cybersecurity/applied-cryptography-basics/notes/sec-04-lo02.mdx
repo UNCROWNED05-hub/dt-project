@@ -1,0 +1,33 @@
+---
+loId: "sec-04-lo02"
+reviewed: false
+sources: ["lic-04"]
+---
+
+### Core Idea
+Block ciphers like AES operate on fixed-size blocks (128 bits). The block cipher mode dictates how plaintext blocks are transformed:
+1. ECB (Electronic Codebook): Each block is encrypted independently. Identical plaintext blocks produce identical ciphertext blocks, leaking structural data patterns (the famous ECB Penguin effect). Insecure for general use.
+2. CBC (Cipher Block Chaining): XORs each plaintext block with the preceding ciphertext block before encryption, using a random Initialization Vector (IV). Vulnerable to padding oracle attacks if integrity is not verified.
+3. GCM (Galois/Counter Mode): An Authenticated Encryption with Associated Data (AEAD) mode that provides both high-speed encryption and cryptographic integrity verification in a single pass.
+
+### Worked Example
+Simulating pattern leakage in Electronic Codebook (ECB) mode:
+```python
+# Two identical 16-byte plaintext blocks
+block1 = b"SECURITY_CONF_24"
+block2 = b"SECURITY_CONF_24"
+
+# In ECB, identical inputs produce identical outputs under the same key:
+def mock_ecb_encrypt(block, key):
+    return bytes([b ^ key for b in block])
+
+c1 = mock_ecb_encrypt(block1, 0xAA)
+c2 = mock_ecb_encrypt(block2, 0xAA)
+print("Are ECB ciphertexts identical?", c1 == c2) # True (leaks pattern)
+```
+
+### Common Mistake
+Reusing an Initialization Vector (IV) or Nonce in counter-based modes like GCM. Nonce reuse in GCM completely compromises the authentication key and allows adversaries to forge arbitrary ciphertext messages.
+
+### Check Yourself
+Which block cipher mode provides Authenticated Encryption with Associated Data (AEAD) combining confidentiality and integrity? Galois/Counter Mode (GCM).
