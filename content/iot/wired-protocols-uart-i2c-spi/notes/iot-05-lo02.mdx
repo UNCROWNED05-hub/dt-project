@@ -1,0 +1,41 @@
+---
+loId: "iot-05-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Inter-Integrated Circuit (I2C) is a synchronous, multi-device, 2-wire serial bus designed by Philips/NXP for short-distance board-level communications:
+1. Physical Bus Architecture:
+   - Serial Data (SDA): Bidirectional data line.
+   - Serial Clock (SCL): Clock line driven by the bus Master.
+2. Open-Drain with Pull-Up Resistors:
+   Neither the master nor slaves ever drive SDA or SCL HIGH with an active push-pull transistor. Instead, pins operate in open-drain mode: they can only pull the line LOW to Ground or release it into a high-impedance state.
+3. Pull-Up Resistor Sizing:
+   External pull-up resistors (typically $2.2\,\text{k}\Omega - 10\,\text{k}\Omega$) tie SDA and SCL to $V_{CC}$ (e.g., $3.3\text{V}$). When no device is asserting the bus, the lines float HIGH.
+   - Too Large (e.g. $100\,\text{k}\Omega$): Bus capacitance causes slow, rounded RC rise times, corrupting data at high speeds.
+   - Too Small (e.g. $470\,\Omega$): Devices cannot sink enough current to pull the line cleanly below $V_{IL}$ ($0.3 \times V_{CC}$).
+   - Golden Rule: For $3.3\text{V}$ buses at $400\text{kHz}$ (Fast Mode), $4.7\,\text{k}\Omega$ resistors are standard.
+
+### Worked Example
+Python script calculating minimum and maximum I2C pull-up resistance:
+```python
+def calculate_i2c_pullups(vcc, bus_capacitance_pf, speed_mode="standard"):
+    # Rise time max: 1000ns for standard (100kHz), 300ns for fast (400kHz)
+    t_rise_max = 1000e-9 if speed_mode == "standard" else 300e-9
+    r_max = t_rise_max / (0.8473 * (bus_capacitance_pf * 1e-12))
+    # Sink current limit 3mA max
+    r_min = (vcc - 0.4) / 0.003
+    return {"r_min_ohms": round(r_min), "r_max_ohms": round(r_max)}
+
+res = calculate_i2c_pullups(vcc=3.3, bus_capacitance_pf=100, speed_mode="fast")
+print(f"I2C Pull-Up Window: {res['r_min_ohms']} to {res['r_max_ohms']} Ohms")
+# ~967 to ~3540 Ohms -> Use standard 2.2k or 3.3k Ohms
+```
+
+### Common Mistake
+Omitting external pull-up resistors on an I2C bus where connected breakout boards lack onboard pull-ups; the bus lines float around intermediate voltages and transactions fail with time-out errors.
+
+### Check Yourself
+Why do I2C bus lines require pull-up resistors to $V_{CC}$ instead of relying on push-pull drivers?

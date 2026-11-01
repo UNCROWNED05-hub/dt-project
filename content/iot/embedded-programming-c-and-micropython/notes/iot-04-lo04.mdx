@@ -1,0 +1,48 @@
+---
+loId: "iot-04-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Physical mechanical switches generate noisy electrical transients during actuation that must be eliminated in software:
+1. Contact Bounce Physics: When metal switch contacts close, microscopic elastic collisions cause the contacts to physically bounce apart and re-connect dozens of times over a $5\text{ms} - 20\text{ms}$ duration. To a high-speed $240\text{MHz}$ microcontroller, a single finger press appears as 10 to 50 distinct button pushes.
+2. Software Debouncing Strategy:
+   - When a state change is first detected on the pin, record the current `millis()` timestamp.
+   - Ignore subsequent fluctuations until the signal remains stable continuously for a predefined debounce window (typically $30\text{ms} - 50\text{ms}$).
+   - Once the signal holds steady beyond the window, accept the transition as a confirmed user action.
+3. Hardware Alternative: Placing an RC low-pass filter ($10\,\text{k}\Omega$ resistor and $0.1\,\mu\text{F}$ capacitor) with a Schmitt-trigger inverter cleans bounce at the circuit level before reaching the GPIO pin.
+
+### Worked Example
+State machine software debouncing implementation in C++:
+```cpp
+const int BUTTON_PIN = 4;
+int button_state = HIGH;
+int last_reading = HIGH;
+uint32_t last_debounce_time = 0;
+const uint32_t DEBOUNCE_DELAY = 50; // 50 milliseconds
+
+void loop() {
+  int reading = digitalRead(BUTTON_PIN);
+  if (reading != last_reading) {
+    last_debounce_time = millis(); // Reset debounce timer on transition
+  }
+
+  if ((millis() - last_debounce_time) > DEBOUNCE_DELAY) {
+    if (reading != button_state) {
+      button_state = reading;
+      if (button_state == LOW) {
+        Serial.println("Confirmed Debounced Button Press!");
+      }
+    }
+  }
+  last_reading = reading;
+}
+```
+
+### Common Mistake
+Incrementing a counter directly inside a raw GPIO interrupt attached to a push-button without debouncing; pressing the button once increments the counter by 15 to 30 spurious counts.
+
+### Check Yourself
+Why does a single physical push-button press register as multiple rapid button events on an un-debounced digital pin?

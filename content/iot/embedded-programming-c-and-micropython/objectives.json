@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "chapterId": "iot-04",
+  "objectives": [
+    {
+      "id": "iot-04-lo01",
+      "order": 1,
+      "title": "Structure firmware execution using the Arduino setup/loop lifecycle and fixed-width integer types",
+      "bloom": "structure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "setup and loop",
+        "fixed-width types",
+        "uint8_t",
+        "uint32_t",
+        "embedded c"
+      ],
+      "aliases": [
+        "embedded c basics",
+        "fixed width integers"
+      ],
+      "prerequisites": [
+        "iot-03-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-04-lo02",
+      "order": 2,
+      "title": "Implement non-blocking cooperative multitasking using the millis() timestamp pattern",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "millis",
+        "non-blocking delay",
+        "cooperative multitasking",
+        "state timer",
+        "blink without delay"
+      ],
+      "aliases": [
+        "non blocking timing",
+        "millis pattern"
+      ],
+      "prerequisites": [
+        "iot-04-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-04-lo03",
+      "order": 3,
+      "title": "Program hardware Interrupt Service Routines (ISRs) using volatile flags and critical sections",
+      "bloom": "program",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "isr",
+        "attachinterrupt",
+        "volatile keyword",
+        "critical section",
+        "hardware interrupt"
+      ],
+      "aliases": [
+        "interrupt handling",
+        "volatile in embedded c"
+      ],
+      "prerequisites": [
+        "iot-04-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-04-lo04",
+      "order": 4,
+      "title": "Eliminate mechanical contact chatter using software switch debouncing algorithms",
+      "bloom": "mitigate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "switch debouncing",
+        "contact bounce",
+        "state machine debounce",
+        "debounce delay"
+      ],
+      "aliases": [
+        "button debouncing",
+        "contact chatter elimination"
+      ],
+      "prerequisites": [
+        "iot-04-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-04-lo05",
+      "order": 5,
+      "title": "Configure ESP32 low-power sleep modes: Modem Sleep, Light Sleep, and Deep Sleep",
+      "bloom": "configure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "deep sleep",
+        "light sleep",
+        "modem sleep",
+        "rtc memory",
+        "esp_deep_sleep_start"
+      ],
+      "aliases": [
+        "esp32 sleep modes",
+        "power management in iot"
+      ],
+      "prerequisites": [
+        "iot-03-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-04-lo06",
+      "order": 6,
+      "title": "Debug firmware execution using serial logging and compile-time macro flags",
+      "bloom": "debug",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "serial debugging",
+        "baud rate",
+        "printf",
+        "debug macros",
+        "core dump"
+      ],
+      "aliases": [
+        "firmware debugging",
+        "serial logging"
+      ],
+      "prerequisites": [
+        "iot-04-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-04-lo07",
+      "order": 7,
+      "title": "Manage dynamic heap fragmentation and stack sizing in memory-constrained microcontrollers",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "heap fragmentation",
+        "stack overflow",
+        "malloc",
+        "free",
+        "static allocation"
+      ],
+      "aliases": [
+        "embedded memory management",
+        "ram exhaustion"
+      ],
+      "prerequisites": [
+        "iot-03-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-04-lo08",
+      "order": 8,
+      "title": "Execute embedded scripts using MicroPython on ESP32 via the interactive REPL",
+      "bloom": "execute",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "micropython",
+        "repl",
+        "machine module",
+        "python on mcu",
+        "thonny ide"
+      ],
+      "aliases": [
+        "micropython esp32",
+        "python embedded programming"
+      ],
+      "prerequisites": [
+        "iot-03-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-04-lo09",
+      "order": 9,
+      "title": "Compare performance, deterministic latency, and resource constraints of C/C++ versus MicroPython",
+      "bloom": "compare",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "c vs micropython",
+        "garbage collection pauses",
+        "execution overhead",
+        "firmware selection"
+      ],
+      "aliases": [
+        "micropython trade-offs",
+        "embedded language selection"
+      ],
+      "prerequisites": [
+        "iot-04-lo08"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

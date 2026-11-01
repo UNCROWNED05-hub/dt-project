@@ -1,0 +1,36 @@
+---
+loId: "iot-04-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Selecting between compiled C/C++ and interpreted MicroPython requires evaluating execution speed, memory limits, and project timelines:
+1. Performance & Execution Speed:
+   - C/C++: Compiles directly into native machine code (Tensilica/ARM). Executes 10x to 100x faster than MicroPython with predictable microsecond instruction timing.
+   - MicroPython: Bytecode interpreter running on a virtual machine. Subject to periodic Garbage Collection (GC) pauses ($5\text{ms} - 50\text{ms}$) where execution freezes unexpectedly while recovering dead memory.
+2. Memory Efficiency:
+   - C/C++: Full control over memory footprint; operates smoothly within 2KB of RAM (ATmega328P).
+   - MicroPython: Requires at least 256KB Flash and 16KB-64KB RAM just for the interpreter; prone to `MemoryError` when loading large network libraries or parsing heavy JSON.
+3. Decision Framework:
+   - Choose MicroPython for rapid prototyping, educational courses, and simple sensor hubs where development speed outweighs raw compute throughput.
+   - Choose C/C++ for commercial products, hard real-time motor control, battery-optimized deep sleep nodes, and high-speed audio/DSP processing.
+
+### Worked Example
+Comparison summary matrix between C/C++ and MicroPython:
+```text
+Metric                  C / C++ (ESP-IDF/Arduino)    MicroPython
+-------------------------------------------------------------------
+Execution Speed         Native (Fastest, ~1x)        Interpreted (~10x-50x slower)
+Memory Overhead         Minimal (~2KB RAM capable)   High (requires >64KB RAM)
+Real-Time Latency       Microsecond deterministic    Subject to Garbage Collection pauses
+Compilation Required    Yes (toolchain build)        No (interpreted live on REPL)
+Debugging Workflow      Serial logs / JTAG           Interactive live REPL terminal
+```
+
+### Common Mistake
+Attempting to use MicroPython for hard real-time closed-loop drone flight stabilization; unexpected garbage collection sweeps halt the control loop, causing motor desynchronization and crashes.
+
+### Check Yourself
+Why do periodic Garbage Collection (GC) sweeps make MicroPython unsuitable for hard real-time control applications?

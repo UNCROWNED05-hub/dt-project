@@ -1,0 +1,38 @@
+---
+loId: "iot-04-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Dynamic memory management in microcontrollers requires rigorous discipline to avoid silent crashes caused by heap exhaustion or stack corruption:
+1. Heap vs. Stack Architecture:
+   - Stack: Stores local function variables, parameter passing, and return addresses. Grows downward. If nested function calls or massive local arrays exceed allocated stack size, a fatal Stack Overflow occurs.
+   - Heap: Stores dynamically allocated objects via `malloc()` / `new`. Grows upward.
+2. Heap Fragmentation in Embedded Systems:
+   Repeatedly allocating and freeing small, variable-sized memory buffers (e.g., using the Arduino `String` class for building JSON or HTTP payloads) punches holes into the heap. Over days of operation, available RAM becomes fragmented into tiny non-contiguous blocks, causing future allocations to fail even when total free RAM appears sufficient.
+3. Embedded Best Practices:
+   - Avoid `String`: Use fixed-size static character buffers (`char buf[128]`) with `snprintf()`.
+   - Static Allocation: Allocate buffers globally or statically at boot time so memory usage is known at compile time.
+
+### Worked Example
+C++ buffer formatting avoiding heap fragmentation:
+```cpp
+void build_telemetry_payload(float temp, float humidity, char* output_buffer, size_t max_len) {
+  // Uses fixed static stack memory with buffer boundary protection
+  snprintf(output_buffer, max_len, "{"temp":%.1f,"hum":%.1f}", temp, humidity);
+}
+
+void loop() {
+  char json_payload[64]; // Fixed static buffer on stack
+  build_telemetry_payload(24.5, 60.2, json_payload, sizeof(json_payload));
+  // Payload is sent without touching the dynamic heap
+}
+```
+
+### Common Mistake
+Using the Arduino `String` class with dynamic string concatenation (`str += val`) inside continuous sensor loops, fragmenting heap memory until the MCU crashes unexpectedly after several hours.
+
+### Check Yourself
+What is heap fragmentation in embedded microcontrollers, and why does extensive use of the Arduino `String` class cause it?

@@ -1,0 +1,1129 @@
+[
+  {
+    "loId": "iot-05-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q01",
+    "stem": "How must the TX and RX pins be connected between two devices communicating over UART?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Device A TX connects to Device B RX, and Device A RX connects to Device B TX (Crossover connection)."
+      },
+      {
+        "id": "b",
+        "text": "TX connects to TX, and RX connects to RX directly."
+      },
+      {
+        "id": "c",
+        "text": "Both TX and RX connect to Ground."
+      },
+      {
+        "id": "d",
+        "text": "TX connects to the 5V power pin."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "UART transmitters must drive the opposing receivers in a TX-to-RX crossover arrangement.",
+    "noteRef": "iot-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q02",
+    "stem": "A micro-GPS receiver transmits data using 9600 baud 8-N-1 UART. How many total physical bits are transmitted over the wire to deliver 100 bytes of NMEA data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "800 bits"
+      },
+      {
+        "id": "b",
+        "text": "1000 bits"
+      },
+      {
+        "id": "c",
+        "text": "100 bits"
+      },
+      {
+        "id": "d",
+        "text": "1600 bits"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Standard 8-N-1 framing has 10 bits per byte (1 start + 8 data + 1 stop); 100 bytes * 10 = 1000 bits.",
+    "noteRef": "iot-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-05-q03",
+    "stem": "What is the theoretical maximum transmission rate in bytes per second for a UART connection operating at 115200 baud with 8-N-1 framing (10 bits/byte)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14400"
+      },
+      {
+        "id": "b",
+        "text": "9600"
+      },
+      {
+        "id": "c",
+        "text": "11520"
+      },
+      {
+        "id": "d",
+        "text": "57600"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "115200 baud / 10 bits per byte = 11,520 bytes per second.",
+    "noteRef": "iot-05-lo01",
+    "verify": "(115200 / 10 === 11520)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q04",
+    "stem": "Why does UART communication fail completely if the transmitter and receiver clock generators deviate from each other by more than roughly 3%?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because UART chips explode if clocks differ."
+      },
+      {
+        "id": "b",
+        "text": "Because UART requires microwave laser synchronization."
+      },
+      {
+        "id": "c",
+        "text": "Because the baud rate automatically switches to zero."
+      },
+      {
+        "id": "d",
+        "text": "Because UART lacks a shared clock line; accumulated clock drift causes the receiver to sample data bits at the incorrect time within the 10-bit frame window."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Asynchronous sampling accumulates timing error across the frame; >3% drift misaligns bit center sampling.",
+    "noteRef": "iot-05-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q05",
+    "stem": "What are the two physical signal lines used by the Inter-Integrated Circuit (I2C) bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SDA (Serial Data) and SCL (Serial Clock)"
+      },
+      {
+        "id": "b",
+        "text": "MOSI and MISO"
+      },
+      {
+        "id": "c",
+        "text": "TX and RX"
+      },
+      {
+        "id": "d",
+        "text": "CAN_H and CAN_L"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "I2C uses exactly two bidirectional bus lines: SDA (Serial Data) and SCL (Serial Clock).",
+    "noteRef": "iot-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q06",
+    "stem": "An engineer designs an I2C sensor board but forgets to include pull-up resistors on SDA and SCL. When the MCU attempts to read the sensor, what happens?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The bus operates at double speed."
+      },
+      {
+        "id": "b",
+        "text": "The lines float in an undefined state and the bus hangs, failing to establish START conditions or transfer data."
+      },
+      {
+        "id": "c",
+        "text": "The sensor automatically switches to Bluetooth."
+      },
+      {
+        "id": "d",
+        "text": "The microcontroller GPIO pins short circuit."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Open-drain buses cannot drive lines HIGH; without pull-ups, lines float and transactions fail.",
+    "noteRef": "iot-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-05-q07",
+    "stem": "What is the typical recommended pull-up resistor value for an I2C bus operating at 3.3V and 400 kHz (Fast Mode)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100k Ohms"
+      },
+      {
+        "id": "b",
+        "text": "10 Ohms"
+      },
+      {
+        "id": "c",
+        "text": "2.2k to 4.7k Ohms"
+      },
+      {
+        "id": "d",
+        "text": "1 Mega-Ohm"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "At 400kHz, 2.2k to 4.7k Ohm resistors ensure fast RC rise times while respecting the 3mA driver sink limit.",
+    "noteRef": "iot-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q08",
+    "stem": "Why does total bus capacitance (limited to 400 pF by the I2C specification) restrict the physical length of an I2C bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Capacitance consumes DC electrical power."
+      },
+      {
+        "id": "b",
+        "text": "Capacitance causes radio emissions that are banned."
+      },
+      {
+        "id": "c",
+        "text": "I2C cables become physically heavy."
+      },
+      {
+        "id": "d",
+        "text": "Higher cable capacitance slows the passive RC voltage rise time, rounding square wave clock pulses and causing bit decode errors at high frequencies."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Cable capacitance creates a low-pass filter with pull-up resistors; exceeding 400pF degrades rise times.",
+    "noteRef": "iot-05-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q09",
+    "stem": "How is an I2C START condition generated on the bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SDA transitions from HIGH to LOW while SCL remains HIGH."
+      },
+      {
+        "id": "b",
+        "text": "SDA transitions from LOW to HIGH while SCL remains LOW."
+      },
+      {
+        "id": "c",
+        "text": "Both SDA and SCL stay LOW for 1 hour."
+      },
+      {
+        "id": "d",
+        "text": "Sending an ASCII 'S' character over UART."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A START condition is defined as a HIGH-to-LOW transition on SDA while SCL is held HIGH.",
+    "noteRef": "iot-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q10",
+    "stem": "A microcontroller sends an address byte to an I2C temperature sensor. On the 9th clock pulse, the sensor pulls SDA LOW. What signal was delivered?",
+    "options": [
+      {
+        "id": "a",
+        "text": "NACK (Not Acknowledge)"
+      },
+      {
+        "id": "b",
+        "text": "ACK (Acknowledge)"
+      },
+      {
+        "id": "c",
+        "text": "STOP condition"
+      },
+      {
+        "id": "d",
+        "text": "Clock Stretch"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Pulling SDA LOW during the 9th clock pulse confirms acknowledgment (ACK) of the preceding byte.",
+    "noteRef": "iot-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-05-q11",
+    "stem": "What is the theoretical maximum number of distinct peripheral devices that can be addressed on an I2C bus using standard 7-bit addressing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "256"
+      },
+      {
+        "id": "b",
+        "text": "64"
+      },
+      {
+        "id": "c",
+        "text": "128"
+      },
+      {
+        "id": "d",
+        "text": "16"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A 7-bit address space yields 2^7 = 128 possible addresses (addresses 0x00 and several others are reserved).",
+    "noteRef": "iot-05-lo03",
+    "verify": "(2 ** 7 === 128)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q12",
+    "stem": "What mechanism allows an I2C slave peripheral to pause the master if it needs extra time to process an internal conversion?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Turning off the power supply."
+      },
+      {
+        "id": "b",
+        "text": "Sending an interrupt over the MOSI pin."
+      },
+      {
+        "id": "c",
+        "text": "Flashing an onboard LED."
+      },
+      {
+        "id": "d",
+        "text": "Clock Stretching (the slave pulls SCL LOW, forcing the master to wait before continuing the clock)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Slaves hold SCL LOW to stretch the clock period, pausing the master until data is ready.",
+    "noteRef": "iot-05-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q13",
+    "stem": "What are the four signal lines in a standard SPI communication bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MOSI, MISO, SCLK, and CS (Chip Select)"
+      },
+      {
+        "id": "b",
+        "text": "SDA, SCL, VCC, GND"
+      },
+      {
+        "id": "c",
+        "text": "TX, RX, RTS, CTS"
+      },
+      {
+        "id": "d",
+        "text": "CAN_H, CAN_L, 12V, GND"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Standard 4-wire SPI uses Master Out Slave In (MOSI), Master In Slave Out (MISO), Serial Clock (SCLK), and Chip Select (CS).",
+    "noteRef": "iot-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q14",
+    "stem": "An engineer attaches three separate SPI devices (an SD card, a display, and a sensor) to an ESP32. How does the master select which device to talk to?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By broadcasting a 7-bit digital address over MOSI."
+      },
+      {
+        "id": "b",
+        "text": "By pulling the specific target device's dedicated Chip Select (CS) pin LOW while keeping all others HIGH."
+      },
+      {
+        "id": "c",
+        "text": "By changing the SPI clock frequency."
+      },
+      {
+        "id": "d",
+        "text": "SPI only supports one device per microcontroller."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "SPI uses dedicated active-LOW hardware Chip Select (CS) lines to address individual slave devices.",
+    "noteRef": "iot-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-05-q15",
+    "stem": "Why does SPI achieve dramatically higher transmission data rates (e.g. 40MHz - 80MHz) than I2C (400kHz)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SPI cables are made of pure silver."
+      },
+      {
+        "id": "b",
+        "text": "SPI only transmits odd numbers."
+      },
+      {
+        "id": "c",
+        "text": "SPI lines use active push-pull CMOS output transistors with sharp transition edges rather than passive high-resistance open-drain pull-ups."
+      },
+      {
+        "id": "d",
+        "text": "SPI does not require Ground."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Push-pull drivers charge and discharge line capacitance actively, producing fast edges at high clock speeds.",
+    "noteRef": "iot-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q16",
+    "stem": "What is meant by 'Full-Duplex' in SPI bus communication?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data can only travel in one direction at a time."
+      },
+      {
+        "id": "b",
+        "text": "The bus operates without any wires."
+      },
+      {
+        "id": "c",
+        "text": "Every packet is sent twice for safety."
+      },
+      {
+        "id": "d",
+        "text": "Data is transmitted simultaneously in both directions: master sends a bit on MOSI while reading a bit on MISO during the exact same clock pulse."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Full-duplex allows simultaneous bidirectional transmission via shared shift registers clocked together.",
+    "noteRef": "iot-05-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q17",
+    "stem": "In SPI communication, what does Clock Polarity (CPOL) define?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The electrical logic level (LOW or HIGH) of the SCLK line when the bus is idle."
+      },
+      {
+        "id": "b",
+        "text": "The maximum operating temperature of the chip."
+      },
+      {
+        "id": "c",
+        "text": "The physical direction of electron flow."
+      },
+      {
+        "id": "d",
+        "text": "The baud rate of the serial monitor."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "CPOL defines whether the clock line idles LOW (CPOL=0) or idles HIGH (CPOL=1).",
+    "noteRef": "iot-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q18",
+    "stem": "A datasheet states an SPI sensor requires Mode 0 (CPOL=0, CPHA=0). When does the receiver sample the incoming data on MOSI/MISO?",
+    "options": [
+      {
+        "id": "a",
+        "text": "On the falling (trailing) edge of SCLK."
+      },
+      {
+        "id": "b",
+        "text": "On the rising (leading) edge of SCLK."
+      },
+      {
+        "id": "c",
+        "text": "Only when CS transitions HIGH."
+      },
+      {
+        "id": "d",
+        "text": "Continuous analog sampling."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "In Mode 0, the clock idles LOW and samples data on the first (rising) clock edge.",
+    "noteRef": "iot-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-05-q19",
+    "stem": "Which of the following parameters are specified when configuring an SPI transaction using `SPISettings()`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Maximum clock frequency (e.g. 10000000 for 10MHz)"
+      },
+      {
+        "id": "b",
+        "text": "Bit order (MSBFIRST or LSBFIRST)"
+      },
+      {
+        "id": "c",
+        "text": "SPI Mode (SPI_MODE0, SPI_MODE1, SPI_MODE2, or SPI_MODE3)"
+      },
+      {
+        "id": "d",
+        "text": "Wi-Fi SSID network name"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "`SPISettings` takes clock frequency, bit transmission order, and SPI mode (0-3).",
+    "noteRef": "iot-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q20",
+    "stem": "What failure symptom typically occurs if an SPI master is configured for CPHA=0 when communicating with a peripheral that expects CPHA=1?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The microcontroller GPIO pins melt."
+      },
+      {
+        "id": "b",
+        "text": "The power supply voltage doubles."
+      },
+      {
+        "id": "c",
+        "text": "Every received byte is shifted by 1 bit, corrupting register numbers and data values."
+      },
+      {
+        "id": "d",
+        "text": "The SPI clock frequency drops to zero."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Mismatched CPHA samples data during shift transitions, causing a 1-bit offset in all transmitted bytes.",
+    "noteRef": "iot-05-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q21",
+    "stem": "Which wired protocol requires the FEWEST microcontroller GPIO pins when connecting 6 external environmental sensors to a single board?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SPI (requires 3 shared pins + 6 separate CS pins = 9 pins)"
+      },
+      {
+        "id": "b",
+        "text": "UART (requires 2 dedicated pins per device = 12 pins)"
+      },
+      {
+        "id": "c",
+        "text": "Parallel 8-bit bus"
+      },
+      {
+        "id": "d",
+        "text": "I2C (strictly 2 pins for all 6 sensors)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "I2C uses a shared 2-wire bus where all 6 sensors share the same SDA and SCL lines via 7-bit addressing.",
+    "noteRef": "iot-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q22",
+    "stem": "An engineer needs to drive a 320x240 pixel 16-bit color TFT display (requiring ~153 KB per screen refresh). Which protocol is required to achieve smooth 25 FPS frame rates?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SPI operating at 40MHz or higher."
+      },
+      {
+        "id": "b",
+        "text": "I2C operating at 100kHz."
+      },
+      {
+        "id": "c",
+        "text": "UART operating at 9600 baud."
+      },
+      {
+        "id": "d",
+        "text": "1-Wire bus."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "153 KB * 25 FPS = ~30 Mbps throughput, requiring high-speed push-pull SPI buses.",
+    "noteRef": "iot-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-05-q23",
+    "stem": "Which of the following factors should guide the selection between UART, I2C, and SPI in an IoT hardware design?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Required bandwidth and data throughput"
+      },
+      {
+        "id": "b",
+        "text": "Number of available GPIO pins on the microcontroller"
+      },
+      {
+        "id": "c",
+        "text": "Physical distance between components"
+      },
+      {
+        "id": "d",
+        "text": "Color of the PCB solder mask"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Bandwidth, pin economy, and bus trace distance govern serial protocol selection.",
+    "noteRef": "iot-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q24",
+    "stem": "Why is UART with an RS-485 transceiver preferred over I2C or SPI for communicating across a 100-meter factory floor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RS-485 does not require cables."
+      },
+      {
+        "id": "b",
+        "text": "I2C and SPI are high-impedance unbalanced board-level buses that cannot tolerate high cable capacitance and EMI; RS-485 uses balanced differential signaling over long distances."
+      },
+      {
+        "id": "c",
+        "text": "I2C only works in cold weather."
+      },
+      {
+        "id": "d",
+        "text": "SPI cannot transmit numbers above 100."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "I2C/SPI are short-distance PCB buses (<1m); differential RS-485 cancels noise over kilometer distances.",
+    "noteRef": "iot-05-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q25",
+    "stem": "What bitwise expression combines high byte `msb` and low byte `lsb` into a 16-bit big-endian integer?",
+    "options": [
+      {
+        "id": "a",
+        "text": "(lsb << 8) | msb"
+      },
+      {
+        "id": "b",
+        "text": "msb + lsb"
+      },
+      {
+        "id": "c",
+        "text": "(msb << 8) | lsb"
+      },
+      {
+        "id": "d",
+        "text": "msb & lsb"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Shifting the most significant byte left by 8 bits and bitwise ORing with the low byte yields a 16-bit big-endian value.",
+    "noteRef": "iot-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo07",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-05-q26",
+    "stem": "If a sensor returns MSB = 0x01 and LSB = 0x00 over I2C, what is the combined 16-bit integer value in decimal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "512"
+      },
+      {
+        "id": "c",
+        "text": "100"
+      },
+      {
+        "id": "d",
+        "text": "256"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "(0x01 << 8) | 0x00 = 0x0100 in hex = 256 in decimal.",
+    "noteRef": "iot-05-lo07",
+    "verify": "(((0x01 << 8) | 0x00) === 256)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q27",
+    "stem": "An accelerometer reads raw values around 65520 when tilted downwards instead of negative numbers like -16. What software mistake occurred?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The combined 16-bit integer was stored in an unsigned `uint16_t` instead of a signed two's-complement `int16_t`."
+      },
+      {
+        "id": "b",
+        "text": "The I2C bus was running backwards."
+      },
+      {
+        "id": "c",
+        "text": "The accelerometer was upside down."
+      },
+      {
+        "id": "d",
+        "text": "The pull-up resistor burned out."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Two's complement signed 16-bit values (-16) interpret as 65520 if stored as unsigned `uint16_t`.",
+    "noteRef": "iot-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q28",
+    "stem": "In Arduino's `Wire` library, why is `Wire.endTransmission(false)` used when writing a register address before reading data back?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It turns off the sensor power."
+      },
+      {
+        "id": "b",
+        "text": "Passing `false` generates a Repeated START condition, preventing other multi-master devices from interrupting or seizing the bus between write and read."
+      },
+      {
+        "id": "c",
+        "text": "It inverts the clock polarity."
+      },
+      {
+        "id": "d",
+        "text": "It causes the transmission to fail intentionally."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`endTransmission(false)` sends a repeated start, holding the bus continuously between register select and reading.",
+    "noteRef": "iot-05-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-05-q29",
+    "stem": "What does an I2C bus scanner sketch do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It measures the physical length of the wires."
+      },
+      {
+        "id": "b",
+        "text": "It scans for local Wi-Fi networks."
+      },
+      {
+        "id": "c",
+        "text": "It iterates through all 127 7-bit addresses on the bus, checking for an ACK response to identify connected devices."
+      },
+      {
+        "id": "d",
+        "text": "It updates the microcontroller's firmware."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "An I2C scanner sends address frames from 1 to 126, logging responsive ACK devices to the serial monitor.",
+    "noteRef": "iot-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q30",
+    "stem": "During an I2C transaction, the microcontroller resets while an external sensor was sending a '0' bit. The sensor now holds SDA permanently LOW, freezing all future I2C transactions. How can the master recover the bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increase the supply voltage to 24V to force the line HIGH."
+      },
+      {
+        "id": "b",
+        "text": "Cut the SDA wire with wire cutters."
+      },
+      {
+        "id": "c",
+        "text": "Wait 24 hours for the sensor to reset."
+      },
+      {
+        "id": "d",
+        "text": "Reconfigure SCL as a GPIO output and toggle it 9 to 16 times manually to clock the slave out of its byte transfer, then assert a STOP condition."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Toggling SCL manually finishes the slave's pending byte transmission, causing it to release the open-drain SDA line.",
+    "noteRef": "iot-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-05-q31",
+    "stem": "Which of the following physical layer problems can a USB logic analyzer identify when diagnosing serial buses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Missing ACK/NACK responses on I2C"
+      },
+      {
+        "id": "b",
+        "text": "Mismatched baud rate framing errors on UART"
+      },
+      {
+        "id": "c",
+        "text": "Incorrect SPI clock mode (CPOL/CPHA) alignment"
+      },
+      {
+        "id": "d",
+        "text": "Wi-Fi router password authentication errors"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Logic analyzers decode hardware bit states, ACKs, and edge timings on wired physical buses.",
+    "noteRef": "iot-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q32",
+    "stem": "Why can connecting two identical I2C sensor breakout boards with hardwired non-configurable addresses (e.g. both fixed at 0x68) cause bus collapse?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Both devices acknowledge simultaneously and drive SDA concurrently during reads, resulting in electrical bus contention and corrupted data."
+      },
+      {
+        "id": "b",
+        "text": "The power supply voltage cuts in half."
+      },
+      {
+        "id": "c",
+        "text": "It causes the microcontroller to overheat instantly."
+      },
+      {
+        "id": "d",
+        "text": "The I2C clock frequency doubles."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Address collisions cause multiple slaves to drive SDA at once, garbling communication.",
+    "noteRef": "iot-05-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-05-q33",
+    "stem": "What physical transmission characteristic makes RS-485 highly resilient against industrial electrical noise?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Operating at 1000 Volts."
+      },
+      {
+        "id": "b",
+        "text": "Differential signaling over a twisted wire pair (measuring VA - VB), which causes common-mode noise to cancel out."
+      },
+      {
+        "id": "c",
+        "text": "Using fiber optic light."
+      },
+      {
+        "id": "d",
+        "text": "Transmitting data in Latin."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Differential receivers subtract noise common to both twisted wires ($V_A - V_B$), rejecting heavy EMI.",
+    "noteRef": "iot-05-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-05-q34",
+    "stem": "An engineer builds a 500-meter RS-485 Modbus network connecting 10 solar inverters. Where must 120 Ohm termination resistors be placed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "On every single inverter along the entire chain."
+      },
+      {
+        "id": "b",
+        "text": "Between each inverter and earth ground."
+      },
+      {
+        "id": "c",
+        "text": "Across lines A and B at the two extreme physical ends of the cable run."
+      },
+      {
+        "id": "d",
+        "text": "Only on the microcontroller power supply."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Termination resistors (120 Ohms) must be installed exclusively at the two physical ends of the bus to match cable impedance.",
+    "noteRef": "iot-05-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-05-q35",
+    "stem": "Which of the following fields are standard components of a Modbus RTU serial frame?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1-byte Slave Device Address"
+      },
+      {
+        "id": "b",
+        "text": "1-byte Function Code (e.g. 0x03 Read Holding Registers)"
+      },
+      {
+        "id": "c",
+        "text": "16-bit CRC Error Checksum"
+      },
+      {
+        "id": "d",
+        "text": "HTTP Cookie Header"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Modbus RTU frames consist of Slave Address, Function Code, Data Payload, and CRC-16 Checksum.",
+    "noteRef": "iot-05-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-05-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-05-q36",
+    "stem": "Why must half-duplex RS-485 transceiver circuits toggle the Driver Enable (DE) pin to LOW immediately after sending a packet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To save the microcontroller's RAM memory."
+      },
+      {
+        "id": "b",
+        "text": "To recharge the termination resistors."
+      },
+      {
+        "id": "c",
+        "text": "Because the transceiver shuts down after every transmission."
+      },
+      {
+        "id": "d",
+        "text": "To release the differential line driver and switch the transceiver into listen mode so incoming slave response packets can be received."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Half-duplex transceivers share the line; holding DE HIGH blocks incoming responses by driving the bus.",
+    "noteRef": "iot-05-lo09",
+    "reviewed": false
+  }
+]

@@ -1,0 +1,44 @@
+---
+loId: "iot-05-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+SPI transmission modes define the clock idling level and edge sampling phases, partitioned into four distinct modes by CPOL and CPHA:
+1. Clock Polarity (CPOL): Defines the idle state of the SCLK line when no data is being transferred:
+   - $\text{CPOL} = 0$: Clock idles at LOW ($0\text{V}$).
+   - $\text{CPOL} = 1$: Clock idles at HIGH ($V_{CC}$).
+2. Clock Phase (CPHA): Defines which clock edge samples the data:
+   - $\text{CPHA} = 0$: Data sampled on the first (leading) clock edge and shifted on the second (trailing) edge.
+   - $\text{CPHA} = 1$: Data shifted on the first (leading) clock edge and sampled on the second (trailing) edge.
+3. The Four Standard SPI Modes:
+   - Mode 0 ($\text{CPOL}=0, \text{CPHA}=0$): Idles LOW, samples on Rising edge. Most common (SD cards, BME280).
+   - Mode 1 ($\text{CPOL}=0, \text{CPHA}=1$): Idles LOW, samples on Falling edge.
+   - Mode 2 ($\text{CPOL}=1, \text{CPHA}=0$): Idles HIGH, samples on Falling edge.
+   - Mode 3 ($\text{CPOL}=1, \text{CPHA}=1$): Idles HIGH, samples on Rising edge.
+4. Setting Modes in Code: Microcontrollers must configure `SPISettings(speed, bitOrder, SPI_MODE)` to match the peripheral datasheet's exact timing diagram.
+
+### Worked Example
+Python script checking SPI mode compatibility:
+```python
+def determine_spi_mode(cpol, cpha):
+    modes = {
+        (0, 0): "SPI_MODE0 (Clock idles LOW, samples on RISING edge)",
+        (0, 1): "SPI_MODE1 (Clock idles LOW, samples on FALLING edge)",
+        (1, 0): "SPI_MODE2 (Clock idles HIGH, samples on FALLING edge)",
+        (1, 1): "SPI_MODE3 (Clock idles HIGH, samples on RISING edge)"
+    }
+    return modes.get((cpol, cpha), "INVALID")
+
+# Testing Mode 0 and Mode 3 configurations
+print(determine_spi_mode(0, 0)) # SPI_MODE0
+print(determine_spi_mode(1, 1)) # SPI_MODE3
+```
+
+### Common Mistake
+Attempting to communicate with an SPI sensor expecting Mode 3 using default Mode 0; clock edge misalignments cause all received bytes to be shifted by 1 bit, corrupting register reads.
+
+### Check Yourself
+In SPI Mode 0 ($	ext{CPOL}=0, 	ext{CPHA}=0$), what is the clock idle state and which clock edge samples data?

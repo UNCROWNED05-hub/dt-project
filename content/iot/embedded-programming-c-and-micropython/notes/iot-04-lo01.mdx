@@ -1,0 +1,44 @@
+---
+loId: "iot-04-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Embedded firmware executes in a bare-metal environment governed by the core setup/loop lifecycle and explicit memory sizing:
+1. Lifecycle Architecture:
+   - `setup()`: Invoked once immediately upon boot or reset. Initializes hardware peripherals, configures GPIO pin directions, opens communication ports (`Serial.begin`), and configures network credentials.
+   - `loop()`: Executes continuously in an infinite background while-loop. Handles periodic sensor polling, network heartbeats, and actuation logic.
+2. Fixed-Width Integer Types (`<stdint.h>`):
+   Standard C types like `int` vary across architectures (16 bits on AVR, 32 bits on ESP32). Embedded developers mandate fixed-width types to guarantee predictable memory footprint and avoid overflow bugs:
+   - `uint8_t`: 8-bit unsigned integer ($0$ to $255$). Consumes exactly 1 byte.
+   - `int16_t`: 16-bit signed integer ($-32,768$ to $+32,767$).
+   - `uint32_t`: 32-bit unsigned integer ($0$ to $4,294,967,295$), essential for millisecond timestamps.
+3. Variable Scoping: Minimize global variable declarations; scope variables locally to preserve limited SRAM.
+
+### Worked Example
+C++ example demonstrating fixed-width types and setup/loop architecture:
+```cpp
+#include <Arduino.h>
+#include <stdint.h>
+
+const uint8_t STATUS_LED = 2; // Exact 1-byte storage
+
+void setup() {
+  pinMode(STATUS_LED, OUTPUT);
+  Serial.begin(115200);
+  Serial.println("System Initialized");
+}
+
+void loop() {
+  uint32_t current_time = millis(); // 32-bit millisecond counter
+  // Firmware operational loop continues here
+}
+```
+
+### Common Mistake
+Using a standard signed `int` (16 bits on Arduino Uno) to store millisecond timestamps from `millis()`; the 16-bit signed integer overflows after only $32.7$ seconds ($32,767\text{ms}$), breaking all subsequent timing comparisons.
+
+### Check Yourself
+Why must millisecond timestamps returned by `millis()` always be stored in an unsigned 32-bit integer (`uint32_t`)?

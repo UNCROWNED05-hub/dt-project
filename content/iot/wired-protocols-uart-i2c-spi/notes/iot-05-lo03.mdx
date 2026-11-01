@@ -1,0 +1,36 @@
+---
+loId: "iot-05-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+I2C transactions follow a strict frame protocol governed by clock edges, addressing, and explicit acknowledgments:
+1. Start and Stop Conditions:
+   - START: SDA transitions from HIGH to LOW while SCL is HIGH, signaling a new transmission.
+   - STOP: SDA transitions from LOW to HIGH while SCL is HIGH, releasing the bus.
+2. 7-Bit Device Addressing:
+   The master transmits an 8-bit byte containing 7 address bits (identifying up to 127 devices) and 1 Read/Write bit (0 for Write, 1 for Read).
+3. Acknowledgment (ACK / NACK):
+   After every 8-bit byte, the transmitter releases SDA during the 9th clock pulse.
+   - ACK: The receiver pulls SDA LOW during the 9th clock pulse to confirm receipt.
+   - NACK: SDA remains HIGH, indicating address mismatch or transfer completion.
+4. Clock Stretching: If a slave needs extra processing time, it holds SCL LOW, pausing the master until released.
+
+### Worked Example
+Tracing an I2C write sequence to a sensor register:
+1. Master generates START condition.
+2. Master transmits address byte (`0x68 << 1 | 0`).
+3. Slave ($0x68$) pulls SDA LOW on 9th clock $\rightarrow$ ACK.
+4. Master transmits register address (`0x3B`).
+5. Slave pulls SDA LOW on 9th clock $\rightarrow$ ACK.
+6. Master transmits data byte (`0x01`).
+7. Slave pulls SDA LOW on 9th clock $\rightarrow$ ACK.
+8. Master generates STOP condition to release bus.
+
+### Common Mistake
+Confusing a sensor's 7-bit I2C address ($0x68$) with its 8-bit shifted write address ($0xD0$); passing $0xD0$ to `Wire.beginTransmission()` targets the wrong address because the library performs the 1-bit shift automatically.
+
+### Check Yourself
+What electrical signal state on SDA during the 9th SCL clock pulse represents a successful ACK in I2C?

@@ -1,0 +1,47 @@
+---
+loId: "iot-04-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Calling blocking `delay()` freezes the CPU in a dead spin loop, preventing microcontrollers from servicing button presses, processing serial packets, or maintaining network connections:
+1. The `millis()` Pattern (Blink Without Delay):
+   `millis()` tracks elapsed milliseconds since power-on via an internal hardware timer tick. Instead of stalling execution, the firmware checks elapsed time cooperatively:
+   $$\text{Elapsed Time} = \text{current\_time} - \text{previous\_time}$$
+2. Non-Blocking Scheduling:
+   Store the timestamp of the last executed action. On every `loop()` iteration, evaluate whether the interval has expired. If yes, update the timestamp and execute the task; if no, immediately yield execution to other tasks.
+3. Rollover Safety:
+   `millis()` rolls over from $2^{32}-1$ to $0$ every $\sim 49.7$ days. By using unsigned subtraction (`current_time - previous_time >= interval`), standard binary two's-complement arithmetic guarantees correct operation even across rollover events.
+
+### Worked Example
+Cooperative multitasking with non-blocking `millis()` in Arduino C++:
+```cpp
+uint32_t last_sensor_read = 0;
+uint32_t last_led_blink = 0;
+const uint32_t SENSOR_INTERVAL = 2000; // 2 seconds
+const uint32_t BLINK_INTERVAL = 500;   // 500 ms
+
+void loop() {
+  uint32_t now = millis();
+
+  // Task 1: Blink status LED every 500 ms
+  if (now - last_led_blink >= BLINK_INTERVAL) {
+    last_led_blink = now;
+    digitalWrite(2, !digitalRead(2));
+  }
+
+  // Task 2: Read temperature sensor every 2 seconds
+  if (now - last_sensor_read >= SENSOR_INTERVAL) {
+    last_sensor_read = now;
+    read_temperature_sensor();
+  }
+}
+```
+
+### Common Mistake
+Writing timing conditions as `now >= last_time + interval`; when `last_time + interval` overflows past $2^{32}-1$, the condition fails permanently until the next rollover, locking up the schedule for 49 days.
+
+### Check Yourself
+Why does the subtraction syntax `(current_time - previous_time >= interval)` remain safe against 49-day `millis()` rollovers?

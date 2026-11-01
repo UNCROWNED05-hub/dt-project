@@ -1,0 +1,50 @@
+---
+loId: "iot-04-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Hardware Interrupt Service Routines (ISRs) provide immediate, microsecond response to asynchronous physical events without wasting CPU polling cycles:
+1. Interrupt Mechanics: When a configured electrical transition occurs on a GPIO pin (RISING, FALLING, CHANGE), the CPU immediately suspends main execution, saves registers onto the stack, and jumps to the assigned ISR callback function.
+2. The `volatile` Keyword: Informs the C/C++ compiler optimizer that a variable can be modified outside the normal code flow (by an ISR). Without `volatile`, the compiler caches the variable in a CPU register, preventing the main loop from detecting changes written by the interrupt.
+3. ISR Golden Rules:
+   - Keep It Ultra-Short: An ISR should only set a boolean flag, record a timestamp, or increment a counter.
+   - Zero Blocking Calls: Never invoke `delay()`, `Serial.print()`, `malloc()`, or I2C/SPI transactions inside an ISR; these functions rely on other interrupts and cause deadlock crashes.
+4. IRAM_ATTR: On the ESP32, mark ISR functions with `IRAM_ATTR` so the code resides in internal SRAM rather than slower external SPI Flash.
+
+### Worked Example
+Robust ESP32 interrupt handler in Arduino C++:
+```cpp
+#include <Arduino.h>
+
+const int BUTTON_PIN = 14;
+volatile bool button_pressed = false;
+volatile uint32_t press_count = 0;
+
+void IRAM_ATTR handle_button_isr() {
+  button_pressed = true;
+  press_count++;
+}
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), handle_button_isr, FALLING);
+  Serial.begin(115200);
+}
+
+void loop() {
+  if (button_pressed) {
+    button_pressed = false; // Clear flag in main thread
+    Serial.printf("Interrupt Triggered! Total Presses: %u
+", press_count);
+  }
+}
+```
+
+### Common Mistake
+Calling `Serial.println()` or `delay(100)` inside an ISR; `Serial.println` uses interrupts to empty its transmit buffer, causing an immediate hardware watchdog timeout or system freeze.
+
+### Check Yourself
+What critical function does the `volatile` type qualifier perform when declaring variables shared between an ISR and main loop?

@@ -1,0 +1,43 @@
+---
+loId: "iot-04-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+MicroPython brings the Python 3 programming language to microcontrollers, delivering interactive rapid prototyping and live hardware control:
+1. MicroPython Architecture: A compact, highly optimized Python 3 interpreter and runtime that fits inside $256\text{KB}$ of flash and runs within $16\text{KB}$ of RAM.
+2. The Read-Eval-Print Loop (REPL): Accessible over standard USB-to-UART serial at 115200 baud. Allows developers to execute Python code interactively on the physical chip line-by-line, instantly toggling GPIOs, reading sensors, and testing Wi-Fi connections without compilation cycles.
+3. The `machine` Module: The core hardware abstraction API in MicroPython:
+   - `machine.Pin`: Controls digital I/O modes and drive states.
+   - `machine.ADC`: Configures analog reading and attenuation.
+   - `machine.PWM`: Synthesizes pulse-width modulated outputs.
+   - `machine.I2C` / `machine.SPI`: Communicates with bus peripherals.
+4. File Storage: MicroPython implements a virtual Flash filesystem (LittleFS/FAT), storing scripts like `boot.py` (runs at power-on) and `main.py` (main application code).
+
+### Worked Example
+Controlling ESP32 hardware via interactive MicroPython script:
+```python
+import time
+from machine import Pin, ADC
+
+led = Pin(2, Pin.OUT)
+sensor = ADC(Pin(34))
+sensor.atten(ADC.ATTN_11DB) # 0 - 3.3V range
+
+print("Starting MicroPython Sensor Loop...")
+for _ in range(5):
+    led.value(1) # LED ON
+    raw_val = sensor.read()
+    voltage = (raw_val / 4095) * 3.3
+    print("ADC Reading: {} | Voltage: {:.2f}V".format(raw_val, voltage))
+    led.value(0) # LED OFF
+    time.sleep(1)
+```
+
+### Common Mistake
+Attempting to run standard desktop Python packages (like NumPy, Pandas, or OpenCV) on MicroPython; MicroPython is a lean subset specifically written for microcontrollers and lacks full CPython library support.
+
+### Check Yourself
+What are the distinct roles of `boot.py` and `main.py` in the MicroPython filesystem?

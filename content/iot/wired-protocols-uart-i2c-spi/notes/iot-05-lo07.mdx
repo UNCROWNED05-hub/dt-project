@@ -1,0 +1,46 @@
+---
+loId: "iot-05-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Reading multi-byte sensor data over I2C requires querying internal memory registers and assembling raw bytes according to datasheet endianness formats:
+1. Register-Based Architecture:
+   Sensors organize readings across memory-mapped 8-bit registers. For example, a 16-bit accelerometer axis is split into two separate registers: `ACCEL_X_OUT_H` (high byte) and `ACCEL_X_OUT_L` (low byte).
+2. Endianness Assembly:
+   - Big-Endian (Most Significant Byte first):
+     $$\text{Value} = (\text{High Byte} \ll 8) \mid \text{Low Byte}$$
+   - Little-Endian (Least Significant Byte first):
+     $$\text{Value} = (\text{Low Byte}) \mid (\text{High Byte} \ll 8)$$
+3. Signed Value Sign Extension:
+   Accelerometers output two's complement signed data (e.g., $-32,768$ to $+32,767$). Casting the combined 16-bit unsigned integer to an `int16_t` correctly sign-extends negative acceleration values.
+4. Scale Factor Conversion:
+   Multiply raw integer readings by the sensitivity scale factor (e.g., $0.061\text{mg/LSB}$) documented in the sensor datasheet to yield engineering units ($m/s^2$ or $g$).
+
+### Worked Example
+Arduino C++ reading a 16-bit sensor axis over I2C:
+```cpp
+#include <Wire.h>
+
+int16_t read_mpu_axis(uint8_t reg_high) {
+  Wire.beginTransmission(0x68);
+  Wire.write(reg_high); // Request high byte register
+  Wire.endTransmission(false); // Repeated start condition
+
+  Wire.requestFrom((uint8_t)0x68, (uint8_t)2); // Request 2 bytes
+  uint8_t msb = Wire.read();
+  uint8_t lsb = Wire.read();
+
+  // Combine into 16-bit signed integer (Big-Endian)
+  int16_t raw_accel = (int16_t)((msb << 8) | lsb);
+  return raw_accel;
+}
+```
+
+### Common Mistake
+Omitting the cast to `int16_t` when combining signed 16-bit sensor bytes; negative acceleration readings register as huge positive values around $+65,000$ due to unsigned interpretation.
+
+### Check Yourself
+How are a high byte (`msb`) and low byte (`lsb`) combined into a single 16-bit big-endian value in C++?

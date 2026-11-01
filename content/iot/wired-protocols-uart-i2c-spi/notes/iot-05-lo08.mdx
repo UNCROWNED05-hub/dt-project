@@ -1,0 +1,43 @@
+---
+loId: "iot-05-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Wired serial buses can deadlock due to physical layer faults or clock timing bugs, requiring systematic diagnosis:
+1. The I2C Bus Scanner: A firmware diagnostic tool that sweeps through all 127 7-bit addresses. For each address, it sends a START and address byte, checking if an ACK is received. If a device ACKs, its hexadecimal address is printed to the serial monitor.
+2. The "SDA Stuck LOW" Bus Hang:
+   If an MCU resets in the middle of reading a byte from an I2C slave, the slave may be waiting to output a '0' bit on SDA, holding SDA permanently LOW. Because SDA is held LOW, the master cannot generate a valid START condition, freezing the bus.
+   - Recovery Sequence: The master reconfigures SCL as a GPIO output and manually clocks SCL 9 to 16 times until the slave releases SDA, then sends a STOP condition.
+3. Logic Analyzer Debugging:
+   Hardware logic analyzers (such as Saleae or open-source 24MHz USB analyzers with PulseView) decode bus waveforms in real time, inspecting address bytes, ACK/NACK bits, and setup/hold timing violations.
+
+### Worked Example
+Standard I2C scanner diagnostic function in Arduino C++:
+```cpp
+#include <Wire.h>
+
+void scan_i2c_bus() {
+  Serial.println("Scanning I2C Bus for responsive addresses...");
+  byte count = 0;
+  for (byte addr = 1; addr < 127; addr++) {
+    Wire.beginTransmission(addr);
+    byte error = Wire.endTransmission();
+    if (error == 0) {
+      Serial.printf("Device detected at address 0x%02X
+", addr);
+      count++;
+    }
+  }
+  Serial.printf("Scan complete. %d device(s) found.
+", count);
+}
+```
+
+### Common Mistake
+Assuming an unresponsive I2C sensor is broken without checking if multiple devices on the bus share identical hardwired I2C addresses (e.g. two display boards hardcoded to $0x3C$).
+
+### Check Yourself
+How does a microcontroller recover an I2C bus when a slave peripheral has locked SDA in a persistent LOW state?

@@ -45,6 +45,7 @@ const VERBS = new Set([
   'maximize', 'transform', 'calibrate', 'balance', 'regularize', 'prune', 'combine',
   'preserve', 'maintain', 'automate', 'enforce', 'integrate', 'conduct', 'prioritize',
   'prototype', 'convert', 'generate', 'control', 'develop', 'utilize',
+  'eliminate', 'manage', 'read',
   'extract', 'prioritize', 'conduct'
 ]);
 

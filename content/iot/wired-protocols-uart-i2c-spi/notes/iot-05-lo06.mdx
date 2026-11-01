@@ -1,0 +1,37 @@
+---
+loId: "iot-05-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+System architects select communication protocols by evaluating trade-offs between speed, pin efficiency, distance, and hardware complexity:
+1. Protocol Trade-Off Matrix:
+   - UART: Point-to-point (2 devices). Pin count: 2 (TX, RX). Speed: up to $1\text{Mbps}$. Distance: up to $2\text{m}-5\text{m}$ at TTL ($>100\text{m}$ with RS-485). Best for: GPS modules, GSM/cellular modems, PC debug consoles.
+   - I2C: Multi-drop bus (up to 127 devices). Pin count: strictly 2 (SDA, SCL) regardless of device count. Speed: $100\text{kHz}$ (Standard), $400\text{kHz}$ (Fast), $1\text{MHz}$ (Fast+). Distance: $<1\text{m}$ (limited by $400\text{pF}$ bus capacitance). Best for: Low-speed environmental sensors (temp, humidity, pressure, RTC, IMUs).
+   - SPI: Multi-device star bus. Pin count: $3 + N$ (SCLK, MOSI, MISO + 1 CS pin per slave). Speed: $10\text{MHz} - 80\text{MHz}$. Distance: $<0.3\text{m}$ (PCB trace lengths). Best for: High-bandwidth devices (Color TFT screens, SD card storage, camera feeds).
+2. Selection Decision Rule:
+   If high throughput is required, choose SPI. If pin economy across many sensors is paramount, choose I2C. If communicating off-board point-to-point, choose UART.
+
+### Worked Example
+Decision logic in Python selecting the optimal embedded protocol:
+```python
+def select_wired_protocol(data_rate_kbps, num_devices, max_distance_meters):
+    if data_rate_kbps > 2000:
+        return "SPI (High throughput push-pull bus, requires CS per device)"
+    elif num_devices > 2 and max_distance_meters < 1.0:
+        return "I2C (Pin-efficient shared 2-wire bus, 7-bit addressing)"
+    elif max_distance_meters > 2.0:
+        return "UART with RS-485 transceiver (Differential signaling for long distance)"
+    return "UART (Simple point-to-point asynchronous connection)"
+
+# Selecting protocol for 5 temperature sensors on a single PCB:
+print(select_wired_protocol(data_rate_kbps=50, num_devices=5, max_distance_meters=0.2)) # I2C
+```
+
+### Common Mistake
+Attempting to run a 320x240 Color TFT LCD display over an I2C bus; at 400kHz, refreshing the 153,600-byte frame takes several seconds, producing unacceptably sluggish frame rates (<1 FPS).
+
+### Check Yourself
+Why is I2C preferred over SPI when connecting eight environmental sensors to a pin-constrained microcontroller?

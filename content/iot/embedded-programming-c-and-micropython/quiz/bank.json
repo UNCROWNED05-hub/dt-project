@@ -1,0 +1,1125 @@
+[
+  {
+    "loId": "iot-04-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q01",
+    "stem": "In standard Arduino C++ firmware, how many times is the `setup()` function executed after power-on reset?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exactly once"
+      },
+      {
+        "id": "b",
+        "text": "Continuously in an infinite loop"
+      },
+      {
+        "id": "c",
+        "text": "Once every 1000 milliseconds"
+      },
+      {
+        "id": "d",
+        "text": "Only when a button is pressed"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "`setup()` runs once upon power-on or hardware reset to initialize peripherals and pins.",
+    "noteRef": "iot-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q02",
+    "stem": "An engineer needs to store an analog sensor value ranging from 0 to 255 in the smallest possible memory footprint. Which fixed-width C data type should be used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "uint32_t"
+      },
+      {
+        "id": "b",
+        "text": "uint8_t"
+      },
+      {
+        "id": "c",
+        "text": "int16_t"
+      },
+      {
+        "id": "d",
+        "text": "double"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`uint8_t` stores unsigned integers from 0 to 255 consuming exactly 1 byte (8 bits) of SRAM.",
+    "noteRef": "iot-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-04-q03",
+    "stem": "How many bytes of memory are consumed by an array of 50 `uint16_t` integers in embedded C?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50"
+      },
+      {
+        "id": "b",
+        "text": "200"
+      },
+      {
+        "id": "c",
+        "text": "100"
+      },
+      {
+        "id": "d",
+        "text": "25"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`uint16_t` is 2 bytes; 50 * 2 = 100 bytes of memory.",
+    "noteRef": "iot-04-lo01",
+    "verify": "(50 * 2 === 100)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q04",
+    "stem": "Why are fixed-width integer types (`uint8_t`, `int32_t`) strictly preferred over standard `int` in embedded firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because `int` is not supported by C++ compilers."
+      },
+      {
+        "id": "b",
+        "text": "Because fixed-width types run at higher clock frequencies."
+      },
+      {
+        "id": "c",
+        "text": "Because standard `int` consumes 64 bytes of storage."
+      },
+      {
+        "id": "d",
+        "text": "Because standard `int` size varies across architectures (16 bits on AVR, 32 bits on ESP32/ARM), causing subtle overflow and memory corruption bugs when porting code."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Standard `int` size is architecture-dependent; fixed-width types ensure deterministic sizing across all MCUs.",
+    "noteRef": "iot-04-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q05",
+    "stem": "Why is calling blocking `delay(1000)` bad practice in responsive embedded systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It halts CPU instruction execution in a dead spin loop, preventing the microcontroller from servicing buttons, sensors, or network packets."
+      },
+      {
+        "id": "b",
+        "text": "It doubles battery consumption permanently."
+      },
+      {
+        "id": "c",
+        "text": "It erases the microcontroller flash memory."
+      },
+      {
+        "id": "d",
+        "text": "It reduces the operating voltage to zero."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Blocking `delay()` stops main thread execution, blinding the MCU to external inputs and network events.",
+    "noteRef": "iot-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q06",
+    "stem": "A firmware engineer wants to blink an LED every 200ms while continuously reading temperature every 5000ms without freezing execution. What architectural pattern achieves this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Chaining multiple `delay()` functions sequentially."
+      },
+      {
+        "id": "b",
+        "text": "The cooperative non-blocking `millis()` timestamp pattern checking elapsed intervals."
+      },
+      {
+        "id": "c",
+        "text": "Rebooting the microcontroller every 200 milliseconds."
+      },
+      {
+        "id": "d",
+        "text": "Using five separate physical Arduino boards."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Non-blocking `millis()` polling allows independent tasks to run concurrently at distinct time intervals.",
+    "noteRef": "iot-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q07",
+    "stem": "Approximately how many days of continuous operation elapse before the 32-bit unsigned millisecond counter `millis()` overflows and rolls over to 0?",
+    "options": [
+      {
+        "id": "a",
+        "text": "24.0 hours"
+      },
+      {
+        "id": "b",
+        "text": "365 days"
+      },
+      {
+        "id": "c",
+        "text": "49.7 days"
+      },
+      {
+        "id": "d",
+        "text": "30 seconds"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "2^32 - 1 ms = 4,294,967,295 ms = ~49.71 days before unsigned 32-bit rollover.",
+    "noteRef": "iot-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q08",
+    "stem": "Why does the expression `(current_millis - previous_millis >= interval)` work seamlessly even during the 49.7-day rollover event?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the compiler automatically pauses time during rollover."
+      },
+      {
+        "id": "b",
+        "text": "Because `millis()` is backed by an atomic clock."
+      },
+      {
+        "id": "c",
+        "text": "Because microcontrollers automatically reset on the 49th day."
+      },
+      {
+        "id": "d",
+        "text": "Binary two's complement unsigned integer subtraction naturally wraps around, yielding the exact positive difference between the two values."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Unsigned modulo arithmetic under two's complement guarantees `now - prev` produces the correct delta across rollover.",
+    "noteRef": "iot-04-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q09",
+    "stem": "What does ISR stand for in embedded systems programming?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Interrupt Service Routine"
+      },
+      {
+        "id": "b",
+        "text": "Internal Serial Register"
+      },
+      {
+        "id": "c",
+        "text": "Input Signal Rectifier"
+      },
+      {
+        "id": "d",
+        "text": "Instruction Set Reducer"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "An ISR (Interrupt Service Routine) is the callback function invoked when a hardware interrupt triggers.",
+    "noteRef": "iot-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q10",
+    "stem": "A variable `flag` is modified inside an ISR, but the while loop in `main()` never detects the update and loops forever. What keyword is missing from the variable declaration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "static"
+      },
+      {
+        "id": "b",
+        "text": "volatile"
+      },
+      {
+        "id": "c",
+        "text": "const"
+      },
+      {
+        "id": "d",
+        "text": "register"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`volatile` tells the compiler that the variable can change asynchronously, preventing aggressive register caching.",
+    "noteRef": "iot-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo03",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-04-q11",
+    "stem": "Which of the following functions should NEVER be called inside an Interrupt Service Routine (ISR)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "delay(100)"
+      },
+      {
+        "id": "b",
+        "text": "Serial.println('Interrupt occurred')"
+      },
+      {
+        "id": "c",
+        "text": "Setting a boolean flag to true (`flag = true;`)"
+      },
+      {
+        "id": "d",
+        "text": "Dynamic memory allocation (`malloc(1024)`)"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "ISRs must be fast and non-blocking; `delay`, `Serial.print`, and `malloc` cause deadlocks or stack corruption.",
+    "noteRef": "iot-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q12",
+    "stem": "On the ESP32, why must ISR functions be attributed with the `IRAM_ATTR` macro?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It doubles the microcontroller's RAM memory."
+      },
+      {
+        "id": "b",
+        "text": "It converts C++ code into Python."
+      },
+      {
+        "id": "c",
+        "text": "It instructs the linker to place the ISR code in internal SRAM rather than SPI Flash, preventing crashes when interrupts trigger while Flash cache is disabled."
+      },
+      {
+        "id": "d",
+        "text": "It prevents electrical short circuits on the pin."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`IRAM_ATTR` keeps ISR code in internal SRAM so it executes immediately even if external SPI Flash access is stalled.",
+    "noteRef": "iot-04-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q13",
+    "stem": "What physical phenomenon causes 'Contact Bounce' in mechanical switches?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Static electricity jumping from the user's hand."
+      },
+      {
+        "id": "b",
+        "text": "Thermal expansion of the copper pins."
+      },
+      {
+        "id": "c",
+        "text": "Radio frequency interference from local Wi-Fi routers."
+      },
+      {
+        "id": "d",
+        "text": "Microscopic elastic collisions causing metal contacts to physically bounce open and closed dozens of times within a few milliseconds."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Mechanical spring contacts bounce upon physical impact, generating noisy electrical pulses over 5-20ms.",
+    "noteRef": "iot-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q14",
+    "stem": "A user presses a pushbutton once, but the digital counter jumps from 0 to 14. What firmware mitigation is needed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Software debouncing that ignores state changes until the signal remains stable beyond a 30-50ms window."
+      },
+      {
+        "id": "b",
+        "text": "Replacing the 3.3V battery with a 12V car battery."
+      },
+      {
+        "id": "c",
+        "text": "Increasing the CPU clock speed to 1 GHz."
+      },
+      {
+        "id": "d",
+        "text": "Formatting the micro SD card."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Software debouncing filters out contact bounce oscillations by requiring signal stability over a debounce period.",
+    "noteRef": "iot-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q15",
+    "stem": "What typical debounce delay interval is appropriate for standard tactile pushbuttons?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5000 milliseconds"
+      },
+      {
+        "id": "b",
+        "text": "20 to 50 milliseconds"
+      },
+      {
+        "id": "c",
+        "text": "1 microsecond"
+      },
+      {
+        "id": "d",
+        "text": "10 minutes"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Mechanical bounce finishes within 10-20ms; a 20-50ms debounce window reliably filters chatter without perceptible lag.",
+    "noteRef": "iot-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q16",
+    "stem": "How does a hardware RC low-pass filter eliminate contact bounce at the electrical level?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It converts digital signals into alternating current."
+      },
+      {
+        "id": "b",
+        "text": "It doubles the current flowing into the switch."
+      },
+      {
+        "id": "c",
+        "text": "The capacitor smooths out high-frequency contact transitions, producing a clean monotonic voltage ramp fed into a Schmitt-trigger input."
+      },
+      {
+        "id": "d",
+        "text": "It disconnects the switch physically from Ground."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "An RC filter dampens fast voltage transitions; a Schmitt trigger converts the smooth ramp into a crisp digital step.",
+    "noteRef": "iot-04-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q17",
+    "stem": "What power consumption range does an ESP32 achieve when placed into Deep Sleep mode?",
+    "options": [
+      {
+        "id": "a",
+        "text": "80 to 240 milliamps (mA)"
+      },
+      {
+        "id": "b",
+        "text": "5 Amperes (A)"
+      },
+      {
+        "id": "c",
+        "text": "0.5 Watts"
+      },
+      {
+        "id": "d",
+        "text": "10 to 15 microamps (uA)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Deep sleep powers down CPUs and main SRAM, reducing current draw to roughly 10-15 microamps.",
+    "noteRef": "iot-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q18",
+    "stem": "An ESP32 battery sensor wakes from deep sleep every 10 minutes to record soil moisture. How does the ESP32 resume execution when the wakeup timer expires?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It performs a fresh reboot, executing `setup()` from the beginning with main SRAM reinitialized."
+      },
+      {
+        "id": "b",
+        "text": "It resumes precisely from the line immediately following `esp_deep_sleep_start()`."
+      },
+      {
+        "id": "c",
+        "text": "It waits for a USB flashing command from a PC."
+      },
+      {
+        "id": "d",
+        "text": "It operates without running any software."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Waking from deep sleep is equivalent to a power-on reset: the processor re-boots and runs `setup()`.",
+    "noteRef": "iot-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q19",
+    "stem": "Which attribute must be added to a variable declaration in C++ so that its value survives across ESP32 Deep Sleep cycles?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PROGMEM"
+      },
+      {
+        "id": "b",
+        "text": "RTC_DATA_ATTR"
+      },
+      {
+        "id": "c",
+        "text": "volatile"
+      },
+      {
+        "id": "d",
+        "text": "register"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`RTC_DATA_ATTR` places variables in the 8KB RTC slow memory domain that remains powered during deep sleep.",
+    "noteRef": "iot-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q20",
+    "stem": "What fundamental operational difference distinguishes Light Sleep from Deep Sleep on the ESP32?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Light sleep consumes less power than deep sleep."
+      },
+      {
+        "id": "b",
+        "text": "Light sleep can only wake up from Wi-Fi signals."
+      },
+      {
+        "id": "c",
+        "text": "Light sleep retains full CPU and SRAM state and resumes code execution immediately, whereas deep sleep powers down main RAM and restarts from boot."
+      },
+      {
+        "id": "d",
+        "text": "There is no difference between Light and Deep sleep."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Light sleep pauses clocks while preserving full RAM state; deep sleep drops power to near-zero by unpowering main RAM.",
+    "noteRef": "iot-04-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q21",
+    "stem": "What occurs if the baud rate set in `Serial.begin(115200)` does not match the baud rate selected in the host Serial Monitor terminal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The microcontroller permanently locks its flash memory."
+      },
+      {
+        "id": "b",
+        "text": "The computer's USB port blows a fuse."
+      },
+      {
+        "id": "c",
+        "text": "The text is automatically translated into French."
+      },
+      {
+        "id": "d",
+        "text": "The terminal displays unreadable corrupted garbage symbols due to timing mismatch."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "UART is asynchronous and lacks a clock line; mismatched baud rates cause bit framing errors, outputting garbage characters.",
+    "noteRef": "iot-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q22",
+    "stem": "An engineer wants to output structured debug telemetry containing integers and floating-point sensor values in a single statement on ESP32. Which method is most concise?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Serial.printf(\"Sensor %d: Temp=%.2f C\\n\", id, temp);"
+      },
+      {
+        "id": "b",
+        "text": "Chaining eight consecutive Serial.print() statements."
+      },
+      {
+        "id": "c",
+        "text": "Writing bytes directly to EEPROM."
+      },
+      {
+        "id": "d",
+        "text": "Using analogWrite() on the TX pin."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "ESP32 supports standard C `printf` formatting via `Serial.printf`, formatting multiple types cleanly.",
+    "noteRef": "iot-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q23",
+    "stem": "Why are preprocessor macros (`#ifdef DEBUG ... #endif`) used around serial logging statements in production firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To encrypt the serial output."
+      },
+      {
+        "id": "b",
+        "text": "To strip logging code and string literals completely out of release binaries, saving flash memory and preventing execution latency."
+      },
+      {
+        "id": "c",
+        "text": "Because serial ports stop working after 1 hour."
+      },
+      {
+        "id": "d",
+        "text": "To comply with Wi-Fi regulatory certifications."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Conditional compilation removes debug strings from binary images, minimizing flash usage and eliminating serial latency.",
+    "noteRef": "iot-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q24",
+    "stem": "What utility can decode a hexadecimal ESP32 backtrace dump printed during a Guru Meditation panic error into human-readable source code filenames and line numbers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wireshark"
+      },
+      {
+        "id": "b",
+        "text": "Nmap"
+      },
+      {
+        "id": "c",
+        "text": "addr2line (ESP Exception Decoder)"
+      },
+      {
+        "id": "d",
+        "text": "Fdisk"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`addr2line` maps memory program counter addresses back to exact source file lines using compiler ELF debug symbols.",
+    "noteRef": "iot-04-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q25",
+    "stem": "What is Heap Fragmentation in embedded microcontroller programming?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Physical cracks on the microcontroller silicon die."
+      },
+      {
+        "id": "b",
+        "text": "A hardware failure of the crystal oscillator."
+      },
+      {
+        "id": "c",
+        "text": "Overheating of the USB connector."
+      },
+      {
+        "id": "d",
+        "text": "The breakdown of available free heap memory into small, non-contiguous gaps caused by frequent dynamic allocations and deallocations."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Dynamic allocations intersperse allocated and freed chunks; over time, no single large contiguous block remains.",
+    "noteRef": "iot-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q26",
+    "stem": "An IoT gateway running on Arduino Uno crashes every 3 days. The code repeatedly concatenates sensor telemetry using the `String` class (`payload += String(temp)`). What is the root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Heap fragmentation and memory exhaustion caused by thousands of dynamic reallocations in the tiny 2KB SRAM."
+      },
+      {
+        "id": "b",
+        "text": "The temperature sensor became too hot."
+      },
+      {
+        "id": "c",
+        "text": "The Arduino ran out of resistor resistance."
+      },
+      {
+        "id": "d",
+        "text": "The 5V power supply ran backwards."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Arduino `String` objects reallocate heap buffers on every concatenation, rapidly fragmenting 2KB AVR SRAM.",
+    "noteRef": "iot-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-04-q27",
+    "stem": "Which practices prevent dynamic heap fragmentation in production embedded firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Using fixed-size static character buffers with `snprintf()` instead of dynamic `String` classes"
+      },
+      {
+        "id": "b",
+        "text": "Allocating long-lived buffers globally or statically at compile time"
+      },
+      {
+        "id": "c",
+        "text": "Avoiding frequent `malloc()` and `free()` inside continuous operational loops"
+      },
+      {
+        "id": "d",
+        "text": "Allocating 10MB arrays on 2KB microcontrollers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Static allocation and `snprintf` with fixed buffers eliminate runtime heap churning and guarantee memory bounds.",
+    "noteRef": "iot-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q28",
+    "stem": "What fatal hardware exception occurs when deeply nested function calls or massive local arrays exceed allocated task stack boundaries?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bus contention"
+      },
+      {
+        "id": "b",
+        "text": "Stack Overflow (overwriting adjacent memory or triggering the memory protection unit)"
+      },
+      {
+        "id": "c",
+        "text": "Clock desynchronization"
+      },
+      {
+        "id": "d",
+        "text": "Floating gate erase"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A stack overflow pushes return addresses and variables past allocated stack boundaries, corrupting data and crashing.",
+    "noteRef": "iot-04-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-04-q29",
+    "stem": "What is the primary interface used in MicroPython to interactively execute Python commands line-by-line over a serial cable?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SSH terminal"
+      },
+      {
+        "id": "b",
+        "text": "Web browser HTTP console"
+      },
+      {
+        "id": "c",
+        "text": "REPL (Read-Eval-Print Loop)"
+      },
+      {
+        "id": "d",
+        "text": "FTP command line"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The REPL (Read-Eval-Print Loop) gives developers live interactive prompt access to Python on the MCU.",
+    "noteRef": "iot-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q30",
+    "stem": "An engineer powers on an ESP32 running MicroPython. Which script file does the MicroPython runtime execute automatically on boot before launching `main.py`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "init.sh"
+      },
+      {
+        "id": "b",
+        "text": "config.json"
+      },
+      {
+        "id": "c",
+        "text": "index.html"
+      },
+      {
+        "id": "d",
+        "text": "boot.py"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "MicroPython boots by running `boot.py` (system setup), followed immediately by `main.py` (application logic).",
+    "noteRef": "iot-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q31",
+    "stem": "Which built-in MicroPython module provides low-level hardware control classes such as `Pin`, `ADC`, and `PWM`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "machine"
+      },
+      {
+        "id": "b",
+        "text": "sys"
+      },
+      {
+        "id": "c",
+        "text": "hardware"
+      },
+      {
+        "id": "d",
+        "text": "arduino"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The `machine` module contains all microcontroller-specific hardware abstraction classes in MicroPython.",
+    "noteRef": "iot-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q32",
+    "stem": "Why does MicroPython require significantly more Flash and RAM than compiled C/C++ firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because Python files cannot be compressed."
+      },
+      {
+        "id": "b",
+        "text": "It must host the complete Python bytecode compiler, virtual machine runtime, and dynamic object memory allocator directly in chip memory."
+      },
+      {
+        "id": "c",
+        "text": "Because MicroPython includes desktop Linux."
+      },
+      {
+        "id": "d",
+        "text": "MicroPython requires 1000 times more copper traces."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The entire interpreter engine and dynamic object allocator reside on the device, requiring >256KB flash and >64KB RAM.",
+    "noteRef": "iot-04-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-04-q33",
+    "stem": "What runtime event in MicroPython can cause unpredictable 10ms to 50ms pauses, making it problematic for hard real-time motor control?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hardware brownout detection"
+      },
+      {
+        "id": "b",
+        "text": "Wi-Fi packet encryption"
+      },
+      {
+        "id": "c",
+        "text": "Automatic Garbage Collection (GC) sweeps"
+      },
+      {
+        "id": "d",
+        "text": "ADC sampling rate division"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Automatic garbage collection suspends execution while traversing and recovering heap objects, introducing jitter.",
+    "noteRef": "iot-04-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-04-q34",
+    "stem": "A company is building a high-volume commercial smart thermostat powered by coin-cell batteries that must run for 5 years and handle digital audio processing. Which programming language should be selected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "MicroPython via the interactive REPL."
+      },
+      {
+        "id": "b",
+        "text": "Client-side JavaScript running in Node.js."
+      },
+      {
+        "id": "c",
+        "text": "PHP script."
+      },
+      {
+        "id": "d",
+        "text": "C/C++ using the native ESP-IDF framework for minimal power and maximum DSP execution efficiency."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "C/C++ provides optimal instruction density, native DSP execution, and microamp deep sleep capabilities.",
+    "noteRef": "iot-04-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-04-q35",
+    "stem": "In which engineering scenarios is MicroPython superior to C/C++?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Rapid proof-of-concept prototyping and testing sensor APIs without compilation delays"
+      },
+      {
+        "id": "b",
+        "text": "Educational classrooms teaching beginners physical computing concepts"
+      },
+      {
+        "id": "c",
+        "text": "Interactive hardware troubleshooting via line-by-line REPL commands"
+      },
+      {
+        "id": "d",
+        "text": "Developing flight-stabilization loops for 30,000 RPM drone motors"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "MicroPython excels at prototyping, teaching, and interactive debugging; ultra-fast motor control requires C/C++.",
+    "noteRef": "iot-04-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-04-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-04-q36",
+    "stem": "Why does compiled C/C++ execute roughly 10x to 50x faster on microcontrollers than MicroPython?",
+    "options": [
+      {
+        "id": "a",
+        "text": "C/C++ compiles directly into native CPU machine instructions, whereas MicroPython interprets bytecode instructions through virtual machine software loops."
+      },
+      {
+        "id": "b",
+        "text": "C++ runs on gold-plated wires."
+      },
+      {
+        "id": "c",
+        "text": "MicroPython limits CPU clock speed to 1 MHz."
+      },
+      {
+        "id": "d",
+        "text": "C++ programs do not consume electricity."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Native machine code executes directly on CPU silicon pipelines without bytecode interpretation overhead.",
+    "noteRef": "iot-04-lo09",
+    "reviewed": false
+  }
+]

@@ -1,0 +1,46 @@
+---
+loId: "iot-05-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Universal Asynchronous Receiver-Transmitter (UART) is the ubiquitous point-to-point serial communication hardware protocol:
+1. Physical Wiring (TX/RX Crossover): UART requires two data lines plus a mandatory common Ground. The Transmitter (TX) of Device A connects to the Receiver (RX) of Device B, and RX of Device A connects to TX of Device B ($TX \rightarrow RX, RX \rightarrow TX$).
+2. Asynchronous Framing: Lacking a shared clock line, transmitter and receiver must agree in advance on an exact Baud Rate (symbols per second, e.g., $9600, 115200$).
+3. Packet Frame Structure (Standard 8-N-1):
+   - Idle State: Signal remains HIGH ($V_{CC}$).
+   - Start Bit: Transitions LOW for 1 bit period to synchronize the receiver's internal clock generator.
+   - Data Payload: 8 data bits transmitted least significant bit (LSB) first.
+   - Parity Bit (Optional, 'N'=None): Used for primitive error detection (Even/Odd).
+   - Stop Bit(s): 1 or 2 bits driven HIGH to terminate the frame and reset for the next byte.
+4. Total Frame Overhead: Sending 8 bits of data in 8-N-1 format takes 10 physical bit durations (1 start + 8 data + 1 stop). At 115200 baud, theoretical maximum data transfer is $\frac{115200}{10} = 11,520\text{ bytes/sec}$.
+
+### Worked Example
+Configuring hardware UART on ESP32 in Arduino C++:
+```cpp
+#include <HardwareSerial.h>
+
+// Use ESP32 Hardware Serial Port 2
+HardwareSerial GPS_Serial(2);
+
+void setup() {
+  Serial.begin(115200); // USB monitor
+  // Baud, Config, RX pin, TX pin
+  GPS_Serial.begin(9600, SERIAL_8N1, 16, 17);
+}
+
+void loop() {
+  while (GPS_Serial.available()) {
+    char c = GPS_Serial.read();
+    Serial.write(c); // Forward GPS byte to PC
+  }
+}
+```
+
+### Common Mistake
+Connecting TX to TX and RX to RX between two microcontrollers; UART is a directional crossover bus where each transmitter must drive the opposing receiver.
+
+### Check Yourself
+How many total bits are transmitted on the physical wire to send a single 8-bit byte using standard 8-N-1 UART framing?

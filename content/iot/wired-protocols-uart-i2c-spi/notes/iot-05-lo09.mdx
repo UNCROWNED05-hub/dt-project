@@ -1,0 +1,38 @@
+---
+loId: "iot-05-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Standard TTL serial signals ($0\text{V} - 3.3\text{V}$) degrade over a few meters; industrial automation relies on differential signaling over RS-485 for noisy, kilometer-long runs:
+1. Differential Signaling Architecture (RS-485):
+   Uses a twisted pair of balanced wires named 'A' and 'B'. Rather than measuring voltage relative to ground, the receiver measures the differential voltage between the lines:
+   $$V_{\text{diff}} = V_A - V_B$$
+   Common-mode electromagnetic noise (from nearby factory motors or heavy relays) couples equally into both twisted wires, canceling out at the differential receiver.
+2. Physical Specifications:
+   - Transmission Distance: Up to $1200\text{ meters}$ ($1.2\text{km}$).
+   - Data Rates: Up to $10\text{Mbps}$ at short ranges ($100\text{kbps}$ at $1200\text{m}$).
+   - Termination Resistors: A $120\,\Omega$ resistor must be placed across lines A and B at both physical ends of the bus to prevent transmission line signal reflections.
+3. Modbus RTU Protocol:
+   An industrial master-slave binary protocol operating over RS-485. Modbus packets contain Slave Address (1 byte), Function Code (e.g., Read Holding Registers $0x03$), Data, and a 16-bit CRC checksum.
+
+### Worked Example
+Wiring and driving an RS-485 transceiver (MAX485) in Arduino:
+```cpp
+const int DE_RE_PIN = 4; // Driver Enable / Receiver Enable pin
+
+void send_modbus_packet(uint8_t* packet, size_t length) {
+  digitalWrite(DE_RE_PIN, HIGH); // Enable TX driver mode
+  Serial2.write(packet, length);
+  Serial2.flush();               // Wait until all bytes transmitted
+  digitalWrite(DE_RE_PIN, LOW);  // Return to RX listen mode
+}
+```
+
+### Common Mistake
+Omitting the $120\,\Omega$ termination resistors on long RS-485 cable runs; electrical reflections from unterminated wire ends bounce back and corrupt incoming serial packets.
+
+### Check Yourself
+Why is differential signaling on RS-485 immune to heavy electromagnetic noise in industrial environments?

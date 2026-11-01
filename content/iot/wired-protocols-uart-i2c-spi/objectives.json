@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "chapterId": "iot-05",
+  "objectives": [
+    {
+      "id": "iot-05-lo01",
+      "order": 1,
+      "title": "Analyze Universal Asynchronous Receiver-Transmitter (UART) framing, baud rates, and point-to-point wiring",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "uart",
+        "baud rate",
+        "tx rx crossover",
+        "start stop bits",
+        "parity bit"
+      ],
+      "aliases": [
+        "serial communication",
+        "asynchronous uart"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-05-lo02",
+      "order": 2,
+      "title": "Construct Inter-Integrated Circuit (I2C) multi-device buses with open-drain lines and pull-up resistors",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "i2c",
+        "sda",
+        "scl",
+        "open drain",
+        "pull-up sizing",
+        "bus capacitance"
+      ],
+      "aliases": [
+        "two wire interface",
+        "i2c bus topology"
+      ],
+      "prerequisites": [
+        "iot-02-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-05-lo03",
+      "order": 3,
+      "title": "Trace I2C packet transactions: 7-bit addressing, Read/Write bits, ACK/NACK, and clock stretching",
+      "bloom": "trace",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "i2c transaction",
+        "7-bit address",
+        "ack nack",
+        "start condition",
+        "clock stretching"
+      ],
+      "aliases": [
+        "i2c protocol timing",
+        "i2c packet structure"
+      ],
+      "prerequisites": [
+        "iot-05-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-05-lo04",
+      "order": 4,
+      "title": "Implement Serial Peripheral Interface (SPI) high-speed 4-wire full-duplex communication",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "spi",
+        "mosi",
+        "miso",
+        "sclk",
+        "chip select",
+        "cpol cpha modes"
+      ],
+      "aliases": [
+        "serial peripheral interface",
+        "spi 4-wire bus"
+      ],
+      "prerequisites": [
+        "iot-05-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-05-lo05",
+      "order": 5,
+      "title": "Evaluate SPI clock polarity (CPOL) and clock phase (CPHA) modes against sensor datasheets",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cpol",
+        "cpha",
+        "spi mode 0",
+        "spi mode 3",
+        "clock phase",
+        "clock polarity"
+      ],
+      "aliases": [
+        "spi transmission modes",
+        "cpol cpha settings"
+      ],
+      "prerequisites": [
+        "iot-05-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-05-lo06",
+      "order": 6,
+      "title": "Select optimal communication protocols (UART vs. I2C vs. SPI) based on pin count, speed, and bus distance",
+      "bloom": "select",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "protocol selection",
+        "throughput comparison",
+        "bus distance",
+        "pin economy",
+        "wired protocols"
+      ],
+      "aliases": [
+        "uart vs i2c vs spi",
+        "bus protocol comparison"
+      ],
+      "prerequisites": [
+        "iot-05-lo03",
+        "iot-05-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-05-lo07",
+      "order": 7,
+      "title": "Read multi-byte sensor registers over I2C and reconstruct values across endianness formats",
+      "bloom": "parse",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "sensor registers",
+        "big-endian",
+        "little-endian",
+        "bitwise shift",
+        "wire library"
+      ],
+      "aliases": [
+        "reading i2c registers",
+        "sensor data parsing"
+      ],
+      "prerequisites": [
+        "iot-05-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-05-lo08",
+      "order": 8,
+      "title": "Diagnose wired bus faults using I2C bus scanner sketches and logic analyzers",
+      "bloom": "diagnose",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "i2c scanner",
+        "logic analyzer",
+        "bus hanging",
+        "sda stuck low",
+        "i2c recovery"
+      ],
+      "aliases": [
+        "bus troubleshooting",
+        "i2c fault diagnosis"
+      ],
+      "prerequisites": [
+        "iot-05-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-05-lo09",
+      "order": 9,
+      "title": "Interface differential industrial serial buses using RS-485 transceivers and Modbus RTU",
+      "bloom": "interface",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "rs-485",
+        "differential signaling",
+        "max485",
+        "modbus rtu",
+        "industrial bus"
+      ],
+      "aliases": [
+        "rs485 communication",
+        "differential serial"
+      ],
+      "prerequisites": [
+        "iot-05-lo01"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

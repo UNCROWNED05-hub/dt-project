@@ -1,0 +1,49 @@
+---
+loId: "iot-04-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Energy management is the defining requirement for battery-operated IoT edge devices; the ESP32 provides tiered power-saving sleep architectures:
+1. Sleep Mode Hierarchy:
+   - Active Mode: Dual CPUs running at $240\text{MHz}$, Wi-Fi/BT transmitting: draws $80\text{mA} - 240\text{mA}$.
+   - Modem Sleep: Wi-Fi/BT radios powered off, CPUs throttled: draws $15\text{mA} - 30\text{mA}$.
+   - Light Sleep: High-speed clocks gated, CPU paused, digital peripherals suspended: draws $\sim 0.8\text{mA}$. Wakes up in $<1\text{ms}$.
+   - Deep Sleep: Main CPUs, RAM, and digital peripherals completely unpowered. Only the Real-Time Clock (RTC) domain, RTC slow memory, and ULP coprocessor remain active: draws only $10\mu\text{A} - 15\mu\text{A}$.
+2. Deep Sleep Lifecycle:
+   When waking from deep sleep, the ESP32 does NOT resume where it left off; it executes a fresh power-on boot from `setup()`.
+3. RTC Memory Preservation:
+   Standard SRAM contents are erased during deep sleep. Variables marked with the `RTC_DATA_ATTR` attribute reside in the $8\text{KB}$ RTC slow SRAM and survive across deep sleep boot cycles.
+
+### Worked Example
+Configuring periodic deep sleep with RTC memory tracking in ESP32 C++:
+```cpp
+#include <esp_sleep.h>
+
+#define uS_TO_S_FACTOR 1000000ULL /* Conversion factor micro to seconds */
+#define TIME_TO_SLEEP  60        /* Sleep duration in seconds */
+
+RTC_DATA_ATTR uint32_t boot_count = 0; // Preserved in RTC memory
+
+void setup() {
+  Serial.begin(115200);
+  boot_count++;
+  Serial.printf("Boot Count across Deep Sleep: %u
+", boot_count);
+
+  // Configure timer wakeup source
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+  Serial.println("Entering Deep Sleep for 60 seconds...");
+  esp_deep_sleep_start();
+}
+
+void loop() {} // Never reached
+```
+
+### Common Mistake
+Assuming normal global C++ variables retain their values across deep sleep cycles; all standard SRAM is powered off during deep sleep unless explicitly declared with `RTC_DATA_ATTR`.
+
+### Check Yourself
+How does an ESP32 resume execution upon waking up from Deep Sleep mode compared to Light Sleep mode?
