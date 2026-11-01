@@ -1,0 +1,39 @@
+---
+loId: "sec-11-lo05"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+DevSecOps integrates automated security controls into every stage of the modern CI/CD software delivery pipeline (Shifting Left):
+1. Pre-Commit / Secret Scanning: Tools like Gitleaks and TruffleHog scan local commits and pull requests for exposed API keys, private certificates, and AWS tokens before code reaches public repositories.
+2. Static Application Security Testing (SAST): Scans uncompiled source code for programmatic security flaws (SQL injection, XSS, insecure deserialization) using tools like Semgrep, SonarQube, or CodeQL.
+3. Software Composition Analysis (SCA): Analyzes open-source third-party dependencies (npm, pip, Maven) for known CVEs and license violations using tools like Snyk or OWASP Dependency-Check.
+4. Dynamic Application Security Testing (DAST): Probes running staging applications from an external perspective using automated scanners (OWASP ZAP) to uncover runtime misconfigurations.
+5. Pipeline Quality Gates: Automated breaking rules that halt deployment if critical vulnerabilities or hardcoded secrets are detected.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Simulating automated CI/CD pipeline security gating in Python:
+```python
+def evaluate_pipeline_gate(secret_scan_clean, critical_cves_count, sast_clean):
+    if not secret_scan_clean:
+        return "BUILD_BLOCKED: Hardcoded secrets detected in commit"
+    if critical_cves_count > 0:
+        return f"BUILD_BLOCKED: {critical_cves_count} Critical CVEs found in dependencies"
+    if not sast_clean:
+        return "BUILD_BLOCKED: High-severity SAST security vulnerabilities found"
+    return "BUILD_PASSED: Deploying to staging environment"
+
+gate_status = evaluate_pipeline_gate(secret_scan_clean=True, critical_cves_count=0, sast_clean=True)
+print(gate_status) # BUILD_PASSED
+```
+
+### Common Mistake
+Treating security as a final gatekeeper audit immediately before production release rather than integrating automated scanner feedback into developer IDEs and PR workflows.
+
+### Check Yourself
+How does Static Application Security Testing (SAST) differ from Dynamic Application Security Testing (DAST) in a CI/CD pipeline?

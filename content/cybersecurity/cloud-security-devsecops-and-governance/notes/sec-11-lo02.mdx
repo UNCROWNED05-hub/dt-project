@@ -1,0 +1,49 @@
+---
+loId: "sec-11-lo02"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Cloud Identity and Access Management (IAM) serves as the primary security perimeter in cloud architectures, enforcing strict authentication, authorization, and least privilege:
+1. Principles of Cloud IAM: Every request evaluates principal identity, actions, target resources, and conditional context. No access is granted unless an explicit Allow statement exists without any matching Deny statements.
+2. Roles vs. Long-Lived Access Keys: Never hardcode permanent AWS secret access keys or service account credentials in code. Applications must assume temporary IAM Roles via metadata services (STS, instance profiles, or workload identity).
+3. Least Privilege Policy Design: Avoid wildcard permissions (`Action: "*"`). Restrict actions to specific API calls on named Amazon Resource Names (ARNs) or GCP resource URIs.
+4. Condition Blocks: Mandate Multi-Factor Authentication (`aws:MultiFactorAuthPresent`), restrict source IP CIDRs, and require TLS encryption (`aws:SecureTransport`).
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+A secure, least-privilege AWS IAM JSON policy granting read-only access to a specific bucket:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowSpecificBucketRead",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::corporate-finance-prod",
+        "arn:aws:s3:::corporate-finance-prod/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "true"
+        }
+      }
+    }
+  ]
+}
+```
+
+### Common Mistake
+Attaching full administrator privileges (`AdministratorAccess`) to EC2 instances or Lambda functions to resolve permission errors during development, exposing entire cloud accounts to takeover if the application is breached.
+
+### Check Yourself
+Why are short-lived IAM roles and temporary session tokens significantly more secure than static access keys?

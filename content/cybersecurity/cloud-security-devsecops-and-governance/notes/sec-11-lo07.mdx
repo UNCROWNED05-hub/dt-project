@@ -1,0 +1,43 @@
+---
+loId: "sec-11-lo07"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Security frameworks establish standardized governance controls, policies, and operational structures to guide enterprise cybersecurity maturity:
+1. NIST Cybersecurity Framework (CSF 2.0): Organizes enterprise security activities into six core functions:
+   - Govern: Establish organizational cybersecurity risk management strategy, expectations, and policy.
+   - Identify: Understand cybersecurity risks to assets, individuals, and supply chains.
+   - Protect: Implement safeguards to ensure delivery of critical services (access control, training, data security).
+   - Detect: Identify the occurrence of a cybersecurity event in real time.
+   - Respond: Take action regarding a detected cybersecurity incident.
+   - Recover: Restore capabilities and services impaired due to an incident.
+2. ISO/IEC 27001: The international gold standard for implementing an Information Security Management System (ISMS). Requires formal leadership commitment, risk treatment plans, and continuous audit controls outlined in Annex A.
+3. SOC 2 Type II: An independent third-party audit evaluating a service organization's controls over time against the AICPA Trust Services Criteria (Security, Availability, Confidentiality).
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Mapping operational tasks to NIST CSF 2.0 Core Functions in Python:
+```python
+nist_csf_functions = {
+    "IAM_RBAC": "Protect",
+    "SIEM_Alerting": "Detect",
+    "Post_Incident_Playbook": "Respond",
+    "WORM_Backup_Restoration": "Recover",
+    "Asset_Inventory_Discovery": "Identify",
+    "Risk_Management_Policy": "Govern"
+}
+
+task = "SIEM_Alerting"
+print(f"Operational Task '{task}' maps to NIST CSF Function: {nist_csf_functions[task]}")
+```
+
+### Common Mistake
+Treating compliance frameworks as a check-the-box paper exercise rather than continuously operationalized engineering controls, creating a false sense of security.
+
+### Check Yourself
+What new core function was introduced in NIST CSF 2.0 to oversee enterprise risk strategy and policy?

@@ -1,0 +1,36 @@
+---
+loId: "sec-10-lo07"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Forensic evidence must be legally defensible in court proceedings and organizational compliance hearings through strict chain of custody and cryptographic integrity controls:
+1. Hardware Write Blockers: Physical bridge devices connecting the suspect drive to the forensic workstation, preventing any write signals or timestamp alterations from reaching original media.
+2. Bit-Stream Imaging: Creating sector-by-sector disk clones (using raw DD or E01 Expert Witness formats) that duplicate every allocated and unallocated sector, slack space, and deleted file fragments.
+3. Cryptographic Verification: Hashing the source drive with SHA-256 immediately before acquisition, and hashing the resulting forensic image immediately after. The two hashes must match identically.
+4. Chain of Custody Documentation: A continuous, immutable ledger recording the exact date, time, evidence tag, collector identity, purpose of transfer, and physical storage location. Any undocumented gap invalidates evidence admissibility.
+
+### Worked Example
+Cryptographic hash verification of acquired forensic disk images:
+```python
+import hashlib
+
+def verify_evidence_integrity(source_hash, image_hash):
+    if source_hash == image_hash:
+        return "INTEGRITY_VERIFIED: Evidence is authentic and unaltered"
+    return "INTEGRITY_FAIL: Hashes do not match; evidence compromised"
+
+# Comparing SHA-256 checksums
+original_drive_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+disk_image_sha256     = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+print(verify_evidence_integrity(original_drive_sha256, disk_image_sha256))
+```
+
+### Common Mistake
+Performing analysis directly on the primary suspect media rather than working on verified forensic clones, corrupting metadata access timestamps and compromising legal admissibility.
+
+### Check Yourself
+What purpose does a hardware write blocker serve during the bit-stream disk acquisition process?

@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "chapterId": "sec-11",
+  "objectives": [
+    {
+      "id": "sec-11-lo01",
+      "order": 1,
+      "title": "Analyze the Cloud Shared Responsibility Model across IaaS, PaaS, and SaaS",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "shared responsibility",
+        "iaas",
+        "paas",
+        "saas",
+        "csp boundaries"
+      ],
+      "aliases": [
+        "cloud responsibility boundaries",
+        "csp vs customer responsibility"
+      ],
+      "prerequisites": [
+        "sec-01-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-11-lo02",
+      "order": 2,
+      "title": "Enforce Cloud Identity & Access Management (IAM) and least privilege policies",
+      "bloom": "enforce",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "cloud iam",
+        "iam roles",
+        "least privilege",
+        "policy evaluation",
+        "temporary credentials"
+      ],
+      "aliases": [
+        "aws iam",
+        "cloud access control"
+      ],
+      "prerequisites": [
+        "sec-05-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-11-lo03",
+      "order": 3,
+      "title": "Implement Cloud Security Posture Management (CSPM) and prevent misconfigurations",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cspm",
+        "s3 bucket security",
+        "cloud misconfiguration",
+        "security hub",
+        "compliance drift"
+      ],
+      "aliases": [
+        "cloud posture management",
+        "s3 bucket exposure"
+      ],
+      "prerequisites": [
+        "sec-11-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-11-lo04",
+      "order": 4,
+      "title": "Harden containerized environments (Docker, minimal base images, non-root users)",
+      "bloom": "harden",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "container security",
+        "docker hardening",
+        "distroless images",
+        "non-root user",
+        "cgroups"
+      ],
+      "aliases": [
+        "dockerfile security",
+        "container hardening"
+      ],
+      "prerequisites": [
+        "sec-03-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-11-lo05",
+      "order": 5,
+      "title": "Integrate DevSecOps automated security scanning (SAST, DAST, SCA, Secret Scanning)",
+      "bloom": "integrate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "devsecops",
+        "sast",
+        "dast",
+        "sca",
+        "secret scanning",
+        "shift left"
+      ],
+      "aliases": [
+        "ci/cd pipeline security",
+        "shift-left security"
+      ],
+      "prerequisites": [
+        "sec-06-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-11-lo06",
+      "order": 6,
+      "title": "Conduct quantitative and qualitative cybersecurity risk assessments",
+      "bloom": "conduct",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "risk assessment",
+        "ale",
+        "sle",
+        "aro",
+        "risk matrix",
+        "qualitative risk"
+      ],
+      "aliases": [
+        "cyber risk analysis",
+        "ale calculation"
+      ],
+      "prerequisites": [
+        "sec-01-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-11-lo07",
+      "order": 7,
+      "title": "Map compliance controls across NIST CSF 2.0 and ISO/IEC 27001",
+      "bloom": "map",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "nist csf 2.0",
+        "iso 27001",
+        "compliance frameworks",
+        "isms",
+        "governance"
+      ],
+      "aliases": [
+        "security governance",
+        "nist csf functions"
+      ],
+      "prerequisites": [
+        "sec-11-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-11-lo08",
+      "order": 8,
+      "title": "Implement privacy regulations including GDPR and India's DPDP Act 2023",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "gdpr",
+        "dpdp act 2023",
+        "data fiduciary",
+        "privacy by design",
+        "data principal rights"
+      ],
+      "aliases": [
+        "privacy compliance",
+        "digital personal data protection"
+      ],
+      "prerequisites": [
+        "sec-01-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-11-lo09",
+      "order": 9,
+      "title": "Automate Infrastructure as Code (IaC) security linting and policy enforcement",
+      "bloom": "automate",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "iac security",
+        "terraform scanning",
+        "checkov",
+        "tflint",
+        "policy-as-code"
+      ],
+      "aliases": [
+        "infrastructure as code security",
+        "policy as code"
+      ],
+      "prerequisites": [
+        "sec-11-lo05"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+---
+loId: "sec-10-lo06"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Digital forensic evidence degrades rapidly if not preserved systematically. RFC 3227 establishes the mandatory Order of Volatility, dictating that the most ephemeral data must be collected first:
+1. CPU Registers and Cache: The most volatile data; lost in microseconds if system state alters.
+2. Routing Tables, ARP Cache, Process Tables, Kernel Statistics, and RAM: Volatile physical memory containing active process listings, unencrypted passwords, network sockets, and injected code.
+3. Temporary File Systems and Swap Space: Ephemeral storage on local drives.
+4. Non-Volatile Disks (SATA/NVMe/SSD): Hard drive sectors, persistent file systems, and operating system event logs.
+5. Remote Logging and Monitoring Data: Centralized SIEM logs, firewall flows, and syslog archives stored off-host.
+6. Physical Topologies and Cable Configurations.
+7. Archival Media: Backup tapes, optical discs, and offline snapshots.
+
+### Worked Example
+Evaluating evidence collection priority according to RFC 3227:
+```python
+volatility_order = [
+    (1, "CPU registers and cache"),
+    (2, "RAM and live process memory"),
+    (3, "Network state and routing tables"),
+    (4, "Local disk file systems"),
+    (5, "Archival backups and remote logs")
+]
+
+# When arriving at a compromised live server:
+first_target = min(volatility_order, key=lambda x: x[0])
+print(f"First Evidence Collection Target: {first_target[1]}")
+```
+
+### Common Mistake
+Starting forensic collection by imaging the mechanical hard drive before dumping live physical RAM, completely losing decrypted keys, running process injection artifacts, and live C2 connections.
+
+### Check Yourself
+According to RFC 3227, why must physical RAM be acquired before taking an offline disk image of an endpoint?

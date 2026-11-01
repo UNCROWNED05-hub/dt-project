@@ -1,0 +1,36 @@
+---
+loId: "sec-10-lo04"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+The NIST SP 800-61 Computer Security Incident Handling Guide standardizes the incident response lifecycle into five structured operational phases:
+1. Preparation: Establishing incident response policies, assembling and training the CSIRT, securing communication channels, and provisioning forensic toolkits before an incident occurs.
+2. Detection & Analysis: Identifying precursor indicators (threat warnings, vulnerability announcements) and incident indicators (SIEM alerts, anomalous network egress). Determining the attack vector, scope, and severity.
+3. Containment: Limiting incident impact through short-term containment (isolating infected subnets) and long-term containment (patching vulnerabilities and isolating compromised service accounts).
+4. Eradication & Recovery: Removing all adversarial artifacts (malware binaries, persistence mechanisms) and restoring clean systems from validated backups into production.
+5. Post-Incident Activity (Lessons Learned): Conducting post-mortem debriefs to document root causes, calculate financial impact, and upgrade preventative controls within two weeks of closure.
+
+### Worked Example
+Simulating an incident response severity triage matrix:
+```python
+def determine_nist_phase_action(phase, alert_confirmed):
+    if phase == "Detection" and alert_confirmed:
+        return "Declare Incident & Escalate to Containment"
+    elif phase == "Containment":
+        return "Isolate Network Segment and Revoke Tokens"
+    elif phase == "Recovery":
+        return "Restore Clean Backups and Monitor Telemetry"
+    return "Continue Standard Operations"
+
+action = determine_nist_phase_action("Detection", alert_confirmed=True)
+print(f"Operational Directive: {action}")
+```
+
+### Common Mistake
+Jumping straight from detection to system wipe/reinstallation without completing forensic analysis and containment, allowing the attacker to re-enter through unresolved root causes.
+
+### Check Yourself
+What critical operational activities must occur during the Post-Incident Activity (Lessons Learned) phase?

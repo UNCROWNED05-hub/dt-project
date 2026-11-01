@@ -1,0 +1,1131 @@
+[
+  {
+    "loId": "sec-11-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q01",
+    "stem": "Under the Cloud Shared Responsibility Model, what is the customer ALWAYS responsible for across all cloud models (IaaS, PaaS, SaaS)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Customer data, identity access management, and endpoint configurations."
+      },
+      {
+        "id": "b",
+        "text": "Physical data center power and air conditioning."
+      },
+      {
+        "id": "c",
+        "text": "Hypervisor hardware maintenance."
+      },
+      {
+        "id": "d",
+        "text": "Undersea fiber optic cabling."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Customers retain full responsibility for their data classification, user access, and identity across every service model.",
+    "noteRef": "sec-11-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q02",
+    "stem": "A company deploys an Ubuntu Linux virtual machine on AWS EC2 (IaaS). Six months later, the server is compromised through an unpatched OpenSSH vulnerability. Who failed their security responsibility?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AWS, because AWS guarantees that all EC2 instances are patched automatically."
+      },
+      {
+        "id": "b",
+        "text": "The customer, because in IaaS the customer owns guest operating system patching and maintenance."
+      },
+      {
+        "id": "c",
+        "text": "The hardware manufacturer of the Intel CPU."
+      },
+      {
+        "id": "d",
+        "text": "The internet service provider."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "In IaaS, the cloud provider manages host hardware while the customer is responsible for guest OS patching.",
+    "noteRef": "sec-11-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-11-q03",
+    "stem": "Which of the following responsibilities belong to the Cloud Service Provider (CSP) in an Infrastructure as a Service (IaaS) deployment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Physical datacenter perimeter security and biometric facility access"
+      },
+      {
+        "id": "b",
+        "text": "Physical server hardware replacement and hypervisor virtualization layer"
+      },
+      {
+        "id": "c",
+        "text": "Core physical network infrastructure"
+      },
+      {
+        "id": "d",
+        "text": "Customer IAM role definitions and user passwords"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "The CSP secures physical facilities, hardware, and hypervisors; customers configure IAM and access.",
+    "noteRef": "sec-11-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q04",
+    "stem": "How does the security boundary shift between IaaS and PaaS (such as AWS Elastic Beanstalk or GCP App Engine)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In PaaS, the customer must manufacture their own server motherboards."
+      },
+      {
+        "id": "b",
+        "text": "In PaaS, the provider takes ownership of all customer intellectual property."
+      },
+      {
+        "id": "c",
+        "text": "In PaaS, the cloud provider assumes responsibility for the underlying operating system and language runtime, leaving only the application code and data to the customer."
+      },
+      {
+        "id": "d",
+        "text": "There is no operational difference between IaaS and PaaS."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "PaaS abstracts the underlying OS and middleware patching, transferring those operational duties to the provider.",
+    "noteRef": "sec-11-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q05",
+    "stem": "What is the primary danger of using long-lived static AWS access keys in application source code?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They slow down web server execution speed."
+      },
+      {
+        "id": "b",
+        "text": "They expire automatically every 10 seconds."
+      },
+      {
+        "id": "c",
+        "text": "They cause DNS servers to crash."
+      },
+      {
+        "id": "d",
+        "text": "They can be accidentally committed to public repositories, enabling unauthorized adversaries to gain permanent account access."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Hardcoded static credentials in git repos are routinely scraped by automated botnets within minutes of exposure.",
+    "noteRef": "sec-11-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q06",
+    "stem": "A microservice running on AWS EC2 needs to read files from a private S3 bucket. What is the most secure architectural mechanism to authorize the application?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Attach an IAM Role via an EC2 Instance Profile that issues short-lived temporary credentials automatically."
+      },
+      {
+        "id": "b",
+        "text": "Save the root AWS account password in an unencrypted text file on the server desktop."
+      },
+      {
+        "id": "c",
+        "text": "Make the entire S3 bucket publicly readable to the world."
+      },
+      {
+        "id": "d",
+        "text": "Hardcode the admin access key into the frontend HTML code."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Instance profiles assign IAM roles with automatic rotating temporary tokens, eliminating credential leaks.",
+    "noteRef": "sec-11-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-11-q07",
+    "stem": "Which conditions can be enforced in an enterprise cloud IAM policy statement to harden access controls?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Requiring Multi-Factor Authentication (`aws:MultiFactorAuthPresent`)"
+      },
+      {
+        "id": "b",
+        "text": "Enforcing encrypted HTTPS transport (`aws:SecureTransport: true`)"
+      },
+      {
+        "id": "c",
+        "text": "Restricting access to approved corporate IP CIDR blocks (`aws:SourceIp`)"
+      },
+      {
+        "id": "d",
+        "text": "Mandating that developers use specific keyboard models"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Cloud IAM condition blocks enforce MFA, encryption in transit, and corporate IP boundaries.",
+    "noteRef": "sec-11-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q08",
+    "stem": "In AWS IAM policy evaluation logic, how does an explicit Deny statement interact with an explicit Allow statement targeting the same action?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An explicit Allow overrides an explicit Deny."
+      },
+      {
+        "id": "b",
+        "text": "An explicit Deny ALWAYS overrides any explicit Allow, resulting in access denial."
+      },
+      {
+        "id": "c",
+        "text": "The two statements cancel out and generate a random decision."
+      },
+      {
+        "id": "d",
+        "text": "The policy with the shortest name takes precedence."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "AWS policy evaluation enforces the principle of ultimate authority: an explicit Deny always wins.",
+    "noteRef": "sec-11-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q09",
+    "stem": "What does CSPM stand for in modern cloud security architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Certified Software Protection Mechanism"
+      },
+      {
+        "id": "b",
+        "text": "Centralized System Password Manager"
+      },
+      {
+        "id": "c",
+        "text": "Cloud Security Posture Management"
+      },
+      {
+        "id": "d",
+        "text": "Compute Server Performance Monitor"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "CSPM tools continuously audit cloud configurations against security standards and compliance benchmarks.",
+    "noteRef": "sec-11-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q10",
+    "stem": "A developer modifies an AWS Security Group in the console to allow inbound TCP port 22 from 0.0.0.0/0 to troubleshoot a connection. Why does a CSPM flag this as a critical finding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Port 22 is reserved exclusively for web browser traffic."
+      },
+      {
+        "id": "b",
+        "text": "SSH connections consume 100% of network bandwidth."
+      },
+      {
+        "id": "c",
+        "text": "AWS charges $10,000 per hour for port 22."
+      },
+      {
+        "id": "d",
+        "text": "Exposing SSH management ports to the public internet leaves the host vulnerable to automated brute-force attacks and zero-day exploits."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Exposing SSH (22) or RDP (3389) publicly to 0.0.0.0/0 creates severe exposure to brute force and credential stuffing.",
+    "noteRef": "sec-11-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-11-q11",
+    "stem": "What is 'configuration drift' in cloud infrastructure environments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Discrepancies that occur when cloud resources are manually modified in the web console, deviating from the declared Infrastructure-as-Code (Terraform) state."
+      },
+      {
+        "id": "b",
+        "text": "Physical movement of servers between data centers."
+      },
+      {
+        "id": "c",
+        "text": "A gradual decrease in network bandwidth over time."
+      },
+      {
+        "id": "d",
+        "text": "Changes in local room temperature around cloud servers."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Drift happens when ad-hoc manual changes cause live cloud states to diverge from baseline code templates.",
+    "noteRef": "sec-11-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q12",
+    "stem": "How does automated CSPM remediation (such as invoking an AWS Lambda function upon a CloudWatch alert) enhance defense?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It prevents users from using strong passwords."
+      },
+      {
+        "id": "b",
+        "text": "It reduces the Mean Time to Remediate (MTTR) by automatically revoking dangerous misconfigurations (e.g. closing a public S3 bucket) within seconds of creation."
+      },
+      {
+        "id": "c",
+        "text": "It replaces all cloud storage with local floppy disks."
+      },
+      {
+        "id": "d",
+        "text": "It encrypts the internet gateway permanently."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Event-driven automated remediation closes exposure windows immediately without waiting for human intervention.",
+    "noteRef": "sec-11-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q13",
+    "stem": "Why is running production containers as the default root user (UID 0) considered dangerous?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Root containers cannot connect to the internet."
+      },
+      {
+        "id": "b",
+        "text": "Docker requires payment for root user execution."
+      },
+      {
+        "id": "c",
+        "text": "If an adversary achieves a container breakout via a kernel vulnerability, they immediately obtain full root privileges on the host operating system."
+      },
+      {
+        "id": "d",
+        "text": "Root containers consume 100% of RAM on launch."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Container root shares UID 0 with host root; breaking isolation yields immediate host compromise.",
+    "noteRef": "sec-11-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q14",
+    "stem": "A software team switches their production container base image from `ubuntu:latest` to a Google `distroless` image. What security benefit is achieved?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Distroless images allow containers to run without electricity."
+      },
+      {
+        "id": "b",
+        "text": "Distroless images automatically generate unit tests."
+      },
+      {
+        "id": "c",
+        "text": "It increases the Docker image size by 500%."
+      },
+      {
+        "id": "d",
+        "text": "The attack surface is drastically reduced because distroless images contain only the application binary, eliminating shells (bash), package managers (apt), and system utilities."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Distroless images omit shells and package managers, denying attackers post-exploitation utilities.",
+    "noteRef": "sec-11-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-11-q15",
+    "stem": "Which of the following practices are recommended container hardening techniques?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Setting the root filesystem to read-only (`read_only: true`)"
+      },
+      {
+        "id": "b",
+        "text": "Dropping all unnecessary Linux kernel capabilities (`cap_drop: ['ALL']`)"
+      },
+      {
+        "id": "c",
+        "text": "Enforcing an explicit unprivileged non-root user (`USER 10001`)"
+      },
+      {
+        "id": "d",
+        "text": "Launching all containers with `--privileged` flag"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Read-only filesystems, dropped capabilities, and non-root users are core hardening standards; `--privileged` disables all isolation.",
+    "noteRef": "sec-11-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q16",
+    "stem": "What Linux kernel mechanism is used by container engines to restrict the maximum memory and CPU consumption of a container?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Control Groups (cgroups)"
+      },
+      {
+        "id": "b",
+        "text": "Namespaces"
+      },
+      {
+        "id": "c",
+        "text": "Chroot"
+      },
+      {
+        "id": "d",
+        "text": "SELinux"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Cgroups throttle and allocate hardware resources (CPU, RAM), preventing a single container from starving the host.",
+    "noteRef": "sec-11-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q17",
+    "stem": "What does 'Shift-Left' mean in DevSecOps pipeline engineering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Moving the software development team to another country."
+      },
+      {
+        "id": "b",
+        "text": "Integrating security testing and vulnerability scanning earlier in the software development lifecycle, rather than waiting for post-production audits."
+      },
+      {
+        "id": "c",
+        "text": "Pressing the left arrow key during deployment."
+      },
+      {
+        "id": "d",
+        "text": "Writing code in backwards order."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Shifting left catches vulnerabilities during code commit and CI builds when fixes are cheapest and easiest.",
+    "noteRef": "sec-11-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q18",
+    "stem": "A developer opens a pull request. An automated GitHub Action analyzes the raw TypeScript code and flags a potential SQL injection vulnerability on line 42 without running the application. What tool type performed this scan?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dynamic Application Security Testing (DAST)"
+      },
+      {
+        "id": "b",
+        "text": "Cloud Posture Manager (CSPM)"
+      },
+      {
+        "id": "c",
+        "text": "Static Application Security Testing (SAST)"
+      },
+      {
+        "id": "d",
+        "text": "Network Sniffer"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "SAST inspects non-compiled source code statically to identify syntax-level vulnerability patterns.",
+    "noteRef": "sec-11-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-11-q19",
+    "stem": "Which security scanning tools are standard automated components of modern DevSecOps CI/CD pipelines?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Secret Scanners (e.g., Gitleaks, TruffleHog) detecting committed API tokens"
+      },
+      {
+        "id": "b",
+        "text": "Software Composition Analysis (SCA) detecting known CVEs in third-party libraries"
+      },
+      {
+        "id": "c",
+        "text": "Static Application Security Testing (SAST) analyzing source code flaws"
+      },
+      {
+        "id": "d",
+        "text": "Cryptocurrency miners running on test servers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Pipelines routinely automate secret scanning, dependency CVE checks (SCA), and code analysis (SAST).",
+    "noteRef": "sec-11-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q20",
+    "stem": "What fundamental operational difference distinguishes Dynamic Application Security Testing (DAST) from Static Testing (SAST)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DAST can only scan hardware circuits."
+      },
+      {
+        "id": "b",
+        "text": "SAST can only run on production databases."
+      },
+      {
+        "id": "c",
+        "text": "There is no difference between SAST and DAST."
+      },
+      {
+        "id": "d",
+        "text": "DAST requires a running application in a staging environment to simulate external attacks, whereas SAST analyzes unexecuted source code."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "DAST exercises running systems as a black-box tester; SAST evaluates codebase files white-box.",
+    "noteRef": "sec-11-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q21",
+    "stem": "In quantitative risk management, what formula calculates the Annualized Loss Expectancy (ALE)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ALE = Single Loss Expectancy (SLE) * Annualized Rate of Occurrence (ARO)"
+      },
+      {
+        "id": "b",
+        "text": "ALE = Asset Value (AV) / Exposure Factor (EF)"
+      },
+      {
+        "id": "c",
+        "text": "ALE = Return on Investment (ROI) * 365"
+      },
+      {
+        "id": "d",
+        "text": "ALE = Total Revenue - Operational Cost"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Annualized Loss Expectancy (ALE) = Single Loss Expectancy (SLE) multiplied by Annualized Rate of Occurrence (ARO).",
+    "noteRef": "sec-11-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-11-q22",
+    "stem": "An enterprise server asset is valued at $200,000. If a power surge occurs, the Exposure Factor (EF) is estimated at 25%. What is the Single Loss Expectancy (SLE) in dollars?",
+    "options": [
+      {
+        "id": "a",
+        "text": "25000"
+      },
+      {
+        "id": "b",
+        "text": "50000"
+      },
+      {
+        "id": "c",
+        "text": "100000"
+      },
+      {
+        "id": "d",
+        "text": "150000"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "SLE = Asset Value * Exposure Factor = $200,000 * 0.25 = $50,000.",
+    "noteRef": "sec-11-lo06",
+    "verify": "(200000 * 0.25 === 50000)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q23",
+    "stem": "An enterprise purchases a $10,000,000 cyber insurance policy to cover customer liability damages in the event of a major data breach. Which risk treatment strategy is being implemented?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Risk Avoidance"
+      },
+      {
+        "id": "b",
+        "text": "Risk Mitigation"
+      },
+      {
+        "id": "c",
+        "text": "Risk Transference"
+      },
+      {
+        "id": "d",
+        "text": "Risk Acceptance"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Purchasing insurance or outsourcing operational liability transfers the financial impact to a third party.",
+    "noteRef": "sec-11-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q24",
+    "stem": "Why would an executive risk committee choose 'Risk Acceptance' rather than implementing an expensive technical safeguard?",
+    "options": [
+      {
+        "id": "a",
+        "text": "When the company is closing down operations next week."
+      },
+      {
+        "id": "b",
+        "text": "Because compliance regulations forbid spending money on firewalls."
+      },
+      {
+        "id": "c",
+        "text": "When the risk is completely unknown."
+      },
+      {
+        "id": "d",
+        "text": "When the annualized cost of the proposed security control exceeds the total Annualized Loss Expectancy (ALE) of the risk."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "If a safeguard costs more than the expected annualized loss, accepting the risk is the rational economic choice.",
+    "noteRef": "sec-11-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q25",
+    "stem": "What core function was newly introduced in the NIST Cybersecurity Framework (CSF) Version 2.0?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Govern"
+      },
+      {
+        "id": "b",
+        "text": "Isolate"
+      },
+      {
+        "id": "c",
+        "text": "Punish"
+      },
+      {
+        "id": "d",
+        "text": "Encrypt"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "NIST CSF 2.0 added 'Govern' to encompass enterprise risk governance, policy, and executive oversight.",
+    "noteRef": "sec-11-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q26",
+    "stem": "A software vendor seeks an independent audit to prove to prospective enterprise customers that their cloud security, confidentiality, and availability controls have operated effectively over a six-month period. What report is standard for this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RFC 1918 Address Allocation"
+      },
+      {
+        "id": "b",
+        "text": "SOC 2 Type II Report"
+      },
+      {
+        "id": "c",
+        "text": "W3C HTML Validation"
+      },
+      {
+        "id": "d",
+        "text": "DNS Zone Transfer Record"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A SOC 2 Type II report audits the operational effectiveness of security controls over an extended time window (3 to 12 months).",
+    "noteRef": "sec-11-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-11-q27",
+    "stem": "Which of the following are the six Core Functions of the NIST Cybersecurity Framework 2.0?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Govern, Identify, Protect"
+      },
+      {
+        "id": "b",
+        "text": "Detect, Respond, Recover"
+      },
+      {
+        "id": "c",
+        "text": "Attack, Exploit, Exfiltrate"
+      },
+      {
+        "id": "d",
+        "text": "Purchase, Install, Reboot"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "The six NIST CSF 2.0 core functions are Govern, Identify, Protect, Detect, Respond, and Recover.",
+    "noteRef": "sec-11-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q28",
+    "stem": "What is an Information Security Management System (ISMS) according to the ISO/IEC 27001 standard?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A specific proprietary antivirus software package."
+      },
+      {
+        "id": "b",
+        "text": "A network routing protocol."
+      },
+      {
+        "id": "c",
+        "text": "A systematic approach to managing sensitive company information through a continuous framework of policies, procedures, and technical risk controls."
+      },
+      {
+        "id": "d",
+        "text": "A hardware server rack cooling system."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "ISO 27001 defines an ISMS as an ongoing, management-led risk framework for protecting institutional data.",
+    "noteRef": "sec-11-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-11-q29",
+    "stem": "Under India's Digital Personal Data Protection (DPDP) Act 2023, what is the entity that determines the purpose and means of processing personal data called?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data Principal"
+      },
+      {
+        "id": "b",
+        "text": "Data Miner"
+      },
+      {
+        "id": "c",
+        "text": "Data Broker"
+      },
+      {
+        "id": "d",
+        "text": "Data Fiduciary"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The DPDP Act 2023 defines the data controller entity as the 'Data Fiduciary'.",
+    "noteRef": "sec-11-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q30",
+    "stem": "An e-commerce mobile app asks users for access to their smartphone contact list, microphone, and location when they only signed up to buy books. Which privacy principle does this violate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data Minimization and Purpose Limitation"
+      },
+      {
+        "id": "b",
+        "text": "Symmetric Encryption"
+      },
+      {
+        "id": "c",
+        "text": "Least Cost Routing"
+      },
+      {
+        "id": "d",
+        "text": "High Availability"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Data minimization requires collecting only data strictly necessary for the declared service purpose.",
+    "noteRef": "sec-11-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-11-q31",
+    "stem": "Under the European Union General Data Protection Regulation (GDPR), within how many hours must a data controller report a confirmed personal data breach to the supervisory authority?",
+    "options": [
+      {
+        "id": "a",
+        "text": "24"
+      },
+      {
+        "id": "b",
+        "text": "72"
+      },
+      {
+        "id": "c",
+        "text": "48"
+      },
+      {
+        "id": "d",
+        "text": "168"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "GDPR Article 33 mandates reporting personal data breaches to regulators within 72 hours of becoming aware.",
+    "noteRef": "sec-11-lo08",
+    "verify": "(72 === 72)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q32",
+    "stem": "What maximum financial penalty can be imposed under India's DPDP Act 2023 for failure to observe reasonable security safeguards to prevent a personal data breach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Up to ₹50,000"
+      },
+      {
+        "id": "b",
+        "text": "Up to ₹5 lakh"
+      },
+      {
+        "id": "c",
+        "text": "Up to ₹250 crore (₹2.5 billion)"
+      },
+      {
+        "id": "d",
+        "text": "Up to ₹10 crore"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The Schedule to the DPDP Act 2023 specifies penalties up to ₹250 crore for failure to prevent breaches.",
+    "noteRef": "sec-11-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-11-q33",
+    "stem": "What is the primary advantage of scanning Terraform and CloudFormation templates with static IaC analyzers like Checkov or tfsec before deployment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It compiles Terraform code into C++ binaries."
+      },
+      {
+        "id": "b",
+        "text": "It grants unlimited free AWS compute credits."
+      },
+      {
+        "id": "c",
+        "text": "It replaces the need for cloud networking."
+      },
+      {
+        "id": "d",
+        "text": "It intercepts cloud security misconfigurations in pull requests before infrastructure is ever provisioned, preventing production exposure."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Static IaC scanning shifts cloud security left, detecting dangerous templates before cloud deployment.",
+    "noteRef": "sec-11-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-11-q34",
+    "stem": "A developer commits a Terraform script defining an `aws_s3_bucket` without a server-side encryption block. A CI check halts the pull request with error `CKV_AWS_19: Ensure all data stored in the S3 bucket is securely encrypted at rest`. What paradigm is enforced?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Policy-as-Code automated pre-deployment gating"
+      },
+      {
+        "id": "b",
+        "text": "Runtime application self-protection"
+      },
+      {
+        "id": "c",
+        "text": "Forensic disk acquisition"
+      },
+      {
+        "id": "d",
+        "text": "Distributed denial of service"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Policy-as-code codifies compliance rules into automated pre-commit / CI gates.",
+    "noteRef": "sec-11-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "sec-11-q35",
+    "stem": "Which of the following cloud infrastructure misconfigurations can be detected by static Infrastructure-as-Code (IaC) security linters?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Security groups permitting unrestricted public inbound access (0.0.0.0/0 on port 22)"
+      },
+      {
+        "id": "b",
+        "text": "Storage volumes (EBS) created without encryption enabled"
+      },
+      {
+        "id": "c",
+        "text": "S3 buckets lacking public access block configurations"
+      },
+      {
+        "id": "d",
+        "text": "Physical server fan speed failures in the data center"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "IaC templates declare security groups, encryption flags, and public access blocks; fan speeds are hardware.",
+    "noteRef": "sec-11-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-11-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-11-q36",
+    "stem": "Why does enforcing GitOps for infrastructure deployment enhance organizational auditability and security governance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "GitOps eliminates the need for software testing."
+      },
+      {
+        "id": "b",
+        "text": "Every infrastructure change is recorded as a version-controlled, cryptographically signed git commit with peer reviews and automated scanner sign-offs."
+      },
+      {
+        "id": "c",
+        "text": "Git repositories are legally exempt from privacy regulations."
+      },
+      {
+        "id": "d",
+        "text": "GitOps automatically generates cloud provider invoices."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "GitOps provides an immutable, auditable log of who approved and deployed every infrastructure modification.",
+    "noteRef": "sec-11-lo09",
+    "reviewed": false
+  }
+]

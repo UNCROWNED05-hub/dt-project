@@ -1,0 +1,43 @@
+---
+loId: "sec-11-lo08"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Modern data privacy legislation mandates that engineering systems enforce privacy-by-design and respect individual data rights under severe penalty:
+1. General Data Protection Regulation (GDPR - EU): Establishes extraterritorial rights for individuals (Data Subjects). Enforces strict consent rules, 72-hour mandatory breach notification deadlines, and fines up to 4% of global annual turnover or €20 million.
+2. India's Digital Personal Data Protection (DPDP) Act 2023:
+   - Data Principal: The individual to whom the personal data relates.
+   - Data Fiduciary: Any entity determining the purpose and means of processing personal data.
+   - Lawful Processing: Data must be processed solely for lawful purposes for which explicit, verifiable consent is obtained, or for certain legitimate uses.
+   - Severe Penalties: Financial penalties up to ₹250 crore (₹2.5 billion) for failure to take reasonable security safeguards to prevent personal data breaches.
+3. Core Technical Principles:
+   - Purpose Limitation: Data collected for one reason cannot be used for unrelated secondary purposes without new consent.
+   - Data Minimization: Store only the minimum data strictly necessary to fulfill the business function.
+   - Right to Erasure / Right to be Forgotten: Cryptographically shredding or deleting records upon user request.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Simulating a privacy data minimization check in Python:
+```python
+def audit_data_minimization(required_fields, collected_fields):
+    unnecessary_data = [f for f in collected_fields if f not in required_fields]
+    if unnecessary_data:
+        return {"compliant": False, "violation": f"Excess data collected: {unnecessary_data}"}
+    return {"compliant": True, "violation": "None"}
+
+req = ["user_id", "email", "hashed_password"]
+collected = ["user_id", "email", "hashed_password", "gps_coordinates", "blood_group"]
+res = audit_data_minimization(req, collected)
+print(f"Privacy Audit: {res['violation']}")
+```
+
+### Common Mistake
+Failing to notify regulatory authorities within the mandatory 72-hour window after discovering a confirmed personal data breach, triggering maximum statutory fines.
+
+### Check Yourself
+Under India's DPDP Act 2023, what is the term used for the individual whose personal data is being processed?

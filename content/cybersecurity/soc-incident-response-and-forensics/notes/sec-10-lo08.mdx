@@ -1,0 +1,37 @@
+---
+loId: "sec-10-lo08"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Data backup and disaster recovery architecture determines whether an enterprise can withstand ransomware extortion and catastrophic data destruction:
+1. The 3-2-1 Backup Rule: Maintain at least 3 total copies of data, across 2 different media types (e.g., local NVMe SAN and cloud object store), with 1 copy stored completely off-site or in an air-gapped immutable repository.
+2. Immutable Backups: Implementing Write-Once-Read-Many (WORM) storage or S3 Object Lock policies preventing backup deletion or encryption, even if an attacker gains domain administrator credentials.
+3. Recovery Point Objective (RPO): The maximum acceptable age of files that must be recovered from backup storage for normal operations to resume (determines backup frequency).
+4. Recovery Time Objective (RTO): The maximum acceptable duration of system downtime permitted before business operations are restored.
+5. Periodic Restoration Testing: Backups are untrusted until recovery is actively executed and verified in isolated sandbox environments.
+
+### Worked Example
+Calculating RPO and RTO compliance in disaster recovery planning:
+```python
+def evaluate_dr_targets(last_backup_age_hours, actual_recovery_hours, rpo_target, rto_target):
+    rpo_met = last_backup_age_hours <= rpo_target
+    rto_met = actual_recovery_hours <= rto_target
+    return {
+        "rpo_compliant": rpo_met,
+        "rto_compliant": rto_met,
+        "dr_ready": rpo_met and rto_met
+    }
+
+# Evaluating 4-hour RPO and 2-hour RTO
+status = evaluate_dr_targets(last_backup_age_hours=2, actual_recovery_hours=1.5, rpo_target=4, rto_target=2)
+print(f"Disaster Recovery SLA Met: {status['dr_ready']}") # True
+```
+
+### Common Mistake
+Storing online backup shares on domain-joined servers accessible via default administrative credentials, allowing ransomware operators to erase all shadow copies and network backups prior to encryption.
+
+### Check Yourself
+What is the difference between Recovery Point Objective (RPO) and Recovery Time Objective (RTO)?

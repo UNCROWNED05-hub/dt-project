@@ -43,6 +43,7 @@ const VERBS = new Set([
   'architect', 'establish', 'orchestrate', 'instrument', 'triage',
   'filter', 'aggregate', 'plot', 'standardize', 'address', 'extend',
   'maximize', 'transform', 'calibrate', 'balance', 'regularize', 'prune', 'combine',
+  'preserve', 'maintain', 'automate', 'enforce', 'integrate', 'conduct', 'prioritize',
   'extract', 'prioritize', 'conduct'
 ]);
 

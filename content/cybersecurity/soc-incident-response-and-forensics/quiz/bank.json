@@ -1,0 +1,1130 @@
+[
+  {
+    "loId": "sec-10-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q01",
+    "stem": "What is the primary responsibility of a Tier 1 SOC Analyst?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Monitoring incoming SIEM alerts, validating true positives, filtering false alarms, and performing initial alert triage."
+      },
+      {
+        "id": "b",
+        "text": "Conducting multi-day kernel memory forensics."
+      },
+      {
+        "id": "c",
+        "text": "Designing organizational corporate budgets."
+      },
+      {
+        "id": "d",
+        "text": "Writing enterprise security policies."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Tier 1 analysts handle front-line alert triage, verification, and escalation to Tier 2 responders.",
+    "noteRef": "sec-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q02",
+    "stem": "A SOC analyst observes 10,000 low-fidelity alerts firing per hour, causing legitimate high-severity alerts to be overlooked. What operational problem does this represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ransomware detonation"
+      },
+      {
+        "id": "b",
+        "text": "Alert Fatigue"
+      },
+      {
+        "id": "c",
+        "text": "Cryptographic failure"
+      },
+      {
+        "id": "d",
+        "text": "DNS Cache Poisoning"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Alert fatigue occurs when excessive false alarms overwhelm analysts, creating severe risks of missed intrusions.",
+    "noteRef": "sec-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-10-q03",
+    "stem": "Which of the following metrics are standard operational key performance indicators (KPIs) tracked by SOC leadership?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mean Time to Detect (MTTD)"
+      },
+      {
+        "id": "b",
+        "text": "Mean Time to Respond / Remediate (MTTR)"
+      },
+      {
+        "id": "c",
+        "text": "False Positive Ratio"
+      },
+      {
+        "id": "d",
+        "text": "Physical monitor refresh rate"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "MTTD, MTTR, and false positive rates quantify detection efficiency and response agility in a SOC.",
+    "noteRef": "sec-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q04",
+    "stem": "How does proactive threat hunting performed by Tier 3 specialists differ fundamentally from traditional alert triage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Threat hunting only runs once per calendar year."
+      },
+      {
+        "id": "b",
+        "text": "Threat hunting relies entirely on off-the-shelf antivirus popup notifications."
+      },
+      {
+        "id": "c",
+        "text": "Threat hunting actively hypothesizes and searches for stealthy adversaries that have already bypassed existing automated SIEM detection rules."
+      },
+      {
+        "id": "d",
+        "text": "Threat hunting does not require access to host event logs."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Hunting is hypothesis-driven and manual, uncovering persistent threats invisible to automated signature rules.",
+    "noteRef": "sec-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q05",
+    "stem": "What does SIEM stand for in enterprise cybersecurity operations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Secure Internet Encryption Mechanism"
+      },
+      {
+        "id": "b",
+        "text": "System Isolation and Endpoint Maintenance"
+      },
+      {
+        "id": "c",
+        "text": "Standard Input Environment Module"
+      },
+      {
+        "id": "d",
+        "text": "Security Information and Event Management"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "SIEM combines security information management (SIM) and security event management (SEM).",
+    "noteRef": "sec-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q06",
+    "stem": "A SIEM correlation rule flags an alert because a workstation logged 50 failed Kerberos authentication attempts within 30 seconds followed by a successful admin logon from a new IP. What correlation technique was used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Temporal cross-event behavioral correlation"
+      },
+      {
+        "id": "b",
+        "text": "Static dictionary search"
+      },
+      {
+        "id": "c",
+        "text": "Hardware write blocking"
+      },
+      {
+        "id": "d",
+        "text": "Symmetric key generation"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Temporal correlation links multiple discrete events across a time window to detect attack patterns like brute force.",
+    "noteRef": "sec-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-10-q07",
+    "stem": "Why is log normalization to a standard schema (such as ECS or OCSF) essential in enterprise SIEM architectures?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It compresses logs into encrypted ZIP archives."
+      },
+      {
+        "id": "b",
+        "text": "It maps heterogeneous event logs from diverse vendors into standardized field names, allowing unified queries and correlation rules across the entire fleet."
+      },
+      {
+        "id": "c",
+        "text": "It prevents Windows workstations from rebooting."
+      },
+      {
+        "id": "d",
+        "text": "It encrypts hard drives automatically."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Standard schemas ensure that field names like `source_ip` match across Windows, Linux, and firewall logs.",
+    "noteRef": "sec-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo02",
+    "type": "numeric",
+    "difficulty": 3,
+    "id": "sec-10-q08",
+    "stem": "If a busy enterprise network generates an average of 5,000 events per second (EPS), how many total events must the SIEM ingest across a 60-second window?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50000"
+      },
+      {
+        "id": "b",
+        "text": "120000"
+      },
+      {
+        "id": "c",
+        "text": "300000"
+      },
+      {
+        "id": "d",
+        "text": "600000"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "5,000 EPS * 60 seconds = 300,000 total events.",
+    "noteRef": "sec-10-lo02",
+    "verify": "(5000 * 60 === 300000)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q09",
+    "stem": "What is Sigma in modern detection engineering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A proprietary hardware firewall manufactured by Cisco."
+      },
+      {
+        "id": "b",
+        "text": "A Linux kernel compile-time flag."
+      },
+      {
+        "id": "c",
+        "text": "A type of fiber-optic network cable."
+      },
+      {
+        "id": "d",
+        "text": "An open, vendor-agnostic signature format for writing log detection rules that translate into various SIEM query languages."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Sigma provides an open YAML specification describing detection rules independent of target SIEM backends.",
+    "noteRef": "sec-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q10",
+    "stem": "A detection engineer needs to scan memory dumps and local binaries on disk for specific malware strings and compiled byte patterns. Which tool is purpose-built for this task?",
+    "options": [
+      {
+        "id": "a",
+        "text": "YARA"
+      },
+      {
+        "id": "b",
+        "text": "Nmap"
+      },
+      {
+        "id": "c",
+        "text": "Wireshark"
+      },
+      {
+        "id": "d",
+        "text": "Burp Suite"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "YARA is the standard tool for identifying and classifying malware based on textual or binary patterns.",
+    "noteRef": "sec-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo03",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-10-q11",
+    "stem": "Which of the following sections are standard elements of a valid Sigma detection rule file?",
+    "options": [
+      {
+        "id": "a",
+        "text": "logsource (e.g., category: process_creation)"
+      },
+      {
+        "id": "b",
+        "text": "detection (selection criteria and condition logic)"
+      },
+      {
+        "id": "c",
+        "text": "tags (e.g., attack.execution)"
+      },
+      {
+        "id": "d",
+        "text": "root_password_hash"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Sigma files structure rules using logsource, detection selections, and tags; passwords are never included.",
+    "noteRef": "sec-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q12",
+    "stem": "Why must newly authored detection rules undergo baselining against historical telemetry before being assigned high alerting priority in production?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because SIEM rules expire after 24 hours."
+      },
+      {
+        "id": "b",
+        "text": "To identify whether legitimate enterprise administrative tools match the rule patterns, preventing massive false positive alert storms."
+      },
+      {
+        "id": "c",
+        "text": "To allow attackers time to alter their scripts."
+      },
+      {
+        "id": "d",
+        "text": "To encrypt the SIEM query engine."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Baselining identifies false alarms triggered by benign sysadmin scripts before waking up on-call responders.",
+    "noteRef": "sec-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q13",
+    "stem": "What is the correct sequential order of the Incident Handling Lifecycle according to NIST SP 800-61?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Containment -> Eradication -> Preparation -> Post-Incident Activity"
+      },
+      {
+        "id": "b",
+        "text": "Post-Incident Activity -> Detection -> Eradication -> Preparation"
+      },
+      {
+        "id": "c",
+        "text": "Preparation -> Detection & Analysis -> Containment, Eradication & Recovery -> Post-Incident Activity"
+      },
+      {
+        "id": "d",
+        "text": "Eradication -> Detection -> Containment -> Preparation"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "NIST SP 800-61 defines Preparation, Detection & Analysis, Containment/Eradication/Recovery, and Post-Incident Activity.",
+    "noteRef": "sec-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q14",
+    "stem": "Two weeks after recovering from a ransomware breach, the security team convenes with executives to document root causes, review time-to-containment, and update defense playbooks. Which NIST phase is being executed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Preparation"
+      },
+      {
+        "id": "b",
+        "text": "Short-term Containment"
+      },
+      {
+        "id": "c",
+        "text": "Eradication"
+      },
+      {
+        "id": "d",
+        "text": "Post-Incident Activity (Lessons Learned)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Lessons learned debriefs identify preventative gaps and update response procedures after an incident is closed.",
+    "noteRef": "sec-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-10-q15",
+    "stem": "Which of the following activities belong to the Preparation phase of the NIST incident response lifecycle?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Establishing secure out-of-band communication channels for responders"
+      },
+      {
+        "id": "b",
+        "text": "Training the CSIRT team through simulated tabletop exercises"
+      },
+      {
+        "id": "c",
+        "text": "Procuring and testing forensic hardware write blockers and acquisition toolkits"
+      },
+      {
+        "id": "d",
+        "text": "Deleting server log files to prevent clutter"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Preparation equips the organization with policies, tools, communication channels, and training before breaches occur.",
+    "noteRef": "sec-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q16",
+    "stem": "Why does NIST SP 800-61 emphasize separating Short-Term Containment from Long-Term Containment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Short-term containment limits immediate damage (e.g. isolating subnets) while long-term containment patches systems and establishes clean infrastructure without disrupting operations permanently."
+      },
+      {
+        "id": "b",
+        "text": "Short-term containment requires calling law enforcement, while long-term does not."
+      },
+      {
+        "id": "c",
+        "text": "Long-term containment is only performed if data is unencrypted."
+      },
+      {
+        "id": "d",
+        "text": "Short-term containment can only last 10 seconds."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Short-term containment stops the bleeding (isolation), while long-term prepares the environment for sustainable eradication.",
+    "noteRef": "sec-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q17",
+    "stem": "What is the primary objective of the Containment phase in incident response?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Formatting all hard drives in the enterprise immediately."
+      },
+      {
+        "id": "b",
+        "text": "Preventing the attacker or malware from spreading laterally or exfiltrating data, while preserving volatile evidence."
+      },
+      {
+        "id": "c",
+        "text": "Negotiating ransom payments."
+      },
+      {
+        "id": "d",
+        "text": "Upgrading office furniture."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Containment halts attack progression and limits operational impact while safeguarding evidence.",
+    "noteRef": "sec-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q18",
+    "stem": "An active command-and-control beacon is detected on a critical domain controller. The responder executes an EDR network isolation command rather than pulling the power plug. Why is this preferred?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because power plugs cannot be removed on domain controllers."
+      },
+      {
+        "id": "b",
+        "text": "Pulling the plug automatically encrypts the file system."
+      },
+      {
+        "id": "c",
+        "text": "Network isolation cuts attacker communication while preserving volatile RAM, process state, and network socket evidence for forensic analysis."
+      },
+      {
+        "id": "d",
+        "text": "EDR commands speed up hard drive spin rates."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Host isolation severs external connectivity while keeping RAM intact for forensic acquisition.",
+    "noteRef": "sec-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "sec-10-q19",
+    "stem": "Which actions are standard components of the Eradication phase during incident response?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Removing malware persistence mechanisms (scheduled tasks, registry run keys, services)"
+      },
+      {
+        "id": "b",
+        "text": "Closing exploited vulnerabilities and applying security patches"
+      },
+      {
+        "id": "c",
+        "text": "Revoking compromised credentials and resetting Kerberos tickets"
+      },
+      {
+        "id": "d",
+        "text": "Publishing unredacted customer data to GitHub"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Eradication eliminates all adversary footprints, backdoors, and root vulnerabilities from the network.",
+    "noteRef": "sec-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q20",
+    "stem": "Why do enterprise incident response teams rebuild compromised operating systems from known-good golden images rather than manually deleting malware files?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Golden images are free while manual deletion costs money."
+      },
+      {
+        "id": "b",
+        "text": "Manual deletion is banned by copyright law."
+      },
+      {
+        "id": "c",
+        "text": "Operating systems cannot run after one virus detection."
+      },
+      {
+        "id": "d",
+        "text": "Advanced adversaries frequently install hidden rootkits, WMI subscriptions, and deep persistence hooks that evade manual file-by-file cleaning."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Manual cleaning rarely eliminates stealthy rootkits; deploying validated golden images guarantees integrity.",
+    "noteRef": "sec-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q21",
+    "stem": "What internet standard establishes the Order of Volatility for digital evidence preservation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RFC 3227"
+      },
+      {
+        "id": "b",
+        "text": "RFC 1918"
+      },
+      {
+        "id": "c",
+        "text": "RFC 791"
+      },
+      {
+        "id": "d",
+        "text": "RFC 2616"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "RFC 3227: Guidelines for Evidence Collection and Archiving defines the Order of Volatility.",
+    "noteRef": "sec-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q22",
+    "stem": "A forensic responder arrives at a live, running workstation suspected of being involved in a cyber heist. Which artifact must be acquired FIRST under the Order of Volatility?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SATA Hard Drive disk image"
+      },
+      {
+        "id": "b",
+        "text": "CPU registers and Physical RAM"
+      },
+      {
+        "id": "c",
+        "text": "Offline backup tapes"
+      },
+      {
+        "id": "d",
+        "text": "Printed printer spools"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "RAM and CPU state are highly volatile and vanish upon reboot or power loss; they must be acquired first.",
+    "noteRef": "sec-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-10-q23",
+    "stem": "What valuable forensic evidence is preserved exclusively in volatile memory (RAM) and absent from unpowered hard drives?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The BIOS manufacturer serial number."
+      },
+      {
+        "id": "b",
+        "text": "The physical dimensions of the computer chassis."
+      },
+      {
+        "id": "c",
+        "text": "Injected fileless malware code, unencrypted memory passwords, and active TCP socket connections."
+      },
+      {
+        "id": "d",
+        "text": "The monitor resolution settings."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Fileless malware, in-memory crypto keys, and live network connections exist solely in RAM.",
+    "noteRef": "sec-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q24",
+    "stem": "Why does executing commands directly on a live suspect system modify the evidence state during incident investigation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because keyboards emit destructive electromagnetic pulses."
+      },
+      {
+        "id": "b",
+        "text": "Operating systems automatically reformat upon analyst login."
+      },
+      {
+        "id": "c",
+        "text": "It causes the power supply to overheat."
+      },
+      {
+        "id": "d",
+        "text": "Every launched binary alters memory allocations, updates file access timestamps, and modifies active process IDs in RAM."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Interacting with a live host inevitably overwrites memory pages and changes filesystem access timestamps.",
+    "noteRef": "sec-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q25",
+    "stem": "What is a Chain of Custody document in digital forensics?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A chronological paper or digital log tracking the receipt, custody, transfer, analysis, and disposition of physical and electronic evidence."
+      },
+      {
+        "id": "b",
+        "text": "A certificate verifying an employee's university degree."
+      },
+      {
+        "id": "c",
+        "text": "A software license for antivirus products."
+      },
+      {
+        "id": "d",
+        "text": "A purchase order for network switches."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Chain of custody proves an unbroken trail of possession to ensure evidence is admissible in court.",
+    "noteRef": "sec-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q26",
+    "stem": "An investigator clones a suspect NVMe drive. Before acquisition, the source drive SHA-256 hash is computed as `h1`. After creating the bit-stream disk image, the image SHA-256 hash is computed as `h2`. If `h1 === h2`, what does this prove?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The drive contains no viruses."
+      },
+      {
+        "id": "b",
+        "text": "Cryptographic proof that the disk image is an exact, unaltered bit-for-bit duplicate of the suspect drive."
+      },
+      {
+        "id": "c",
+        "text": "The hard drive has been securely wiped."
+      },
+      {
+        "id": "d",
+        "text": "The investigator's computer is connected to the internet."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Matching cryptographic hashes verify bit-stream integrity, proving no bytes were added or changed.",
+    "noteRef": "sec-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-10-q27",
+    "stem": "What hardware tool must be placed between a suspect hard drive and the forensic forensic workstation during bit-stream cloning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ethernet Hub"
+      },
+      {
+        "id": "b",
+        "text": "HDMI Splitter"
+      },
+      {
+        "id": "c",
+        "text": "Hardware Write Blocker"
+      },
+      {
+        "id": "d",
+        "text": "Bluetooth Dongle"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Hardware write blockers physically prevent the host operating system from writing any data or altering timestamps on the original media.",
+    "noteRef": "sec-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q28",
+    "stem": "Why are digital forensic analyses performed on forensic clones or disk images rather than on the primary original physical media?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because disk images run 500 times faster than original drives."
+      },
+      {
+        "id": "b",
+        "text": "Original drives cannot be connected to forensic workstations."
+      },
+      {
+        "id": "c",
+        "text": "Legal statutes require original drives to be destroyed immediately after imaging."
+      },
+      {
+        "id": "d",
+        "text": "To protect the original evidence from accidental modification, corruption, or hardware failure during rigorous deep-dive carving and indexing."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Working on clones guarantees the pristine preservation of the original source media for courtroom presentation.",
+    "noteRef": "sec-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "sec-10-q29",
+    "stem": "What does the industry-standard 3-2-1 backup strategy dictate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "At least 3 copies of data, on 2 different media types, with 1 copy stored off-site or in an immutable repository."
+      },
+      {
+        "id": "b",
+        "text": "3 administrators, 2 passwords, 1 server."
+      },
+      {
+        "id": "c",
+        "text": "3 backups per day, lasting 2 hours, using 1 thumb drive."
+      },
+      {
+        "id": "d",
+        "text": "3 cloud providers, 2 firewalls, 1 router."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The 3-2-1 rule ensures redundancy across independent storage media and physical locations.",
+    "noteRef": "sec-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q30",
+    "stem": "An enterprise is hit with ransomware at 4:00 PM. Their last successful backup completed at 12:00 PM noon. The business policy states that no more than 6 hours of data loss is tolerable. Is this scenario compliant with the Recovery Point Objective (RPO)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, because any data loss violates RPO."
+      },
+      {
+        "id": "b",
+        "text": "Yes, because the 4 hours of data loss is within the 6-hour RPO threshold."
+      },
+      {
+        "id": "c",
+        "text": "No, because RPO measures recovery speed, not data age."
+      },
+      {
+        "id": "d",
+        "text": "Yes, because backups run once per year."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Data loss span is 4 hours (12 PM to 4 PM), which meets the RPO limit of 6 hours.",
+    "noteRef": "sec-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "sec-10-q31",
+    "stem": "If a company's Recovery Time Objective (RTO) is 4 hours, and full system restoration from immutable cloud snapshots completes in 150 minutes, by how many minutes was the RTO satisfied?",
+    "options": [
+      {
+        "id": "a",
+        "text": "30"
+      },
+      {
+        "id": "b",
+        "text": "60"
+      },
+      {
+        "id": "c",
+        "text": "90"
+      },
+      {
+        "id": "d",
+        "text": "120"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "4 hours = 240 minutes. 240 - 150 = 90 minutes ahead of the SLA deadline.",
+    "noteRef": "sec-10-lo08",
+    "verify": "(240 - 150 === 90)",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q32",
+    "stem": "Why are Write-Once-Read-Many (WORM) immutable backups critical for surviving modern targeted ransomware attacks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Immutable backups eliminate the need for disaster recovery drills."
+      },
+      {
+        "id": "b",
+        "text": "WORM backups make files immune to packet loss."
+      },
+      {
+        "id": "c",
+        "text": "They convert data into uncompressed text files."
+      },
+      {
+        "id": "d",
+        "text": "Even if adversaries compromise enterprise domain administrator credentials, storage lock policies prevent modification or deletion of backup snapshots."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "WORM/Object Lock locks snapshots cryptographically, preventing compromised admin accounts from wiping backups.",
+    "noteRef": "sec-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "sec-10-q33",
+    "stem": "What primary benefit does a Security Orchestration, Automation, and Response (SOAR) platform provide over standalone SIEM?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It coordinates disparate security tools via APIs to automate incident response playbooks and accelerate containment."
+      },
+      {
+        "id": "b",
+        "text": "It replaces all human network engineers."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need for computer firewalls."
+      },
+      {
+        "id": "d",
+        "text": "It generates hardware passwords."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "SOAR links multi-vendor tools and executes automated response actions (e.g. host isolation) programmatically.",
+    "noteRef": "sec-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "sec-10-q34",
+    "stem": "A phishing report arrives from an employee. The SOAR playbook extracts the attached hash, queries VirusTotal, identifies it as known trojan malware, purges the email across all user inboxes, and blocks the sender IP on the perimeter firewall. How did SOAR assist the SOC?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It installed the trojan onto the domain controller."
+      },
+      {
+        "id": "b",
+        "text": "It completed end-to-end enrichment and containment automatically in seconds, eliminating manual analyst toil."
+      },
+      {
+        "id": "c",
+        "text": "It sent an email to the attacker."
+      },
+      {
+        "id": "d",
+        "text": "It turned off the company's electricity."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Automated triage, lookup, mailbox purging, and firewall blocking dramatically lower MTTR.",
+    "noteRef": "sec-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "sec-10-q35",
+    "stem": "Which of the following actions are commonly automated within enterprise SOAR playbooks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Enriching IP and URL reputation using threat intelligence feeds"
+      },
+      {
+        "id": "b",
+        "text": "Triggering endpoint network isolation via EDR APIs"
+      },
+      {
+        "id": "c",
+        "text": "Revoking active session tokens in cloud identity providers"
+      },
+      {
+        "id": "d",
+        "text": "Negotiating payment terms with ransomware syndicates"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Threat enrichment, endpoint isolation, and token revocation are prime SOAR automation targets; ransom negotiations are never automated.",
+    "noteRef": "sec-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "sec-10-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "sec-10-q36",
+    "stem": "Why do mature SOC teams incorporate Human-in-the-Loop approval gates in SOAR containment playbooks for tier-1 critical infrastructure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because SOAR platforms cannot execute code without human typing."
+      },
+      {
+        "id": "b",
+        "text": "To satisfy copyright licensing agreements."
+      },
+      {
+        "id": "c",
+        "text": "To prevent accidental disruption of mission-critical production servers if false positive detections occur."
+      },
+      {
+        "id": "d",
+        "text": "Because cloud APIs do not support automation."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Human approval guards against disastrous automated shutdowns of core business services caused by false alerts.",
+    "noteRef": "sec-10-lo09",
+    "reviewed": false
+  }
+]

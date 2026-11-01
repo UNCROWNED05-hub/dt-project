@@ -1,0 +1,37 @@
+---
+loId: "sec-10-lo02"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Security Information and Event Management (SIEM) systems centralize telemetry across servers, endpoints, firewalls, and cloud environments to uncover coordinated attacker activities:
+1. Log Collection & Forwarding: Syslog agents, Windows Event Forwarding (WEF), and cloud API integrations feed structured event data into central ingestion queues.
+2. Normalization & Parsing: Converts vendor-specific formats (Cisco ASA, Windows XML, Linux Auditd) into standard schemas like the Elastic Common Schema (ECS) or Open Cybersecurity Schema Framework (OCSF).
+3. Correlation Engine: Applies temporal and cross-source rules across millions of events. For example, detecting five failed SSH attempts from a single external IP followed immediately by an administrative command execution on the target server.
+4. Alert Generation: Triggers actionable notifications for SOC analysts with mapped contextual metadata and asset tags.
+
+### Worked Example
+Log aggregation and parsing simulation in Python:
+```python
+import json
+
+raw_log = '{"src_ip": "198.51.100.22", "event_id": 4625, "user": "admin", "status": "FAIL"}'
+event = json.loads(raw_log)
+
+def evaluate_correlation(event, fail_count):
+    # Rule: Trigger alert if repeated failed logins followed by escalation
+    if event["event_id"] == 4625:
+        fail_count += 1
+    return fail_count >= 5
+
+triggered = evaluate_correlation(event, fail_count=4)
+print(f"SIEM Alert Generated: {triggered}") # True
+```
+
+### Common Mistake
+Treating a SIEM as a passive archival storage system rather than an active correlation platform. Unindexed, unparsed raw log lakes provide zero proactive alerting value during real-time intrusions.
+
+### Check Yourself
+Why is data normalization (e.g., ECS or OCSF) essential before executing cross-platform SIEM correlation rules?

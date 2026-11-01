@@ -1,0 +1,42 @@
+---
+loId: "sec-11-lo04"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Container security protects microservice workloads by enforcing defense-in-depth across image build, runtime execution, and host kernel boundaries:
+1. Minimal Base Images: Standard OS images (Ubuntu, Debian) contain hundreds of unnecessary utilities (curl, bash, apt) that expand the attack surface. Use Distroless, Alpine, or scratch images containing only the compiled binary and runtime.
+2. Non-Root Execution: By default, Docker runs containers as UID 0 (root). If a container escape occurs, the attacker gains host root access. Always declare an unprivileged user (`USER 10001:10001`).
+3. Read-Only Root Filesystems: Mounting container filesystems with `read_only: true` prevents malware from dropping persistence scripts or downloading secondary stages into `/tmp` or `/bin`.
+4. Kernel Capabilities & cgroups: Drop all Linux capabilities (`cap_drop: ["ALL"]`) and add back only strictly necessary capabilities. Restrict CPU and memory limits to prevent host denial of service.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+A hardened, multi-stage Dockerfile adhering to container security best practices:
+```dockerfile
+# Stage 1: Build environment
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+
+# Stage 2: Hardened, unprivileged runtime
+FROM gcr.io/distroless/nodejs20-debian12
+WORKDIR /app
+COPY --from=builder /app /app
+# Run as non-root user
+USER 65532:65532
+EXPOSE 8080
+CMD ["server.js"]
+```
+
+### Common Mistake
+Running production containers in privileged mode (`--privileged`) or running as the default root user, enabling trivial container breakout to the host operating system kernel.
+
+### Check Yourself
+Why does building containers with Distroless base images drastically reduce reported CVE vulnerabilities?

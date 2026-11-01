@@ -1,0 +1,40 @@
+---
+loId: "sec-11-lo03"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Cloud Security Posture Management (CSPM) continuously audits cloud infrastructure against security baselines to detect and automatically remediate dangerous misconfigurations:
+1. Common Cloud Misconfigurations: Publicly readable S3 buckets, unrestricted security groups (0.0.0.0/0 on port 22/3389), disabled multi-region audit trails (CloudTrail), and unencrypted data volumes.
+2. Continuous Compliance Monitoring: Tools like AWS Security Hub, GCP Security Command Center, and open-source scanners (Prowler, ScoutSuite) ingest resource states and score posture against CIS Cloud Benchmarks.
+3. Drift Detection: Identifies manual, out-of-band changes applied in the cloud web console that bypass approved Infrastructure as Code (Terraform) pipelines.
+4. Automated Remediation: Triggers serverless functions (AWS Lambda) upon detection events to immediately revoke public access or terminate non-compliant instances within seconds.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Simulating CSPM S3 public access audit in Python:
+```python
+def audit_s3_bucket(bucket_policy):
+    # Rule: Detect public wildcard read permissions
+    is_public = False
+    for statement in bucket_policy.get("Statement", []):
+        if statement.get("Principal") == "*" and statement.get("Effect") == "Allow":
+            is_public = True
+            break
+    if is_public:
+        return {"compliant": False, "finding": "CRITICAL: Publicly accessible S3 bucket detected"}
+    return {"compliant": True, "finding": "PASS"}
+
+policy = {"Statement": [{"Effect": "Allow", "Principal": "*", "Action": "s3:GetObject"}]}
+print(audit_s3_bucket(policy)["finding"])
+```
+
+### Common Mistake
+Relying on periodic manual audits rather than continuous automated CSPM monitoring; manual checks miss transient misconfigurations introduced during continuous deployment cycles.
+
+### Check Yourself
+What risk does an unrestricted 0.0.0.0/0 security group rule on port 22 pose to cloud compute instances?

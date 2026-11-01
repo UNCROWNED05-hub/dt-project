@@ -1,0 +1,42 @@
+---
+loId: "sec-11-lo01"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+The Cloud Shared Responsibility Model establishes the precise legal and operational boundary separating customer duties from Cloud Service Provider (CSP) responsibilities:
+1. Security OF the Cloud (Provider Duty): The CSP (AWS, Google Cloud, Azure) owns physical data centers, host hardware, power, physical networking, hypervisor isolation, and facility security.
+2. Security IN the Cloud (Customer Duty): The customer retains full ownership and accountability for data classification, customer IAM permissions, network firewall configurations, operating systems, and application security.
+3. Service Model Variations:
+   - Infrastructure as a Service (IaaS): Customer manages OS patching, firewalls, runtimes, and applications.
+   - Platform as a Service (PaaS): Provider manages the underlying OS and runtime; customer secures application code, databases, and configuration.
+   - Software as a Service (SaaS): Provider manages the entire stack; customer is solely responsible for user identity, data access policies, and endpoint security.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Simulating shared responsibility division across service tiers in Python:
+```python
+def determine_security_responsibility(service_model, component):
+    csp_duties = {
+        "IaaS": ["physical_hardware", "hypervisor", "datacenter_security"],
+        "PaaS": ["physical_hardware", "hypervisor", "operating_system", "runtime_patching"],
+        "SaaS": ["physical_hardware", "hypervisor", "operating_system", "runtime", "application_code"]
+    }
+    if component in csp_duties.get(service_model, []):
+        return "CLOUD_PROVIDER"
+    return "CUSTOMER"
+
+# Customer is always responsible for customer data across all models
+print(determine_security_responsibility("IaaS", "operating_system")) # CUSTOMER
+print(determine_security_responsibility("SaaS", "operating_system")) # CLOUD_PROVIDER
+```
+
+### Common Mistake
+Assuming moving workloads to AWS or Azure relieves the customer from configuring firewalls, securing API access keys, or encrypting stored customer data. Customers retain 100% responsibility for their data in all models.
+
+### Check Yourself
+Who is responsible for applying operating system security patches in an IaaS environment compared to a PaaS environment?

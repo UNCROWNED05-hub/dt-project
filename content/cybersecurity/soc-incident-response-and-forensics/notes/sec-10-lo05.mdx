@@ -1,0 +1,36 @@
+---
+loId: "sec-10-lo05"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Incident playbooks provide step-by-step technical procedures to guide responders through containment, eradication, and safe restoration during high-stress breaches:
+1. Network Isolation: Severing an infected host's network connectivity via EDR agent commands or switch port disabling while keeping the machine powered on to preserve volatile memory.
+2. Identity Containment: Immediately invalidating Kerberos tickets (TGT reset), resetting active directory passwords, revoking OAuth session tokens, and disabling compromised service accounts.
+3. Eradication: Identifying and removing scheduled tasks, registry Run keys, WMI subscriptions, web shells, and malicious shadow administrator accounts established by the adversary.
+4. Validation & Recovery: Restoring systems from verified, pre-infection immutable backups. Rebuilding compromised operating systems from known-good golden images rather than attempting manual sanitization.
+5. Enhanced Post-Recovery Telemetry: Applying high-fidelity logging and active hunting rules to the restored environment for at least 30 to 90 days.
+
+### Worked Example
+Automating host containment verification via Python:
+```python
+def execute_containment_checks(host_id, is_isolated, tokens_revoked):
+    playbook_status = {
+        "host": host_id,
+        "network_isolated": is_isolated,
+        "identity_contained": tokens_revoked,
+        "ready_for_eradication": is_isolated and tokens_revoked
+    }
+    return playbook_status
+
+result = execute_containment_checks("SRV-DB-01", is_isolated=True, tokens_revoked=True)
+print(f"Safe to Begin Eradication: {result['ready_for_eradication']}") # True
+```
+
+### Common Mistake
+Rebooting or pulling the power cord on an infected machine during initial response, permanently destroying active RAM evidence, unencrypted malware payloads, and active network connection state.
+
+### Check Yourself
+Why must network isolation keep the infected machine powered on rather than performing an immediate hard power shutoff?

@@ -1,0 +1,45 @@
+---
+loId: "sec-11-lo09"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Infrastructure as Code (IaC) security applies automated static analysis and policy-as-code to cloud declarative templates (Terraform, CloudFormation, Kubernetes YAML) before provisioning:
+1. Policy-as-Code: Tools like Open Policy Agent (OPA) and Rego evaluate cloud infrastructure definitions against organizational security policies at pull-request time.
+2. Static IaC Scanners: Scanners like Checkov, tfsec, and KICS parse Terraform plans and detect insecure defaults (unencrypted EBS volumes, public security groups, missing logging configurations).
+3. Shift-Left Cost Savings: Remediating a cloud misconfiguration in a Terraform file takes minutes and costs pennies; remediating the same flaw after deployment or breach costs thousands of dollars.
+4. GitOps Security: Storing all infrastructure state in cryptographically signed Git repositories, enforcing automated pipeline verification and rejecting any direct web console changes.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Example of a Checkov rule detecting unencrypted AWS S3 bucket resources in Terraform:
+```hcl
+# Insecure: Lacks server-side encryption configuration
+resource "aws_s3_bucket" "insecure_bucket" {
+  bucket = "company-data-insecure"
+}
+
+# Secure: Hardened with AES-256 server-side encryption
+resource "aws_s3_bucket" "secure_bucket" {
+  bucket = "company-data-secure"
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "secure_sse" {
+  bucket = aws_s3_bucket.secure_bucket.id
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+```
+
+### Common Mistake
+Allowing developers to manually provision production cloud resources via the web console without passing through IaC scanning pipelines, creating unmonitored security blind spots.
+
+### Check Yourself
+What primary advantage does scanning Terraform templates with Checkov or tfsec provide over post-deployment scanning?

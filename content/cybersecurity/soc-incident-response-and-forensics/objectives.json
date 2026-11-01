@@ -1,0 +1,212 @@
+{
+  "version": 1,
+  "chapterId": "sec-10",
+  "objectives": [
+    {
+      "id": "sec-10-lo01",
+      "order": 1,
+      "title": "Define Security Operations Center (SOC) organizational tiers and alert triage workflows",
+      "bloom": "define",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "soc tiers",
+        "tier 1 triage",
+        "alert fatigue",
+        "escalation matrix",
+        "mean time to detect"
+      ],
+      "aliases": [
+        "soc workflow",
+        "incident triage hierarchy"
+      ],
+      "prerequisites": [
+        "sec-01-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo02",
+      "order": 2,
+      "title": "Aggregate and correlate event logs using Security Information and Event Management (SIEM)",
+      "bloom": "aggregate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "siem",
+        "log normalization",
+        "event correlation",
+        "syslog",
+        "windows event logs"
+      ],
+      "aliases": [
+        "security log aggregation",
+        "siem correlation"
+      ],
+      "prerequisites": [
+        "sec-03-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-10-lo03",
+      "order": 3,
+      "title": "Construct detection logic and correlation rules using Sigma and YARA",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "sigma rules",
+        "yara signatures",
+        "detection engineering",
+        "false positives"
+      ],
+      "aliases": [
+        "detection rules",
+        "sigma syntax"
+      ],
+      "prerequisites": [
+        "sec-10-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo04",
+      "order": 4,
+      "title": "Execute the NIST SP 800-61 Incident Handling Lifecycle",
+      "bloom": "execute",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "nist sp 800-61",
+        "incident response lifecycle",
+        "containment",
+        "eradication",
+        "recovery",
+        "lessons learned"
+      ],
+      "aliases": [
+        "incident handling phases",
+        "nist incident lifecycle"
+      ],
+      "prerequisites": [
+        "sec-01-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "sec-10-lo05",
+      "order": 5,
+      "title": "Execute incident containment, eradication, and system recovery playbooks",
+      "bloom": "execute",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "incident playbooks",
+        "network isolation",
+        "eradication",
+        "account disablement",
+        "recovery"
+      ],
+      "aliases": [
+        "containment playbooks",
+        "incident remediation"
+      ],
+      "prerequisites": [
+        "sec-10-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo06",
+      "order": 6,
+      "title": "Preserve forensic artifacts adhering to RFC 3227 Order of Volatility",
+      "bloom": "preserve",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "order of volatility",
+        "rfc 3227",
+        "volatile memory",
+        "live forensics",
+        "ram capture"
+      ],
+      "aliases": [
+        "evidence volatility",
+        "rfc 3227 evidence preservation"
+      ],
+      "prerequisites": [
+        "sec-03-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo07",
+      "order": 7,
+      "title": "Maintain digital forensics chain of custody and forensic disk/memory imaging",
+      "bloom": "maintain",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "chain of custody",
+        "forensic imaging",
+        "cryptographic hash verification",
+        "write blocker"
+      ],
+      "aliases": [
+        "evidence integrity",
+        "digital forensics acquisition"
+      ],
+      "prerequisites": [
+        "sec-10-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo08",
+      "order": 8,
+      "title": "Design resilient backup retention policies (3-2-1 rule) and disaster recovery procedures",
+      "bloom": "design",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "3-2-1 backup rule",
+        "immutable backups",
+        "rto",
+        "rpo",
+        "disaster recovery"
+      ],
+      "aliases": [
+        "backup resilience",
+        "ransomware recovery"
+      ],
+      "prerequisites": [
+        "sec-08-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "sec-10-lo09",
+      "order": 9,
+      "title": "Automate incident response using Security Orchestration, Automation, and Response (SOAR)",
+      "bloom": "automate",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "soar",
+        "automated response",
+        "security orchestration",
+        "webhook trigger",
+        "playbook automation"
+      ],
+      "aliases": [
+        "soar workflows",
+        "automated containment"
+      ],
+      "prerequisites": [
+        "sec-10-lo05"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

@@ -103,16 +103,45 @@ export function generateCourseReview(courseSlug, outputFile) {
       lines.push(`### Chapter: ${item.ch.title} (\`${item.ch.slug}\`)`);
       lines.push(`- **Volatility**: \`fast-moving\``);
       lines.push(`- **Last Verified Date**: February 2026`);
-      lines.push(`- **Key Official Sources**: Attention Is All You Need (Vaswani et al.), Hugging Face Transformers Documentation (Apache 2.0), OpenAI API documentation.`);
-      lines.push(`- **Currency Guarantees**: Covers modern decoder-only causal models (LLaMA 3, Mistral, GPT-4), Rotary Position Embeddings (RoPE), LoRA rank decomposition, and current guardrail practices (Llama Guard).\n`);
+      if (courseSlug === 'ai-ml') {
+        lines.push(`- **Key Official Sources**: Attention Is All You Need (Vaswani et al.), Hugging Face Transformers Documentation (Apache 2.0), OpenAI API documentation.`);
+        lines.push(`- **Currency Guarantees**: Covers modern decoder-only causal models (LLaMA 3, Mistral, GPT-4), Rotary Position Embeddings (RoPE), LoRA rank decomposition, and current guardrail practices (Llama Guard).\n`);
+      } else if (courseSlug === 'cybersecurity') {
+        if (item.ch.slug === 'web-application-security-owasp-top-10') {
+          lines.push(`- **Key Official Sources**: OWASP Top 10 (2021/latest official release), PortSwigger Web Security Academy.`);
+          lines.push(`- **Currency Guarantees**: Covers Broken Access Control (A01), Cryptographic Failures (A02), Injection (A03), SSRF (A10), and secure parameterized querying.\n`);
+        } else if (item.ch.slug === 'malware-phishing-and-threat-intel') {
+          lines.push(`- **Key Official Sources**: MITRE ATT&CK Framework v14+, CISA Known Exploited Vulnerabilities (KEV) Catalog.`);
+          lines.push(`- **Currency Guarantees**: Covers Living-off-the-Land Binaries (LOLBins), QR phishing (quishing), ransomware encryption stages, and STIX/TAXII threat intel sharing.\n`);
+        } else if (item.ch.slug === 'cloud-security-devsecops-and-governance') {
+          lines.push(`- **Key Official Sources**: Cloud Security Alliance (CSA) CCM, NIST SP 800-145, India DPDP Act 2023, EU GDPR Article 33.`);
+          lines.push(`- **Currency Guarantees**: Covers Cloud Shared Responsibility (IaaS/PaaS/SaaS), IAM least privilege, container distroless hardening, DevSecOps CI/CD gates, and statutory breach penalties.\n`);
+        } else {
+          lines.push(`- **Key Official Sources**: Official documentation and industry technical standards.\n`);
+        }
+      } else if (courseSlug === 'iot') {
+        lines.push(`- **Key Official Sources**: ESP-IDF Documentation, FreeRTOS Kernel Guide, TensorFlow Lite for Microcontrollers (Apache 2.0).`);
+        lines.push(`- **Currency Guarantees**: Covers modern ESP32 dual-core Xtensa/RISC-V architectures, TinyML int8 quantization, and cloud MQTT telemetry pipelines.\n`);
+      }
     }
   }
 
   lines.push(`## 3. Content Decisions Ledger\n`);
-  lines.push(`- **Verb-Led Objectives**: Every LO starts with an approved Bloom's taxonomy action verb (e.g. *Explain*, *Calculate*, *Compare*, *Trace*, *Optimize*, *Formulate*).`);
-  lines.push(`- **Aliases and Video Matching**: Broad keyword coverage ensures diverse educational videos match LOs (e.g., *Inertia* vs *WCSS*, *Perceptron* vs *Affine transformation*, *LoRA* vs *PEFT*).`);
-  lines.push(`- **Safety & Reproducibility**: AI code examples run natively with standard NumPy and math operations without heavy unneeded dependencies; version assumptions are preserved.`);
-  lines.push(`- **Answer Distribution**: Answer positions across single/scenario/numeric questions are balanced via deterministic rotation, preventing position bias (all single answer rates strictly < 35%).\n`);
+  if (courseSlug === 'ai-ml') {
+    lines.push(`- **Verb-Led Objectives**: Every LO starts with an approved Bloom's taxonomy action verb (e.g. *Explain*, *Calculate*, *Compare*, *Trace*, *Optimize*, *Formulate*).`);
+    lines.push(`- **Aliases and Video Matching**: Broad keyword coverage ensures diverse educational videos match LOs (e.g., *Inertia* vs *WCSS*, *Perceptron* vs *Affine transformation*, *LoRA* vs *PEFT*).`);
+    lines.push(`- **Safety & Reproducibility**: AI code examples run natively with standard NumPy and math operations without heavy unneeded dependencies; version assumptions are preserved.`);
+    lines.push(`- **Answer Distribution**: Answer positions across single/scenario/numeric questions are balanced via deterministic rotation, preventing position bias (all single answer rates strictly < 35%).\n`);
+  } else if (courseSlug === 'cybersecurity') {
+    lines.push(`- **Verb-Led Objectives**: Every LO starts with an approved Bloom's taxonomy action verb (e.g. *Define*, *Aggregate*, *Enforce*, *Harden*, *Execute*, *Analyze*).`);
+    lines.push(`- **Defensive & Lab-Only Safety**: Strictly defensive, analytical, and remediation-focused. No weaponized payloads, exploitation scripts against unowned systems, or attack tutorials.`);
+    lines.push(`- **Standards-Aligned**: Faithfully reflects NIST SP 800-61, RFC 3227 Order of Volatility, CVSS v3.1, MITRE ATT&CK, ISO/IEC 27001, and statutory privacy regulations.`);
+    lines.push(`- **Answer Distribution**: Deterministic rotation ensures uniform option distribution (< 30% per option position, well below 35% limit).\n`);
+  } else {
+    lines.push(`- **Verb-Led Objectives**: Every LO starts with an approved Bloom's taxonomy action verb.`);
+    lines.push(`- **Hardware & Electrical Safety**: Embedded instructions emphasize safety precautions for mains voltages, LiPo batteries, short circuits, and soldering.`);
+    lines.push(`- **Answer Distribution**: Deterministic rotation ensures balanced option choices (< 35% per option position).\n`);
+  }
 
   lines.push(`## 4. Human Editorial Review Queue\n`);
   lines.push(`- All newly authored learning objectives and question items have \`reviewed: false\` set as required by the Task 5B protocol, pending human subject-matter expert sign-off.`);
@@ -122,5 +151,14 @@ export function generateCourseReview(courseSlug, outputFile) {
   console.log(`✅ Review packet written to ${outputFile}`);
 }
 
-// Generate for ai-ml
-generateCourseReview('ai-ml', path.join(ROOT_DIR, 'REVIEW_ai-ml.md'));
+// Generate reviews if called directly
+const targetCourse = process.argv[2] || 'all';
+if (targetCourse === 'all' || targetCourse === 'ai-ml') {
+  generateCourseReview('ai-ml', path.join(ROOT_DIR, 'REVIEW_ai-ml.md'));
+}
+if (targetCourse === 'all' || targetCourse === 'cybersecurity') {
+  generateCourseReview('cybersecurity', path.join(ROOT_DIR, 'REVIEW_cybersecurity.md'));
+}
+if (targetCourse === 'all' || targetCourse === 'iot') {
+  generateCourseReview('iot', path.join(ROOT_DIR, 'REVIEW_iot.md'));
+}

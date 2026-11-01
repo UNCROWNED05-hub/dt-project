@@ -1,0 +1,36 @@
+---
+loId: "sec-10-lo01"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+A Security Operations Center (SOC) operates as the nerve center for organizational cyber defense, organized into structured operational tiers to counter alert fatigue and ensure rapid escalation:
+1. Tier 1 (Triage Analyst): Continuously monitors SIEM and EDR alerts. Reviews incoming detections, eliminates false positives, gathers initial contextual host and user data, and escalates confirmed true positives.
+2. Tier 2 (Incident Responder): Conducts deep-dive investigations into escalated incidents, determines attack scope, establishes root causes, and executes containment and remediation playbooks.
+3. Tier 3 (Threat Hunter & Forensic Specialist): Proactively hunts for persistent adversaries bypassing automated rules, reverses malware artifacts, and conducts deep endpoint forensics.
+4. SOC Lead / Manager: Oversees operational metrics including Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR), manages compliance reporting, and liaises with executive leadership.
+
+### Worked Example
+Simulating an automated alert triage severity scoring function:
+```python
+def triage_alert(asset_criticality, indicator_confidence, severity_base):
+    # Calculate triage priority score (1 to 10 scale)
+    priority_score = (asset_criticality * 0.4) + (indicator_confidence * 0.3) + (severity_base * 0.3)
+    if priority_score >= 8.0:
+        return "TIER_2_ESCALATION_IMMEDIATE"
+    elif priority_score >= 5.0:
+        return "TIER_1_INVESTIGATE"
+    return "SUPPRESS_OR_AUTO_CLOSE"
+
+# High-value domain controller alert with verified beacon
+status = triage_alert(asset_criticality=10, indicator_confidence=9, severity_base=8)
+print(f"Triage Decision: {status}") # TIER_2_ESCALATION_IMMEDIATE
+```
+
+### Common Mistake
+Assuming Tier 1 analysts must resolve all advanced malware infections without escalating. Attempting complex containment without alerting Tier 2 incident responders leads to missed persistence mechanisms and uncontained lateral movement.
+
+### Check Yourself
+What are the distinct primary responsibilities of a Tier 1 triage analyst compared to a Tier 2 incident responder?

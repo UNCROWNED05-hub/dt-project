@@ -1,0 +1,42 @@
+---
+loId: "sec-10-lo03"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+---
+
+### Core Idea
+Detection engineering codifies adversarial techniques into shared, testable detection rules independent of specific vendor log platforms:
+1. Sigma Rules: An open, vendor-agnostic YAML specification for describing log signatures. Sigma rules translate seamlessly into Splunk SPL, Elastic Lucene, Microsoft Sentinel KQL, or SumoLogic queries.
+2. Rule Components: A standard Sigma rule defines metadata (title, status, author, description), log sources (category, product, service), detection patterns (selection conditions and Boolean logic), and MITRE ATT&CK technique tags.
+3. YARA Signatures: Pattern matching rules designed to identify and classify malware samples, strings, and byte sequences across memory dumps and file storage.
+4. False Positive Tuning: Rules must be baselined against benign enterprise noise (such as administrative automation scripts) to maintain low false alarm rates.
+
+### Worked Example
+Structure of a vendor-agnostic Sigma detection rule:
+```yaml
+title: Suspicious PowerShell Download Cradle
+status: stable
+description: Detects command-line invocations downloading remote payloads
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\powershell.exe'
+        CommandLine|contains:
+            - 'DownloadString'
+            - 'Net.WebClient'
+            - 'Invoke-WebRequest'
+    condition: selection
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001
+```
+
+### Common Mistake
+Deploying unbaselined detection rules directly into production blocking modes without testing against historical enterprise logs, causing massive alert floods or breaking legitimate administrative workflows.
+
+### Check Yourself
+How does writing detection signatures in Sigma syntax enable platform interoperability across different enterprise SIEM engines?

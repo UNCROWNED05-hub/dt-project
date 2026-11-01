@@ -1,0 +1,44 @@
+---
+loId: "sec-11-lo06"
+reviewed: false
+sources:
+  - "NIST Special Publications and Cloud Security Alliance (CSA)"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Cybersecurity risk management enables organizations to quantify threats and prioritize security investments using structured methodologies:
+1. Quantitative Risk Assessment: Calculates precise monetary values to estimate expected financial losses:
+   - Asset Value (AV): The total business value of the affected asset.
+   - Exposure Factor (EF): The percentage of asset value lost if an incident occurs.
+   - Single Loss Expectancy (SLE): `SLE = AV * EF`.
+   - Annualized Rate of Occurrence (ARO): Estimated frequency of the incident per year.
+   - Annualized Loss Expectancy (ALE): `ALE = SLE * ARO`.
+2. Qualitative Risk Assessment: Uses subjective ratings (Likelihood vs. Impact matrix: Low, Medium, High, Critical) to categorize operational risks when exact monetary values cannot be calculated.
+3. Risk Treatment Strategies:
+   - Mitigation: Implementing defense controls to reduce probability or impact.
+   - Transference: Offloading risk via cyber insurance or vendor SLAs.
+   - Avoidance: Discontinuing risky business activities entirely.
+   - Acceptance: Formally acknowledging residual risk within defined risk appetite thresholds.
+
+*Last verified: February 2026 against vendor documentation.*
+
+### Worked Example
+Calculating quantitative Annualized Loss Expectancy (ALE) in Python:
+```python
+def calculate_ale(asset_value, exposure_factor, aro):
+    sle = asset_value * exposure_factor
+    ale = sle * aro
+    return {"sle": sle, "ale": ale}
+
+# Example: E-commerce database worth $500,000, 40% loss per breach, expected once every 2 years (ARO = 0.5)
+res = calculate_ale(asset_value=500000, exposure_factor=0.40, aro=0.5)
+print(f"Single Loss Expectancy (SLE): ${res['sle']}") # $200,000
+print(f"Annualized Loss Expectancy (ALE): ${res['ale']}") # $100,000
+```
+
+### Common Mistake
+Spending $200,000 annually on a security control to protect an asset with an Annualized Loss Expectancy (ALE) of only $20,000, failing basic cost-benefit risk economics.
+
+### Check Yourself
+How is Annualized Loss Expectancy (ALE) calculated from Single Loss Expectancy (SLE) and Annualized Rate of Occurrence (ARO)?
