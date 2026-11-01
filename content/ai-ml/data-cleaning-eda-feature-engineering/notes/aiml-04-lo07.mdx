@@ -1,0 +1,47 @@
+---
+loId: "aiml-04-lo07"
+title: "Addressing Class Imbalance: Resampling and Cost-Sensitive Loss"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+In critical classification domains—such as credit card fraud, disease diagnostics, or network intrusion detection—the positive target class of interest is exceptionally rare (often 0.1% of transactions). A naive classifier that predicts the majority class ("Not Fraud") 100% of the time achieves 99.9% raw accuracy, yet delivers zero utility.
+
+Three primary remediation techniques counter class imbalance:
+1. **Random Resampling**: 
+   - *Undersampling*: Randomly discarding majority-class examples to equalize class proportions. This reduces dataset size and discards valid training data.
+   - *Oversampling*: Duplicating minority-class observations.
+2. **Synthetic Oversampling (SMOTE)**: Synthetic Minority Over-sampling Technique creates synthetic examples along feature-space line segments connecting k-nearest minority neighbors, avoiding exact duplicate memorization.
+3. **Cost-Sensitive Learning (Class Weights)**: Modifying the loss function to penalize misclassifications on minority instances inversely proportional to class frequencies:
+$$w_j = \frac{N}{2 \times N_j}$$
+Setting `class_weight="balanced"` forces gradient descent to treat a rare positive error as heavily as dozens of common negative errors.
+
+### Worked Example
+Applying balanced class weighting in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
+
+# 990 negative samples (0), 10 positive samples (1)
+y = np.array([0]*990 + [1]*10)
+
+# Compute exact balanced loss weights
+classes = np.array([0, 1])
+weights = compute_class_weight(class_weight="balanced", classes=classes, y=y)
+print(f"Weights: Class 0 = {weights[0]:.2f}, Class 1 = {weights[1]:.2f}")
+# Class 0: ~0.51, Class 1: ~50.0
+
+# Train classifier with automatic balanced penalization
+clf = LogisticRegression(class_weight="balanced")
+```
+
+### Common Mistake
+Applying SMOTE or oversampling to the entire dataset prior to splitting into train/test sets, creating near-identical synthetic twins across both splits and causing severe leakage.
+
+### Check Yourself
+If an algorithm achieves 99.5% accuracy on a fraud dataset where 99.5% of samples are legitimate, why is raw accuracy misleading? (Because a dummy model predicting strictly legitimate transactions achieves the same score while catching 0% of fraud).

@@ -1,0 +1,53 @@
+---
+loId: "aiml-04-lo06"
+title: "Data Leakage Prevention and Scikit-Learn Pipelines"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Data leakage is one of the most insidious errors in applied machine learning. It occurs when information from outside the training dataset (specifically from the validation or test splits) is inadvertently used to create features or fit model parameters. When leakage occurs, the model achieves unrealistically stellar validation scores, but collapses in production on real-world unseen data.
+
+Common leakage vectors:
+- Computing global feature mean, standard deviation, or min/max on the full dataset before splitting into train/test.
+- Target encoding using the entire target column.
+- Time-series leakage: using future observations to predict past events (lookahead bias).
+
+The definitive architectural solution is the **Scikit-Learn Pipeline**. A Pipeline encapsulates all preprocessing transformers (imputers, encoders, scalers) alongside the final estimator, guaranteeing that `.fit()` is invoked exclusively on training partitions, while validation and test sets only ever receive `.transform()`.
+
+### Worked Example
+Constructing a leak-free Machine Learning Pipeline:
+```python
+# scikit-learn==1.4.2
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+X = np.random.randn(200, 5)
+y = np.random.randint(0, 2, 200)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Build unified pipeline
+pipeline = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler", StandardScaler()),
+    ("classifier", LogisticRegression())
+])
+
+# Pipeline fits transformers strictly on X_train, then applies to X_test
+pipeline.fit(X_train, y_train)
+test_score = pipeline.score(X_test, y_test)
+print(f"Clean test accuracy: {test_score:.4f}")
+```
+
+### Common Mistake
+Calling `fit_transform` on the test dataset instead of `transform`, recalculating the mean and standard deviation on test samples and polluting the evaluation benchmark.
+
+### Check Yourself
+What Scikit-Learn abstraction encapsulates data transformers and estimators to ensure zero preprocessing leakage across cross-validation folds? (`Pipeline`).

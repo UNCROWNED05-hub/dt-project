@@ -1,0 +1,46 @@
+---
+loId: "aiml-05-lo02"
+title: "Analytical Ordinary Least Squares: The Normal Equation"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+While iterative optimization steps along gradients, linear regression has a closed-form analytical solution known as the **Normal Equation**.
+
+By setting the partial derivatives of the Mean Squared Error loss with respect to weight vector $\mathbf{w}$ to zero:
+$$\frac{\partial L}{\partial \mathbf{w}} = \frac{1}{N} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y}) = \mathbf{0}$$
+$$\mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \mathbf{y}$$
+Assuming matrix $\mathbf{X}^T \mathbf{X}$ is invertible, multiplying by its inverse gives the exact optimal parameter weights in a single mathematical step:
+$$\mathbf{w}^* = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$$
+
+Trade-offs:
+- **Pros**: Zero hyperparameter tuning—no learning rate, no epochs, no convergence checks. Finds the exact global optimum instantly.
+- **Cons**: Computational complexity of inverting an $D \times D$ matrix is approximately $\mathcal{O}(D^3)$. When feature count $D$ exceeds 10,000 to 50,000, matrix inversion exhausts RAM and compute. If features are collinear, $\mathbf{X}^T \mathbf{X}$ is singular (non-invertible).
+
+### Worked Example
+Solving linear regression using the Normal Equation in NumPy:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Training features and target
+X_raw = np.array([[1.0], [2.0], [3.0], [4.0]])
+y = np.array([2.5, 4.5, 6.5, 8.5])
+
+# Prepend bias column of ones
+X = np.c_[np.ones(len(X_raw)), X_raw] # shape (4, 2)
+
+# Solve: w = inv(X.T @ X) @ X.T @ y
+w_analytical = np.linalg.inv(X.T @ X) @ X.T @ y
+print(f"Optimal parameters [bias, slope]: {w_analytical.round(3)}")
+# Output: [0.5, 2.0] -> y = 2.0*x + 0.5
+```
+
+### Common Mistake
+Attempting to use the Normal Equation when feature count $D = 100,000$, resulting in an unrecoverable memory allocation error during matrix inversion. Use iterative gradient descent instead.
+
+### Check Yourself
+What is the computational complexity of the Normal Equation relative to feature dimension $D$? (Approximately $\mathcal{O}(D^3)$ due to $(X^T X)^{-1}$ matrix inversion).

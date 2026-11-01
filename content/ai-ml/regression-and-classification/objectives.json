@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "chapterId": "ai-05",
+  "objectives": [
+    {
+      "id": "aiml-05-lo01",
+      "order": 1,
+      "title": "Formulate linear regression hypotheses and calculate Mean Squared Error (MSE) loss",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "linear regression",
+        "hypothesis function",
+        "weights",
+        "bias",
+        "MSE",
+        "residual sum of squares"
+      ],
+      "aliases": [
+        "ordinary least squares",
+        "linear model formulation"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-05-lo02",
+      "order": 2,
+      "title": "Solve linear regression parameters analytically using the Normal Equation",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "normal equation",
+        "closed-form solution",
+        "matrix inversion",
+        "XTX",
+        "analytical solution"
+      ],
+      "aliases": [
+        "analytical linear regression",
+        "closed form OLS"
+      ],
+      "prerequisites": [
+        "aiml-05-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-05-lo03",
+      "order": 3,
+      "title": "Optimize regression weights iteratively using batch and stochastic Gradient Descent",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "gradient descent",
+        "learning rate",
+        "weight update rule",
+        "cost function",
+        "convergence"
+      ],
+      "aliases": [
+        "iterative optimization",
+        "gradient weight updates"
+      ],
+      "prerequisites": [
+        "aiml-05-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-05-lo04",
+      "order": 4,
+      "title": "Formulate logistic regression for binary classification using the Sigmoid activation function",
+      "bloom": "understand",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "logistic regression",
+        "sigmoid",
+        "logistic function",
+        "log-odds",
+        "logit",
+        "binary classification"
+      ],
+      "aliases": [
+        "sigmoid activation",
+        "logistic model"
+      ],
+      "prerequisites": [
+        "aiml-05-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-05-lo05",
+      "order": 5,
+      "title": "Calculate binary cross-entropy (log-loss) and map decision boundaries at threshold 0.5",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cross-entropy",
+        "log-loss",
+        "decision boundary",
+        "classification threshold",
+        "maximum likelihood"
+      ],
+      "aliases": [
+        "binary loss",
+        "logistic cost function"
+      ],
+      "prerequisites": [
+        "aiml-05-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-05-lo06",
+      "order": 6,
+      "title": "Prevent overfitting using L2 Ridge regularization and L1 Lasso weight sparsity penalties",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "regularization",
+        "Ridge",
+        "Lasso",
+        "L1 norm",
+        "L2 norm",
+        "shrinkage",
+        "feature sparsity"
+      ],
+      "aliases": [
+        "weight penalty",
+        "L1 L2 regularization"
+      ],
+      "prerequisites": [
+        "aiml-05-lo01",
+        "aiml-05-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-05-lo07",
+      "order": 7,
+      "title": "Evaluate regression predictions using MAE, RMSE, and the Coefficient of Determination ($R^2$)",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "MAE",
+        "RMSE",
+        "R-squared",
+        "coefficient of determination",
+        "residual analysis",
+        "regression metrics"
+      ],
+      "aliases": [
+        "regression evaluation",
+        "goodness of fit"
+      ],
+      "prerequisites": [
+        "aiml-05-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-05-lo08",
+      "order": 8,
+      "title": "Evaluate binary classifiers using classification accuracy, baseline majorities, and error matrices",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "accuracy",
+        "baseline majority",
+        "confusion matrix",
+        "misclassification rate",
+        "dummy classifier"
+      ],
+      "aliases": [
+        "classification evaluation",
+        "accuracy assessment"
+      ],
+      "prerequisites": [
+        "aiml-05-lo04",
+        "aiml-05-lo05"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-05-lo09",
+      "order": 9,
+      "title": "Extend binary logistic regression to multi-class classification using Softmax and Cross-Entropy loss",
+      "bloom": "apply",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "softmax",
+        "multinomial logistic regression",
+        "categorical cross-entropy",
+        "multi-class",
+        "one-vs-rest"
+      ],
+      "aliases": [
+        "softmax regression",
+        "multiclass classification"
+      ],
+      "prerequisites": [
+        "aiml-05-lo04",
+        "aiml-05-lo05"
+      ],
+      "estMinutes": 15
+    }
+  ]
+}

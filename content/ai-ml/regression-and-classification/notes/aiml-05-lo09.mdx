@@ -1,0 +1,48 @@
+---
+loId: "aiml-05-lo09"
+title: "Multi-Class Classification: Softmax Activation and Categorical Cross-Entropy"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Binary logistic regression models two classes ($y \in \{0, 1\}$). When targets span $K > 2$ discrete categories (such as classifying images into cat, dog, or bird), we extend the model to **Multinomial Logistic Regression** (Softmax Regression).
+
+Instead of producing a single scalar logit, the model computes a vector of raw scores $\mathbf{z} = [z_1, z_2, \dots, z_K]^T$, where $z_k = \mathbf{w}_k^T \mathbf{x} + b_k$. The **Softmax function** normalizes these raw real-valued logits into a probability distribution over all $K$ classes:
+$$P(y = k | \mathbf{x}) = \text{Softmax}(\mathbf{z})_k = \frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}$$
+
+Properties:
+- All output probabilities lie strictly between $0$ and $1$.
+- The sum across all classes is guaranteed to equal $1$: $\sum_{k=1}^K P(y=k) = 1.0$.
+
+Training optimizes **Categorical Cross-Entropy loss**:
+$$L_{\text{CCE}} = -\sum_{k=1}^K y_k \log(\hat{p}_k)$$
+where $\mathbf{y}$ is a one-hot encoded ground truth target vector.
+
+### Worked Example
+Computing Softmax probabilities in NumPy with numerical stability:
+```python
+# numpy==1.26.4
+import numpy as np
+
+def stable_softmax(logits):
+    # Subtract max logit for numerical stability against overflow
+    exp_shifted = np.exp(logits - np.max(logits, axis=-1, keepdims=True))
+    return exp_shifted / np.sum(exp_shifted, axis=-1, keepdims=True)
+
+# 3 classes: Cat, Dog, Bird
+logits = np.array([2.0, 1.0, 0.1])
+probs = stable_softmax(logits)
+
+print(f"Probabilities: {probs.round(4)}") # [0.659, 0.242, 0.099]
+print(f"Sum of probabilities: {np.sum(probs):.1f}") # Exactly 1.0
+print(f"Predicted class index: {np.argmax(probs)}") # Class 0 (Cat)
+```
+
+### Common Mistake
+Applying exponentiation to large raw logits (e.g., $e^{1000}$) without subtracting the maximum logit first, triggering a floating-point overflow crash (`inf / inf = nan`).
+
+### Check Yourself
+What activation function generalizes the binary Sigmoid to produce a normalized probability distribution across $K > 2$ mutually exclusive classes? (The Softmax function).

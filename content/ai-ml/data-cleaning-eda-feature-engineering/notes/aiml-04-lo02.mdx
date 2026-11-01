@@ -1,0 +1,46 @@
+---
+loId: "aiml-04-lo02"
+title: "Outlier Detection and Treatment: IQR and Z-Scores"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Outliers are anomalous observations that deviate drastically from the general distribution of training data. Left untreated, extreme outliers exert disproportionate leverage on parameter optimization, pulling linear regression planes and distorting variance scales.
+
+Two statistical frameworks detect univariate outliers:
+1. **Interquartile Range (IQR)**: The IQR spans the middle 50% of data: $\text{IQR} = Q_3 - Q_1$. Tukey's rule establishes conservative boundaries:
+$$\text{Lower Bound} = Q_1 - 1.5 \times \text{IQR}, \quad \text{Upper Bound} = Q_3 + 1.5 \times \text{IQR}$$
+Points outside these fences are tagged as outliers. Because quartiles rely on rank ordering rather than sums, IQR is robust against extreme anomalies.
+2. **Z-Score Thresholding**: For approximately Gaussian data, values with $|z| = \left|\frac{x - \mu}{\sigma}\right| > 3.0$ represent observations over three standard deviations from the mean (under 0.3% probability).
+
+Treatment methods include trimming (deletion) or **Winsorization** (capping/clipping values at specified percentile bounds).
+
+### Worked Example
+Clipping outliers using Tukey's IQR rule:
+```python
+# numpy==1.26.4
+import numpy as np
+
+data = np.array([12, 14, 15, 14, 16, 15, 13, 14, 98, -45])
+
+q1 = np.percentile(data, 25)
+q3 = np.percentile(data, 75)
+iqr = q3 - q1
+
+lower_bound = q1 - 1.5 * iqr
+upper_bound = q3 + 1.5 * iqr
+
+# Winsorizing / clipping data to fences
+clipped_data = np.clip(data, lower_bound, upper_bound)
+print(f"Bounds: [{lower_bound:.1f}, {upper_bound:.1f}]")
+print(f"Clipped array:\n{clipped_data}")
+```
+
+### Common Mistake
+Blindly deleting outliers without investigating their domain origin. In fraud detection and cyber intrusion analysis, the outliers *are* the exact positive target class you must identify.
+
+### Check Yourself
+In Tukey's boxplot method, what multiplier of the Interquartile Range determines the outer fence boundaries? (1.5).

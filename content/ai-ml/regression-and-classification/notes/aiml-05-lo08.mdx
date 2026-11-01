@@ -1,0 +1,48 @@
+---
+loId: "aiml-05-lo08"
+title: "Binary Classification Evaluation: Baselines and Accuracy Pitfalls"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Evaluating classification models requires establishing baseline performance standards. A model's score is meaningless without comparing it against a **naive baseline classifier**.
+
+Baseline models:
+1. **Majority Class Baseline**: Predicts the most frequent class label in training data 100% of the time.
+2. **Stratified Random Baseline**: Generates random predictions based on class frequency proportions.
+
+**Classification Accuracy** is the ratio of correct predictions over total predictions:
+$$\text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}$$
+
+When classes are approximately balanced (50/50), accuracy is intuitive. However, on imbalanced distributions, a model that beats the majority baseline by only 0.1% offers virtually zero predictive capability. Furthermore, accuracy treats False Positives and False Negatives with identical weight, which is unacceptable in medical or fraud applications.
+
+### Worked Example
+Evaluating a classifier against a Dummy baseline:
+```python
+# scikit-learn==1.4.2
+from sklearn.dummy import DummyClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+import numpy as np
+
+# Imbalanced dataset: 90 negative (0), 10 positive (1)
+y_train = np.array([0]*90 + [1]*10)
+X_train = np.random.randn(100, 2)
+
+# 1. Naive baseline: Always predict majority class (0)
+baseline = DummyClassifier(strategy="most_frequent")
+baseline.fit(X_train, y_train)
+baseline_acc = accuracy_score(y_train, baseline.predict(X_train))
+print(f"Baseline Majority Accuracy: {baseline_acc:.2%}") # 90.00%
+
+# Any real model MUST decisively outperform 90.00% to have predictive validity
+```
+
+### Common Mistake
+Celebrating 95% accuracy on an imbalanced dataset where the majority class baseline is 97%, failing to recognize that the trained model performs worse than a dummy guesser.
+
+### Check Yourself
+On a binary dataset with 80% negative and 20% positive samples, what is the accuracy of a naive majority-class classifier? (80%).

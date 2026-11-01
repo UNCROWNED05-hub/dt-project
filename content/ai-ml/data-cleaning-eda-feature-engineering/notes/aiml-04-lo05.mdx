@@ -1,0 +1,42 @@
+---
+loId: "aiml-04-lo05"
+title: "Feature Creation: Interactions, Polynomials, and Temporal Components"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Raw data columns rarely capture complex domain phenomena in their raw form. Feature engineering is the practice of transforming, combining, and deriving new mathematical representations from existing columns to expose linear relationships to the model.
+
+Key feature creation patterns include:
+1. **Interaction Features**: Multiplicative or ratio terms ($x_1 \times x_2$ or $x_1 / x_2$). For instance, combining `total_price` and `square_feet` into `price_per_sqft` provides a normalized density signal.
+2. **Polynomial Features**: Adding squared or cubic terms ($x^2, x^3$) allows linear algorithms to fit curved, non-linear relationships without altering the underlying model architecture.
+3. **Temporal Decompositions**: Timestamp columns (`2026-10-15 14:32:00`) cannot be read as continuous floats without losing periodicity. Engineers extract calendar components: day of week, hour of day, is_weekend, or transform cyclic hours using trigonometric sine and cosine embeddings: $\sin(2\pi \cdot \text{hour} / 24)$ and $\cos(2\pi \cdot \text{hour} / 24)$.
+
+### Worked Example
+Engineering polynomial and cyclical temporal features:
+```python
+# scikit-learn==1.4.2, numpy==1.26.4
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import PolynomialFeatures
+
+# 1. Polynomial and interaction terms
+poly = PolynomialFeatures(degree=2, include_bias=False)
+X = np.array([[2.0, 3.0], [4.0, 5.0]])
+X_poly = poly.fit_transform(X) # Yields [x1, x2, x1^2, x1*x2, x2^2]
+print(f"Poly features shape: {X_poly.shape}") # (2, 5)
+
+# 2. Cyclical time encoding (hour 23 is adjacent to hour 0)
+hours = np.array([0, 6, 12, 18, 23])
+sin_hour = np.sin(2 * np.pi * hours / 24.0)
+cos_hour = np.cos(2 * np.pi * hours / 24.0)
+```
+
+### Common Mistake
+Generating polynomial expansions of degree 4 or 5 indiscriminately across dozens of features, triggering a combinatorial explosion that inflates feature counts into millions and severely overfits.
+
+### Check Yourself
+Why are cyclical temporal features (like hour of day) encoded with sine and cosine transforms rather than simple integers 0 to 23? (Because 23:00 is mathematically 1 hour away from 00:00, but integer encoding treats them as 23 units apart).

@@ -1,0 +1,40 @@
+---
+loId: "aiml-04-lo01"
+title: "Remediating Missing Data: Imputation Strategies and Indicators"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Real-world datasets rarely arrive complete. Missingness arises from hardware sensor failures, customer drop-off in web forms, or merged databases with divergent schemas. Statistically, missing data falls into three categories: Missing Completely at Random (MCAR), Missing at Random (MAR), and Missing Not at Random (MNAR).
+
+When less than 1-2% of rows have missing values at random, listwise row deletion (`dropna`) is viable. For wider gaps, deletion introduces selection bias and discards valuable training observations. Standard remediation strategies include:
+1. **Univariate Imputation**: Replacing nulls with the column mean (for symmetric data) or median (for skewed distributions). For categorical columns, the most frequent value (mode) or an explicit "Missing" label is used.
+2. **Missingness Indicator**: Appending a binary flag column indicating whether the feature was originally missing. In many operational domains (such as credit underwriting or healthcare), the fact that a user skipped a question is itself a powerful predictive signal.
+
+### Worked Example
+Executing median imputation with Scikit-Learn:
+```python
+# scikit-learn==1.4.2, numpy==1.26.4
+import numpy as np
+from sklearn.impute import SimpleImputer
+
+# Training feature matrix with NaN entries
+X_train = np.array([[10.0, np.nan], [12.0, 300.0], [np.nan, 250.0], [14.0, 200.0]])
+
+# Configure imputer to compute median and add missing indicator flags
+imputer = SimpleImputer(strategy="median", add_indicator=True)
+X_imputed = imputer.fit_transform(X_train)
+
+# Output contains imputed values plus 2 binary indicator columns
+print(f"Imputed shape: {X_imputed.shape}") # (4, 4)
+print(X_imputed)
+```
+
+### Common Mistake
+Imputing missing values using the mean on heavily skewed distributions (such as personal income), causing extreme outliers to artificially distort typical replacement values. Use median instead.
+
+### Check Yourself
+If the fact that an income field is missing strongly correlates with bankruptcy risk, which imputation enhancement preserves this predictive signal? (Adding an explicit binary missingness indicator column).

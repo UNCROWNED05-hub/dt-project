@@ -1,0 +1,43 @@
+---
+loId: "aiml-05-lo05"
+title: "Binary Cross-Entropy Loss and Decision Boundaries"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Using Mean Squared Error on Sigmoid outputs creates a non-convex loss surface with many shallow local minima. To guarantee strict convexity, Logistic Regression is trained using **Binary Cross-Entropy (BCE)**, also known as **Log-Loss**, derived from Maximum Likelihood Estimation:
+
+$$L_{\text{BCE}}(\mathbf{w}, b) = -\frac{1}{N} \sum_{i=1}^N \left[ y^{(i)} \log(\hat{p}^{(i)}) + (1 - y^{(i)}) \log(1 - \hat{p}^{(i)}) \right]$$
+
+Behavior:
+- If ground truth $y = 1$, the loss is $-\log(\hat{p})$. As $\hat{p} \to 1$, loss $\to 0$. If $\hat{p} \to 0$, loss $\to +\infty$.
+- If ground truth $y = 0$, the loss is $-\log(1 - \hat{p})$. Confident wrong predictions are punished with massive penalties.
+
+The **Decision Boundary** is the geometric surface where the model is indifferent: $\hat{p} = 0.5$, which corresponds to $z = \mathbf{w}^T \mathbf{x} + b = 0$. For two features, the boundary is a line $w_1 x_1 + w_2 x_2 + b = 0$.
+
+### Worked Example
+Evaluating Binary Cross-Entropy loss in Python:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# True labels: [1, 0, 1]
+y_true = np.array([1.0, 0.0, 1.0])
+# Model predicted probabilities
+y_pred = np.array([0.90, 0.10, 0.60])
+
+# Binary Cross-Entropy formula with epsilon clipping for numerical stability
+eps = 1e-15
+p_clipped = np.clip(y_pred, eps, 1.0 - eps)
+loss = -np.mean(y_true * np.log(p_clipped) + (1.0 - y_true) * np.log(1.0 - p_clipped))
+print(f"Log-Loss: {loss:.4f}") # ≈ 0.2415
+```
+
+### Common Mistake
+Failing to clip predicted probabilities before computing $\log(\hat{p})$, resulting in $\log(0) = -\infty$ and causing `NaN` gradient crashes.
+
+### Check Yourself
+At what linear logit score $z$ does a standard logistic regression decision boundary lie when using threshold 0.5? ($z = 0$).

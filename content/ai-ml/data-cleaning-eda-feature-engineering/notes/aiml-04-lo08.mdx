@@ -1,0 +1,43 @@
+---
+loId: "aiml-04-lo08"
+title: "Statistical Profiling and Data Drift Evaluation"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Machine learning models operate under the mathematical assumption that future inference data is drawn from the identical probability distribution as historical training data ($P_{\text{train}}(X) = P_{\text{test}}(X)$). Over time, changes in consumer behavior, macroeconomic shifts, or updated sensor hardware violate this assumption, causing **Data Drift**.
+
+Evaluating data stability requires rigorous statistical profiling:
+1. **Summary Percentiles**: Comparing 5-number summaries (min, $Q_1$, median, $Q_3$, max) across baseline training sets and live production windows.
+2. **Distribution Divergence**: Metrics such as the Population Stability Index (PSI) and Kolmogorov-Smirnov (KS) test detect whether continuous feature distributions have drifted significantly.
+3. **Skewness & Kurtosis**: Measuring distribution tail asymmetry (skewness) and peak sharpness (kurtosis) alerts engineers to sudden regime shifts in streaming data pipelines.
+
+### Worked Example
+Comparing train vs production feature drift using the KS test:
+```python
+# scipy==1.13.1, numpy==1.26.4
+import numpy as np
+from scipy.stats import ks_2samp
+
+# Historical training distribution
+train_feature = np.random.normal(loc=50.0, scale=10.0, size=1000)
+
+# Production monitoring batch (drifted mean: 55.0)
+prod_feature = np.random.normal(loc=55.0, scale=10.0, size=500)
+
+# Kolmogorov-Smirnov 2-sample test
+statistic, p_value = ks_2samp(train_feature, prod_feature)
+print(f"KS Statistic: {statistic:.4f}, p-value: {p_value:.2e}")
+
+if p_value < 0.05:
+    print("WARNING: Statistically significant data drift detected! Retraining recommended.")
+```
+
+### Common Mistake
+Deploying models into production without automated feature distribution monitors, remaining blind to catastrophic accuracy decay caused by silent data drift.
+
+### Check Yourself
+What statistical test compares two continuous empirical distributions to evaluate whether production feature data has drifted from training baselines? (The two-sample Kolmogorov-Smirnov / KS test).

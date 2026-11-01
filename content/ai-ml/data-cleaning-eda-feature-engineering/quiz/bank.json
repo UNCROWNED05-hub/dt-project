@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "aiml-04-q01",
+    "loId": "aiml-04-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why is listwise row deletion (`dropna`) hazardous when a dataset contains missing values across multiple columns?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It can discard a huge percentage of training records and introduce selection bias."
+      },
+      {
+        "id": "b",
+        "text": "It permanently corrupts the operating system file system."
+      },
+      {
+        "id": "c",
+        "text": "It converts floating point features into complex strings."
+      },
+      {
+        "id": "d",
+        "text": "It violates GPU driver specifications."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Dropping every row containing any null value can easily wipe out 50%+ of observations and bias the training sample.",
+    "noteRef": "aiml-04-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q02",
+    "loId": "aiml-04-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "When imputing missing values in a heavily skewed numerical feature like annual customer income, why is the median preferred over the mean?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The median executes 1,000x faster in hardware."
+      },
+      {
+        "id": "b",
+        "text": "The median is robust against extreme outlier distortion, whereas the mean is pulled heavily by extreme wealth values."
+      },
+      {
+        "id": "c",
+        "text": "The mean can only be computed on integer values."
+      },
+      {
+        "id": "d",
+        "text": "The median automatically converts values into probabilities."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The median is a non-parametric statistic resistant to extreme tail outliers, preserving typical central values.",
+    "noteRef": "aiml-04-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q03",
+    "loId": "aiml-04-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "In a medical diagnosis pipeline, patients who skip an optional lifestyle questionnaire have a 4x higher risk of disease. How should this missingness be engineered?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Replace all missing entries with zero without telling the model."
+      },
+      {
+        "id": "b",
+        "text": "Drop all patients who skipped the questionnaire."
+      },
+      {
+        "id": "c",
+        "text": "Impute numerical values and append a binary missingness indicator column to preserve the signal that the field was omitted."
+      },
+      {
+        "id": "d",
+        "text": "Duplicate the skipped rows 4 times."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "When data is Missing Not at Random (MNAR), the fact of missingness is itself an informative predictor captured by indicator flags.",
+    "noteRef": "aiml-04-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q04",
+    "loId": "aiml-04-lo01",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following imputation strategies are supported natively by Scikit-Learn's `SimpleImputer`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "strategy='mean'"
+      },
+      {
+        "id": "b",
+        "text": "strategy='median'"
+      },
+      {
+        "id": "c",
+        "text": "strategy='most_frequent'"
+      },
+      {
+        "id": "d",
+        "text": "strategy='neural_autoencoder_synthesis'"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "SimpleImputer provides mean, median, most_frequent, and constant replacement strategies.",
+    "noteRef": "aiml-04-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q05",
+    "loId": "aiml-04-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In Tukey's boxplot method, how is the Interquartile Range (IQR) calculated?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IQR = Variance squared."
+      },
+      {
+        "id": "b",
+        "text": "IQR = Maximum value minus Minimum value."
+      },
+      {
+        "id": "c",
+        "text": "IQR = Mean divided by Standard Deviation."
+      },
+      {
+        "id": "d",
+        "text": "IQR = Q3 - Q1 (the 75th percentile minus the 25th percentile)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "IQR measures the statistical spread of the middle 50% of ordered observations.",
+    "noteRef": "aiml-04-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q06",
+    "loId": "aiml-04-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is 'Winsorization' in outlier management?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Capping extreme outliers at specified percentile thresholds (e.g., 1st and 99th percentiles) rather than deleting rows."
+      },
+      {
+        "id": "b",
+        "text": "Converting continuous features into categorical text strings."
+      },
+      {
+        "id": "c",
+        "text": "Encrypting outlier values to protect user privacy."
+      },
+      {
+        "id": "d",
+        "text": "Replacing all outliers with the global maximum."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Winsorization limits extreme values by clipping them to specified lower and upper boundary percentiles.",
+    "noteRef": "aiml-04-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q07",
+    "loId": "aiml-04-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A continuous training feature has $Q_1 = 20$ and $Q_3 = 40$. What is the upper outlier boundary under Tukey's 1.5 * IQR rule?",
+    "options": [
+      {
+        "id": "a",
+        "text": "60, calculated as Q3 + IQR."
+      },
+      {
+        "id": "b",
+        "text": "70, calculated as Q3 + 1.5 * (40 - 20) = 40 + 30 = 70."
+      },
+      {
+        "id": "c",
+        "text": "80, calculated as 2 * Q3."
+      },
+      {
+        "id": "d",
+        "text": "50, calculated as Q3 + 10."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "IQR = 40 - 20 = 20. Upper fence = Q3 + 1.5 * 20 = 40 + 30 = 70.",
+    "noteRef": "aiml-04-lo02",
+    "verify": "(40 + 1.5 * (40 - 20) === 70)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q08",
+    "loId": "aiml-04-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Why can naive automatic deletion of statistical outliers severely harm machine learning projects?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In fraud and threat detection, anomalous outliers represent the exact positive target cases of interest"
+      },
+      {
+        "id": "b",
+        "text": "It discards valid high-variance phenomena that the model will encounter in real production environments"
+      },
+      {
+        "id": "c",
+        "text": "It reduces sample size and statistical power"
+      },
+      {
+        "id": "d",
+        "text": "It violates mathematical laws of matrix multiplication"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Outliers often hold critical domain signals, and removing them leaves models unprepared for real-world anomalies.",
+    "noteRef": "aiml-04-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q09",
+    "loId": "aiml-04-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why is One-Hot Encoding preferred over arbitrary Label Encoding (0, 1, 2) for nominal categories like car colors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Label Encoding only works in Python 2."
+      },
+      {
+        "id": "b",
+        "text": "One-Hot Encoding requires less memory than integers."
+      },
+      {
+        "id": "c",
+        "text": "One-Hot Encoding avoids imposing an artificial mathematical ordering that distance and linear models would falsely exploit."
+      },
+      {
+        "id": "d",
+        "text": "One-Hot Encoding guarantees 100% test accuracy."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Encoding Red=1, Green=2, Blue=3 causes models to assume Green is twice Red, whereas One-Hot Encoding preserves categorical independence.",
+    "noteRef": "aiml-04-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q10",
+    "loId": "aiml-04-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What major challenge arises when applying One-Hot Encoding to high-cardinality features, such as 5,000 distinct ZIP codes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It causes hardware overheating on standard CPUs."
+      },
+      {
+        "id": "b",
+        "text": "It produces negative numbers that crash linear models."
+      },
+      {
+        "id": "c",
+        "text": "It converts numerical columns into binary strings."
+      },
+      {
+        "id": "d",
+        "text": "It explodes feature dimensionality, creating a massive sparse matrix that slows training and induces the curse of dimensionality."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "High-cardinality OHE creates thousands of sparse binary columns, drastically expanding memory footprint and causing overfitting.",
+    "noteRef": "aiml-04-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q11",
+    "loId": "aiml-04-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A categorical column in test data contains an unseen category 'Solar' that never appeared in training. How should `OneHotEncoder` handle this safely?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Configure `handle_unknown='ignore'`, encoding the unseen category as all zeros across the binary columns."
+      },
+      {
+        "id": "b",
+        "text": "Crash the program with an unrecoverable ValueError."
+      },
+      {
+        "id": "c",
+        "text": "Randomly assign it to one of the training categories."
+      },
+      {
+        "id": "d",
+        "text": "Replace the entire dataset with NaN."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "`handle_unknown='ignore'` gracefully outputs all 0s for novel categories without crashing production inference.",
+    "noteRef": "aiml-04-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q12",
+    "loId": "aiml-04-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following techniques help mitigate target leakage and overfitting when implementing Target (Mean) Encoding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Computing target averages strictly within cross-validation training folds (out-of-fold encoding)"
+      },
+      {
+        "id": "b",
+        "text": "Adding empirical Bayes smoothing towards the global target mean for rare categories"
+      },
+      {
+        "id": "c",
+        "text": "Adding Gaussian noise to the encodings during training"
+      },
+      {
+        "id": "d",
+        "text": "Computing the target encoding across all train and test rows simultaneously before splitting"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Out-of-fold calculation, smoothing, and noise injection prevent models from memorizing target labels. Option d is direct data leakage.",
+    "noteRef": "aiml-04-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q13",
+    "loId": "aiml-04-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What mathematical transformation defines `StandardScaler` (Z-score normalization)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$z = \\frac{x - \\min}{\\max - \\min}$, compressing data to $[0, 1]$."
+      },
+      {
+        "id": "b",
+        "text": "$z = \\frac{x - \\mu}{\\sigma}$, producing zero mean and unit variance."
+      },
+      {
+        "id": "c",
+        "text": "$z = \\log(1 + x)$."
+      },
+      {
+        "id": "d",
+        "text": "$z = x^2$."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "StandardScaler centers data at mean 0 and scales to standard deviation 1.",
+    "noteRef": "aiml-04-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q14",
+    "loId": "aiml-04-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does unscaled feature data severely degrade optimization in gradient-based algorithms like Linear Regression or Neural Networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gradient descent cannot compute derivatives on numbers greater than 100."
+      },
+      {
+        "id": "b",
+        "text": "Unscaled data causes CPU arithmetic logic units to execute backward."
+      },
+      {
+        "id": "c",
+        "text": "The loss surface forms an elongated canyon, causing gradients to oscillate wildly along steep dimensions and converge slowly."
+      },
+      {
+        "id": "d",
+        "text": "Features with small scales are automatically deleted."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Mismatched feature scales create anisotropic loss surfaces where gradient steps bounce erratically rather than stepping directly toward the minimum.",
+    "noteRef": "aiml-04-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q15",
+    "loId": "aiml-04-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A feature has minimum 10.0 and maximum 50.0. What is the normalized value of sample $x = 30.0$ under `MinMaxScaler`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.00, representing maximum value."
+      },
+      {
+        "id": "b",
+        "text": "0.60, calculated as 30 / 50."
+      },
+      {
+        "id": "c",
+        "text": "0.20, calculated as (30 - 10) / 100."
+      },
+      {
+        "id": "d",
+        "text": "0.50, calculated as (30 - 10) / (50 - 10) = 20 / 40 = 0.50."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "(30 - 10) / (50 - 10) = 20 / 40 = 0.50.",
+    "noteRef": "aiml-04-lo04",
+    "verify": "((30 - 10) / (50 - 10) === 0.5)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q16",
+    "loId": "aiml-04-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following machine learning algorithms are directly sensitive to feature scaling and require standardization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "k-Nearest Neighbors (k-NN) using Euclidean distance"
+      },
+      {
+        "id": "b",
+        "text": "Support Vector Machines (SVM) with RBF kernels"
+      },
+      {
+        "id": "c",
+        "text": "Regularized Logistic Regression (Ridge / Lasso)"
+      },
+      {
+        "id": "d",
+        "text": "Decision Trees and Random Forests"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Distance-based and regularized models depend on feature scale. Decision trees split features independently by rank order and are scale-invariant.",
+    "noteRef": "aiml-04-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q17",
+    "loId": "aiml-04-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is an interaction feature in tabular machine learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A new feature created by multiplying, dividing, or combining two or more base features to capture joint effects."
+      },
+      {
+        "id": "b",
+        "text": "A user interface button on a web dashboard."
+      },
+      {
+        "id": "c",
+        "text": "An error metric computed on validation data."
+      },
+      {
+        "id": "d",
+        "text": "A duplicate column created by memory corruption."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Interaction terms (such as $x_1 \\times x_2$) allow linear models to capture non-additive synergy between predictors.",
+    "noteRef": "aiml-04-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q18",
+    "loId": "aiml-04-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is cyclical encoding with sine and cosine transforms used for temporal features like hour of day (0-23)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It compresses 24 hours into 1 bit."
+      },
+      {
+        "id": "b",
+        "text": "It preserves cyclic continuity, ensuring hour 23 and hour 0 are mathematically close in vector space."
+      },
+      {
+        "id": "c",
+        "text": "It converts timestamps into Julian calendar days."
+      },
+      {
+        "id": "d",
+        "text": "It prevents timezone conversions."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Sine and cosine map circular 24-hour time onto a continuous unit circle where 23:00 and 00:00 remain adjacent.",
+    "noteRef": "aiml-04-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q19",
+    "loId": "aiml-04-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have two input features $[x_1, x_2]$. Applying Scikit-Learn's `PolynomialFeatures(degree=2, include_bias=False)` expands this into which set of features?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$[1, x_1, x_2]$ (3 features total)."
+      },
+      {
+        "id": "b",
+        "text": "$[x_1^2, x_2^2]$ (2 features total)."
+      },
+      {
+        "id": "c",
+        "text": "$[x_1, x_2, x_1^2, x_1 x_2, x_2^2]$ (5 features total)."
+      },
+      {
+        "id": "d",
+        "text": "$[x_1, x_2, x_1 + x_2]$."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Degree 2 expansion includes original terms, squares of each term, and the cross-product interaction term.",
+    "noteRef": "aiml-04-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q20",
+    "loId": "aiml-04-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are potential risks of generating high-degree polynomial features?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Combinatorial explosion in the number of columns, causing memory bloat"
+      },
+      {
+        "id": "b",
+        "text": "Severe model overfitting on training noise"
+      },
+      {
+        "id": "c",
+        "text": "Extreme collinearity between powers of the same feature ($x, x^2, x^3$)"
+      },
+      {
+        "id": "d",
+        "text": "Inability to compute predictions using matrix multiplication"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "High-degree polynomials rapidly multiply feature dimensions, induce multicollinearity, and cause extreme overfitting.",
+    "noteRef": "aiml-04-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q21",
+    "loId": "aiml-04-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is data leakage in machine learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "When GPU cache lines lose voltage."
+      },
+      {
+        "id": "b",
+        "text": "When personal user data is published on an unsecured public server."
+      },
+      {
+        "id": "c",
+        "text": "When RAM memory leaks caused by circular references exhaust system memory."
+      },
+      {
+        "id": "d",
+        "text": "When information from the validation or test split inadvertently influences the training phase, artificially inflating evaluation scores."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Data leakage introduces future or out-of-sample information into training, producing over-optimistic evaluation metrics that collapse in production.",
+    "noteRef": "aiml-04-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q22",
+    "loId": "aiml-04-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does invoking `scaler.fit_transform(X)` on the entire dataset BEFORE calling `train_test_split` constitute data leakage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the mean and standard deviation of the test set are incorporated into the scaling calculation used during training."
+      },
+      {
+        "id": "b",
+        "text": "Because `fit_transform` drops the test target column."
+      },
+      {
+        "id": "c",
+        "text": "Because `train_test_split` requires raw unscaled integers."
+      },
+      {
+        "id": "d",
+        "text": "Because test labels are converted into features."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Fitting scalers on combined data leaks the test set distribution parameters into training, violating strict out-of-sample isolation.",
+    "noteRef": "aiml-04-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q23",
+    "loId": "aiml-04-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An engineer builds a cross-validation loop and uses a Scikit-Learn `Pipeline([('scaler', StandardScaler()), ('model', Ridge())])`. Why is this leak-free?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because `Ridge` automatically deletes leaked columns."
+      },
+      {
+        "id": "b",
+        "text": "Because the Pipeline ensures `fit` is executed exclusively on the training folds, while validation folds are only transformed."
+      },
+      {
+        "id": "c",
+        "text": "Because Scikit-Learn Pipelines encrypt all intermediate arrays."
+      },
+      {
+        "id": "d",
+        "text": "Because cross-validation eliminates the need for test data."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A Pipeline encapsulates transformers inside cross-validation splits, ensuring validation fold data is never seen during fitting.",
+    "noteRef": "aiml-04-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q24",
+    "loId": "aiml-04-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following preprocessing practices introduce data leakage into a machine learning workflow?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Imputing missing values using the global median computed across the full combined dataset prior to splitting"
+      },
+      {
+        "id": "b",
+        "text": "Selecting the top 10 features based on correlation with the target across the entire dataset before cross-validation"
+      },
+      {
+        "id": "c",
+        "text": "Fitting a TF-IDF vocabulary on all documents including the test split"
+      },
+      {
+        "id": "d",
+        "text": "Fitting an imputer strictly on `X_train` and calling `imputer.transform(X_test)`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Options a, b, and c use full-dataset statistics before splitting. Option d is the correct, leak-free protocol.",
+    "noteRef": "aiml-04-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q25",
+    "loId": "aiml-04-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why is raw classification accuracy an uninformative metric when training on highly imbalanced data (e.g., 99.9% legitimate transactions, 0.1% fraud)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Accuracy is mathematically restricted to balanced binary problems."
+      },
+      {
+        "id": "b",
+        "text": "Accuracy cannot be calculated when datasets exceed 1,000 samples."
+      },
+      {
+        "id": "c",
+        "text": "A trivial baseline model predicting 100% legitimate transactions achieves 99.9% accuracy while detecting zero fraud."
+      },
+      {
+        "id": "d",
+        "text": "Imbalanced datasets cause floating point division by zero in accuracy formulas."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "High class imbalance allows majority class memorization to register near-perfect accuracy without learning minority patterns.",
+    "noteRef": "aiml-04-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q26",
+    "loId": "aiml-04-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does the Synthetic Minority Over-sampling Technique (SMOTE) generate new minority training instances?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By downloading random samples from the internet."
+      },
+      {
+        "id": "b",
+        "text": "By making exact bit-for-bit copies of existing minority rows."
+      },
+      {
+        "id": "c",
+        "text": "By clustering majority samples and deleting the centroids."
+      },
+      {
+        "id": "d",
+        "text": "By interpolating synthetic points along vector segments connecting k-nearest neighbors in minority feature space."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "SMOTE synthesizes novel minority samples along lines connecting neighboring minority instances, avoiding pure duplicate memorization.",
+    "noteRef": "aiml-04-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q27",
+    "loId": "aiml-04-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have 900 negative samples and 100 positive samples. Under balanced weighting ($w_j = \\frac{N}{2 \\times N_j}$), what loss weight is assigned to each positive sample?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5.0, calculated as 1000 / (2 * 100) = 1000 / 200 = 5.0."
+      },
+      {
+        "id": "b",
+        "text": "9.0, reflecting the 9:1 ratio."
+      },
+      {
+        "id": "c",
+        "text": "0.5, calculated as 100 / 200."
+      },
+      {
+        "id": "d",
+        "text": "1.0, treating all samples equally."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Total samples N = 1000. Weight for class 1 = 1000 / (2 * 100) = 5.0. Negative class weight = 1000 / (2 * 900) ≈ 0.56.",
+    "noteRef": "aiml-04-lo07",
+    "verify": "(1000 / (2 * 100) === 5.0)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q28",
+    "loId": "aiml-04-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following techniques are effective for training classifiers on severely imbalanced datasets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Configuring cost-sensitive class weights in the loss function (`class_weight='balanced'`)"
+      },
+      {
+        "id": "b",
+        "text": "Synthesizing minority training instances using SMOTE strictly inside training folds"
+      },
+      {
+        "id": "c",
+        "text": "Evaluating models using Precision, Recall, PR-AUC, and F1-score rather than raw accuracy"
+      },
+      {
+        "id": "d",
+        "text": "Over-sampling the test set so validation accuracy appears higher"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Class weighting, SMOTE, and precision/recall evaluation handle imbalance cleanly. Resampling the test set corrupts real-world validation.",
+    "noteRef": "aiml-04-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q29",
+    "loId": "aiml-04-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is 'data drift' in production machine learning systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Physical degradation of server storage drives over time."
+      },
+      {
+        "id": "b",
+        "text": "A statistical shift in input feature distributions between baseline training data and live production inference data."
+      },
+      {
+        "id": "c",
+        "text": "Gradual reduction in CPU clock frequency due to thermal throttling."
+      },
+      {
+        "id": "d",
+        "text": "Accumulation of uncommitted Git branches."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Data drift occurs when live feature distributions P(X) diverge from training assumptions, degrading model accuracy.",
+    "noteRef": "aiml-04-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q30",
+    "loId": "aiml-04-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Which statistical hypothesis test evaluates whether two continuous empirical distributions differ significantly for drift detection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Pearson correlation test."
+      },
+      {
+        "id": "b",
+        "text": "The Euclidean distance test."
+      },
+      {
+        "id": "c",
+        "text": "The two-sample Kolmogorov-Smirnov (KS) test."
+      },
+      {
+        "id": "d",
+        "text": "The Dijkstra pathfinding algorithm."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The two-sample KS test compares empirical cumulative distribution functions to identify statistically significant drift.",
+    "noteRef": "aiml-04-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q31",
+    "loId": "aiml-04-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A production monitoring system computes a KS test between baseline and weekly transaction amounts, yielding $p = 0.0001$. How should the engineering team respond?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increase model learning rate."
+      },
+      {
+        "id": "b",
+        "text": "Ignore the alert; small p-values prove the model is 100% accurate."
+      },
+      {
+        "id": "c",
+        "text": "Delete all production records to restore equilibrium."
+      },
+      {
+        "id": "d",
+        "text": "Investigate feature drift immediately; $p < 0.05$ indicates statistically significant divergence requiring pipeline review or retraining."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A tiny p-value rejects the null hypothesis that distributions match, confirming significant drift in live inputs.",
+    "noteRef": "aiml-04-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q32",
+    "loId": "aiml-04-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which statistical metrics are standard components of automated data drift monitoring suites?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Population Stability Index (PSI)"
+      },
+      {
+        "id": "b",
+        "text": "Kolmogorov-Smirnov (KS) test statistic"
+      },
+      {
+        "id": "c",
+        "text": "Summary percentile tracking (median, IQR, min, max)"
+      },
+      {
+        "id": "d",
+        "text": "GPU temperature throttling index"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "PSI, KS tests, and percentile tracking quantify distribution shifts in production feature pipelines.",
+    "noteRef": "aiml-04-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q33",
+    "loId": "aiml-04-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What advantage does Mutual Information have over Pearson Correlation for feature selection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mutual Information captures arbitrary non-linear dependencies between feature and target, whereas Pearson only measures linear relationships."
+      },
+      {
+        "id": "b",
+        "text": "Mutual Information executes in $O(1)$ constant time."
+      },
+      {
+        "id": "c",
+        "text": "Mutual Information works only on image files."
+      },
+      {
+        "id": "d",
+        "text": "Pearson correlation cannot be computed in Python."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Mutual Information quantifies information shared between variables, detecting non-linear relationships (like $y = x^2$) where linear correlation is 0.",
+    "noteRef": "aiml-04-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q34",
+    "loId": "aiml-04-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "How does Recursive Feature Elimination (RFE) select a target subset of $K$ features?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It computes variance thresholds on the first row only."
+      },
+      {
+        "id": "b",
+        "text": "It iteratively trains a model, ranks feature importance/weights, prunes the weakest features, and repeats until $K$ features remain."
+      },
+      {
+        "id": "c",
+        "text": "It randomly drops features using coin flips."
+      },
+      {
+        "id": "d",
+        "text": "It calculates PCA components."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "RFE is a wrapper method that prunes the least significant features iteratively using estimator coefficients.",
+    "noteRef": "aiml-04-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-04-q35",
+    "loId": "aiml-04-lo02",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A dataset has $Q_1 = 30.0$ and $Q_3 = 50.0$. Under Tukey's rule ($1.5 \\times \\text{IQR}$), what is the lower outlier fence?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.0"
+      },
+      {
+        "id": "b",
+        "text": "10.0"
+      },
+      {
+        "id": "c",
+        "text": "15.0"
+      },
+      {
+        "id": "d",
+        "text": "20.0"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "IQR = 50 - 30 = 20. Lower fence = Q1 - 1.5 * IQR = 30 - 1.5 * 20 = 30 - 30 = 0.0.",
+    "noteRef": "aiml-04-lo02",
+    "verify": "(30.0 - 1.5 * (50.0 - 30.0) === 0.0)",
+    "reviewed": false
+  }
+]

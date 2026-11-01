@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "chapterId": "ai-04",
+  "objectives": [
+    {
+      "id": "aiml-04-lo01",
+      "order": 1,
+      "title": "Detect and remediate missing data using deletion, mean/median imputation, and indicator variables",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "missing data",
+        "imputation",
+        "SimpleImputer",
+        "MCAR",
+        "MAR",
+        "null indicator"
+      ],
+      "aliases": [
+        "missing value handling",
+        "data imputation"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-04-lo02",
+      "order": 2,
+      "title": "Identify and treat numerical outliers using IQR thresholds and Z-score boundaries",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "outlier detection",
+        "IQR",
+        "interquartile range",
+        "z-score",
+        "winsorization",
+        "clipping"
+      ],
+      "aliases": [
+        "outlier filtering",
+        "robust statistics"
+      ],
+      "prerequisites": [
+        "aiml-04-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-04-lo03",
+      "order": 3,
+      "title": "Encode categorical features using One-Hot and Target Encoding without target leakage",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "one-hot encoding",
+        "dummy variables",
+        "target encoding",
+        "cardinality",
+        "sparse matrix"
+      ],
+      "aliases": [
+        "categorical encoding",
+        "dummy encoding"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-04-lo04",
+      "order": 4,
+      "title": "Standardize and normalize continuous features using StandardScaler and MinMaxScaler",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "feature scaling",
+        "StandardScaler",
+        "MinMaxScaler",
+        "z-score",
+        "unit variance",
+        "gradient convergence"
+      ],
+      "aliases": [
+        "normalization",
+        "feature standardization"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-04-lo05",
+      "order": 5,
+      "title": "Construct interaction features, polynomial expansions, and temporal date components",
+      "bloom": "create",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "feature engineering",
+        "polynomial features",
+        "interaction terms",
+        "date extraction",
+        "cyclical encoding"
+      ],
+      "aliases": [
+        "feature creation",
+        "derived predictors"
+      ],
+      "prerequisites": [
+        "aiml-04-lo03",
+        "aiml-04-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-04-lo06",
+      "order": 6,
+      "title": "Prevent data leakage by isolating preprocessing fits to the training split only",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "data leakage",
+        "train test contamination",
+        "Pipeline",
+        "fit_transform vs transform",
+        "lookahead bias"
+      ],
+      "aliases": [
+        "leakage prevention",
+        "pipeline isolation"
+      ],
+      "prerequisites": [
+        "aiml-04-lo01",
+        "aiml-04-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-04-lo07",
+      "order": 7,
+      "title": "Address class imbalance using random oversampling, SMOTE, and class-weighted loss penalties",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "class imbalance",
+        "SMOTE",
+        "oversampling",
+        "undersampling",
+        "class weights",
+        "focal loss"
+      ],
+      "aliases": [
+        "imbalanced learning",
+        "resampling methods"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-04-lo08",
+      "order": 8,
+      "title": "Compute summary statistics and distribution percentiles to evaluate data drift",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "summary statistics",
+        "percentiles",
+        "data drift",
+        "descriptive EDA",
+        "skewness",
+        "kurtosis"
+      ],
+      "aliases": [
+        "exploratory data analysis",
+        "statistical profiling"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-04-lo09",
+      "order": 9,
+      "title": "Select high-impact features using mutual information, variance thresholding, and Recursive Feature Elimination",
+      "bloom": "analyze",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "feature selection",
+        "mutual information",
+        "RFE",
+        "variance threshold",
+        "curse of dimensionality"
+      ],
+      "aliases": [
+        "feature pruning",
+        "dimensionality reduction"
+      ],
+      "prerequisites": [
+        "aiml-04-lo04",
+        "aiml-04-lo05"
+      ],
+      "estMinutes": 15
+    }
+  ]
+}

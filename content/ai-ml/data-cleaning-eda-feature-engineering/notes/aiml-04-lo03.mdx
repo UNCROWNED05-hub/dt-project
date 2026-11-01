@@ -1,0 +1,41 @@
+---
+loId: "aiml-04-lo03"
+title: "Categorical Feature Encoding: One-Hot vs Target Encoding"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Machine learning algorithms perform arithmetic on real-valued tensors and cannot ingest raw text strings directly. Categorical variables must be numerically encoded into feature vectors.
+
+Two primary encoding schemes dominate tabular workflows:
+1. **One-Hot Encoding (OHE)**: Creates a dedicated binary column ($0$ or $1$) for each unique category level. This preserves neutrality by preventing algorithms from assuming an arbitrary mathematical ordering (e.g., `Red=1, Green=2, Blue=3`). However, for high-cardinality features (like ZIP codes or user IDs with thousands of levels), OHE creates an unwieldy, sparse matrix that exhausts memory and induces the curse of dimensionality.
+2. **Target (Mean) Encoding**: Replaces each category level with the historical average of the target variable for that cohort (e.g., replacing "Department: Eng" with 0.85 if 85% of engineering candidates are hired). To prevent catastrophic overfitting on rare categories, target encodings must be regularized using Bayesian smoothing and computed strictly inside cross-validation folds.
+
+### Worked Example
+Applying One-Hot Encoding with Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+
+df = pd.DataFrame({
+    "device": ["iOS", "Android", "Android", "Web"],
+    "browser": ["Safari", "Chrome", "Firefox", "Chrome"]
+})
+
+encoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
+encoded_matrix = encoder.fit_transform(df)
+feature_names = encoder.get_feature_names_out()
+
+encoded_df = pd.DataFrame(encoded_matrix, columns=feature_names)
+print(encoded_df)
+```
+
+### Common Mistake
+Applying simple integer label encoding (`0, 1, 2`) to nominal categories (such as vehicle color). Linear and distance-based models will falsely assume that "Blue (2)" is mathematically greater than "Red (0)".
+
+### Check Yourself
+Why is Target Encoding hazardous if computed naively across an entire dataset without smoothing? (It causes target leakage, allowing models to memorize training target labels through rare category averages).

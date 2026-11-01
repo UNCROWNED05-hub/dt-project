@@ -1,0 +1,47 @@
+---
+loId: "aiml-05-lo01"
+title: "Linear Regression Formulation and Mean Squared Error Loss"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Linear regression models a linear relationship between input features $\mathbf{x} = [x_1, x_2, \dots, x_D]^T$ and a continuous real-valued scalar target $y \in \mathbb{R}$.
+
+The linear hypothesis is parameterized by a weight vector $\mathbf{w}$ and scalar bias $b$:
+$$\hat{y} = h_{\mathbf{w}, b}(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b = w_1 x_1 + w_2 x_2 + \dots + w_D x_D + b$$
+In vectorized matrix form across a mini-batch matrix $\mathbf{X} \in \mathbb{R}^{N \times D}$, predictions are computed as $\mathbf{\hat{y}} = \mathbf{X}\mathbf{w} + b$.
+
+To quantify prediction error across $N$ training samples, we compute the **Mean Squared Error (MSE)** loss:
+$$L_{\text{MSE}}(\mathbf{w}, b) = \frac{1}{2N} \sum_{i=1}^N (\hat{y}^{(i)} - y^{(i)})^2$$
+The squaring operation penalizes large outlier errors quadratically and ensures the loss surface is strictly convex (a smooth multidimensional bowl) with a unique global minimum.
+
+### Worked Example
+Computing vectorized predictions and MSE loss:
+```python
+# numpy==1.26.4
+import numpy as np
+
+# Feature matrix X (3 samples, 2 features)
+X = np.array([[1.0, 2.0], [2.0, 1.0], [3.0, 4.0]])
+y_true = np.array([5.0, 4.0, 11.0])
+
+weights = np.array([2.0, 1.5])
+bias = 0.5
+
+# Forward predictions: y_hat = X @ w + b
+y_hat = X @ weights + bias # [1*2 + 2*1.5 + 0.5, 2*2 + 1*1.5 + 0.5, 3*2 + 4*1.5 + 0.5] -> [5.5, 6.0, 12.5]
+residuals = y_hat - y_true # [0.5, 2.0, 1.5]
+
+mse = (1.0 / len(y_true)) * np.sum(residuals**2)
+print(f"Predictions: {y_hat}")
+print(f"MSE Loss: {mse:.4f}") # (0.25 + 4.0 + 2.25) / 3 = 6.5 / 3 ≈ 2.1667
+```
+
+### Common Mistake
+Applying linear regression directly to multi-class classification targets (such as categorical class labels 0, 1, 2), falsely assuming numerical ordering and distance between classes.
+
+### Check Yourself
+Why is the squared error loss function strictly convex for linear models? (Because the second derivative with respect to weights is positive semi-definite $X^T X \ge 0$, guaranteeing a bowl with a single global minimum).

@@ -1,0 +1,47 @@
+---
+loId: "aiml-04-lo09"
+title: "Feature Selection: Mutual Information and Recursive Feature Elimination"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Feeding dozens of irrelevant or redundant features into machine learning models increases training latency, expands memory usage, and exacerbates the **curse of dimensionality**. Feature selection identifies the most predictive subset of variables while discarding noise.
+
+Three primary feature selection paradigms exist:
+1. **Filter Methods**: Rank features independently of any model using statistical metrics.
+   - *Variance Threshold*: Discards features whose variance falls below a threshold (e.g., constant columns).
+   - *Mutual Information (MI)*: Measures non-linear dependency between feature $X$ and target $y$ based on entropy reduction:
+$$I(X; Y) = \sum \sum p(x, y) \log \frac{p(x, y)}{p(x)p(y)}$$
+2. **Wrapper Methods**: Search feature combinations using model performance as feedback. **Recursive Feature Elimination (RFE)** trains an estimator, prunes the weakest weights or feature importances, and repeats until the target feature count is reached.
+3. **Embedded Methods**: Perform selection naturally during training, such as L1 Lasso regularization or tree split gain rankings.
+
+### Worked Example
+Selecting top features using Mutual Information and RFE:
+```python
+# scikit-learn==1.4.2
+from sklearn.feature_selection import mutual_info_classif, RFE
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+X = np.random.randn(100, 8)
+y = np.random.randint(0, 2, 100)
+
+# 1. Mutual Information ranking
+mi_scores = mutual_info_classif(X, y)
+print(f"Mutual Information scores:\n{mi_scores.round(3)}")
+
+# 2. Recursive Feature Elimination to top 4 features
+estimator = LogisticRegression()
+rfe = RFE(estimator, n_features_to_select=4)
+rfe.fit(X, y)
+print(f"Selected feature mask: {rfe.support_}")
+```
+
+### Common Mistake
+Using Pearson correlation to discard features, missing non-linear dependencies (such as quadratic relationships $y = x^2$) where Pearson correlation is 0 but Mutual Information is high.
+
+### Check Yourself
+Which feature selection approach trains a model iteratively and prunes the lowest-weight features in successive passes? (Recursive Feature Elimination / RFE).

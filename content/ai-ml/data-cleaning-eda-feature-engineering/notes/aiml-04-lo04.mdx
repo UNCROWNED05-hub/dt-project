@@ -1,0 +1,46 @@
+---
+loId: "aiml-04-lo04"
+title: "Feature Scaling: StandardScaler and MinMaxScaler"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Features in real datasets span drastically different measurement scales. A customer's age ranges from 18 to 80, while their annual income ranges from $20,000 to $1,000,000. When fed directly into optimization algorithms, gradient descent oscillates wildly because the loss surface forms an elongated canyon, requiring thousands of steps along the steeper high-magnitude axis. Furthermore, distance-based models (such as k-NN, SVMs, and k-Means) are overwhelmingly dominated by the largest feature.
+
+Two fundamental scalers restore numerical balance:
+1. **StandardScaler (Z-Score Normalization)**:
+$$z = \frac{x - \mu}{\sigma}$$
+Transforms features to have a mean $\mu = 0$ and standard deviation $\sigma = 1$. It preserves outlier information and handles unbounded Gaussian distributions gracefully.
+2. **MinMaxScaler (Range Normalization)**:
+$$x_{\text{scaled}} = \frac{x - x_{\min}}{x_{\max} - x_{\min}}$$
+Compresses values into a bounded interval (typically $[0, 1]$). It is essential for algorithms requiring bounded inputs (like neural networks with sigmoid activations), but is highly sensitive to extreme outliers.
+
+### Worked Example
+Comparing StandardScaler and MinMaxScaler:
+```python
+# scikit-learn==1.4.2
+import numpy as np
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+X = np.array([[20.0, 30000.0], [40.0, 80000.0], [60.0, 150000.0]])
+
+# StandardScaler -> zero mean, unit variance
+std_scaler = StandardScaler()
+X_std = std_scaler.fit_transform(X)
+
+# MinMaxScaler -> bounded [0, 1]
+minmax_scaler = MinMaxScaler()
+X_minmax = minmax_scaler.fit_transform(X)
+
+print(f"Standardized:\n{X_std.round(2)}")
+print(f"MinMax [0, 1]:\n{X_minmax.round(2)}")
+```
+
+### Common Mistake
+Fitting the scaler on the combined dataset before splitting into train and test sets, which leaks test distribution parameters ($\mu, \sigma$) into training.
+
+### Check Yourself
+Which scaling method compresses all continuous numerical values strictly into the interval $[0, 1]$? (MinMaxScaler).

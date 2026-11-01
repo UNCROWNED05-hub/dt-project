@@ -1,0 +1,45 @@
+---
+loId: "aiml-05-lo06"
+title: "Overfitting Prevention: Ridge (L2) and Lasso (L1) Regularization"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+When models have many collinear features or high polynomial degrees, parameter weights can grow excessively large. Large weights cause the model to fit high-frequency training noise, resulting in low training error but high test error (overfitting). **Regularization** adds a penalty term on weight magnitude to the objective loss function:
+$$J(\mathbf{w}) = L_{\text{data}}(\mathbf{w}) + \lambda \cdot \Omega(\mathbf{w})$$
+where $\lambda > 0$ controls the regularization strength.
+
+1. **Ridge Regularization (L2 Norm)**:
+$$\Omega(\mathbf{w}) = \|\mathbf{w}\|_2^2 = \sum_{j=1}^D w_j^2$$
+Penalizes the sum of squared weights. It shrinks all weights smoothly towards zero, reducing model variance while retaining all features.
+2. **Lasso Regularization (L1 Norm)**:
+$$\Omega(\mathbf{w}) = \|\mathbf{w}\|_1 = \sum_{j=1}^D |w_j|$$
+Penalizes the sum of absolute values. Due to diamond-shaped geometric constraint contours, Lasso drives non-essential weights to exactly zero, performing automated feature selection.
+
+### Worked Example
+Comparing Ridge and Lasso feature shrinkage in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.linear_model import Ridge, Lasso
+import numpy as np
+
+# 10 correlated features
+X = np.random.randn(50, 10)
+y = 3.0 * X[:, 0] - 2.0 * X[:, 1] + np.random.randn(50) * 0.1
+
+ridge = Ridge(alpha=1.0).fit(X, y)
+lasso = Lasso(alpha=0.2).fit(X, y)
+
+print(f"Ridge coefficients: {ridge.coef_.round(2)}") # All non-zero, shrunken
+print(f"Lasso coefficients: {lasso.coef_.round(2)}") # Zeros out uninformative features
+print(f"Lasso zeroed features: {np.sum(lasso.coef_ == 0)} of 10")
+```
+
+### Common Mistake
+Regularizing the bias intercept parameter $b$. Regularization penalties should strictly penalize feature slope weights $\mathbf{w}$, not the baseline vertical offset.
+
+### Check Yourself
+Which regularization penalty drives non-essential feature weights to exactly zero, producing sparse models? (L1 Lasso regularization).
