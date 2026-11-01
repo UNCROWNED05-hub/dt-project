@@ -1,0 +1,1131 @@
+[
+  {
+    "loId": "iot-09-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q01",
+    "stem": "What is Edge Computing in the context of IoT architectures?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Processing and analyzing sensor data locally on end devices and local gateways rather than offloading raw streams to cloud data centers."
+      },
+      {
+        "id": "b",
+        "text": "Placing servers on the edge of physical tables."
+      },
+      {
+        "id": "c",
+        "text": "Using sharp tools to slice circuit boards."
+      },
+      {
+        "id": "d",
+        "text": "Operating computers without internet."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Edge computing brings computation closer to the data source to minimize latency and bandwidth consumption.",
+    "noteRef": "iot-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q02",
+    "stem": "An automated emergency shutdown system on a high-speed industrial turbine must detect anomalous vibration and trip circuit breakers in under 5 milliseconds. Why can this system NOT rely on a cloud API?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cloud servers cannot calculate numbers."
+      },
+      {
+        "id": "b",
+        "text": "Cloud round-trip network transmission latencies (typically 50ms - 300ms) far exceed the mandatory 5ms safety limit."
+      },
+      {
+        "id": "c",
+        "text": "Turbines do not have electrical power."
+      },
+      {
+        "id": "d",
+        "text": "Cloud APIs are illegal in industrial plants."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Network round-trip latency introduces variable delays exceeding critical sub-millisecond safety windows.",
+    "noteRef": "iot-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-09-q03",
+    "stem": "Which of the following are primary benefits achieved by running machine learning models at the edge?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Deterministic, ultra-low inference latency"
+      },
+      {
+        "id": "b",
+        "text": "Massive bandwidth conservation across cellular and satellite links"
+      },
+      {
+        "id": "c",
+        "text": "Enhanced user privacy by keeping sensitive biometric/audio data on-device"
+      },
+      {
+        "id": "d",
+        "text": "Elimination of all software bugs"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Latency, bandwidth savings, privacy, and offline autonomy are core drivers of edge computing.",
+    "noteRef": "iot-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q04",
+    "stem": "How does edge TinyML inference enhance compliance with data privacy regulations such as GDPR and India's DPDP Act?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Edge computing legally exempts devices from all privacy laws."
+      },
+      {
+        "id": "b",
+        "text": "Edge devices automatically delete customer files."
+      },
+      {
+        "id": "c",
+        "text": "Raw personal data (voice recordings, camera images) is processed in volatile memory and discarded locally, preventing unauthorized transmission to cloud servers."
+      },
+      {
+        "id": "d",
+        "text": "It converts personal names into random numbers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Processing locally minimizes data collection and exposure, upholding privacy-by-design standards.",
+    "noteRef": "iot-09-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q05",
+    "stem": "In what format are optimized neural network models typically embedded into microcontroller C/C++ firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "As an uncompiled Python `.py` script"
+      },
+      {
+        "id": "b",
+        "text": "As a Microsoft Word `.docx` file"
+      },
+      {
+        "id": "c",
+        "text": "As an SQL database dump"
+      },
+      {
+        "id": "d",
+        "text": "As a static C byte array (`const unsigned char model_data[]`)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Models are exported as raw byte arrays in C header files, stored in read-only flash memory.",
+    "noteRef": "iot-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q06",
+    "stem": "An engineer wants to train a machine learning model to classify industrial machine sounds. Where should the model training phase take place?",
+    "options": [
+      {
+        "id": "a",
+        "text": "On a high-performance workstation or cloud GPU cluster, before quantizing and deploying to the microcontroller."
+      },
+      {
+        "id": "b",
+        "text": "Directly on an Arduino Uno during production operation."
+      },
+      {
+        "id": "c",
+        "text": "Inside an analog operational amplifier."
+      },
+      {
+        "id": "d",
+        "text": "On the physical audio microphone diaphragm."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Backpropagation training requires massive matrix computation and RAM; only inference runs on MCUs.",
+    "noteRef": "iot-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-09-q07",
+    "stem": "Which of the following stages are standard components of the TinyML engineering lifecycle?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data collection and preprocessing feature extraction"
+      },
+      {
+        "id": "b",
+        "text": "Model training and int8 quantization"
+      },
+      {
+        "id": "c",
+        "text": "Exporting model to C byte array for on-device inference"
+      },
+      {
+        "id": "d",
+        "text": "Hand-soldering individual transistors for every neural weight"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Data collection, training, quantization, and C array deployment form the standard TinyML workflow.",
+    "noteRef": "iot-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q08",
+    "stem": "What open-source software tool from Google converts trained TensorFlow/Keras models into optimized `.tflite` files?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Docker"
+      },
+      {
+        "id": "b",
+        "text": "TFLiteConverter (TensorFlow Lite Converter)"
+      },
+      {
+        "id": "c",
+        "text": "Wireshark"
+      },
+      {
+        "id": "d",
+        "text": "GitLab"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`tf.lite.TFLiteConverter` applies graph optimizations and quantization to export compact TFLite models.",
+    "noteRef": "iot-09-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q09",
+    "stem": "What data type is standardly used for neural network weights and activations in quantized TinyML models?",
+    "options": [
+      {
+        "id": "a",
+        "text": "float64 (64-bit double precision float)"
+      },
+      {
+        "id": "b",
+        "text": "complex128"
+      },
+      {
+        "id": "c",
+        "text": "int8 (8-bit signed integer)"
+      },
+      {
+        "id": "d",
+        "text": "ASCII strings"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`int8` signed integers (-128 to 127) are the industry standard representation for quantized TinyML.",
+    "noteRef": "iot-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-09-q10",
+    "stem": "A float32 deep learning model has a memory footprint of 400 KB. What is its approximate size (in KB) after full int8 post-training quantization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "200"
+      },
+      {
+        "id": "b",
+        "text": "50"
+      },
+      {
+        "id": "c",
+        "text": "400"
+      },
+      {
+        "id": "d",
+        "text": "100"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Quantizing 32-bit floats to 8-bit integers compresses weights by 4x: 400 KB / 4 = 100 KB.",
+    "noteRef": "iot-09-lo03",
+    "verify": "(400 / 4 === 100)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q11",
+    "stem": "An engineer notices an int8 quantized model runs 3x faster than the original float32 model on an ARM Cortex-M4 microcontroller without a hardware floating-point unit (FPU). Why?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The CPU executes integer operations natively in single clock cycles, avoiding slow multi-cycle software floating-point emulation libraries."
+      },
+      {
+        "id": "b",
+        "text": "The int8 model skips half the layers."
+      },
+      {
+        "id": "c",
+        "text": "The microcontroller clock speed automatically doubles."
+      },
+      {
+        "id": "d",
+        "text": "Floating point math generates heat that throttles the CPU."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "MCUs without hardware FPUs emulate float math in software, taking dozens of cycles per operation.",
+    "noteRef": "iot-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q12",
+    "stem": "In the quantization equation `real_value = (quantized_int - zero_point) * scale`, what is the role of `zero_point`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It sets the starting battery voltage."
+      },
+      {
+        "id": "b",
+        "text": "It maps the real-world value of 0.0 to an exact integer value in the quantized range, ensuring that zero-padding does not introduce numerical bias."
+      },
+      {
+        "id": "c",
+        "text": "It clears memory on startup."
+      },
+      {
+        "id": "d",
+        "text": "It calculates network latency."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Zero-point ensures real 0.0 maps exactly to an integer, critical for zero-padded convolution layers.",
+    "noteRef": "iot-09-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q13",
+    "stem": "What is the Tensor Arena in TensorFlow Lite for Microcontrollers (TFLM)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A physical esports stadium for robots."
+      },
+      {
+        "id": "b",
+        "text": "An online marketplace for selling AI models."
+      },
+      {
+        "id": "c",
+        "text": "A pre-allocated contiguous memory array in SRAM used by the interpreter to store activation tensors and scratchpad memory."
+      },
+      {
+        "id": "d",
+        "text": "A graphics card processor."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The Tensor Arena is the static memory pool where TFLM allocates all intermediate runtime buffers.",
+    "noteRef": "iot-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q15",
+    "stem": "An engineer calls `interpreter.AllocateTensors()` in an ESP32 sketch, but it returns `kTfLiteError`. What is the most likely root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Wi-Fi antenna is disconnected."
+      },
+      {
+        "id": "b",
+        "text": "The microcontroller is running out of ground pins."
+      },
+      {
+        "id": "c",
+        "text": "The USB cable is plugged into a 3.0 port."
+      },
+      {
+        "id": "d",
+        "text": "The declared `tensor_arena` buffer size is too small to fit the model's activation tensors and working memory."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "If intermediate layer activation maps exceed the allocated arena capacity, `AllocateTensors()` fails.",
+    "noteRef": "iot-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-09-q16",
+    "stem": "Which of the following architectural constraints are strictly enforced by TensorFlow Lite for Microcontrollers (TFLM)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zero dynamic memory allocations (`malloc` or `new`) during runtime inference"
+      },
+      {
+        "id": "b",
+        "text": "No dependencies on underlying operating system kernel services (runs bare-metal)"
+      },
+      {
+        "id": "c",
+        "text": "Static compilation of required operator kernels to minimize binary code size"
+      },
+      {
+        "id": "d",
+        "text": "Mandatory requirement of 32 GB RAM"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "TFLM is designed for bare-metal systems with zero dynamic allocations and minimal code size.",
+    "noteRef": "iot-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q17",
+    "stem": "Why does TFLM encourage using `MicroMutableOpResolver` instead of `AllOpsResolver` in production firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`MicroMutableOpResolver` links only the specific math operators used by the model, shaving tens of kilobytes of unused library code from the final binary."
+      },
+      {
+        "id": "b",
+        "text": "`AllOpsResolver` does not support int8 models."
+      },
+      {
+        "id": "c",
+        "text": "`MicroMutableOpResolver` automatically connects to Wi-Fi."
+      },
+      {
+        "id": "d",
+        "text": "`AllOpsResolver` is deprecated by ISO."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Registering only used operators prevents linker bloat, saving critical flash space on embedded targets.",
+    "noteRef": "iot-09-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q18",
+    "stem": "What is Edge Impulse in the embedded machine learning ecosystem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A high-voltage pulse generator."
+      },
+      {
+        "id": "b",
+        "text": "A cloud-based development platform that automates data collection, DSP feature engineering, and TinyML model deployment for embedded devices."
+      },
+      {
+        "id": "c",
+        "text": "An electrical transformer."
+      },
+      {
+        "id": "d",
+        "text": "A physical accelerometer sensor chip."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Edge Impulse provides end-to-end tools to build and deploy ML pipelines to microcontrollers.",
+    "noteRef": "iot-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q19",
+    "stem": "An engineer builds a vibration classification model for factory pumps using Edge Impulse. What processing block converts raw time-series vibration waveforms into frequency energy bins?",
+    "options": [
+      {
+        "id": "a",
+        "text": "UART Serial driver"
+      },
+      {
+        "id": "b",
+        "text": "MQTT broker"
+      },
+      {
+        "id": "c",
+        "text": "Spectral Analysis (FFT) DSP block"
+      },
+      {
+        "id": "d",
+        "text": "DC motor driver"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Spectral analysis uses FFTs to compute frequency power distributions from raw time-series accelerometer data.",
+    "noteRef": "iot-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-09-q20",
+    "stem": "Which of the following metrics does Edge Impulse profile for target hardware before model deployment?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Estimated on-device inference latency (milliseconds)"
+      },
+      {
+        "id": "b",
+        "text": "Peak RAM / Tensor Arena consumption (bytes)"
+      },
+      {
+        "id": "c",
+        "text": "Flash memory binary footprint (bytes)"
+      },
+      {
+        "id": "d",
+        "text": "Physical weight of the microcontroller in grams"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Edge Impulse profiles execution time, peak RAM, and flash footprint across target MCU architectures.",
+    "noteRef": "iot-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q21",
+    "stem": "What format does Edge Impulse export for deployment into standard Arduino IDE or ESP-IDF projects?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A Python `.whl` package requiring pip."
+      },
+      {
+        "id": "b",
+        "text": "An uncompiled Linux kernel module."
+      },
+      {
+        "id": "c",
+        "text": "A web browser extension."
+      },
+      {
+        "id": "d",
+        "text": "A standalone, self-contained C++ library containing DSP feature code and trained model weights."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Edge Impulse exports self-contained C++ source trees that compile directly with native embedded toolchains.",
+    "noteRef": "iot-09-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q22",
+    "stem": "What digital bus interface is standardly used to connect digital MEMS microphones (like INMP441) to microcontrollers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "I2S (Inter-IC Sound)"
+      },
+      {
+        "id": "b",
+        "text": "RS-232"
+      },
+      {
+        "id": "c",
+        "text": "CAN Bus"
+      },
+      {
+        "id": "d",
+        "text": "Ethernet"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "I2S (Inter-IC Sound) is the standard serial bus for streaming digital audio data into microcontrollers.",
+    "noteRef": "iot-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q23",
+    "stem": "A Keyword Spotting (KWS) firmware processes 1 second of audio into a 2D image representing frequency intensities over time. What is this representation called?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A Barcode"
+      },
+      {
+        "id": "b",
+        "text": "A Spectrogram (or MFCC heat map)"
+      },
+      {
+        "id": "c",
+        "text": "A QR code"
+      },
+      {
+        "id": "d",
+        "text": "A Vector table"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Spectrograms display time on the horizontal axis and frequency bins on the vertical axis.",
+    "noteRef": "iot-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-09-q24",
+    "stem": "What neural network layer architecture is most effective at classifying 2D audio spectrogram features in TinyML models?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Linear Regression"
+      },
+      {
+        "id": "b",
+        "text": "K-Means Clustering"
+      },
+      {
+        "id": "c",
+        "text": "2D Convolutional Neural Network (CNN) / Depthwise Separable CNN"
+      },
+      {
+        "id": "d",
+        "text": "Sorting Algorithm"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "2D CNNs excel at detecting local time-frequency acoustic patterns like formant transitions.",
+    "noteRef": "iot-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q25",
+    "stem": "Why are Mel-Frequency Cepstral Coefficients (MFCCs) preferred over raw linear FFT frequency bins for human speech recognition?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because MFCC files are written in English."
+      },
+      {
+        "id": "b",
+        "text": "Because FFT does not work on speech."
+      },
+      {
+        "id": "c",
+        "text": "MFCCs consume zero bytes of memory."
+      },
+      {
+        "id": "d",
+        "text": "The Mel scale non-linearly spaces frequency bands to match human ear perception (higher resolution at low frequencies, coarser at high frequencies)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "The Mel scale models human auditory non-linear pitch perception, concentrating features where speech cues reside.",
+    "noteRef": "iot-09-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q26",
+    "stem": "In embedded microcontrollers, which memory component is almost always the primary limiting bottleneck for running deep learning models?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Internal SRAM (RAM)"
+      },
+      {
+        "id": "b",
+        "text": "SPI Flash memory"
+      },
+      {
+        "id": "c",
+        "text": "EEPROM"
+      },
+      {
+        "id": "d",
+        "text": "CPU clock frequency"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Internal SRAM is very scarce (e.g. 320 KB on ESP32, 2 KB on AVR); activation tensors must fit in SRAM.",
+    "noteRef": "iot-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q27",
+    "stem": "An engineer designs an image classification CNN for ESP32. The model weights are 200 KB (fits in 4MB Flash), but Layer 1 generates a 400 KB activation tensor. Why will this model fail to execute?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The camera is too small."
+      },
+      {
+        "id": "b",
+        "text": "The 400 KB activation tensor exceeds the ESP32's maximum available internal SRAM (~320 KB), causing allocation failure."
+      },
+      {
+        "id": "c",
+        "text": "The ESP32 runs at 240 MHz."
+      },
+      {
+        "id": "d",
+        "text": "The flash memory burns out."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Intermediate layer activation maps must reside in fast internal SRAM during layer forward passes.",
+    "noteRef": "iot-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo07",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-09-q28",
+    "stem": "If a microcontroller core performs an average of 5,000,000 MAC operations per second, approximately how many milliseconds will a 100,000 MAC neural network take to execute?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100"
+      },
+      {
+        "id": "b",
+        "text": "5"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "500"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "100,000 / 5,000,000 = 0.02 seconds = 20 milliseconds.",
+    "noteRef": "iot-09-lo07",
+    "verify": "((100000 / 5000000) * 1000 === 20)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q29",
+    "stem": "Why does reducing intermediate feature map spatial dimensions (e.g. via strided convolutions or pooling) conserve SRAM in TinyML models?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It reduces the clock speed."
+      },
+      {
+        "id": "b",
+        "text": "It deletes the model weights."
+      },
+      {
+        "id": "c",
+        "text": "It prevents Wi-Fi disconnects."
+      },
+      {
+        "id": "d",
+        "text": "It decreases the height and width of tensor output arrays, directly shrinking the memory buffer required inside the Tensor Arena."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Activation tensor size equals $H \\times W \\times C$; reducing spatial dimensions directly reduces SRAM consumption.",
+    "noteRef": "iot-09-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-09-q30",
+    "stem": "What machine learning architecture is standardly used for unsupervised vibration anomaly detection in predictive maintenance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Autoencoder Neural Network"
+      },
+      {
+        "id": "b",
+        "text": "Decision Tree Regressor"
+      },
+      {
+        "id": "c",
+        "text": "Naive Bayes Classifier"
+      },
+      {
+        "id": "d",
+        "text": "Binary Search Tree"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Autoencoders compress and reconstruct normal signals, flagging anomalies when reconstruction error spikes.",
+    "noteRef": "iot-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q31",
+    "stem": "An Autoencoder model on an industrial pump monitors bearing vibration. During healthy operation, reconstruction error averages 0.04. Suddenly, the error jumps to 4.2. What does this indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The pump is working better than ever."
+      },
+      {
+        "id": "b",
+        "text": "The pump is vibrating with novel, anomalous frequency patterns indicative of mechanical wear or impending failure."
+      },
+      {
+        "id": "c",
+        "text": "The microcontroller flash memory was erased."
+      },
+      {
+        "id": "d",
+        "text": "The database password changed."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "High reconstruction error proves the current input does not match the normal healthy baseline learned during training.",
+    "noteRef": "iot-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-09-q32",
+    "stem": "Which mechanical machinery faults can be detected early using high-frequency vibration analysis?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bearing ball race pitting and spalling"
+      },
+      {
+        "id": "b",
+        "text": "Shaft misalignment and rotational imbalance"
+      },
+      {
+        "id": "c",
+        "text": "Gear tooth cracking and chipping"
+      },
+      {
+        "id": "d",
+        "text": "Software copyright licensing violations"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Vibration spectral analysis detects bearing pitting, imbalance, and gear tooth fractures.",
+    "noteRef": "iot-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-09-q33",
+    "stem": "Why is unsupervised anomaly detection preferred over supervised classification for factory predictive maintenance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Supervised models cannot run on microcontrollers."
+      },
+      {
+        "id": "b",
+        "text": "Unsupervised models do not use mathematics."
+      },
+      {
+        "id": "c",
+        "text": "Industrial machines operate normally 99.9% of the time; real-world destructive failure training data is rare, dangerous to induce, and expensive to obtain."
+      },
+      {
+        "id": "d",
+        "text": "Factory managers prefer random decisions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Machine failure data is exceedingly scarce; autoencoders need only healthy baseline operational data to train.",
+    "noteRef": "iot-09-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-09-q34",
+    "stem": "What does SIMD stand for in microcontroller processor architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Serial Interface Memory Device"
+      },
+      {
+        "id": "b",
+        "text": "System Isolation Monitoring Daemon"
+      },
+      {
+        "id": "c",
+        "text": "Synchronous Input Modulator"
+      },
+      {
+        "id": "d",
+        "text": "Single Instruction, Multiple Data"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "SIMD (Single Instruction, Multiple Data) executes a single operation on multiple packed data elements in parallel.",
+    "noteRef": "iot-09-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-09-q35",
+    "stem": "A firmware developer compiles an audio Keyword Spotting model on an ARM Cortex-M4 board with ARM's CMSIS-NN library enabled. What speedup can they expect over standard reference C++ code?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Roughly 3x to 5x faster inference execution with proportional energy savings."
+      },
+      {
+        "id": "b",
+        "text": "1,000,000x faster execution."
+      },
+      {
+        "id": "c",
+        "text": "No speedup whatsoever."
+      },
+      {
+        "id": "d",
+        "text": "The code will run 10x slower."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "CMSIS-NN leverages SIMD DSP instructions to accelerate 8-bit convolutions by 3x to 5x.",
+    "noteRef": "iot-09-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-09-q36",
+    "stem": "Which of the following embedded hardware acceleration libraries optimize neural network execution on microcontrollers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "CMSIS-NN (for ARM Cortex-M cores)"
+      },
+      {
+        "id": "b",
+        "text": "ESP-NN (for Espressif ESP32 Xtensa and RISC-V cores)"
+      },
+      {
+        "id": "c",
+        "text": "Apache Hadoop"
+      },
+      {
+        "id": "d",
+        "text": "Nvidia CUDA on microcontrollers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "CMSIS-NN (ARM) and ESP-NN (Espressif) are the primary hardware assembly libraries for microcontrollers.",
+    "noteRef": "iot-09-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-09-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-09-q37",
+    "stem": "How does the ARM CMSIS-NN library achieve significant speedups on Cortex-M processors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By overclocking the microcontroller crystal oscillator beyond factory ratings."
+      },
+      {
+        "id": "b",
+        "text": "By using SIMD instructions to perform four 8-bit integer multiply-accumulate operations in a single CPU clock cycle."
+      },
+      {
+        "id": "c",
+        "text": "By transmitting the neural network weights to an external GPU server over Wi-Fi."
+      },
+      {
+        "id": "d",
+        "text": "By converting 8-bit integers into 64-bit double precision floats."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "CMSIS-NN packs four 8-bit inputs into 32-bit registers and uses SIMD instructions for parallel multiply-accumulate operations.",
+    "noteRef": "iot-09-lo09",
+    "reviewed": false
+  }
+]

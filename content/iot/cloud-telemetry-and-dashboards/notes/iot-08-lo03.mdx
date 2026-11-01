@@ -1,0 +1,41 @@
+---
+loId: "iot-08-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Traditional relational databases (PostgreSQL, MySQL) degrade under massive ingestion of append-only sensor telemetry; Time-Series Databases (TSDBs) are purpose-built for continuous metrics:
+1. TSDB Architecture:
+   Optimized for timestamped records `(timestamp, entity_id, metric, value)`. Employs columnar storage, automatic time-partitioned chunking (hypertables), and aggressive compression algorithms (Gorilla XOR for floats, Delta-of-delta for timestamps) reducing storage by up to $90\%$.
+2. TimescaleDB (PostgreSQL Extension):
+   Provides full standard SQL compatibility while automatically partitioning tables into temporal "chunks". Supports continuous aggregates for automated materialized rollups.
+3. InfluxDB (Native TSDB):
+   Uses a schemaless tag/field model optimized for millisecond-resolution telemetry and automated data retention policies.
+4. Downsampling and Retention Policies:
+   Keep high-resolution raw data (every 1 second) for 7 days, downsample to 1-minute averages for 90 days, and archive 1-hour averages for 5 years, preventing infinite storage growth.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+TimescaleDB continuous aggregate query computing hourly average temperature:
+```sql
+CREATE MATERIALIZED VIEW hourly_temperature_summary
+WITH (timescaledb.continuous) AS
+SELECT 
+    device_id,
+    time_bucket('1 hour', time) AS hour_bucket,
+    AVG(temperature) AS avg_temp,
+    MAX(temperature) AS max_temp,
+    MIN(temperature) AS min_temp
+FROM sensor_telemetry
+GROUP BY device_id, hour_bucket;
+```
+
+### Common Mistake
+Storing raw 1-second interval sensor data in an unpartitioned standard relational table without automated retention or downsampling, causing disk exhaustion and sluggish dashboard queries within months.
+
+### Check Yourself
+What primary optimization distinguishes time-series databases from standard relational databases when storing high-frequency sensor readings?

@@ -1,0 +1,38 @@
+---
+loId: "iot-08-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Deploying enterprise IoT products across global customer accounts requires automated zero-touch provisioning and multi-tenant fleet isolation:
+1. Zero-Touch Onboarding:
+   Devices are unboxed, powered on, and automatically claim ownership in the cloud without technician configuration:
+   - Factory Flashing: Each device is programmed with a hardware unique ID and bootstrap certificate.
+   - Claim Verification: When powered on at a customer facility, the device contacts the bootstrap server; ownership is validated using pre-purchased serial numbers.
+   - Dynamic Re-Provisioning: The bootstrap server delivers a customer-specific operational certificate and endpoint URL; the device closes the bootstrap session and connects to the customer's production broker.
+2. Multi-Tenant Fleet Isolation:
+   - Policy-based isolation restricts customer tenants to their specific MQTT topic trees (`customer_abc/#`).
+   - Tenant data is partitioned into separate database schemas or independent cloud accounts.
+3. Fleet OTA Campaigns:
+   Deploy firmware updates gradually across canary stages (e.g. 1% -> 10% -> 100%) to catch regressions before affecting the entire global fleet.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Canary fleet OTA deployment rollout strategy:
+```text
+Phase 1: Canary Deploy (1% of fleet, 24-hour soak test)
+   └── If error rate < 0.05% -> Proceed to Phase 2
+Phase 2: Regional Rollout (20% of fleet, 48-hour soak test)
+   └── If watchdog reset rate stable -> Proceed to Phase 3
+Phase 3: Global Production Release (100% of fleet)
+```
+
+### Common Mistake
+Rolling out a brand-new OTA firmware release to 100% of an enterprise fleet simultaneously; a subtle regression bricks every customer device globally with no rollback recourse.
+
+### Check Yourself
+Why do professional IoT fleet operators deploy firmware updates through gradual canary stages rather than releasing to 100% of devices at once?

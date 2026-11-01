@@ -1,0 +1,44 @@
+---
+loId: "iot-08-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+The Device Shadow (Digital Twin) pattern bridges physical IoT hardware with asynchronous cloud applications through dual reported and desired state records:
+1. Architectural Problem: IoT devices sleep or lose network connection. If a smartphone user switches a smart valve "ON" while the valve is offline, the command must not be lost.
+2. The Dual-State Model:
+   - Reported State: The current real-world state reported by the physical device firmware (e.g., `{"valve": "closed"}`).
+   - Desired State: The target state requested by a user or business application (e.g., `{"valve": "open"}`).
+3. Delta Generation & Reconciliation:
+   When `reported != desired`, the cloud generates a `$aws/things/<device>/shadow/update/delta` JSON payload containing only the conflicting keys.
+   - When the device wakes up or reconnects, it receives the delta document.
+   - The device actuates the physical hardware (opens the valve).
+   - The device publishes an update setting `reported.valve = "open"`, clearing the delta.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Simulating shadow delta calculation in Python:
+```python
+def calculate_shadow_delta(reported_state, desired_state):
+    delta = {}
+    for key, desired_val in desired_state.items():
+        if reported_state.get(key) != desired_val:
+            delta[key] = desired_val
+    return delta
+
+reported = {"relay": "OFF", "brightness": 50}
+desired  = {"relay": "ON",  "brightness": 50}
+
+delta = calculate_shadow_delta(reported, desired)
+print(f"Shadow Delta to dispatch: {delta}") # {'relay': 'ON'}
+```
+
+### Common Mistake
+Publishing the entire device state tree back to the shadow on every sensor reading; this generates excessive cloud message metering charges. Publish only modified attributes.
+
+### Check Yourself
+When does an IoT cloud shadow service dispatch a message to the `delta` topic?

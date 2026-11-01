@@ -1,0 +1,1134 @@
+[
+  {
+    "loId": "iot-08-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q01",
+    "stem": "What is the primary function of a Cloud IoT Device Registry?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To maintain an authoritative catalog of managed physical devices, their digital identities, and authorization policies."
+      },
+      {
+        "id": "b",
+        "text": "To manufacture circuit boards."
+      },
+      {
+        "id": "c",
+        "text": "To compile C++ code into machine language."
+      },
+      {
+        "id": "d",
+        "text": "To test battery capacity."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Device registries track provisioned nodes, metadata, certificates, and access policies.",
+    "noteRef": "iot-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q02",
+    "stem": "A company manufactures 50,000 smart thermostat units. Rather than burning individual certificates during factory production, each unit boots with a bootstrap claim certificate that downloads its permanent certificate upon first boot. What is this process called?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Manual serial terminal registration"
+      },
+      {
+        "id": "b",
+        "text": "Fleet Provisioning by Claim"
+      },
+      {
+        "id": "c",
+        "text": "Wi-Fi brute forcing"
+      },
+      {
+        "id": "d",
+        "text": "Analog calibration"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Provisioning by Claim allows unboxed devices to bootstrap and download operational certificates automatically.",
+    "noteRef": "iot-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q03",
+    "stem": "Which of the following attributes are standard metadata elements tracked in enterprise cloud device registries?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hardware Model & Serial Number"
+      },
+      {
+        "id": "b",
+        "text": "Active X.509 Certificate Status"
+      },
+      {
+        "id": "c",
+        "text": "Current Firmware Version"
+      },
+      {
+        "id": "d",
+        "text": "Owner's personal bank account password"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Registries store hardware models, firmware versions, and crypto credentials, never banking passwords.",
+    "noteRef": "iot-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q04",
+    "stem": "Why is sharing a single shared private key across thousands of IoT devices a catastrophic architectural flaw?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the cloud broker will run out of memory."
+      },
+      {
+        "id": "b",
+        "text": "Because private keys expire after 5 minutes."
+      },
+      {
+        "id": "c",
+        "text": "Extracting the private key from a single compromised device allows an attacker to authenticate as and impersonate any device across the entire fleet."
+      },
+      {
+        "id": "d",
+        "text": "Because shared keys slow down Wi-Fi speed."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A single shared key breaks isolation; compromising one device exposes the entire fleet.",
+    "noteRef": "iot-08-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q05",
+    "stem": "In the Device Shadow / Digital Twin pattern, what is the difference between 'reported' and 'desired' state?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Reported is for analog sensors; Desired is for digital sensors."
+      },
+      {
+        "id": "b",
+        "text": "Desired is only used when the battery is dead."
+      },
+      {
+        "id": "c",
+        "text": "There is no difference between reported and desired states."
+      },
+      {
+        "id": "d",
+        "text": "Reported is the actual current hardware state sent by the device; Desired is the target state requested by a user or application."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Reported reflects physical reality; desired reflects user intention.",
+    "noteRef": "iot-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q06",
+    "stem": "A user switches a smart garden sprinkler 'ON' via mobile app while the sprinkler controller is asleep. What does the cloud shadow service do when the controller reconnects?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It publishes a delta message containing `{\"valve\": \"ON\"}` to the device so it synchronizes its physical state."
+      },
+      {
+        "id": "b",
+        "text": "It deletes the sprinkler from the database."
+      },
+      {
+        "id": "c",
+        "text": "It sounds an alarm on the user's phone."
+      },
+      {
+        "id": "d",
+        "text": "It switches the sprinkler permanently to manual mode."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The delta topic notifies the device of discrepancies between its reported state and desired target state.",
+    "noteRef": "iot-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q07",
+    "stem": "Which of the following topics are standard MQTT topic endpoints in AWS IoT Device Shadow architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`$aws/things/<device_name>/shadow/update`"
+      },
+      {
+        "id": "b",
+        "text": "`$aws/things/<device_name>/shadow/update/delta`"
+      },
+      {
+        "id": "c",
+        "text": "`$aws/things/<device_name>/shadow/get`"
+      },
+      {
+        "id": "d",
+        "text": "`$aws/things/<device_name>/delete_firmware`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Standard shadow topics include update, delta, and get; delete_firmware is not a shadow endpoint.",
+    "noteRef": "iot-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q08",
+    "stem": "How does the Device Shadow pattern decouple mobile user interfaces from flaky, intermittent device network connections?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It creates a direct Bluetooth link over the internet."
+      },
+      {
+        "id": "b",
+        "text": "Apps interact with the persistent cloud shadow document instantly without waiting for sleeping or offline hardware to respond."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need for cloud databases."
+      },
+      {
+        "id": "d",
+        "text": "It forces the physical device to stay awake permanently."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Applications read and modify cloud state records asynchronously; physical devices reconcile when online.",
+    "noteRef": "iot-08-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q09",
+    "stem": "What primary optimization allows Time-Series Databases (TSDBs) like InfluxDB and TimescaleDB to handle massive sensor write workloads?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Storing data as uncompressed text files on desktop folders."
+      },
+      {
+        "id": "b",
+        "text": "Disabling all data encryption."
+      },
+      {
+        "id": "c",
+        "text": "Automatic temporal partitioning (hypertables) and columnar compression tailored for timestamped sequences."
+      },
+      {
+        "id": "d",
+        "text": "Requiring manual sorting by human operators."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "TSDBs partition data into time chunks and compress repetitive timestamps and metrics efficiently.",
+    "noteRef": "iot-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q10",
+    "stem": "An IoT architecture collects vibration metrics at 100 Hz. After 30 days, individual sub-second readings are no longer needed, but 1-hour average trends must be kept for 3 years. What TSDB feature implements this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Full manual table deletion."
+      },
+      {
+        "id": "b",
+        "text": "Rebooting the server daily."
+      },
+      {
+        "id": "c",
+        "text": "Converting numbers into PDF reports."
+      },
+      {
+        "id": "d",
+        "text": "Continuous Aggregates with Downsampling and Data Retention Policies."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Downsampling calculates rollups into aggregates while retention policies drop old granular raw data.",
+    "noteRef": "iot-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-08-q11",
+    "stem": "What compression algorithm is widely used in time-series databases to compress 64-bit floating-point sensor values?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gorilla XOR-based floating point compression"
+      },
+      {
+        "id": "b",
+        "text": "MP3 audio compression"
+      },
+      {
+        "id": "c",
+        "text": "JPEG lossy image compression"
+      },
+      {
+        "id": "d",
+        "text": "ROT13 substitution"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Facebook's Gorilla algorithm compresses float values using XOR deltas between consecutive samples.",
+    "noteRef": "iot-08-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo03",
+    "type": "numeric",
+    "difficulty": 3,
+    "id": "iot-08-q12",
+    "stem": "If a sensor transmits 1 record per second, and downsampling aggregates 60 seconds into a single 1-minute summary record, by what factor is the number of stored rows reduced?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "60"
+      },
+      {
+        "id": "c",
+        "text": "3600"
+      },
+      {
+        "id": "d",
+        "text": "2"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "60 raw records are condensed into 1 summary record, reducing rows by a factor of 60.",
+    "noteRef": "iot-08-lo03",
+    "verify": "(60 / 1 === 60)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q13",
+    "stem": "What open-source visualization platform is widely used to build real-time time-series telemetry dashboards?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Photoshop"
+      },
+      {
+        "id": "b",
+        "text": "Microsoft Word"
+      },
+      {
+        "id": "c",
+        "text": "Grafana"
+      },
+      {
+        "id": "d",
+        "text": "Postman"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Grafana is the leading open-source dashboard visualization tool for metrics and time-series data.",
+    "noteRef": "iot-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q14",
+    "stem": "An operator monitors 500 solar inverters in Grafana. How can they view individual inverter metrics without duplicating 500 separate dashboard pages?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Open 500 browser tabs simultaneously."
+      },
+      {
+        "id": "b",
+        "text": "Print out graphs on paper."
+      },
+      {
+        "id": "c",
+        "text": "Manually edit the database SQL table every time."
+      },
+      {
+        "id": "d",
+        "text": "Use a Dashboard Variable (e.g. `$inverter_id`) to dynamically populate queries from a single master dashboard."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Template variables allow one dashboard template to dynamically display telemetry for any selected device.",
+    "noteRef": "iot-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q15",
+    "stem": "Which of the following dashboard components are commonly featured in IoT platforms like ThingsBoard?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Real-time gauge and time-series line charts"
+      },
+      {
+        "id": "b",
+        "text": "Geographic map widgets tracking GPS asset locations"
+      },
+      {
+        "id": "c",
+        "text": "Control widgets (switches, buttons) that publish MQTT RPC commands to hardware"
+      },
+      {
+        "id": "d",
+        "text": "Automated compiler debuggers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "ThingsBoard provides telemetry charts, maps, and interactive control widgets to send commands to devices.",
+    "noteRef": "iot-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q16",
+    "stem": "Why should dashboard alert rules incorporate evaluation delay periods (e.g. 'condition met for 5 minutes') rather than triggering instantly on a single sample spike?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To filter out transient electrical sensor noise or temporary network blips, preventing alert fatigue caused by false alarms."
+      },
+      {
+        "id": "b",
+        "text": "Because email servers take 5 minutes to boot."
+      },
+      {
+        "id": "c",
+        "text": "To reduce cloud electricity consumption."
+      },
+      {
+        "id": "d",
+        "text": "Because analog sensors only report every 5 minutes."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Temporal persistence windows prevent transient single-sample noise spikes from triggering false alarms.",
+    "noteRef": "iot-08-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q17",
+    "stem": "What is the primary benefit of a dual-partition (A/B) flash architecture for Over-The-Air (OTA) updates?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It doubles the microcontroller's RAM memory."
+      },
+      {
+        "id": "b",
+        "text": "It allows safe flashing to an inactive partition while running, rolling back automatically if the new image fails self-tests."
+      },
+      {
+        "id": "c",
+        "text": "It allows running two operating systems at the exact same microsecond."
+      },
+      {
+        "id": "d",
+        "text": "It eliminates the need for flash memory."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A/B partitioning downloads to the secondary slot, safely rolling back if new code fails to boot.",
+    "noteRef": "iot-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q18",
+    "stem": "An ESP32 downloads a new firmware binary to Slot B and reboots. During initialization, the firmware crashes due to a Null Pointer Exception. What does the bootloader do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The device stays permanently dead."
+      },
+      {
+        "id": "b",
+        "text": "It downloads Linux from the internet."
+      },
+      {
+        "id": "c",
+        "text": "The hardware watchdog timer triggers a reset, and the bootloader automatically reverts to the known-good firmware in Slot A."
+      },
+      {
+        "id": "d",
+        "text": "It erases the flash chip completely."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "ESP-IDF rollback rolls back to the previous bootable partition if the new image fails validation.",
+    "noteRef": "iot-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q19",
+    "stem": "Which of the following security validations must be conducted before an IoT device flashes an OTA binary to flash?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cryptographic signature verification using a pre-burned public key"
+      },
+      {
+        "id": "b",
+        "text": "Binary header compatibility and hardware chip ID check"
+      },
+      {
+        "id": "c",
+        "text": "Anti-rollback firmware version counter check"
+      },
+      {
+        "id": "d",
+        "text": "Checking the color of the microcontroller PCB"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Signature checks, hardware compatibility, and anti-rollback counters prevent loading malicious or older buggy code.",
+    "noteRef": "iot-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q20",
+    "stem": "What ESP-IDF API function must newly booted firmware invoke to confirm successful operation and cancel automatic rollback?",
+    "options": [
+      {
+        "id": "a",
+        "text": "esp_restart()"
+      },
+      {
+        "id": "b",
+        "text": "WiFi.disconnect()"
+      },
+      {
+        "id": "c",
+        "text": "Serial.end()"
+      },
+      {
+        "id": "d",
+        "text": "esp_ota_mark_app_valid_cancel_rollback()"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "`esp_ota_mark_app_valid_cancel_rollback()` marks the running partition as confirmed, cancelling bootloader rollback.",
+    "noteRef": "iot-08-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q21",
+    "stem": "How do major cloud IoT platforms (like AWS IoT Core) measure message ingestion billing units?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In 5 KB payload increments per message sent or received."
+      },
+      {
+        "id": "b",
+        "text": "By measuring physical CPU temperature."
+      },
+      {
+        "id": "c",
+        "text": "Based on the number of wires connected to the sensor."
+      },
+      {
+        "id": "d",
+        "text": "Charging a flat $100 per device per day."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "AWS IoT bills messages in 5 KB increments; a 1 KB message and 4 KB message each count as 1 message.",
+    "noteRef": "iot-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q22",
+    "stem": "A fleet of 1,000 smart meters transmits temperature every second, producing ~2.6 billion messages per month at significant cost. How can the engineering team reduce cloud ingestion cost by >95% without losing high-resolution historical data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Turn off the smart meters permanently."
+      },
+      {
+        "id": "b",
+        "text": "Batch 60 consecutive one-second readings into a single compressed payload published once per minute."
+      },
+      {
+        "id": "c",
+        "text": "Switch the meters to send uncompressed video."
+      },
+      {
+        "id": "d",
+        "text": "Remove the Wi-Fi antennas."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Batching 60 readings into 1 message per minute slashes cloud messaging transactions by 60x (a 98.3% reduction).",
+    "noteRef": "iot-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo06",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-08-q23",
+    "stem": "How many total messages are generated per day by a single IoT device publishing telemetry every 10 seconds (86,400 seconds per day)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "86400"
+      },
+      {
+        "id": "b",
+        "text": "1440"
+      },
+      {
+        "id": "c",
+        "text": "8640"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "86,400 seconds / 10 seconds per message = 8,640 messages per day.",
+    "noteRef": "iot-08-lo06",
+    "verify": "(86400 / 10 === 8640)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q24",
+    "stem": "What is 'Deadband Filtering' in edge telemetry optimization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Turning off the radio when the battery is completely empty."
+      },
+      {
+        "id": "b",
+        "text": "Filtering out high-voltage audio noise."
+      },
+      {
+        "id": "c",
+        "text": "Deleting corrupted flash memory sectors."
+      },
+      {
+        "id": "d",
+        "text": "Suppressing transmission until a sensor reading changes by more than a predefined delta threshold (e.g. ±0.5°C) from the last published value."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Deadband filtering skips transmitting static or near-static telemetry, conserving bandwidth and cloud billing.",
+    "noteRef": "iot-08-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q25",
+    "stem": "What query language is standardly used by Cloud IoT Rules Engines to filter and transform MQTT messages?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SQL-like query syntax (e.g. `SELECT * FROM 'topic' WHERE ...`)"
+      },
+      {
+        "id": "b",
+        "text": "HTML tags"
+      },
+      {
+        "id": "c",
+        "text": "Assembly language"
+      },
+      {
+        "id": "d",
+        "text": "Python regular expressions only"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "AWS, Azure, and Google Cloud IoT rules engines parse topics and JSON payloads using SQL-like syntax.",
+    "noteRef": "iot-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q26",
+    "stem": "An IoT temperature sensor publishes to `plants/+/sensors`. An AWS IoT Rule matches `temperature > 90` and triggers an AWS Lambda function to shut down heating coils. Why is this serverless design cost-effective?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Lambda functions are completely free forever without limits."
+      },
+      {
+        "id": "b",
+        "text": "The serverless function executes only when an emergency condition occurs, incurring zero compute cost during normal operations."
+      },
+      {
+        "id": "c",
+        "text": "Because temperature sensors do not use electricity."
+      },
+      {
+        "id": "d",
+        "text": "Because SQL queries run locally on the sensor."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Serverless event-driven compute charges strictly per millisecond of invocation, costing nothing during idle states.",
+    "noteRef": "iot-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q27",
+    "stem": "Which of the following actions can be automatically invoked by an IoT cloud rules engine upon matching a message?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Routing the message into an S3 bucket or data lake"
+      },
+      {
+        "id": "b",
+        "text": "Invoking a serverless compute function (AWS Lambda / Google Cloud Function)"
+      },
+      {
+        "id": "c",
+        "text": "Sending an SMS or push notification via an alerting service"
+      },
+      {
+        "id": "d",
+        "text": "Soldering a loose wire on the physical PCB"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Rules engines route data, trigger serverless code, and dispatch alerts; they cannot alter physical solder joints.",
+    "noteRef": "iot-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q28",
+    "stem": "In an AWS IoT SQL rule, what built-in function extracts the client ID of the publishing MQTT device?",
+    "options": [
+      {
+        "id": "a",
+        "text": "get_mac_address()"
+      },
+      {
+        "id": "b",
+        "text": "device_owner()"
+      },
+      {
+        "id": "c",
+        "text": "clientid()"
+      },
+      {
+        "id": "d",
+        "text": "ip_source()"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "`clientid()` extracts the client ID used during the MQTT CONNECT packet.",
+    "noteRef": "iot-08-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-08-q29",
+    "stem": "What is the primary role of an on-device Store-and-Forward telemetry queue?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To compress image files."
+      },
+      {
+        "id": "b",
+        "text": "To charge the backup battery."
+      },
+      {
+        "id": "c",
+        "text": "To compile C++ code."
+      },
+      {
+        "id": "d",
+        "text": "To cache sensor readings in local non-volatile flash memory during network outages, transmitting them when connectivity returns."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Store-and-forward caches data locally during disconnects, preventing data gaps.",
+    "noteRef": "iot-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q30",
+    "stem": "A mining vehicle loses cellular coverage for 4 hours while underground. What data structure in non-volatile flash should be used to buffer telemetry so the newest data is preserved if storage fills up?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A circular FIFO (First-In, First-Out) ring buffer that evicts oldest entries when capacity is reached."
+      },
+      {
+        "id": "b",
+        "text": "A single global variable."
+      },
+      {
+        "id": "c",
+        "text": "A recursive binary tree."
+      },
+      {
+        "id": "d",
+        "text": "An unindexed text file that crashes when full."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A circular ring buffer overwrites oldest historical samples when full, preserving the most recent telemetry.",
+    "noteRef": "iot-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-08-q31",
+    "stem": "Which file systems are commonly implemented on ESP32 SPI flash memory for caching offline sensor data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "LittleFS (resilient against power cuts and wear-leveled)"
+      },
+      {
+        "id": "b",
+        "text": "SPIFFS (SPI Flash File System)"
+      },
+      {
+        "id": "c",
+        "text": "FAT file system (on external SD cards)"
+      },
+      {
+        "id": "d",
+        "text": "NTFS"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "LittleFS, SPIFFS, and FAT are standard embedded filesystems; NTFS is a proprietary Windows desktop filesystem.",
+    "noteRef": "iot-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q32",
+    "stem": "Why must an IoT node throttle historical backlog uploads when reconnecting after a multi-hour network outage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because historical data travels slower through copper wires."
+      },
+      {
+        "id": "b",
+        "text": "To avoid exhausting local socket buffers, triggering broker rate-limiting quotas, or starving real-time telemetry."
+      },
+      {
+        "id": "c",
+        "text": "Because cloud brokers reject data older than 1 minute."
+      },
+      {
+        "id": "d",
+        "text": "To prevent the flash memory from demagnetizing."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Throttling backlog drains prevents buffer overflows, network congestion, and API rate-limit penalties.",
+    "noteRef": "iot-08-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-08-q33",
+    "stem": "What is Zero-Touch Provisioning in enterprise IoT fleet deployments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Devices that operate without ever being touched by human hands during manufacturing."
+      },
+      {
+        "id": "b",
+        "text": "Devices that function without wireless radios."
+      },
+      {
+        "id": "c",
+        "text": "Devices securely authenticate, download operational certificates, and attach to customer accounts automatically upon first power-on without technician interaction."
+      },
+      {
+        "id": "d",
+        "text": "Devices that have zero security."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Zero-touch provisioning automates onboarding securely using hardware identifiers and pre-burned claims.",
+    "noteRef": "iot-08-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-08-q34",
+    "stem": "A firm manages 100,000 smart streetlights across 20 municipalities. How is tenant isolation enforced on a shared MQTT broker infrastructure?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Buying 20 separate physical cellular towers."
+      },
+      {
+        "id": "b",
+        "text": "Allowing all municipalities to see all data."
+      },
+      {
+        "id": "c",
+        "text": "Painting the streetlights different colors."
+      },
+      {
+        "id": "d",
+        "text": "Using broker authorization policies that restrict each municipality's credentials to their specific root topic namespace (e.g. `muni_a/#`)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Granular topic ACLs isolate tenant data access strictly to their assigned sub-trees.",
+    "noteRef": "iot-08-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-08-q35",
+    "stem": "Which of the following phases are standard elements of a professional Canary OTA deployment pipeline?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Deploying to an internal laboratory testing fleet"
+      },
+      {
+        "id": "b",
+        "text": "Deploying to a small 1% canary group of production devices and monitoring for crashes for 24-48 hours"
+      },
+      {
+        "id": "c",
+        "text": "Progressive regional rollout (e.g. 10%, 25%, 100%)"
+      },
+      {
+        "id": "d",
+        "text": "Deleting the previous firmware source code from Git"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Canary rollouts validate software health across graduated fleet cohorts before full production deployment.",
+    "noteRef": "iot-08-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-08-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-08-q36",
+    "stem": "Why are progressive canary firmware rollouts essential when maintaining mission-critical industrial IoT fleets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They contain the blast radius of unforeseen bugs or kernel crashes to a tiny fraction of the fleet before widespread bricking occurs."
+      },
+      {
+        "id": "b",
+        "text": "Because cloud servers cannot transmit more than 10 files per day."
+      },
+      {
+        "id": "c",
+        "text": "To test whether customers are paying attention."
+      },
+      {
+        "id": "d",
+        "text": "Because firmware binaries expire after 48 hours."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Canary testing limits blast radius; if a bug is uncovered, only 1% of nodes are affected while rollback halts the rollout.",
+    "noteRef": "iot-08-lo09",
+    "reviewed": false
+  }
+]

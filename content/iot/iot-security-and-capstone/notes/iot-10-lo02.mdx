@@ -1,0 +1,41 @@
+---
+loId: "iot-10-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+A hardware Root of Trust (RoT) forms the foundational cryptographic anchor from which all higher-level security software is authenticated:
+1. Secure Elements (e.g., Microchip ATECC608A / ATECC608B):
+   A dedicated tamper-resistant companion cryptographic co-processor connected via I2C:
+   - High-Security Key Storage: Stores private ECC keys inside hardened EEPROM shielded by physical active mesh layers that self-destruct if microscopically probed.
+   - On-Chip Cryptographic Engine: Performs hardware ECDSA signatures, ECDH key agreements, and true random number generation (TRNG). The private key NEVER leaves the secure element silicon.
+2. Microcontroller eFuses:
+   One-Time-Programmable (OTP) microscopic electrical fuses inside microcontrollers like the ESP32:
+   - Once programmed by blowing the fuse wire with a high-voltage pulse, their physical state is permanently irreversible.
+   - Used to permanently burn cryptographic keys (AES-256 for flash encryption, RSA/ECDSA public key hashes for secure boot) and disable hardware debug interfaces.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Simulating hardware-backed cryptographic signing with an external secure element:
+```python
+def secure_element_sign(message_digest, key_slot, tamper_detected=False):
+    if tamper_detected:
+        # Hardware physically destroys internal keys
+        return "HARDWARE_LOCKED: Tamper mesh breached; keys erased"
+    # Cryptographic signing occurs strictly inside protected silicon
+    signature = f"ECDSA_SIG(slot_{key_slot}, {message_digest[:8]}...)"
+    return signature
+
+sig = secure_element_sign("e3b0c44298fc1c149afbf4c8996fb92427ae...", key_slot=0)
+print(f"Generated Signature: {sig}")
+```
+
+### Common Mistake
+Storing raw private keys as plaintext strings in standard microcontroller flash memory; any attacker with a $10 CH341A flash programmer can dump the chip and extract the keys in seconds.
+
+### Check Yourself
+Why does performing cryptographic signing inside a dedicated Secure Element prevent private key theft?

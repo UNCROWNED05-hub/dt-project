@@ -1,0 +1,38 @@
+---
+loId: "iot-10-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Hardware debugging interfaces (UART, JTAG, SWD) provide deep low-level access during development but become severe vulnerabilities if left accessible on production hardware:
+1. Physical Exploitation via Debug Ports:
+   - JTAG / SWD (Serial Wire Debug): Hardware debug ports wired directly to the CPU core. An attacker connecting an OpenOCD probe can halt the processor, inspect registers, alter memory values, and bypass authentication checks in real time.
+   - UART Serial Consoles: Often drop into a Linux root shell or interactive bootloader console if an attacker sends an Enter key or holds a pin during boot.
+2. Production Hardening Actions:
+   - Disable JTAG Permanently in eFuses: Burn the `JTAG_DISABLE` eFuse bit on the ESP32, which physically cuts the silicon trace connecting JTAG logic to external GPIO pins.
+   - Disable ROM Download Mode: Configure eFuses to permanently disable UART flashing, preventing unauthorized overwriting of firmware binaries.
+   - Remove Test Points & Headers: Remove pin headers from production PCBs; hide test points on inner PCB layers or bury them under conformal coating.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Checking and burning JTAG disable eFuses on ESP32:
+```bash
+# Query current security eFuse status
+espefuse.py --port /dev/ttyUSB0 summary
+
+# Permanently disable hardware JTAG interface (Irreversible!)
+espefuse.py --port /dev/ttyUSB0 burn_efuse JTAG_DISABLE
+
+# Permanently disable UART ROM download bootloader mode
+espefuse.py --port /dev/ttyUSB0 burn_efuse UART_DOWNLOAD_DIS
+```
+
+### Common Mistake
+Shipping production commercial IoT hardware with silkscreened "GND, TX, RX, VCC" pin headers soldered in place; adversaries connect a 3.3V USB-to-UART adapter and gain interactive root access in minutes.
+
+### Check Yourself
+Why must the hardware JTAG interface be permanently disabled via eFuses before shipping commercial IoT devices?

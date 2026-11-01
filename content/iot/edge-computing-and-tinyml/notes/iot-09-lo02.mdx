@@ -1,0 +1,51 @@
+---
+loId: "iot-09-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+TinyML brings machine learning inference to resource-constrained microcontrollers operating within strict milliwatt power and kilobyte memory boundaries:
+1. The TinyML Pipeline:
+   - Data Collection: Sample real-world sensor streams (accelerometers, microphones) using edge microcontrollers with strict timestamping.
+   - Digital Signal Processing (DSP) Preprocessing: Compute time-frequency features (Spectrograms, Fast Fourier Transforms, Mel-Frequency Cepstral Coefficients) to extract informative signals and reduce dimensionality.
+   - Model Training: Train a lightweight neural network (CNN, MLP) in TensorFlow/Keras on a workstation or cloud cluster.
+   - Quantization & Optimization: Convert 32-bit floating-point weights into 8-bit integers via the TensorFlow Lite Converter (`TFLiteConverter`).
+   - C Header Export: Serialize the quantized model into a static C byte array (`unsigned char model[]`) embedded into firmware.
+   - On-Device Execution: Run inference on-device using a static memory pool without dynamic memory allocations.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Python script exporting a quantized TensorFlow model to a C byte array:
+```python
+import tensorflow as tf
+
+# Convert trained model to Quantized TFLite
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+tflite_quant_model = converter.convert()
+
+# Export as C array header for Arduino/ESP-IDF
+with open("model_data.h", "w") as f:
+    f.write("const unsigned char g_model[] = {
+  ")
+    for i, byte in enumerate(tflite_quant_model):
+        f.write(f"0x{byte:02x}, ")
+        if (i + 1) % 12 == 0:
+            f.write("
+  ")
+    f.write("
+};
+")
+    f.write(f"const int g_model_len = {len(tflite_quant_model)};
+")
+```
+
+### Common Mistake
+Attempting to train machine learning models directly on an 8-bit or 32-bit microcontroller; microcontrollers lack the memory and compute pipelines for backpropagation. Training is performed on GPUs; only inference runs on the MCU.
+
+### Check Yourself
+Why is model training performed on cloud/workstation hardware while microcontrollers execute only inference?

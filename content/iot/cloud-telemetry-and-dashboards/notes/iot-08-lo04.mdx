@@ -1,0 +1,41 @@
+---
+loId: "iot-08-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Operational dashboards provide engineering and operations teams with real-time visibility, trend forecasting, and alerting across IoT fleets:
+1. Grafana Open-Source Visualization:
+   - Connects directly to time-series backends (TimescaleDB, InfluxDB, Prometheus).
+   - Renders interactive time-series graphs, heatmaps, state timelines, and gauges with sub-second live refresh rates.
+   - Parameterized Dashboards: Uses template variables (`$device_id`) allowing operators to toggle between thousands of physical nodes seamlessly from a single dashboard.
+2. ThingsBoard Open-Source IoT Platform:
+   - Provides out-of-the-box device management, telemetry widgets, and bidirectional control panels (switches, sliders, buttons) that publish MQTT commands back to hardware.
+   - Visual Rule Engine: Nodes drag-and-drop to filter telemetry, detect anomalies, and dispatch notifications via SMS, Email, or Slack.
+3. Alerting Thresholds:
+   Configure alert rules (e.g. `battery_volts < 3.2V for 5m`) with evaluation delays to prevent transient sensor blips from waking on-call personnel.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Example Grafana SQL panel query for parameterized device telemetry:
+```sql
+SELECT
+  time AS "time",
+  temperature AS "Temperature (°C)",
+  humidity AS "Humidity (%)"
+FROM sensor_telemetry
+WHERE
+  device_id = '$device_id'
+  AND time >= $__timeFrom() AND time <= $__timeTo()
+ORDER BY time ASC;
+```
+
+### Common Mistake
+Configuring instantaneous alert thresholds on noisy analog sensors without temporal hysteresis or evaluation delays, generating hundreds of false alarms from single-sample measurement spikes.
+
+### Check Yourself
+How do parameterized dashboard variables (e.g. `$device_id` in Grafana) improve fleet monitoring scalability?

@@ -1,0 +1,46 @@
+---
+loId: "iot-08-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Over-The-Air (OTA) firmware updates are the critical lifeline for maintaining deployed IoT nodes, fixing vulnerabilities, and rolling out features without physical access:
+1. Dual-Partition (A/B) Flash Layout:
+   The microcontroller's SPI Flash is partitioned into at least two application slots: `ota_0` (Slot A) and `ota_1` (Slot B).
+   - If the device currently runs from Slot A, the new binary is downloaded and written into Slot B.
+   - The bootloader configuration is updated to designate Slot B as the next boot target.
+2. Safe Boot and Rollback Protocol:
+   Upon reboot, the bootloader boots Slot B into an intermediate "diagnostic" state.
+   - The new firmware initializes peripherals, verifies network connectivity, and checks sensor health.
+   - If tests pass, it calls `esp_ota_mark_app_valid_cancel_rollback()`, making Slot B permanent.
+   - If the firmware panics, enters a crash loop, or fails to connect within a timeout window, the hardware watchdog trips, the bootloader rolls back to Slot A, and the device avoids being bricked.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Arduino ESP32 OTA validation sequence:
+```cpp
+#include <esp_ota_ops.h>
+
+void setup() {
+  Serial.begin(115200);
+  // Verify firmware health
+  if (verify_network_and_sensors()) {
+    // Confirm successful update, cancelling automatic rollback
+    esp_ota_mark_app_valid_cancel_rollback();
+    Serial.println("New firmware validated. Rollback cancelled.");
+  } else {
+    Serial.println("Self-test failed! Rebooting to trigger rollback...");
+    esp_restart();
+  }
+}
+```
+
+### Common Mistake
+Flashing OTA updates directly over the currently running partition without an A/B dual-partition scheme; an interrupted download or a software bug permanently bricks the remote hardware.
+
+### Check Yourself
+What critical protection does a dual-partition A/B flash architecture provide during an OTA firmware update?

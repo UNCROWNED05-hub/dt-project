@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "chapterId": "iot-09",
+  "objectives": [
+    {
+      "id": "iot-09-lo01",
+      "order": 1,
+      "title": "Evaluate edge computing trade-offs across latency, bandwidth conservation, privacy, and intermittent connectivity",
+      "bloom": "evaluate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "edge computing",
+        "bandwidth reduction",
+        "inference latency",
+        "data privacy",
+        "local intelligence"
+      ],
+      "aliases": [
+        "edge vs cloud",
+        "edge processing benefits"
+      ],
+      "prerequisites": [
+        "iot-01-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-09-lo02",
+      "order": 2,
+      "title": "Structure the end-to-end TinyML workflow: data collection, model design, quantization, and deployment",
+      "bloom": "structure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "tinyml workflow",
+        "data collection",
+        "model conversion",
+        "tflite converter",
+        "on-device inference"
+      ],
+      "aliases": [
+        "tinyml pipeline",
+        "embedded ml lifecycle"
+      ],
+      "prerequisites": [
+        "ai-01-lo05",
+        "iot-09-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-09-lo03",
+      "order": 3,
+      "title": "Quantize deep neural networks from float32 to int8 representations using post-training quantization",
+      "bloom": "quantize",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "int8 quantization",
+        "post-training quantization",
+        "zero point",
+        "quantization scale",
+        "integer arithmetic"
+      ],
+      "aliases": [
+        "model quantization",
+        "float32 to int8"
+      ],
+      "prerequisites": [
+        "ai-10-lo04",
+        "iot-09-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-09-lo04",
+      "order": 4,
+      "title": "Deploy on-device inference using TensorFlow Lite for Microcontrollers (TFLM)",
+      "bloom": "deploy",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "tflm",
+        "tensor arena",
+        "micro interpreter",
+        "all_ops_resolver",
+        "c byte array model"
+      ],
+      "aliases": [
+        "tensorflow lite micro",
+        "tflite microcontroller"
+      ],
+      "prerequisites": [
+        "iot-09-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-09-lo05",
+      "order": 5,
+      "title": "Train and deploy sensor classification models using Edge Impulse",
+      "bloom": "train",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "edge impulse",
+        "dsp feature extraction",
+        "spectral analysis",
+        "anomaly detection",
+        "impulse design"
+      ],
+      "aliases": [
+        "edge impulse pipeline",
+        "sensor anomaly detection"
+      ],
+      "prerequisites": [
+        "iot-09-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-09-lo06",
+      "order": 6,
+      "title": "Implement keyword spotting and audio anomaly detection on embedded microcontrollers",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "keyword spotting",
+        "mfcc",
+        "spectrogram",
+        "audio classification",
+        "i2s microphone"
+      ],
+      "aliases": [
+        "audio anomaly detection",
+        "embedded voice recognition"
+      ],
+      "prerequisites": [
+        "iot-09-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-09-lo07",
+      "order": 7,
+      "title": "Analyze memory boundaries and compute constraints: SRAM budget, Flash footprint, and inference cycles",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "sram budget",
+        "tensor arena sizing",
+        "peak memory",
+        "mac operations",
+        "inference latency"
+      ],
+      "aliases": [
+        "tinyml memory constraints",
+        "embedded compute budget"
+      ],
+      "prerequisites": [
+        "iot-04-lo07",
+        "iot-09-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-09-lo08",
+      "order": 8,
+      "title": "Detect mechanical machine faults using accelerometer anomaly detection and autoencoders",
+      "bloom": "detect",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "anomaly detection",
+        "autoencoders",
+        "reconstruction error",
+        "predictive maintenance",
+        "vibration analysis"
+      ],
+      "aliases": [
+        "predictive maintenance",
+        "vibration anomaly detection"
+      ],
+      "prerequisites": [
+        "ai-08-lo06",
+        "iot-09-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-09-lo09",
+      "order": 9,
+      "title": "Accelerate on-device inference using hardware SIMD DSP vector extensions (ESP-NN, CMSIS-NN)",
+      "bloom": "optimize",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "esp-nn",
+        "cmsis-nn",
+        "simd instructions",
+        "hardware acceleration",
+        "vector math"
+      ],
+      "aliases": [
+        "tinyml hardware acceleration",
+        "simd on microcontrollers"
+      ],
+      "prerequisites": [
+        "iot-09-lo04"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

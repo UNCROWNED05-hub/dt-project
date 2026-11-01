@@ -1,0 +1,42 @@
+---
+loId: "iot-10-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Firmware security auditing applies reverse-engineering and static vulnerability analysis to firmware binaries to uncover embedded weaknesses:
+1. Binary Firmware Extraction:
+   - Dumping flash directly over serial UART using `esptool.py read_flash`.
+   - Physical chip desoldering and reading SPI flash chips with EEPROM programmers (CH341A).
+2. Binwalk Firmware Analysis:
+   - Binwalk scans binary images for known magic byte signatures, identifying compressed file systems (SquashFS, CramFS), bootloader headers, embedded Linux kernels, and cryptographic certificates.
+   - `binwalk -e firmware.bin`: Automatically extracts embedded file systems into searchable directories.
+3. Entropy Analysis:
+   - High entropy (near 1.0) across the entire flash binary indicates encrypted or compressed firmware.
+   - Flat low-entropy blocks indicate plaintext code, unencrypted ASCII strings, or empty unwritten flash sectors.
+4. Static Disassembly with Ghidra / IDA Pro:
+   Decompiles compiled machine instructions into C pseudo-code, hunting for hardcoded credentials, buffer overflows, and insecure API calls.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Audit commands for inspecting firmware binary images:
+```bash
+# 1. Inspect firmware entropy (detects if encryption is active)
+binwalk -E firmware_dump.bin
+
+# 2. Search for embedded file systems and extract contents
+binwalk -Me firmware_dump.bin
+
+# 3. Search for hardcoded plaintext credentials and API tokens
+strings firmware_dump.bin | grep -Ei "password|api_key|secret|aws_"
+```
+
+### Common Mistake
+Storing confidential Wi-Fi credentials, private encryption keys, or cloud database passwords as plaintext strings in application firmware; running `strings` on the binary reveals them in seconds.
+
+### Check Yourself
+What does an entropy analysis score near 1.0 indicate across a firmware binary image?

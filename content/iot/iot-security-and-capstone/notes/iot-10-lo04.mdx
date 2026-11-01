@@ -1,0 +1,51 @@
+---
+loId: "iot-10-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+The OWASP Internet of Things Top 10 documents the most prevalent vulnerabilities exploited by global botnets (such as Mirai and Mozi) against connected devices:
+1. Top Vulnerabilities and Defense Mitigations:
+   - I1: Weak, Guessable, or Hardcoded Passwords:
+     *Exploit*: Factory-default credentials (`admin:admin`, `root:123456`) allow automated worm propagation.
+     *Defense*: Enforce unique random per-device passwords printed on physical serial labels; mandate password change upon initial setup.
+   - I2: Insecure Network Services:
+     *Exploit*: Unnecessary open ports (Telnet port 23, unauthenticated HTTP on 8080) listening on public IP interfaces.
+     *Defense*: Close all unused daemons; bind local services to localhost; require SSH keys instead of Telnet.
+   - I3: Insecure Ecosystem Interfaces:
+     *Exploit*: Web, mobile, or cloud API endpoints lacking authentication or vulnerable to SQL injection and broken access control.
+   - I4: Lack of Secure Update Mechanism:
+     *Exploit*: Unencrypted, unsigned OTA binaries accepting malicious third-party firmware.
+     *Defense*: Mandate cryptographic signature checks before writing OTA binaries.
+   - I5: Insecure Privacy Protection: Storing user PII unencrypted in flash.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Security audit checklist for firmware release gating in Python:
+```python
+def audit_firmware_security(telnet_enabled, default_password_set, ota_signed):
+    vulnerabilities = []
+    if telnet_enabled:
+        vulnerabilities.append("OWASP I2: Unencrypted Telnet daemon exposed")
+    if default_password_set:
+        vulnerabilities.append("OWASP I1: Hardcoded default credentials present")
+    if not ota_signed:
+        vulnerabilities.append("OWASP I4: Unsigned OTA firmware update mechanism")
+    
+    return {
+        "passed": len(vulnerabilities) == 0,
+        "critical_flaws": vulnerabilities
+    }
+
+print(audit_firmware_security(telnet_enabled=False, default_password_set=False, ota_signed=True)["passed"]) # True
+```
+
+### Common Mistake
+Leaving an unauthenticated Telnet server or exposed serial debug shell enabled in production firmware builds, allowing remote adversaries to gain root access in seconds.
+
+### Check Yourself
+What was the primary vulnerability exploited by the infamous Mirai IoT botnet to hijack hundreds of thousands of consumer IP cameras?

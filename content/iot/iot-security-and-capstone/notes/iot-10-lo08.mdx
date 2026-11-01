@@ -1,0 +1,49 @@
+---
+loId: "iot-10-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+The Capstone architecture synthesizes every domain mastered across the IoT curriculum into a production-grade, secure, resilient smart environmental and machine health monitoring system:
+1. Physical Edge Layer:
+   - Microcontroller: ESP32 dual-core running FreeRTOS with hardware Secure Boot, Flash Encryption, and JTAG disabled via eFuses.
+   - Sensors & Actuators: Environmental sensors (I2C BME280) and 3-axis industrial vibration accelerometer (SPI ADXL345).
+   - Local Machine Intelligence: Quantized int8 TinyML Autoencoder running under TensorFlow Lite for Microcontrollers detecting bearing anomalies in real time without cloud latency.
+2. Communication & Transport Security:
+   - Transport: MQTTS over TLS 1.3 on port 8883 with mutual X.509 client certificate authentication backed by an ATECC608 secure element.
+   - Resilience: Local LittleFS flash store-and-forward circular queue buffering telemetry during network blackouts.
+3. Cloud Platform & Analytics:
+   - Broker & Rules Engine: High-availability MQTT broker routing telemetry into a TimescaleDB time-series database.
+   - Ingestion Optimization: Edge deadband filtering and 60-second batching reducing cloud messaging transactions by $98\%$.
+   - Operational Visibility: Real-time Grafana dashboards displaying vibration FFT spectra, temperature trends, and automated Slack emergency notifications.
+   - Lifecycle Maintenance: Dual-partition A/B OTA update mechanism with automated bootloader rollback safeguards.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Capstone end-to-end telemetry and command architecture:
+```text
+[Sensors & Accelerometer]
+          │ (I2C / SPI)
+          ▼
+[ESP32 Edge Node] ──► [TinyML Autoencoder] (Local Anomaly Scoring)
+          │
+          ├── (LittleFS Store & Forward Caching if Offline)
+          │
+          ▼ (MQTTS Port 8883 / TLS 1.3 with mTLS)
+[Cloud IoT Message Broker]
+          │
+          ├──► [Rules Engine] ──► [Serverless Lambda Alerting]
+          │
+          ▼
+[TimescaleDB Time-Series DB] ──► [Grafana Fleet Dashboard]
+```
+
+### Common Mistake
+Treating security and resilience as afterthoughts added at the end of development; production IoT architectures must incorporate hardware security, power budgets, and offline caching from the very first breadboard schematic.
+
+### Check Yourself
+How does the combination of on-device TinyML anomaly detection and cloud time-series dashboards provide comprehensive machine health monitoring?

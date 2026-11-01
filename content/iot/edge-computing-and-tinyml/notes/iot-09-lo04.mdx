@@ -1,0 +1,54 @@
+---
+loId: "iot-09-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+TensorFlow Lite for Microcontrollers (TFLM) is a lean C++ runtime designed to execute neural network inference on bare-metal systems with zero dynamic memory allocation:
+1. Zero Dynamic Allocation Architecture:
+   TFLM prohibits runtime `malloc()` or `new` calls. The developer pre-allocates a single contiguous memory buffer in SRAM known as the Tensor Arena.
+2. The Tensor Arena:
+   Holds all intermediate layer activation tensors, input buffers, output arrays, and interpreter scratchpads.
+   `constexpr int kTensorArenaSize = 60 * 1024; // 60 KB pre-allocated buffer`
+3. Core Interpreter Workflow:
+   - Load Model: Point the `tflite::GetModel()` pointer to the C byte array in flash.
+   - AllOpsResolver: Pulls in only the specific mathematical kernels needed (e.g., Conv2D, FullyConnected, Softmax) to minimize binary code size.
+   - Allocate Tensors: `interpreter.AllocateTensors()` maps activation buffers within the Tensor Arena.
+   - Populate Input & Invoke: Copy sensor features into `input->data.int8`, execute `interpreter.Invoke()`, and read class probabilities from `output->data.int8`.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Arduino C++ inference loop using TensorFlow Lite for Microcontrollers:
+```cpp
+#include <TensorFlowLite.h>
+#include "tensorflow/lite/micro/all_ops_resolver.h"
+#include "tensorflow/lite/micro/micro_interpreter.h"
+#include "model_data.h" // Exported C array
+
+constexpr int kArenaSize = 30 * 1024; // 30 KB
+uint8_t tensor_arena[kArenaSize];
+
+tflite::MicroInterpreter* interpreter;
+TfLiteTensor* input;
+TfLiteTensor* output;
+
+void setup() {
+  const tflite::Model* model = tflite::GetModel(g_model);
+  static tflite::AllOpsResolver resolver;
+  static tflite::MicroInterpreter static_interpreter(model, resolver, tensor_arena, kArenaSize);
+  interpreter = &static_interpreter;
+  interpreter->AllocateTensors();
+  input = interpreter->input(0);
+  output = interpreter->output(0);
+}
+```
+
+### Common Mistake
+Sizing the Tensor Arena too small; `AllocateTensors()` returns `kTfLiteError` because the intermediate activation maps exceed the pre-allocated buffer memory.
+
+### Check Yourself
+What purpose does the pre-allocated Tensor Arena serve in TensorFlow Lite for Microcontrollers?

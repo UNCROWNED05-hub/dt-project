@@ -1,0 +1,218 @@
+{
+  "version": 1,
+  "chapterId": "iot-10",
+  "objectives": [
+    {
+      "id": "iot-10-lo01",
+      "order": 1,
+      "title": "Model physical and network threats against embedded devices using STRIDE and attack surface mapping",
+      "bloom": "model",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "stride threat model",
+        "physical attack surface",
+        "jtag extraction",
+        "uart snooping",
+        "embedded attack vectors"
+      ],
+      "aliases": [
+        "iot threat modeling",
+        "hardware attack surface"
+      ],
+      "prerequisites": [
+        "sec-01-lo02",
+        "iot-03-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-10-lo02",
+      "order": 2,
+      "title": "Establish hardware root of trust using secure elements (ATECC608) and eFuses",
+      "bloom": "establish",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "hardware root of trust",
+        "secure element",
+        "atecc608",
+        "efuses",
+        "crypto key protection"
+      ],
+      "aliases": [
+        "hardware security root",
+        "tamper resistant key storage"
+      ],
+      "prerequisites": [
+        "iot-10-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-10-lo03",
+      "order": 3,
+      "title": "Configure ESP32 hardware Secure Boot and transparent Flash Encryption",
+      "bloom": "configure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "secure boot",
+        "flash encryption",
+        "rsa verification",
+        "aes-xts-256",
+        "esp-idf security"
+      ],
+      "aliases": [
+        "esp32 secure boot",
+        "hardware flash encryption"
+      ],
+      "prerequisites": [
+        "iot-10-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-10-lo04",
+      "order": 4,
+      "title": "Mitigate OWASP IoT Top 10 vulnerabilities: default credentials, insecure interfaces, and unencrypted transport",
+      "bloom": "mitigate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "owasp iot top 10",
+        "default passwords",
+        "unencrypted communications",
+        "insecure interfaces",
+        "hardening"
+      ],
+      "aliases": [
+        "owasp iot vulnerabilities",
+        "iot firmware hardening"
+      ],
+      "prerequisites": [
+        "iot-10-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-10-lo05",
+      "order": 5,
+      "title": "Isolate IoT devices using VLAN network segmentation and firewall microsegmentation",
+      "bloom": "isolate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "iot vlan",
+        "network segmentation",
+        "firewall rules",
+        "isolate untrusted devices",
+        "zero trust iot"
+      ],
+      "aliases": [
+        "iot network segmentation",
+        "vlan containment"
+      ],
+      "prerequisites": [
+        "sec-07-lo03",
+        "iot-06-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-10-lo06",
+      "order": 6,
+      "title": "Analyze Industrial IoT (IIoT) protocols and architectures: Modbus, OPC UA, and the Purdue Model",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "iiot",
+        "opc ua",
+        "modbus security",
+        "purdue model",
+        "scada",
+        "ics security"
+      ],
+      "aliases": [
+        "industrial iot standards",
+        "purdue reference model"
+      ],
+      "prerequisites": [
+        "iot-05-lo09"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-10-lo07",
+      "order": 7,
+      "title": "Disable physical hardware debug interfaces (JTAG, UART, SWD) in production firmware builds",
+      "bloom": "secure",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "disable jtag",
+        "lock uart bootloader",
+        "swd disabling",
+        "anti-tamper",
+        "production lock"
+      ],
+      "aliases": [
+        "debug port locking",
+        "hardware interface hardening"
+      ],
+      "prerequisites": [
+        "iot-10-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-10-lo08",
+      "order": 8,
+      "title": "Architect an end-to-end resilient, secure, and power-optimized smart monitoring capstone system",
+      "bloom": "architect",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "capstone architecture",
+        "sensor to cloud",
+        "tinyml inference",
+        "mqtts telemetry",
+        "end-to-end iot"
+      ],
+      "aliases": [
+        "iot capstone project",
+        "full stack iot design"
+      ],
+      "prerequisites": [
+        "iot-08-lo05",
+        "iot-09-lo04",
+        "iot-10-lo03"
+      ],
+      "estMinutes": 15
+    },
+    {
+      "id": "iot-10-lo09",
+      "order": 9,
+      "title": "Conduct dynamic firmware security auditing and binary extraction vulnerability analysis",
+      "bloom": "audit",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "binwalk",
+        "firmware extraction",
+        "ghidra embedded",
+        "firmware security audit",
+        "entropy analysis"
+      ],
+      "aliases": [
+        "firmware reverse engineering",
+        "binwalk analysis"
+      ],
+      "prerequisites": [
+        "iot-10-lo07"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

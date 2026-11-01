@@ -1,0 +1,51 @@
+---
+loId: "iot-08-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Real-world wireless networks experience frequent disconnects; embedded edge devices must implement store-and-forward telemetry caching to prevent data loss:
+1. Local Flash Ring Buffers:
+   When network connectivity drops (`WiFi.status() != WL_CONNECTED`), the firmware diverts telemetry away from the network socket into on-chip non-volatile Flash storage (using SPIFFS, LittleFS, or SD cards).
+2. FIFO Queue Management:
+   - Records are appended sequentially with hardware RTC timestamps.
+   - If memory fills completely during extended blackouts, a First-In-First-Out (FIFO) circular overwrite strategy ensures the most recent telemetry is preserved while discarding oldest non-critical records.
+3. Burst Drain Reconciliation:
+   Upon network restoration, the device enters a drain mode:
+   - Throttles bulk historical telemetry transmission to prevent overwhelming network buffers.
+   - Intersperses live real-time readings with queued historical uploads until the backlog is cleared.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Store-and-forward queueing logic in Python:
+```python
+class TelemetryQueue:
+    def __init__(self, max_capacity=1000):
+        self.queue = []
+        self.max_capacity = max_capacity
+
+    def push(self, record):
+        if len(self.queue) >= self.max_capacity:
+            self.queue.pop(0) # Evict oldest entry (FIFO)
+        self.queue.append(record)
+
+    def drain(self, batch_size=10):
+        batch = self.queue[:batch_size]
+        self.queue = self.queue[batch_size:]
+        return batch
+
+q = TelemetryQueue(max_capacity=5)
+for i in range(7):
+    q.push({"val": i})
+print(f"Remaining in Queue: {[r['val'] for r in q.queue]}") # [2, 3, 4, 5, 6]
+```
+
+### Common Mistake
+Discarding sensor telemetry immediately when network connectivity is lost rather than queueing readings in local non-volatile flash storage.
+
+### Check Yourself
+What memory structure is used to cache sensor readings locally on an IoT node during temporary network outages?

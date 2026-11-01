@@ -1,0 +1,36 @@
+---
+loId: "iot-10-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Network segmentation quarantines IoT devices into isolated security zones, preventing compromised smart appliances from attacking corporate workstations or databases:
+1. The Lateral Movement Threat:
+   Adversaries frequently breach low-security IoT devices (smart fish tanks, HVAC controllers, Wi-Fi lightbulbs) and use them as beachheads to pivot laterally across the flat local network to enterprise servers.
+2. IoT VLAN Architecture:
+   - Isolated IoT VLAN: Place all smart appliances on a dedicated Virtual Local Area Network (e.g. VLAN 50) distinct from employee laptops (VLAN 10) and corporate servers (VLAN 20).
+   - Firewall Rules (Microsegmentation):
+     * Permitted: IoT nodes may initiate outbound MQTTS/HTTPS connections to specific cloud broker endpoints.
+     * Denied: IoT nodes are strictly prohibited from initiating inbound connections to employee laptops or other internal subnets.
+     * Client Isolation: Enable wireless client isolation on the Wi-Fi Access Point so IoT devices on the same SSID cannot communicate directly with each other.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Firewall routing policy representation for IoT VLAN microsegmentation:
+```text
+Rule 1: ALLOW IoT_VLAN (192.168.50.0/24) -> WAN (Port 8883 MQTTS, Port 123 NTP)
+Rule 2: DENY  IoT_VLAN (192.168.50.0/24) -> Corporate_LAN (192.168.10.0/24) [ALL TRAFFIC]
+Rule 3: DENY  IoT_VLAN (192.168.50.0/24) -> Server_LAN (192.168.20.0/24) [ALL TRAFFIC]
+Rule 4: ALLOW Corporate_LAN -> IoT_VLAN (HTTP/HTTPS for device administration only)
+Rule 5: DEFAULT DROP ALL
+```
+
+### Common Mistake
+Connecting untrusted consumer IoT devices to the primary enterprise Wi-Fi network alongside corporate laptops and database servers, exposing the entire enterprise to lateral pivot attacks.
+
+### Check Yourself
+Why should wireless client isolation be enabled on Wi-Fi access points hosting IoT smart devices?

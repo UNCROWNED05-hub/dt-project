@@ -1,0 +1,1136 @@
+[
+  {
+    "loId": "iot-10-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q01",
+    "stem": "What fundamental physical factor distinguishes IoT device security from cloud data center security?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IoT devices are physically deployed in untrusted, accessible environments where adversaries can touch, disassemble, and probe electrical pins."
+      },
+      {
+        "id": "b",
+        "text": "IoT devices do not use electricity."
+      },
+      {
+        "id": "c",
+        "text": "Cloud data centers have no firewalls."
+      },
+      {
+        "id": "d",
+        "text": "IoT devices cannot be connected to the internet."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Physical exposure allows attackers to probe PCB traces, attach logic analyzers, and dump flash chips.",
+    "noteRef": "iot-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q02",
+    "stem": "An attacker clips a logic analyzer onto an unencrypted I2C bus between an MCU and an external sensor to record transmitted bytes. Which category of the STRIDE model does this attack represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Repudiation"
+      },
+      {
+        "id": "b",
+        "text": "Information Disclosure"
+      },
+      {
+        "id": "c",
+        "text": "Denial of Service"
+      },
+      {
+        "id": "d",
+        "text": "Elevation of Privilege"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Eavesdropping on unencrypted bus traffic violates confidentiality, constituting Information Disclosure.",
+    "noteRef": "iot-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo01",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q03",
+    "stem": "Which of the following physical attack surfaces are commonly exploited by hardware hackers on IoT circuit boards?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Unprotected UART serial debugging headers"
+      },
+      {
+        "id": "b",
+        "text": "JTAG / SWD processor debug interfaces"
+      },
+      {
+        "id": "c",
+        "text": "Exposed SPI flash memory chips that can be desoldered and dumped"
+      },
+      {
+        "id": "d",
+        "text": "The plastic chassis color"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "UART shells, JTAG debug ports, and exposed flash chips are primary hardware attack targets.",
+    "noteRef": "iot-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q04",
+    "stem": "How does a RF jamming attack targeting sub-GHz LoRa frequencies map to the STRIDE threat model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Elevation of Privilege"
+      },
+      {
+        "id": "b",
+        "text": "Spoofing"
+      },
+      {
+        "id": "c",
+        "text": "Denial of Service (DoS)"
+      },
+      {
+        "id": "d",
+        "text": "Repudiation"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "RF jamming prevents nodes from communicating, directly violating availability as a Denial of Service attack.",
+    "noteRef": "iot-10-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q05",
+    "stem": "What is an eFuse in a microcontroller like the ESP32?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A software variable in C++."
+      },
+      {
+        "id": "b",
+        "text": "A rechargeable backup battery."
+      },
+      {
+        "id": "c",
+        "text": "A mechanical safety switch on the power cord."
+      },
+      {
+        "id": "d",
+        "text": "A One-Time-Programmable (OTP) microscopic electrical fuse inside the silicon that is permanently blown to burn permanent security keys."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "eFuses are OTP silicon fuses used to store permanent cryptographic keys and lock hardware modes.",
+    "noteRef": "iot-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q06",
+    "stem": "A smart lock uses an ATECC608A secure element to authenticate door open requests via ECDSA. An attacker steals the lock and uses an electron microscope to inspect the silicon. What defense protects the private key?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Active tamper detection shields and internal memory scrambling that destroy stored keys if physical probing is detected."
+      },
+      {
+        "id": "b",
+        "text": "The secure element emits an audio alarm."
+      },
+      {
+        "id": "c",
+        "text": "The chip catches fire intentionally."
+      },
+      {
+        "id": "d",
+        "text": "The microscope is automatically disabled."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Secure elements incorporate active physical top-layer metal meshes that erase memory upon intrusion.",
+    "noteRef": "iot-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-10-q07",
+    "stem": "Why does performing cryptographic signing inside a hardware Secure Element prevent private key extraction?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because private keys are converted into public keys."
+      },
+      {
+        "id": "b",
+        "text": "The private key never leaves the internal secure silicon; the MCU sends the message digest and receives only the resulting signature."
+      },
+      {
+        "id": "c",
+        "text": "Because the secure element communicates over Wi-Fi."
+      },
+      {
+        "id": "d",
+        "text": "Because the key changes every millisecond."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Secure elements perform math internally; raw private keys are never exposed on external buses.",
+    "noteRef": "iot-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q08",
+    "stem": "What is meant by a 'Hardware Root of Trust' in an embedded computing architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A physical tree planted outside the factory."
+      },
+      {
+        "id": "b",
+        "text": "An insurance policy covering hardware defects."
+      },
+      {
+        "id": "c",
+        "text": "An unalterable, tamper-proof hardware foundation (such as ROM bootloader and eFuse keys) from which all subsequent software trust is authenticated."
+      },
+      {
+        "id": "d",
+        "text": "A warranty provided by the chip distributor."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A root of trust is the inherently trusted hardware anchor that verifies all firmware layers above it.",
+    "noteRef": "iot-10-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q09",
+    "stem": "What cryptographic operation does Secure Boot perform before executing newly booted firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It compresses the code into a ZIP file."
+      },
+      {
+        "id": "b",
+        "text": "It formats the SPI flash memory."
+      },
+      {
+        "id": "c",
+        "text": "It measures the operating voltage."
+      },
+      {
+        "id": "d",
+        "text": "It verifies the digital signature of the firmware binary using a public key hash burned permanently into hardware eFuses."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Secure boot authenticates firmware signatures against trusted eFuse keys before execution.",
+    "noteRef": "iot-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q10",
+    "stem": "An attacker desolders the SPI flash chip from an ESP32 smart meter with Flash Encryption enabled and reads the bytes using a programmer. What data do they see?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Indecipherable pseudo-random encrypted ciphertext (AES-256) with zero readable code or strings."
+      },
+      {
+        "id": "b",
+        "text": "Cleartext C++ source code."
+      },
+      {
+        "id": "c",
+        "text": "The homeowner's Wi-Fi password in plaintext."
+      },
+      {
+        "id": "d",
+        "text": "An empty flash chip."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Hardware flash encryption encrypts all data at rest on external SPI flash using a unique on-chip key.",
+    "noteRef": "iot-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo03",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q11",
+    "stem": "Which of the following protections are provided by enabling ESP32 hardware Secure Boot?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Preventing execution of unauthorized, modified, or malicious firmware"
+      },
+      {
+        "id": "b",
+        "text": "Establishing a cryptographic chain of trust from ROM bootloader to application code"
+      },
+      {
+        "id": "c",
+        "text": "Halting boot execution if binary integrity is compromised"
+      },
+      {
+        "id": "d",
+        "text": "Eliminating the need for electrical power"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Secure boot blocks execution of unsigned or tampered firmware images.",
+    "noteRef": "iot-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q12",
+    "stem": "Why is burning the Secure Boot eFuse on an ESP32 considered an irreversible action?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the compiler deletes the source code."
+      },
+      {
+        "id": "b",
+        "text": "eFuses physically destroy microscopic silicon fuse links with high current; once blown, they can never be restored to unprogrammed states."
+      },
+      {
+        "id": "c",
+        "text": "Because Espressif servers lock the user account."
+      },
+      {
+        "id": "d",
+        "text": "Because the flash chip is soldered shut."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "eFuses are physical one-way microscopic fuses; once blown, the silicon state cannot be reversed.",
+    "noteRef": "iot-10-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q13",
+    "stem": "According to the OWASP IoT Top 10, what vulnerability is categorized as I1 (the most common flaw)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Insecure Software/Firmware Update"
+      },
+      {
+        "id": "b",
+        "text": "Insufficient Privacy Protection"
+      },
+      {
+        "id": "c",
+        "text": "Weak, Guessable, or Hardcoded Passwords"
+      },
+      {
+        "id": "d",
+        "text": "Physical Hardening Lack"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "OWASP IoT I1 is Weak, Guessable, or Hardcoded Passwords, the primary vector for Mirai botnets.",
+    "noteRef": "iot-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q14",
+    "stem": "A consumer security camera brand ships all 100,000 units with default username `admin` and password `12345`. Automated worm scripts scan public IP ranges and hijack 40,000 cameras. What simple engineering fix mitigates this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Painting the cameras black."
+      },
+      {
+        "id": "b",
+        "text": "Using larger camera lenses."
+      },
+      {
+        "id": "c",
+        "text": "Switching the camera to analog video."
+      },
+      {
+        "id": "d",
+        "text": "Enforcing unique random per-device passwords printed on physical factory labels, and requiring password change upon initial setup."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Unique per-device passwords prevent automated credential stuffing and botnet colonization.",
+    "noteRef": "iot-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo04",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q15",
+    "stem": "Which of the following practices are core recommendations from the OWASP IoT Security Guidance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disabling unencrypted legacy protocols like Telnet (port 23) in production"
+      },
+      {
+        "id": "b",
+        "text": "Requiring cryptographic signature verification on all OTA firmware updates"
+      },
+      {
+        "id": "c",
+        "text": "Encrypting all sensitive user credentials and telemetry in transit via TLS"
+      },
+      {
+        "id": "d",
+        "text": "Publishing root passwords on the company's public website"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Disabling Telnet, signing OTA updates, and enforcing TLS in transit are core OWASP recommendations.",
+    "noteRef": "iot-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q16",
+    "stem": "What was the primary attack mechanism used by the Mirai IoT botnet in 2016 to orchestrate massive 1 Tbps DDoS attacks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Scanning the internet for open Telnet ports (23) and brute-forcing 61 common factory default usernames and passwords."
+      },
+      {
+        "id": "b",
+        "text": "Exploiting a zero-day flaw in AES-256 encryption."
+      },
+      {
+        "id": "c",
+        "text": "Physical break-ins to consumer homes."
+      },
+      {
+        "id": "d",
+        "text": "Spoofing GPS satellite signals."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Mirai automated scanning and credential stuffing against hardcoded default passwords on open Telnet ports.",
+    "noteRef": "iot-10-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q17",
+    "stem": "What network security technique isolates IoT devices from corporate laptops and databases on separate virtual networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bluetooth pairing"
+      },
+      {
+        "id": "b",
+        "text": "VLAN (Virtual Local Area Network) segmentation"
+      },
+      {
+        "id": "c",
+        "text": "USB debugging"
+      },
+      {
+        "id": "d",
+        "text": "Port forwarding"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "VLAN segmentation segregates untrusted IoT devices into separate isolated network broadcast domains.",
+    "noteRef": "iot-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q18",
+    "stem": "In a corporate casino, attackers compromised an internet-connected smart aquarium thermometer and used it to pivot across the flat corporate network to exfiltrate a customer database. What architecture would have stopped this lateral movement?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Using a bigger fish tank."
+      },
+      {
+        "id": "b",
+        "text": "Replacing the fish with robotic fish."
+      },
+      {
+        "id": "c",
+        "text": "Placing the thermometer on an isolated IoT VLAN with firewall rules prohibiting traffic initiation into internal corporate subnets."
+      },
+      {
+        "id": "d",
+        "text": "Turning off the casino's lights at night."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Firewall microsegmentation restricts IoT devices to outbound internet only, blocking lateral pivots.",
+    "noteRef": "iot-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo05",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q19",
+    "stem": "Which firewall rules should be applied to an isolated IoT VLAN hosting smart sensors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Allow outbound traffic only to specific cloud broker ports (e.g. 8883 MQTTS, 123 NTP)"
+      },
+      {
+        "id": "b",
+        "text": "Block all inbound traffic initiated from the IoT VLAN toward corporate office subnets"
+      },
+      {
+        "id": "c",
+        "text": "Enable wireless client isolation on the IoT Wi-Fi SSID"
+      },
+      {
+        "id": "d",
+        "text": "Grant full unrestricted administrative access to all internal database servers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Restricting outbound ports, blocking internal routing, and isolating wireless clients prevent attacks.",
+    "noteRef": "iot-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q20",
+    "stem": "Why is Wi-Fi 'Client Isolation' critical on an access point hosting hundreds of smart building sensors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It prevents sensors from consuming battery."
+      },
+      {
+        "id": "b",
+        "text": "It increases Wi-Fi radio transmission power."
+      },
+      {
+        "id": "c",
+        "text": "It converts 2.4GHz into 5GHz."
+      },
+      {
+        "id": "d",
+        "text": "It prevents compromised IoT devices from probing, scanning, or attacking other smart devices sharing the same Wi-Fi network."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Client isolation blocks direct layer-2 peer-to-peer traffic, preventing worm propagation across sensors.",
+    "noteRef": "iot-10-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q21",
+    "stem": "What hierarchical security architecture standard partitions industrial manufacturing networks into Levels 0 through 4?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Purdue Enterprise Reference Model (PERM / ISA-95)"
+      },
+      {
+        "id": "b",
+        "text": "OSI 7-Layer Model"
+      },
+      {
+        "id": "c",
+        "text": "TCP/IP 4-Layer Model"
+      },
+      {
+        "id": "d",
+        "text": "Bell-LaPadula Model"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The Purdue Model defines levels 0 (physical) to 4 (enterprise) for industrial control segmentation.",
+    "noteRef": "iot-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q22",
+    "stem": "An industrial water treatment plant upgrades from legacy Modbus TCP to OPC UA. What critical security feature does OPC UA provide that Modbus completely lacked?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Support for analog dials."
+      },
+      {
+        "id": "b",
+        "text": "Native cryptographic mutual authentication via X.509 certificates and end-to-end payload encryption."
+      },
+      {
+        "id": "c",
+        "text": "Ability to run on AA batteries."
+      },
+      {
+        "id": "d",
+        "text": "Zero network latency."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "OPC UA incorporates native X.509 certificates, digital signatures, and encryption; Modbus has zero authentication.",
+    "noteRef": "iot-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q23",
+    "stem": "Which components typically reside in the Industrial Demilitarized Zone (IDMZ) separating corporate IT from operational OT networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data Historian replication proxies"
+      },
+      {
+        "id": "b",
+        "text": "Jump servers for remote vendor maintenance with Multi-Factor Authentication"
+      },
+      {
+        "id": "c",
+        "text": "Internal software update mirror servers"
+      },
+      {
+        "id": "d",
+        "text": "Physical high-voltage steam turbines"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "IDMZ hosts proxy historians, jump servers, and patch mirrors; turbines reside at physical Level 0.",
+    "noteRef": "iot-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q24",
+    "stem": "Why is legacy Modbus protocol considered extremely dangerous when exposed directly to IP networks?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because Modbus operates at 10,000 Volts."
+      },
+      {
+        "id": "b",
+        "text": "Modbus packets cause optical cables to melt."
+      },
+      {
+        "id": "c",
+        "text": "Modbus has no authentication, authorization, or encryption; any host that can reach port 502 can read sensor registers and write coil commands to trip equipment."
+      },
+      {
+        "id": "d",
+        "text": "Modbus only works on Linux."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Modbus lacks credentials; any reachable endpoint can issue destructive write commands to PLCs.",
+    "noteRef": "iot-10-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q25",
+    "stem": "What hardware debugging interface allows physical probe connections directly into the CPU core to halt instructions and inspect memory?",
+    "options": [
+      {
+        "id": "a",
+        "text": "HDMI"
+      },
+      {
+        "id": "b",
+        "text": "DisplayPort"
+      },
+      {
+        "id": "c",
+        "text": "SATA"
+      },
+      {
+        "id": "d",
+        "text": "JTAG / SWD (Serial Wire Debug)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "JTAG/SWD provides low-level hardware debugging access directly into the processor core.",
+    "noteRef": "iot-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q26",
+    "stem": "Before shipping 50,000 commercial medical IoT monitors, the manufacturing team burns the `JTAG_DISABLE` eFuse on every unit. What attack does this prevent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Attaching hardware debuggers to extract proprietary firmware, dump RAM keys, or bypass security checks."
+      },
+      {
+        "id": "b",
+        "text": "Wi-Fi packet interception."
+      },
+      {
+        "id": "c",
+        "text": "Battery overcharging."
+      },
+      {
+        "id": "d",
+        "text": "Display screen cracking."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Disabling JTAG physically disconnects debug hardware logic, blocking JTAG memory dumps.",
+    "noteRef": "iot-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q27",
+    "stem": "Which of the following physical design practices harden production printed circuit boards against physical reverse-engineering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Omitting silkscreen labels identifying TX, RX, and JTAG pin names"
+      },
+      {
+        "id": "b",
+        "text": "Routing sensitive communication bus traces on internal inner PCB layers"
+      },
+      {
+        "id": "c",
+        "text": "Applying opaque, tamper-resistant epoxy potting compound over microcontrollers and flash chips"
+      },
+      {
+        "id": "d",
+        "text": "Installing bright blinking party lights"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Concealing silkscreen, burying traces, and applying epoxy potting prevent physical probing.",
+    "noteRef": "iot-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q28",
+    "stem": "What risk arises if a microcontroller's UART ROM download bootloader mode is left permanently enabled in production?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The serial port will stop functioning."
+      },
+      {
+        "id": "b",
+        "text": "An attacker who can touch the board can ground the boot strapping pin and overwrite the flash memory with custom malicious firmware."
+      },
+      {
+        "id": "c",
+        "text": "The CPU clock speed will double."
+      },
+      {
+        "id": "d",
+        "text": "The chip will consume 100 Amps."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "If download mode remains enabled, pulling boot pins LOW allows unauthorized firmware flashing.",
+    "noteRef": "iot-10-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-10-q29",
+    "stem": "What three core requirements must be synthesized in a production-grade IoT Capstone architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Maximum possible power consumption and unencrypted protocols."
+      },
+      {
+        "id": "b",
+        "text": "Relying strictly on manual human paper logs."
+      },
+      {
+        "id": "c",
+        "text": "Hardware security and tamper resilience, power and bandwidth optimization, and reliable cloud telemetry visualization."
+      },
+      {
+        "id": "d",
+        "text": "Eliminating all microcontrollers from the design."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A robust capstone balances security, energy/bandwidth optimization, and resilient telemetry.",
+    "noteRef": "iot-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q30",
+    "stem": "A capstone project monitors remote wind turbines. The node uses an ESP32 with int8 TinyML autoencoders, MQTTS over TLS 1.3 on port 8883, and dual A/B flash OTA. If an unusual bearing vibration develops, how is it detected and transmitted?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The turbine shuts down and sends an acoustic scream."
+      },
+      {
+        "id": "b",
+        "text": "The sensor waits for a technician to visit once per year."
+      },
+      {
+        "id": "c",
+        "text": "The node uploads 100 GB of raw uncompressed audio to YouTube."
+      },
+      {
+        "id": "d",
+        "text": "The on-device TinyML autoencoder detects a spike in reconstruction error locally and immediately publishes an encrypted MQTTS alarm to the cloud broker."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Local TinyML detects anomalies instantly, publishing encrypted alerts over secure MQTTS.",
+    "noteRef": "iot-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-10-q31",
+    "stem": "Which of the following layers are integral components of an end-to-end IoT capstone architecture?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Physical sensor acquisition and local signal conditioning"
+      },
+      {
+        "id": "b",
+        "text": "Secure edge processing and anomaly detection (TinyML)"
+      },
+      {
+        "id": "c",
+        "text": "Encrypted wireless transport (MQTTS / TLS 1.3)"
+      },
+      {
+        "id": "d",
+        "text": "Time-series database ingestion and operational dashboard visualization"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "explanation": "All four layers form the complete end-to-end IoT sensor-to-cloud architecture.",
+    "noteRef": "iot-10-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo08",
+    "type": "numeric",
+    "difficulty": 3,
+    "id": "iot-10-q32",
+    "stem": "An IoT capstone deployment monitors a solar farm with 1024 edge nodes. Each node transmits a 128-byte encrypted telemetry payload every 30 seconds. How many total kilobytes (KB) of raw payload does the fleet generate in one hour? (Use 1 KB = 1024 bytes)",
+    "options": [
+      {
+        "id": "a",
+        "text": "15360"
+      },
+      {
+        "id": "b",
+        "text": "7680"
+      },
+      {
+        "id": "c",
+        "text": "30720"
+      },
+      {
+        "id": "d",
+        "text": "1024"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "1024 nodes * 120 transmissions/hour * 128 bytes = 15,728,640 bytes. Dividing by 1024 bytes/KB yields 15,360 KB/hour.",
+    "noteRef": "iot-10-lo08",
+    "verify": "const nodes = 1024;\nconst packetsPerHour = 3600 / 30;\nconst bytesPerPacket = 128;\nreturn (nodes * packetsPerHour * bytesPerPacket) / 1024;",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-10-q33",
+    "stem": "What open-source command-line tool is standardly used for analyzing, reverse-engineering, and extracting embedded firmware file systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "VLC"
+      },
+      {
+        "id": "b",
+        "text": "Binwalk"
+      },
+      {
+        "id": "c",
+        "text": "Nginx"
+      },
+      {
+        "id": "d",
+        "text": "Docker"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Binwalk analyzes binary images, searches magic signatures, and extracts embedded file systems.",
+    "noteRef": "iot-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-10-q34",
+    "stem": "A security researcher runs `binwalk -E firmware.bin` and observes that the entropy score is roughly 0.2 across large sections of the file. What does this reveal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The firmware is encrypted with military-grade AES-256."
+      },
+      {
+        "id": "b",
+        "text": "The file is completely corrupted."
+      },
+      {
+        "id": "c",
+        "text": "The firmware is NOT encrypted; it contains unencrypted code, plaintext ASCII strings, or large unwritten padded blocks."
+      },
+      {
+        "id": "d",
+        "text": "The computer has run out of RAM."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Low entropy (<0.8) indicates uncompressed, unencrypted plaintext data; encryption produces entropy near 1.0.",
+    "noteRef": "iot-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-10-q35",
+    "stem": "Which of the following sensitive assets are commonly discovered in unhardened firmware dumps by security auditors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Plaintext Wi-Fi network passwords and API keys"
+      },
+      {
+        "id": "b",
+        "text": "Hardcoded administrative master credentials"
+      },
+      {
+        "id": "c",
+        "text": "Unprotected private cryptographic keys and certificates"
+      },
+      {
+        "id": "d",
+        "text": "Physical copper wires"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Unhardened firmware routinely exposes passwords, API tokens, and private keys via string dumps.",
+    "noteRef": "iot-10-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-10-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-10-q36",
+    "stem": "What open-source software reverse engineering suite developed by the NSA is widely used to decompile extracted embedded firmware binaries into C pseudo-code?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wireshark"
+      },
+      {
+        "id": "b",
+        "text": "Metasploit"
+      },
+      {
+        "id": "c",
+        "text": "Snort"
+      },
+      {
+        "id": "d",
+        "text": "Ghidra"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Ghidra is the standard open-source SRE framework for disassembling and decompiling firmware architectures.",
+    "noteRef": "iot-10-lo09",
+    "reviewed": false
+  }
+]

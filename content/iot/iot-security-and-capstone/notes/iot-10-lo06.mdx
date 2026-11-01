@@ -1,0 +1,41 @@
+---
+loId: "iot-10-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Industrial Internet of Things (IIoT) systems merge operational technology (OT) physical processes with enterprise digital systems:
+1. The Purdue Enterprise Reference Model (PERM / ISA-95):
+   Partitions industrial manufacturing networks into strict hierarchical security zones:
+   - Level 0 (Process): Physical sensors, motors, valves, pumps.
+   - Level 1 (Basic Control): Programmable Logic Controllers (PLCs), Remote Terminal Units (RTUs).
+   - Level 2 (Area Supervisory): Human-Machine Interfaces (HMIs), supervisory SCADA control stations.
+   - Level 3 (Site Operations): Historian databases, manufacturing execution systems (MES).
+   - Industrial DMZ (IDMZ): Isolates OT production networks from corporate enterprise IT networks. No direct traffic is ever permitted between Level 3 and Level 4!
+2. Industrial Protocols:
+   - Modbus TCP/RTU: Legacy standard; lacks native encryption, authentication, or integrity checks. Anyone who can inject a packet can trip a breaker.
+   - OPC Unified Architecture (OPC UA): The modern industrial gold standard. Fully object-oriented, incorporating X.509 mutual certificate authentication, digital signatures, and AES encryption.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Purdue Enterprise Reference Architecture mapping:
+```text
+[Enterprise IT] Level 4: Enterprise Business Network (ERP, Email, Internet)
+========================================================================
+[Industrial DMZ] IDMZ: Secure Proxy, Reverse Proxy, Patch Mirrors
+========================================================================
+[Industrial OT] Level 3: Manufacturing Operations (Historian, SCADA Master)
+                Level 2: Supervisory Control (HMIs, Operator Consoles)
+                Level 1: Basic Control (PLCs, RTUs, Embedded Controllers)
+                Level 0: Physical Process (Sensors, Actuators, Motors)
+```
+
+### Common Mistake
+Connecting Modbus PLCs controlling water pumps directly to the internet; because Modbus lacks authentication, anyone on Shodan can issue write commands and trigger physical equipment destruction.
+
+### Check Yourself
+What critical function does an Industrial Demilitarized Zone (IDMZ) serve in the Purdue reference architecture?

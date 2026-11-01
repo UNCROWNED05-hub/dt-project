@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "chapterId": "iot-08",
+  "objectives": [
+    {
+      "id": "iot-08-lo01",
+      "order": 1,
+      "title": "Manage cloud IoT device registries, digital identities, and certificate lifecycle provisioning",
+      "bloom": "manage",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "device registry",
+        "x509 provisioning",
+        "device certificate",
+        "aws iot core",
+        "fleet provisioning"
+      ],
+      "aliases": [
+        "cloud device registry",
+        "iot identity provisioning"
+      ],
+      "prerequisites": [
+        "iot-07-lo08"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-08-lo02",
+      "order": 2,
+      "title": "Synchronize device states using Device Shadow and Digital Twin reported versus desired state models",
+      "bloom": "synchronize",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "device shadow",
+        "digital twin",
+        "reported state",
+        "desired state",
+        "delta topic"
+      ],
+      "aliases": [
+        "device shadow sync",
+        "reported vs desired state"
+      ],
+      "prerequisites": [
+        "iot-08-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-08-lo03",
+      "order": 3,
+      "title": "Store high-frequency IoT telemetry using time-series databases (TimescaleDB, InfluxDB)",
+      "bloom": "store",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "time series database",
+        "timescaledb",
+        "influxdb",
+        "hypertables",
+        "downsampling"
+      ],
+      "aliases": [
+        "tsdb storage",
+        "iot telemetry ingestion"
+      ],
+      "prerequisites": [
+        "iot-07-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-08-lo04",
+      "order": 4,
+      "title": "Construct real-time operational visualization dashboards using open-source Grafana and ThingsBoard",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "grafana",
+        "thingsboard",
+        "operational dashboards",
+        "panel query",
+        "alert thresholds"
+      ],
+      "aliases": [
+        "iot dashboards",
+        "grafana telemetry"
+      ],
+      "prerequisites": [
+        "iot-08-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-08-lo05",
+      "order": 5,
+      "title": "Execute Over-The-Air (OTA) firmware updates using dual-partition A/B flash booting and rollback mechanisms",
+      "bloom": "execute",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ota updates",
+        "a/b partition",
+        "boot rollback",
+        "esp_ota",
+        "firmware validation"
+      ],
+      "aliases": [
+        "over the air updates",
+        "dual partition boot"
+      ],
+      "prerequisites": [
+        "iot-03-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-08-lo06",
+      "order": 6,
+      "title": "Analyze cloud IoT data ingestion pricing and optimize payload transmission economics",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "cloud pricing",
+        "data egress",
+        "payload compression",
+        "cost optimization",
+        "message metering"
+      ],
+      "aliases": [
+        "cloud cost awareness",
+        "iot data economics"
+      ],
+      "prerequisites": [
+        "iot-07-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-08-lo07",
+      "order": 7,
+      "title": "Trigger automated operational alerts and serverless event-driven workflows from telemetry rules",
+      "bloom": "trigger",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "iot rules engine",
+        "serverless trigger",
+        "aws lambda",
+        "event-driven iot",
+        "webhook alert"
+      ],
+      "aliases": [
+        "rules engine",
+        "serverless telemetry processing"
+      ],
+      "prerequisites": [
+        "iot-08-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-08-lo08",
+      "order": 8,
+      "title": "Implement edge data caching and offline queueing for intermittent network connectivity",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "offline queueing",
+        "spiffs caching",
+        "store and forward",
+        "network reconnect",
+        "flash ring buffer"
+      ],
+      "aliases": [
+        "intermittent connectivity handling",
+        "offline telemetry caching"
+      ],
+      "prerequisites": [
+        "iot-04-lo07"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-08-lo09",
+      "order": 9,
+      "title": "Deploy multi-tenant IoT fleet management architectures with zero-touch provisioning",
+      "bloom": "deploy",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "fleet management",
+        "zero-touch provisioning",
+        "multi-tenant iot",
+        "claim certificates",
+        "ota campaigns"
+      ],
+      "aliases": [
+        "fleet provisioning at scale",
+        "zero touch onboarding"
+      ],
+      "prerequisites": [
+        "iot-08-lo01",
+        "iot-08-lo05"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

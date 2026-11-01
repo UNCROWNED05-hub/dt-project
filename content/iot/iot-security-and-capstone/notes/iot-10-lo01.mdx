@@ -1,0 +1,46 @@
+---
+loId: "iot-10-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Securing IoT systems requires modeling threats against physical hardware interfaces and wireless network vectors using the STRIDE framework:
+1. Physical Attack Vectors:
+   Unlike cloud servers in locked data centers, IoT nodes sit in accessible public environments. An adversary with physical possession can:
+   - Attach logic analyzers to exposed PCB test pads to sniff unencrypted I2C/SPI bus credentials.
+   - Solder onto serial UART or JTAG headers to dump flash memory contents or access debug root shells.
+   - Desolder SPI flash chips to extract raw firmware images using external EEPROM programmers.
+2. The STRIDE Framework for Embedded IoT:
+   - Spoofing: Impersonating legitimate sensors via cloned MAC addresses or stolen certificates.
+   - Tampering: Modifying firmware in flash or injecting forged sensor readings.
+   - Repudiation: Denying malicious actuation commands due to absent cryptographic audit trails.
+   - Information Disclosure: Sniffing plaintext MQTT packets or reading unencrypted private keys.
+   - Denial of Service: Flooding radio frequencies with RF jamming signals or beacon storms.
+   - Elevation of Privilege: Escaping unprivileged application tasks into RTOS kernel mode.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+STRIDE threat evaluation script in Python:
+```python
+def audit_iot_stride(threat_category, component):
+    mitigations = {
+        "Spoofing": "Enforce mTLS client certificates backed by ATECC608 secure element",
+        "Tampering": "Enable hardware Secure Boot and Flash Encryption via eFuses",
+        "Information Disclosure": "Encrypt all transport traffic with MQTTS (TLS 1.3)",
+        "Denial of Service": "Implement rate limiting and watchdog timer resets"
+    }
+    return mitigations.get(threat_category, "Standard hardening required")
+
+print(audit_iot_stride("Tampering", "ESP32 SPI Flash"))
+# Enable hardware Secure Boot and Flash Encryption via eFuses
+```
+
+### Common Mistake
+Assuming an IoT node is secure because it connects over WPA2 Wi-Fi; network encryption provides zero protection against an adversary who physically solders onto the board's unencrypted SPI flash lines.
+
+### Check Yourself
+Why do physical attack surfaces (e.g. exposed JTAG pins and SPI flash lines) make IoT security fundamentally different from cloud server security?

@@ -1,0 +1,52 @@
+---
+loId: "iot-09-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Edge Impulse provides a complete end-to-end engineering platform that streamlines data collection, digital signal processing (DSP), and embedded ML deployment:
+1. Digital Signal Processing (DSP) Feature Blocks:
+   Feeding raw sensor time-series directly into a neural network requires massive deep models. Edge Impulse applies classical DSP feature extraction first:
+   - Spectral Analysis Block: Computes Fast Fourier Transforms (FFTs) to extract dominant frequency peaks, spectral power, and harmonic distortion from accelerometer vibration.
+   - Audio MFCC Block: Extracts Mel-Frequency Cepstral Coefficients mimicking the human auditory system.
+2. Learning Blocks:
+   Compact neural network classifiers or anomaly detection blocks (K-Means / GMM clustering) trained on the extracted low-dimensional DSP features.
+3. Hardware Profiling:
+   Calculates exact flash usage, peak RAM consumption, and execution latency across target MCU architectures (e.g. ESP32, ARM Cortex-M4) prior to firmware deployment.
+4. Export as C++ Library: Exports the trained pipeline as a self-contained, dependency-free C++ library ready to compile directly into Arduino or ESP-IDF projects.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Structure of an Edge Impulse deployment callback in C++:
+```cpp
+#include <My_Sensor_inferencing.h>
+
+void loop() {
+  signal_t signal;
+  signal.total_length = EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE;
+  signal.get_data = &get_sensor_data_callback;
+
+  ei_impulse_result_t result = { 0 };
+  EI_IMPULSE_ERROR res = run_classifier(&signal, &result, false);
+
+  if (res == EI_IMPULSE_OK) {
+    // Print classification probabilities
+    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+      Serial.printf("%s: %.2f
+", result.classification[ix].label, result.classification[ix].value);
+    }
+    Serial.printf("Anomaly score: %.2f
+", result.anomaly);
+  }
+}
+```
+
+### Common Mistake
+Skipping DSP feature extraction and feeding thousands of raw accelerometer samples into dense neural network layers; the resulting model is too large for microcontroller SRAM.
+
+### Check Yourself
+Why does extracting DSP frequency features (e.g. FFT/MFCC) prior to neural network layers dramatically improve TinyML model efficiency?

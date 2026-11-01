@@ -1,0 +1,50 @@
+---
+loId: "iot-09-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Deploying deep neural networks onto microcontrollers requires rigorous optimization within tight hardware memory boundaries:
+1. Static Flash Memory Footprint:
+   Stores read-only compiled program instructions and model weights. An ESP32 typically has $4\text{MB}$ of SPI flash; models between $50\text{KB}$ and $500\text{KB}$ fit comfortably.
+2. Dynamic SRAM Memory Ceiling:
+   The true hard bottleneck. An ESP32 provides $\sim 320\text{KB}$ of usable internal SRAM; an Arduino Uno provides only $2\text{KB}$. SRAM must hold the OS stack, Wi-Fi buffers, DMA descriptors, and the Tensor Arena.
+3. Peak Activation Memory:
+   The Tensor Arena must accommodate the two largest adjacent activation tensor layers in the neural network simultaneously. Deep networks with large intermediate spatial feature maps (e.g., early convolutional layers) consume massive peak SRAM.
+4. Multiply-Accumulate (MAC) Operations:
+   Inference latency is proportional to total MAC count:
+   $$\text{Inference Time} \approx \frac{\text{Total MAC Operations}}{\text{MACs per second supported by CPU}}$$
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Estimating model memory footprints in Python:
+```python
+def evaluate_tinyml_model_budget(num_parameters, peak_activation_bytes, available_sram_bytes, available_flash_bytes):
+    # Quantized int8: 1 byte per parameter
+    model_flash_bytes = num_parameters * 1
+    tensor_arena_bytes = peak_activation_bytes * 1.2 # 20% scratchpad buffer
+    
+    fits_flash = model_flash_bytes < available_flash_bytes
+    fits_sram = tensor_arena_bytes < available_sram_bytes
+    
+    return {
+        "flash_kb": round(model_flash_bytes / 1024, 1),
+        "sram_kb": round(tensor_arena_bytes / 1024, 1),
+        "deployable": fits_flash and fits_sram
+    }
+
+# Evaluating a 100k parameter model on ESP32 (320KB SRAM, 4MB Flash)
+res = evaluate_tinyml_model_budget(100000, 45000, 320000, 4000000)
+print(f"Flash: {res['flash_kb']} KB, SRAM: {res['sram_kb']} KB | Deployable: {res['deployable']}")
+# 97.7 KB Flash, 52.7 KB SRAM | Deployable: True
+```
+
+### Common Mistake
+Evaluating a model based only on its file size on disk; a small model with high-resolution intermediate activation tensors can easily exceed available SRAM and crash during allocation.
+
+### Check Yourself
+What is the difference between model Flash footprint and Tensor Arena SRAM requirements in TinyML deployment?

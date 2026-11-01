@@ -1,0 +1,40 @@
+---
+loId: "iot-09-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Edge computing shifts algorithmic data processing and inference directly onto IoT end nodes and local gateways rather than offloading raw streams to cloud data centers:
+1. The Four Drivers of Edge Intelligence:
+   - Ultra-Low Latency: Real-world control systems (industrial emergency shutdowns, autonomous vehicle braking) require sub-millisecond reactions. Cloud round-trip network delays ($50\text{ms} - 500\text{ms}$) are unacceptably sluggish.
+   - Bandwidth Conservation: Streaming high-bandwidth sensor feeds (vibration at $10\text{kHz}$, acoustic audio, video frames) continuously over cellular/satellite saturates network quotas. Edge preprocessing summarizes raw streams into lean state flags.
+   - Privacy and Data Sovereignty: Audio recordings, facial biometrics, and medical vitals are processed locally; sensitive raw bytes never leave the device, complying with GDPR and India's DPDP Act.
+   - Resilient Offline Autonomy: Edge devices execute full machine learning inference even when severed from the internet or deep underground.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Latency comparison in Python for edge vs cloud inference:
+```python
+def compare_inference_latency(edge_compute_ms, network_rtt_ms, cloud_compute_ms):
+    total_cloud_ms = network_rtt_ms + cloud_compute_ms
+    return {
+        "edge_latency_ms": edge_compute_ms,
+        "cloud_latency_ms": total_cloud_ms,
+        "speedup_factor": round(total_cloud_ms / edge_compute_ms, 1)
+    }
+
+# ESP32 local TinyML vs 4G LTE cloud API call
+res = compare_inference_latency(edge_compute_ms=12.0, network_rtt_ms=120.0, cloud_compute_ms=15.0)
+print(f"Edge: {res['edge_latency_ms']} ms vs Cloud: {res['cloud_latency_ms']} ms (Speedup: {res['speedup_factor']}x)")
+# Edge: 12.0 ms vs Cloud: 135.0 ms (11.2x faster!)
+```
+
+### Common Mistake
+Streaming continuous raw 16-bit audio feeds from 10,000 factory microphones to a cloud LLM to detect bearing faults; the cellular bandwidth costs exceed millions of dollars annually while local TinyML costs zero network bandwidth.
+
+### Check Yourself
+What are the four primary drivers compelling the adoption of edge computing in IoT architectures?

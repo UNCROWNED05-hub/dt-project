@@ -1,0 +1,44 @@
+---
+loId: "iot-08-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Deploying enterprise IoT requires strict bandwidth and cloud ingestion cost modeling to prevent surprise cloud computing bills:
+1. Cloud Metering Units:
+   Major cloud providers (AWS IoT Core, Azure IoT Hub) meter billing based on 5KB payload increments and message volume:
+   - Publishing 1 message per second = $86,400\text{ messages/day} = \sim 2.6\text{ million messages/month}$ per node.
+   - For a fleet of 1,000 nodes, that totals 2.6 billion messages monthly, costing thousands of dollars in ingestion charges alone.
+2. Ingestion Optimization Strategies:
+   - Edge Filtering: Only publish when telemetry deviates beyond a deadband threshold (e.g. temperature changes by $>0.5^{\circ}\text{C}$).
+   - Batching: Collect 60 one-second readings locally and dispatch a single combined message every minute, slashing billing transactions by $98.3\%$.
+   - Binary Compression: Using CBOR or Protobuf keeps payloads under 5KB chunks.
+3. Free-Tier Vigilance: AWS and Azure provide limited free tiers (e.g., 250,000 messages/month free on AWS IoT Core); exceeding free tiers incurs metered pricing per million requests.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+Python script calculating cloud ingestion cost savings via batching:
+```python
+def calculate_monthly_messaging_cost(num_nodes, publish_interval_sec, cost_per_million=1.00):
+    messages_per_node_per_day = 86400 / publish_interval_sec
+    total_monthly_messages = num_nodes * messages_per_node_per_day * 30
+    total_cost = (total_monthly_messages / 1000000.0) * cost_per_million
+    return round(total_cost, 2)
+
+# Fleet of 500 nodes: 1s updates vs 60s batched updates
+cost_1s = calculate_monthly_messaging_cost(num_nodes=500, publish_interval_sec=1)
+cost_60s = calculate_monthly_messaging_cost(num_nodes=500, publish_interval_sec=60)
+
+print(f"1-sec Interval Monthly Cost: ${cost_1s} | 60-sec Batched Cost: ${cost_60s}")
+# $1296.00/mo vs $21.60/mo (98.3% cost reduction!)
+```
+
+### Common Mistake
+Configuring sensors to publish telemetry every 100ms directly to cloud MQTT brokers without edge batching or deadbands, generating massive cloud bills without actionable operational value.
+
+### Check Yourself
+How does edge batching (e.g. aggregating 60 seconds of readings into one packet) dramatically reduce cloud IoT operating costs?

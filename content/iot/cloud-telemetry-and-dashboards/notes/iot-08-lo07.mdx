@@ -1,0 +1,40 @@
+---
+loId: "iot-08-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems, AWS IoT, and TensorFlow Lite for Microcontrollers Technical Documentation"
+lastVerified: "2026-03"
+---
+
+### Core Idea
+Cloud IoT Rules Engines evaluate incoming telemetry streams in real time, routing data and triggering serverless actions without managing virtual servers:
+1. SQL-Based Topic Filtering:
+   Cloud rules engines use standard SQL dialect to filter and extract payload attributes from MQTT topics:
+   `SELECT device_id, temperature, humidity FROM 'factory/+/telemetry' WHERE temperature > 80.0`
+2. Serverless Event-Driven Actions:
+   When rule conditions match, the rules engine automatically executes downstream integrations without human polling:
+   - AWS Lambda / Google Cloud Functions: Executes Python/Node code to process complex business logic.
+   - Amazon SNS / Twilio: Dispatches immediate SMS emergency alerts to on-duty field technicians.
+   - Ingestion Pipeline: Routes raw streams directly into Amazon Kinesis, SQS, or S3 data lakes for archival.
+3. Cost & Latency Benefits:
+   Event-driven serverless architectures charge only for the milliseconds code actively executes, eliminating the cost of idle servers.
+
+*Last verified: February 2026 against vendor documentation and technical specifications.*
+
+### Worked Example
+AWS IoT SQL Rule Definition dispatching alerts on high vibration:
+```sql
+SELECT 
+    clientid() AS node_id,
+    vibration_amplitude_g,
+    timestamp() AS alert_time
+FROM 'machinery/+/vibration'
+WHERE vibration_amplitude_g > 4.5
+```
+Action: Invoke AWS Lambda function `handle_machinery_emergency` to immediately open circuit breakers.
+
+### Common Mistake
+Writing monolithic cloud applications that poll databases every 5 seconds to detect threshold alarms rather than triggering event-driven serverless rules at message ingestion time.
+
+### Check Yourself
+What primary function does a cloud IoT Rules Engine perform upon receiving incoming MQTT messages?
