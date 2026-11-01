@@ -1,0 +1,44 @@
+---
+loId: "aiml-06-lo07"
+title: "The SVM Kernel Trick: Non-Linear Mapping and RBF Kernels"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+When data is not linearly separable in its original $D$-dimensional feature space, linear hyperplanes fail. Cover's Theorem states that non-separable patterns can almost always be made linearly separable by projecting them into a sufficiently high-dimensional space: $\mathbf{x} \mapsto \phi(\mathbf{x})$.
+
+Explicitly mapping features to high-dimensional space incurs crippling computational costs. The **Kernel Trick** bypasses explicit mapping entirely: because the dual formulation of SVM optimization depends *only* on inner dot products between sample pairs $\phi(\mathbf{x}_i) \cdot \phi(\mathbf{x}_j)$, a **Kernel Function** $K(\mathbf{x}_i, \mathbf{x}_j)$ computes this inner product directly in low-dimensional space without ever calculating $\phi(\mathbf{x})$.
+
+Common kernels:
+1. **Polynomial Kernel**: $K(\mathbf{x}, \mathbf{z}) = (\gamma \mathbf{x}^T \mathbf{z} + r)^d$.
+2. **Radial Basis Function (RBF / Gaussian) Kernel**:
+$$K(\mathbf{x}, \mathbf{z}) = \exp\left( -\gamma \|\mathbf{x} - \mathbf{z}\|^2 \right)$$
+The RBF kernel implicitly projects data into an *infinite-dimensional* Hilbert space. The parameter $\gamma$ controls the radius of influence: large $\gamma$ creates tight, highly complex decision boundaries around individual points; small $\gamma$ yields smooth boundaries.
+
+### Worked Example
+Comparing Linear and RBF Kernel SVMs:
+```python
+# scikit-learn==1.4.2
+from sklearn.svm import SVC
+from sklearn.datasets import make_circles
+
+# Non-linearly separable concentric circles
+X, y = make_circles(n_samples=200, factor=0.5, noise=0.1, random_state=42)
+
+# Linear SVM fails on concentric circles
+linear_svm = SVC(kernel="linear").fit(X, y)
+print(f"Linear SVM Accuracy: {linear_svm.score(X, y):.2%}") # ~50% (random guess)
+
+# RBF Kernel SVM maps to separable space effortlessly
+rbf_svm = SVC(kernel="rbf", gamma="scale", C=1.0).fit(X, y)
+print(f"RBF Kernel Accuracy: {rbf_svm.score(X, y):.2%}") # ~100%
+```
+
+### Common Mistake
+Setting the RBF parameter $\gamma$ excessively high (e.g., $\gamma = 100.0$), creating narrow island-like decision boundaries around individual training points and severely overfitting.
+
+### Check Yourself
+What computational shortcut allows Support Vector Machines to evaluate dot products in infinite-dimensional Hilbert spaces without calculating transformed feature vectors? (The Kernel Trick).

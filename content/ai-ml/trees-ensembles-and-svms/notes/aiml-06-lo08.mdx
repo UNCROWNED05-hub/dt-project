@@ -1,0 +1,55 @@
+---
+loId: "aiml-06-lo08"
+title: "Instance-Based Learning: k-Nearest Neighbors (k-NN) and Distance Metrics"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Most machine learning algorithms are *eager learners* that construct explicit parameterized functions during training. In contrast, **k-Nearest Neighbors (k-NN)** is a *lazy, non-parametric instance-based learner*. During training, k-NN simply stores the training dataset in memory ($mathcal{O}(1)$ training cost).
+
+Prediction mechanics:
+1. For an incoming query point $\mathbf{x}_q$, compute its geometric distance to all $N$ stored training instances.
+2. Select the $k$ closest neighbors.
+3. For classification, assign the majority class label among the $k$ neighbors; for regression, average their target values: $\hat{y} = \frac{1}{k} \sum_{i \in N_k} y_i$.
+
+Distance metrics:
+- **Euclidean ($L_2$) Distance**: $d(\mathbf{u}, \mathbf{v}) = \sqrt{\sum (u_i - v_i)^2}$.
+- **Manhattan ($L_1$) Distance**: $d(\mathbf{u}, \mathbf{v}) = \sum |u_i - v_i|$.
+
+Challenges:
+- **Inference Latency**: Predicting a single point requires scanning all $N$ training observations ($\mathcal{O}(N \cdot D)$), unless accelerated by KD-Trees or Ball-Trees.
+- **Curse of Dimensionality**: In high dimensions ($D > 50$), distance metrics become uniform, degrading neighbor differentiation.
+
+### Worked Example
+Classifying with k-NN in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+import numpy as np
+
+X = np.array([[1.0, 1.0], [1.5, 2.0], [3.0, 3.5], [5.0, 5.0], [6.0, 5.5]])
+y = np.array([0, 0, 0, 1, 1])
+
+# Pipeline ensures Euclidean scaling is uniform
+knn = Pipeline([
+    ("scaler", StandardScaler()),
+    ("classifier", KNeighborsClassifier(n_neighbors=3, metric="euclidean"))
+])
+knn.fit(X, y)
+
+query = np.array([[2.0, 2.0]])
+pred = knn.predict(query)
+probs = knn.predict_proba(query)
+print(f"Predicted class: {pred[0]}, Class Probabilities: {probs[0]}")
+```
+
+### Common Mistake
+Failing to scale features prior to running k-NN. Unscaled features with large numerical magnitudes (e.g., annual revenue) will completely dwarf small-scale features (e.g., age) in distance calculations.
+
+### Check Yourself
+Why does k-Nearest Neighbors exhibit high inference latency in production environments? (Because computing predictions requires calculating pairwise distances against the entire stored training dataset).

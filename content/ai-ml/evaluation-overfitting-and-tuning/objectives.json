@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "chapterId": "ai-07",
+  "objectives": [
+    {
+      "id": "aiml-07-lo01",
+      "order": 1,
+      "title": "Diagnose model generalization using the Bias-Variance tradeoff and irreducible error decomposition",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "bias-variance tradeoff",
+        "underfitting",
+        "overfitting",
+        "irreducible error",
+        "generalization gap",
+        "model capacity"
+      ],
+      "aliases": [
+        "bias variance decomposition",
+        "error analysis"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-07-lo02",
+      "order": 2,
+      "title": "Evaluate generalization stability using k-Fold, Stratified, and Time-Series Cross-Validation",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "k-fold cross-validation",
+        "stratified k-fold",
+        "time series split",
+        "validation folds",
+        "variance estimation"
+      ],
+      "aliases": [
+        "cross-validation resampling",
+        "resampling protocols"
+      ],
+      "prerequisites": [
+        "aiml-07-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-07-lo03",
+      "order": 3,
+      "title": "Construct and interpret Confusion Matrices to identify True Positives, False Positives, and False Negatives",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "confusion matrix",
+        "true positive",
+        "false positive",
+        "true negative",
+        "false negative",
+        "type I error",
+        "type II error"
+      ],
+      "aliases": [
+        "classification contingency table",
+        "error matrix"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-07-lo04",
+      "order": 4,
+      "title": "Calculate Precision, Recall, and the harmonic F1-score across asymmetric error costs",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "precision",
+        "recall",
+        "F1-score",
+        "harmonic mean",
+        "F-beta",
+        "cost-sensitive evaluation"
+      ],
+      "aliases": [
+        "precision recall metrics",
+        "F1 score"
+      ],
+      "prerequisites": [
+        "aiml-07-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-07-lo05",
+      "order": 5,
+      "title": "Evaluate discrimination thresholds using Receiver Operating Characteristic (ROC) and Area Under the Curve (AUC)",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "ROC curve",
+        "ROC-AUC",
+        "TPR",
+        "FPR",
+        "threshold invariant",
+        "rank order"
+      ],
+      "aliases": [
+        "ROC AUC evaluation",
+        "receiver operating characteristic"
+      ],
+      "prerequisites": [
+        "aiml-07-lo03",
+        "aiml-07-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-07-lo06",
+      "order": 6,
+      "title": "Tune hyperparameters using Grid Search, Randomized Search, and Bayesian Optimization",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "hyperparameter tuning",
+        "GridSearchCV",
+        "RandomizedSearchCV",
+        "Bayesian optimization",
+        "Optuna",
+        "search space"
+      ],
+      "aliases": [
+        "hyperparameter search",
+        "model tuning"
+      ],
+      "prerequisites": [
+        "aiml-07-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-07-lo07",
+      "order": 7,
+      "title": "Analyze Learning Curves to distinguish between high bias (underfitting) and high variance (overfitting)",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "learning curves",
+        "sample size scaling",
+        "high bias diagnosis",
+        "high variance diagnosis",
+        "asymptotic convergence"
+      ],
+      "aliases": [
+        "sample complexity curves",
+        "model diagnostic curves"
+      ],
+      "prerequisites": [
+        "aiml-07-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-07-lo08",
+      "order": 8,
+      "title": "Establish performance baselines and verify evaluation pipelines against subtle data leakage",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "baseline models",
+        "dummy classifier",
+        "evaluation leakage",
+        "target leakage",
+        "pipeline hygiene"
+      ],
+      "aliases": [
+        "baseline benchmarking",
+        "evaluation integrity"
+      ],
+      "prerequisites": [
+        "aiml-07-lo02",
+        "aiml-07-lo03"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-07-lo09",
+      "order": 9,
+      "title": "Calibrate probabilistic model predictions using Platt Scaling and Isotonic Regression",
+      "bloom": "apply",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "probability calibration",
+        "Platt scaling",
+        "isotonic regression",
+        "Brier score",
+        "calibration curve",
+        "reliability diagram"
+      ],
+      "aliases": [
+        "confidence calibration",
+        "probability reliability"
+      ],
+      "prerequisites": [
+        "aiml-07-lo04",
+        "aiml-07-lo05"
+      ],
+      "estMinutes": 15
+    }
+  ]
+}

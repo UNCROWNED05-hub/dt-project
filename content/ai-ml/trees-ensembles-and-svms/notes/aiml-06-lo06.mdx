@@ -1,0 +1,42 @@
+---
+loId: "aiml-06-lo06"
+title: "Support Vector Machines: Maximum Margin Hyperplanes and Slack Variables"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Support Vector Machines (**SVMs**) classify linearly separable binary data by finding the unique decision hyperplane that maximizes the geometric **margin**—the physical distance between the hyperplane and the closest training data points from either class. These critical boundary points are the **Support Vectors**; all other training points can be moved or deleted without altering the decision boundary.
+
+For linearly separable data with labels $y_i \in \{-1, +1\}$, the margin width is $\frac{2}{\|\mathbf{w}\|_2}$. Maximizing the margin corresponds to minimizing $\frac{1}{2}\|\mathbf{w}\|^2$.
+
+When classes overlap in real data, the **Soft-Margin SVM** introduces slack variables $\xi_i \ge 0$ to permit controlled margin violations, controlled by penalty parameter $C > 0$:
+$$\min_{\mathbf{w}, b, \boldsymbol{\xi}} \frac{1}{2}\|\mathbf{w}\|^2 + C \sum_{i=1}^N \xi_i \quad \text{subject to } y_i(\mathbf{w}^T \mathbf{x}_i + b) \ge 1 - \xi_i$$
+- **Large $C$**: Heavy penalty on slack violations, forcing narrow margins and risking overfitting.
+- **Small $C$**: Tolerates margin violations, producing a wider margin that generalizes better.
+
+### Worked Example
+Fitting a Soft-Margin Linear SVM with Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.svm import SVC
+import numpy as np
+
+X = np.array([[1.0, 2.0], [2.0, 3.0], [3.0, 3.0], [5.0, 5.0], [6.0, 7.0], [7.0, 8.0]])
+y = np.array([0, 0, 0, 1, 1, 1])
+
+# Linear SVM with soft-margin parameter C
+svm = SVC(kernel="linear", C=1.0)
+svm.fit(X, y)
+
+print(f"Number of support vectors: {len(svm.support_vectors_)}")
+print(f"Support vector coordinates:\n{svm.support_vectors_}")
+```
+
+### Common Mistake
+Omitting feature scaling before training an SVM. Because SVMs maximize Euclidean geometric distances, features with large numeric scales dominate margin calculation completely. Always apply `StandardScaler`.
+
+### Check Yourself
+What happens to the SVM decision margin as the regularization penalty parameter $C$ approaches infinity? (The margin becomes as narrow as possible, attempting to strictly separate all training points without tolerance for violations).

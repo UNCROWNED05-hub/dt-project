@@ -1,0 +1,49 @@
+---
+loId: "aiml-07-lo09"
+title: "Probability Calibration: Platt Scaling and Isotonic Regression"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Many machine learning classifiers (such as SVMs, Naive Bayes, or boosted trees) produce ranking scores that do not reflect true statistical probabilities. A model might predict probability 0.95 for 1,000 observations, but in reality only 70% of those samples turn out positive. Such models are **uncalibrated**.
+
+In safety-critical applications (such as loan approvals or clinical surgery recommendations), probabilities must be calibrated: if the model predicts probability $p$, exactly $p \times 100\%$ of those predictions must be positive.
+
+Calibration techniques:
+1. **Platt Scaling (Sigmoidal Calibration)**: Fits a single-variable logistic regression on the uncalibrated model decision scores $f(\mathbf{x})$:
+$$P(y=1 | \mathbf{x}) = \frac{1}{1 + \exp(A \cdot f(\mathbf{x}) + B)}$$
+Effective for small validation sets, assuming sigmoid distortion.
+2. **Isotonic Regression**: Fits a non-parametric, piece-wise constant non-decreasing monotonic step function. More expressive than Platt scaling, but requires larger validation datasets ($N > 1,000$) to prevent overfitting.
+
+Calibration is evaluated visually using **Reliability Diagrams** and numerically via the **Brier Score** ($L_B = \frac{1}{N} \sum (p_i - y_i)^2$).
+
+### Worked Example
+Calibrating a classifier using Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.calibration import CalibratedClassifierCV, calibration_curve
+from sklearn.svm import LinearSVC
+from sklearn.datasets import make_classification
+
+X, y = make_classification(n_samples=500, n_features=5, random_state=42)
+
+# LinearSVC outputs raw uncalibrated decision function margins
+base_svc = LinearSVC(random_state=42)
+
+# Calibrate probabilities using Platt Scaling (sigmoid) via cross-validation
+calibrated_svc = CalibratedClassifierCV(estimator=base_svc, method="sigmoid", cv=3)
+calibrated_svc.fit(X, y)
+
+# Predict true calibrated probabilities
+calibrated_probs = calibrated_svc.predict_proba(X[:3])
+print(f"Calibrated probabilities:\n{calibrated_probs.round(3)}")
+```
+
+### Common Mistake
+Fitting probability calibration on the original training set. Calibration transformers must be fit on independent validation folds; otherwise, models will appear artificially confident and miscalibrated.
+
+### Check Yourself
+What diagnostic plot plots predicted probability intervals against true empirical observed fractions to evaluate calibration quality? (A Reliability Diagram / Calibration Curve).

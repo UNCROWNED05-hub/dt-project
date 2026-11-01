@@ -1,0 +1,50 @@
+---
+loId: "aiml-06-lo09"
+title: "Model Selection Trade-Offs: Performance, Latency, and Interpretability"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+No single machine learning algorithm outperforms all others across all problem domains—a principle formalized by the **No Free Lunch Theorem**. Selecting an appropriate model architecture requires balancing statistical accuracy against operational constraints:
+
+1. **Tabular Data vs Deep Learning**: For structured tabular data, gradient boosted decision trees (XGBoost, LightGBM, CatBoost) consistently outperform deep neural networks in training speed, hyperparameter robustness, and empirical test accuracy.
+2. **Inference Latency Budgets**:
+   - *Microsecond Budgets* (e.g., high-frequency trading, packet inspection): Linear models or single small decision trees implemented as compiled C if/else branches.
+   - *Millisecond Budgets* (e.g., web search reranking): Shallow Gradient Boosted Trees or small Random Forests.
+   - *Batch Offline Pipelines*: Large tree ensembles or deep neural architectures.
+3. **Regulatory Interpretability**: In regulated industries (credit lending under FCRA, medical diagnostics), algorithms must provide explicit adverse action notices. Linear models and shallow decision trees provide exact transparent coefficients and rules, whereas deep ensembles require post-hoc explainability tools (SHAP / TreeSHAP).
+
+### Worked Example
+Benchmarking model training and inference latency:
+```python
+# scikit-learn==1.4.2
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+import time
+
+X = np.random.randn(1000, 20)
+y = np.random.randint(0, 2, 1000)
+
+# Linear model latency
+t0 = time.perf_counter()
+lr = LogisticRegression().fit(X, y)
+lr_pred_time = (time.perf_counter() - t0) * 1000
+
+# Random Forest latency
+t0 = time.perf_counter()
+rf = RandomForestClassifier(n_estimators=100).fit(X, y)
+rf_pred_time = (time.perf_counter() - t0) * 1000
+
+print(f"Logistic Regression: {lr_pred_time:.2f} ms")
+print(f"Random Forest (100 trees): {rf_pred_time:.2f} ms")
+```
+
+### Common Mistake
+Defaulting to deep neural networks for standard tabular business datasets where gradient boosted trees achieve superior accuracy in a fraction of the training time.
+
+### Check Yourself
+What class of machine learning models consistently achieves state-of-the-art performance on structured tabular datasets while maintaining fast training times? (Gradient Boosted Decision Trees / GBDTs such as XGBoost and LightGBM).

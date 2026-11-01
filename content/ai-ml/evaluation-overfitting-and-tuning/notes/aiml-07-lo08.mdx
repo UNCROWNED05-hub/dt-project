@@ -1,0 +1,50 @@
+---
+loId: "aiml-07-lo08"
+title: "Evaluation Integrity: Establishing Baselines and Eliminating Subtle Leakage"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+A model evaluation is only as trustworthy as the experimental protocol that generated it. Flawed evaluation protocols generate optimistic illusions of accuracy that unravel in production environments.
+
+Two foundational evaluation safeguards:
+1. **Heuristic Baselines**: Every trained model must be benchmarked against simple deterministic baselines:
+   - For classification: the majority-class guesser (`DummyClassifier(strategy="most_frequent")`).
+   - For regression: the mean or median target predictor (`DummyRegressor(strategy="mean")`).
+   If a complex ensemble cannot beat the majority baseline, it holds zero practical value.
+2. **Subtle Leakage Vectors in Evaluation**:
+   - *Target Leakage*: Including proxy features created after the target event occurred (e.g., using `refund_amount` to predict customer cancellation).
+   - *Group Contamination*: Splitting medical records randomly across train and test when multiple records belong to the same patient. The model memorizes patient anatomy rather than disease patterns. Use `GroupKFold`.
+   - *Duplication Leakage*: Identical records duplicated across train and test partitions.
+
+### Worked Example
+Preventing group contamination with GroupKFold:
+```python
+# scikit-learn==1.4.2
+from sklearn.model_selection import GroupKFold
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+X = np.random.randn(100, 4)
+y = np.random.randint(0, 2, 100)
+# Patient IDs: 10 patients with 10 scans each
+patient_ids = np.repeat(np.arange(10), 10)
+
+# GroupKFold ensures all scans for any single patient are kept in the SAME fold
+gkf = GroupKFold(n_splits=5)
+for fold, (train_idx, val_idx) in enumerate(gkf.split(X, y, groups=patient_ids)):
+    train_patients = set(patient_ids[train_idx])
+    val_patients = set(patient_ids[val_idx])
+    # Intersection must be empty
+    assert len(train_patients.intersection(val_patients)) == 0
+print("GroupKFold integrity confirmed: Zero patient contamination across splits!")
+```
+
+### Common Mistake
+Using standard random splits on multi-record patient or user data, allowing the model to achieve artificial 99% accuracy by memorizing specific individuals.
+
+### Check Yourself
+Which cross-validation splitter ensures that all observations belonging to the same subject or group remain strictly isolated within either training or validation, never split across both? (`GroupKFold`).

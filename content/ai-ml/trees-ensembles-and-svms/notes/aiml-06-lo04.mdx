@@ -1,0 +1,43 @@
+---
+loId: "aiml-06-lo04"
+title: "Gradient Boosting: Sequential Residual Optimization and Shrinkage"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+While Random Forests train independent trees in parallel to reduce variance, **Gradient Boosting** trains trees sequentially to reduce bias. Each successive tree is fit to predict the pseudo-residuals (negative loss gradients) of the preceding ensemble.
+
+The Gradient Boosted Decision Tree (GBDT) algorithm operates iteratively:
+1. Initialize ensemble with a constant baseline prediction that minimizes loss: $F_0(\mathbf{x}) = \arg\min_c \sum L(y_i, c)$ (for MSE, $F_0 = \bar{y}$).
+2. For iteration $m = 1$ to $M$:
+   - Calculate pseudo-residuals: $r_{im} = -\left[ \frac{\partial L(y_i, F(\mathbf{x}_i))}{\partial F(\mathbf{x}_i)} \right]_{F = F_{m-1}}$. Under MSE loss, the residual is simply $y_i - F_{m-1}(\mathbf{x}_i)$.
+   - Fit a shallow decision tree $h_m(\mathbf{x})$ to predict residuals $r_{im}$.
+   - Update the ensemble with a **shrinkage learning rate** $\nu \in (0, 1]$:
+$$F_m(\mathbf{x}) = F_{m-1}(\mathbf{x}) + \nu \cdot h_m(\mathbf{x})$$
+
+The shrinkage factor $\nu$ (typically $0.01$ to $0.1$) acts as regularization, ensuring each individual tree makes only a conservative contribution to the ensemble.
+
+### Worked Example
+Training a Gradient Boosting Regressor in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.datasets import make_regression
+
+X, y = make_regression(n_samples=200, n_features=6, noise=0.1, random_state=42)
+
+# Gradient boosting with shrinkage learning rate
+gbr = GradientBoostingRegressor(n_estimators=100, learning_rate=0.05, max_depth=3, random_state=42)
+gbr.fit(X, y)
+
+print(f"Train score: {gbr.score(X, y):.4f}")
+```
+
+### Common Mistake
+Setting both `learning_rate` and `n_estimators` very high simultaneously without early stopping, which causes gradient boosting to severely overfit residual noise.
+
+### Check Yourself
+In Gradient Boosting under Mean Squared Error loss, what target values are predicted by each successive tree in the sequence? (The pseudo-residuals: $y_i - F_{m-1}(\mathbf{x}_i)$).

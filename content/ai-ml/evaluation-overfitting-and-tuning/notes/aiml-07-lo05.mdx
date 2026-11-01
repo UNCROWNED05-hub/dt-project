@@ -1,0 +1,46 @@
+---
+loId: "aiml-07-lo05"
+title: "Receiver Operating Characteristic (ROC) and Area Under the Curve (AUC)"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Binary classifiers output continuous probabilities $\hat{p} \in [0, 1]$. Class labels are assigned by applying a classification threshold $\tau$ (traditionally $\tau = 0.5$). However, varying $\tau$ from $0.0$ to $1.0$ trades off False Positives against False Negatives.
+
+The **Receiver Operating Characteristic (ROC)** curve evaluates classifier discrimination across *all possible thresholds*:
+- **y-axis**: True Positive Rate (Recall / Sensitivity): $\text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}$.
+- **x-axis**: False Positive Rate (Fall-out / $1 - \text{Specificity}$): $\text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}}$.
+
+The **Area Under the ROC Curve (ROC-AUC)** measures overall ranking performance:
+- $\text{AUC} = 1.0$: Perfect discrimination; every positive sample is ranked higher than every negative sample.
+- $\text{AUC} = 0.5$: Baseline performance equivalent to random coin flips (the diagonal line).
+- $\text{AUC} < 0.5$: Worse than random (predictions are inverted).
+
+ROC-AUC is threshold-invariant and scale-invariant, measuring rank ordering rather than absolute calibration.
+
+### Worked Example
+Plotting and calculating ROC-AUC in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.metrics import roc_auc_score, roc_curve
+import numpy as np
+
+y_true = np.array([0, 0, 1, 1])
+y_scores = np.array([0.1, 0.4, 0.35, 0.8])
+
+# Compute Area Under the Curve
+auc = roc_auc_score(y_true, y_scores)
+fpr, tpr, thresholds = roc_curve(y_true, y_scores)
+
+print(f"ROC-AUC Score: {auc:.4f}") # 0.75 -> 75% probability of ranking positive higher than negative
+print(f"Thresholds evaluated: {thresholds}")
+```
+
+### Common Mistake
+Relying on ROC-AUC on severely imbalanced datasets (e.g., 99.9% negative). Because total negative samples (TN) is massive, FPR remains tiny even with thousands of False Positives, making ROC curves look deceptively stellar. Use Precision-Recall AUC instead.
+
+### Check Yourself
+What ROC-AUC score corresponds to a completely uninformative baseline model that makes random predictions? (0.50).

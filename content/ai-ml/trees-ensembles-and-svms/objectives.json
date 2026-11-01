@@ -1,0 +1,220 @@
+{
+  "version": 1,
+  "chapterId": "ai-06",
+  "objectives": [
+    {
+      "id": "aiml-06-lo01",
+      "order": 1,
+      "title": "Construct decision tree splits using Shannon Entropy, Information Gain, and Gini Impurity",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "decision tree",
+        "entropy",
+        "Gini impurity",
+        "information gain",
+        "split criterion",
+        "CART"
+      ],
+      "aliases": [
+        "tree splitting",
+        "impurity criteria"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo02",
+      "order": 2,
+      "title": "Mitigate tree overfitting using maximum depth constraints, minimum sample splits, and cost-complexity pruning",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "tree pruning",
+        "max_depth",
+        "min_samples_split",
+        "cost-complexity",
+        "ccp_alpha",
+        "overfitting"
+      ],
+      "aliases": [
+        "tree regularization",
+        "pre-pruning post-pruning"
+      ],
+      "prerequisites": [
+        "aiml-06-lo01"
+      ],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-06-lo03",
+      "order": 3,
+      "title": "Construct Random Forest ensembles using Bootstrap Aggregation (bagging) and random feature subspace sampling",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "random forest",
+        "bagging",
+        "bootstrap aggregation",
+        "out-of-bag error",
+        "feature subsampling",
+        "decorrelation"
+      ],
+      "aliases": [
+        "forest ensemble",
+        "bootstrap bagging"
+      ],
+      "prerequisites": [
+        "aiml-06-lo01",
+        "aiml-06-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo04",
+      "order": 4,
+      "title": "Optimize sequential decision trees using Gradient Boosting and shrinkage learning rates",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "gradient boosting",
+        "boosting",
+        "residual fitting",
+        "learning rate shrinkage",
+        "AdaBoost",
+        "GBDT"
+      ],
+      "aliases": [
+        "gradient boosted trees",
+        "residual learning"
+      ],
+      "prerequisites": [
+        "aiml-06-lo01",
+        "aiml-06-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo05",
+      "order": 5,
+      "title": "Analyze extreme gradient boosting (XGBoost) enhancements including second-order Taylor approximations and regularized split gain",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "XGBoost",
+        "second-order gradient",
+        "Hessian",
+        "regularized split",
+        "sparsity awareness",
+        "LightGBM"
+      ],
+      "aliases": [
+        "extreme gradient boosting",
+        "second order boosting"
+      ],
+      "prerequisites": [
+        "aiml-06-lo04"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo06",
+      "order": 6,
+      "title": "Maximize classification margins using linear Support Vector Machines (SVMs) and slack variables",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "support vector machine",
+        "SVM",
+        "maximum margin",
+        "support vectors",
+        "slack variables",
+        "hinge loss",
+        "parameter C"
+      ],
+      "aliases": [
+        "margin maximization",
+        "soft margin SVM"
+      ],
+      "prerequisites": [],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo07",
+      "order": 7,
+      "title": "Transform non-linear feature geometries using the SVM Kernel Trick (Polynomial and RBF kernels)",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "kernel trick",
+        "RBF kernel",
+        "radial basis function",
+        "polynomial kernel",
+        "Mercer theorem",
+        "gamma"
+      ],
+      "aliases": [
+        "kernel SVM",
+        "non-linear mapping"
+      ],
+      "prerequisites": [
+        "aiml-06-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "aiml-06-lo08",
+      "order": 8,
+      "title": "Classify observations using non-parametric k-Nearest Neighbors (k-NN) and distance metrics",
+      "bloom": "apply",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "k-NN",
+        "nearest neighbors",
+        "Euclidean distance",
+        "Manhattan distance",
+        "non-parametric",
+        "curse of dimensionality"
+      ],
+      "aliases": [
+        "k nearest neighbors",
+        "instance-based learning"
+      ],
+      "prerequisites": [],
+      "estMinutes": 10
+    },
+    {
+      "id": "aiml-06-lo09",
+      "order": 9,
+      "title": "Select optimal machine learning models based on dataset size, interpretability, and latency trade-offs",
+      "bloom": "evaluate",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "model selection",
+        "inference latency",
+        "interpretability",
+        "linear vs tree",
+        "tabular benchmarks"
+      ],
+      "aliases": [
+        "algorithm selection",
+        "production trade-offs"
+      ],
+      "prerequisites": [
+        "aiml-06-lo03",
+        "aiml-06-lo04",
+        "aiml-06-lo06"
+      ],
+      "estMinutes": 15
+    }
+  ]
+}

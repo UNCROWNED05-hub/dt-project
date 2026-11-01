@@ -1,0 +1,44 @@
+---
+loId: "aiml-06-lo02"
+title: "Tree Overfitting Mitigation: Pre-Pruning and Cost-Complexity Pruning"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Unconstrained decision trees partition feature space until every leaf node contains a single training sample ($I_G = 0$). While this achieves 100% training accuracy, the tree memorizes individual noise points and outliers, creating highly fragmented decision boundaries that fail to generalize (severe high variance).
+
+Overfitting is mitigated using two pruning paradigms:
+1. **Pre-Pruning (Early Stopping)**: Halting tree expansion during construction via structural hyperparameters:
+   - `max_depth`: Limits vertical hierarchy depth.
+   - `min_samples_split`: Minimum samples required to attempt a split.
+   - `min_samples_leaf`: Minimum samples required in any terminal leaf node.
+2. **Post-Pruning (Minimal Cost-Complexity Pruning)**: Growing the full tree $T_0$, then pruning subtrees backward by penalizing tree size with cost-complexity parameter $\alpha \ge 0$:
+$$R_\alpha(T) = R(T) + \alpha |T|$$
+where $R(T)$ is total leaf misclassification and $|T|$ is the count of terminal leaves. Tuning $\alpha$ via cross-validation extracts the optimal pruned subtree.
+
+### Worked Example
+Applying cost-complexity pruning in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import make_classification
+
+X, y = make_classification(n_samples=200, n_features=5, random_state=42)
+
+# Unconstrained tree overfits
+unconstrained = DecisionTreeClassifier(random_state=42).fit(X, y)
+print(f"Unconstrained depth: {unconstrained.get_depth()}, leaves: {unconstrained.get_n_leaves()}")
+
+# Pre-pruned tree restricts depth and leaf size
+pruned = DecisionTreeClassifier(max_depth=4, min_samples_leaf=5, random_state=42).fit(X, y)
+print(f"Pruned depth: {pruned.get_depth()}, leaves: {pruned.get_n_leaves()}")
+```
+
+### Common Mistake
+Setting `max_depth` excessively shallow (e.g., depth=1, a decision stump) on complex non-linear problems, inducing severe underfitting and high bias.
+
+### Check Yourself
+Which hyperparameter in Scikit-Learn's `DecisionTreeClassifier` directly limits the maximum vertical depth of the tree hierarchy? (`max_depth`).

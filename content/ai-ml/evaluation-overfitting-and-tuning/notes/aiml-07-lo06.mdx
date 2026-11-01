@@ -1,0 +1,49 @@
+---
+loId: "aiml-07-lo06"
+title: "Hyperparameter Optimization: Grid Search, Random Search, and Bayesian Tuning"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Model parameters (such as weights $\mathbf{w}$) are learned automatically via gradient descent during training. In contrast, **hyperparameters** (such as learning rate $\eta$, tree `max_depth`, or regularization $\lambda$) govern the algorithm architecture and must be configured prior to training.
+
+Optimization strategies:
+1. **Grid Search (`GridSearchCV`)**: Exhaustively trains and evaluates models on every combination of hyperparameter values specified in a discrete grid. Guaranteed to find the best point in the defined grid, but suffers from the curse of dimensionality—testing 4 parameters with 5 values each requires $5^4 = 625$ cross-validation runs.
+2. **Randomized Search (`RandomizedSearchCV`)**: Randomly samples $N$ combinations from continuous or discrete parameter distributions. Bergstra and Bengio (2012) proved that Random Search finds superior models in a fraction of the time because it allocates all budget to exploring unique values along the few truly impactful hyperparameters.
+3. **Bayesian Optimization (e.g., Optuna)**: Fits a probabilistic surrogate model (such as a Gaussian Process or Tree-structured Parzen Estimator) to historical trial results, using acquisition functions to intelligently explore promising search regions.
+
+### Worked Example
+Executing Randomized Search with cross-validation in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from scipy.stats import randint
+import numpy as np
+
+X = np.random.randn(200, 6); y = np.random.randint(0, 2, 200)
+
+param_distributions = {
+    "n_estimators": randint(50, 200),
+    "max_depth": randint(3, 10),
+    "min_samples_split": randint(2, 10)
+}
+
+search = RandomizedSearchCV(
+    RandomForestClassifier(random_state=42),
+    param_distributions=param_distributions,
+    n_iter=15, cv=3, random_state=42
+)
+search.fit(X, y)
+print(f"Best CV Score: {search.best_score_:.4f}")
+print(f"Best Hyperparameters: {search.best_params_}")
+```
+
+### Common Mistake
+Evaluating hyperparameter search tuning results on the test dataset. Hyperparameter tuning must be guided strictly by cross-validation on the training set; the test set is reserved exclusively for the final audit.
+
+### Check Yourself
+Why does Randomized Search consistently outperform exhaustive Grid Search on fixed compute budgets? (Because it explores a far greater number of distinct values for the few hyperparameters that actually govern performance).

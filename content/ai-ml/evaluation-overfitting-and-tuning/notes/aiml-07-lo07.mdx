@@ -1,0 +1,51 @@
+---
+loId: "aiml-07-lo07"
+title: "Diagnostic Learning Curves: Identifying High Bias vs High Variance"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+A **Learning Curve** plots training error and validation error as a function of the number of training samples ($N$). By observing how these two curves behave as sample size expands, engineers can diagnose whether a model suffers from high bias (underfitting) or high variance (overfitting).
+
+Diagnostic patterns:
+1. **High Bias (Underfitting)**:
+   - Both training error and validation error plateau at high, unacceptable levels.
+   - The validation error quickly converges close to the training error (very small generalization gap).
+   - *Remedy*: Collecting more training data will **not** help; the curves are already flat. You must increase model capacity (add features, use non-linear models, decrease regularization).
+2. **High Variance (Overfitting)**:
+   - Training error remains low, but validation error remains significantly higher (large persistent generalization gap).
+   - As sample size $N$ increases, validation error continues to trend downward.
+   - *Remedy*: Collecting more training data is effective. Alternatively, reduce model capacity (increase regularization, reduce depth, select fewer features).
+
+### Worked Example
+Generating diagnostic learning curve data in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.model_selection import learning_curve
+from sklearn.linear_model import Ridge
+import numpy as np
+
+X = np.random.randn(300, 5)
+y = 2.0 * X[:, 0] + np.random.randn(300) * 0.5
+
+train_sizes, train_scores, val_scores = learning_curve(
+    Ridge(), X, y, cv=5, train_sizes=np.linspace(0.2, 1.0, 5),
+    scoring="neg_mean_squared_error"
+)
+
+# Convert negative MSE to positive MSE
+mean_train_mse = -np.mean(train_scores, axis=1)
+mean_val_mse = -np.mean(val_scores, axis=1)
+
+for size, t_err, v_err in zip(train_sizes, mean_train_mse, mean_val_mse):
+    print(f"Samples: {size:3d} | Train MSE: {t_err:.3f} | Val MSE: {v_err:.3f} | Gap: {v_err - t_err:.3f}")
+```
+
+### Common Mistake
+Investing significant budget to collect more data when learning curves show both training and validation error have already plateaued at high values (high bias).
+
+### Check Yourself
+If a learning curve shows training error is 0.02 and validation error is 0.45 with a large persistent gap, what failure mode is occurring? (High variance / overfitting).

@@ -1,0 +1,52 @@
+---
+loId: "aiml-06-lo01"
+title: "Decision Tree Splitting Criteria: Gini Impurity and Shannon Entropy"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Decision trees partition multidimensional feature space into orthogonal hyper-rectangles using hierarchical threshold queries (e.g., $x_1 \le 3.5$). At each internal node, the Classification and Regression Tree (CART) algorithm searches over all features and potential split thresholds to maximize **Information Gain**—the reduction in node impurity.
+
+Two primary impurity metrics govern classification splits:
+1. **Gini Impurity**: Measures the probability that a randomly chosen element from the node subset would be incorrectly labeled if it were randomly labeled according to the class distribution:
+$$I_G(p) = 1 - \sum_{k=1}^K p_k^2$$
+For a perfectly pure node (all samples belong to one class), $I_G = 0$. For a 50/50 binary split, $I_G = 0.5$.
+2. **Shannon Entropy**: Measures the information-theoretic uncertainty in bits:
+$$H(p) = -\sum_{k=1}^K p_k \log_2(p_k)$$
+Entropy peaks at $1.0$ for a balanced binary split and reaches $0.0$ for pure nodes.
+
+Gini is computationally faster because it avoids calculating logarithms, making it the default in modern libraries like Scikit-Learn.
+
+### Worked Example
+Computing Gini impurity and Information Gain in Python:
+```python
+# numpy==1.26.4
+import numpy as np
+
+def gini_impurity(counts):
+    total = np.sum(counts)
+    if total == 0: return 0.0
+    probs = counts / total
+    return 1.0 - np.sum(probs**2)
+
+# Parent node with 50 positive and 50 negative samples
+parent_gini = gini_impurity(np.array([50, 50])) # 1.0 - (0.25 + 0.25) = 0.50
+
+# Split into left child (40 pos, 10 neg) and right child (10 pos, 40 neg)
+left_gini = gini_impurity(np.array([40, 10]))   # 1 - (0.64 + 0.04) = 0.32
+right_gini = gini_impurity(np.array([10, 40]))  # 0.32
+
+# Weighted child impurity
+weighted_child_gini = 0.5 * left_gini + 0.5 * right_gini # 0.32
+info_gain = parent_gini - weighted_child_gini
+print(f"Parent Gini: {parent_gini:.2f}, Information Gain: {info_gain:.2f}") # Gain = 0.18
+```
+
+### Common Mistake
+Assuming Gini impurity and Entropy produce radically divergent decision trees. In practice, they select identical split points over 98% of the time; Gini simply avoids expensive floating-point logarithm evaluations.
+
+### Check Yourself
+What is the Gini impurity of a perfectly pure node where 100% of samples belong to Class A? (0.0).

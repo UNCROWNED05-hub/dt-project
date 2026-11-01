@@ -1,0 +1,39 @@
+---
+loId: "aiml-06-lo03"
+title: "Random Forest Ensembles: Bagging and Feature Subspace Sampling"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+Individual decision trees have high variance and sensitivity to training data fluctuations. **Random Forests** solve this limitation by assembling a diverse committee of decorrelated decision trees using **Bootstrap Aggregation (Bagging)** and random feature subspace projection.
+
+Core mechanics:
+1. **Bootstrapping**: Each tree $t$ is trained on an independent bootstrap sample of size $N$ drawn *with replacement* from the training dataset. Statistically, each bootstrap draw contains approximately $1 - 1/e \approx 63.2\%$ of unique observations; the remaining $36.8\%$ form the **Out-Of-Bag (OOB)** sample, serving as an organic validation set.
+2. **Feature Subsampling**: At *every split node*, the algorithm selects a random subset of $m \approx \sqrt{D}$ features rather than evaluating all $D$ features. This prevents a single dominant feature from dictating the root splits across all trees, decorrelating individual tree predictions.
+3. **Aggregation**: For classification, trees vote by majority rule; for regression, predictions are averaged: $\hat{y} = \frac{1}{B} \sum_{b=1}^B T_b(\mathbf{x})$. By the law of large numbers, averaging $B$ decorrelated high-variance models reduces overall ensemble variance without increasing bias.
+
+### Worked Example
+Training a Random Forest and evaluating Out-Of-Bag (OOB) score:
+```python
+# scikit-learn==1.4.2
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+
+X, y = make_classification(n_samples=500, n_features=10, random_state=42)
+
+# Train forest with OOB scoring enabled
+rf = RandomForestClassifier(n_estimators=100, max_features="sqrt", oob_score=True, random_state=42)
+rf.fit(X, y)
+
+print(f"OOB Generalization Score: {rf.oob_score_:.4f}")
+print(f"Feature Importances:\n{rf.feature_importances_.round(3)}")
+```
+
+### Common Mistake
+Assuming adding more trees (`n_estimators=1000`) causes a Random Forest to overfit. Adding trees reduces ensemble variance and stabilizes predictions; it never increases overfitting risk (though it hits diminishing returns in latency).
+
+### Check Yourself
+What proportion of original training samples are left out as Out-Of-Bag (OOB) validation samples in a standard bootstrap sample with replacement? (Approximately 36.8%).

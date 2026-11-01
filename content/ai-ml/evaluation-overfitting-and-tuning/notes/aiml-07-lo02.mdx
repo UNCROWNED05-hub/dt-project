@@ -1,0 +1,41 @@
+---
+loId: "aiml-07-lo02"
+title: "Cross-Validation Protocols: k-Fold, Stratified, and Temporal Splits"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+A single train/test split provides only an isolated point estimate of model performance, subject to high variance based on which specific samples were randomly sequestered into the test set. **Cross-Validation** generates reliable empirical estimates of expected generalization error.
+
+Primary validation protocols:
+1. **Standard k-Fold Cross-Validation**: Partitions the training set into $k$ equal, non-overlapping folds. The model is trained $k$ times; in each iteration, $k-1$ folds serve as training data and the remaining fold serves as validation. The final score is the mean and standard error across all $k$ validation iterations.
+2. **Stratified k-Fold**: Essential for classification datasets. Ensures every fold maintains the identical target class proportion (e.g., 90% Class 0 and 10% Class 1) as the complete dataset, preventing folds from having zero positive instances.
+3. **Time-Series (Temporal) Split**: On sequential time-series data, standard k-fold causes catastrophic future lookahead leakage. A temporal split enforces strict chronological ordering ($t_1 \to t_2 \to t_3$), training strictly on historical windows to predict subsequent future blocks.
+
+### Worked Example
+Executing Stratified k-Fold Cross-Validation in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.datasets import make_classification
+import numpy as np
+
+X, y = make_classification(n_samples=500, weights=[0.9, 0.1], random_state=42)
+
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+clf = LogisticRegression()
+
+scores = cross_val_score(clf, X, y, cv=skf, scoring="f1")
+print(f"5-Fold F1 Scores: {scores.round(3)}")
+print(f"Mean F1: {scores.mean():.3f} (+/- {scores.std():.3f})")
+```
+
+### Common Mistake
+Applying standard shuffled k-fold cross-validation to time-series stock price data, allowing the model to train on tomorrow's closing prices to predict yesterday's movements (lookahead leakage).
+
+### Check Yourself
+Why is Stratified k-Fold preferred over standard k-Fold on imbalanced classification datasets? (It guarantees that every fold preserves the exact class frequency proportions of the overall dataset).

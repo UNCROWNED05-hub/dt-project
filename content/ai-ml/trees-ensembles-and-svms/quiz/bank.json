@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "aiml-06-q01",
+    "loId": "aiml-06-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What does Gini Impurity measure in a decision tree node?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The probability that a randomly chosen sample would be misclassified if labeled according to the node's class distribution."
+      },
+      {
+        "id": "b",
+        "text": "The physical memory size of the tree data structure in bytes."
+      },
+      {
+        "id": "c",
+        "text": "The curvature of the decision boundary."
+      },
+      {
+        "id": "d",
+        "text": "The correlation between features."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Gini impurity calculates 1 - sum(p_k^2), measuring the statistical dispersion of classes in a subset.",
+    "noteRef": "aiml-06-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-lo02",
+    "loId": "aiml-06-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is Gini Impurity generally favored over Shannon Entropy as the default splitting criterion in CART implementations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Entropy can only process integer values."
+      },
+      {
+        "id": "b",
+        "text": "Gini impurity does not require computing logarithmic functions, executing faster while yielding virtually identical splits."
+      },
+      {
+        "id": "c",
+        "text": "Gini impurity guarantees zero leaf overfitting."
+      },
+      {
+        "id": "d",
+        "text": "Entropy violates the laws of thermodynamics."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Gini calculates simple squares rather than log2 evaluations, speeding up tree construction with negligible difference in split quality.",
+    "noteRef": "aiml-06-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-lo03",
+    "loId": "aiml-06-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A decision tree node contains 80 samples of Class 0 and 20 samples of Class 1. What is the Gini impurity of this node?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.00, because Class 0 dominates."
+      },
+      {
+        "id": "b",
+        "text": "0.50, representing an even split."
+      },
+      {
+        "id": "c",
+        "text": "0.32, calculated as 1 - (0.8^2 + 0.2^2) = 1 - (0.64 + 0.04) = 0.32."
+      },
+      {
+        "id": "d",
+        "text": "0.16, representing the minority fraction."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Gini = 1 - (p_0^2 + p_1^2) = 1 - (0.64 + 0.04) = 0.32.",
+    "noteRef": "aiml-06-lo01",
+    "verify": "(1.0 - (Math.pow(0.8, 2) + Math.pow(0.2, 2)) === 0.32)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q04",
+    "loId": "aiml-06-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A binary node has 50 samples of Class A and 50 samples of Class B. What is its Gini Impurity?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.50"
+      },
+      {
+        "id": "b",
+        "text": "1.00"
+      },
+      {
+        "id": "c",
+        "text": "0.25"
+      },
+      {
+        "id": "d",
+        "text": "0.00"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Gini = 1 - (0.5^2 + 0.5^2) = 1 - (0.25 + 0.25) = 0.50.",
+    "noteRef": "aiml-06-lo01",
+    "verify": "(1.0 - (0.25 + 0.25) === 0.5)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q05",
+    "loId": "aiml-06-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why do unconstrained decision trees exhibit severe overfitting on training data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They require matrix inversion."
+      },
+      {
+        "id": "b",
+        "text": "They can only make horizontal splits."
+      },
+      {
+        "id": "c",
+        "text": "They have too few parameters to capture patterns."
+      },
+      {
+        "id": "d",
+        "text": "They partition feature space until every leaf contains a single sample, memorizing noise and outliers."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Unconstrained trees grow until impurity is 0, creating hyper-specific boundaries that fit training noise.",
+    "noteRef": "aiml-06-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-lo06",
+    "loId": "aiml-06-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is the difference between pre-pruning and post-pruning in decision trees?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pre-pruning halts growth early using depth/sample thresholds; post-pruning grows the full tree and trims branches using cost-complexity."
+      },
+      {
+        "id": "b",
+        "text": "Pre-pruning is for regression; post-pruning is only for classification."
+      },
+      {
+        "id": "c",
+        "text": "Post-pruning modifies feature values."
+      },
+      {
+        "id": "d",
+        "text": "Pre-pruning requires deep neural networks."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Pre-pruning stops splitting early (max_depth, min_samples_leaf); post-pruning trims a fully grown tree using complexity penalties.",
+    "noteRef": "aiml-06-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q07",
+    "loId": "aiml-06-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A decision tree model achieves 100% training accuracy but only 68% cross-validation accuracy. Which hyperparameter adjustment will help reduce overfitting?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Increase `max_depth` to infinity."
+      },
+      {
+        "id": "b",
+        "text": "Reduce `max_depth` and increase `min_samples_leaf`."
+      },
+      {
+        "id": "c",
+        "text": "Decrease `min_samples_split` to 1."
+      },
+      {
+        "id": "d",
+        "text": "Remove all stopping criteria."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Constraining depth and requiring more samples per leaf prevents isolated, overfitted partitions.",
+    "noteRef": "aiml-06-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q08",
+    "loId": "aiml-06-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following hyperparameters in Scikit-Learn's `DecisionTreeClassifier` act as pre-pruning regularizers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`max_depth` (maximum vertical tree depth)"
+      },
+      {
+        "id": "b",
+        "text": "`min_samples_split` (minimum samples required to split an internal node)"
+      },
+      {
+        "id": "c",
+        "text": "`min_samples_leaf` (minimum samples required in a terminal leaf)"
+      },
+      {
+        "id": "d",
+        "text": "`learning_rate`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "max_depth, min_samples_split, and min_samples_leaf constrain tree complexity. Learning rate is for boosted ensembles.",
+    "noteRef": "aiml-06-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-06-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "aiml-06-q09",
+    "stem": "What two randomization mechanisms define a Random Forest ensemble?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Random learning rates and stochastic gradient steps."
+      },
+      {
+        "id": "b",
+        "text": "Random neural activations and dropout masks."
+      },
+      {
+        "id": "c",
+        "text": "Bootstrap aggregation of training rows and random feature subset sampling at each split node."
+      },
+      {
+        "id": "d",
+        "text": "Random data deletion and noise injection."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Random forests combine bagging (row bootstrapping with replacement) and random feature subspace selection per split.",
+    "noteRef": "aiml-06-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q10",
+    "loId": "aiml-06-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does selecting a random subset of features ($m \\approx \\sqrt{D}$) at each node split improve ensemble performance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It guarantees zero training error."
+      },
+      {
+        "id": "b",
+        "text": "It compresses training data into 8-bit integers."
+      },
+      {
+        "id": "c",
+        "text": "It eliminates the need for leaf node predictions."
+      },
+      {
+        "id": "d",
+        "text": "It decorrelates individual trees, preventing dominant features from dictating root splits across all trees."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Feature subsampling decorrelates the trees; averaging decorrelated trees drastically reduces ensemble variance.",
+    "noteRef": "aiml-06-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q11",
+    "loId": "aiml-06-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "What is the 'Out-Of-Bag' (OOB) error in a Random Forest?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Validation error evaluated on the ~36.8% of samples left out of each tree's bootstrap training draw."
+      },
+      {
+        "id": "b",
+        "text": "The percentage of memory overflow errors during training."
+      },
+      {
+        "id": "c",
+        "text": "The misclassification rate on test data."
+      },
+      {
+        "id": "d",
+        "text": "The error caused by missing values."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "OOB samples act as a built-in cross-validation set because they are never seen during the training of that specific tree.",
+    "noteRef": "aiml-06-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q12",
+    "loId": "aiml-06-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following statements regarding Random Forests are true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Individual decision trees in a Random Forest can be trained completely in parallel"
+      },
+      {
+        "id": "b",
+        "text": "Adding more trees (`n_estimators`) does not cause a Random Forest to overfit"
+      },
+      {
+        "id": "c",
+        "text": "Feature scaling (standardization) is not required for Random Forests"
+      },
+      {
+        "id": "d",
+        "text": "Random Forests cannot be used for regression tasks"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Random forests train in parallel, do not overfit from additional trees, and are scale-invariant. They support both classification and regression.",
+    "noteRef": "aiml-06-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q13",
+    "loId": "aiml-06-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "How does Gradient Boosting differ fundamentally from Random Forests in how trees are trained?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gradient Boosting is an unsupervised algorithm."
+      },
+      {
+        "id": "b",
+        "text": "Gradient Boosting trains trees sequentially to predict residual errors; Random Forests train trees independently in parallel."
+      },
+      {
+        "id": "c",
+        "text": "Random Forests use gradients, while Gradient Boosting does not."
+      },
+      {
+        "id": "d",
+        "text": "Gradient Boosting only works with linear models."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Boosting builds sequential trees that iteratively correct the pseudo-residuals of previous trees.",
+    "noteRef": "aiml-06-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q14",
+    "loId": "aiml-06-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In Gradient Boosted Trees, what role does the 'shrinkage' (learning rate $\\nu$) play?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It sets the maximum leaf count."
+      },
+      {
+        "id": "b",
+        "text": "It compresses the tree structure on disk."
+      },
+      {
+        "id": "c",
+        "text": "It scales each tree's prediction contribution, acting as regularization to prevent early trees from overfitting."
+      },
+      {
+        "id": "d",
+        "text": "It removes negative predictions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Shrinkage scales each tree's contribution (e.g., 0.05), requiring many diverse trees to learn and preventing premature overfitting.",
+    "noteRef": "aiml-06-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q15",
+    "loId": "aiml-06-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "Under Mean Squared Error loss, the current ensemble predicts $\\hat{y}_i = 18.0$ for true target $y_i = 25.0$. What pseudo-residual value must the next tree fit for this sample?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.38."
+      },
+      {
+        "id": "b",
+        "text": "-7.0."
+      },
+      {
+        "id": "c",
+        "text": "43.0."
+      },
+      {
+        "id": "d",
+        "text": "+7.0, calculated as y_i - y_hat_i = 25.0 - 18.0 = +7.0."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "For MSE, the negative gradient (pseudo-residual) is exactly y - y_hat = 25 - 18 = 7.",
+    "noteRef": "aiml-06-lo04",
+    "verify": "(25.0 - 18.0 === 7.0)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q16",
+    "loId": "aiml-06-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which hyperparameters in Gradient Boosting must be co-tuned to balance accuracy and overfitting?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`n_estimators` (number of sequential trees)"
+      },
+      {
+        "id": "b",
+        "text": "`learning_rate` (shrinkage factor)"
+      },
+      {
+        "id": "c",
+        "text": "`max_depth` (depth of individual weak learner trees)"
+      },
+      {
+        "id": "d",
+        "text": "`audio_sampling_frequency`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Lower learning rates require higher n_estimators; shallow max_depth (3-6) ensures weak base learners.",
+    "noteRef": "aiml-06-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q17",
+    "loId": "aiml-06-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What mathematical enhancement does XGBoost incorporate beyond traditional first-order gradient boosting?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Second-order Taylor approximations using both first-order gradients and second-order Hessians."
+      },
+      {
+        "id": "b",
+        "text": "Complex imaginary number matrices."
+      },
+      {
+        "id": "c",
+        "text": "Convolutional pooling layers."
+      },
+      {
+        "id": "d",
+        "text": "Fourier frequency analysis."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "XGBoost uses exact second-order Taylor expansion (gradients g and Hessians h) to compute optimal leaf weights and split gain.",
+    "noteRef": "aiml-06-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q18",
+    "loId": "aiml-06-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "How does the complexity parameter $\\gamma$ in XGBoost control tree growth?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It sets the learning rate."
+      },
+      {
+        "id": "b",
+        "text": "It acts as a minimum split loss reduction threshold; splits with gain less than $\\gamma$ are pruned."
+      },
+      {
+        "id": "c",
+        "text": "It determines the number of threads."
+      },
+      {
+        "id": "d",
+        "text": "It replaces missing values with zero."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Gamma is the minimum gain required to make a further partition on a leaf node, pruning weak splits.",
+    "noteRef": "aiml-06-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q19",
+    "loId": "aiml-06-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An XGBoost tree evaluates a potential split that yields Gain $= 3.4$. If $\\gamma$ is set to $5.0$, will the split be performed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, but only on the right leaf."
+      },
+      {
+        "id": "b",
+        "text": "Yes, because gain is positive."
+      },
+      {
+        "id": "c",
+        "text": "No, because the split gain (3.4) does not exceed the regularization threshold gamma (5.0)."
+      },
+      {
+        "id": "d",
+        "text": "It depends on the random seed."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "XGBoost requires Gain >= gamma. Since 3.4 < 5.0, the split is rejected and the node remains terminal.",
+    "noteRef": "aiml-06-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q20",
+    "loId": "aiml-06-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following computational features make XGBoost and LightGBM exceptionally fast on large datasets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Histogram-based continuous feature binning"
+      },
+      {
+        "id": "b",
+        "text": "Native sparsity awareness for missing values"
+      },
+      {
+        "id": "c",
+        "text": "Cache-aware memory pre-fetching and multithreaded block sorting"
+      },
+      {
+        "id": "d",
+        "text": "Quantum computing emulators"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Histogram binning, missing value default routing, and cache-conscious memory layout enable rapid training on millions of rows.",
+    "noteRef": "aiml-06-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q21",
+    "loId": "aiml-06-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In Support Vector Machines, what are the 'Support Vectors'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The CPU memory registers."
+      },
+      {
+        "id": "b",
+        "text": "The vector of bias constants."
+      },
+      {
+        "id": "c",
+        "text": "The target labels in the test set."
+      },
+      {
+        "id": "d",
+        "text": "The critical training data points that lie closest to the decision boundary and define the margin."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Support vectors are the training observations lying on or within the margin boundary; they uniquely determine the hyperplane position.",
+    "noteRef": "aiml-06-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q22",
+    "loId": "aiml-06-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In Soft-Margin SVMs, how does the regularization parameter $C$ balance the optimization trade-off?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Large $C$ penalizes slack violations heavily (narrow margin, risks overfitting); small $C$ tolerates violations (wider margin, generalizes better)."
+      },
+      {
+        "id": "b",
+        "text": "Large $C$ creates wider margins."
+      },
+      {
+        "id": "c",
+        "text": "Parameter $C$ sets the number of polynomial degrees."
+      },
+      {
+        "id": "d",
+        "text": "Parameter $C$ eliminates support vectors."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "C weights the penalty on slack variables. High C enforces strict separation with narrow margins; low C allows softer margins.",
+    "noteRef": "aiml-06-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q23",
+    "loId": "aiml-06-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "An SVM achieves a weight vector norm $\\|\\mathbf{w}\\|_2 = 2.0$. What is the geometric margin width $\\frac{2}{\\|\\mathbf{w}\\|_2}$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4.0."
+      },
+      {
+        "id": "b",
+        "text": "1.0, calculated as 2 / 2.0 = 1.0."
+      },
+      {
+        "id": "c",
+        "text": "0.5."
+      },
+      {
+        "id": "d",
+        "text": "2.0."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Margin width = 2 / ||w|| = 2 / 2.0 = 1.0.",
+    "noteRef": "aiml-06-lo06",
+    "verify": "(2.0 / 2.0 === 1.0)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q24",
+    "loId": "aiml-06-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following statements about Support Vector Machines are accurate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Non-support vector data points can be moved or deleted without changing the optimal hyperplane"
+      },
+      {
+        "id": "b",
+        "text": "Features must be standardized so distance metrics along all axes are geometrically equivalent"
+      },
+      {
+        "id": "c",
+        "text": "SVMs optimize Hinge loss with L2 weight regularization"
+      },
+      {
+        "id": "d",
+        "text": "SVM training time scales linearly with $N = 10,000,000$ samples"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Hyperplanes depend only on support vectors, require scaled features, and optimize regularized hinge loss. Standard SVMs scale quadratically or cubically with sample count.",
+    "noteRef": "aiml-06-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q25",
+    "loId": "aiml-06-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the primary advantage of the 'Kernel Trick' in Support Vector Machines?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It eliminates the need for support vectors."
+      },
+      {
+        "id": "b",
+        "text": "It converts continuous targets into binary classifications."
+      },
+      {
+        "id": "c",
+        "text": "It computes inner products in high-dimensional feature spaces implicitly without explicitly mapping points."
+      },
+      {
+        "id": "d",
+        "text": "It runs without a CPU."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The kernel trick evaluates K(u, v) = phi(u) . phi(v) directly, bypassing the computational cost of explicit transformation.",
+    "noteRef": "aiml-06-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q26",
+    "loId": "aiml-06-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In the Radial Basis Function (RBF) kernel $K(\\mathbf{x}, \\mathbf{z}) = \\exp(-\\gamma \\|\\mathbf{x} - \\mathbf{z}\\|^2)$, what does parameter $\\gamma$ control?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The maximum depth of the kernel."
+      },
+      {
+        "id": "b",
+        "text": "The number of trees in the ensemble."
+      },
+      {
+        "id": "c",
+        "text": "The learning rate of gradient descent."
+      },
+      {
+        "id": "d",
+        "text": "The radius of influence of each support vector: high $\\gamma$ creates tight complex boundaries (risks overfitting); low $\\gamma$ produces smooth boundaries."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Gamma defines how far the influence of a single training example reaches. High gamma creates isolated island boundaries.",
+    "noteRef": "aiml-06-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q27",
+    "loId": "aiml-06-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You have a dataset where Class 1 forms a tight inner ring completely surrounded by Class 0 (concentric circles). Which kernel will separate these classes effortlessly?",
+    "options": [
+      {
+        "id": "a",
+        "text": "RBF (Gaussian) Kernel or degree-2 Polynomial Kernel."
+      },
+      {
+        "id": "b",
+        "text": "Linear Kernel."
+      },
+      {
+        "id": "c",
+        "text": "Zero-order Step Kernel."
+      },
+      {
+        "id": "d",
+        "text": "None; concentric circles cannot be solved by SVMs."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Concentric rings are not linearly separable in 2D, but become linearly separable when projected via RBF or polynomial (x1^2 + x2^2) kernels.",
+    "noteRef": "aiml-06-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q28",
+    "loId": "aiml-06-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are valid Mercer kernel functions supported in Scikit-Learn's `SVC`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`kernel='linear'`"
+      },
+      {
+        "id": "b",
+        "text": "`kernel='rbf'`"
+      },
+      {
+        "id": "c",
+        "text": "`kernel='poly'`"
+      },
+      {
+        "id": "d",
+        "text": "`kernel='deep_transformer'`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Linear, RBF, polynomial, and sigmoid are standard Mercer kernels in Scikit-Learn.",
+    "noteRef": "aiml-06-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q29",
+    "loId": "aiml-06-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why is k-Nearest Neighbors (k-NN) categorized as a 'lazy learner'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It executes with 0% CPU utilization."
+      },
+      {
+        "id": "b",
+        "text": "It does not learn an explicit parameterized model during training, deferring computation until query inference time."
+      },
+      {
+        "id": "c",
+        "text": "It can only run in background threads."
+      },
+      {
+        "id": "d",
+        "text": "It skips difficult training examples."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "k-NN simply stores training data during fit; all distance calculations and neighbor lookups occur dynamically at inference.",
+    "noteRef": "aiml-06-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q30",
+    "loId": "aiml-06-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What happens to the decision boundary of a k-NN classifier when $k$ is set to 1 ($k=1$)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The model underfits and predicts the majority class."
+      },
+      {
+        "id": "b",
+        "text": "The decision boundary becomes a perfectly flat linear plane."
+      },
+      {
+        "id": "c",
+        "text": "The decision boundary becomes extremely jagged and sensitive to individual noise points (maximum variance / overfitting)."
+      },
+      {
+        "id": "d",
+        "text": "The model cannot make predictions."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "At k=1, each training sample creates its own Voronoi cell, memorizing outliers and producing high variance.",
+    "noteRef": "aiml-06-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q31",
+    "loId": "aiml-06-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A query point has 5 nearest neighbors with classes [1, 1, 0, 1, 0]. What class does a 5-NN classifier predict by majority vote?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Class 2."
+      },
+      {
+        "id": "b",
+        "text": "Class 0."
+      },
+      {
+        "id": "c",
+        "text": "Tie (no prediction)."
+      },
+      {
+        "id": "d",
+        "text": "Class 1, because 3 of the 5 neighbors belong to Class 1 (60% majority)."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Majority vote among [1, 1, 0, 1, 0] gives 3 votes for Class 1 and 2 votes for Class 0.",
+    "noteRef": "aiml-06-lo08",
+    "verify": "([1, 1, 0, 1, 0].filter(x => x === 1).length === 3)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q32",
+    "loId": "aiml-06-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "What factors severely degrade k-NN performance in production systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "High inference latency scaling as $\\mathcal{O}(N \\cdot D)$ with dataset size"
+      },
+      {
+        "id": "b",
+        "text": "The curse of dimensionality in high feature spaces ($D > 100$)"
+      },
+      {
+        "id": "c",
+        "text": "Failure to scale input features to uniform ranges"
+      },
+      {
+        "id": "d",
+        "text": "Lack of GPU backpropagation support"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "k-NN suffers from distance metric uniformity in high dimensions, scale sensitivity, and heavy inference compute.",
+    "noteRef": "aiml-06-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q33",
+    "loId": "aiml-06-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "When deploying a model for high-frequency fraud detection requiring sub-millisecond (<1ms) inference latency, which architecture is best suited?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A regularized linear model (Logistic Regression) or shallow decision tree."
+      },
+      {
+        "id": "b",
+        "text": "A 500-tree Gradient Boosted ensemble."
+      },
+      {
+        "id": "c",
+        "text": "k-Nearest Neighbors with 10 million stored points."
+      },
+      {
+        "id": "d",
+        "text": "A 70-billion parameter transformer."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Linear models evaluate a simple dot product in microseconds, meeting strict real-time SLA constraints.",
+    "noteRef": "aiml-06-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q34",
+    "loId": "aiml-06-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "What does the 'No Free Lunch' theorem establish regarding machine learning model selection?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Machine learning algorithms require paid cloud subscriptions."
+      },
+      {
+        "id": "b",
+        "text": "No single learning algorithm is universally superior across all possible data distributions when averaged over all problems."
+      },
+      {
+        "id": "c",
+        "text": "Deep learning always beats decision trees."
+      },
+      {
+        "id": "d",
+        "text": "Models must be retrained every 24 hours."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "The No Free Lunch theorem proves that every algorithm's inductive bias makes it excel on some problems while underperforming on others.",
+    "noteRef": "aiml-06-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-06-q35",
+    "loId": "aiml-06-lo08",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "What is the Euclidean distance between query point $\\mathbf{q} = [1.0, 2.0]$ and neighbor $\\mathbf{p} = [4.0, 6.0]$?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5.0"
+      },
+      {
+        "id": "b",
+        "text": "7.0"
+      },
+      {
+        "id": "c",
+        "text": "25.0"
+      },
+      {
+        "id": "d",
+        "text": "3.5"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Distance = sqrt((4-1)^2 + (6-2)^2) = sqrt(3^2 + 4^2) = sqrt(9 + 16) = sqrt(25) = 5.0.",
+    "noteRef": "aiml-06-lo08",
+    "verify": "(Math.sqrt(Math.pow(4-1, 2) + Math.pow(6-2, 2)) === 5.0)",
+    "reviewed": false
+  }
+]

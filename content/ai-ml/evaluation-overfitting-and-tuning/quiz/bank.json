@@ -1,0 +1,1106 @@
+[
+  {
+    "id": "aiml-07-q01",
+    "loId": "aiml-07-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What three components comprise the mathematical decomposition of expected generalization error?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bias squared, Variance, and Irreducible error ($\\text{Bias}^2 + \\text{Var} + \\sigma_\\epsilon^2$)."
+      },
+      {
+        "id": "b",
+        "text": "Precision, Recall, and Accuracy."
+      },
+      {
+        "id": "c",
+        "text": "Training loss, Test loss, and Validation loss."
+      },
+      {
+        "id": "d",
+        "text": "Entropy, Gini impurity, and Information Gain."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Expected prediction error on unseen data breaks down into model bias, variance across training sets, and irreducible noise.",
+    "noteRef": "aiml-07-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q02",
+    "loId": "aiml-07-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "A model exhibits high training error and equally high validation error. What problem is occurring, and how should it be resolved?",
+    "options": [
+      {
+        "id": "a",
+        "text": "High Variance (Overfitting); resolve by collecting more data."
+      },
+      {
+        "id": "b",
+        "text": "High Bias (Underfitting); resolve by increasing model capacity, adding features, or decreasing regularization."
+      },
+      {
+        "id": "c",
+        "text": "Data leakage; resolve by retraining on test data."
+      },
+      {
+        "id": "d",
+        "text": "Numerical overflow; resolve by reducing float precision."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "When both train and validation errors are high, the model lacks capacity to capture the underlying pattern (high bias).",
+    "noteRef": "aiml-07-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q03",
+    "loId": "aiml-07-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A deep polynomial regression model achieves 0.01 MSE on training data, but 48.5 MSE on validation data. What does this massive gap indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Optimal trade-off: training error is near zero."
+      },
+      {
+        "id": "b",
+        "text": "High Bias: the model is too simple."
+      },
+      {
+        "id": "c",
+        "text": "High Variance (Overfitting): the model memorized training sample noise and fails to generalize."
+      },
+      {
+        "id": "d",
+        "text": "Irreducible error is zero."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "A large generalization gap between low training error and high validation error is the hallmark of high variance / overfitting.",
+    "noteRef": "aiml-07-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-07-lo01",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "aiml-07-q04",
+    "stem": "Which of the following interventions are effective remedies for High Variance (Overfitting)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Adding L1 or L2 regularization penalties"
+      },
+      {
+        "id": "b",
+        "text": "Collecting more training observations"
+      },
+      {
+        "id": "c",
+        "text": "Reducing feature dimensionality through pruning or PCA"
+      },
+      {
+        "id": "d",
+        "text": "Increasing polynomial degree from 2 to 10"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Regularization, more data, and feature pruning constrain variance. Increasing polynomial degree worsens overfitting.",
+    "noteRef": "aiml-07-lo01",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q05",
+    "loId": "aiml-07-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "How does k-Fold Cross-Validation estimate model generalization performance?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It divides the learning rate by $k$."
+      },
+      {
+        "id": "b",
+        "text": "It trains $k$ different models on the full dataset and selects the largest."
+      },
+      {
+        "id": "c",
+        "text": "It generates $k$ synthetic datasets using SMOTE."
+      },
+      {
+        "id": "d",
+        "text": "It partitions data into $k$ folds, iteratively training on $k-1$ folds and validating on the remaining fold across $k$ rounds."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "k-Fold partitions data into k slices, using each fold as a validation holdout once, and averages the results.",
+    "noteRef": "aiml-07-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q06",
+    "loId": "aiml-07-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why must standard shuffled k-fold cross-validation NOT be used for time-series financial forecasting?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Shuffling future time steps into training sets creates future lookahead leakage, yielding unrealistic performance estimates."
+      },
+      {
+        "id": "b",
+        "text": "Financial data cannot be partitioned into folds."
+      },
+      {
+        "id": "c",
+        "text": "Stock prices are always non-convex."
+      },
+      {
+        "id": "d",
+        "text": "Standard k-fold requires GPU hardware."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Time-series data has temporal autocorrelation; shuffling allows the model to train on future events to predict the past.",
+    "noteRef": "aiml-07-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q07",
+    "loId": "aiml-07-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You are training a fraud detection model where only 1% of samples are fraudulent. Which cross-validation splitter must be used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Standard KFold, because random chance is sufficient."
+      },
+      {
+        "id": "b",
+        "text": "StratifiedKFold, ensuring every fold preserves the 1% minority fraud proportion."
+      },
+      {
+        "id": "c",
+        "text": "Leave-One-Out CV, because it is fastest."
+      },
+      {
+        "id": "d",
+        "text": "No split; train on 100% of data."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "StratifiedKFold preserves class distribution across folds, preventing folds with zero fraud samples.",
+    "noteRef": "aiml-07-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q08",
+    "loId": "aiml-07-lo02",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are valid cross-validation splitting strategies supported in Scikit-Learn?",
+    "options": [
+      {
+        "id": "a",
+        "text": "`KFold` (standard unstratified k-fold)"
+      },
+      {
+        "id": "b",
+        "text": "`StratifiedKFold` (class-balanced k-fold)"
+      },
+      {
+        "id": "c",
+        "text": "`TimeSeriesSplit` (forward-chaining temporal split)"
+      },
+      {
+        "id": "d",
+        "text": "`QuantumEntangledSplit`"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "KFold, StratifiedKFold, and TimeSeriesSplit are standard resampling protocols in Scikit-Learn.",
+    "noteRef": "aiml-07-lo02",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q09",
+    "loId": "aiml-07-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "In a binary Confusion Matrix, what does a 'False Positive' (Type I Error) represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A positive ground-truth instance that the model missed."
+      },
+      {
+        "id": "b",
+        "text": "A positive ground-truth instance that the model correctly identified."
+      },
+      {
+        "id": "c",
+        "text": "A negative ground-truth instance that the model incorrectly predicted as positive (false alarm)."
+      },
+      {
+        "id": "d",
+        "text": "A corrupted data file."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "False Positives occur when the actual condition is negative, but the model incorrectly triggers a positive prediction.",
+    "noteRef": "aiml-07-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q10",
+    "loId": "aiml-07-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "In airport security screening, what constitutes a 'False Negative' (Type II Error)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A flight is delayed due to weather."
+      },
+      {
+        "id": "b",
+        "text": "An innocent passenger's bag is flagged for additional manual inspection."
+      },
+      {
+        "id": "c",
+        "text": "A passenger boards on time."
+      },
+      {
+        "id": "d",
+        "text": "A passenger carrying a prohibited weapon is falsely cleared as safe and permitted through."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A False Negative is a missed detection: the threat exists (positive ground truth), but the scanner fails to detect it.",
+    "noteRef": "aiml-07-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q11",
+    "loId": "aiml-07-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A cancer screening test on 1,000 patients yields: TP = 45, FP = 15, FN = 5, TN = 935. How many total actual cancer patients existed in this cohort?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50, calculated as TP + FN = 45 + 5 = 50."
+      },
+      {
+        "id": "b",
+        "text": "60, calculated as TP + FP."
+      },
+      {
+        "id": "c",
+        "text": "45, representing true positives."
+      },
+      {
+        "id": "d",
+        "text": "950, representing non-cancer patients."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Total actual positives = TP + FN = 45 + 5 = 50.",
+    "noteRef": "aiml-07-lo03",
+    "verify": "(45 + 5 === 50)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q12",
+    "loId": "aiml-07-lo03",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following metrics can be directly computed from a standard $2 \\times 2$ binary Confusion Matrix?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Accuracy: $(TP + TN) / (TP + TN + FP + FN)$"
+      },
+      {
+        "id": "b",
+        "text": "Precision: $TP / (TP + FP)$"
+      },
+      {
+        "id": "c",
+        "text": "Recall (Sensitivity): $TP / (TP + FN)$"
+      },
+      {
+        "id": "d",
+        "text": "Hardware GPU FLOPS throughput"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Accuracy, Precision, Recall, Specificity, and F1 are all calculated directly from confusion matrix counts.",
+    "noteRef": "aiml-07-lo03",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q13",
+    "loId": "aiml-07-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the formula for Precision in binary classification?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$\\text{Precision} = \\frac{\\text{TP}}{\\text{TP} + \\text{FN}}$"
+      },
+      {
+        "id": "b",
+        "text": "$\\text{Precision} = \\frac{\\text{TP}}{\\text{TP} + \\text{FP}}$"
+      },
+      {
+        "id": "c",
+        "text": "$\\text{Precision} = \\frac{\\text{TN}}{\\text{TN} + \\text{FP}}$"
+      },
+      {
+        "id": "d",
+        "text": "$\\text{Precision} = \\frac{\\text{TP} + \\text{TN}}{\\text{Total}}$"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Precision measures how many of the model's positive predictions were genuinely positive.",
+    "noteRef": "aiml-07-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q14",
+    "loId": "aiml-07-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why is the F1-score computed as the harmonic mean of Precision and Recall rather than their simple arithmetic mean?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The arithmetic mean cannot average decimals."
+      },
+      {
+        "id": "b",
+        "text": "The harmonic mean executes in constant hardware time."
+      },
+      {
+        "id": "c",
+        "text": "The harmonic mean severely penalizes extreme imbalances, preventing models with near-zero recall from registering high scores."
+      },
+      {
+        "id": "d",
+        "text": "The harmonic mean ignores False Positives."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "If precision is 1.0 but recall is 0.0, the arithmetic mean is 0.50, but the harmonic F1 is 0.0, reflecting model uselessness.",
+    "noteRef": "aiml-07-lo04",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q15",
+    "loId": "aiml-07-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A spam detector correctly flags 80 spam emails (TP), but lets 20 spam emails slip through into inbox (FN) and falsely marks 20 legitimate emails as spam (FP). What is its Precision?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.90 (90%)."
+      },
+      {
+        "id": "b",
+        "text": "0.50 (50%)."
+      },
+      {
+        "id": "c",
+        "text": "0.20 (20%)."
+      },
+      {
+        "id": "d",
+        "text": "0.80 (80%), calculated as TP / (TP + FP) = 80 / (80 + 20) = 80 / 100 = 0.80."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Precision = TP / (TP + FP) = 80 / (80 + 20) = 0.80.",
+    "noteRef": "aiml-07-lo04",
+    "verify": "(80.0 / (80.0 + 20.0) === 0.8)",
+    "reviewed": false
+  },
+  {
+    "loId": "aiml-07-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "aiml-07-q16",
+    "stem": "A classifier achieves Precision = 0.60 and Recall = 0.60. What is its F1-score?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.60"
+      },
+      {
+        "id": "b",
+        "text": "0.36"
+      },
+      {
+        "id": "c",
+        "text": "1.20"
+      },
+      {
+        "id": "d",
+        "text": "0.50"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "When precision equals recall, F1 equals that same value: 2 * (0.6 * 0.6) / (0.6 + 0.6) = 0.72 / 1.2 = 0.60.",
+    "noteRef": "aiml-07-lo04",
+    "verify": "((2.0 * 0.6 * 0.6) / (0.6 + 0.6) === 0.6)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q17",
+    "loId": "aiml-07-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What two metrics are plotted against each other to create the Receiver Operating Characteristic (ROC) curve?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True Positive Rate (Recall) on the y-axis vs False Positive Rate (1 - Specificity) on the x-axis."
+      },
+      {
+        "id": "b",
+        "text": "Precision on the y-axis vs Recall on the x-axis."
+      },
+      {
+        "id": "c",
+        "text": "Training loss on the y-axis vs Epochs on the x-axis."
+      },
+      {
+        "id": "d",
+        "text": "Variance on the y-axis vs Bias on the x-axis."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The ROC curve plots TPR vs FPR across all classification probability thresholds.",
+    "noteRef": "aiml-07-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q18",
+    "loId": "aiml-07-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What does an Area Under the ROC Curve (ROC-AUC) of 1.0 represent?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zero training loss on linear regression."
+      },
+      {
+        "id": "b",
+        "text": "Perfect classification ranking: every positive sample is assigned a higher predicted probability than every negative sample."
+      },
+      {
+        "id": "c",
+        "text": "A model that makes random coin flips."
+      },
+      {
+        "id": "d",
+        "text": "Severe overfitting."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "AUC = 1.0 indicates perfect class separability across all possible decision thresholds.",
+    "noteRef": "aiml-07-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q19",
+    "loId": "aiml-07-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A fraud detection system has an ROC-AUC of 0.50. What does this indicate about the model?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The model has converged to the global optimum."
+      },
+      {
+        "id": "b",
+        "text": "The model is 50% accurate."
+      },
+      {
+        "id": "c",
+        "text": "The model has zero discriminatory capability, performing exactly like a random coin flip."
+      },
+      {
+        "id": "d",
+        "text": "The threshold should be set to 0.5."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "An ROC-AUC of 0.50 corresponds to the diagonal random chance line.",
+    "noteRef": "aiml-07-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q20",
+    "loId": "aiml-07-lo05",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following are key properties of the ROC-AUC evaluation metric?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It is threshold-invariant, evaluating ranking across all classification cutoffs"
+      },
+      {
+        "id": "b",
+        "text": "It is scale-invariant, measuring rank order rather than absolute probability calibration"
+      },
+      {
+        "id": "c",
+        "text": "It can give deceptively optimistic impressions on severely imbalanced datasets"
+      },
+      {
+        "id": "d",
+        "text": "It only works for multi-class classification"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "ROC-AUC is threshold- and scale-invariant, but can look deceptively good on massive negative classes. PR-AUC is preferred there.",
+    "noteRef": "aiml-07-lo05",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q21",
+    "loId": "aiml-07-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What is the fundamental difference between model parameters and hyperparameters?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hyperparameters are integer numbers only."
+      },
+      {
+        "id": "b",
+        "text": "Hyperparameters are learned via backpropagation; parameters are fixed."
+      },
+      {
+        "id": "c",
+        "text": "Parameters are only used in deep learning."
+      },
+      {
+        "id": "d",
+        "text": "Parameters (weights) are learned from data during training; hyperparameters (learning rate, tree depth) are configured before training."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Parameters are optimized by the training algorithm; hyperparameters govern the learning algorithm itself.",
+    "noteRef": "aiml-07-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q22",
+    "loId": "aiml-07-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "Why does Randomized Search often find better models than exhaustive Grid Search on fixed compute budgets?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It tests many more distinct values for each individual hyperparameter rather than wasting trials on redundant combinations of uninformative parameters."
+      },
+      {
+        "id": "b",
+        "text": "It bypasses the need for validation data."
+      },
+      {
+        "id": "c",
+        "text": "It automatically scales up CPU clock speed."
+      },
+      {
+        "id": "d",
+        "text": "It optimizes the learning rate analytically."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "In most models, only a few hyperparameters matter; Random Search explores distinct points along these vital dimensions without repeating.",
+    "noteRef": "aiml-07-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q23",
+    "loId": "aiml-07-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "You want to evaluate 5 hyperparameters, each with 4 potential values, using 5-fold cross-validation. How many model training fits does exhaustive Grid Search require?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100 fits."
+      },
+      {
+        "id": "b",
+        "text": "5,120 fits, calculated as (4^5 combinations) * 5 folds = 1024 * 5 = 5120 fits."
+      },
+      {
+        "id": "c",
+        "text": "25 fits."
+      },
+      {
+        "id": "d",
+        "text": "500 fits."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Total parameter combinations = 4^5 = 1024. With 5-fold CV, total fits = 1024 * 5 = 5120.",
+    "noteRef": "aiml-07-lo06",
+    "verify": "(Math.pow(4, 5) * 5 === 5120)",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q24",
+    "loId": "aiml-07-lo06",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following hyperparameter search techniques are standard in modern machine learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "GridSearchCV (exhaustive grid evaluation)"
+      },
+      {
+        "id": "b",
+        "text": "RandomizedSearchCV (probabilistic sampling)"
+      },
+      {
+        "id": "c",
+        "text": "Bayesian Optimization (surrogate Gaussian process / TPE)"
+      },
+      {
+        "id": "d",
+        "text": "Linear Regression parameter inversion"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Grid search, random search, and Bayesian optimization (e.g., Optuna) are the three pillars of hyperparameter tuning.",
+    "noteRef": "aiml-07-lo06",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q25",
+    "loId": "aiml-07-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "What do Learning Curves plot to diagnose machine learning models?",
+    "options": [
+      {
+        "id": "a",
+        "text": "False Positive Rate against True Positive Rate."
+      },
+      {
+        "id": "b",
+        "text": "Inference latency against CPU temperature."
+      },
+      {
+        "id": "c",
+        "text": "Training error and validation error as a function of training dataset sample size."
+      },
+      {
+        "id": "d",
+        "text": "Feature variance against feature mean."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Learning curves visualize how performance scales as more training samples are provided.",
+    "noteRef": "aiml-07-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q26",
+    "loId": "aiml-07-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "If a Learning Curve shows training error and validation error have converged together at high unacceptable error, what is the diagnosis?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Data leakage across cross-validation splits."
+      },
+      {
+        "id": "b",
+        "text": "High Variance (Overfitting): the model requires more training data."
+      },
+      {
+        "id": "c",
+        "text": "Perfect convergence: training should stop."
+      },
+      {
+        "id": "d",
+        "text": "High Bias (Underfitting): the model is too simple, and collecting more data will not improve it."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "When curves flatten together at high error, the model lacks capacity to learn the phenomenon (high bias).",
+    "noteRef": "aiml-07-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q27",
+    "loId": "aiml-07-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A learning curve shows training error is 0.05 while validation error is 0.40 at 1,000 samples, but validation error steadily drops as samples increase to 10,000. What does this suggest?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The model has high variance, and gathering additional training data will continue to improve generalization."
+      },
+      {
+        "id": "b",
+        "text": "The model is underfitting and cannot learn."
+      },
+      {
+        "id": "c",
+        "text": "The model should be replaced with a linear model."
+      },
+      {
+        "id": "d",
+        "text": "The validation set is corrupted."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "A downward-trending validation curve with a persistent gap indicates high variance that benefits from additional training volume.",
+    "noteRef": "aiml-07-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q28",
+    "loId": "aiml-07-lo07",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following actions are recommended when learning curves diagnose High Bias (Underfitting)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Add new features or polynomial feature interactions"
+      },
+      {
+        "id": "b",
+        "text": "Select a more expressive model architecture (e.g., deeper trees, neural networks)"
+      },
+      {
+        "id": "c",
+        "text": "Decrease regularization strength (reduce $\\lambda$ / penalty parameter)"
+      },
+      {
+        "id": "d",
+        "text": "Spend significant budget collecting 10x more training data"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Underfitting requires expanding model capacity. Gathering more data on a high-bias model does not help.",
+    "noteRef": "aiml-07-lo07",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q29",
+    "loId": "aiml-07-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "stem": "Why must machine learning models always be benchmarked against simple heuristic baselines?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To format outputs for database ingestion."
+      },
+      {
+        "id": "b",
+        "text": "To verify that complex architectures provide genuine predictive lift beyond trivial majority-class guessing."
+      },
+      {
+        "id": "c",
+        "text": "To initialize weights before backpropagation."
+      },
+      {
+        "id": "d",
+        "text": "Because Scikit-Learn will raise an error without a baseline."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Comparing against dummy baselines ensures models actually learn patterns rather than riding imbalanced class proportions.",
+    "noteRef": "aiml-07-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q30",
+    "loId": "aiml-07-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What is 'group contamination' leakage in cross-validation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "When columns have missing values."
+      },
+      {
+        "id": "b",
+        "text": "When training labels are corrupted by malicious hackers."
+      },
+      {
+        "id": "c",
+        "text": "When multiple observations from the same subject or patient are split across both training and validation folds."
+      },
+      {
+        "id": "d",
+        "text": "When the computer executes multiple processes simultaneously."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Group contamination allows models to recognize specific subjects rather than learning generalizable disease/behavior patterns.",
+    "noteRef": "aiml-07-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q31",
+    "loId": "aiml-07-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "stem": "A team predicts hospital readmission using a feature `days_in_icu_post_discharge`. What critical evaluation flaw exists?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Underfitting."
+      },
+      {
+        "id": "b",
+        "text": "High variance."
+      },
+      {
+        "id": "c",
+        "text": "Collinear feature scaling."
+      },
+      {
+        "id": "d",
+        "text": "Target leakage: the feature contains future information that occurs after the prediction event."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Using post-discharge ICU days to predict readmission uses future data that would never exist at inference time.",
+    "noteRef": "aiml-07-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q32",
+    "loId": "aiml-07-lo08",
+    "type": "multi",
+    "difficulty": 3,
+    "stem": "Which of the following practices ensure evaluation integrity in production machine learning?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Using `GroupKFold` when multiple records share a common entity ID (patient, household, device)"
+      },
+      {
+        "id": "b",
+        "text": "Evaluating models against a naive Dummy baseline"
+      },
+      {
+        "id": "c",
+        "text": "Isolating the final test set until all model decisions and tuning are complete"
+      },
+      {
+        "id": "d",
+        "text": "Imputing and scaling test data using test set parameters"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Group splits, baseline comparisons, and holding out test data maintain integrity. Option d leaks test distribution data.",
+    "noteRef": "aiml-07-lo08",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q33",
+    "loId": "aiml-07-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "stem": "What does it mean for a probabilistic classifier to be 'well-calibrated'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "When predicted probabilities match empirical observation frequencies (e.g., of samples predicted at 80%, exactly 80% are positive)."
+      },
+      {
+        "id": "b",
+        "text": "When training accuracy equals 100%."
+      },
+      {
+        "id": "c",
+        "text": "When the decision threshold is exactly 0.50."
+      },
+      {
+        "id": "d",
+        "text": "When weights are initialized from a Gaussian distribution."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Calibration ensures that predicted confidence percentages reflect true real-world empirical likelihoods.",
+    "noteRef": "aiml-07-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q34",
+    "loId": "aiml-07-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "stem": "How does Platt Scaling calibrate uncalibrated model decision margins?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It multiplies decision margins by the learning rate."
+      },
+      {
+        "id": "b",
+        "text": "It fits a univariate logistic regression model on the raw decision margins using a validation set."
+      },
+      {
+        "id": "c",
+        "text": "It bins predictions into 10 equal discrete categories."
+      },
+      {
+        "id": "d",
+        "text": "It sets negative margins to zero."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Platt scaling fits a logistic sigmoid 1 / (1 + exp(A*f + B)) to transform raw scores into calibrated probabilities.",
+    "noteRef": "aiml-07-lo09",
+    "reviewed": false
+  },
+  {
+    "id": "aiml-07-q35",
+    "loId": "aiml-07-lo04",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A model correctly identifies 60 fraud cases (TP) and falsely flags 20 legitimate transactions (FP). What is the model's Precision percentage?",
+    "options": [
+      {
+        "id": "a",
+        "text": "75%"
+      },
+      {
+        "id": "b",
+        "text": "80%"
+      },
+      {
+        "id": "c",
+        "text": "60%"
+      },
+      {
+        "id": "d",
+        "text": "40%"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Precision = 60 / (60 + 20) = 60 / 80 = 0.75 (75%).",
+    "noteRef": "aiml-07-lo04",
+    "verify": "(60.0 / (60.0 + 20.0) === 0.75)",
+    "reviewed": false
+  }
+]

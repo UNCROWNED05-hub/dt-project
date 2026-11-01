@@ -1,0 +1,44 @@
+---
+loId: "aiml-07-lo04"
+title: "Precision, Recall, and the F1-Score: Navigating Asymmetric Error Costs"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+When class frequencies are imbalanced or error costs are asymmetric, machine learning practitioners rely on Precision, Recall, and the harmonic F1-score:
+
+1. **Precision (Positive Predictive Value)**: Of all samples the model predicted as positive, what proportion was actually positive?
+$$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
+High precision minimizes False Alarms (essential for spam filters or automated account suspension).
+2. **Recall (Sensitivity / True Positive Rate)**: Of all actual positive cases in reality, what proportion did the model successfully find?
+$$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
+High recall minimizes Missed Detections (essential for medical screening and fraud detection).
+3. **F1-Score**: The harmonic mean of Precision and Recall:
+$$F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} = \frac{2\text{TP}}{2\text{TP} + \text{FP} + \text{FN}}$$
+The harmonic mean severely penalizes extreme trade-offs: if precision is 100% but recall is 0%, the arithmetic mean is 50%, but the F1-score is 0%.
+
+### Worked Example
+Computing Precision, Recall, and F1 in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.metrics import precision_score, recall_score, f1_score
+import numpy as np
+
+y_true = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+y_pred = np.array([1, 1, 1, 0, 1, 0, 0, 0, 0, 0])
+
+prec = precision_score(y_true, y_pred) # TP / (TP + FP) = 3 / (3 + 1) = 0.75
+rec  = recall_score(y_true, y_pred)    # TP / (TP + FN) = 3 / (3 + 1) = 0.75
+f1   = f1_score(y_true, y_pred)        # 2 * (0.75 * 0.75) / (1.5) = 0.75
+
+print(f"Precision: {prec:.2f}, Recall: {rec:.2f}, F1: {f1:.2f}")
+```
+
+### Common Mistake
+Using standard arithmetic mean $\frac{P + R}{2}$ to evaluate classifiers, hiding models that predict positive on only a single trivial sample (Precision=100%, Recall=0.1%).
+
+### Check Yourself
+If a fraud detection system achieves a Precision of 1.0 (100%) but a Recall of 0.05 (5%), what is its F1-score? (Approximately 0.095: the harmonic mean collapses when either metric approaches zero).

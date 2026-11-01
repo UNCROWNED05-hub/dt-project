@@ -1,0 +1,49 @@
+---
+loId: "aiml-07-lo03"
+title: "The Confusion Matrix: Deconstructing Type I and Type II Errors"
+reviewed: false
+sources:
+  - title: "Scikit-Learn Documentation & User Guide"
+    url: "https://scikit-learn.org/stable/user_guide.html"
+---
+
+### Core Idea
+A single summary scalar like accuracy conceals the specific nature of model failures. The **Confusion Matrix** is a $2 \times 2$ contingency table that breaks down classification predictions against actual ground-truth outcomes across all four possibilities:
+
+| | Predicted Negative (0) | Predicted Positive (1) |
+|---|---|---|
+| **Actual Negative (0)** | **True Negative (TN)** | **False Positive (FP)** (Type I Error) |
+| **Actual Positive (1)** | **False Negative (FN)** (Type II Error) | **True Positive (TP)** |
+
+Definitions:
+- **True Positive (TP)**: Correctly predicted positive condition (e.g., fraudulent transaction correctly blocked).
+- **True Negative (TN)**: Correctly predicted negative condition (e.g., legitimate user granted access).
+- **False Positive (FP)** (*Type I Error / False Alarm*): Negative sample incorrectly predicted positive (e.g., innocent email tagged as spam).
+- **False Negative (FN)** (*Type II Error / Missed Detection*): Positive sample incorrectly predicted negative (e.g., malignant tumor diagnosed as benign).
+
+Understanding this trade-off is critical: in disease diagnosis, False Negatives can be fatal, whereas False Positives require only an extra follow-up test.
+
+### Worked Example
+Extracting confusion matrix metrics in Scikit-Learn:
+```python
+# scikit-learn==1.4.2
+from sklearn.metrics import confusion_matrix
+import numpy as np
+
+y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+y_pred = np.array([0, 0, 1, 0, 1, 1, 0, 1])
+
+# Extract TN, FP, FN, TP
+cm = confusion_matrix(y_true, y_pred)
+tn, fp, fn, tp = cm.ravel()
+
+print(f"Confusion Matrix:\n{cm}")
+print(f"TN: {tn}, FP: {fp}, FN: {fn}, TP: {tp}")
+# Output: TN: 3, FP: 1, FN: 1, TP: 3
+```
+
+### Common Mistake
+Treating Type I (FP) and Type II (FN) errors as having equal financial or operational costs in production system designs.
+
+### Check Yourself
+In a medical screening test for a deadly contagious virus, which error category is most dangerous: False Positives or False Negatives? (False Negatives: infected patients are sent home undetected, risking death and public transmission).
