@@ -1,0 +1,35 @@
+---
+loId: "iot-02-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Interfacing sensors requires converting external physical phenomena into electrical signals compatible with MCU inputs:
+1. Light Dependent Resistors (LDRs): Photoresistors whose resistance drops from several mega-ohms in darkness to a few hundred ohms under bright light. Connected in a voltage divider with a fixed $10\,\text{k}\Omega$ resistor to generate an analog voltage readable by an ADC pin.
+2. DHT22 (AM2302) Temperature & Humidity: Uses a capacitive humidity sensor and NTC thermistor. Communicates over a custom single-wire digital protocol with a mandatory $4.7\,\text{k}\Omega - 10\,\text{k}\Omega$ pull-up resistor, providing $0.1^{\circ}\text{C}$ resolution.
+3. HC-SR04 Ultrasonic Distance Sensor: Measures distance via sound time-of-flight:
+   $$\text{Distance (cm)} = \frac{\text{Echo High Duration (}\mu\text{s)} \times 0.0343}{2}$$
+   Requires sending a $10\,\mu\text{s}$ HIGH pulse on the Trigger pin and timing the Echo pin pulse duration.
+   *Critical Level Shifting*: HC-SR04 Echo pin outputs $5\text{V}$; it must be stepped down to $3.3\text{V}$ with a resistor divider before connecting to an ESP32 input pin.
+
+### Worked Example
+Calculating distance from HC-SR04 echo duration in Python:
+```python
+def calculate_distance_cm(duration_microseconds):
+    # Speed of sound in air at 20°C is 343 m/s = 0.0343 cm/microsecond
+    # Divided by 2 for out-and-back round trip
+    distance_cm = (duration_microseconds * 0.0343) / 2
+    return round(distance_cm, 2)
+
+# Ultrasonic echo pulse returned after 1000 microseconds
+dist = calculate_distance_cm(1000)
+print(f"Object Distance: {dist} cm") # 17.15 cm
+```
+
+### Common Mistake
+Connecting the HC-SR04 $5\text{V}$ Echo output pin directly to an ESP32 $3.3\text{V}$ GPIO pin without a voltage divider or logic level shifter, overstressing and damaging the MCU input buffer.
+
+### Check Yourself
+Why must the round-trip sound travel time be divided by 2 when computing target distance with an ultrasonic sensor?

@@ -1,0 +1,1129 @@
+[
+  {
+    "loId": "iot-02-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q01",
+    "stem": "According to Ohm's Law, what formula expresses the relationship between Voltage (V), Current (I), and Resistance (R)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "V = I * R"
+      },
+      {
+        "id": "b",
+        "text": "V = I / R"
+      },
+      {
+        "id": "c",
+        "text": "V = I + R"
+      },
+      {
+        "id": "d",
+        "text": "V = R / I"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Ohm's Law states that Voltage equals Current multiplied by Resistance (V = I * R).",
+    "noteRef": "iot-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo01",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-02-q02",
+    "stem": "A 5V power source drives a circuit through a 250 Ohm resistor. What current (in milliamperes, mA) flows through the circuit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "50"
+      },
+      {
+        "id": "b",
+        "text": "20"
+      },
+      {
+        "id": "c",
+        "text": "1250"
+      },
+      {
+        "id": "d",
+        "text": "5"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "I = V / R = 5V / 250 Ohm = 0.02 A = 20 mA.",
+    "noteRef": "iot-02-lo01",
+    "verify": "((5 / 250) * 1000 === 20)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q03",
+    "stem": "An engineer needs to power a red LED with forward drop Vf = 1.8V from a 5V supply at target current 20mA (0.02A). What resistor value (in Ohms) is required?",
+    "options": [
+      {
+        "id": "a",
+        "text": "250"
+      },
+      {
+        "id": "b",
+        "text": "100"
+      },
+      {
+        "id": "c",
+        "text": "160"
+      },
+      {
+        "id": "d",
+        "text": "340"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "R = (Vsupply - Vf) / I = (5.0 - 1.8) / 0.02 = 3.2 / 0.02 = 160 Ohms.",
+    "noteRef": "iot-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo01",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q04",
+    "stem": "If a 100 Ohm resistor has a current of 0.1A passing through it, what power is dissipated as heat, and is a standard 0.25W resistor safe?",
+    "options": [
+      {
+        "id": "a",
+        "text": "P = 0.1W; safe because it is below 0.25W."
+      },
+      {
+        "id": "b",
+        "text": "P = 10W; safe because resistors cannot burn."
+      },
+      {
+        "id": "c",
+        "text": "P = 0.01W; safe because voltage is zero."
+      },
+      {
+        "id": "d",
+        "text": "P = 1.0W; unsafe because it exceeds the 0.25W rating fourfold."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "P = I^2 * R = (0.1)^2 * 100 = 0.01 * 100 = 1.0W, drastically exceeding a 0.25W resistor rating.",
+    "noteRef": "iot-02-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q05",
+    "stem": "How are tie-points interconnected along the long outer rails of a standard solderless breadboard?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vertically connected as continuous common power/ground distribution buses."
+      },
+      {
+        "id": "b",
+        "text": "Horizontally connected in groups of 5 tie-points."
+      },
+      {
+        "id": "c",
+        "text": "Completely isolated from all other pins."
+      },
+      {
+        "id": "d",
+        "text": "Tied through internal 10k resistors."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Outer breadboard bus strips run vertically down the board to distribute power rails.",
+    "noteRef": "iot-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q06",
+    "stem": "An engineer wants to measure the operating current of an IoT temperature sensor using a digital multimeter. How must the DMM test leads be placed?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In parallel across the sensor's VCC and GND pins."
+      },
+      {
+        "id": "b",
+        "text": "In series within the power line, breaking the circuit so all current flows through the meter."
+      },
+      {
+        "id": "c",
+        "text": "Connected directly between the breadboard power rail and earth ground."
+      },
+      {
+        "id": "d",
+        "text": "Attached only to the plastic chassis."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Current measurement requires inserting the low-impedance ammeter in series into the circuit loop.",
+    "noteRef": "iot-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo02",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-02-q07",
+    "stem": "What does an audible continuous beep indicate when using a DMM in Continuity Test mode across unpowered power rails?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The circuit is completely open and safe to power on."
+      },
+      {
+        "id": "b",
+        "text": "The battery is fully charged."
+      },
+      {
+        "id": "c",
+        "text": "A direct low-resistance short circuit exists between the power and ground rails."
+      },
+      {
+        "id": "d",
+        "text": "The Wi-Fi antenna is connected."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Continuity beeps on low resistance (<30 Ohms); beeping across rails indicates a dangerous dead short.",
+    "noteRef": "iot-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q08",
+    "stem": "What happens if a user leaves a DMM probe plugged into the 10A current jack and connects the probes in parallel across a 12V lead-acid battery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The multimeter accurately reads 12V."
+      },
+      {
+        "id": "b",
+        "text": "The battery becomes permanently uncharged."
+      },
+      {
+        "id": "c",
+        "text": "The multimeter displays digital frequency."
+      },
+      {
+        "id": "d",
+        "text": "The near-zero internal resistance of the ammeter creates a catastrophic short circuit, blowing the meter fuse or melting test leads."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Ammeter jacks have micro-ohm shunt resistance; placing them in parallel across a voltage source causes a direct short.",
+    "noteRef": "iot-02-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q09",
+    "stem": "What is the formula for the output voltage (Vout) of a two-resistor voltage divider?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vout = Vin * (R2 / (R1 + R2))"
+      },
+      {
+        "id": "b",
+        "text": "Vout = Vin * ((R1 + R2) / R2)"
+      },
+      {
+        "id": "c",
+        "text": "Vout = Vin * (R1 / R2)"
+      },
+      {
+        "id": "d",
+        "text": "Vout = Vin - (R1 * R2)"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The voltage divider equation is Vout = Vin * (R2 / (R1 + R2)).",
+    "noteRef": "iot-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo03",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-02-q10",
+    "stem": "If Vin = 12V, R1 = 10k Ohms, and R2 = 10k Ohms, what is the output voltage Vout (in Volts)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "6"
+      },
+      {
+        "id": "c",
+        "text": "3"
+      },
+      {
+        "id": "d",
+        "text": "24"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Equal resistors divide voltage in half: 12 * (10 / (10 + 10)) = 6V.",
+    "noteRef": "iot-02-lo03",
+    "verify": "(12 * (10 / 20) === 6)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q11",
+    "stem": "An engineer uses R1 = 1.0k Ohm and R2 = 2.0k Ohm to step down a 5V digital signal for an ESP32 3.3V input. What voltage is delivered to the ESP32?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2.50V"
+      },
+      {
+        "id": "b",
+        "text": "1.67V"
+      },
+      {
+        "id": "c",
+        "text": "3.33V"
+      },
+      {
+        "id": "d",
+        "text": "4.50V"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Vout = 5 * (2000 / 3000) = 5 * (2/3) = 3.33V, safe for 3.3V CMOS inputs.",
+    "noteRef": "iot-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q12",
+    "stem": "Why cannot a passive resistive voltage divider be used as a power supply regulator for a 3.3V motor or Wi-Fi radio?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because resistors only work with alternating current (AC)."
+      },
+      {
+        "id": "b",
+        "text": "Because voltage dividers generate microwave radiation."
+      },
+      {
+        "id": "c",
+        "text": "Microcontrollers reject voltages produced by resistors."
+      },
+      {
+        "id": "d",
+        "text": "Dynamic current drawn by the load alters the effective parallel resistance of R2, causing the output voltage to fluctuate wildly and collapse under load."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Load impedance in parallel with R2 shifts the division ratio, collapsing voltage when dynamic current is drawn.",
+    "noteRef": "iot-02-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q13",
+    "stem": "What is the primary function of a 0.1 uF ceramic decoupling capacitor placed right next to an MCU power pin?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To supply high-frequency transient switching current and shunt electrical noise to Ground, preventing sporadic MCU resets."
+      },
+      {
+        "id": "b",
+        "text": "To store power for operating the device during multi-day blackouts."
+      },
+      {
+        "id": "c",
+        "text": "To amplify digital signals by 10x."
+      },
+      {
+        "id": "d",
+        "text": "To convert DC into 50Hz AC."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Decoupling caps act as local charge reservoirs absorbing high-frequency transient current spikes during clock switching.",
+    "noteRef": "iot-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q14",
+    "stem": "A push button connects a microcontroller GPIO pin to Ground. When unpressed, the pin reads erratic random 1s and 0s. What component is missing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A step-up transformer."
+      },
+      {
+        "id": "b",
+        "text": "A pull-up resistor tying the pin weakly to VCC when the switch is open."
+      },
+      {
+        "id": "c",
+        "text": "A heatsink."
+      },
+      {
+        "id": "d",
+        "text": "A high-pass audio filter."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "A floating input pin acts as an antenna picking up EMI; a pull-up resistor establishes a defined HIGH state when open.",
+    "noteRef": "iot-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-02-q15",
+    "stem": "Why must a reverse-biased flyback (snubber) diode be placed across an electromechanical relay coil?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To make the relay switch twice as fast."
+      },
+      {
+        "id": "b",
+        "text": "To convert DC coil voltage into AC."
+      },
+      {
+        "id": "c",
+        "text": "To dissipate the high-voltage inductive kickback spike generated when the coil magnetic field collapses upon turn-off."
+      },
+      {
+        "id": "d",
+        "text": "To illuminate when the relay activates."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Inductors resist abrupt current changes; the collapse generates a back-EMF spike of hundreds of volts without a flyback clamp.",
+    "noteRef": "iot-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo04",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-02-q16",
+    "stem": "Which of the following problems can be resolved by integrating passive components into an embedded circuit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Preventing floating input logic states via pull-up / pull-down resistors"
+      },
+      {
+        "id": "b",
+        "text": "Suppressing high-voltage inductive spikes across coils via flyback diodes"
+      },
+      {
+        "id": "c",
+        "text": "Smoothing supply rail voltage ripples via decoupling capacitors"
+      },
+      {
+        "id": "d",
+        "text": "Overclocking an 8-bit MCU to execute multi-billion parameter LLMs"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Passives manage pin states, voltage spikes, and power rail stability; they cannot add compute capacity.",
+    "noteRef": "iot-02-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q17",
+    "stem": "How many discrete quantization levels does a 12-bit Analog-to-Digital Converter (ADC) provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1024 (0 to 1023)"
+      },
+      {
+        "id": "b",
+        "text": "256 (0 to 255)"
+      },
+      {
+        "id": "c",
+        "text": "65536 (0 to 65535)"
+      },
+      {
+        "id": "d",
+        "text": "4096 (0 to 4095)"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "A 12-bit ADC provides 2^12 = 4096 discrete quantization steps (ranging from 0 to 4095).",
+    "noteRef": "iot-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q18",
+    "stem": "An Arduino Uno with a 10-bit ADC (1024 steps) and 5.0V reference reads an analog value of 512 from a temperature sensor. What voltage is present on the pin?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2.50V"
+      },
+      {
+        "id": "b",
+        "text": "1.25V"
+      },
+      {
+        "id": "c",
+        "text": "3.30V"
+      },
+      {
+        "id": "d",
+        "text": "5.00V"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "512 is exactly half of 1024; (512 / 1023) * 5.0V = 2.50V.",
+    "noteRef": "iot-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo05",
+    "type": "numeric",
+    "difficulty": 2,
+    "id": "iot-02-q19",
+    "stem": "What is the theoretical maximum digital value returned by a standard 10-bit ADC?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1024"
+      },
+      {
+        "id": "b",
+        "text": "1023"
+      },
+      {
+        "id": "c",
+        "text": "4095"
+      },
+      {
+        "id": "d",
+        "text": "255"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "2^10 - 1 = 1024 - 1 = 1023.",
+    "noteRef": "iot-02-lo05",
+    "verify": "((2 ** 10) - 1 === 1023)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q20",
+    "stem": "What well-known hardware quirk affects raw ADC readings on native ESP32 chips near the rails (below 0.15V and above 3.1V)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The ADC reverses its numerical sign."
+      },
+      {
+        "id": "b",
+        "text": "The ADC operates only on prime numbers."
+      },
+      {
+        "id": "c",
+        "text": "Severe non-linearity and dead bands near 0V and 3.3V, requiring calibration curves for accurate measurements."
+      },
+      {
+        "id": "d",
+        "text": "The ESP32 shuts down permanently."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "ESP32 SAR ADCs suffer from significant non-linearity near lower and upper voltage thresholds.",
+    "noteRef": "iot-02-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q21",
+    "stem": "What is 'Duty Cycle' in Pulse Width Modulation (PWM)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The total number of pulses generated per calendar day."
+      },
+      {
+        "id": "b",
+        "text": "The amount of electricity consumed by a resistor."
+      },
+      {
+        "id": "c",
+        "text": "The physical angle of a motor rotor."
+      },
+      {
+        "id": "d",
+        "text": "The percentage of time a digital pulse stays HIGH during one complete switching period."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Duty cycle is the ratio of active pulse width (Ton) to total period (T), expressed as a percentage.",
+    "noteRef": "iot-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q22",
+    "stem": "A 3.3V microcontroller controls an LED using an 8-bit PWM peripheral (values 0 to 255). If the code writes a duty value of 128 (approx 50%), what is the effective time-averaged voltage delivered?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.65V"
+      },
+      {
+        "id": "b",
+        "text": "3.30V"
+      },
+      {
+        "id": "c",
+        "text": "0.825V"
+      },
+      {
+        "id": "d",
+        "text": "2.50V"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "50% duty cycle on a 3.3V supply yields an average effective voltage of 3.3 * 0.5 = 1.65V.",
+    "noteRef": "iot-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo06",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-02-q23",
+    "stem": "What specific PWM signal is required to position standard hobby servomotors (like SG90)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A 100 kHz square wave at 90% duty."
+      },
+      {
+        "id": "b",
+        "text": "A 50 Hz pulse train (20 ms period) with HIGH pulse width varying between 1.0 ms (0 deg) and 2.0 ms (180 deg)."
+      },
+      {
+        "id": "c",
+        "text": "A continuous DC current of 5 Amps."
+      },
+      {
+        "id": "d",
+        "text": "An infrared beam flashing at 38 kHz."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Hobby servos decode pulse duration (1.0ms - 2.0ms) within a 50Hz frame to dictate rotor angle.",
+    "noteRef": "iot-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q24",
+    "stem": "Why does an oscilloscope show full 0V and 3.3V logic levels on a PWM pin regardless of whether the duty cycle is set to 10% or 90%?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because the oscilloscope probe is broken."
+      },
+      {
+        "id": "b",
+        "text": "Because digital pins cannot carry current."
+      },
+      {
+        "id": "c",
+        "text": "Because PWM alternates digital switches between full HIGH and full LOW; only the time-averaged ratio changes, not the instantaneous voltage amplitude."
+      },
+      {
+        "id": "d",
+        "text": "Because the microcontroller is operating in sleep mode."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Digital CMOS outputs switch rail-to-rail; PWM synthesizes intermediate power by modulating time duration.",
+    "noteRef": "iot-02-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q25",
+    "stem": "How does the electrical resistance of a Light Dependent Resistor (LDR) respond when ambient light levels increase?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Its electrical resistance increases towards infinity."
+      },
+      {
+        "id": "b",
+        "text": "Its resistance remains completely constant."
+      },
+      {
+        "id": "c",
+        "text": "It generates 240V AC electricity."
+      },
+      {
+        "id": "d",
+        "text": "Its electrical resistance decreases significantly."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Photons excite charge carriers in cadmium sulfide (CdS) photoresistors, dropping resistance under light.",
+    "noteRef": "iot-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q26",
+    "stem": "An HC-SR04 ultrasonic distance sensor emits an ultrasonic burst, and the Echo pin stays HIGH for 1000 microseconds before receiving the reflection. Assuming sound speed is 0.0343 cm/us, what is the distance to the target?",
+    "options": [
+      {
+        "id": "a",
+        "text": "17.15 cm"
+      },
+      {
+        "id": "b",
+        "text": "34.30 cm"
+      },
+      {
+        "id": "c",
+        "text": "8.57 cm"
+      },
+      {
+        "id": "d",
+        "text": "68.60 cm"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Distance = (duration * 0.0343) / 2 = (1000 * 0.0343) / 2 = 34.3 / 2 = 17.15 cm.",
+    "noteRef": "iot-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo07",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-02-q27",
+    "stem": "Which of the following precautions must be observed when connecting an HC-SR04 ultrasonic sensor to a 3.3V ESP32 microcontroller?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The HC-SR04 requires a 5V supply to power its ultrasonic transducers"
+      },
+      {
+        "id": "b",
+        "text": "The 5V Echo output signal must be level-shifted down to 3.3V before entering an ESP32 GPIO pin"
+      },
+      {
+        "id": "c",
+        "text": "A 10 microsecond HIGH trigger pulse must be generated to initiate a measurement ping"
+      },
+      {
+        "id": "d",
+        "text": "The sensor must be submerged in mineral oil"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "The sensor runs on 5V and outputs a 5V Echo pulse requiring voltage division; submerging it destroys transducers.",
+    "noteRef": "iot-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q28",
+    "stem": "Why does the DHT22 temperature and humidity sensor require an external 4.7k to 10k Ohm pull-up resistor on its single-wire data bus?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To heat up the temperature sensor."
+      },
+      {
+        "id": "b",
+        "text": "The communication bus utilizes an open-drain/open-collector topology where devices only pull the line LOW, relying on the resistor to pull the line HIGH."
+      },
+      {
+        "id": "c",
+        "text": "To convert digital packets into audio pulses."
+      },
+      {
+        "id": "d",
+        "text": "To ground stray radio frequencies."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Open-drain buses require pull-up resistors to restore default HIGH idle state without bus contention.",
+    "noteRef": "iot-02-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-02-q29",
+    "stem": "What primary advantage does an optocoupler provide when interfacing microcontrollers to high-voltage industrial circuits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Doubling the microcontroller's RAM memory."
+      },
+      {
+        "id": "b",
+        "text": "Transmitting data over satellite frequencies."
+      },
+      {
+        "id": "c",
+        "text": "Galvanic electrical isolation using optical light transmission, completely preventing high-voltage surges from reaching the MCU."
+      },
+      {
+        "id": "d",
+        "text": "Generating 12V DC power from nothing."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Optocouplers isolate circuits with thousands of volts of dielectric insulation by converting electrical signals to light.",
+    "noteRef": "iot-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q30",
+    "stem": "An engineer drives a 12V 2A DC motor using an N-Channel MOSFET. When the ESP32 GPIO outputs 3.3V, the MOSFET gets scorching hot and the motor barely turns. What is the root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The ESP32 is running out of flash memory."
+      },
+      {
+        "id": "b",
+        "text": "The motor requires an optical fiber connection."
+      },
+      {
+        "id": "c",
+        "text": "The resistor values are too accurate."
+      },
+      {
+        "id": "d",
+        "text": "The MOSFET is not logic-level rated; its threshold voltage VGS requires 10V to fully saturate, causing it to operate in the high-resistance linear region at 3.3V."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Standard power MOSFETs need 10V gate voltage; driving them with 3.3V creates high channel resistance and severe heating.",
+    "noteRef": "iot-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo08",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-02-q31",
+    "stem": "Which components are required in a safe, complete transistor circuit driving a 12V DC electromagnetic solenoid?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A logic-level N-Channel MOSFET or NPN transistor capable of handling the load current"
+      },
+      {
+        "id": "b",
+        "text": "A flyback diode placed in reverse-parallel across the solenoid coil"
+      },
+      {
+        "id": "c",
+        "text": "A 10k Ohm pull-down resistor from Gate/Base to Ground"
+      },
+      {
+        "id": "d",
+        "text": "A 240V AC step-up transformer"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Switching transistor, flyback diode, and gate pull-down form the robust DC inductive driver circuit.",
+    "noteRef": "iot-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo08",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q32",
+    "stem": "Why must the Ground of an external 12V motor power supply be tied together with the Ground of a 3.3V microcontroller?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To provide a common electrical reference potential so that the gate-to-source voltage (VGS) can be established across the transistor."
+      },
+      {
+        "id": "b",
+        "text": "To allow 12V power to flow into the ESP32 chip."
+      },
+      {
+        "id": "c",
+        "text": "Because electrical codes forbid separate ground terminals."
+      },
+      {
+        "id": "d",
+        "text": "To prevent the breadboard from melting."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Voltage is relative; establishing a shared common ground reference allows the MCU gate signal to be referenced to the source pin.",
+    "noteRef": "iot-02-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-02-q33",
+    "stem": "What critical risk occurs if a Lithium Polymer (LiPo) battery is discharged below its minimum safe threshold (~2.8V)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The battery becomes an alternating current generator."
+      },
+      {
+        "id": "b",
+        "text": "Copper shunts form internally, causing permanent capacity loss and severe risks of short-circuit fire during subsequent recharge cycles."
+      },
+      {
+        "id": "c",
+        "text": "The battery weight increases by 50%."
+      },
+      {
+        "id": "d",
+        "text": "The battery automatically recharges itself."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Over-discharging dissolves copper into the electrolyte; recharging then causes micro-shorts leading to thermal runaway.",
+    "noteRef": "iot-02-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-02-q34",
+    "stem": "An engineer designs an IoT smart plug PCB switching 230V AC mains electricity. What minimum physical clearance and creepage distance should be maintained between mains AC traces and low-voltage DC traces?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.1 mm"
+      },
+      {
+        "id": "b",
+        "text": "50 cm"
+      },
+      {
+        "id": "c",
+        "text": "At least 5 to 6 mm of physical isolation distance or an air isolation slot milled into the PCB."
+      },
+      {
+        "id": "d",
+        "text": "No separation is required if solder mask is applied."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "IEC 60950/62368 standards mandate 5-6mm creepage/clearance to prevent lethal arcing across mains and DC rails.",
+    "noteRef": "iot-02-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-02-q35",
+    "stem": "Which of the following safety measures are mandatory when soldering electronic prototypes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Using active fume extraction or soldering in well-ventilated spaces to avoid inhaling rosin flux fumes"
+      },
+      {
+        "id": "b",
+        "text": "Washing hands thoroughly after handling lead-based solder alloys"
+      },
+      {
+        "id": "c",
+        "text": "Resting the hot soldering iron exclusively in a dedicated heat-resistant stand"
+      },
+      {
+        "id": "d",
+        "text": "Testing iron tip temperature by touching it with bare fingers"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "Fume ventilation, hygiene, and safe iron stands are essential laboratory safety practices.",
+    "noteRef": "iot-02-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-02-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-02-q36",
+    "stem": "Why are battery management ICs (like the TP4056 paired with DW01A) mandatory for Lithium-ion powered IoT devices?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They allow charging from high-voltage AC mains without transformers."
+      },
+      {
+        "id": "b",
+        "text": "They eliminate the need for batteries."
+      },
+      {
+        "id": "c",
+        "text": "They convert lithium batteries into solar cells."
+      },
+      {
+        "id": "d",
+        "text": "They enforce Constant-Current/Constant-Voltage (CC/CV) charging profiles and cut off power during overcharge (>4.2V), over-discharge (<2.8V), or short circuits."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Lithium cells lack self-balancing and violently fail if overcharged or shorted; protection ICs prevent disaster.",
+    "noteRef": "iot-02-lo09",
+    "reviewed": false
+  }
+]

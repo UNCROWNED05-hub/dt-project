@@ -1,0 +1,38 @@
+---
+loId: "iot-02-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+A resistive voltage divider scales down a higher input voltage to a proportional lower output voltage, essential for feeding $5\text{V}$ sensor signals into $3.3\text{V}$ microcontrollers:
+1. Voltage Divider Equation:
+   $$V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}$$
+   Where $R_1$ is connected between $V_{\text{in}}$ and $V_{\text{out}}$, and $R_2$ is connected between $V_{\text{out}}$ and Ground.
+2. Level-Shifting $5\text{V}$ to $3.3\text{V}$:
+   To step $5.0\text{V}$ down to $3.3\text{V}$, the required resistor ratio is:
+   $$\frac{R_2}{R_1 + R_2} = \frac{3.3}{5.0} = 0.66$$
+   Using standard E24 resistor values: $R_1 = 1.0\,\text{k}\Omega$ and $R_2 = 2.0\,\text{k}\Omega$ yields:
+   $$V_{\text{out}} = 5.0\text{V} \times \frac{2000}{1000 + 2000} = 3.33\text{V}$$
+3. Impedance Loading Caution: Voltage dividers work only into high-impedance inputs (like MCU ADC pins or CMOS GPIOs). Never use a passive voltage divider to supply power to motors or high-current sensors.
+
+### Worked Example
+Python script calculating exact voltage divider outputs:
+```python
+def calculate_divider_output(v_in, r1_ohms, r2_ohms):
+    v_out = v_in * (r2_ohms / (r1_ohms + r2_ohms))
+    current_drawn_ma = (v_in / (r1_ohms + r2_ohms)) * 1000
+    return {"v_out": round(v_out, 3), "current_ma": round(current_drawn_ma, 2)}
+
+# 5V stepped down using 1k and 2k resistors
+result = calculate_divider_output(v_in=5.0, r1_ohms=1000, r2_ohms=2000)
+print(f"Output Voltage: {result['v_out']} V, Quiescent Current: {result['current_ma']} mA")
+# 3.333 V, 1.67 mA
+```
+
+### Common Mistake
+Attempting to power a $3.3\text{V}$ Wi-Fi module from a $5\text{V}$ supply using a simple resistor divider; the module's fluctuating operating current alters the voltage drop, causing the voltage to collapse and brownout the device.
+
+### Check Yourself
+If $R_1 = 10\,\text{k}\Omega$, $R_2 = 10\,\text{k}\Omega$, and $V_{\text{in}} = 10\text{V}$, what is the output voltage $V_{\text{out}}$?

@@ -1,0 +1,39 @@
+---
+loId: "iot-02-lo06"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Microcontrollers cannot directly output variable analog voltages from digital pins; Pulse Width Modulation (PWM) synthesizes analog-like power through high-speed digital switching:
+1. Operating Principle: PWM rapidly switches a digital pin between HIGH ($V_{CC}$) and LOW ($0\text{V}$) at a constant frequency. The human eye (LED dimming) or mechanical inertia (motor coils) averages the high and low states.
+2. Duty Cycle ($D$): The percentage of time the signal remains HIGH during one full period ($T$):
+   $$\text{Duty Cycle } D = \frac{T_{\text{on}}}{T} \times 100\%$$
+   $$\text{Effective Average Voltage } V_{\text{avg}} = V_{CC} \times \frac{\text{Duty Cycle}}{100}$$
+   At $V_{CC} = 3.3\text{V}$ with a $50\%$ duty cycle, the average effective voltage delivered is $1.65\text{V}$.
+3. Frequency Requirements:
+   - LED Dimming: $>100\text{Hz}$ to eliminate human-perceptible optical flicker.
+   - DC Motor Speed: $1\text{kHz} - 20\text{kHz}$ to eliminate audible acoustic motor whine.
+   - Hobby Servos: Exact $50\text{Hz}$ pulse train ($20\text{ms}$ period) where high pulses between $1.0\text{ms}$ and $2.0\text{ms}$ govern rotor angle ($0^{\circ}$ to $180^{\circ}$).
+
+### Worked Example
+Configuring ESP32 hardware PWM via LEDC peripheral in Arduino framework:
+```cpp
+const int LED_PIN = 18;
+const int PWM_CHANNEL = 0;
+const int PWM_FREQ = 5000;    // 5 kHz frequency
+const int PWM_RESOLUTION = 8; // 8-bit resolution (0-255 steps)
+
+void setup() {
+  ledcAttachChannel(LED_PIN, PWM_FREQ, PWM_RESOLUTION, PWM_CHANNEL);
+  // Set 50% duty cycle (128 / 255)
+  ledcWrite(LED_PIN, 128);
+}
+```
+
+### Common Mistake
+Assuming PWM changes the actual output voltage amplitude; the instantaneous output voltage is always fully HIGH ($3.3\text{V}$) or fully LOW ($0\text{V}$), only the time average varies.
+
+### Check Yourself
+If an ESP32 outputting $3.3\text{V}$ runs an 8-bit PWM channel at duty value 64 (out of 255), what is the approximate average effective voltage?

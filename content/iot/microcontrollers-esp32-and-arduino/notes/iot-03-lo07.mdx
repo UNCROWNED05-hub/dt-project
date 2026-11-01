@@ -1,0 +1,37 @@
+---
+loId: "iot-03-lo07"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Circuit simulators accelerate embedded development by enabling rapid hardware-firmware prototyping in the browser without physical hardware risks:
+1. Wokwi Simulator: An open-source, cycle-accurate browser simulator modeling microcontrollers (ESP32, RP2040, Arduino Uno) and dozens of sensors, OLED displays, relays, and actuators.
+2. Architecture & Configuration (`diagram.json`): Defines components and virtual jumper wire routing using human-readable JSON. Simulates SPI, I2C, UART, and analog signals with high fidelity.
+3. Virtual Wi-Fi Simulation: Wokwi models ESP32 Wi-Fi hardware, permitting virtual devices to connect to an emulated internet gateway (`Wokwi-GUEST`) and exchange live MQTT messages, HTTP GET/POST requests, and NTP time packets.
+4. Fast Debugging Cycles: Test edge cases (such as sensor disconnects, invalid checksums, and power brownouts) instantly without risk of blowing fuses or frying expensive chips.
+
+### Worked Example
+Wokwi `diagram.json` connecting an ESP32 to a DHT22 sensor:
+```json
+{
+  "version": 1,
+  "author": "IoT Engineer",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0 },
+    { "type": "wokwi-dht22", "id": "dht", "top": -50, "left": 150 }
+  ],
+  "connections": [
+    [ "esp:GND.1", "dht:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "dht:VCC", "red", [ "v0" ] ],
+    [ "esp:D15", "dht:SDA", "green", [ "v0" ] ]
+  ]
+}
+```
+
+### Common Mistake
+Assuming a browser simulation models physical parasitic capacitance, contact resistance, and real-world RF antenna attenuation perfectly; code verified in Wokwi must still undergo physical hardware verification.
+
+### Check Yourself
+How does virtual Wi-Fi emulation in Wokwi assist in testing networked IoT firmware before flashing physical hardware?

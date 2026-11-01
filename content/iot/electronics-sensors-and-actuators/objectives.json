@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "chapterId": "iot-02",
+  "objectives": [
+    {
+      "id": "iot-02-lo01",
+      "order": 1,
+      "title": "Calculate voltage, current, resistance, and electrical power using Ohm's Law and Joule's Law",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "ohm's law",
+        "voltage",
+        "current",
+        "resistance",
+        "power",
+        "joule's law"
+      ],
+      "aliases": [
+        "v=ir",
+        "electrical calculations",
+        "resistor power rating"
+      ],
+      "prerequisites": [
+        "iot-01-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-02-lo02",
+      "order": 2,
+      "title": "Prototype solderless breadboard circuits and measure signals using digital multimeters",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "breadboard",
+        "multimeter",
+        "continuity test",
+        "voltage measurement",
+        "short circuit prevention"
+      ],
+      "aliases": [
+        "circuit prototyping",
+        "dmm measurement"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-02-lo03",
+      "order": 3,
+      "title": "Construct resistive voltage dividers to level-shift sensor outputs into safe MCU voltages",
+      "bloom": "construct",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "voltage divider",
+        "resistor ratio",
+        "level shifting",
+        "analog sensor scaling"
+      ],
+      "aliases": [
+        "potential divider",
+        "5v to 3.3v scaling"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-02-lo04",
+      "order": 4,
+      "title": "Analyze passive electronic components: capacitors, diodes, and pull-up/pull-down resistors",
+      "bloom": "analyze",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "capacitors",
+        "diodes",
+        "decoupling",
+        "pull-up resistor",
+        "floating pin"
+      ],
+      "aliases": [
+        "passive components",
+        "filtering capacitors",
+        "flyback diode"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-02-lo05",
+      "order": 5,
+      "title": "Convert continuous analog voltages to discrete readings using Analog-to-Digital Converters (ADC)",
+      "bloom": "calculate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "adc",
+        "bit depth",
+        "quantization error",
+        "reference voltage",
+        "sampling resolution"
+      ],
+      "aliases": [
+        "analog to digital conversion",
+        "adc resolution"
+      ],
+      "prerequisites": [
+        "iot-02-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-02-lo06",
+      "order": 6,
+      "title": "Generate variable analog outputs and motor speeds using Pulse Width Modulation (PWM)",
+      "bloom": "generate",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "pwm",
+        "duty cycle",
+        "pwm frequency",
+        "analogwrite",
+        "led dimming"
+      ],
+      "aliases": [
+        "pulse width modulation",
+        "duty cycle calculation"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-02-lo07",
+      "order": 7,
+      "title": "Interface environmental and distance sensors (LDR, DHT22, HC-SR04 ultrasonic)",
+      "bloom": "interface",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "ldr",
+        "dht22",
+        "hc-sr04",
+        "ultrasonic sensor",
+        "sensor calibration"
+      ],
+      "aliases": [
+        "sensor interfacing",
+        "environmental sensors"
+      ],
+      "prerequisites": [
+        "iot-02-lo05"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-02-lo08",
+      "order": 8,
+      "title": "Control high-power actuators safely using electromechanical relays, optocouplers, and MOSFETs",
+      "bloom": "control",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "relay",
+        "optocoupler",
+        "n-channel mosfet",
+        "flyback diode",
+        "galvanic isolation"
+      ],
+      "aliases": [
+        "actuator driving",
+        "motor control circuit"
+      ],
+      "prerequisites": [
+        "iot-02-lo04"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-02-lo09",
+      "order": 9,
+      "title": "Apply electrical safety protocols for mains voltage isolation, LiPo batteries, and soldering",
+      "bloom": "apply",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "electrical safety",
+        "mains isolation",
+        "lipo battery safety",
+        "soldering safety",
+        "fume extraction"
+      ],
+      "aliases": [
+        "workshop safety",
+        "high voltage safety in iot"
+      ],
+      "prerequisites": [
+        "iot-02-lo08"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

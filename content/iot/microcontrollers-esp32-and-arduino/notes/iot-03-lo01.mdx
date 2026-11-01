@@ -1,0 +1,35 @@
+---
+loId: "iot-03-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Choosing between a microcontroller (MCU) and a microprocessor (MPU/SBC) determines an IoT device's cost, battery life, and software architecture:
+1. Microcontroller (MCU - e.g., ESP32, STM32, ATmega328P): Integrates CPU, RAM, Flash memory, and I/O peripherals onto a single monolithic silicon die. Executes bare-metal C/C++ firmware or a lightweight Real-Time Operating System (FreeRTOS) with zero OS boot delays, microsecond response times, and milliwatt power consumption ($<15\text{mA}$ active, $<10\mu\text{A}$ sleep).
+2. Microprocessor / Single-Board Computer (MPU/SBC - e.g., Raspberry Pi 4/5): Houses a high-speed multi-core CPU requiring external DDR RAM, eMMC/microSD storage, and complex power management ICs (PMICs). Runs full desktop Linux, boots in tens of seconds, consumes several watts ($500\text{mA} - 3000\text{mA}$ at $5\text{V}$), and cannot guarantee deterministic microsecond real-time I/O response due to OS kernel scheduling interrupts.
+3. Summary Decision Rule: Use an MCU for dedicated, battery-powered sensor nodes, motor control, and hard real-time tasks. Use an MPU when heavy graphical displays, video processing, local databases, or complex networking stacks are required.
+
+### Worked Example
+Python script comparing battery life for MCU vs MPU nodes:
+```python
+def estimate_battery_life_days(capacity_mah, active_ma, sleep_ma, active_seconds_per_hour):
+    duty_cycle = active_seconds_per_hour / 3600.0
+    avg_current_ma = (active_ma * duty_cycle) + (sleep_ma * (1.0 - duty_cycle))
+    battery_life_hours = capacity_mah / avg_current_ma
+    return round(battery_life_hours / 24.0, 1)
+
+# 2500mAh battery running 10s sensor check every hour
+mcu_days = estimate_battery_life_days(2500, active_ma=30.0, sleep_ma=0.01, active_seconds_per_hour=10)
+mpu_days = estimate_battery_life_days(2500, active_ma=600.0, sleep_ma=150.0, active_seconds_per_hour=10)
+
+print(f"MCU Battery Life: {mcu_days} days | MPU Battery Life: {mpu_days} days")
+# MCU: ~950+ days (years) vs MPU: ~0.7 days (hours)
+```
+
+### Common Mistake
+Deploying a full Raspberry Pi 4 running Linux for a simple remote soil-moisture sensor, exhausting a rechargeable battery pack in less than 24 hours while an ESP32 would run for two years on AA batteries.
+
+### Check Yourself
+Why can a bare-metal microcontroller guarantee hard real-time timing that a standard Linux single-board computer cannot?

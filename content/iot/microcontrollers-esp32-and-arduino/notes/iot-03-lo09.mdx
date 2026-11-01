@@ -1,0 +1,37 @@
+---
+loId: "iot-03-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+The ESP32 incorporates dedicated hardware subsystems for low-power operation and human interface sensing without external active components:
+1. Capacitive Touch Sensing: Includes up to 10 capacitive touch pads (T0-T9, shared with GPIOs like GPIO 4, 15, 27). The internal hardware continuously charges and discharges a capacitive RC circuit. Touching a conductive pad or insulated wire introduces human body capacitance ($50\text{pF}-100\text{pF}$), increasing charge time and lowering the returned digital count.
+2. Ultra-Low-Power (ULP) Coprocessor: A simple 32-bit RISC-V or FSM coprocessor that continues executing assembly or limited C instructions while the primary dual-core Xtensa CPUs are in deep sleep mode ($10\mu\text{A}$ power draw).
+3. Wakeup Triggers: The ULP can poll I2C sensors, sample ADC voltages, or detect touch events. When a threshold condition is met (e.g., temperature exceeds $40^{\circ}\text{C}$ or touch detected), it asserts an interrupt that boots the primary CPU cores.
+
+### Worked Example
+Reading capacitive touch pins in Arduino framework on ESP32:
+```cpp
+const int TOUCH_PIN = 4; // Touch0 is on GPIO 4
+const int THRESHOLD = 30; // Lower value indicates finger presence
+
+void setup() {
+  Serial.begin(115200);
+}
+
+void loop() {
+  int touch_val = touchRead(TOUCH_PIN);
+  if (touch_val < THRESHOLD) {
+    Serial.println("Capacitive Touch Detected!");
+  }
+  delay(100);
+}
+```
+
+### Common Mistake
+Leaving touch pins connected with long, unshielded wires in environments with high electrical noise (near AC motors), causing false touch activations due to electromagnetic interference.
+
+### Check Yourself
+Why does an ESP32's `touchRead()` function return a lower numerical value when a user touches the pin?

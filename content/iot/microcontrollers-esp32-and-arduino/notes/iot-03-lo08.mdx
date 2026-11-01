@@ -1,0 +1,40 @@
+---
+loId: "iot-03-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Reading manufacturer datasheets and pinout diagrams is the fundamental skill distinguishing professional hardware engineers from hobbyists:
+1. Absolute Maximum Ratings: Operating limits (voltage, current, temperature) that must never be exceeded, even for a microsecond. Exceeding absolute maximums causes irreversible dielectric breakdown or thermal fusing inside the silicon die.
+2. Pin Sink and Source Current Limits:
+   - Sourcing Current: Current flowing *out* of an MCU GPIO pin into an external load tied to Ground.
+   - Sinking Current: Current flowing *into* an MCU GPIO pin from an external load tied to $V_{CC}$.
+   - ATmega328P: Maximum $40\text{mA}$ per pin ($20\text{mA}$ recommended), with total chip package limit of $200\text{mA}$.
+   - ESP32: Maximum $20\text{mA}-40\text{mA}$ per pin depending on drive strength, with recommended continuous operation below $12\text{mA}$ to prevent rail voltage drop.
+3. Pin Multiplexing & Alternate Functions: Modern MCU pins serve multiple internal peripherals (UART, I2C, SPI, PWM, ADC, capacitive touch). The datasheet pinout table identifies which pins support specific hardware blocks.
+
+### Worked Example
+Calculating total package current budget for an ESP32:
+```python
+def evaluate_gpio_current_budget(active_outputs, current_per_pin_ma, package_limit_ma=1200):
+    total_gpio_current = sum(active_outputs)
+    is_safe = total_gpio_current < package_limit_ma
+    return {
+        "total_current_ma": total_gpio_current,
+        "within_safety_limits": is_safe,
+        "remaining_budget_ma": package_limit_ma - total_gpio_current
+    }
+
+# 8 LEDs drawing 10mA each from GPIO pins
+load = [10] * 8
+report = evaluate_gpio_current_budget(load, current_per_pin_ma=10, package_limit_ma=250)
+print(f"Total Current: {report['total_current_ma']} mA, Safe: {report['within_safety_limits']}")
+```
+
+### Common Mistake
+Connecting 10 LEDs directly to MCU GPIO pins each drawing 20mA; while individual pins may stay within limits, the cumulative 200mA current burns the chip's internal Ground bonding wires.
+
+### Check Yourself
+What is the difference between a GPIO pin's "Absolute Maximum" rating and its "Recommended Operating" rating in a datasheet?

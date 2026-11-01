@@ -1,0 +1,40 @@
+---
+loId: "iot-02-lo01"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Understanding fundamental electrical relationships is mandatory for designing reliable, unburnt embedded circuits:
+1. Ohm's Law ($V = I \times R$): Voltage ($V$, volts) equals Current ($I$, amperes) multiplied by Resistance ($R$, ohms). It dictates how much current flows through a path given an electrical potential difference.
+2. Joule's Law of Electrical Power ($P = V \times I = I^2 R = \frac{V^2}{R}$): Power ($P$, watts) measures thermal energy dissipated per second. Standard through-hole resistors are rated at $0.25\text{W}$; exceeding this thermal envelope burns the component.
+3. Current-Limiting Resistor Calculation for LEDs:
+   $$\text{Resistor Value } R = \frac{V_{\text{supply}} - V_{\text{forward}}}{I_{\text{target}}}$$
+   For a $3.3\text{V}$ microcontroller driving a red LED with forward drop $V_f = 2.0\text{V}$ at $10\text{mA}$ ($0.01\text{A}$):
+   $$R = \frac{3.3 - 2.0}{0.01} = 130\,\Omega$$
+   Use the next standard E24 resistor value ($150\,\Omega$).
+
+### Worked Example
+Python script calculating current-limiting resistance and power dissipation:
+```python
+def calculate_led_resistor(v_supply, v_forward, i_target_amps):
+    v_resistor = v_supply - v_forward
+    resistance = v_resistor / i_target_amps
+    power_watts = (v_resistor ** 2) / resistance
+    return {
+        "resistance_ohms": resistance,
+        "power_dissipation_watts": power_watts,
+        "is_safe_for_quarter_watt": power_watts < 0.25
+    }
+
+spec = calculate_led_resistor(v_supply=5.0, v_forward=2.0, i_target_amps=0.015)
+print(f"Resistance: {spec['resistance_ohms']:.1f} Ohms, Power: {spec['power_dissipation_watts']:.3f} W")
+# 200.0 Ohms, 0.045 W (Safe)
+```
+
+### Common Mistake
+Connecting an LED directly between a GPIO pin and Ground without a current-limiting resistor. The LED presents near-zero dynamic resistance, drawing destructive excessive current (>50mA) that instantly destroys the microcontroller output driver.
+
+### Check Yourself
+How much current flows through a $220\,\Omega$ resistor connected across a $3.3\text{V}$ power rail with negligible diode drop?

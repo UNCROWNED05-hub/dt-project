@@ -1,0 +1,44 @@
+---
+loId: "iot-03-lo03"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+General Purpose Input/Output (GPIO) pins connect the MCU processor core to external circuits through configurable hardware registers:
+1. Operating Modes:
+   - `INPUT`: Pin is configured in high-impedance state ($>100\text{M}\Omega$), drawing negligible current to sample external voltages without loading the signal source.
+   - `INPUT_PULLUP`: Activates an internal weak resistor (typically $20\text{k}\Omega - 50\text{k}\Omega$) pulling the pin to $V_{CC}$ when unconnected.
+   - `OUTPUT`: Drives the pin actively to $V_{CC}$ (HIGH) through a P-channel MOSFET or to Ground (LOW) through an N-channel MOSFET.
+2. ESP32 Pin Limitations & Gotchas:
+   - Input-Only Pins (GPIO 34, 35, 36, 39): These pins lack internal output drivers and pull-up/pull-down resistors. They can ONLY be used as analog or digital inputs.
+   - Strapping Pins (GPIO 0, 2, 5, 12, 15): Sampled during boot to determine flashing and boot modes. Connecting external hardware pulling these pins LOW or HIGH during power-up prevents normal firmware execution.
+   - SPI Flash Pins (GPIO 6-11): Connected directly to the integrated SPI flash memory die; never use them for general I/O.
+
+### Worked Example
+Arduino C++ GPIO configuration demonstrating output and input-with-pullup:
+```cpp
+const int LED_PIN = 2;       // Onboard blue LED on most ESP32 boards
+const int BUTTON_PIN = 14;   // External push button
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+}
+
+void loop() {
+  int button_state = digitalRead(BUTTON_PIN);
+  if (button_state == LOW) { // Button pressed to Ground
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+}
+```
+
+### Common Mistake
+Attempting to use ESP32 GPIO 34, 35, 36, or 39 as digital outputs; calling `digitalWrite` on these pins fails silently because they lack internal push-pull output driver transistors.
+
+### Check Yourself
+Why can GPIO pins 34, 35, 36, and 39 on an ESP32 never be used to drive an external LED?

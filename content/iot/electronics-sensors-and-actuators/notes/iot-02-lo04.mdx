@@ -1,0 +1,38 @@
+---
+loId: "iot-02-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Passive components establish circuit stability, signal conditioning, and electrical protection:
+1. Decoupling Capacitors: Microcontrollers draw instantaneous high-frequency current spikes during clock transitions. Placing a $0.1\,\mu\text{F}$ ceramic capacitor physically adjacent to every MCU $V_{DD}$ pin shunts high-frequency noise to Ground, preventing sporadic resets. A larger electrolytic or tantalum capacitor ($10\,\mu\text{F}$ to $100\,\mu\text{F}$) on the main rail buffers bulk power fluctuations.
+2. Diodes and Rectification: Diodes permit current flow in only one direction (anode to cathode). Flyback (snubber) diodes placed reverse-biased across inductive loads (relays, DC motors) absorb dangerous high-voltage inductive kickback spikes ($V = -L \frac{di}{dt}$) generated when current is abruptly interrupted.
+3. Pull-Up and Pull-Down Resistors: Floating digital input pins act like miniature radio antennas, picking up electromagnetic interference and randomly fluctuating between HIGH and LOW. A $10\,\text{k}\Omega$ pull-up resistor ties the pin weakly to $V_{CC}$ until an external switch pulls it to Ground.
+
+### Worked Example
+Arduino C++ example enabling internal weak pull-up resistors:
+```cpp
+const int BUTTON_PIN = 4;
+
+void setup() {
+  // Configures input pin with internal ~40k pull-up to VCC
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  Serial.begin(115200);
+}
+
+void loop() {
+  // Reading returns LOW when button is pressed to GND
+  int state = digitalRead(BUTTON_PIN);
+  if (state == LOW) {
+    Serial.println("Switch pressed to Ground");
+  }
+}
+```
+
+### Common Mistake
+Omitting a flyback diode across an electromagnetic relay coil driven by a transistor; the inductive voltage spike of several hundred volts punctures and permanently fries the switching transistor upon turn-off.
+
+### Check Yourself
+What erratic behavior occurs when a digital input pin is left floating without a pull-up or pull-down resistor?

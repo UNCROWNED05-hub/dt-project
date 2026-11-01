@@ -1,0 +1,1125 @@
+[
+  {
+    "loId": "iot-03-lo01",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q01",
+    "stem": "What architectural feature primarily distinguishes a microcontroller (MCU) from a microprocessor (MPU/SBC)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An MCU integrates CPU, RAM, ROM/Flash, and I/O peripherals onto a single monolithic silicon chip."
+      },
+      {
+        "id": "b",
+        "text": "An MCU requires a separate external motherboard and graphics card."
+      },
+      {
+        "id": "c",
+        "text": "An MCU only processes analog audio signals."
+      },
+      {
+        "id": "d",
+        "text": "An MCU always runs desktop Microsoft Windows."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "MCUs integrate processor, memory, and peripheral controllers on one die for dedicated embedded control.",
+    "noteRef": "iot-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo01",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q02",
+    "stem": "An engineer is designing a battery-powered agricultural sensor node that must sleep for 59 minutes and wake up for 5 seconds to take readings over 3 years. Which compute platform is appropriate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A Raspberry Pi 4 running Ubuntu Linux."
+      },
+      {
+        "id": "b",
+        "text": "A low-power 32-bit microcontroller with deep-sleep modes drawing microamps."
+      },
+      {
+        "id": "c",
+        "text": "An Intel Core i7 desktop computer."
+      },
+      {
+        "id": "d",
+        "text": "A high-end smartphone with display permanently on."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "MCUs draw microamps in deep sleep, enabling multi-year battery lifespans impossible for OS-based SBCs.",
+    "noteRef": "iot-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo01",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q03",
+    "stem": "Why can a bare-metal microcontroller guarantee hard real-time execution that standard desktop Linux cannot?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because microcontrollers operate at higher clock speeds than supercomputers."
+      },
+      {
+        "id": "b",
+        "text": "Because Linux does not have a CPU clock."
+      },
+      {
+        "id": "c",
+        "text": "Bare-metal firmware executes instructions directly on hardware without non-deterministic OS kernel scheduling or background preemptive thread context switches."
+      },
+      {
+        "id": "d",
+        "text": "Microcontrollers are physically smaller."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Bare-metal or RTOS on an MCU executes deterministic code paths with predictable microsecond interrupt latencies.",
+    "noteRef": "iot-03-lo01",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo01",
+    "type": "numeric",
+    "difficulty": 3,
+    "id": "iot-03-q04",
+    "stem": "If a low-power MCU draws an average current of 0.1 mA, how many continuous hours can it run on a 2000 mAh battery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "200"
+      },
+      {
+        "id": "b",
+        "text": "2000"
+      },
+      {
+        "id": "c",
+        "text": "500"
+      },
+      {
+        "id": "d",
+        "text": "20000"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Battery life hours = Capacity / Average Current = 2000 mAh / 0.1 mA = 20,000 hours (~2.28 years).",
+    "noteRef": "iot-03-lo01",
+    "verify": "(2000 / 0.1 === 20000)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo02",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q05",
+    "stem": "What is the maximum operating CPU clock speed of a standard ESP32 dual-core microcontroller?",
+    "options": [
+      {
+        "id": "a",
+        "text": "240 MHz"
+      },
+      {
+        "id": "b",
+        "text": "16 MHz"
+      },
+      {
+        "id": "c",
+        "text": "1.5 GHz"
+      },
+      {
+        "id": "d",
+        "text": "4 MHz"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The ESP32 Xtensa dual-core processor operates at configurable frequencies up to 240 MHz.",
+    "noteRef": "iot-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo02",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q06",
+    "stem": "A developer wants to upgrade an Arduino Uno project to an ESP32. What critical logic voltage difference must they accommodate to prevent frying the ESP32?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The ESP32 runs exclusively on 120V AC."
+      },
+      {
+        "id": "b",
+        "text": "The Arduino Uno operates at 5.0V logic, whereas the ESP32 operates at 3.3V logic and is not 5V-tolerant."
+      },
+      {
+        "id": "c",
+        "text": "The Arduino operates at 1.8V while ESP32 operates at 12V."
+      },
+      {
+        "id": "d",
+        "text": "There is no difference in logic voltages."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Arduino Uno is a 5.0V system; ESP32 is strictly 3.3V and connecting 5.0V inputs permanently destroys pins.",
+    "noteRef": "iot-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo02",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-03-q07",
+    "stem": "Which of the following built-in wireless capabilities are integrated directly onto standard ESP32 silicon?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2.4 GHz Wi-Fi (802.11 b/g/n)"
+      },
+      {
+        "id": "b",
+        "text": "Bluetooth v4.2 and Bluetooth Low Energy (BLE)"
+      },
+      {
+        "id": "c",
+        "text": "5G Cellular NR mmWave"
+      },
+      {
+        "id": "d",
+        "text": "Satellite GPS Receiver"
+      }
+    ],
+    "answer": [
+      "a",
+      "b"
+    ],
+    "explanation": "The ESP32 integrates 2.4 GHz Wi-Fi and Bluetooth/BLE radio hardware; cellular and GPS require external modules.",
+    "noteRef": "iot-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo02",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q08",
+    "stem": "What unique hardware subsystem on the Raspberry Pi Pico (RP2040) allows generating custom high-speed digital protocols without CPU overhead?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Integrated GPU"
+      },
+      {
+        "id": "b",
+        "text": "Hardware thermal printer"
+      },
+      {
+        "id": "c",
+        "text": "Programmable I/O (PIO) state machines"
+      },
+      {
+        "id": "d",
+        "text": "Optical disc drive"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "RP2040 features 8 Programmable I/O (PIO) state machines to bit-bang protocols without loading CPU cores.",
+    "noteRef": "iot-03-lo02",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo03",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q09",
+    "stem": "Which ESP32 GPIO pins are strictly INPUT-ONLY and lack internal output driver transistors?",
+    "options": [
+      {
+        "id": "a",
+        "text": "GPIO 2, 4, 12, and 14"
+      },
+      {
+        "id": "b",
+        "text": "GPIO 16 and 17"
+      },
+      {
+        "id": "c",
+        "text": "GPIO 21 and 22"
+      },
+      {
+        "id": "d",
+        "text": "GPIO 34, 35, 36, and 39"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "GPIOs 34-39 on the ESP32 are input-only pins without output driver circuitry or internal pull resistors.",
+    "noteRef": "iot-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo03",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q10",
+    "stem": "An engineer attaches an external circuit to ESP32 GPIO 0. When powered on, the ESP32 refuses to run firmware and gets stuck in download mode. What caused this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "GPIO 0 is a strapping pin; the external circuit pulled it LOW during boot, forcing the chip into UART flashing mode."
+      },
+      {
+        "id": "b",
+        "text": "GPIO 0 is reserved for AC mains power."
+      },
+      {
+        "id": "c",
+        "text": "The USB cable was too long."
+      },
+      {
+        "id": "d",
+        "text": "The microcontroller was in deep sleep."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Strapping pins (like GPIO 0) configure boot behavior; pulling GPIO 0 LOW at boot forces flashing mode.",
+    "noteRef": "iot-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo03",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q11",
+    "stem": "Why are GPIO pins 6 through 11 on standard ESP32 development modules unavailable for user circuits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They are dedicated high-voltage AC terminals."
+      },
+      {
+        "id": "b",
+        "text": "They are internally connected to the on-module SPI Flash memory chip."
+      },
+      {
+        "id": "c",
+        "text": "They are reserved for audio microphones."
+      },
+      {
+        "id": "d",
+        "text": "They are dummy pins with no physical connection."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Pins 6-11 route directly to the SPI flash die; connecting external circuits crashes program execution.",
+    "noteRef": "iot-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo03",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q12",
+    "stem": "What electrical state is a GPIO pin configured in when initialized with `pinMode(pin, INPUT)`?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Direct connection to Ground with 0 Ohms resistance."
+      },
+      {
+        "id": "b",
+        "text": "Direct connection to 3.3V through a power transistor."
+      },
+      {
+        "id": "c",
+        "text": "High-Impedance (Hi-Z) state with resistance over 100 Mega-Ohms, minimizing circuit loading."
+      },
+      {
+        "id": "d",
+        "text": "Continuous 50Hz oscillation."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Digital input mode disconnects drivers, presenting a high-impedance (Hi-Z) listening state to avoid loading signals.",
+    "noteRef": "iot-03-lo03",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo04",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q13",
+    "stem": "What is the primary function of a Low-Dropout (LDO) voltage regulator like the AMS1117-3.3?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Converting DC battery power into 230V AC."
+      },
+      {
+        "id": "b",
+        "text": "Amplifying radio frequencies for long-range Wi-Fi."
+      },
+      {
+        "id": "c",
+        "text": "Flashing firmware over Bluetooth."
+      },
+      {
+        "id": "d",
+        "text": "Stepping down a higher DC input voltage (e.g. 5V) to a stable, regulated 3.3V rail for the MCU."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "LDO regulators maintain a stable, clean output voltage (such as 3.3V) from a higher input supply.",
+    "noteRef": "iot-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo04",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q14",
+    "stem": "An ESP32 board repeatedly prints 'Brownout detector was triggered' in serial logs whenever `WiFi.begin()` is called. What is the root cause?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The 3.3V power supply cannot satisfy the transient 500mA RF calibration current surge, causing voltage to sag below the reset threshold."
+      },
+      {
+        "id": "b",
+        "text": "The Wi-Fi password contains special characters."
+      },
+      {
+        "id": "c",
+        "text": "The antenna is detecting too many radio stations."
+      },
+      {
+        "id": "d",
+        "text": "The ESP32 has run out of memory."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Wi-Fi radio initialization draws sudden 500mA current bursts; inadequate supplies sag voltage, tripping the BOD.",
+    "noteRef": "iot-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo04",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q15",
+    "stem": "If an LDO linear regulator has a dropout voltage of 1.1V, what is the absolute minimum input voltage required to maintain a regulated 3.3V output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3.3V"
+      },
+      {
+        "id": "b",
+        "text": "4.4V"
+      },
+      {
+        "id": "c",
+        "text": "2.2V"
+      },
+      {
+        "id": "d",
+        "text": "5.5V"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Vmin = Vout + Vdropout = 3.3V + 1.1V = 4.4V.",
+    "noteRef": "iot-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo04",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q16",
+    "stem": "Why is placing a 100 uF electrolytic capacitor directly across the ESP32 3.3V and Ground pins an effective solution for Wi-Fi brownouts?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It doubles the radio transmission range."
+      },
+      {
+        "id": "b",
+        "text": "It speeds up the CPU clock."
+      },
+      {
+        "id": "c",
+        "text": "It serves as an immediate local charge reservoir that supplies transient peak current during RF transmission bursts, preventing rail sag."
+      },
+      {
+        "id": "d",
+        "text": "It encrypts network packets in hardware."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Bulk capacitors deliver localized high-current spikes during RF transmission bursts, keeping the 3.3V rail stiff.",
+    "noteRef": "iot-03-lo04",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo05",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q17",
+    "stem": "What open-source Python utility is used to communicate with the ESP32 ROM bootloader and flash firmware over serial?",
+    "options": [
+      {
+        "id": "a",
+        "text": "pip install"
+      },
+      {
+        "id": "b",
+        "text": "docker run"
+      },
+      {
+        "id": "c",
+        "text": "npm start"
+      },
+      {
+        "id": "d",
+        "text": "esptool.py"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "esptool.py is the official Espressif Python utility for flashing firmware binaries over UART.",
+    "noteRef": "iot-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo05",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q18",
+    "stem": "During firmware upload, the IDE asserts the USB-to-UART bridge DTR and RTS control lines. What action do these signals perform automatically?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They manipulate the EN (Reset) and GPIO 0 pins through two transistors to force the chip into UART download mode without button presses."
+      },
+      {
+        "id": "b",
+        "text": "They encrypt the computer's hard drive."
+      },
+      {
+        "id": "c",
+        "text": "They measure the ambient room temperature."
+      },
+      {
+        "id": "d",
+        "text": "They test Wi-Fi internet speeds."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "The standard auto-reset circuit sequences EN and GPIO 0 via DTR/RTS to automate entry into bootloader mode.",
+    "noteRef": "iot-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo05",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q19",
+    "stem": "If an ESP32 development board lacks auto-reset transistors, how can an engineer manually place the board into flashing mode?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Disconnect the USB cable and plug it into an AC wall socket."
+      },
+      {
+        "id": "b",
+        "text": "Hold down the BOOT (GPIO 0) button, press and release the EN (Reset) button, then release the BOOT button."
+      },
+      {
+        "id": "c",
+        "text": "Hit the computer keyboard with a magnet."
+      },
+      {
+        "id": "d",
+        "text": "Submerge the board in cold water."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Holding BOOT (GPIO 0 LOW) during reset release forces the ROM bootloader into UART download mode.",
+    "noteRef": "iot-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo05",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q20",
+    "stem": "At what standard flash offset address does the application binary (app.bin) reside in the default ESP32 partition table?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0x0000"
+      },
+      {
+        "id": "b",
+        "text": "0x1000"
+      },
+      {
+        "id": "c",
+        "text": "0x10000"
+      },
+      {
+        "id": "d",
+        "text": "0x8000"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "0x1000 is bootloader, 0x8000 is partition table, and 0x10000 is the start of the default factory app binary.",
+    "noteRef": "iot-03-lo05",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo06",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q21",
+    "stem": "What configuration file in a PlatformIO project defines target microcontrollers, frameworks, and library dependencies?",
+    "options": [
+      {
+        "id": "a",
+        "text": "package.json"
+      },
+      {
+        "id": "b",
+        "text": "Dockerfile"
+      },
+      {
+        "id": "c",
+        "text": "Makefile"
+      },
+      {
+        "id": "d",
+        "text": "platformio.ini"
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "PlatformIO projects are configured via the declarative `platformio.ini` project configuration file.",
+    "noteRef": "iot-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo06",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q22",
+    "stem": "A team of three firmware engineers uses PlatformIO for an ESP32 project. How does declaring `lib_deps = bblanchon/ArduinoJson @ ^7.0.0` in `platformio.ini` guarantee reproducibility?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It automatically downloads the exact compatible version of the library across all team members' workstations during build time."
+      },
+      {
+        "id": "b",
+        "text": "It prevents other developers from editing source code."
+      },
+      {
+        "id": "c",
+        "text": "It makes the firmware open-source on GitHub."
+      },
+      {
+        "id": "d",
+        "text": "It increases internet upload speeds."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Semantic version declarations in `lib_deps` ensure every machine builds against identical library APIs.",
+    "noteRef": "iot-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo06",
+    "type": "multi",
+    "difficulty": 2,
+    "id": "iot-03-q23",
+    "stem": "Which of the following development advantages does PlatformIO offer over the standard Arduino IDE 1.x?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Advanced code autocompletion, refactoring, and navigation powered by VS Code"
+      },
+      {
+        "id": "b",
+        "text": "Automatic toolchain and cross-compiler management per environment"
+      },
+      {
+        "id": "c",
+        "text": "Integrated static code analysis and unit testing tools"
+      },
+      {
+        "id": "d",
+        "text": "Free unlimited cloud hardware manufacturing"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "PlatformIO integrates professional IDE tooling, dependency isolation, and testing into modern editor workflows.",
+    "noteRef": "iot-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo06",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q24",
+    "stem": "What parameter in `platformio.ini` sets the serial monitor baud rate to match `Serial.begin(115200)` in firmware?",
+    "options": [
+      {
+        "id": "a",
+        "text": "upload_port = 115200"
+      },
+      {
+        "id": "b",
+        "text": "monitor_speed = 115200"
+      },
+      {
+        "id": "c",
+        "text": "baud_rate_max = 115200"
+      },
+      {
+        "id": "d",
+        "text": "serial_frequency = 115200"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "`monitor_speed = 115200` configures PlatformIO's serial terminal baud rate.",
+    "noteRef": "iot-03-lo06",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo07",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q25",
+    "stem": "What is Wokwi in modern embedded systems engineering?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A physical soldering station."
+      },
+      {
+        "id": "b",
+        "text": "A high-voltage AC multimeter."
+      },
+      {
+        "id": "c",
+        "text": "An online cycle-accurate hardware simulator for microcontrollers like ESP32, RP2040, and Arduino."
+      },
+      {
+        "id": "d",
+        "text": "A proprietary operating system for supercomputers."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Wokwi is an advanced browser-based hardware and firmware simulator.",
+    "noteRef": "iot-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo07",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q26",
+    "stem": "A student needs to test an ESP32 firmware sketch that connects to a public MQTT broker, but they do not have physical hardware on hand. How does Wokwi enable this test?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wokwi mails a physical ESP32 to the student's house."
+      },
+      {
+        "id": "b",
+        "text": "Wokwi converts C++ code into an MP3 file."
+      },
+      {
+        "id": "c",
+        "text": "Wokwi disables all networking functions."
+      },
+      {
+        "id": "d",
+        "text": "Wokwi simulates an emulated Wi-Fi access point ('Wokwi-GUEST') that bridges real internet network packets from the simulated firmware to live web servers."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Wokwi's virtual Wi-Fi gateway allows simulated ESP32 firmware to communicate with live internet servers.",
+    "noteRef": "iot-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo07",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q27",
+    "stem": "In a Wokwi project, which JSON file defines the virtual components, display screens, and wiring connections?",
+    "options": [
+      {
+        "id": "a",
+        "text": "diagram.json"
+      },
+      {
+        "id": "b",
+        "text": "circuit.xml"
+      },
+      {
+        "id": "c",
+        "text": "hardware.txt"
+      },
+      {
+        "id": "d",
+        "text": "schema.csv"
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "`diagram.json` stores the visual parts list and point-to-point wiring coordinates in Wokwi.",
+    "noteRef": "iot-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo07",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q28",
+    "stem": "Why is hardware simulation valuable during the firmware debugging process prior to manufacturing PCBs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It eliminates the need for software code."
+      },
+      {
+        "id": "b",
+        "text": "It allows testing logic edge cases (sensor failure, boundary inputs) and catch race conditions without risk of damaging physical silicon."
+      },
+      {
+        "id": "c",
+        "text": "It generates printed circuit boards for free."
+      },
+      {
+        "id": "d",
+        "text": "Simulated code never contains bugs."
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "Simulating circuits isolates firmware bugs from physical hardware wiring defects and avoids physical chip damage.",
+    "noteRef": "iot-03-lo07",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo08",
+    "type": "single",
+    "difficulty": 1,
+    "id": "iot-03-q29",
+    "stem": "In a semiconductor datasheet, what section defines the stress limits beyond which permanent hardware destruction occurs?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Recommended Operating Conditions"
+      },
+      {
+        "id": "b",
+        "text": "Ordering Information"
+      },
+      {
+        "id": "c",
+        "text": "Absolute Maximum Ratings"
+      },
+      {
+        "id": "d",
+        "text": "Revision History"
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "Absolute Maximum Ratings specify electrical and thermal boundaries that cause irreversible damage if exceeded.",
+    "noteRef": "iot-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo08",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q30",
+    "stem": "A hobbyist connects an LED that draws 60mA directly to an ESP32 GPIO pin. The datasheet recommends maximum continuous current of 12mA per pin. What is the risk?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The LED will turn blue."
+      },
+      {
+        "id": "b",
+        "text": "The Wi-Fi password will be deleted."
+      },
+      {
+        "id": "c",
+        "text": "The computer monitor will flicker."
+      },
+      {
+        "id": "d",
+        "text": "Severe voltage drop on the internal rail, overheating of the output driver MOSFET, and permanent burnout of the GPIO silicon cell."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Drawing 60mA through a 12mA-rated pin creates excessive local heating that destroys the internal driver.",
+    "noteRef": "iot-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo08",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q31",
+    "stem": "What is the difference between a GPIO pin 'Sinking' current versus 'Sourcing' current?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sourcing supplies current OUT of the pin from VCC to a load; Sinking draws current INTO the pin from a load to Ground."
+      },
+      {
+        "id": "b",
+        "text": "Sinking is for AC current; Sourcing is for DC current."
+      },
+      {
+        "id": "c",
+        "text": "Sourcing only works on odd-numbered pins."
+      },
+      {
+        "id": "d",
+        "text": "There is no physical difference."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Sourcing outputs current from VCC; sinking absorbs incoming current through the low-side switch to Ground.",
+    "noteRef": "iot-03-lo08",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo08",
+    "type": "numeric",
+    "difficulty": 3,
+    "id": "iot-03-q32",
+    "stem": "If a microcontroller chip has an absolute total VCC/GND package current limit of 150 mA, and each indicator LED consumes 15 mA, what is the maximum number of such LEDs that can be driven simultaneously?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "20"
+      },
+      {
+        "id": "d",
+        "text": "15"
+      }
+    ],
+    "answer": [
+      "b"
+    ],
+    "explanation": "150 mA / 15 mA = 10 LEDs maximum before exceeding the total package current budget.",
+    "noteRef": "iot-03-lo08",
+    "verify": "(150 / 15 === 10)",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo09",
+    "type": "single",
+    "difficulty": 2,
+    "id": "iot-03-q33",
+    "stem": "What is the primary function of the Ultra-Low-Power (ULP) coprocessor built into the ESP32?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It mines cryptocurrency in background threads."
+      },
+      {
+        "id": "b",
+        "text": "It plays 4K video streams."
+      },
+      {
+        "id": "c",
+        "text": "It executes small programs to monitor sensors, touch pads, and ADC thresholds while the main high-power CPU cores remain in deep sleep."
+      },
+      {
+        "id": "d",
+        "text": "It encrypts Wi-Fi passwords."
+      }
+    ],
+    "answer": [
+      "c"
+    ],
+    "explanation": "The ULP coprocessor monitors peripherals at 10-20 microamps of power while main CPUs sleep.",
+    "noteRef": "iot-03-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo09",
+    "type": "scenario",
+    "difficulty": 2,
+    "id": "iot-03-q34",
+    "stem": "An engineer attaches a plain copper foil strip to ESP32 Touch0 (GPIO 4) and calls `touchRead(4)`. Why does the numerical reading drop from 80 down to 15 when a human finger touches the foil?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The human finger generates 240V electricity."
+      },
+      {
+        "id": "b",
+        "text": "The foil becomes magnetic."
+      },
+      {
+        "id": "c",
+        "text": "The ESP32 reduces its clock speed."
+      },
+      {
+        "id": "d",
+        "text": "Human skin introduces additional capacitance to Ground, increasing the RC charge/discharge time measured by the hardware counter."
+      }
+    ],
+    "answer": [
+      "d"
+    ],
+    "explanation": "Capacitive touch pins measure RC oscillator frequency; finger capacitance slows oscillation, dropping the count.",
+    "noteRef": "iot-03-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo09",
+    "type": "multi",
+    "difficulty": 3,
+    "id": "iot-03-q35",
+    "stem": "Which of the following events can be configured to wake up an ESP32 from deep sleep mode?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Timer alarm (RTC timer expiration)"
+      },
+      {
+        "id": "b",
+        "text": "External GPIO interrupt (ext0 / ext1 wakeup)"
+      },
+      {
+        "id": "c",
+        "text": "Capacitive touch pad activation"
+      },
+      {
+        "id": "d",
+        "text": "Changes in CPU serial number"
+      }
+    ],
+    "answer": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "The RTC controller can awaken the ESP32 via timers, GPIO pins, touch pads, or ULP interrupts.",
+    "noteRef": "iot-03-lo09",
+    "reviewed": false
+  },
+  {
+    "loId": "iot-03-lo09",
+    "type": "single",
+    "difficulty": 3,
+    "id": "iot-03-q36",
+    "stem": "Why are capacitive touch sensors advantageous over physical mechanical push-buttons in harsh outdoor IoT deployments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "They operate through sealed glass or plastic enclosures with no moving parts, preventing water ingress, dust contamination, and mechanical wear."
+      },
+      {
+        "id": "b",
+        "text": "They work when completely unpowered."
+      },
+      {
+        "id": "c",
+        "text": "They can be pressed from 10 miles away."
+      },
+      {
+        "id": "d",
+        "text": "They never require software debouncing."
+      }
+    ],
+    "answer": [
+      "a"
+    ],
+    "explanation": "Touch pads sense through sealed bezels, eliminating moving parts and sealing enclosures against water and dust.",
+    "noteRef": "iot-03-lo09",
+    "reviewed": false
+  }
+]

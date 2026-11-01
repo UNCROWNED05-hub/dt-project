@@ -1,0 +1,35 @@
+---
+loId: "iot-02-lo09"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Physical electronics engineering involves real hazards requiring strict adherence to workshop and electrical safety protocols:
+1. Mains Voltage AC Hazard ($110\text{V} - 240\text{V}$): AC mains voltage is lethal. Never touch live wiring; always test with non-contact voltage testers. Ensure minimum $5\text{mm}$ physical creepage and clearance distances between mains AC PCB traces and low-voltage DC tracks. Always enclose mains relays in fire-retardant enclosures.
+2. Lithium Polymer (LiPo) Battery Safety: LiPo batteries store tremendous chemical energy and can enter violent thermal runaway if short-circuited, punctured, or overcharged. Always use dedicated battery management ICs (like TP4056 with DW01A protection) enforcing overvoltage ($4.2\text{V}$ max), undervoltage ($2.8\text{V}$ min cutoff), and overcurrent limits.
+3. Soldering Safety & Chemical Hygiene: Solder irons operate at $300^{\circ}\text{C} - 380^{\circ}\text{C}$. Always use active fume extraction or well-ventilated areas to avoid inhaling rosin flux fumes. Wash hands thoroughly after handling lead-bearing solder.
+
+### Worked Example
+Safety checklist for battery-powered IoT prototypes:
+```python
+def verify_lipo_safety(cell_voltage, charging_current_ma, cell_capacity_mah):
+    # Rule: Max charge current is 1C (1x capacity), voltage must stay between 3.0V and 4.2V
+    is_voltage_safe = 3.0 <= cell_voltage <= 4.2
+    is_charge_rate_safe = charging_current_ma <= cell_capacity_mah
+    return {
+        "cell_safe": is_voltage_safe and is_charge_rate_safe,
+        "hazard_detected": not (is_voltage_safe and is_charge_rate_safe)
+    }
+
+# Evaluating a 500mAh LiPo cell at 4.1V charged at 400mA
+status = verify_lipo_safety(cell_voltage=4.1, charging_current_ma=400, cell_capacity_mah=500)
+print(f"Safe Operating Condition: {status['cell_safe']}") # True
+```
+
+### Common Mistake
+Charging a bare Lithium-ion cell without a protection circuit module (PCM), allowing an overcharge past $4.25\text{V}$ that initiates irreversible electrolyte decomposition, swelling, and fire.
+
+### Check Yourself
+Why must dedicated battery management circuits enforce a low-voltage cutoff ($sim 2.8	ext{V}$) on LiPo cells?

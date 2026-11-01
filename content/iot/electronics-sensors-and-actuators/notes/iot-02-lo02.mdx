@@ -1,0 +1,30 @@
+---
+loId: "iot-02-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Solderless breadboards and digital multimeters (DMMs) form the core prototyping workbench:
+1. Breadboard Architecture: Terminal strips connect groups of 5 tie-points horizontally across central DIP channels. Long vertical power rails (busses) run along both edges for Ground (blue/black) and $V_{CC}$ (red).
+2. Prototyping Cleanliness: Keep jumper wires flush against the breadboard, color-code connections systematically (Black=GND, Red=Power, Blue/Yellow=Signals), and always verify power rails before inserting expensive silicon.
+3. Digital Multimeter Operations:
+   - DC Voltage: Measured in parallel across two nodes without breaking the circuit.
+   - DC Current: Measured in series; the circuit loop must be broken so that all current passes through the DMM meter shunt.
+   - Continuity Test: Emits an audible tone when resistance is below $\sim 30\,\Omega$, allowing rapid detection of solder bridges or shorted traces.
+4. Pre-Power Continuity Check: Always test continuity between $V_{CC}$ and GND with power disconnected; an audible beep indicates an immediate dead short circuit.
+
+### Worked Example
+DMM current measurement procedure:
+1. Turn off external power supply.
+2. Move DMM red lead to the 10A or mA current socket.
+3. Disconnect the $V_{CC}$ lead going into the sensor.
+4. Connect DMM red probe to the power source, and black probe to the sensor's power pin (placing the meter in series).
+5. Apply power and observe current consumption under operating and sleep states.
+
+### Common Mistake
+Leaving the DMM red probe in the low-impedance Ammeter socket while attempting to measure voltage across power rails, creating a direct low-impedance short that blows the DMM internal protective fuse.
+
+### Check Yourself
+Why must DC current be measured in series with the load rather than in parallel across the load?

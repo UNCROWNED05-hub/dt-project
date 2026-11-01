@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "chapterId": "iot-03",
+  "objectives": [
+    {
+      "id": "iot-03-lo01",
+      "order": 1,
+      "title": "Compare microcontrollers (MCU) with microprocessors (MPU/SBC) across architecture, power, and real-time execution",
+      "bloom": "compare",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "mcu vs mpu",
+        "bare metal",
+        "operating system overhead",
+        "power consumption",
+        "deterministic latency"
+      ],
+      "aliases": [
+        "microcontroller vs microprocessor",
+        "esp32 vs raspberry pi"
+      ],
+      "prerequisites": [
+        "iot-01-lo02"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-03-lo02",
+      "order": 2,
+      "title": "Benchmark specifications of Arduino Uno, ESP32, and Raspberry Pi Pico",
+      "bloom": "benchmark",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "atmega328p",
+        "esp32 xtensa",
+        "rp2040",
+        "clock speed",
+        "ram capacity",
+        "operating voltage"
+      ],
+      "aliases": [
+        "microcontroller comparison",
+        "esp32 specs",
+        "arduino vs esp32"
+      ],
+      "prerequisites": [
+        "iot-03-lo01"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-03-lo03",
+      "order": 3,
+      "title": "Configure General Purpose Input/Output (GPIO) modes and manage pin multiplexing",
+      "bloom": "configure",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "gpio",
+        "pinmode",
+        "digitalread",
+        "digitalwrite",
+        "input-only pins",
+        "pin multiplexing"
+      ],
+      "aliases": [
+        "gpio configuration",
+        "esp32 pinout"
+      ],
+      "prerequisites": [
+        "iot-02-lo02"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-03-lo04",
+      "order": 4,
+      "title": "Design power distribution architectures and brownout protection using Low-Dropout (LDO) regulators",
+      "bloom": "design",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "ldo regulator",
+        "ams1117",
+        "brownout detector",
+        "decoupling",
+        "3.3v power rail"
+      ],
+      "aliases": [
+        "mcu power circuit",
+        "esp32 brownout"
+      ],
+      "prerequisites": [
+        "iot-02-lo01"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-03-lo05",
+      "order": 5,
+      "title": "Execute firmware flashing workflows via UART bootloaders and auto-reset circuitry",
+      "bloom": "execute",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "uart flashing",
+        "bootloader",
+        "dtr rts circuit",
+        "esptool",
+        "flashing sequence"
+      ],
+      "aliases": [
+        "firmware flashing",
+        "esp32 bootloader",
+        "auto-reset circuit"
+      ],
+      "prerequisites": [
+        "iot-03-lo03"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-03-lo06",
+      "order": 6,
+      "title": "Develop embedded projects using Arduino IDE and VS Code with PlatformIO",
+      "bloom": "implement",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "platformio",
+        "arduino ide",
+        "platformio.ini",
+        "library dependency",
+        "build systems"
+      ],
+      "aliases": [
+        "embedded ide",
+        "platformio workflow"
+      ],
+      "prerequisites": [
+        "iot-03-lo05"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-03-lo07",
+      "order": 7,
+      "title": "Simulate microcontroller circuits and firmware behaviors using Wokwi",
+      "bloom": "simulate",
+      "tier": "core",
+      "mustHave": false,
+      "keywords": [
+        "wokwi",
+        "simulation",
+        "diagram.json",
+        "virtual breadboard",
+        "logic debugging"
+      ],
+      "aliases": [
+        "mcu simulator",
+        "wokwi simulation"
+      ],
+      "prerequisites": [
+        "iot-03-lo06"
+      ],
+      "estMinutes": 12
+    },
+    {
+      "id": "iot-03-lo08",
+      "order": 8,
+      "title": "Interpret manufacturer datasheets and pinout diagrams for pin sink/source current limits",
+      "bloom": "interpret",
+      "tier": "core",
+      "mustHave": true,
+      "keywords": [
+        "datasheet",
+        "pinout diagram",
+        "absolute maximum ratings",
+        "sink current",
+        "source current"
+      ],
+      "aliases": [
+        "reading datasheets",
+        "pin current limits"
+      ],
+      "prerequisites": [
+        "iot-03-lo03"
+      ],
+      "estMinutes": 14
+    },
+    {
+      "id": "iot-03-lo09",
+      "order": 9,
+      "title": "Utilize ESP32 capacitive touch sensing and Low-Power (ULP) coprocessor capabilities",
+      "bloom": "implement",
+      "tier": "extension",
+      "mustHave": false,
+      "keywords": [
+        "touch pins",
+        "ulp coprocessor",
+        "capacitive sensing",
+        "deep sleep wakeup",
+        "low power"
+      ],
+      "aliases": [
+        "esp32 touch sensing",
+        "ulp programming"
+      ],
+      "prerequisites": [
+        "iot-03-lo03"
+      ],
+      "estMinutes": 12
+    }
+  ]
+}

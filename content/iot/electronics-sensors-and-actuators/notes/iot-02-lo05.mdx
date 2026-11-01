@@ -1,0 +1,34 @@
+---
+loId: "iot-02-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Analog-to-Digital Converters (ADCs) quantize continuous environmental physical voltages into discrete digital integer values:
+1. Bit Depth and Resolution: An $N$-bit ADC partitions the analog reference voltage range ($V_{\text{ref}}$) into $2^N$ discrete steps.
+   $$\text{Voltage Resolution per LSB} = \frac{V_{\text{ref}}}{2^N - 1}$$
+   - Arduino Uno: 10-bit ADC $\rightarrow 2^{10} = 1024$ levels ($0$ to $1023$). At $V_{\text{ref}} = 5.0\text{V}$, resolution is $\frac{5.0}{1023} \approx 4.88\text{mV}$ per step.
+   - ESP32: 12-bit ADC $\rightarrow 2^{12} = 4096$ levels ($0$ to $4095$). At $V_{\text{ref}} = 3.3\text{V}$, resolution is $\frac{3.3}{4095} \approx 0.806\text{mV}$ per step.
+2. Conversion Formula:
+   $$\text{Measured Voltage } V = \text{ADC Raw Reading} \times \frac{V_{\text{ref}}}{2^N - 1}$$
+3. ESP32 Non-Linearity: The native ESP32 ADC exhibits non-linear response curves below $\sim 0.15\text{V}$ and above $\sim 3.1\text{V}$, requiring multi-point calibration tables for precision measurement.
+
+### Worked Example
+C++ function converting raw 12-bit ADC readings to voltage:
+```cpp
+float convert_raw_adc_to_voltage(int raw_val, float v_ref = 3.3, int bit_depth = 12) {
+    int max_steps = (1 << bit_depth) - 1; // 4095 for 12-bit
+    return (raw_val * v_ref) / max_steps;
+}
+
+// Example: raw reading of 2048 on 12-bit ADC with 3.3V reference
+// returns 2048 * 3.3 / 4095 = 1.651 Volts
+```
+
+### Common Mistake
+Feeding an analog input voltage greater than the microcontroller supply rail ($3.3\text{V}$ on ESP32 or $5.0\text{V}$ on Arduino) directly into an ADC pin, forward-biasing internal ESD clamp diodes and permanently burning the pin.
+
+### Check Yourself
+What is the theoretical maximum raw integer value returned by a 10-bit ADC?

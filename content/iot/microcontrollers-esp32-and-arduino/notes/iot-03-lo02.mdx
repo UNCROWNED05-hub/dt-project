@@ -1,0 +1,43 @@
+---
+loId: "iot-03-lo02"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Modern embedded engineering requires selecting the exact microcontroller family suited to project requirements:
+1. Arduino Uno (ATmega328P):
+   - CPU Architecture: 8-bit AVR RISC @ $16\text{MHz}$.
+   - Memory: $32\text{KB}$ Flash, $2\text{KB}$ SRAM, $1\text{KB}$ EEPROM.
+   - Operating Logic: $5.0\text{V}$. No native wireless connectivity.
+   - Ideal For: Absolute beginners learning introductory digital I/O and electronics basics.
+2. ESP32 (Espressif Systems):
+   - CPU Architecture: 32-bit Dual-Core Tensilica Xtensa LX6 @ up to $240\text{MHz}$.
+   - Memory: $448\text{KB}$ ROM, $520\text{KB}$ internal SRAM, typically $4\text{MB}-16\text{MB}$ external SPI Flash.
+   - Wireless: Integrated $2.4\text{GHz}$ Wi-Fi ($802.11\text{b/g/n}$) and Bluetooth 4.2 / BLE.
+   - Operating Logic: $3.3\text{V}$ strictly.
+   - Ideal For: Connected IoT edge nodes, MQTT telemetry, sensor hubs.
+3. Raspberry Pi Pico (RP2040):
+   - CPU Architecture: 32-bit Dual-Core ARM Cortex-M0+ @ $133\text{MHz}$.
+   - Memory: $264\text{KB}$ SRAM, external SPI Flash ($2\text{MB}$).
+   - Unique Feature: Programmable I/O (PIO) state machines for custom hardware protocol generation without CPU loading.
+
+### Worked Example
+Comparing raw computing power across platforms:
+```python
+platforms = [
+    {"name": "Arduino Uno", "mhz": 16, "cores": 1, "ram_kb": 2, "wifi": False},
+    {"name": "RP2040 (Pico)", "mhz": 133, "cores": 2, "ram_kb": 264, "wifi": False},
+    {"name": "ESP32", "mhz": 240, "cores": 2, "ram_kb": 520, "wifi": True}
+]
+
+for p in platforms:
+    print(f"{p['name']}: {p['cores']} core(s) @ {p['mhz']} MHz, {p['ram_kb']} KB RAM, Wi-Fi: {p['wifi']}")
+```
+
+### Common Mistake
+Applying 5V logic signals directly to an ESP32 GPIO pin because you previously used an Arduino Uno; the ESP32 is strictly a 3.3V device and 5V inputs permanently damage internal input buffers.
+
+### Check Yourself
+What is the clock speed and internal SRAM capacity difference between an Arduino Uno and an ESP32?

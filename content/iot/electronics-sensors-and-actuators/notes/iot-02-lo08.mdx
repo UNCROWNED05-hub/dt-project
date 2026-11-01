@@ -1,0 +1,28 @@
+---
+loId: "iot-02-lo08"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Microcontroller GPIO pins source only tiny currents ($12\text{mA}-20\text{mA}$ max), requiring driver stages to control motors, solenoids, and AC appliances:
+1. Electromechanical Relays: A low-power coil activates mechanical switch contacts. Provides complete galvanic physical isolation between the low-voltage DC logic and high-voltage AC mains.
+2. Optocouplers (Photocouplers): Transmit digital signals across an internal infrared LED and phototransistor barrier with no physical copper connection, providing up to $5000\text{V}$ electrical isolation against ground loops and surges.
+3. N-Channel Power MOSFETs (Logic-Level): Semiconductor switches for high-current DC loads (LED strips, DC motors). Must be logic-level rated ($V_{GS(\text{th})} < 2.5\text{V}$) so that $3.3\text{V}$ GPIO signals saturate the gate fully.
+4. Inductive Load Protection: When driving DC inductive loads (coils, motors) via MOSFET or BJT, always place a 1N4007 or Schottky flyback diode in reverse parallel across the load terminals to suppress back-EMF spikes.
+
+### Worked Example
+Circuit wiring topology for a logic-level N-Channel MOSFET:
+1. Microcontroller GPIO connected through a $220\,\Omega$ gate resistor to the MOSFET Gate pin.
+2. A $10\,\text{k}\Omega$ pull-down resistor tied from Gate to Ground (ensuring the MOSFET stays OFF during MCU reboot).
+3. MOSFET Source pin connected directly to Common Ground.
+4. MOSFET Drain connected to the negative terminal of the DC motor/load.
+5. Positive load terminal connected to external $+12\text{V}$ power supply.
+6. Flyback diode connected across motor terminals (cathode to $+12\text{V}$, anode to Drain).
+
+### Common Mistake
+Failing to connect the external motor power supply Ground to the microcontroller Ground; without a common reference ground, the gate-to-source voltage $V_{GS}$ cannot be established, causing erratic switching.
+
+### Check Yourself
+What critical function does an optocoupler perform in high-power embedded circuits?

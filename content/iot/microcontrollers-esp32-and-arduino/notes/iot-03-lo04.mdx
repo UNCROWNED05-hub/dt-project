@@ -1,0 +1,32 @@
+---
+loId: "iot-03-lo04"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Microcontrollers require clean, ripple-free power rails to prevent erratic execution, memory corruption, and spontaneous brownout resets:
+1. Low-Dropout (LDO) Regulators: Linear regulators (such as the AMS1117-3.3) step down $5\text{V}$ USB or battery inputs to a stable $3.3\text{V}$. The "dropout voltage" ($V_{\text{drop}} \approx 1.0\text{V}-1.2\text{V}$) dictates that input voltage must exceed $3.3 + 1.2 = 4.5\text{V}$ for regulation to hold.
+2. ESP32 Wi-Fi Current Spikes: When the ESP32 Wi-Fi radio powers up and negotiates with an access point, it draws instantaneous RF transmission current spikes up to $500\text{mA}$ for tens of microseconds. If power traces are thin or decoupling capacitors are absent, the $3.3\text{V}$ rail dips below $\sim 2.8\text{V}$.
+3. Brownout Detector (BOD): An internal hardware comparator continuously monitors $V_{DD}$. If supply voltage sags below threshold, the BOD immediately triggers a hardware reset to prevent executing corrupted instructions.
+4. Mitigation Architecture: Place a $100\mu\text{F}$ electrolytic or tantalum capacitor in parallel with a $0.1\mu\text{F}$ ceramic capacitor right across the ESP32 $3.3\text{V}$ and GND pins.
+
+### Worked Example
+ESP32 brownout reboot signature in serial monitor logs:
+```text
+rst:0x10 (RTCWDT_RTC_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+Brownout detector was triggered
+
+ets Jun  8 2016 00:22:57
+```
+Remediation: Upgrade the USB power supply/cable or add a $100\mu\text{F}$ capacitor across the $3.3\text{V}$ rail.
+
+### Common Mistake
+Powering an ESP32 with Wi-Fi enabled directly from an Arduino Uno's onboard 3.3V pin, which is typically rated for only 50mA; the Wi-Fi current burst triggers an immediate perpetual brownout reset loop.
+
+### Check Yourself
+What specific hardware condition causes the ESP32 to output "Brownout detector was triggered" in serial logs?

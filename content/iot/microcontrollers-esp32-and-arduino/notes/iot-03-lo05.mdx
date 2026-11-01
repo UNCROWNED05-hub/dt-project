@@ -1,0 +1,31 @@
+---
+loId: "iot-03-lo05"
+reviewed: false
+sources:
+  - "Official Espressif Systems and Arduino Technical Reference Manuals"
+---
+
+### Core Idea
+Flashing firmware to modern microcontrollers relies on integrated hardware bootloaders and automated serial handshakes:
+1. ROM Bootloader: Buried in read-only hardware memory at silicon fabrication. When reset occurs, the CPU jumps to address 0 and checks strapping pin voltages (notably GPIO 0 on ESP32).
+   - If GPIO 0 is LOW at boot: The MCU enters UART Download Mode, waiting for new firmware images over serial (GPIO 1 TX, GPIO 3 RX).
+   - If GPIO 0 is HIGH at boot: The MCU enters Normal SPI Flash Boot Mode, executing stored application code.
+2. Auto-Reset Circuitry (DTR/RTS): Development boards incorporate two small NPN transistors (e.g., S8050) bridging the USB-to-UART bridge (CP2102, CH340) control lines:
+   - DTR and RTS signals from the host computer automatically pull EN (reset) LOW, then pull GPIO 0 LOW, and release EN, placing the board into download mode without manual button pressing.
+3. Command-Line Flashing with `esptool.py`: Compiles binary partitions (bootloader, partition-table, app.bin) and writes them over serial at speeds up to $921600\text{ baud}$.
+
+### Worked Example
+Flashing firmware manually from the command line using esptool:
+```bash
+# Read chip MAC address and flash parameters
+esptool.py --port /dev/ttyUSB0 flash_id
+
+# Write compiled application binary at 460800 baud
+esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash   0x1000 bootloader.bin   0x8000 partitions.bin   0x10000 firmware.bin
+```
+
+### Common Mistake
+Holding a development board in download mode permanently by leaving a jumper connecting GPIO 0 directly to Ground; the board will flash successfully but will never boot and run the application code upon power cycle.
+
+### Check Yourself
+What logic state must ESP32 GPIO 0 be held at during power-on reset to enter UART firmware download mode?
